@@ -9,45 +9,54 @@ import fillstar from '../assets/fill-star.svg';
 
 
 interface LengthwiseCardProps {
-    img? : string,
-    star? : number,
-    review? : number,
-    shop : string,
-    cakename : string ,
-    minprice : number
+    getData: any
+    // img? : string,
+    // star? : number,
+    // review? : number,
+    // shop : string,
+    // cakename : string ,
+    // minprice : number
 }
 
-function LengthwiseCard({ star, shop, cakename, minprice}: LengthwiseCardProps) { 
+function LengthwiseCard({getData}: LengthwiseCardProps) { 
+    console.log(getData);
     return (
-            <div className="container">
-        <div className="vertical-card">
-                <img src={cake1}  alt="cake-image" className="vertical-card-img"/>
-                <div className="vertical-card-info">
-                    <div className="card-top-info">
-                        <div className="card-rating-star">
-                            <img src={fillstar} alt="lating-star" />
-                            <img src={fillstar} alt="lating-star" />
-                            <img src={fillstar} alt="lating-star" />
-                            <img src={emptystar} alt="lating-star" />
-                            <img src={emptystar} alt="lating-star" />
+        <div className="container">
+            {getData.map((data: { name: any,id:any,userName:any})=>{
+                return (
+                    <div className="container"  key={data.id}>
+                        <div className="vertical-card">
+                                <img src={cake1}  alt="cake-image" className="vertical-card-img"/>
+                                <div className="vertical-card-info">
+                                    <div className="card-top-info">
+                                        <div className="card-rating-star">
+                                            <img src={fillstar} alt="lating-star" />
+                                            <img src={fillstar} alt="lating-star" />
+                                            <img src={fillstar} alt="lating-star" />
+                                            <img src={emptystar} alt="lating-star" />
+                                            <img src={emptystar} alt="lating-star" />
+                                        </div>
+                                    <div className="card-review">
+                                        리뷰 27
+                                    </div>
+                                </div>
+                                <div className="card-shop-name">
+                                    {/* {shop} */}
+                                    {data.name}
+                                </div>
+                                <div className="card-cake-name">
+                                    {/* {cakename} */}
+                                    {data.userName}
+                                </div>
+                                <div className="card-minprice">
+                                    {/* {minprice+"~"} */}
+                                    {data.id+"~"}
+                                </div>
+                            </div>
                         </div>
-                        <div className="card-review">
-                            리뷰 27
-                        </div>
                     </div>
-                    
-                    <div className="card-shop-name">
-                        {shop}
-                    </div>
-                    <div className="card-cake-name">
-                        {cakename}
-                    </div>
-                    <div className="card-minprice">
-                        {minprice+"~"}
-                    </div>
-                    
-                </div>
-            </div>
+                )
+                })}
         </div>
     );
 }
