@@ -1,0 +1,224 @@
+$p-text: #f96d6d;
+
+.landing-page {
+  height: -webkit-fill-available;
+  background-color: #f7d2d1;
+}
+// 헤더
+.landing-header {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+
+  img {
+    width: 25vw;
+  }
+}
+
+// intro
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.kcook-img {
+  //   overflow: hidden;
+
+  .kcook-logo {
+    margin-top: 36px;
+    width: 30vw;
+  }
+}
+.intro-span {
+  margin-bottom: 12px;
+  color: #f96d6d;
+  font-size: 14px;
+  font-weight: 700;
+  span {
+    font-size: 10px;
+  }
+}
+
+.intro-title {
+  margin-bottom: 12px;
+  color: #ea5450;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 33px;
+  span {
+    letter-spacing: 1.68px;
+  }
+}
+.title-desc {
+  margin-bottom: 40px;
+  color: #525252;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.coupon-img {
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+.kcook-coupon {
+  width: 80vw;
+}
+
+.intro-footer {
+  margin-bottom: 45px;
+  color: #808080;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+// 이메일 정보 확인
+
+.get-email {
+  background-color: #fff;
+  border-radius: 20px 20px 10px 0;
+  box-shadow: 0 -8px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.get-email-title {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 900;
+  color: #ea5450;
+}
+
+.get-email-form {
+  padding: 0 11vw;
+
+  p {
+    color: #525252;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  span {
+    padding-right: 16px;
+    font-size: 12px;
+    color: #808080;
+    font-weight: 500;
+  }
+  input {
+    height: 36px;
+    width: 70%;
+    border: 1px solid #ea5450;
+  }
+  select {
+    width: 30%;
+    height: 36px;
+    border: 1px solid #ea5450;
+    margin-right: 6px;
+  }
+}
+
+.input-email {
+  margin: 14px 0;
+}
+
+.get-email-sub {
+  text-align: center;
+  padding: 15px;
+  font-size: 10px;
+  color: #808080;
+  font-weight: 500;
+}
+
+.get-email-btn {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 7px 0;
+  width: 70vw;
+  background-color: #ea5450;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 17px;
+}
+.kcook-info {
+  color: #999999;
+  font-size: 10px;
+  font-weight: 300;
+  padding: 0 5vw 16px;
+}
+
+// 눈송이 부분
+.snowflake {
+  font-size: 26px;
+}
+
+#outer {
+  width: 98%;
+  height: 600px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.snowflake {
+  height: 600px;
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+} /* height값은 없어도 되는 속성 */
+
+.intro {
+  background-image: url("../assets/snow.png"), url("../assets/snow2.png");
+
+  -webkit-animation: snow 10s linear infinite;
+
+  -moz-animation: snow 10s linear infinite;
+
+  -ms-animation: snow 10s linear infinite;
+
+  animation: snow 10s linear infinite;
+}
+
+@keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@-moz-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@-webkit-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  50% {
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@-ms-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}

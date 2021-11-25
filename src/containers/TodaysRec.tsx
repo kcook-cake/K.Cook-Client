@@ -17,14 +17,14 @@ function TodaysRec (){
             <div className="sort-by-rec">
                 <div className="title">리뷰 별점순</div>
                 <div className="recommend-contents">
+                    {/* <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
+                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/> */}
                 </div>
                 <div className="pagination">
                     <Link to="/" className="arrow prev" href="#"> &lt;Prev</Link>

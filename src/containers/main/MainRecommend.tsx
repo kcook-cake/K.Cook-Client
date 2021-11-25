@@ -4,13 +4,12 @@ import { Url } from 'url';
 import '../../../src/styles/main/MainRecommend.scss'
 import VerticalCard from '../../components/LengthwiseCard';
 import SectionTitle from '../../components/SectionTitle';
-
 import axios from 'axios';
 import {environment} from '../../enviroment/enviroment';
 
 
-let [data, setData] =useState([]);
 const Recommend = ()=>{
+    let [data, setData] =useState([]);
         console.log(environment.apiUrl);
         useEffect(()=>{
             axios.get(`https://www.kcook-cake.com/app/cakes`)
@@ -22,7 +21,7 @@ const Recommend = ()=>{
     return(
         <div className="recommend">
             <div className="recommend-header">
-                <SectionTitle title="오늘의 추천"/>
+                <SectionTitle title="오늘의 추천"/>
             </div>
             <div className="recommend-contents">
                 <VerticalCard getData={data}/>
