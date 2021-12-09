@@ -1,4 +1,5 @@
 import React from "react";
+// import Presenter from "./presenter";
 
 class dDayCount extends React.Component {
   state = {
@@ -25,7 +26,17 @@ class dDayCount extends React.Component {
 
   render() {
     const { days, hours, minutes, seconds, progress } = this.state;
-    return <div className="div-count">{days}</div>;
+    return (
+      <div className="div-count">
+        <div>
+          days={days}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+          progress={progress}
+        </div>
+      </div>
+    );
   }
   //화면을 구성해주는 부분입니다. 눈여겨 보실 필요 없으십니다.
 
