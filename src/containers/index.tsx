@@ -11,6 +11,7 @@ import CustomerService from './CS';
 import Mypage from './Mypage';
 import Seller from './Seller';
 import FullCalendarApp from '../components/seller/FullCalendarApp';
+import Login from './Login';
 
 const Pages = () =>{
   return (
@@ -24,6 +25,7 @@ const Pages = () =>{
         <Route exact path="/MypageOrder" component={Mypage} />
         <Route exact path="/SellerOrder" component={Seller} />
         <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
+        <Route exact path="/Login" component={Login} />
       <Footer address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>
     </Router>    
   );
