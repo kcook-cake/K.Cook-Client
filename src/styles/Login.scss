@@ -11,18 +11,20 @@
   border: solid 1px #ea5450;
 }
 .login-list {
-  margin-bottom: 8px;
+  margin: 20px 0 8px;
   font-size: 12px;
   font-weight: bold;
   color: #333;
 }
 
 .login-input {
-  margin-bottom: 25px;
   border: 1px solid #eaeaea;
   width: 320px;
   height: 42px;
   padding-left: 18px;
+  & + & {
+    margin-top: 6px;
+  }
 }
 
 .login-title {
@@ -37,18 +39,18 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 0;
-  .auto-login {
-    margin: 0;
-    font-size: 12px;
-    color: #333;
-    font-weight: bold;
-    label {
-      margin-left: 4px;
-    }
-    input {
-      display: inline-block;
-      padding-top: 5px;
-    }
+}
+.auto-login {
+  margin: 0;
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+  label {
+    margin-left: 4px;
+  }
+  input {
+    display: inline-block;
+    padding-top: 5px;
   }
   a {
     font-size: 12px;
