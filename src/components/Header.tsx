@@ -34,8 +34,8 @@ function Header (){
                 <Link to="/MypageOrder">
                     <button className="header-link">마이페이지</button>
                 </Link>
-                <Link to="/">
-                    <button className="header-link">로그아웃</button>
+                <Link to="/SignUp">
+                    <button className="header-link">회원가입</button>
                 </Link>
             </div>
             <div className="menu-bar">
