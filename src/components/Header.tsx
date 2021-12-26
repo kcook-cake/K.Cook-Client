@@ -26,16 +26,16 @@ function Header (){
                     <input type="text" placeholder="상품 또는 스토어를 검색하세요." />
                 </form>
                 <Link to="/Login">
-                    <button className="login">로그인</button>
+                    <button className="header-link">로그인</button>
                 </Link>
                 <Link to="/SellerOrder">
-                    <button className="login">판매자로 전환</button>
+                    <button className="header-link">판매자로 전환</button>
                 </Link>
                 <Link to="/MypageOrder">
-                    <button className="login">마이페이지</button>
+                    <button className="header-link">마이페이지</button>
                 </Link>
                 <Link to="/">
-                    <button className="login">로그아웃</button>
+                    <button className="header-link">로그아웃</button>
                 </Link>
             </div>
             <div className="menu-bar">

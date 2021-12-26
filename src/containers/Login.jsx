@@ -23,7 +23,10 @@ function Login() {
           placeholder="비밀번호 입력"
         ></input>
         <div className="login-sub">
-          <button type="radio">자동 로그인</button>
+          <div className="auto-login">
+            <input type="checkbox" id="autoLogin"></input>
+            <label for="cb1">자동 로그인</label>
+          </div>
           <Link to="/">비밀번호찾기</Link>
         </div>
         <div className="login-btn">로그인</div>

@@ -10,10 +10,71 @@
   //   filter: blur(10px);
   border: solid 1px #ea5450;
 }
+.login-list {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
 
 .login-input {
+  margin-bottom: 25px;
   border: 1px solid #eaeaea;
   width: 320px;
   height: 42px;
   padding-left: 18px;
+}
+
+.login-title {
+  font-size: 20px;
+  color: #222222;
+  margin: 0;
+  font-weight: 500;
+  margin-bottom: 36px;
+}
+.login-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0;
+  .auto-login {
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    label {
+      margin-left: 4px;
+    }
+    input {
+      display: inline-block;
+      padding-top: 5px;
+    }
+  }
+  a {
+    font-size: 12px;
+    color: #333;
+  }
+}
+
+.login-btn {
+  margin: 28px 0 20px;
+  padding: 13px;
+  border-radius: 5px;
+  background-color: rgba(234, 84, 80, 0.5);
+
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+.login-go-to-register {
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+  a {
+    padding-left: 2px;
+    color: 000;
+    font-weight: 500;
+    text-decoration: underline;
+  }
 }
