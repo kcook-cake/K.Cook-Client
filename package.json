@@ -31,7 +31,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "export PORT=80 && react-scripts start",
+    "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -54,7 +54,10 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://prod.kcook-cake.com"
+,
   "devDependencies": {
-    "prettier-eslint": "^13.0.0"
+    "prettier-eslint": "^13.0.0",
+    "webpack-dev-server": "^3.11.1"
   }
 }
