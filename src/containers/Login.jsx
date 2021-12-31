@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import axios from "axios";
 function Login() {
-  const [inputId, setInputId] = useState("");
-  const [inputPw, setInputPw] = useState("");
+  const [password, setInputId] = useState("");
+  const [signInId, setInputPw] = useState("");
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -21,8 +21,8 @@ function Login() {
     axios
       .post("https://prod.kcook-cake.com/app/sign-in", {
         params: {
-          password: inputId,
-          signInId: inputPw,
+          password: password,
+          signInId: signInId,
         },
       })
       .then((res) => console.log(res))
@@ -35,7 +35,7 @@ function Login() {
       axios
         .get("https://prod.kcook-cake.com/app/accounts/auth")
         .then((res) => console.log(res))
-        .catch((error) => console.log(error));
+        .catch(() => console.log("실패했어요"));
     },
     // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
     []
