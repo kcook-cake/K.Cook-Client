@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import axios from "axios";
 function Login() {
-  const [password, setInputId] = useState("");
-  const [signInId, setInputPw] = useState("");
+  const [signInId, setInputId] = useState("");
+  const [password, setInputPw] = useState("");
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -18,6 +18,8 @@ function Login() {
 
   const onClickLogin = () => {
     console.log("click login");
+    console.log(password);
+    console.log(signInId);
     axios
       .post("https://prod.kcook-cake.com/app/sign-in", {
         params: {
