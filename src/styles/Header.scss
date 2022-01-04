@@ -1,8 +1,5 @@
 @import "reset.scss";
 
-.header {
-  // max-width: 1200px;
-}
 .header-ad {
   padding: 0 $basic-padding;
   line-height: 50px;
@@ -35,6 +32,8 @@
 //메인
 
 .head {
+  display: flex;
+  justify-content: space-between;
   padding: 0 $basic-padding;
   line-height: 82px;
   border-bottom: 1px solid #eee;
@@ -95,4 +94,39 @@
   padding-bottom: 3px;
   border-bottom: 3px solid $pink;
   transition: all 0.1s ease-in;
+}
+.only-mobile,
+.menu-icon,
+.question-icon {
+  display: none;
+}
+@media (max-width: 1200px) {
+}
+@media (max-width: 767px) {
+  // 보이고 안보이고 지정
+
+  .header-ad,
+  .header-right,
+  .header-left input {
+    display: none;
+  }
+  .only-mobile,
+  .menu-icon,
+  .question-icon {
+    display: block;
+    margin: 0;
+  }
+  .head {
+    padding: 0;
+  }
+  .header-left {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 60px;
+  }
+  .logo {
+    height: 37px;
+  }
 }

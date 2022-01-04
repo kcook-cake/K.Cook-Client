@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PC,Mobile } from './MediaQuery';
+// import { PC,Mobile } from './MediaQuery';
 import Pages from './containers/index';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.scss';
@@ -10,11 +10,11 @@ function App() {
 
 	return (
     <div>
-      <PC>
+      {/* <PC> */}
         <Pages/>
-      </PC>
+      {/* </PC>
       <Mobile>
-      </Mobile>
+      </Mobile> */}
     </div>
   )};
 
