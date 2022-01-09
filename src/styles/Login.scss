@@ -86,3 +86,23 @@
     text-decoration: underline;
   }
 }
+.iscorrect-login {
+  margin: 20vh auto;
+
+  width: 258px;
+  height: 44px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 44px;
+  background-color: #525252;
+  font-size: 12px;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  // 보이고 안보이고 지정
+  .login-section {
+    border: none;
+  }
+}

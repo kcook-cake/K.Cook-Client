@@ -107,7 +107,9 @@
 
   .header-ad,
   .header-right,
-  .header-left input {
+  .header-left form,
+  .header-left input,
+  .menu-bar {
     display: none;
   }
   .only-mobile,
@@ -120,7 +122,7 @@
     padding: 0;
   }
   .header-left {
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;

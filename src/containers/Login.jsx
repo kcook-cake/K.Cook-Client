@@ -17,9 +17,9 @@ function Login() {
   };
 
   const onClickLogin = () => {
-    console.log("click login");
-    console.log(password);
-    console.log(signInId);
+    // console.log("click login");
+    // console.log(password);
+    // console.log(signInId);
     axios
       .post("https://prod.kcook-cake.com/app/sign-in", {
         params: {
@@ -117,6 +117,9 @@ function Login() {
         <div className="login-go-to-register">
           아직 계정이 없으신가요?
           <Link to="/">가입하기</Link>
+          <div className="iscorrect-login">
+            로그인 정보가 일치하지 않습니다.
+          </div>
         </div>
       </form>
     </div>
