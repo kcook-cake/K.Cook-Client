@@ -74,6 +74,9 @@
   font-size: 12px;
   font-weight: bold;
   color: #fff;
+  &:disabled {
+    background-color: #ea5450;
+  }
 }
 .login-go-to-register {
   text-align: center;

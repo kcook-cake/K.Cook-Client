@@ -11,21 +11,18 @@ function Login() {
   const handleInputId = (e) => {
     setInputId(e.target.value);
   };
-
+  //onChange 될때마다 그 값을 handleInputId 메서드로 setInputId에 값을 변경한다.
+  //setInputId 는 signInId의 값을 변경한다.
+  console.log(handleInputId);
   const handleInputPw = (e) => {
     setInputPw(e.target.value);
   };
 
   const onClickLogin = () => {
-    // console.log("click login");
-    // console.log(password);
-    // console.log(signInId);
     axios
       .post("https://prod.kcook-cake.com/app/sign-in", {
-        params: {
-          password: password,
-          signInId: signInId,
-        },
+        password: password,
+        signInId: signInId,
       })
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
@@ -43,42 +40,16 @@ function Login() {
     []
   );
 
-  //글로벌 전역 상태값 setUser를 받아옴
-  //로그인이 성공적으로 이루어지면 user에 상태값을 넣어줘야지 나중에 다른 컴포넌트에서도 user값을 이용하여 다른 것들을 할 수 있음
-  //   const { setUser } = useUserContext();
-
-  //url 이동을 위한 useHistory
-  //   const history = useHistory();
-  //input에 입력하면 자동적으로 account state값 변경
-  //   중복제출 방지
   const [disabled, setDisabled] = useState(false);
-
-  //   //동기식으로 로그인정보를 통신하여 출력
-  //   const onSubmitAccount = async () => {
-  //     try {
-  //       const user = await fetchLogin(account);
-
-  //       //성공하면 해당 user 아이디 패스워드값 셋팅
-  //       setUser(user);
-  //       //성공하면 해당 url로 이동(main페이지로)
-  //       history.replace("/");
-  //     } catch (error) {
-  //       //실패하면 throw new Error("") 값 출력
-  //       window.alert(error);
-  //     }
-  //   };
-
-  //   ///////////////////////////////////////
   const handleSubmit = async (event) => {
     //눌러도 여러번 호출 못하게
     setDisabled(true);
     //새로고침 방지
     event.preventDefault();
-
     await new Promise((r) => setTimeout(r, 1000));
-
     setDisabled(false);
   };
+
   return (
     <div className="login">
       <form className="login-section" onSubmit={handleSubmit}>
@@ -89,6 +60,7 @@ function Login() {
           className="input-id login-input"
           type="text"
           placeholder="아이디입력"
+          disabled={disabled}
           onChange={handleInputId}
         ></input>
         <p className="login-list">비밀번호</p>
@@ -110,7 +82,9 @@ function Login() {
           type="submit"
           className="login-btn"
           onClick={onClickLogin}
-          disabled={disabled}
+          disabled={
+            signInId.length !== 0 && password.length >= 8 ? true : false
+          }
         >
           로그인
         </button>
