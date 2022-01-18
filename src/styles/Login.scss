@@ -5,10 +5,14 @@
   margin: 40px auto;
   max-width: 450px;
   height: 972px;
-  padding: 34px 65px 491px 54px;
+  padding: 10px 7.2vw;
   border-radius: 18px;
   //   filter: blur(10px);
   border: solid 1px #ea5450;
+  img {
+    width: 130px;
+    height: 54.8px;
+  }
 }
 .login-list {
   margin: 20px 0 8px;
@@ -19,7 +23,8 @@
 
 .login-input {
   border: 1px solid #eaeaea;
-  width: 320px;
+  max-width: 400px;
+  width: 100%;
   height: 42px;
   padding-left: 18px;
   & + & {
@@ -66,16 +71,18 @@
   margin: 28px 0 20px;
   padding: 13px;
   display: block;
-  width: 320px;
+  max-width: 400px;
+  width: 100%;
   border-radius: 5px;
-  background-color: rgba(234, 84, 80, 0.5);
-
+  background-color: #ea5450;
+  //기본은 false로 설정
   text-align: center;
   font-size: 12px;
   font-weight: bold;
   color: #fff;
   &:disabled {
-    background-color: #ea5450;
+    //disable이 true일때
+    background-color: rgba(234, 84, 80, 0.5);
   }
 }
 .login-go-to-register {
@@ -90,8 +97,8 @@
   }
 }
 .iscorrect-login {
+  // opacity: 0;
   margin: 20vh auto;
-
   width: 258px;
   height: 44px;
   border-radius: 5px;
@@ -103,6 +110,21 @@
   color: #fff;
 }
 
+// .wow-enter {
+//   opacity: 0;
+// }
+
+// .wow-enter-active {
+//   opacity: 1;
+//   transition: all 500ms;
+// }
+// .wow-exit {
+//   opacity: 1;
+// }
+
+// .wow-exit-active {
+//   opacity: 0.01;
+// }
 @media (max-width: 767px) {
   // 보이고 안보이고 지정
   .login-section {

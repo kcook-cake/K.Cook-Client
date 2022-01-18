@@ -23,6 +23,7 @@
     "react-responsive": "*",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-transition-group": "^4.4.2",
     "sass": "^1.38.0",
     "scss": "^0.2.4",
     "styled-components": "^5.3.1",
@@ -54,8 +55,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://prod.kcook-cake.com"
-,
+  "proxy": "https://prod.kcook-cake.com",
   "devDependencies": {
     "prettier-eslint": "^13.0.0",
     "webpack-dev-server": "^3.11.1"
