@@ -28,6 +28,7 @@ function Login() {
       .then((res) => {
         document.location.href = "/";
         //성공시 메인으로 이동
+        // localStorage.setItem("authenticated", authenticated);
       })
       .catch((error) => {
         setFailModal(true);
