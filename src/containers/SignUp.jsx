@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,   } from "react";
 import "../styles/SignUp.scss";
 import { Link } from "react-router-dom";
 import PopupDom from "../components/PopupDom.js";

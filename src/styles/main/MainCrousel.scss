@@ -7,3 +7,10 @@
     object-fit: cover;
   }
 }
+@media (max-width: 767px) {
+  .crousel {
+    img {
+      height: 300px;
+    }
+  }
+}

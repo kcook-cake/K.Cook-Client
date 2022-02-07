@@ -5,17 +5,17 @@ import '../styles/SectionTitle.scss'
 
 interface SectionTitleProps {
     title : string,
-    more? : string
+    link? : string
 }
 
 
-function SectionTitle({ title}: SectionTitleProps) { 
+function SectionTitle({ title,link}: SectionTitleProps) { 
     return (
         <div className="section-title">
             <div className="title">
                 {title}
             </div>
-            <Link to="/" className="link">더보기 &gt;</Link>                
+            <Link to="./"className="link">더보기 &gt;</Link>                
         </div>
     );
 }

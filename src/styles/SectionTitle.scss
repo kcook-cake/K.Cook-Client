@@ -18,3 +18,23 @@
     font-size: 16px;
   }
 }
+@media (max-width: 767px) {
+  .section-title {
+    .title {
+      font-size: 18px;
+    }
+    .title::after {
+      background-image: url("../assets/right-arrow.svg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 30px;
+      height: 30px;
+      content: "";
+      position: absolute;
+      // color: #fff;
+    }
+    .link {
+      display: none;
+    }
+  }
+}

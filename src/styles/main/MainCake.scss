@@ -9,3 +9,11 @@
     grid-column-gap: 20px;
   }
 }
+
+@media (max-width: 767px) {
+  .main-cake {
+    .cake-contents {
+      padding: 0 16px;
+    }
+  }
+}
