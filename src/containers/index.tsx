@@ -14,20 +14,20 @@ import FullCalendarApp from '../components/seller/FullCalendarApp';
 import Login from './Login';
 import SignUp from './SignUp';
 
-const Pages = () =>{
+const Pages = () => {
   return (
     <Router>
       <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/todaysRec" component={Recommend} />
-        <Route exact path="/cake" component={Cake} />
-        <Route exact path="/MoreItem" component={MoreItem} />
-        <Route exact path="/customer-service" component={CustomerService} />
-        <Route exact path="/MypageOrder" component={Mypage} />
-        <Route exact path="/SellerOrder" component={Seller} />
-        <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/SignUp" component={SignUp} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/todaysRec" component={Recommend} />
+      <Route exact path="/cake" component={Cake} />
+      <Route exact path="/MoreItem" component={MoreItem} />
+      <Route exact path="/CS" component={CustomerService} />
+      <Route exact path="/MypageOrder" component={Mypage} />
+      <Route exact path="/SellerOrder" component={Seller} />
+      {/* <Route exact path="/FullCalendarApp" component={FullCalendarApp} /> */}
+      <Route exact path="/Login" component={Login} />
+      <Route exact path="/SignUp" component={SignUp} />
       <Footer address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>
     </Router>    
   );

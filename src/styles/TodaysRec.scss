@@ -58,6 +58,17 @@
 }
 // 이번달 인기이벤트
 
+@media (max-width: 767px) {
+  .kcook-pick {
+    .pick-contents {
+      padding: 0 16px;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      overflow-x: scroll;
+    }
+  }
+}
+
 .famous-event {
   margin-top: 80px;
   .event-top {
@@ -79,6 +90,18 @@
   display: flex;
   align-items: center;
   margin: 0;
+  overflow-x: scroll;
+}
+
+@media (max-width: 767px) {
+  // .main-cake {
+    .event-contents {
+      padding: 0 16px;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      overflow-x: scroll;
+    }
+  // }
 }
 
 .event-arrow {

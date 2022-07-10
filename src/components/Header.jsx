@@ -13,10 +13,10 @@ function Header() {
         <span className="header-ad-text">
           첫 주문 시 10,000원 할인 쿠폰을 드립니다.
         </span>
-        <button className="header-ad-button">
+        <div className="header-ad-button">
           <span>오늘 하루 그만 보기 </span>
           <img src={Xbutton} className="x-button"></img>
-        </button>
+        </div>
       </div>
 
       <div className="head">

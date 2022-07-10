@@ -1,11 +1,13 @@
 @import "./reset.scss";
 
+.container {
+}
 .vertical-card {
   margin: 0;
   margin-bottom: 40px;
   display: inline-flex;
   flex-direction: column;
-  width: 280px;
+  // width: 280px;
 
   height: 460.5px;
   background-color: fff;
@@ -15,8 +17,13 @@
   //   margin-left: 20px;
   // }
 }
-.container {
+
+@media (max-width: 767px) {
+  .vertical-card {
+    width: 280px;
+  }
 }
+
 .vertical-card-img {
   margin-bottom: 17px;
   width: 100%;

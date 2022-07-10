@@ -27,6 +27,7 @@
     position: relative;
     top: 7px;
   }
+  // background-color: yellow;
 }
 
 //메인
@@ -80,7 +81,7 @@
 }
 
 .menu-bar a {
-  margin-right: 5rem;
+  margin-right: 5rem; //3~5rem
   color: #333333;
 }
 
@@ -101,6 +102,12 @@
   display: none;
 }
 @media (max-width: 1200px) {
+}
+@media (min-width: 768px) and (max-width: 956px) {
+  .menu-bar a {
+    margin-right: 3rem; //3~5rem
+    color: #333333;
+  }
 }
 @media (max-width: 767px) {
   // 보이고 안보이고 지정

@@ -9,12 +9,15 @@ import SellerStore from '../components/seller/SellerStore';
 
 import '../../src/styles/mypage/Mypage.scss'
 import '../../src/styles/seller/Seller.scss'
+import Pages from './index';
+import FullCalendarApp from '../components/seller/FullCalendarApp';
 
 const Seller = () =>{
     return(
             <div className="seller">
                 <Router>
                     <SellerSection />
+                    <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>
                     <Route exact path="/ProductManagement" component={ProductManagement}/>
