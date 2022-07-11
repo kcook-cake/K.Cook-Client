@@ -18,16 +18,18 @@ const Recommend = ()=>{
             });
     },[]);
     return(
-        <div className="recommend">
-            <div className="recommend-header">
-                <SectionTitle title="오늘의 추천"/>
-            </div>
-            <div className="recommend-contents">
-                {/* <LengthwiseCard getData={data}/> */}
-                <LengthwiseCard id={1} name='a' userName='a' price={5000}/>
-                <LengthwiseCard id={1} name='a' userName='a' price={5000}/>
-                <LengthwiseCard id={1} name='a' userName='a' price={5000}/>
-                <LengthwiseCard id={1} name='a' userName='a' price={5000}/>
+        <div className="recommend-flex">
+            <div className="recommend">
+                <div className="recommend-header">
+                    <SectionTitle title="오늘의 추천"/>
+                </div>
+                <div className="recommend-contents">
+                    {/* <LengthwiseCard getData={data}/> */}
+                    <LengthwiseCard id={1} name='aaaaaaabbbaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaabba' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
+                </div>
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ import './styles/reset.scss';
 function App() {
 
 	return (
-    <div>
+    <div id='main'>
       {/* <PC> */}
         <Pages/>
       {/* </PC>

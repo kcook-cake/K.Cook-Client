@@ -10,30 +10,40 @@ interface FooterProps {
 
 function Footer({ email, tel, address}: FooterProps) { 
     return (
+        <div className="footer-flex">
         <div className="footer">
             <dl>
-                <dt className="footer-title">케이쿡</dt>
-                <dd>{email}</dd>
-                <dd>{tel}</dd>
+                <dt id="footer-kcook" className="footer-title">케이쿡</dt>
+                <dt className="footer-context">
+                    <dd>{email}</dd>
+                    <dd>{tel}</dd>
+                </dt>
             </dl>
             <dl>
                 <dt className="footer-title">Services</dt>
-                <dd>Development & Strategy</dd>
-                <dd>Design & Management</dd>
-                <dd>Website Development</dd>
-                <dd>Quick Launch</dd>
+                <dt className="footer-context">
+                    <dd>Development & Strategy</dd>
+                    <dd>Design & Management</dd>
+                    <dd>Website Development</dd>
+                    <dd>Quick Launch</dd>
+                </dt>
             </dl>
             <dl>
                 <dt className="footer-title">About Us</dt>
-                <dd>Milestone</dd>
-                <dd>Check Our Pricing Plan</dd>
-                <dd>Expert Team</dd>
-                <dd>Our Exciting News</dd>
+                <dt className="footer-context">
+                    <dd>Milestone</dd>
+                    <dd>Check Our Pricing Plan</dd>
+                    <dd>Expert Team</dd>
+                    <dd>Our Exciting News</dd>
+                </dt>
             </dl>
             <dl>
                 <dt className="footer-title">Address</dt>
-                <dd>{address}</dd>
+                <dt className="footer-context">
+                    <dd>{address}</dd>
+                </dt>
             </dl>
+        </div>
         </div>
     );
 }

@@ -1,7 +1,12 @@
 @import "reset.scss";
 
+.header-ad-flex {
+  background-color: $pink;
+}
 .header-ad {
-  padding: 0 $basic-padding;
+  // padding: 0 $basic-padding;
+  width: 1179px;
+  margin: auto;
   line-height: 50px;
   background-color: $pink;
 }
@@ -32,19 +37,36 @@
 
 //메인
 
+.head-flex {
+
+}
 .head {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 $basic-padding;
+  width: 1179px;
+  height: 82px;
   line-height: 82px;
-  border-bottom: 1px solid #eee;
+  margin: auto;
+  // display: flex;
+  // justify-content: space-between;
+  // padding: 0 $basic-padding;
+  // line-height: 82px;
+  // border-bottom: 1px solid #eee;
+}
+.header-left {
+  float: left;
+}
+.header-right {
+  float: right;
 }
 .logo {
   vertical-align: middle;
   margin-right: 22px;
 }
 .head form {
+  height: 46px;
+  line-height: 46px;
   display: inline-block;
+  border-radius: 50px;
+  background-color: #f8f8f9;
 }
 
 .head input {
@@ -66,15 +88,24 @@
   }
 }
 
-.header-link {
-  float: right;
-  line-height: 82px;
-  font-size: 14px;
-}
+// .header-link {
+//   float: right;
+//   line-height: 82px;
+//   font-size: 14px;
+// }
 
 // 메뉴바
+.menu-bar-flex {
+  // background-color: red;
+}
 .menu-bar {
-  padding: 15px $basic-padding;
+  width: 1179px;
+  height: 54px;
+  line-height: 54px;
+  margin: auto;
+  padding: 0px 0px 0px 20px;
+  // padding: 15px $basic-padding;
+
   font-weight: 700;
   color: $pricetext;
   border-bottom: 1px solid #eee;
@@ -103,17 +134,16 @@
 }
 @media (max-width: 1200px) {
 }
-@media (min-width: 768px) and (max-width: 956px) {
-  .menu-bar a {
-    margin-right: 3rem; //3~5rem
-    color: #333333;
-  }
-}
+// @media (min-width: 768px) and (max-width: 956px) {
+//   .menu-bar a {
+//     margin-right: 3rem; //3~5rem
+//     color: #333333;
+//   }
+// }
 @media (max-width: 767px) {
   // 보이고 안보이고 지정
 
   .header-ad,
-  .header-right,
   .header-left form,
   .header-left input,
   .menu-bar {
@@ -127,13 +157,6 @@
   }
   .head {
     padding: 0;
-  }
-  .header-left {
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 60px;
   }
   .logo {
     height: 37px;

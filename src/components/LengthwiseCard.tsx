@@ -30,7 +30,7 @@ function LengthwiseCard({id, name, userName, price}: LengthwiseCardProps) {
         <>
             <div className="container"  key={id}>
                 <div className="vertical-card">
-                    <img src={cake1}  alt="cake-image" className="vertical-card-img"/>
+                    <img src={cake1}  alt="cake-image" className="vertical-card-img" width={279.8} height={304}/>
                     <div className="vertical-card-info">
                         <div className="card-top-info">
                             <div className="card-rating-star">

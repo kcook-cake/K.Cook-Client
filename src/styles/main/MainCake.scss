@@ -1,9 +1,13 @@
 @import "../reset.scss";
 
-.main-cake {
+.main-cake-flex {
   margin-top: 80px;
+}
+.main-cake {
+  width: 1179px;
+  margin: auto;
   .cake-contents {
-    padding: 0 $basic-padding;
+    // padding: 0 $basic-padding;
     display: grid;
     grid-template-columns: 1fr 1fr;
     // grid-column-gap: 20px;

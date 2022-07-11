@@ -1,23 +1,41 @@
+.footer-flex {
+  // background-color: #777777;
+  background-color: #dbdbdb;
+}
 .footer {
-  padding: 96px 25%;
+  width: 1179px;
+  padding: 96px;
+  margin: auto;
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   background-color: #dbdbdb;
-  line-height: 24px;
+  // line-height: 24px;
   color: #777777;
 }
 
+#footer-kcook {
+  font-size: 25px;
+  font-weight: 700;
+}
 .footer-title {
   margin-bottom: 23px;
   font-size: 16px;
 }
 
-.footer dd {
-  font-size: 15px;
-}
+// .footer-context {
+//   margin: 0px 30px 0px 0px;
+//   width: 200px;
+//   background-color: red;
+// }
+
+// .footer dd {
+//   font-size: 15px;
+// }
 
 @media (max-width: 767px) {
   .footer {
+    width: 100%;
     margin: 0 0;
     padding: 20px 10px;
     grid-template-columns: 1fr;

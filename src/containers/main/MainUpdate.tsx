@@ -19,12 +19,14 @@ function MainUpdate (){
             });
     },[]);
     return(
-        <div className="recommend">
-            <div className="recommend-header">
-                <SectionTitle title="최근 업데이트"/>
-            </div>
-            <div className="recommend-contents">
-                {/* <LengthwiseCard getData={data}/> */}
+        <div className="recommend-flex">
+            <div className="recommend">
+                <div className="recommend-header">
+                    <SectionTitle title="최근 업데이트"/>
+                </div>
+                <div className="recommend-contents">
+                    {/* <LengthwiseCard getData={data}/> */}
+                </div>
             </div>
         </div>
     )

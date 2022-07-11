@@ -1,15 +1,16 @@
 @import "./reset.scss";
 
 .container {
+  width: 100%;
 }
 .vertical-card {
   margin: 0;
   margin-bottom: 40px;
   display: inline-flex;
   flex-direction: column;
-  // width: 280px;
+  // width: 298px;
+  height: 479px;
 
-  height: 460.5px;
   background-color: fff;
   border-radius: 11px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -19,15 +20,24 @@
 }
 
 @media (max-width: 767px) {
+  .container {
+    margin: 15px 0px 0px 0px;
+  }
   .vertical-card {
-    width: 280px;
+    width: 298px;
+    height: 479px;
+  }
+  .vertical-card-img {
+    margin-bottom: 17px;
+    width: 100%;
+    height: 66%;
   }
 }
 
 .vertical-card-img {
   margin-bottom: 17px;
   width: 100%;
-  height: 66%;
+  // height: 304px;
 }
 
 .vertical-card-info {
@@ -37,15 +47,23 @@
 }
 .card-shop-name {
   margin-bottom: 2px;
+  min-width: 50px;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
   color: $sub-text;
   font-size: 12px;
   line-height: 18px;
+  // background-color: red;
 }
 .card-cake-name {
   margin-bottom: 10px;
   color: $sub-text;
   line-height: 18px;
   font-size: 16px;
+  // background-color: blue;
 }
 .card-minprice {
   color: $pricetext;
