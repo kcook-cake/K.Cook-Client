@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 450px) {
   .widthwise-card {
     flex-direction: column;
     width: 325px;
@@ -61,10 +61,21 @@
     }
   }
   .card-shop-name {
-    position: relative;
-    float: right;
-    top: 75px;
-    margin: 0;
+    // position: relative;
+    // float: right;
+    // top: 75px;
+    // margin: 0;
+
+    margin-bottom: 2px;
+    min-width: 50px;
+  
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  
+    color: $sub-text;
+    font-size: 12px;
+    line-height: 18px;
   }
   .card-cake-name {
     margin-bottom: 0;

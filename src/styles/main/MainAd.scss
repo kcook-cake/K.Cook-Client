@@ -12,3 +12,16 @@
     // object-fit: cover;
   }
 }
+
+@media (max-width: 450px) {
+  .main-ad {
+    margin: auto;
+    width: 100%;
+    background-color: #ff8a25;
+    img {
+      width: 100%;
+      height: 100%;
+      // object-fit: cover;
+    }
+  }
+}

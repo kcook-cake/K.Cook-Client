@@ -21,8 +21,9 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 450px) {
   .recommend {
+    width: 100%;
     .recommend-contents {
       padding: 0 16px;
       grid-template-rows: 1fr;

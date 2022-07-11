@@ -36,9 +36,7 @@
 }
 
 //메인
-
 .head-flex {
-
 }
 .head {
   width: 1179px;
@@ -140,31 +138,75 @@
 //     color: #333333;
 //   }
 // }
-@media (max-width: 767px) {
+@media (max-width: 450px) {
   // 보이고 안보이고 지정
-
   .header-ad,
+  .header-right,
   .header-left form,
   .header-left input,
   .menu-bar {
     display: none;
   }
+
+  .head-flex {
+  }
+  .head {
+    width: 100%;
+    height: 60px;
+  }
+
   .only-mobile,
   .menu-icon,
+  .logo,
   .question-icon {
     display: block;
     margin: 0;
   }
-  .head {
-    padding: 0;
+
+  .header-left {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 60px;
+  }
+
+  .menu-icon {
+    height: 30px;
+    line-height: 30px;
+    margin-left: 6px;
   }
   .logo {
     height: 37px;
   }
-  .menu-icon {
-    margin-left: 6px;
-  }
   .question-icon {
     margin-right: 15px;
   }
+
+  // .head {
+  //   width: 100%;
+  //   // height: 30px;
+  //   padding: 0;
+  //   background-color: red;
+  // }
+  // .only-mobile,
+  // .menu-icon,
+  // .question-icon {
+  //   display: block;
+  //   // margin: 0;
+  // }
+  // .menu-icon {
+  //   height: 30px;
+  //   // margin-left: 6px;
+  //   float: left;
+  // }
+  // .logo {
+  //   height: 37px;
+  //   background-color: blue;
+  // }
+  // .question-icon {
+  //   // margin-right: 15px;
+  //   float: right;
+  // }
 }
