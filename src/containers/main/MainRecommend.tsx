@@ -1,11 +1,13 @@
-import React,  { useEffect, useState }from 'react';
+import React,  { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Url } from 'url';
 import '../../../src/styles/main/MainRecommend.scss'
-import LengthwiseCard from '../../components/LengthwiseCard';
-import SectionTitle from '../../components/SectionTitle';
+
 import axios from 'axios';
 import {environment} from '../../enviroment/enviroment';
+
+import LengthwiseCard from '../../components/LengthwiseCard';
+import SectionTitle from '../../components/SectionTitle';
 
 const Recommend = ()=>{
     let [data, setData] =useState([]);
