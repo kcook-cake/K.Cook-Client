@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.scss";
+
 import { Link } from "react-router-dom";
 import { Transition, CSSTransition } from "react-transition-group";
-import logo from "../assets/logo.png";
 import axios from "axios";
+
+import logo from "../assets/logo.png";
+
 function Login() {
   const [signInId, setInputId] = useState("");
   const [password, setInputPw] = useState("");
@@ -26,11 +29,14 @@ function Login() {
         signInId: signInId,
       })
       .then((res) => {
+        console.log(res)
         document.location.href = "/";
+
         //성공시 메인으로 이동
         // localStorage.setItem("authenticated", authenticated);
       })
       .catch((error) => {
+        console.log(error)
         setFailModal(true);
         setModalCSS(true);
         setInputPw("");

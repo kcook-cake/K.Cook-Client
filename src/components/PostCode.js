@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DaumPostcode from "react-daum-postcode";
 
+interface IProps {
+  parentCallback: (addressMain: string) => void;
+}
+
 const PostCode = (props) => {
+  const [addressMain, setAddressMain] = useState("");
   // 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용
   const handlePostCode = (data) => {
     let fullAddress = data.address;
@@ -17,9 +22,11 @@ const PostCode = (props) => {
       }
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
-    console.log(data);
-    console.log(fullAddress);
-    console.log(data.zonecode);
+
+    setAddressMain(fullAddress.split('(')[0]);
+    // console.log(data);
+    // console.log(fullAddress); //메인
+    // console.log(data.zonecode); //우편번호
     props.onClose();
   };
 
@@ -33,8 +40,12 @@ const PostCode = (props) => {
     border: "1px solid #ddd",
   };
 
+  useEffect(()=>{
+    props.parentCallback(addressMain);
+  })
+
   return (
-    <div className="input-id login-input">
+    <div>
       <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
     </div>
   );

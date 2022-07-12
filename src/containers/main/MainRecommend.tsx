@@ -13,7 +13,8 @@ const Recommend = ()=>{
     let [data, setData] =useState([]);
     console.log(environment.apiUrl);
     useEffect(()=>{
-        axios.get(`https://www.kcook-cake.com/app/cakes`)
+        // axios.get(`https://www.kcook-cake.com/app/cakes`)
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
             .then(res =>{
                 console.log(res);
                 setData(res.data);
