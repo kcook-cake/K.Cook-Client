@@ -43,31 +43,31 @@ function Header() {
             </Link>
           </div>
           <div className="header-right">
-            {localStorage.session ?
+            {sessionStorage.session ?
               <Link to="/SellerOrder">
                 <button className="header-link">판매자로 전환</button>
               </Link>:
               <></>
             }
-            {localStorage.session ?
+            {sessionStorage.session ?
               <Link to="/MypageOrder">
                 <button className="header-link">마이페이지</button>
               </Link>:
               <></>
             }
-            {localStorage.session ?
+            {sessionStorage.session ?
               <></>:
               <Link to="/SignUp">
                 <button className="header-link">회원가입</button>
               </Link>
             }
-            {localStorage.session ?
+            {sessionStorage.session ?
               <button
                 className="header-link"
                 onClick={() => {
-                  localStorage.removeItem("jwToken")
-                  localStorage.removeItem("session")
-                  if (localStorage.session === undefined) document.location.href = "/";
+                  sessionStorage.removeItem("jwToken")
+                  sessionStorage.removeItem("session")
+                  if (sessionStorage.session === undefined) document.location.href = "/";
                 }}
               >로그아웃</button>:
               <Link to="/Login">

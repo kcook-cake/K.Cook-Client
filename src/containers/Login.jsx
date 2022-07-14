@@ -35,7 +35,7 @@ function Login() {
         // setTimeout() //로그인 연장
 
         //성공시 메인으로 이동
-        localStorage.setItem("jwToken", res.data.result.jwt);
+        sessionStorage.setItem("jwToken", res.data.result.jwt);
         // setAuthorizationToken(res.data.result.jwt);
         isSession((isChecked) => {
           if(isChecked) document.location.href = "/";

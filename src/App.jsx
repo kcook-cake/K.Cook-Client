@@ -14,8 +14,8 @@ function App() {
   console.log("App")
   const [isLogin , setIsLogin] = useState(false);
 
-  // localStorage.removeItem('jwToken')
-  // localStorage.removeItem('session')
+  // sessionStorage.removeItem('jwToken')
+  // sessionStorage.removeItem('session')
 
   useEffect(()=>{
     // isSession();
@@ -24,6 +24,9 @@ function App() {
   // function loginCallBack(login){
   //   setIsLogin(login);
   // }
+
+  console.log(sessionStorage.jwToken)
+  console.log(sessionStorage.session)
 
 	return (
     <div id='main'>

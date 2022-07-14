@@ -209,7 +209,7 @@ function SignUp() {
         document.location.href = "/";
 
         //성공시 메인으로 이동
-        // localStorage.setItem("authenticated", authenticated);
+        // sessionStorage.setItem("authenticated", authenticated);
       })
       .catch((error) => {
         console.log(error.response.data.message)

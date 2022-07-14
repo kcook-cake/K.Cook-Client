@@ -11,7 +11,7 @@ import setAuthorizationToken from "src/utils/setAuthorizationToken";
 // const store = createStore(
 // );
 
-// setAuthorizationToken(localStorage.jwToken);
+// setAuthorizationToken(sessionStorage.jwToken);
 
 ReactDOM.render(
   <React.StrictMode>
