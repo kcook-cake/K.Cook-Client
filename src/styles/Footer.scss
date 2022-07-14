@@ -38,6 +38,7 @@
 @media (max-width: 767px) {
   .footer {
     width: 100%;
+    min-width: 0px;
     margin: 0 0;
     padding: 20px 10px;
     grid-template-columns: 1fr;

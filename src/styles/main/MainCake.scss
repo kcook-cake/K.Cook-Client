@@ -20,6 +20,7 @@
 @media (max-width: 767px) {
   .main-cake {
     width: 100%;
+    min-width: 0px;
     .cake-contents {
       padding: 0 16px;
       grid-template-rows: 1fr;
