@@ -36,7 +36,6 @@ function Login() {
         // localStorage.setItem("authenticated", authenticated);
       })
       .catch((error) => {
-        console.log(error)
         setFailModal(true);
         setModalCSS(true);
         setInputPw("");

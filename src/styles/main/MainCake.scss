@@ -4,7 +4,9 @@
   margin-top: 80px;
 }
 .main-cake {
-  width: 1199px;
+  // width: 1199px;
+  max-width: 1199px;
+  min-width: 885px;
   margin: auto;
   padding: 0px 10px;
   .cake-contents {

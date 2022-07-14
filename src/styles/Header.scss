@@ -5,7 +5,9 @@
 }
 .header-ad {
   // padding: 0 $basic-padding;
-  width: 1199px;
+  // width: 1199px;
+  max-width: 1199px;
+  min-width: 885px;
   margin: auto;
   line-height: 50px;
   background-color: $pink;
@@ -39,7 +41,9 @@
 .head-flex {
 }
 .head {
-  width: 1199px;
+  // width: 1199px;
+  max-width: 1199px;
+  min-width: 885px;
   height: 82px;
   line-height: 82px;
   margin: auto;
@@ -97,7 +101,9 @@
   // background-color: red;
 }
 .menu-bar {
-  width: 1199px;
+  // width: 1199px;
+  max-width: 1199px;
+  min-width: 885px;
   height: 54px;
   line-height: 54px;
   margin: auto;

@@ -5,7 +5,9 @@
 }
 .recommend {
   // margin: 0;
-  width: 1199px;
+  // width: 1199px;
+  max-width: 1199px;
+  min-width: 885px;
   margin: auto;
   background-color: #fafafa;
   padding: 80px 10px;
