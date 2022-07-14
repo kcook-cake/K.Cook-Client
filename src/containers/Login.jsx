@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Login.scss";
-
 import { Link } from "react-router-dom";
 import { Transition, CSSTransition } from "react-transition-group";
+import "../styles/Login.scss";
+
 import axios from "axios";
 
+import setAuthorizationToken from "src/utils/setAuthorizationToken";
+import isSession from "src/utils/isSession";
 import logo from "../assets/logo.png";
 
 function Login() {
@@ -29,11 +31,19 @@ function Login() {
         signInId: signInId,
       })
       .then((res) => {
-        console.log(res)
-        document.location.href = "/";
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${res.result.jwt}`;
+        // setTimeout() //로그인 연장
 
         //성공시 메인으로 이동
-        // localStorage.setItem("authenticated", authenticated);
+        localStorage.setItem("jwToken", res.data.result.jwt);
+        // setAuthorizationToken(res.data.result.jwt);
+        isSession((isChecked) => {
+          if(isChecked) document.location.href = "/";
+        });
+        // setTimeout(() => {
+        //   document.location.href = "/";
+        // }, 1000);
+
       })
       .catch((error) => {
         setFailModal(true);
@@ -47,12 +57,7 @@ function Login() {
   };
 
   // 페이지 렌더링 후 가장 처음 호출되는 함수
-  useEffect(
-    () => {
-      axios
-        .get("https://prod.kcook-cake.com/app/accounts/auth")
-        .then((res) => console.log(res))
-        .catch(() => console.log("실패했어요"));
+  useEffect(() => {
     },
     // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
     //업데이트될 때는 useEffect() 실행하지 말아주세요 라는 뜻

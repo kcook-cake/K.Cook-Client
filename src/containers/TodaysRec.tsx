@@ -17,8 +17,15 @@ function TodaysRec (){
             <div className="sort-by-rec">
                 <div className="title">리뷰 별점순</div>
                 <div className="recommend-contents">
+                    <LengthwiseCard id={1} name='aaaaaaabbbaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaabba' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaabbbaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaabba' userName='a' price={5000}/>
+                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
                     {/* <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
                     <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>

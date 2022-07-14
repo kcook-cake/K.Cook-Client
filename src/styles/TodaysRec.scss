@@ -1,7 +1,7 @@
 @import "./reset.scss";
 
 .todays-recommend {
-  margin: 80px $basic-padding;
+  // margin: 80px $basic-padding;
 
   .title {
     font-size: 24px;
@@ -10,7 +10,11 @@
   }
 }
 .sort-by-rec {
-  margin-bottom: 115px;
+  max-width: 1199px;
+  min-width: 885px;
+  margin: auto;
+  // margin-bottom: 115px;
+  padding: 80px 10px;
 }
 
 .recommend-contents {
@@ -50,7 +54,11 @@
 // 케이쿡 추천 픽
 
 .kcook-pick {
-  margin-top: 50px;
+  max-width: 1199px;
+  min-width: 885px;
+  margin: auto;
+  // margin-top: 50px;
+  padding: 80px 10px;
 }
 .pick-contents {
   display: grid;
@@ -70,7 +78,11 @@
 }
 
 .famous-event {
-  margin-top: 80px;
+  max-width: 1199px;
+  min-width: 885px;
+  margin: auto;
+  // margin-top: 50px;
+  padding: 80px 10px;
   .event-top {
     .title {
       display: inline-block;
@@ -87,10 +99,12 @@
 }
 
 .event-contents {
+  // max-width: 1199px;
+  // min-width: 885px;
   display: flex;
   align-items: center;
-  margin: 0;
-  overflow-x: scroll;
+  // background-color: red;
+  // overflow-x: scroll;
 }
 
 @media (max-width: 767px) {
@@ -116,11 +130,13 @@
 }
 
 .card-img {
-  width: 380px;
-  height: 225px;
+  // width: 378px;
+  
   overflow: hidden;
   img {
     width: 100%;
+    max-width: 378px;
+    height: 224px;
   }
 }
 

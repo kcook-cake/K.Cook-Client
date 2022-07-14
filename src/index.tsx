@@ -2,7 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
+// import { createStore } from 'redux';
+// import rootReducer from './rootReducer';
+
 import reportWebVitals from './reportWebVitals';
+import setAuthorizationToken from "src/utils/setAuthorizationToken";
+
+// const store = createStore(
+// );
+
+// setAuthorizationToken(localStorage.jwToken);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,3 +1,3 @@
 export const environment: any = {
-    apiUrl: 'https://www.kcook-cake.com/app'
+    apiUrl: 'https://prod.kcook-cake.com/app'
 }

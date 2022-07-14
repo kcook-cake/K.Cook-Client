@@ -4,19 +4,18 @@ import { Url } from 'url';
 import '../../../src/styles/main/MainRecommend.scss'
 
 import axios from 'axios';
-import {environment} from '../../enviroment/enviroment';
 
+import {environment} from '../../enviroment/enviroment';
 import LengthwiseCard from '../../components/LengthwiseCard';
 import SectionTitle from '../../components/SectionTitle';
 
 const Recommend = ()=>{
     let [data, setData] =useState([]);
-    console.log(environment.apiUrl);
+    // console.log(environment.apiUrl);
     useEffect(()=>{
         // axios.get(`https://www.kcook-cake.com/app/cakes`)
         axios.get(`https://prod.kcook-cake.com/app/cakes`)
             .then(res =>{
-                console.log(res);
                 setData(res.data);
             });
     },[]);

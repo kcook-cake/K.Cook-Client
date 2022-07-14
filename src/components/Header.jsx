@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Header.scss";
+
+import isSession from "src/utils/isSession";
+import axios from "axios";
+
 import Xbutton from "../assets/2477.svg";
 import logo from "../assets/logo.png";
 import menu from "../assets/menu.svg";
 import search from "../assets/search.svg";
 
 function Header() {
+  console.log("Header")
   return (
     <div className="header">
       <div className="header-ad-flex">
@@ -38,18 +43,37 @@ function Header() {
             </Link>
           </div>
           <div className="header-right">
-            <Link to="/Login">
-              <button className="header-link">로그인</button>
-            </Link>
-            <Link to="/SellerOrder">
-              <button className="header-link">판매자로 전환</button>
-            </Link>
-            <Link to="/MypageOrder">
-              <button className="header-link">마이페이지</button>
-            </Link>
-            <Link to="/SignUp">
-              <button className="header-link">회원가입</button>
-            </Link>
+            {localStorage.session ?
+              <Link to="/SellerOrder">
+                <button className="header-link">판매자로 전환</button>
+              </Link>:
+              <></>
+            }
+            {localStorage.session ?
+              <Link to="/MypageOrder">
+                <button className="header-link">마이페이지</button>
+              </Link>:
+              <></>
+            }
+            {localStorage.session ?
+              <></>:
+              <Link to="/SignUp">
+                <button className="header-link">회원가입</button>
+              </Link>
+            }
+            {localStorage.session ?
+              <button
+                className="header-link"
+                onClick={() => {
+                  localStorage.removeItem("jwToken")
+                  localStorage.removeItem("session")
+                  if (localStorage.session === undefined) document.location.href = "/";
+                }}
+              >로그아웃</button>:
+              <Link to="/Login">
+                <button className="header-link">로그인</button>
+              </Link>
+            }
           </div>
         </div>
       </div>

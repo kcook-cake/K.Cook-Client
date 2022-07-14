@@ -10,11 +10,10 @@ import WidthwiseCard from '../../components/WidthwiseCard';
 
 function MainCake (){
     let [data, setData] =useState([]);
-    console.log(environment.apiUrl);
+    // console.log(environment.apiUrl);
     useEffect(()=>{
-        axios.get(`https://www.kcook-cake.com/app/cakes`)
+        axios.get(`/app/cakes`)
             .then(res =>{
-                console.log(res);
                 setData(res.data);
             });
     },[]);
