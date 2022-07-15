@@ -10,8 +10,21 @@ import logo from "../assets/logo.png";
 import menu from "../assets/menu.svg";
 import search from "../assets/search.svg";
 
-function Header() {
-  console.log("Header")
+function Header () {
+  const [session, setSession] = useState(false);
+
+  useEffect(()=> {
+    isSession((s)=>{
+      if (s) setSession(s);
+    });
+  }, []);
+
+  console.log(sessionStorage.jwToken);
+
+  //   sessionStorage.removeItem('jwToken')
+  // sessionStorage.removeItem('session')
+
+  // render() {
   return (
     <div className="header">
       <div className="header-ad-flex">
@@ -43,25 +56,25 @@ function Header() {
             </Link>
           </div>
           <div className="header-right">
-            {sessionStorage.session ?
+            {session ?
               <Link to="/SellerOrder">
                 <button className="header-link">판매자로 전환</button>
               </Link>:
               <></>
             }
-            {sessionStorage.session ?
+            {session ?
               <Link to="/MypageOrder">
                 <button className="header-link">마이페이지</button>
               </Link>:
               <></>
             }
-            {sessionStorage.session ?
+            {session ?
               <></>:
               <Link to="/SignUp">
                 <button className="header-link">회원가입</button>
               </Link>
             }
-            {sessionStorage.session ?
+            {session ?
               <button
                 className="header-link"
                 onClick={() => {
@@ -102,6 +115,7 @@ function Header() {
       </div>
     </div>
   );
+  // }
 }
 
 export default Header;

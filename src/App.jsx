@@ -8,14 +8,15 @@ import Pages from './containers/index';
 
 import axios from "axios";
 
+import Header from './components/Header';
 import isSession from './utils/isSession';
 
 function App() {
-  console.log("App")
-  const [isLogin , setIsLogin] = useState(false);
-
-  // sessionStorage.removeItem('jwToken')
-  // sessionStorage.removeItem('session')
+  // useEffect(()=> {
+  //   isSession((props)=>{
+  //     if (props) Header()
+  //   })
+  // }, []);
 
   useEffect(()=>{
     // isSession();
@@ -24,9 +25,6 @@ function App() {
   // function loginCallBack(login){
   //   setIsLogin(login);
   // }
-
-  console.log(sessionStorage.jwToken)
-  console.log(sessionStorage.session)
 
 	return (
     <div id='main'>

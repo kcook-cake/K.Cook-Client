@@ -12,7 +12,7 @@ function MainUpdate (){
     let [data, setData] =useState([]);
 
     useEffect(()=>{
-        axios.get(`https://prod.kcook-cake.com/app/cakes`)
+        axios.get(`/app/cakes`)
             .then(res =>{
                 setData(res.data);
             });

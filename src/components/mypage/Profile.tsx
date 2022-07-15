@@ -3,7 +3,7 @@ import '../../styles/mypage/Profile.scss';
 
 function Profile (){
     return(
-        <div className="mp-top profile">
+        <div className="profile">
             <div className="mypage-top">
                 <h3>회원 정보 수정</h3>
             </div>

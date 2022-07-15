@@ -26,7 +26,7 @@ function Login() {
 
   const onClickLogin = () => {
     axios
-      .post("https://prod.kcook-cake.com/app/sign-in", {
+      .post(`/app/sign-in`, {
         password: password,
         signInId: signInId,
       })
@@ -36,10 +36,13 @@ function Login() {
 
         //성공시 메인으로 이동
         sessionStorage.setItem("jwToken", res.data.result.jwt);
+        // sessionStorage.setItem("session", true);
+        // isSession((isChecked) => {
+        //   if(isChecked) document.location.href = "/";
+        // });
+        document.location.href = "/";
+
         // setAuthorizationToken(res.data.result.jwt);
-        isSession((isChecked) => {
-          if(isChecked) document.location.href = "/";
-        });
         // setTimeout(() => {
         //   document.location.href = "/";
         // }, 1000);

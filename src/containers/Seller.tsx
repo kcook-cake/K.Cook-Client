@@ -14,6 +14,7 @@ import FullCalendarApp from '../components/seller/FullCalendarApp';
 
 const Seller = () =>{
     return(
+        <div className="seller-flex">
             <div className="seller">
                 <Router>
                     <SellerSection />
@@ -25,6 +26,7 @@ const Seller = () =>{
                     <Route exact path="/SellerStore" component={SellerStore} />
                 </Router> 
             </div>
+        </div>
     )
 }
 

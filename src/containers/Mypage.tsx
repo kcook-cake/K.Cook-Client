@@ -10,6 +10,7 @@ import '../../src/styles/mypage/Mypage.scss'
 
 const Mypage = () =>{
     return(
+        <div className="mypage-flex">
             <div className="mypage">
                 <Router>
                     <MypageSection />
@@ -18,8 +19,9 @@ const Mypage = () =>{
                     <Route exact path="/Membership" component={Membership} />
                     <Route exact path="/Coupon" component={Coupons} />
                     <Route exact path="/Profile" component={Profile} />
-                </Router> 
+                </Router>
             </div>
+        </div>
     )
 }
 

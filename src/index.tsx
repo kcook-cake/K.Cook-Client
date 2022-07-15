@@ -7,6 +7,7 @@ import App from './App.jsx';
 
 import reportWebVitals from './reportWebVitals';
 import setAuthorizationToken from "src/utils/setAuthorizationToken";
+import isSession from './utils/isSession';
 
 // const store = createStore(
 // );

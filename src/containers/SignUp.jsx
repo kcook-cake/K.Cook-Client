@@ -56,29 +56,44 @@ function SignUp() {
 
   const [phoneFailD, setPhoneFailD] = useState(true);
   const [phoneToken, setPhoneToken] = useState("");
+  const [phonejwToken, setPhonejwToken] = useState("");
   const onSMS = () => {
+    console.log(phonejwToken)
     axios
-      .patch("https://prod.kcook-cake.com/app/accounts/sms-token", {
+      .patch(`/app/accounts/sms-token`, {
         phoneNumber: phoneNumber,
+      }, {
+        headers: {
+            'X-ACCESS-TOKEN': phonejwToken,
+        }
       })
       .then((res) => {
         console.log(res)
-        if (res.isSuccess)
-          setPhoneToken(res.message)
+        if (res.isSuccess) {
+          setPhoneFailD(false)
+          document.location.href = "/";
+        }
       })
       .catch((error) => {
         console.log(error)
+        setFailModal(true);
+        setModalCSS(true);
+        setTimeout(() => {
+          setFailModal(false);
+        }, 1000);
       });
   }
   const onSMSCheck = () => {
     axios
-      .patch("https://prod.kcook-cake.com/app/accounts/sms-certification", {
-        smsToken: phoneSign,
+      .patch(`/app/accounts/sms-certification`, {
+        smsToken: phonejwToken,
       })
       .then((res) => {
         console.log(res)
-        if (res.isSuccess)
+        if (res.isSuccess) {
           setPhoneFailD(false)
+          document.location.href = "/";
+        }
       })
       .catch((error) => {
         console.log(error)
@@ -103,6 +118,8 @@ function SignUp() {
   const [nicknameFail, setNicknameFail] = useState(true);
   const [emailFail, setEmailFail] = useState(true);
   const [phoneFail, setPhoneFail] = useState(true);
+  const [phoneSmsFail, setPhoneSmsFail] = useState(false);
+  const [addressFail, setAddressFail] = useState(true);
 
   const [signInIdFailD, setSignInIdFailD] = useState(false);
   const [nicknameFailD, setNicknameFailD] = useState(false);
@@ -177,6 +194,10 @@ function SignUp() {
 
   const handleAddressMain = (addressMain) => {
     setAddressMain(addressMain);
+    if (addressMain !== '')
+      setAddressFail(false)
+    else
+      setAddressFail(true)
   };
 
   const handleAddress = (e) => {
@@ -184,48 +205,50 @@ function SignUp() {
   };
 
   const onClickSignUp = () => {
-    if ((signInIdFail || passwordFail || chPasswordFail || birthdayFail || nicknameFail || emailFail || phoneFail || (addressMain === "") || signInIdFailD || nicknameFailD || emailFailD || phoneFailD) &&
+    if ((signInIdFail || passwordFail || chPasswordFail || birthdayFail || nicknameFail || emailFail || phoneFail || (addressMain === "") || signInIdFailD || nicknameFailD || emailFailD || addressFail) ||
       (!(checkedItems.find(data => data == '서비스 이용약관 동의 (필수)')) || !(checkedItems.find(data => data === '개인정보 수집 및 이용 동의 (필수)')) || !(checkedItems.find(data => data === '만 14세 이상입니다 (필수)')))) {
+        console.log("a")
       setFailModal(true);
       setModalCSS(true);
       setTimeout(() => {
         setFailModal(false);
       }, 1000);
-      return;
+    } else {
+      console.log("b")
+      axios
+        .post("/app/sign-up", {
+          address: addressMain,
+          dateOfBirth: birthday,
+          email: email,
+          nickname: nickname,
+          password: password,
+          phoneNumber: phoneNumber,
+          signInId: signInId,
+        })
+        .then((res) => {
+          console.log(res);
+          setPhonejwToken(res.data.result.jwt);
+          setPhoneSmsFail(true);
+
+          //성공시 메인으로 이동
+          // sessionStorage.setItem("authenticated", authenticated);
+        })
+        .catch((error) => {
+          console.log(error.response.data.message)
+          if (error.response.data.message === '중복된 이메일입니다.') {
+            setEmailFailD(true)
+          } else if (error.response.data.message === '중복된 아이디입니다.') {
+            setSignInIdFailD(true)
+          } else if (error.response.data.message === '중복된 닉네임입니다.') {
+            setNicknameFailD(true)
+          }
+          setFailModal(true);
+          setModalCSS(true);
+          setTimeout(() => {
+            setFailModal(false);
+          }, 1000);
+        });
     }
-
-    axios
-      .post("https://prod.kcook-cake.com/app/sign-up", {
-        address: addressMain,
-        dateOfBirth: birthday,
-        email: email,
-        nickname: nickname,
-        password: password,
-        phoneNumber: phoneNumber,
-        signInId: signInId,
-      })
-      .then((res) => {
-        console.log(res)
-        document.location.href = "/";
-
-        //성공시 메인으로 이동
-        // sessionStorage.setItem("authenticated", authenticated);
-      })
-      .catch((error) => {
-        console.log(error.response.data.message)
-        if (error.response.data.message === '중복된 이메일입니다.') {
-          setEmailFailD(true)
-        } else if (error.response.data.message === '중복된 아이디입니다.') {
-          setSignInIdFailD(true)
-        } else if (error.response.data.message === '중복된 닉네임입니다.') {
-          setNicknameFailD(true)
-        }
-        setFailModal(true);
-        setModalCSS(true);
-        setTimeout(() => {
-          setFailModal(false);
-        }, 1000);
-      });
   };
 
   return (
@@ -323,42 +346,6 @@ function SignUp() {
           : null
         }
 
-        <p className="login-list">휴대폰 번호(숫자만)</p>
-        <div className="login-input phone-confirm">
-          <input
-            className="input-num"
-            type="tel"
-            onChange={handlePhone}
-            value={phoneNumber}
-            placeholder="번호 입력"
-          ></input>
-          <button
-            className="input-btn"
-            onClick={onSMS}
-          >인증문자 발송</button>
-        </div>
-        {phoneFail ?
-          <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
-          : null
-        }
-        <div className="login-input phone-confirm">
-          <input
-            className="input-num"
-            type="tel"
-            onChange={handlePhoneSign}
-            value={phoneSign}
-            placeholder="인증번호 입력"
-          ></input>
-          <button
-            className="input-btn"
-            onClick={onSMSCheck}
-          >확인하기</button>
-        </div>
-        {phoneFailD ?
-          <p className="confirm-text">인증번호가 일치하지 않습니다.</p>
-          : null
-        }
-
         <p className="login-list">주소</p>
         <input
           className="input-id login-input"
@@ -386,6 +373,53 @@ function SignUp() {
           onChange={handleAddress}
           value={address}
         ></input>
+        {addressFail ?
+          <p className="confirm-text">주소 형식이 맞지 않습니다.</p>
+          : null
+        }
+
+      <p className="login-list">휴대폰 번호(숫자만)</p>
+        <div className="login-input phone-confirm">
+          <input
+            className="input-num"
+            type="tel"
+            onChange={handlePhone}
+            value={phoneNumber}
+            placeholder="번호 입력"
+          ></input>
+          {phonejwToken == "" ?
+            <></>:
+            <button
+              className="input-btn"
+              onClick={onSMS}
+            >인증문자 발송</button>
+          }
+        </div>
+        {phoneFail ?
+          <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
+          : null
+        }
+        {phoneSmsFail ?
+          <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호를 인증하셔야 합니다.</p>
+          : null
+        }
+        {/* <div className="login-input phone-confirm">
+          <input
+            className="input-num"
+            type="tel"
+            onChange={handlePhoneSign}
+            value={phoneSign}
+            placeholder="인증번호 입력"
+          ></input>
+          <button
+            className="input-btn"
+            onClick={onSMSCheck}
+          >확인하기</button>
+        </div>
+        {phoneFailD ?
+          <p className="confirm-text">인증번호가 일치하지 않습니다.</p>
+          : null
+        } */}
 
         <div id="wrap"></div>
 

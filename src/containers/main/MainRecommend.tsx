@@ -10,15 +10,17 @@ import LengthwiseCard from '../../components/LengthwiseCard';
 import SectionTitle from '../../components/SectionTitle';
 
 const Recommend = ()=>{
-    let [data, setData] =useState([]);
+    const [data, setData] = useState([]);
     // console.log(environment.apiUrl);
     useEffect(()=>{
         // axios.get(`https://www.kcook-cake.com/app/cakes`)
-        axios.get(`https://prod.kcook-cake.com/app/cakes`)
+        axios.get(`/app/cakes`)
             .then(res =>{
+                console.log(res)
                 setData(res.data);
             });
     },[]);
+
     return(
         <div className="recommend-flex">
             <div className="recommend">
