@@ -255,7 +255,7 @@ function SignUp() {
     <div className="login">
       <div className="login-section">
         <img src={logo} className="logo" />
-        <h1 className="login-title">나만의 케이크 주문, 케이쿡</h1>
+        <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
         
         <p className="login-list">아이디</p>
         <input

@@ -1,51 +1,51 @@
 import React from 'react';
 import '../styles/WidthwiseCard.scss';
 import '../styles/LengthwiseCard.scss';
-import cake1 from '../assets/cake1.png';
-import cake2 from '../assets/cake2.png';
-import cake3 from '../assets/cake3.png';
-import cake4 from '../assets/cake4.png';
-import emptystar from '../assets/empty-star.svg';
-import fillstar from '../assets/fill-star.svg';
+
+import star from 'src/utils/star';
 
 
 interface LengthwiseCardProps {
-    img? : string,
-    star? : number,
-    shop : string,
-    cakename : string ,
-    minprice : number
-    review? : number,
+    getData: any
+    // img? : string,
+    // star? : number,
+    // shop : string,
+    // cakename : string ,
+    // minprice : number
+    // review? : number,
 }
 
-function WidthwiseCard({ star, shop, cakename, minprice}: LengthwiseCardProps) { 
+function WidthwiseCard({ getData }: LengthwiseCardProps) { 
     return (
-        <div className="widthwise-card">
+        <>
+    {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+        return (
+        <div className="widthwise-card" key={data.productId}>
             <div className="widthwise-card-img">
-                <img src={cake2} alt="cake-image" />
+                <img src={data.thumbnail} alt="cake-image" width={263.2} height={154.4} />
             </div>
             <div className="widthwise-card-info">
                 <div className="card-rating-star">
-                    <img src={fillstar} alt="lating-star" />
-                    <img src={fillstar} alt="lating-star" />
-                    <img src={fillstar} alt="lating-star" />
-                    <img src={emptystar} alt="lating-star" />
-                    <img src={emptystar} alt="lating-star" />
+                    {star(data.raiting)}
                 </div>
                 <div className="card-shop-name">
-                    {shop}
+                    {data.storeName}
                 </div>
                 <div className="card-cake-name">
-                    {cakename}
+                    {data.name}
                 </div>
                 <div className="card-minprice">
-                    {minprice+"~"}
+                    {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"~"}
                 </div>
                 <div className="card-review">
-                    리뷰 27
+                    {"리뷰 "+data.reviewCount}
                 </div>
             </div>
         </div>
+        );
+        })
+    }
+    </>
     );
 }
 

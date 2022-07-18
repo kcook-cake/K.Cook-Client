@@ -19,30 +19,17 @@
   // }
 }
 
-@media (max-width: 767px) {
-  .container {
-    margin: 15px 0px 0px 0px;
-  }
-  .vertical-card {
-    width: 298px;
-    height: 479px;
-  }
-  .vertical-card-img {
-    margin-bottom: 17px;
-    width: 100%;
-    height: 66%;
-  }
-}
-
 .vertical-card-img {
   margin-bottom: 17px;
   width: 100%;
+  border-radius: 10px;
   // height: 304px;
 }
 
 .vertical-card-info {
   margin: 0;
-  padding-left: 20px;
+  // padding: 0px;
+  padding-left: 20px; //왜안돼?
   font-weight: bold;
 }
 .card-shop-name {
@@ -71,7 +58,7 @@
 }
 
 .card-top-info {
-  margin-bottom: 4px;
+  // margin-bottom: 4px;
 }
 .card-review {
   display: inline;
@@ -87,4 +74,79 @@
     margin-right: 3px;
     margin-bottom: 16px;
   }
+}
+
+
+@media (max-width: 767px) {
+  .container {
+    width: 156px;
+    margin: 15px 0px 0px 0px;
+  }
+  .vertical-card {
+    display: inline-flex;
+    height: 262px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
+  }
+  .vertical-card-img {
+    width: 156px;
+    height: 116px;
+  }
+  .vertical-card-info {
+    margin: 0;
+    // padding: 0px;
+    padding-left: 0px; //왜안돼?
+    font-weight: bold;
+  }
+
+  .card-shop-name {
+    margin-bottom: 2px;
+    min-width: 50px;
+  
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  
+    color: #333333;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    // background-color: red;
+  }
+  .card-cake-name {
+    margin-bottom: 10px;
+    color: $sub-text;
+    line-height: 18px;
+    font-size: 15px;
+    // background-color: blue;
+  }
+  .card-minprice {
+    color: $pricetext;
+    font-size: 18px;
+  }
+  
+  .card-top-info {
+    margin-bottom: 0px; //왜안돼
+  }
+  .card-review {
+    height: 13px;
+    // line-height: 26px;
+
+    display: inline;
+    float: right;
+    margin-right: 20px;
+    font-size: 11px;
+    color: #858997;
+  }
+  .card-rating-star {
+    display: inline-block;
+    height: 13px;
+    // line-height: 13px;
+    img {
+      width: 13px;
+      vertical-align: top;
+      margin-right: 3px;
+      margin-bottom: 16px;
+    }
+  }
+  
 }

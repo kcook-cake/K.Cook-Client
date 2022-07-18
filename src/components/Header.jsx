@@ -19,8 +19,6 @@ function Header () {
     });
   }, []);
 
-  console.log(sessionStorage.jwToken);
-
   //   sessionStorage.removeItem('jwToken')
   // sessionStorage.removeItem('session')
 

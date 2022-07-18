@@ -14,7 +14,7 @@ function MainCake (){
     useEffect(()=>{
         axios.get(`/app/cakes`)
             .then(res =>{
-                setData(res.data);
+                setData(res.data.result.content);
             });
     },[]);
 
@@ -25,13 +25,7 @@ function MainCake (){
                     <SectionTitle title="케이크" link="/Cake" />
                 </div>
                 <div className="cake-contents">
-                    {/* <WidthwiseCard getData={data}/> */}
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
+                    <WidthwiseCard getData={data}/>
                 </div>
             </div>
         </div>

@@ -18,9 +18,13 @@
 }
 
 @media (max-width: 767px) {
+  .main-cake-flex {
+    margin-top: 45px;
+  }
   .main-cake {
     width: 100%;
     min-width: 0px;
+    padding: 0px 10px;
     .cake-contents {
       padding: 0 16px;
       grid-template-rows: 1fr;

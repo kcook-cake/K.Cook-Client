@@ -16,8 +16,12 @@ const Recommend = ()=>{
         // axios.get(`https://www.kcook-cake.com/app/cakes`)
         axios.get(`/app/cakes`)
             .then(res =>{
-                console.log(res)
-                setData(res.data);
+                setData(res.data.result.content);
+            });
+
+        axios.get(`/app​/stores​/account​/auth`)
+            .then(res =>{
+                console.log(res);
             });
     },[]);
 
@@ -28,11 +32,7 @@ const Recommend = ()=>{
                     <SectionTitle title="오늘의 추천"/>
                 </div>
                 <div className="recommend-contents">
-                    {/* <LengthwiseCard getData={data}/> */}
-                    <LengthwiseCard id={1} name='aaaaaaabbbaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaabba' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
+                    <LengthwiseCard getData={data}/>
                 </div>
             </div>
         </div>

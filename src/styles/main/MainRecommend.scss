@@ -24,9 +24,16 @@
 }
 
 @media (max-width: 767px) {
+  ::-webkit-scrollbar { 
+    width: 0px; 
+    height: 13px;
+  }
+
   .recommend {
     width: 100%;
     min-width: 0px;
+    padding: 45px 10px 0px 10px;
+    background-color: white;
     .recommend-contents {
       padding: 0 16px;
       grid-template-rows: 1fr;

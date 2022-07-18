@@ -14,7 +14,7 @@ function MainUpdate (){
     useEffect(()=>{
         axios.get(`/app/cakes`)
             .then(res =>{
-                setData(res.data);
+                setData(res.data.result.content);
             });
     },[]);
     return(
@@ -24,7 +24,7 @@ function MainUpdate (){
                     <SectionTitle title="최근 업데이트"/>
                 </div>
                 <div className="recommend-contents">
-                    {/* <LengthwiseCard getData={data}/> */}
+                    <LengthwiseCard getData={data}/>
                 </div>
             </div>
         </div>

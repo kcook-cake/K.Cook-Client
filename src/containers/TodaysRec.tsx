@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import LengthwiseCard from '../components/LengthwiseCard';
 import '../../src/styles/main/MainRecommend.scss'
 import '../../src/styles/TodaysRec.scss'
 import WidthwiseCard from '../components/WidthwiseCard';
+
+import axios from "axios";
 
 import leftArrow from '../assets/left-arrow.svg';
 import rightArrow from '../assets/right-arrow.svg';
@@ -12,26 +14,20 @@ import event2 from '../assets/event2.png';
 import event3 from '../assets/event3.png';
 
 function TodaysRec (){
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        axios.get(`/app/cakes`)
+            .then(res =>{
+                setData(res.data.result.content);
+            });
+    },[]);
+
     return(
         <div className="todays-recommend">
             <div className="sort-by-rec">
                 <div className="title">리뷰 별점순</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard id={1} name='aaaaaaabbbaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaabba' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaabbbaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaabba' userName='a' price={5000}/>
-                    <LengthwiseCard id={1} name='aaaaaaaaaaa' userName='a' price={5000}/>
-                    {/* <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <LengthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/> */}
+                    <LengthwiseCard getData={data}/>
                 </div>
                 <div className="pagination">
                     <Link to="/" className="arrow prev" href="#"> &lt;Prev</Link>
@@ -44,12 +40,7 @@ function TodaysRec (){
             <div className="kcook-pick">
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="pick-contents">
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
-                    <WidthwiseCard shop="케이크바이미" cakename="하트볼터치 곰돌이케이크" minprice={5200}/>
+                    <WidthwiseCard getData={data}/>
                 </div>
             </div>
 
