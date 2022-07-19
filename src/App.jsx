@@ -8,6 +8,7 @@ import Pages from './containers/index';
 
 import axios from "axios";
 
+import LandingPage from './containers/LandingPage';
 import Header from './components/Header';
 import isSession from './utils/isSession';
 
@@ -29,7 +30,8 @@ function App() {
 	return (
     <div id='main'>
       {/* <PC> */}
-        <Pages/>
+      <LandingPage/>
+      {/* <Pages/> */}
       {/* </PC>
       <Mobile>
       </Mobile> */}
