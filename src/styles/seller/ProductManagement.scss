@@ -1,6 +1,7 @@
 @import "../reset.scss";
 
 .management-card {
+  width: 848px;
   position: relative;
   margin-bottom: 20px;
   display: flex;
@@ -9,14 +10,15 @@
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #fefefe;
+  // background-color: red;
 }
 .move-tap {
-  margin-left: 380px;
-  height: 30px;
-  width: 100%;
-  svg {
-    display: inline-block;
-  }
+  padding-left: 380px;
+  // height: 30px;
+  // width: 100%;
+  // svg {
+  //   display: inline-block;
+  // }
 }
 .management-tap {
   position: absolute;
@@ -35,7 +37,6 @@
   margin: 0 0 0 30px;
 }
 .management-content {
-  width: 100%;
   display: flex;
 }
 
@@ -51,10 +52,15 @@
   margin: 70px 10px 0 0;
 }
 
+.order-content {
+  width: 549px;
+}
+
+//문제
 .add-cake-name {
   padding-left: 20px;
   margin-bottom: 15pxs;
-  width: 550px;
+  width: 100%;
   height: 55px;
   border-radius: 5px 5px 0 0;
   border-bottom: 3px solid #333;

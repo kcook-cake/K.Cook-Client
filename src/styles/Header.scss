@@ -6,8 +6,7 @@
 .header-ad {
   // padding: 0 $basic-padding;
   // width: 1199px;
-  max-width: 1199px;
-  min-width: 825px;
+  width: 1199px;
   margin: auto;
   line-height: 50px;
   background-color: $pink;
@@ -42,8 +41,7 @@
 }
 .head {
   // width: 1199px;
-  max-width: 1199px;
-  min-width: 825px;
+  width: 1199px;
   height: 82px;
   line-height: 82px;
   margin: auto;

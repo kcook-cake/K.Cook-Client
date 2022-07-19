@@ -1,6 +1,7 @@
 import React,  { useEffect, useState }from 'react';
 import '../../styles/main/MainUpdate.scss'
 import '../../styles/main/MainRecommend.scss'
+
 import axios from 'axios';
 import LengthwiseCard from '../../components/LengthwiseCard';
 import SectionTitle from '../../components/SectionTitle';

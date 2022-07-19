@@ -22,6 +22,7 @@ function ProductManagement (){
                     <div className="management-section">
                         <div className="move-tap"><DragBtn/></div>
                         <div className="management-content">
+                            
                             <div className="order-img">
                                 <img src={cake6}/>
                             </div>    

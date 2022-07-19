@@ -1,6 +1,7 @@
 @import "../reset.scss";
 
 .review-contents {
+  width: 591px;
   display: flex;
   flex-direction: column;
 }
@@ -36,7 +37,7 @@
   }
   .review-button {
     margin-top: 30px;
-    padding: 6px 160px;
+    padding: 6px 154px;
     border-radius: 5px;
     background-color: $pink;
     color: #fff;

@@ -1,8 +1,13 @@
 @import "./reset.scss";
 
-.cake {
-  padding: 20px $basic-padding;
+.cake-flex {
   background-color: #fafafa;
+}
+
+.cake {
+  width: 1199px;
+  margin: auto;
+  padding: 20px 0px;
 }
 
 .item-sort-bar {
@@ -21,6 +26,9 @@
 }
 
 .sorted-item {
+  max-width: 1199px;
+  min-width: 815px;
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 20px;

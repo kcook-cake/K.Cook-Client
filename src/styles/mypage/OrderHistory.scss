@@ -19,12 +19,15 @@
     color: #777777;
   }
 }
-.history-contents {
-  flex-direction: column;
-  display: flex;
-}
+// .history-contents {
+//   flex-direction: column;
+//   display: flex;
+  
+// }
 .history-content {
+  width: 841px;
   display: flex;
+  // background-color: red;
 }
 .order-img {
   margin-right: 35px;

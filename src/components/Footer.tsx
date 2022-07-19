@@ -7,11 +7,10 @@ interface FooterProps {
     address : string 
 }
 
-
 function Footer({ email, tel, address}: FooterProps) { 
     return (
         <>
-        <hr id="footer-hr" className="footer-mobile"/>
+        <hr className="footer-hr"/>
         <div className="footer-flex">
             <div className="footer">
                 <dl>
@@ -66,7 +65,8 @@ function Footer({ email, tel, address}: FooterProps) {
                 </dl> */}
             </div>
             <div className="footer-bottom">
-                케이쿡  |  대표 000  |  서울특별시 성동구 뚝섬로13길 38 상상플래닛 kcook@gmail.com  |  사업자등록번호 : 175-07-01452  |  통신판매업신고
+                케이쿡  |  대표 000  |  서울특별시 성동구 뚝섬로13길 38 상상플래닛
+                kcook@gmail.com  |  사업자등록번호 : 175-07-01452  |  통신판매업신고
             </div>
         </div>
         </>

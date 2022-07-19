@@ -4,7 +4,7 @@ import '../../styles/seller/SellerStore.scss';
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 function SellerStore (){
     return(
-        <div className="mp-top seller-store">
+        <div className="seller-store">
             <div className="mypage-top seller-store-top">
                 <h3>스토어 정보</h3>
             </div>
