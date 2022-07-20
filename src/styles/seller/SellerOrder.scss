@@ -1,9 +1,13 @@
 @import "../reset.scss";
 
+.seller-order-top {
+  width: 848px;
+  // background-color: red;
+}
+
 .order-view-type {
   display: inline-block;
   float: right;
-
   color: #222222;
   font-size: 16px;
   font-weight: 700;
@@ -16,10 +20,13 @@
   width: 841px;
 }
 
-.view-list {
+.order-view {
+  color: #222222;
+}
+.order-view:hover {
   color: $pink;
 }
-.view-list:focus {
+.order-view:focus {
   color: $pink;
 }
 

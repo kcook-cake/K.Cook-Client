@@ -19,10 +19,6 @@ function App() {
   //   })
   // }, []);
 
-  useEffect(()=>{
-    // isSession();
-  },[]);
-
   // function loginCallBack(login){
   //   setIsLogin(login);
   // }

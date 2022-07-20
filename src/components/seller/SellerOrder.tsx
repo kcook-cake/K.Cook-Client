@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/mypage/OrderHistory.scss';
 import '../../styles/seller/SellerOrder.scss';
+
 import cake6 from   '../../assets/cake6.png';
-import { Link } from 'react-router-dom';
 
 function SellerOrder (){
     return(
         <div className="mp-top seller-order">
-            <div className="mypage-top">
+            <div className="mypage-top seller-order-top">
                 <h3>주문확인</h3>
                 <span>처리할 예약 주문입니다.</span>
                 <div className='order-view-type'>
-                    <Link to='/FullCalendarApp' className='view-calander'>달력보기</Link>
+                    <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
                     |
-                    <Link to='/SellerOrder' className='view-list'>목록보기</Link>
+                    <Link to='/SellerOrder' className='order-view view-list'>목록보기</Link>
                 </div>
             </div>
             <div className="history-contents">

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #666;
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #333;
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="icon-menu" transform="translate(-24 -39.578)">
+    <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-1" width="30" height="30" transform="translate(24 39.578)"/>
+    <g id="Group_297" data-name="Group 297" transform="translate(28.467 46.607)">
+      <path id="Vector_82" data-name="Vector 82" class="cls-2" d="M0,0H10.859" transform="translate(10.859 0)"/>
+      <path id="Vector_83" data-name="Vector 83" class="cls-2" d="M0,0H21.719" transform="translate(0 8.145)"/>
+      <path id="Vector_84" data-name="Vector 84" class="cls-2" d="M0,0H12.217" transform="translate(0 16.289)"/>
+    </g>
+  </g>
+</svg>

@@ -19,10 +19,10 @@ const Recommend = ()=>{
                 setData(res.data.result.content);
             });
 
-        axios.get(`/app​/stores​/account​/auth`)
-            .then(res =>{
-                console.log(res);
-            });
+        // axios.get(`/app/stores/account/auth`)
+        //     .then(res =>{
+        //         console.log(res);
+        //     });
     },[]);
 
     return(

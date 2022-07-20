@@ -1,0 +1,289 @@
+
+// // 눈송이 부분
+.snowflake {
+  font-size: 26px;
+}
+
+#outer {
+  width: 98%;
+  height: 600px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.snowflake {
+  height: 600px;
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+} /* height값은 없어도 되는 속성 */
+
+.intro {
+  background-image: url("../assets/snow.png"), url("../assets/snow2.png");
+
+  -webkit-animation: snow 10s linear infinite;
+
+  -moz-animation: snow 10s linear infinite;
+
+  -ms-animation: snow 10s linear infinite;
+
+  animation: snow 10s linear infinite;
+}
+
+// @-webkit-keyframes sway-0 {
+//     0% {
+//         -webkit-transform: rotate(-5deg)
+//     }
+//     40% {
+//         -webkit-transform: rotate(28deg)
+//     }
+//     100% {
+//         -webkit-transform: rotate(3deg)
+//     }
+// }
+
+// @-o-keyframes sway-0 {
+//     0% {
+//         -o-transform: rotate(-5deg)
+//     }
+//     40% {
+//         -o-transform: rotate(28deg)
+//     }
+//     100% {
+//         -o-transform: rotate(3deg)
+//     }
+// }
+
+// @-ms-keyframes sway-0 {
+//     0% {
+//         -ms-transform: rotate(-5deg)
+//     }
+//     40% {
+//         -ms-transform: rotate(28deg)
+//     }
+//     100% {
+//         -ms-transform: rotate(3deg)
+//     }
+// }
+
+// @-moz-keyframes sway-0 {
+//     0% {
+//         -moz-transform: rotate(-5deg)
+//     }
+//     40% {
+//         -moz-transform: rotate(28deg)
+//     }
+//     100% {
+//         -moz-transform: rotate(3deg)
+//     }
+// }
+
+// @keyframes sway-0 {
+//     0% {
+//         transform: rotate(-5deg)
+//     }
+//     40% {
+//         transform: rotate(28deg)
+//     }
+//     100% {
+//         transform: rotate(3deg)
+//     }
+// }
+
+@keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@-moz-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@-webkit-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  50% {
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@-ms-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+// // 눈송이 부분
+// .snowflake {
+//   font-size: 26px;
+// }
+
+// #outer {
+//   width: 98%;
+//   height: 600px;
+//   position: absolute;
+//   top: 0px;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
+// .snowflake {
+//   height: 600px;
+//   color: #fff;
+//   font-size: 1em;
+//   font-family: Arial;
+//   text-shadow: 0 0 1px #000;
+// } /* height값은 없어도 되는 속성 */
+
+// .intro {
+//   background-image: url("../assets/snow.png"), url("../assets/snow2.png");
+
+//   -webkit-animation: snow 10s linear infinite;
+
+//   -moz-animation: snow 10s linear infinite;
+
+//   -ms-animation: snow 10s linear infinite;
+
+//   animation: snow 10s linear infinite;
+// }
+
+// @keyframes snow {
+//   0% {
+//     background-position: 0px 0px, 0px 0px, 0px 0px;
+//   }
+
+//   100% {
+//     background-position: 500px 1000px, 400px 400px, 300px 300px;
+//   }
+// }
+
+// @-moz-keyframes snow {
+//   0% {
+//     background-position: 0px 0px, 0px 0px, 0px 0px;
+//   }
+
+//   100% {
+//     background-position: 500px 1000px, 400px 400px, 300px 300px;
+//   }
+// }
+
+// @-webkit-keyframes snow {
+//   0% {
+//     background-position: 0px 0px, 0px 0px, 0px 0px;
+//   }
+
+//   50% {
+//   }
+
+//   100% {
+//     background-position: 500px 1000px, 400px 400px, 300px 300px;
+//   }
+// }
+
+// @-ms-keyframes snow {
+//   0% {
+//     background-position: 0px 0px, 0px 0px, 0px 0px;
+//   }
+
+//   100% {
+//     background-position: 500px 1000px, 400px 400px, 300px 300px;
+//   }
+// }
+
+// @media (max-width: 767px) {
+//     .snowflake {
+//     font-size: 26px;
+//     }
+
+//     #outer {
+//     width: 98%;
+//     height: 600px;
+//     position: absolute;
+//     top: 0px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     }
+//     .snowflake {
+//     height: 600px;
+//     color: #fff;
+//     font-size: 1em;
+//     font-family: Arial;
+//     text-shadow: 0 0 1px #000;
+//     } /* height값은 없어도 되는 속성 */
+
+//     .intro {
+//     background-image: url("../assets/snow.png"), url("../assets/snow2.png");
+
+//     -webkit-animation: snow 10s linear infinite;
+
+//     -moz-animation: snow 10s linear infinite;
+
+//     -ms-animation: snow 10s linear infinite;
+
+//     animation: snow 10s linear infinite;
+//     }
+
+//     @keyframes snow {
+//     0% {
+//         background-position: 0px 0px, 0px 0px, 0px 0px;
+//     }
+
+//     100% {
+//         background-position: 500px 1000px, 400px 400px, 300px 300px;
+//     }
+//     }
+
+//     @-moz-keyframes snow {
+//     0% {
+//         background-position: 0px 0px, 0px 0px, 0px 0px;
+//     }
+
+//     100% {
+//         background-position: 500px 1000px, 400px 400px, 300px 300px;
+//     }
+//     }
+
+//     @-webkit-keyframes snow {
+//     0% {
+//         background-position: 0px 0px, 0px 0px, 0px 0px;
+//     }
+
+//     50% {
+//     }
+
+//     100% {
+//         background-position: 500px 1000px, 400px 400px, 300px 300px;
+//     }
+//     }
+
+//     @-ms-keyframes snow {
+//     0% {
+//         background-position: 0px 0px, 0px 0px, 0px 0px;
+//     }
+
+//     100% {
+//         background-position: 500px 1000px, 400px 400px, 300px 300px;
+//     }
+//     }
+// }

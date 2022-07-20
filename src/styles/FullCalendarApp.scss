@@ -1,0 +1,21 @@
+@import "./reset.scss";
+
+.fc-toolbar-chunk {
+    display: flex; // 일렬로 나란히
+    align-items: center; // 수직 가운데 정렬
+}
+
+.fc-prev-button,
+.fc-button, 
+.fc-button-primary {
+    display: none;
+    color: red;
+    background-color: red;
+}
+
+.fc-next-button,
+.fc-button, 
+.fc-button-primary {
+    color: red;
+    background-color: red;
+}
