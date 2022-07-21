@@ -26,8 +26,8 @@ function App() {
 	return (
     <div id='main'>
       {/* <PC> */}
-      <LandingPage/>
-      {/* <Pages/> */}
+      {/* <LandingPage/> */}
+      <Pages/>
       {/* </PC>
       <Mobile>
       </Mobile> */}

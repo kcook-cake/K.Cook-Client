@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const isSession = (fn) => {
+const isSession = (fn, fn2) => {
     // sessionStorage.removeItem('jwToken')
     axios
         .get(`/app/accounts/auth`, {
@@ -12,6 +12,7 @@ const isSession = (fn) => {
         .then((res) => {
             // console.log(res.data.isSuccess)
             if(fn != null) fn(res.data.isSuccess);
+            if(fn2 != null) fn2(res.data.result);
         })
         .catch((error) => {
             // console.log(error.response.data.isSuccess)

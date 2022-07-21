@@ -10,7 +10,7 @@ import SellerStore from '../components/seller/SellerStore';
 import '../../src/styles/mypage/Mypage.scss'
 import '../../src/styles/seller/Seller.scss'
 import Pages from './index';
-import FullCalendarApp from '../components/seller/FullCalendarApp';
+import FullCalendarApp from 'src/components/seller/FullCalendarApp';
 
 const Seller = () =>{
     return(

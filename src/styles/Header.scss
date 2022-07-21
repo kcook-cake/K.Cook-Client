@@ -96,12 +96,10 @@
 
 // 메뉴바
 .menu-bar-flex {
-  // background-color: red;
+  // min-width: 825px;
 }
 .menu-bar {
-  // width: 1199px;
-  max-width: 1199px;
-  min-width: 825px;
+  width: 1199px;
   height: 54px;
   line-height: 54px;
   margin: auto;

@@ -12,11 +12,25 @@ import search from "../assets/search.svg";
 
 function Header () {
   const [session, setSession] = useState(false);
+  const [auth, setAuth] = useState({
+    accountId: 0,
+    address: "",
+    dateOfBirth: "",
+    email: "",
+    nickname: "",
+    phoneNumber: "",
+    signInId: "",
+  });
 
   useEffect(()=> {
-    isSession((s)=>{
-      if (s) setSession(s);
-    });
+    isSession(
+      (s)=>{
+        if (s) setSession(s);
+      },
+      (a)=>{
+        setAuth(a);
+      },
+    );
   }, []);
 
   //   sessionStorage.removeItem('jwToken')
@@ -54,6 +68,9 @@ function Header () {
             </Link>
           </div>
           <div className="header-right">
+            {session?
+              <button>{auth.nickname}님 환영합니다</button>:<></>
+            }
             {session ?
               <Link to="/SellerOrder">
                 <button className="header-link">판매자로 전환</button>
