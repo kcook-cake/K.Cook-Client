@@ -93,6 +93,9 @@
 .fc-day-today,
 .fc-day-past {
     background-color:#e6e6e6 !important;
+    .fc-event-title-container {
+        display: none;
+    }
 }
 
 //캘린더 날짜

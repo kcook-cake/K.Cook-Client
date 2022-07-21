@@ -11,9 +11,9 @@ function SalesHistory (){
                 <h3>판매내역</h3>
                 <span>이전에 판매된 내역입니다.</span>
                 <div className='order-view-type'>
-                <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
+                    <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
                     |
-                    <Link to='/SellerOrder' className='order-view view-list'>목록보기</Link>
+                    <Link to='/SellerOrder' className='order-view view-list' style={{ color: "#ea5450", }}>목록보기</Link>
                 </div>
             </div>
             <div className="history-contents">

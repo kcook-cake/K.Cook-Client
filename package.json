@@ -19,6 +19,7 @@
     "@types/styled-components": "^5.1.13",
     "axios": "^0.21.4",
     "global": "^4.4.0",
+    "jquery": "^3.6.0",
     "react": "^17.0.2",
     "react-daum-postcode": "^3.0.1",
     "react-dom": "^17.0.2",
@@ -60,6 +61,7 @@
   },
   "proxy": "https://prod.kcook-cake.com",
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "prettier-eslint": "^13.0.0",
     "webpack-dev-server": "^3.11.1"
   }

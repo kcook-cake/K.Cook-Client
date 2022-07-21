@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+// import $ from 'jquery';
+// window.$ = $;
 const isSession = (fn, fn2) => {
     // sessionStorage.removeItem('jwToken')
     axios

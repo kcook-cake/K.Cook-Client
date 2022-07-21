@@ -14,7 +14,7 @@ function SellerOrder (){
                 <div className='order-view-type'>
                     <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
                     |
-                    <Link to='/SellerOrder' className='order-view view-list'>목록보기</Link>
+                    <Link to='/SellerOrder' className='order-view view-list' style={{ color: "#ea5450", }}>목록보기</Link>
                 </div>
             </div>
             <div className="history-contents">

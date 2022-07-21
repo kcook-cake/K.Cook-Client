@@ -4,8 +4,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-// import $ from 'jquery';
-// window.$ = $;
+import $ from 'jquery';
 import '../../styles/mypage/OrderHistory.scss';
 import '../../styles/seller/SellerOrder.scss';
 import '../../styles/FullCalendarApp.scss';
@@ -64,6 +63,9 @@ function FullCalendarApp (){
   const [events, setEvents] = useState([{}]);
 
   useEffect(()=> {
+    // $(".fc-day-future").click(()=>{
+    //   // $(this).css("background", "red");
+    // });
     isSession(
       (s:any)=>{
         if (s) setSession(s);
@@ -104,7 +106,7 @@ function FullCalendarApp (){
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
         <h3>주문확인</h3>
         <div className='order-view-type'>
-          <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
+          <Link to='/FullCalendarApp' className='order-view view-calander' style={{ color: "#ea5450", }}>달력보기</Link>
           |
           <Link to='/SellerOrder' className='order-view view-list'>목록보기</Link>
         </div>
