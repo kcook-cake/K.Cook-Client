@@ -9,6 +9,7 @@ import '../../styles/mypage/OrderHistory.scss';
 import '../../styles/seller/SellerOrder.scss';
 import '../../styles/FullCalendarApp.scss';
 
+import FullCalendarSeller from 'src/utils/FullCalendarSeller';
 import isSession from 'src/utils/isSession';
 
 function FullCalendarApp (){
@@ -19,37 +20,10 @@ function FullCalendarApp (){
   const [y, setY] = useState(0);
 
   const setting = () => {
-    console.log("setting")
+    console.log(window.pageYOffset)
   }
 
-  //달력 판매자 정보
-  const e = [
-    {
-      id: 1,
-      title: '1',
-      describe: '10',
-      start: '2022-07-22',
-    },
-    {
-      id: 2,
-      title: '2',
-      describe: '10',
-      start: '2022-07-23',
-    },
-    { 
-      id: 3, 
-      title: '2', 
-      describe: '10',
-      start: '2022-07-25',
-    },
-    { 
-      id: 4, 
-      title: '0', 
-      describe: '0',
-      start: '2022-07-28',
-    },
-  ];
-
+  //사용자
   const [session, setSession] = useState(false);
   const [auth, setAuth] = useState({
     accountId: 0,
@@ -60,12 +34,20 @@ function FullCalendarApp (){
     phoneNumber: "",
     signInId: "",
   });
+
+  //판매자 정보
   const [events, setEvents] = useState([{}]);
 
   useEffect(()=> {
-    // $(".fc-day-future").click(()=>{
-    //   // $(this).css("background", "red");
-    // });
+    $(".seller-section").hide();
+    $(".seller-order").css("margin", "auto");
+    // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
+    // const yM = yearMonth.textContent;
+    // yearMonth.innerHTML = `${yM?.split("/")[1]}.${yM?.split("/")[0]}`;
+    // const today = document.querySelector(".fc-day-today .fc-daygrid-day-frame .fc-daygrid-day-top .fc-daygrid-day-number") as Element;
+    // today.innerHTML = `Today`;
+    // $(".fc-day-today .fc-daygrid-day-frame .fc-daygrid-day-top .fc-daygrid-day-number").css("font-weight", "600");
+
     isSession(
       (s:any)=>{
         if (s) setSession(s);
@@ -74,24 +56,30 @@ function FullCalendarApp (){
         setAuth(a);
       },
     );
-    
-    for(var i = 0; i < e.length; i++) {
-      e[i].title = "주문: " + e[i].title + "/" + e[i].describe;
-    }
-    setEvents(e); //사용자의 달력값 가져와서 적어줌
+
+    FullCalendarSeller((seller: any)=>{
+      setEvents(seller);
+    });
   }, []);
 
   // /SellerOrder/{id}
   return(
     <div className="mp-top seller-order">
       {modalFail ? 
-        <div id="calendar-modal" style={{ left: (x)+"px", top: (y)+"px", }}>
+      <div className="calendar-modal-flex" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
+        <div className="calendar-modal-top"></div>
+        <div id="calendar-modal">
           <div style={{ width: "5px", height: "35px", }}></div>
           <div className="calendar-modal-box">{date}</div>
           <br/>
           <div style={{ width: "5px", height: "20px", }}></div>
           <div className="calendar-modal-box">
-            <Link to="/SellerOrder">
+            <Link
+              to="/SellerOrder"
+              onClick={()=>{
+                $(".seller-section").show();
+              }}
+            >
               <button className="calendar-button">예약 확인</button> 
             </Link>
             <button 
@@ -100,15 +88,25 @@ function FullCalendarApp (){
             >주문 건수 설정</button> {/* 휴일해제 */}
           </div>
         </div>
+      </div>
         :<></>
       }
-      <div className="mypage-top seller-order-top">
+      <div className="mypage-top-calendar seller-order-top-calendar"> {/* mypage-top */}
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
-        <h3>주문확인</h3>
+        <Link to='/MypageOrder'>
+          <button className='calendar-mypage'>&lt;&nbsp;마이페이지</button>
+        </Link>
+        <h3 className='calendar-complete'>주문확인</h3>
         <div className='order-view-type'>
           <Link to='/FullCalendarApp' className='order-view view-calander' style={{ color: "#ea5450", }}>달력보기</Link>
           |
-          <Link to='/SellerOrder' className='order-view view-list'>목록보기</Link>
+          <Link
+            to='/SellerOrder'
+            className='order-view view-list'
+            onClick={()=>{
+              $(".seller-section").show();
+            }}
+          >목록보기</Link>
         </div>
       </div>
       <div className="seller-calendar">
@@ -125,6 +123,9 @@ function FullCalendarApp (){
             year: 'numeric', 
             month: 'numeric',
           }}
+          dayHeaderFormat={{
+            weekday: 'long',
+          }}
           customButtons={{
             new: {
               text: 'new',
@@ -135,26 +136,36 @@ function FullCalendarApp (){
           eventColor="red"
           nowIndicator
           dateClick={(e) => {
+            $(".fc-daygrid-day").css("pointer-events", "auto");
+            $(".fc-daygrid-day").css("background", "#fff");
+            $(".fc-event-main-frame").css("background", "#fff");
             setModalFail(false);
+            FullCalendarSeller((seller: any)=>{
+              setEvents(seller);
+            });
           }}
           eventClick={(e) => {
-            setX(e.jsEvent.x); setY(e.jsEvent.y);
-
+            const date = e.event.startStr;
             let d = e.event._instance?.range.start.toString().split(" ")[0]
             if(d=='Mon') d="월요일"; 
-            else if(d=='Tue') d="화요일"; 
-            else if(d=='Wed') d="수요일"; 
-            else if(d=='Thu') d="목요일"; 
-            else if(d=='Fri') d="금요일"; 
-            else if(d=='Sat') d="토요일"; 
+            else if(d=='Tue') d="화요일";
+            else if(d=='Wed') d="수요일";
+            else if(d=='Thu') d="목요일";
+            else if(d=='Fri') d="금요일";
+            else if(d=='Sat') d="토요일";
             else d="일요일";
+            setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
+            
+            $(".fc-daygrid-day").css("pointer-events", "auto");
+            $(".fc-daygrid-day").css("background", "#fff");
+            $(".fc-event-main-frame").css("background", "#fff");
+            $(".fc-daygrid-day[data-date='"+date+"']").css("pointer-events", "none");
+            $(".fc-daygrid-day[data-date='"+date+"']").css("background", "#ea5450");
+            $(".fc-daygrid-day[data-date='"+date+"'] .fc-event-main-frame").css("background", "#ea5450");
 
-            setDate(e.event.startStr.split("-")[1]+"월 "+e.event.startStr.split("-")[2]+"일 "+d);
-
-            if (modalFail)
-              setModalFail(false);
-            else
-              setModalFail(true);
+            const xy = document.querySelector(".fc-daygrid-day[data-date='"+date+"']") as Element;
+            setX(xy.getBoundingClientRect().left); setY(xy.getBoundingClientRect().top);
+            setModalFail(true);
           }}
         />
       </div>

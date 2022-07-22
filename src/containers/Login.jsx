@@ -5,7 +5,6 @@ import "../styles/Login.scss";
 
 import axios from "axios";
 
-import setAuthorizationToken from "src/utils/setAuthorizationToken";
 import isSession from "src/utils/isSession";
 import logo from "../assets/logo.png";
 

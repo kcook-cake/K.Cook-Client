@@ -53,7 +53,7 @@ function Header () {
     );
   }, []);
 
-  //   sessionStorage.removeItem('jwToken')
+  // sessionStorage.removeItem('jwToken')
   // sessionStorage.removeItem('session')
 
   // render() {
@@ -101,23 +101,13 @@ function Header () {
               <button>{auth.nickname}님 환영합니다</button>:<></>
             }
             {session ?
-              <Link
-                to="/SellerOrder"
-                onClick={()=>{
-                  $(".menu-bar-flex").hide();
-                }}
-              >
+              <Link to="/SellerOrder">
                 <button className="header-link">판매자로 전환</button>
               </Link>:
               <></>
             }
             {session ?
-              <Link
-                to="/MypageOrder"
-                onClick={()=>{
-                  $(".menu-bar-flex").hide();
-                }}
-              >
+              <Link to="/MypageOrder">
                 <button className="header-link">마이페이지</button>
               </Link>:
               <></>

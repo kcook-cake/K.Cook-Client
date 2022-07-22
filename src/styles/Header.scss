@@ -38,6 +38,9 @@
 
 //메인
 .head-flex {
+  // width: 100%;
+  border-bottom: 1px solid #eee;
+  // background-color: red;
 }
 .head {
   // width: 1199px;
@@ -45,10 +48,6 @@
   height: 82px;
   line-height: 82px;
   margin: auto;
-  // display: flex;
-  // justify-content: space-between;
-  // padding: 0 $basic-padding;
-  // line-height: 82px;
   // border-bottom: 1px solid #eee;
 }
 .header-left {
@@ -97,6 +96,7 @@
 // 메뉴바
 .menu-bar-flex {
   // min-width: 825px;
+  border-bottom: 1px solid #eee;
 }
 .menu-bar {
   width: 1199px;
@@ -108,7 +108,7 @@
 
   font-weight: 700;
   color: $pricetext;
-  border-bottom: 1px solid #eee;
+  // border-bottom: 1px solid #eee;
 }
 
 .menu-bar a {

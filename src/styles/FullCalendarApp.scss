@@ -1,6 +1,88 @@
 @import "./reset.scss";
 
+.seller-order-top-calendar {
+    // width: 1162.2px;
+    width: 1199px;
+}
+.mypage-top-calendar {
+    margin-bottom: 36px;
+    h3 {
+      display: inline-block;
+      margin-right: 40px;
+  
+      font-size: 20px;
+      font-weight: 700;
+    }
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #777777;
+    }
+}
+.calendar-mypage {
+    width: 95px;
+    height: 34px;
+
+    font-size: 11.5px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    // float: left;
+}
+.calendar-complete {
+    margin-left: 471px;
+    // background-color: red;
+}
+
+//캘린더 크기설정
+.fc-view-harness {
+    width: 1162.2px !important;
+    width: 1199px !important;
+    height: 800px !important;
+}
+.fc-daygrid-day,
+.fc-daygrid-day-frame {
+    height: 100px !important;
+}
+.seller-calendar {
+    padding: 21px 2px 2px 2px;
+    
+    .fc-toolbar-chunk {
+        color: #222222;
+        font-size: 12px;
+    }
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgb(223, 223, 223);
+}
+//캘린더 선설정
+.fc-col-header-cell {
+    border-right: none !important;
+    border-bottom: none !important;
+}
+.seller-calendar,
+.fc-media-screen,
+.fc-view-harness, .fc-view-harness-active,
+.fc-daygrid, .fc-dayGridMonth-view, .fc-view
+.fc-scrollgrid, .fc-scrollgrid-liquid,
+.fc {
+    border: none !important;
+    // box-shadow: 0px 0px 0px white;
+}
+
 //모달창
+.calendar-modal-flex {
+    position: absolute;
+}
+.calendar-modal-top {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-bottom: 7px solid white;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: -5px; left: 9px;
+    z-index: 999;
+}
 #calendar-modal {
     position: absolute;
     width: 374px;
@@ -12,7 +94,7 @@
     background-color: white;
     font-weight: 700;
     box-shadow: 0px 0px 9px rgb(179, 122, 122);
-    z-index: 999;
+    z-index: 998;
 }
 .calendar-modal-box {
     width: 348px;
@@ -32,9 +114,24 @@
 }
 
 //캘린더 머리
+.fc-scrollgrid-section,
+.fc-scroller-harness {
+    margin-bottom: 10px;
+}
+.fc-toolbar-chunk {
+    display: flex; // 일렬로 나란히
+    align-items: center; // 수직 가운데 정렬
+}
 .fc-col-header-cell {
-    margin: 20px 0px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 8px;
     background-color: #f8f8f8;
+}
+.fc-col-header-cell-cushion {
+    color:#414d55;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 //캘린더 버튼
@@ -67,7 +164,7 @@
 }
 .fc-daygrid-event-harness {
     position: absolute;
-    bottom: -38px; 
+    bottom: -50px; //주문: 아래 
     left: 0px;
 }
 .fc-daygrid-event {
@@ -76,56 +173,37 @@
 .fc-event-main-frame {
     background-color: white;
 }
-.fc-daygrid-event,
 .fc-event-title-container {
-    margin-right: 5px;
+    margin-right: 7px; //주문: 오른쪽
     text-align: right;
     color: black;
-    background-color: white;
-}
-
-.fc-toolbar-chunk {
-    display: flex; // 일렬로 나란히
-    align-items: center; // 수직 가운데 정렬
 }
 
 //캘린더 투데이
 .fc-day-today,
 .fc-day-past {
     background-color:#e6e6e6 !important;
-    .fc-event-title-container {
+    .fc-event-main-frame {
         display: none;
     }
 }
 
 //캘린더 날짜
 .fc-day-future:hover {
-    // width: 100%;
-    // // height: 50px;
     background-color: rgba(234, 84, 80, 0.07) !important;
-    .fc-event-title-container {
-        background-color: #FEF3F2;
-    }
-    .fc-daygrid-day-frame {
-        // height: 61px;
-        // border: 1px solid #ea5450 !important;
-    }
     .fc-event-main-frame {
-        background-color: #FEF3F2;
+        background-color: #FEF3F2 !important;
     }
 }
-// .fc-daygrid-day-frame:focus {
-//     width: 100%;
-//     height: 50px;
+// .fc-daygrid-day:focus {
 //     background-color: #ea5450 !important;
 //     // border: 0.1px solid #ea5450 !important;
-//     .fc-event-title-container {
-//         background-color: #FEF3F2;
-//     }
 // }
 .fc-daygrid-day-top {
     float: left !important;
 }
 .fc-daygrid-day-number {
+    margin-left: 10px; //날짜: 왼쪽
+    margin-top: 3px; //날짜: 오른쪽
     color: #999999;
 }

@@ -6,7 +6,6 @@ import App from './App.jsx';
 // import rootReducer from './rootReducer';
 
 import reportWebVitals from './reportWebVitals';
-import setAuthorizationToken from "src/utils/setAuthorizationToken";
 import isSession from './utils/isSession';
 
 // const store = createStore(

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function SalesHistory (){
     return(
         <div className="mp-top seller-order">
-            <div className="mypage-top">
+            <div className="mypage-top seller-order-top">
                 <h3>판매내역</h3>
                 <span>이전에 판매된 내역입니다.</span>
                 <div className='order-view-type'>

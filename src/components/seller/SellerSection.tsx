@@ -26,6 +26,7 @@ function SellerSection (){
     }
 
     useEffect(()=>{
+        $(".menu-bar-flex").hide();
         //pathname, parameter 가져오기
         var pathname = window.location.pathname;
         pathname = pathname.split("/")[1];
