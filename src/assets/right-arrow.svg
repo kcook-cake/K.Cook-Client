@@ -1,7 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-    <g>
-        <!-- <path fill="#fff" d="M0 0H40V40H0z" transform="translate(-1562 -2321) translate(1602 2361) rotate(180)"/> -->
-        <path fill="none" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="3px" d="M9843.2 9604.925l-7.114 7.114 7.114 7.114" transform="translate(-1562 -2321) translate(11422 11953) rotate(180)"/>
-        <!-- //원래 stroke-width 2px 이었음 -->
-    </g>
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #555;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="그룹_3217" data-name="그룹 3217" transform="translate(-1562 -2321)">
+    <rect id="사각형_253" data-name="사각형 253" class="cls-1" width="40" height="40" transform="translate(1602 2361) rotate(180)"/>
+    <path id="패스_2179" data-name="패스 2179" class="cls-2" d="M9843.2,9604.925l-7.114,7.114,7.114,7.114" transform="translate(11422 11953) rotate(180)"/>
+  </g>
 </svg>

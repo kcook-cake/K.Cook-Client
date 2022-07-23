@@ -1,5 +1,9 @@
 @import "reset.scss";
 
+.hm {
+  display: none;
+}
+
 .header-ad-flex {
   background-color: $pink;
 }
@@ -132,8 +136,7 @@
 .question-icon {
   display: none;
 }
-@media (max-width: 1200px) {
-}
+
 @media (max-width: 767px) {
   // 보이고 안보이고 지정
   .header-ad,
@@ -180,30 +183,4 @@
   .question-icon {
     margin-right: 15px;
   }
-
-  // .head {
-  //   width: 100%;
-  //   // height: 30px;
-  //   padding: 0;
-  //   background-color: red;
-  // }
-  // .only-mobile,
-  // .menu-icon,
-  // .question-icon {
-  //   display: block;
-  //   // margin: 0;
-  // }
-  // .menu-icon {
-  //   height: 30px;
-  //   // margin-left: 6px;
-  //   float: left;
-  // }
-  // .logo {
-  //   height: 37px;
-  //   background-color: blue;
-  // }
-  // .question-icon {
-  //   // margin-right: 15px;
-  //   float: right;
-  // }
 }

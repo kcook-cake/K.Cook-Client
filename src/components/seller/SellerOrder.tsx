@@ -7,7 +7,7 @@ import cake6 from   '../../assets/cake6.png';
 
 function SellerOrder (){
     return(
-        <div className="mp-top seller-order">
+        <div className="mp-top seller-order seller-order-home">
             <div className="mypage-top seller-order-top">
                 <h3>주문확인</h3>
                 <span>처리할 예약 주문입니다.</span>

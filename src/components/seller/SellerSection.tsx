@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 import $ from 'jquery';
 import '../../../src/styles/seller/SellerSection.scss';
 
+import designClick from 'src/utils/designClick';
+
 import { ReactComponent as SellerHouse } from '../../assets/3170.svg';
 import { ReactComponent as Menu } from '../../assets/mypage/menu.svg';
 import { ReactComponent as Coin } from '../../assets/seller/coin.svg';
@@ -13,16 +15,16 @@ import { ReactComponent as Question } from '../../assets/seller/question.svg';
 
 
 function SellerSection (){
-    const designClick = (i:any) => {
+    const designClickSeller = (i:any) => {
         $(".seller-menu-link").css("color", "#999999");
         $(".seller-menu-link").css("background", "#fff");
         $(".seller-menu-link").css("stroke", "#fff");
         $(".seller-menu-link text").css("stroke", "#999999"); $(".seller-menu-link circle").css("stroke", "#999999"); $(".seller-menu-link path").css("stroke", "#999999"); $(".seller-menu-link tspan").css("stroke", "#999999"); $(".seller-menu-link ellipse").css("stroke", "#999999"); $(".seller-menu-link line").css("stroke", "#999999");
 
-        $("."+i).css("color", "#fff");
-        $("."+i).css("background", "#ea5450");
-        $("."+i).css("stroke", "#ea5450");
-        $("."+i+" text").css("stroke", "#fff"); $("."+i+" circle").css("stroke", "#fff"); $("."+i+" path").css("stroke", "#fff"); $("."+i+" tspan").css("stroke", "#fff"); $("."+i+" ellipse").css("stroke", "#fff"); $("."+i+" line").css("stroke", "#fff");
+        $(".seller-menu-link."+i).css("color", "#fff");
+        $(".seller-menu-link."+i).css("background", "#ea5450");
+        $(".seller-menu-link."+i).css("stroke", "#ea5450");
+        $(".seller-menu-link."+i+" text").css("stroke", "#fff"); $("."+i+" circle").css("stroke", "#fff"); $("."+i+" path").css("stroke", "#fff"); $("."+i+" tspan").css("stroke", "#fff"); $("."+i+" ellipse").css("stroke", "#fff"); $("."+i+" line").css("stroke", "#fff");
     }
 
     useEffect(()=>{
@@ -30,10 +32,10 @@ function SellerSection (){
         //pathname, parameter 가져오기
         var pathname = window.location.pathname;
         pathname = pathname.split("/")[1];
-        $("."+pathname).css("color", "#fff");
-        $("."+pathname).css("background", "#ea5450");
-        $("."+pathname).css("stroke", "#ea5450");
-        $("."+pathname+" text").css("stroke", "#fff"); $("."+pathname+" circle").css("stroke", "#fff"); $("."+pathname+" path").css("stroke", "#fff"); $("."+pathname+" tspan").css("stroke", "#fff"); $("."+pathname+" ellipse").css("."+pathname+" stroke", "#fff"); $("."+pathname+" line").css("stroke", "#fff");
+        $(".seller-menu-link."+pathname).css("color", "#fff");
+        $(".seller-menu-link."+pathname).css("background", "#ea5450");
+        $(".seller-menu-link."+pathname).css("stroke", "#ea5450");
+        $(".seller-menu-link."+pathname+" text").css("stroke", "#fff"); $("."+pathname+" circle").css("stroke", "#fff"); $("."+pathname+" path").css("stroke", "#fff"); $("."+pathname+" tspan").css("stroke", "#fff"); $("."+pathname+" ellipse").css("."+pathname+" stroke", "#fff"); $("."+pathname+" line").css("stroke", "#fff");
     },[]);
 
     return(
@@ -47,7 +49,7 @@ function SellerSection (){
                         <Link
                             to="/SellerOrder"
                             className="seller-menu-link SellerOrder"
-                            onClick={()=>{designClick("SellerOrder")}}
+                            onClick={()=>{designClickSeller("SellerOrder")}}
                         >
                             <Menu className="icon"/>
                             <span>주문확인 </span>
@@ -57,7 +59,7 @@ function SellerSection (){
                         <Link
                             to="/SalesHistory"
                             className="seller-menu-link SalesHistory"
-                            onClick={()=>{designClick("SalesHistory")}}
+                            onClick={()=>{designClickSeller("SalesHistory")}}
                         >
                             <Coin className="icon"/>
                             <span>판매내역 </span>
@@ -67,7 +69,7 @@ function SellerSection (){
                         <Link
                            to="/ProductManagement"
                            className="seller-menu-link ProductManagement"
-                           onClick={()=>{designClick("ProductManagement")}}
+                           onClick={()=>{designClickSeller("ProductManagement")}}
                         >
                             <Cube className="icon"/>
                             <span>상품관리 </span>
@@ -77,7 +79,7 @@ function SellerSection (){
                         <Link
                             to="/SellerReview"
                             className="seller-menu-link SellerReview"
-                            onClick={()=>{designClick("SellerReview")}}
+                            onClick={()=>{designClickSeller("SellerReview")}}
                         >
                             <SpeechBubble className="icon"/>
                             <span>상품후기 </span>
@@ -87,7 +89,7 @@ function SellerSection (){
                         <Link
                             to="/SellerStore"
                             className="seller-menu-link SellerStore"
-                            onClick={()=>{designClick("SellerStore")}}
+                            onClick={()=>{designClickSeller("SellerStore")}}
                         >
                             <SettingIcon className="icon"/>
                             <span>스토어 정보</span>

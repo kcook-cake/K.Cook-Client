@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/Header.scss";
 
 import isSession from "src/utils/isSession";
+import designClick from "src/utils/designClick";
 import axios from "axios";
 import $ from 'jquery';
 
@@ -12,15 +13,6 @@ import menu from "../assets/menu.svg";
 import search from "../assets/search.svg";
 
 function Header () {
-  const designClick = (i) => {
-    $(".header").css("color", "black");
-    $(".header").css("padding-bottom", "0px");
-    $(".header").css("border-bottom", "0px solid #ea5450");
-
-    $("."+i).css("color", "#ea5450");
-    $("."+i).css("padding-bottom", "3px");
-    $("."+i).css("border-bottom", "3px solid #ea5450");
-  }
 
   //로그인 여부
   const [session, setSession] = useState(false);
@@ -39,9 +31,9 @@ function Header () {
     var pathname = window.location.pathname;
     if (pathname == "/") pathname = "/Home";
     pathname = pathname.split("/")[1];
-    $("."+pathname).css("color", "#ea5450");
-    $("."+pathname).css("padding-bottom", "3px");
-    $("."+pathname).css("border-bottom", "3px solid #ea5450");
+    $(".header."+pathname).css("color", "#ea5450");
+    $(".header."+pathname).css("padding-bottom", "3px");
+    $(".header."+pathname).css("border-bottom", "3px solid #ea5450");
 
     isSession(
       (s)=>{
@@ -58,7 +50,7 @@ function Header () {
 
   // render() {
   return (
-    <div className="header">
+    <div className="header-main">
       <div className="header-ad-flex">
         <div className="header-ad">
           <span className="header-ad-text">
@@ -75,7 +67,13 @@ function Header () {
         <div className="head">
           <div className="header-left">
             <button>
-              <img src={menu} className="menu-icon"></img>
+              <img
+                src={menu}
+                className="menu-icon"
+                onClick={()=>{
+                  $(".hm").show();
+                }}
+              ></img>
             </button>
             <Link
               to="/"
@@ -101,7 +99,15 @@ function Header () {
               <button>{auth.nickname}님 환영합니다</button>:<></>
             }
             {session ?
-              <Link to="/SellerOrder">
+              <Link
+                to="/SellerOrder"
+                onClick={()=>{
+                  // $(".seller-section").show();
+                  // $(".seller-order").css("margin", "0");
+                  // $(".seller-order-calendar").hide();
+                  // $(".seller-order-home").show();
+                }}
+              >
                 <button className="header-link">판매자로 전환</button>
               </Link>:
               <></>
@@ -110,10 +116,6 @@ function Header () {
               <Link to="/MypageOrder">
                 <button className="header-link">마이페이지</button>
               </Link>:
-              <></>
-            }
-            {session ?
-              <></>:
               <Link
                 to="/SignUp"
                 onClick={()=>{

@@ -4,6 +4,7 @@ import LengthwiseCard from '../components/LengthwiseCard';
 import '../../src/styles/main/MainRecommend.scss'
 import '../../src/styles/TodaysRec.scss'
 import WidthwiseCard from '../components/WidthwiseCard';
+import SectionTitle from 'src/components/SectionTitle';
 
 import axios from "axios";
 
@@ -37,6 +38,7 @@ function TodaysRec (){
                     <Link to="/" className="arrow next" href="#">Next &gt;</Link>
                 </div>
             </div>
+
             <div className="kcook-pick">
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="pick-contents">
@@ -47,6 +49,7 @@ function TodaysRec (){
             <div className="famous-event">
                 <div className="event-top">
                     <div className="title">이번 달 인기 이벤트</div>
+                    <Link to="/"className="link"></Link>
                     <a className="view-all">전체 보기 &gt;</a>
                 </div>
                 <div className="event-contents">

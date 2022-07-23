@@ -379,9 +379,9 @@ function SignUp() {
         }
 
       <p className="login-list">휴대폰 번호(숫자만)</p>
-        <div className="login-input phone-confirm">
+        {/* <div className="login-input phone-confirm"> */}
           <input
-            className="input-num"
+            className="login-input input-num"
             type="tel"
             onChange={handlePhone}
             value={phoneNumber}
@@ -394,7 +394,7 @@ function SignUp() {
               onClick={onSMS}
             >인증문자 발송</button>
           }
-        </div>
+        {/* </div> */}
         {phoneFail ?
           <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
           : null

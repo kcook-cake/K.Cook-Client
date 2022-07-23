@@ -1,6 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-    <g data-name="그룹 3216">
-        <path data-name="사각형 250" style="fill:#f8f8f8" d="M0 0h40v40H0z"/>
-        <path data-name="패스 2178" d="m9843.2 9604.925-7.114 7.114 7.114 7.114" transform="translate(-9820 -9592)" style="fill:none;stroke:#555;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f8f8f8;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #555;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="그룹_3216" data-name="그룹 3216" transform="translate(-318 -2321)">
+    <rect id="사각형_250" data-name="사각형 250" class="cls-1" width="40" height="40" transform="translate(318 2321)"/>
+    <path id="패스_2178" data-name="패스 2178" class="cls-2" d="M9843.2,9604.925l-7.114,7.114,7.114,7.114" transform="translate(-9502 -7271)"/>
+  </g>
 </svg>

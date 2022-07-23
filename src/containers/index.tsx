@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from '../components/Header.jsx';
+import HeaderMobile from 'src/components/HeaderMobile.jsx';
 import Footer from '../components/Footer';
 
 import Home from './Home';
@@ -17,6 +18,7 @@ import SignUp from './SignUp';
 const Pages = () => {
   return (
     <Router>
+      <HeaderMobile/>
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/todaysRec" component={Recommend} />
@@ -25,7 +27,7 @@ const Pages = () => {
       <Route exact path="/CS" component={CustomerService} />
       <Route exact path="/MypageOrder" component={Mypage} />
       <Route exact path="/SellerOrder" component={Seller} />
-      {/* <Route exact path="/FullCalendarApp" component={FullCalendarApp} /> */}
+      <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
       <Route exact path="/Login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
       <Footer address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>

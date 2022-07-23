@@ -24,7 +24,7 @@ function MainUpdate (){
                 <div className="recommend-header">
                     <SectionTitle title="최근 업데이트"/>
                 </div>
-                <div className="recommend-contents">
+                <div className="recommend-contents update-contents">
                     <LengthwiseCard getData={data}/>
                 </div>
             </div>

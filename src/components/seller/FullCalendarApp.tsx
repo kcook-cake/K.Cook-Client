@@ -64,7 +64,7 @@ function FullCalendarApp (){
 
   // /SellerOrder/{id}
   return(
-    <div className="mp-top seller-order">
+    <div className="mp-top seller-order-calendar">
       {modalFail ? 
       <div className="calendar-modal-flex" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
         <div className="calendar-modal-top"></div>
@@ -93,7 +93,12 @@ function FullCalendarApp (){
       }
       <div className="mypage-top-calendar seller-order-top-calendar"> {/* mypage-top */}
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
-        <Link to='/MypageOrder'>
+        <Link
+          to="/SellerOrder"
+          onClick={()=>{
+            $(".seller-section").show();
+          }}
+        >
           <button className='calendar-mypage'>&lt;&nbsp;마이페이지</button>
         </Link>
         <h3 className='calendar-complete'>주문확인</h3>
@@ -105,6 +110,7 @@ function FullCalendarApp (){
             className='order-view view-list'
             onClick={()=>{
               $(".seller-section").show();
+              $(".seller-order").css("margin", "0");
             }}
           >목록보기</Link>
         </div>
