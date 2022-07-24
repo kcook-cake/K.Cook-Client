@@ -1,5 +1,12 @@
 @import "../reset.scss";
 
+.mcp {
+
+}
+.mcm {
+  display: none;
+}
+
 .coupon-top {
   display: flex;
 }
@@ -61,4 +68,31 @@
   color: #777777;
   font-size: 14px;
   font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .mcp {
+    display: none;
+  }
+  .mcm {
+    display: block;
+  }
+
+  .mcm-title-right {
+    width: 141px;
+    height: 33px;
+    margin-right: 19px;
+    float: right;
+
+    text-align: center;
+    // font-size: 12px;
+    // font-weight: 500;
+    border-radius: 7px;
+    color: #fff;
+    background-color: #ea5450;
+    .mcm-title-button {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
 }

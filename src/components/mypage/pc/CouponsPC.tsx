@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/mypage/Coupon.scss';
+import '../../../styles/mypage/Coupon.scss';
 
-function Coupons (){
+function CouponsPC (){
     return(
-        <div className="mp-top coupon">
+        <div className="mp-top coupon mcp">
         <div className="mypage-top coupon-top">
             <h3>내 쿠폰 : 3장</h3>
             <div className="coupon-code">
@@ -46,4 +46,4 @@ function Coupons (){
 }
 
 
-export default Coupons;
+export default CouponsPC;

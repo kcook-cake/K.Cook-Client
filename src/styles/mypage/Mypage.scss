@@ -1,6 +1,7 @@
 @import "../reset.scss";
 
 .mypage {
+  // width: 1199px;
   max-width: 1199px;
   min-width: 815px;
   margin: auto;
@@ -10,4 +11,10 @@
   justify-content: flex-start;
   font-size: 14px;
   // background-color: blue;
+}
+
+@media (max-width: 767px) {
+  .mypage {
+    min-width: 0px;
+  }
 }

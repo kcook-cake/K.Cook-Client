@@ -1,5 +1,12 @@
 @import "../reset.scss";
 
+.mprp {
+
+}
+.mprm {
+  display: none;
+}
+
 .review-contents {
   width: 591px;
   display: flex;
@@ -45,6 +52,36 @@
     font-weight: 700;
     span {
       font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .mprp {
+    display: none;
+  }
+  .mprm {
+    width: 100%;
+    display: block;
+  }
+
+  .mypage-mobile {
+    width: 100%;
+    margin-bottom: 23px;
+    .mprm-box {
+      width: 100%;
+      min-width: 0px;
+      padding: 45px 16px 0px 16px;
+    }
+    .title {
+      // padding: 0 16px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .content {
+      margin: 0 6px;
+      margin-top: 35px;
+      overflow-y: scroll;
     }
   }
 }

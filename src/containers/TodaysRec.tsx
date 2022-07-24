@@ -39,12 +39,18 @@ function TodaysRec (){
                 </div>
             </div>
 
-            <div className="kcook-pick">
+            <div className="sort-by-rec" style={{ marginBottom: "23px", }}>
+                <div className="title">케이쿡 추천 Pick</div>
+                <div className="recommend-contents">
+                    <LengthwiseCard getData={data}/>
+                </div>
+            </div>
+            {/* <div className="kcook-pick">
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="pick-contents">
                     <WidthwiseCard getData={data}/>
                 </div>
-            </div>
+            </div> */}
 
             <div className="famous-event">
                 <div className="event-top">

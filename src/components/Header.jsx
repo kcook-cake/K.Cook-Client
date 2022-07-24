@@ -31,9 +31,10 @@ function Header () {
     var pathname = window.location.pathname;
     if (pathname == "/") pathname = "/Home";
     pathname = pathname.split("/")[1];
-    $(".header."+pathname).css("color", "#ea5450");
-    $(".header."+pathname).css("padding-bottom", "3px");
-    $(".header."+pathname).css("border-bottom", "3px solid #ea5450");
+    designClick(pathname);
+    // $(".header."+pathname).css("color", "#ea5450");
+    // $(".header."+pathname).css("padding-bottom", "3px");
+    // $(".header."+pathname).css("border-bottom", "3px solid #ea5450");
 
     isSession(
       (s)=>{

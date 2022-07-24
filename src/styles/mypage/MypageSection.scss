@@ -1,6 +1,10 @@
 @import "../reset.scss";
 
-.mypage-section {
+.msm {
+  display: none;
+}
+
+.msp {
   color: #fff;
   // margin-left: $basic-padding;
   margin-right: 90px;
@@ -89,4 +93,14 @@
 .mypage-menu-item:focus,
 .icon:focus {
   background-color: #fff;
+}
+
+@media (max-width: 767px) {
+  .msm {
+    display: block;
+  }
+  
+  .msp {
+    display: none;
+  }
 }

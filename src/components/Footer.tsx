@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../styles/Footer.scss';
+
+import designClick from "../utils/designClick";
 
 interface FooterProps {
     email : string,
@@ -21,11 +24,41 @@ function Footer({ email, tel, address}: FooterProps) {
                     </dt>
                 </dl>
                 <dl className="footer-mobile">
-                    <dt>홈</dt>
-                    <dt>오늘의 추천</dt>
-                    <dt>케이크</dt>
-                    <dt>추가 상품</dt>
-                    <dt>고객지원</dt>
+                    <Link
+                        to="/"
+                        className="footer-right"
+                        onClick={()=>{
+                            designClick("Home");
+                        }}
+                    ><dt>홈</dt></Link>
+                    <Link
+                        to="/TodaysRec"
+                        className="footer-right"
+                        onClick={()=>{
+                            designClick("TodaysRec");
+                        }}
+                    ><dt>오늘의 추천</dt></Link>
+                    <Link
+                        to="/Cake"
+                        className="footer-right"
+                        onClick={()=>{
+                            designClick("Cake");
+                        }}
+                    ><dt>케이크</dt></Link>
+                    <Link
+                        to="/MoreItem"
+                        className="footer-right"
+                        onClick={()=>{
+                            designClick("MoreItem");
+                        }}
+                    ><dt>추가 상품</dt></Link>
+                    <Link
+                        to="/CS"
+                        className="footer-right"
+                        onClick={()=>{
+                            designClick("CS");
+                        }}
+                    ><dt>고객지원</dt></Link>
                 </dl>
                 <dl>
                     <dt className="footer-title">Services</dt>

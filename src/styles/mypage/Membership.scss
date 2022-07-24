@@ -1,5 +1,12 @@
 @import "../reset.scss";
 
+.mmp {
+
+}
+.mmm {
+  display: none;
+}
+
 .membership-sum {
   margin-left: 100px;
   display: inline-block;
@@ -62,4 +69,34 @@
   display: block;
   width: 100%;
   margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .mmp {
+    display: none;
+  }
+  .mmm {
+    display: block;
+  }
+
+  .mprm-box {
+    .title {
+      position: relative;
+      margin-left: 8px;
+    }
+  }
+  .mmm-title-right {
+    width: 97px;
+    margin-right: 19px;
+
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    float: right;
+
+    vertical-align: bottom;
+    font-size: 12px;
+    font-weight: 500;
+  }
 }

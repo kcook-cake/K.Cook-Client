@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../styles/mypage/ProductReview.scss';
-import cake6 from   '../../assets/cake6.png';
+import '../../../styles/mypage/ProductReview.scss';
+import cake6 from   '../../../assets/cake6.png';
 
-function ProductReview (){
+function ProductReviewPC (){
     return(
-        <div className="mp-top product-review">
+        <div className="mp-top product-review mprp">
             <div className="mypage-top">
                 <h3>상품후기</h3>
                 <span>후기를 작성하고 포인트를 받으세요</span>
@@ -67,4 +67,4 @@ function ProductReview (){
 }
 
 
-export default ProductReview;
+export default ProductReviewPC;

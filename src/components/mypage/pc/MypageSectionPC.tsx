@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
-import '../../../src/styles/mypage/MypageSection.scss'
+import '../../../styles/mypage/MypageSection.scss'
 
 import designClick from 'src/utils/designClick';
 
-import { ReactComponent as Menu } from '../../assets/mypage/menu.svg';
-import { ReactComponent as Coin } from '../../assets/seller/coin.svg';
-import { ReactComponent as SpeechBubble } from '../../assets/mypage/speech-bubble.svg';
-import { ReactComponent as CPicon } from '../../assets/coupon.svg';
-import { ReactComponent as SettingIcon } from '../../assets/seller/setting.svg';
+import { ReactComponent as Menu } from '../../../assets/mypage/menu.svg';
+import { ReactComponent as Coin } from '../../../assets/seller/coin.svg';
+import { ReactComponent as SpeechBubble } from '../../../assets/mypage/speech-bubble.svg';
+import { ReactComponent as CPicon } from '../../../assets/coupon.svg';
+import { ReactComponent as SettingIcon } from '../../../assets/seller/setting.svg';
 
-import { ReactComponent as Question } from '../../assets/seller/question.svg';
+import { ReactComponent as Question } from '../../../assets/seller/question.svg';
 
 
-function MypageSection (){
+function MypageSectionPC (){
     const designClickMypage = (i:any) => {
         $(".mypage-menu-link").css("color", "#fff");
         $(".mypage-menu-link").css("background", "none");
@@ -38,7 +38,7 @@ function MypageSection (){
     },[]);
 
     return(
-        <div className="mypage-section">
+        <div className="msp">
             <div className="side-bar">
                 <div className="name">김민영</div>
                 <div className="email">mykim@naver.com</div>
@@ -104,4 +104,4 @@ function MypageSection (){
 }
 
 
-export default MypageSection;
+export default MypageSectionPC;

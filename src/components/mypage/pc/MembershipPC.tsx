@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../styles/mypage/Membership.scss';
+import '../../../styles/mypage/Membership.scss';
 
-function Membership (){
+function MembershipPC (){
     return(
 
-        <div className="mp-top membership">
+        <div className="mp-top membership mmp">
             <div className="mypage-top">
                 <h3>적립금</h3>
                 <span>구매 및 후기 작성으로 현금처럼 쓸 수 있는 포인트를 받으세요</span>
@@ -52,7 +52,7 @@ function Membership (){
                 </div>
             </div>
 
-            </div>
+        </div>
                 
         
     )
@@ -60,4 +60,4 @@ function Membership (){
 }
 
 
-export default Membership;
+export default MembershipPC;

@@ -1,13 +1,14 @@
 @import "../reset.scss";
 
+.mpp {
+
+}
+.mpm {
+  display: none;
+}
+
 .profile {
   margin: 104px auto;
-  // text-align: right;
-  // padding: 104px;
-  // margin: 104px 0px 0px 280px;
-  // line-height: -50px;
-  // background-color: yellow;
-  // background-color: red;
 }
 
 .profile-list {
@@ -42,4 +43,22 @@
   font-size: 12px;
   font-weight: 700;
   color: #fff;
+}
+
+@media (max-width: 767px) {
+  // .mpp {
+  //   display: none;
+  // }
+  // .mpm {
+  //   display: block;
+  // }
+  .profile-flex {
+    width: 100%;
+    min-width: 0px;
+    margin: none;
+  }
+  .profile {
+    width: 320px;
+    margin: 23px auto;
+  }
 }

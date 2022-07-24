@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../styles/mypage/OrderHistory.scss';
-import cake6 from   '../../assets/cake6.png';
+import '../../../styles/mypage/OrderHistory.scss';
+import cake6 from   '../../../assets/cake6.png';
 
-function OrderHistory (){
+function OrderHistoryPC (){
     return(
-        <div className="mp-top order-history">
+        <div className="mp-top mohp">
             <div className="mypage-top">
                 <h3>주문내역</h3>
                 <span>이전에 주문하신 내역입니다.</span>
@@ -59,4 +59,4 @@ function OrderHistory (){
 }
 
 
-export default OrderHistory;
+export default OrderHistoryPC;

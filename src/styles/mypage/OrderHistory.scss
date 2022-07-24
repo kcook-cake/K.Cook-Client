@@ -1,5 +1,12 @@
 @import "../reset.scss";
 
+.mohp {
+
+}
+.mohm {
+  display: none;
+}
+
 .mp-top {
   padding: 90px 0;
 }
@@ -68,5 +75,21 @@
     font-size: 18px;
     font-weight: 700;
     color: $pink;
+  }
+}
+
+@media (max-width: 767px) {
+  .mp-top {
+    padding: 0;
+  }
+  .mohp {
+    display: none;
+  }
+  .mohm {
+    display: block;
+    width: 100%;
+    .title {
+      font-weight: 700;
+    }
   }
 }
