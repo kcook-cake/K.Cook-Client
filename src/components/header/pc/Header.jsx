@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Header.scss";
+import "../../../styles/Header.scss";
 
 import isSession from "src/utils/isSession";
 import designClick from "src/utils/designClick";
 import axios from "axios";
 import $ from 'jquery';
 
-import Xbutton from "../assets/2477.svg";
-import logo from "../assets/logo.png";
-import menu from "../assets/menu.svg";
-import search from "../assets/search.svg";
+import Xbutton from "../../../assets/2477.svg";
+import logo from "../../../assets/logo.png";
+import menu from "../../../assets/menu.svg";
+import search from "../../../assets/search.svg";
 
-function Header () {
+function Header ({ setNumLeftMobileF }) {
 
   //로그인 여부
   const [session, setSession] = useState(false);
@@ -76,24 +76,30 @@ function Header () {
                 }}
               ></img>
             </button>
+
             <Link
               to="/"
               onClick={()=>{
-                designClick("Home");
+                setNumLeftMobileF(1);
                 $(".menu-bar-flex").show();
               }}
             >
               <img src={logo} className="logo" />
             </Link>
+
             <form>
               <input type="text" placeholder="상품 또는 스토어를 검색하세요." />
             </form>
             <Link
               to="/"
-              onClick={()=>{designClick("Home")}}
+              onClick={()=>{
+                setNumLeftMobileF(1);
+                designClick("Home");
+              }}
             >
               <img src={search} className="question-icon" />
             </Link>
+
           </div>
           <div className="header-right">
             {session?
@@ -103,10 +109,7 @@ function Header () {
               <Link
                 to="/SellerOrder"
                 onClick={()=>{
-                  // $(".seller-section").show();
-                  // $(".seller-order").css("margin", "0");
-                  // $(".seller-order-calendar").hide();
-                  // $(".seller-order-home").show();
+                  setNumLeftMobileF(2);
                 }}
               >
                 <button className="header-link">판매자로 전환</button>
@@ -114,12 +117,19 @@ function Header () {
               <></>
             }
             {session ?
-              <Link to="/MypageOrder">
+              <Link
+                to="/MypageOrder"
+                onClick={()=>{
+                  setNumLeftMobileF(3);
+                }}
+              >
                 <button className="header-link">마이페이지</button>
               </Link>:
               <Link
                 to="/SignUp"
                 onClick={()=>{
+                  setNumLeftMobileF(1);
+                  designClick("SignUp");
                   $(".menu-bar-flex").hide();
                 }}
               >
@@ -138,6 +148,8 @@ function Header () {
               <Link
                 to="/Login"
                 onClick={()=>{
+                  setNumLeftMobileF(1);
+                  designClick("Login");
                   $(".menu-bar-flex").hide();
                 }}
               >
@@ -153,35 +165,50 @@ function Header () {
           <Link
             to="/"
             className="header Home"
-            onClick={()=>{designClick("Home")}}
+            onClick={()=>{
+              setNumLeftMobileF(1);
+              designClick("Home")
+            }}
           >
             홈
           </Link>
           <Link
             to="/TodaysRec"
             className="header TodaysRec"
-            onClick={()=>{designClick("TodaysRec")}}
+            onClick={()=>{
+              setNumLeftMobileF(1);
+              designClick("TodaysRec")
+            }}
           >
             오늘의 추천
           </Link>
           <Link
             to="/Cake"
             className="header Cake"
-            onClick={()=>{designClick("Cake")}}
+            onClick={()=>{
+              setNumLeftMobileF(1);
+              designClick("Cake")
+            }}
           >
             케이크
           </Link>
           <Link
             to="/MoreItem"
             className="header MoreItem"
-            onClick={()=>{designClick("MoreItem")}}
+            onClick={()=>{
+              setNumLeftMobileF(1);
+              designClick("MoreItem")
+            }}
           >
             추가 상품
           </Link>
           <Link
             to="/CS"
             className="header CS"
-            onClick={()=>{designClick("CS")}}
+            onClick={()=>{
+              setNumLeftMobileF(1);
+              designClick("CS")
+            }}
           >
             고객지원
           </Link>

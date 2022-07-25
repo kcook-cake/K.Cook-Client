@@ -1,39 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-import Header from '../components/Header.jsx';
-import HeaderMobile from 'src/components/HeaderMobile.jsx';
-import Footer from '../components/Footer';
 
-import Home from './Home';
-import Recommend from './TodaysRec';
-import Cake from './Cake';
-import MoreItem from './MoreItem';
-import CustomerService from './CS';
+import Header from '../components/header/pc/Header';
+import HeaderMobile from './header/HeaderMobile';
+import Main from './Main';
+import Footer from '../components/Footer';
 import Mypage from './Mypage';
 import Seller from './Seller';
-import FullCalendarApp from '../components/seller/FullCalendarApp';
 import Login from './Login';
 import SignUp from './SignUp';
 
+import * as designClick from 'src/utils/designClick';
+
 const Pages = () => {
+  const [numLeftMobile, setNumLeftMobile] = useState(1);
+  useEffect(()=>{
+    //pathname, parameter 가져오기
+    var pathname = window.location.pathname;
+    if (pathname == "/") pathname = "/Home";
+    pathname = pathname.split("/")[1];
+    if (
+      pathname == "SellerOrder" || 
+      pathname == "SalesHistory" || 
+      pathname == "ProductManagement" || 
+      pathname == "SellerReview" || 
+      pathname == "SellerStore" || 
+      pathname == "FullCalendarApp") setNumLeftMobile(2);
+    else if (
+      pathname == "MypageOrder" || 
+      pathname == "ProductReview" || 
+      pathname == "Membership" || 
+      pathname == "Coupon" || 
+      pathname == "Profile") setNumLeftMobile(3);
+  },[]);
+
   return (
     <Router>
-      <HeaderMobile/>
-      <Header />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/todaysRec" component={Recommend} />
-      <Route exact path="/cake" component={Cake} />
-      <Route exact path="/MoreItem" component={MoreItem} />
-      <Route exact path="/CS" component={CustomerService} />
-      <Route exact path="/MypageOrder" component={Mypage} />
-      <Route exact path="/SellerOrder" component={Seller} />
-      <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
+      <HeaderMobile numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile}/>
+      <Header setNumLeftMobileF={setNumLeftMobile} />
+      <Main />
+      {numLeftMobile == 2?
+        <Seller />:<></>
+      }
+      {numLeftMobile == 3?
+        <Mypage />:<></>
+      }
       <Route exact path="/Login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
-      <Footer address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>
+      <Footer
+        setNumLeftMobileF={setNumLeftMobile}
+        address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>
     </Router>    
   );
-};  
+};
 
 export default Pages;
 

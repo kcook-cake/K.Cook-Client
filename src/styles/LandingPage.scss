@@ -320,6 +320,21 @@ $p-text: #f96d6d;
   display: none;
 }
 
+.lp-incorrect {
+  // opacity: 0;
+  margin: 3vh auto;
+  margin-top: 1vh;
+  width: 258px;
+  height: 44px;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 44px;
+  background-color: #525252;
+  font-size: 12px;
+  color: #fff;
+}
+
 @media (max-width: 767px) {
   $p-text: #f96d6d;
 

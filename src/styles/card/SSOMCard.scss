@@ -1,0 +1,31 @@
+
+.ssom {
+    .title {
+        display: flex;
+        background-color: red;
+    }
+    .ssom-calendar {
+        float: right;
+    }
+
+    .content {
+        margin: 0 6px;
+        margin-top: 20px;
+        overflow-y: scroll;
+    }
+}
+.ssomcard-date {
+    margin-bottom: 10px;
+    color: #777777;
+    font-weight: 500;
+    font-size: 14px;
+}
+.ssomcard-box {
+    width: 99%;
+    height: 94px;
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    box-shadow: 1px 2px 2px rgb(212, 212, 212);
+}

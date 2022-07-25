@@ -1,5 +1,12 @@
 @import "../reset.scss";
 
+.ssop, .sshp {
+  
+}
+.ssom, .sshm {
+  display: none;
+}
+
 .seller-order-top {
   width: 848px;
 }
@@ -53,4 +60,13 @@
   font-size: 12px;
   font-weight: 300;
   color: #777777;
+}
+
+@media (max-width: 767px) {
+  .ssop, .sshp {
+    display: none;
+  }
+  .ssom, .sshm {
+    display: block;
+  }
 }

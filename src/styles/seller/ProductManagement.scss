@@ -1,5 +1,12 @@
 @import "../reset.scss";
 
+.spmp {
+
+}
+.spmm {
+  display: none;
+}
+
 .management-card {
   width: 848px;
   position: relative;
@@ -85,5 +92,14 @@
   circle,
   g {
     stroke: #ebebeb;
+  }
+}
+
+@media (max-width: 767px) {
+  .spmp {
+    display: none;
+  }
+  .spmm {
+    display: block;
   }
 }

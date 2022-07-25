@@ -1,9 +1,5 @@
 @import "../reset.scss";
 
-.msm {
-  display: none;
-}
-
 .msp {
   color: #fff;
   // margin-left: $basic-padding;
@@ -57,7 +53,6 @@
   tspan,
   circle,
   line,
-  text,
   ellipse,
   path {
     stroke: #fff;
@@ -96,10 +91,6 @@
 }
 
 @media (max-width: 767px) {
-  .msm {
-    display: block;
-  }
-  
   .msp {
     display: none;
   }

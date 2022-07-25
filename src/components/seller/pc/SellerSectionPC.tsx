@@ -1,45 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 import $ from 'jquery';
-import '../../../src/styles/seller/SellerSection.scss';
+import '../../../styles/seller/SellerSection.scss';
 
 import designClick from 'src/utils/designClick';
+import sellerDesignClick from 'src/utils/sellerDesignClick';
 
-import { ReactComponent as SellerHouse } from '../../assets/3170.svg';
-import { ReactComponent as Menu } from '../../assets/mypage/menu.svg';
-import { ReactComponent as Coin } from '../../assets/seller/coin.svg';
-import { ReactComponent as Cube } from '../../assets/seller/cube.svg';
-import { ReactComponent as SpeechBubble } from '../../assets/mypage/speech-bubble.svg';
-import { ReactComponent as SettingIcon } from '../../assets/seller/setting.svg';
-import { ReactComponent as Question } from '../../assets/seller/question.svg';
+import { ReactComponent as SellerHouse } from '../../../assets/3170.svg';
+import { ReactComponent as Menu } from '../../../assets/mypage/menu.svg';
+import { ReactComponent as Coin } from '../../../assets/seller/coin.svg';
+import { ReactComponent as Cube } from '../../../assets/seller/cube.svg';
+import { ReactComponent as SpeechBubble } from '../../../assets/mypage/speech-bubble.svg';
+import { ReactComponent as SettingIcon } from '../../../assets/seller/setting.svg';
+import { ReactComponent as Question } from '../../../assets/seller/question.svg';
 
 
-function SellerSection (){
-    const designClickSeller = (i:any) => {
-        $(".seller-menu-link").css("color", "#999999");
-        $(".seller-menu-link").css("background", "#fff");
-        $(".seller-menu-link").css("stroke", "#fff");
-        $(".seller-menu-link text").css("stroke", "#999999"); $(".seller-menu-link circle").css("stroke", "#999999"); $(".seller-menu-link path").css("stroke", "#999999"); $(".seller-menu-link tspan").css("stroke", "#999999"); $(".seller-menu-link ellipse").css("stroke", "#999999"); $(".seller-menu-link line").css("stroke", "#999999");
-
-        $(".seller-menu-link."+i).css("color", "#fff");
-        $(".seller-menu-link."+i).css("background", "#ea5450");
-        $(".seller-menu-link."+i).css("stroke", "#ea5450");
-        $(".seller-menu-link."+i+" text").css("stroke", "#fff"); $("."+i+" circle").css("stroke", "#fff"); $("."+i+" path").css("stroke", "#fff"); $("."+i+" tspan").css("stroke", "#fff"); $("."+i+" ellipse").css("stroke", "#fff"); $("."+i+" line").css("stroke", "#fff");
-    }
-
+function SellerSectionPC (){
     useEffect(()=>{
         $(".menu-bar-flex").hide();
         //pathname, parameter 가져오기
         var pathname = window.location.pathname;
         pathname = pathname.split("/")[1];
-        $(".seller-menu-link."+pathname).css("color", "#fff");
-        $(".seller-menu-link."+pathname).css("background", "#ea5450");
-        $(".seller-menu-link."+pathname).css("stroke", "#ea5450");
-        $(".seller-menu-link."+pathname+" text").css("stroke", "#fff"); $("."+pathname+" circle").css("stroke", "#fff"); $("."+pathname+" path").css("stroke", "#fff"); $("."+pathname+" tspan").css("stroke", "#fff"); $("."+pathname+" ellipse").css("."+pathname+" stroke", "#fff"); $("."+pathname+" line").css("stroke", "#fff");
+        sellerDesignClick(pathname);
     },[]);
 
     return(
-        <div className="seller-section">
+        <div className="seller-section ssp">
             <div className="side-bar seller-list">
                 <div className="seller-icon"><SellerHouse/></div>
                 <div className="name">원모먼트</div>
@@ -49,7 +35,10 @@ function SellerSection (){
                         <Link
                             to="/SellerOrder"
                             className="seller-menu-link SellerOrder"
-                            onClick={()=>{designClickSeller("SellerOrder")}}
+                            onClick={()=>{
+                                designClick("SellerOrder");
+                                sellerDesignClick("SellerOrder");
+                            }}
                         >
                             <Menu className="icon"/>
                             <span>주문확인 </span>
@@ -59,7 +48,10 @@ function SellerSection (){
                         <Link
                             to="/SalesHistory"
                             className="seller-menu-link SalesHistory"
-                            onClick={()=>{designClickSeller("SalesHistory")}}
+                            onClick={()=>{
+                                designClick("SalesHistory");
+                                sellerDesignClick("SalesHistory");
+                            }}
                         >
                             <Coin className="icon"/>
                             <span>판매내역 </span>
@@ -69,7 +61,10 @@ function SellerSection (){
                         <Link
                            to="/ProductManagement"
                            className="seller-menu-link ProductManagement"
-                           onClick={()=>{designClickSeller("ProductManagement")}}
+                           onClick={()=>{
+                            designClick("ProductManagement");
+                            sellerDesignClick("ProductManagement");
+                        }}
                         >
                             <Cube className="icon"/>
                             <span>상품관리 </span>
@@ -79,7 +74,10 @@ function SellerSection (){
                         <Link
                             to="/SellerReview"
                             className="seller-menu-link SellerReview"
-                            onClick={()=>{designClickSeller("SellerReview")}}
+                            onClick={()=>{
+                                designClick("SellerReview");
+                                sellerDesignClick("SellerReview");
+                            }}
                         >
                             <SpeechBubble className="icon"/>
                             <span>상품후기 </span>
@@ -89,7 +87,10 @@ function SellerSection (){
                         <Link
                             to="/SellerStore"
                             className="seller-menu-link SellerStore"
-                            onClick={()=>{designClickSeller("SellerStore")}}
+                            onClick={()=>{
+                                designClick("SellerStore");
+                                sellerDesignClick("SellerStore");
+                            }}
                         >
                             <SettingIcon className="icon"/>
                             <span>스토어 정보</span>
@@ -109,4 +110,4 @@ function SellerSection (){
 }
 
 
-export default SellerSection;
+export default SellerSectionPC;

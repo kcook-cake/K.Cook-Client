@@ -3,13 +3,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.scss';
 import './styles/reset.scss';
 // import { PC,Mobile } from './MediaQuery';
-
-import Pages from './containers/index';
-
 import axios from "axios";
 
+import Pages from './containers/index';
 import LandingPage from './containers/LandingPage';
-import Header from './components/Header';
 import isSession from './utils/isSession';
 
 function App() {

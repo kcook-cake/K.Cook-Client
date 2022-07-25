@@ -1,11 +1,11 @@
 import React from 'react';
-import '../../styles/seller/SellerReview.scss';
-import cake6 from   '../../assets/cake6.png';
 import { Link } from 'react-router-dom';
+import '../../../styles/seller/SellerReview.scss';
+import cake6 from   '../../../assets/cake6.png';
 
-function SellerReview (){
+function SellerReviewPC (){
     return(
-        <div className="mp-top seller-review">
+        <div className="mp-top seller-review ssrp">
             <div className="mypage-top">
                 <h3>상품후기</h3>
                 <span>고객분들이 남겨주신 후기입니다.</span>
@@ -43,4 +43,4 @@ function SellerReview (){
 }
 
 
-export default SellerReview;
+export default SellerReviewPC;

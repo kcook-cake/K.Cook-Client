@@ -1,3 +1,10 @@
+.ssrp {
+
+}
+.ssrm {
+  display: none;
+}
+
 .seller-review-card {
   margin: 0 0 40px 0;
 }
@@ -13,4 +20,13 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 22px;
+}
+
+@media (max-width: 767px) {
+  .ssrp {
+    display: none;
+  }
+  .ssrm {
+    display: block;
+  }
 }

@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import "../styles/HeaderMobile.scss";
+import '../../../styles/HeaderMobile.scss';
 
-import isSession from "src/utils/isSession";
-import designClick from "src/utils/designClick";
-import axios from "axios";
 import $ from 'jquery';
 
-import Xbutton from "../assets/2477.svg";
-import logo from "../assets/logo.png";
-import menu from "../assets/menu.svg";
-import search from "../assets/search.svg";
+import isSession from '../../../utils/isSession';
+import designClick from '../../../utils/designClick';
 
-function HeaderMobile () {
+function HMCard({ setNumLeftMobileF }) {
     //로그인 여부
     const [session, setSession] = useState(false);
     const [auth, setAuth] = useState({
@@ -26,30 +21,34 @@ function HeaderMobile () {
     });
 
     useEffect(()=> {
+        //pathname, parameter 가져오기
+        var pathname = window.location.pathname;
+        if (pathname == "/") pathname = "/Home";
+        pathname = pathname.split("/")[1];
+        designClick(pathname);
         isSession(
-          (s)=>{
+            (s)=>{
             if (s) setSession(s);
-          },
-          (a)=>{
+            },
+            (a)=>{
             setAuth(a);
-          },
+            },
         );
         $(".header-main").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
-          });
+            });
         $(".hm-title").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
-          });
+            });
         $(".hm-background").on('scroll touchmove mousewheel', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+            e.preventDefault();
+            e.stopPropagation();
         });
     }, []);
-
     return (
-        <div className="hm">
+        <>
             <div className="hm-left">
                 <div className="hm-title">케이쿡</div>
                 <hr/>
@@ -59,7 +58,11 @@ function HeaderMobile () {
                             <Link
                                 to="/SellerOrder"
                                 className="header SellerOrder"
-                                onClick={()=>{designClick("SellerOrder"); $(".hm").hide();}}
+                                onClick={()=>{
+                                    setNumLeftMobileF(2);
+                                    designClick("SellerOrder");
+                                    $(".hm").hide();
+                                }}
                             >
                                 판매자로 전환
                             </Link>
@@ -70,7 +73,11 @@ function HeaderMobile () {
                             <Link
                                 to="/MypageOrder"
                                 className="header MypageOrder"
-                                onClick={()=>{designClick("MypageOrder"); $(".hm").hide();}}
+                                onClick={()=>{
+                                    setNumLeftMobileF(3);
+                                    designClick("MypageOrder");
+                                    $(".hm").hide();
+                                }}
                             >
                                 마이페이지
                             </Link>
@@ -79,7 +86,11 @@ function HeaderMobile () {
                             <Link
                                 to="/SignUp"
                                 className="header SignUp"
-                                onClick={()=>{designClick("SignUp"); $(".hm").hide();}}
+                                onClick={()=>{
+                                    setNumLeftMobileF(1);
+                                    designClick("SignUp");
+                                    $(".hm").hide();
+                                }}
                             >
                                 회원가입
                             </Link>
@@ -103,7 +114,11 @@ function HeaderMobile () {
                             <Link
                                 to="/Login"
                                 className="header Login"
-                                onClick={()=>{designClick("Login"); $(".hm").hide();}}
+                                onClick={()=>{
+                                    setNumLeftMobileF(1);
+                                    designClick("Login");
+                                    $(".hm").hide();
+                                }}
                             >
                                 로그인
                             </Link>
@@ -113,7 +128,11 @@ function HeaderMobile () {
                         <Link
                             to="/"
                             className="header Home"
-                            onClick={()=>{designClick("Home"); $(".hm").hide();}}
+                            onClick={()=>{
+                                setNumLeftMobileF(1);
+                                designClick("Home");
+                                $(".hm").hide();
+                            }}
                         >
                             홈
                         </Link>
@@ -122,7 +141,11 @@ function HeaderMobile () {
                         <Link
                             to="/TodaysRec"
                             className="header TodaysRec"
-                            onClick={()=>{designClick("TodaysRec"); $(".hm").hide();}}
+                            onClick={()=>{
+                                setNumLeftMobileF(1);
+                                designClick("TodaysRec");
+                                $(".hm").hide();
+                            }}
                         >
                             오늘의 추천
                         </Link>
@@ -131,7 +154,11 @@ function HeaderMobile () {
                         <Link
                             to="/Cake"
                             className="header Cake"
-                            onClick={()=>{designClick("Cake"); $(".hm").hide();}}
+                            onClick={()=>{
+                                setNumLeftMobileF(1);
+                                designClick("Cake");
+                                $(".hm").hide();
+                            }}
                         >
                             케이크
                         </Link>
@@ -140,7 +167,11 @@ function HeaderMobile () {
                         <Link
                             to="/MoreItem"
                             className="header MoreItem"
-                            onClick={()=>{designClick("MoreItem"); $(".hm").hide();}}
+                            onClick={()=>{
+                                setNumLeftMobileF(1);
+                                designClick("MoreItem");
+                                $(".hm").hide();
+                            }}
                         >
                             추가 상품
                         </Link>
@@ -149,21 +180,19 @@ function HeaderMobile () {
                         <Link
                             to="/CS"
                             className="header CS"
-                            onClick={()=>{designClick("CS"); $(".hm").hide();}}
+                            onClick={()=>{
+                                setNumLeftMobileF(1);
+                                designClick("CS");
+                                $(".hm").hide();
+                            }}
                         >
                             고객지원
                         </Link>
                     </div>
                 </div>
             </div>
-            <div
-                className="hm-background"
-                onClick={()=>{
-                    $(".hm").hide();
-                }}
-            ></div>
-        </div>
+        </>
     );
 }
 
-export default HeaderMobile;
+export default HMCard;

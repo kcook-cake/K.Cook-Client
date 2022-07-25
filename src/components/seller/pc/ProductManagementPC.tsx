@@ -1,18 +1,18 @@
 import React from 'react';
-import '../../styles/mypage/OrderHistory.scss';
-import '../../styles/seller/ProductManagement.scss';
-import cake6 from   '../../assets/cake6.png';
-import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
-import { ReactComponent as CloseBtn } from '../../assets/seller/closebtn.svg';
-import { ReactComponent as CopyBtn } from '../../assets/seller/copybtn.svg';
-import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
-import { ReactComponent as DragCBtn } from '../../assets/seller/drag-column-btn.svg';
+import '../../../styles/mypage/OrderHistory.scss';
+import '../../../styles/seller/ProductManagement.scss';
+import cake6 from   '../../../assets/cake6.png';
+import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
+import { ReactComponent as CloseBtn } from '../../../assets/seller/closebtn.svg';
+import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
+import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
+import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
 
 import { Link } from 'react-router-dom';
 
-function ProductManagement (){
+function ProductManagementPC (){
     return(
-        <div className="mp-top product-management">
+        <div className="mp-top product-management spmp">
             <div className="mypage-top">
                 <h3>상품관리</h3>
                 <span>현재 판매 중인 상품입니다.</span>
@@ -70,4 +70,4 @@ function ProductManagement (){
 }
 
 
-export default ProductManagement;
+export default ProductManagementPC;

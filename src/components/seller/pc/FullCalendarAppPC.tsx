@@ -5,14 +5,14 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import $ from 'jquery';
-import '../../styles/mypage/OrderHistory.scss';
-import '../../styles/seller/SellerOrder.scss';
-import '../../styles/FullCalendarApp.scss';
+import '../../../styles/mypage/OrderHistory.scss';
+import '../../../styles/seller/SellerOrder.scss';
+import '../../../styles/FullCalendarApp.scss';
 
-import FullCalendarSeller from 'src/utils/FullCalendarSeller';
-import isSession from 'src/utils/isSession';
+import FullCalendarSeller from '../../../utils/FullCalendarSeller';
+import isSession from '../../../utils/isSession';
 
-function FullCalendarApp (){
+function FullCalendarAppPC (){
   //모달창
   const [modalFail, setModalFail] = useState(false);
   const [date, setDate] = useState("");
@@ -64,7 +64,7 @@ function FullCalendarApp (){
 
   // /SellerOrder/{id}
   return(
-    <div className="mp-top seller-order-calendar">
+    <div className="mp-top seller-order-calendar fcap">
       {modalFail ? 
       <div className="calendar-modal-flex" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
         <div className="calendar-modal-top"></div>
@@ -180,4 +180,4 @@ function FullCalendarApp (){
   )
 }
 
-export default FullCalendarApp;
+export default FullCalendarAppPC;

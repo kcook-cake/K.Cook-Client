@@ -1,15 +1,16 @@
 import React from 'react';
-import '../../styles/mypage/OrderHistory.scss';
-import '../../styles/seller/SellerOrder.scss';
-import cake6 from   '../../assets/cake6.png';
 import { Link } from 'react-router-dom';
+import '../../../styles/mypage/OrderHistory.scss';
+import '../../../styles/seller/SellerOrder.scss';
 
-function SalesHistory (){
+import cake6 from   '../../../assets/cake6.png';
+
+function SellerOrderPC (){
     return(
-        <div className="mp-top seller-order">
+        <div className="mp-top seller-order seller-order-home ssop">
             <div className="mypage-top seller-order-top">
-                <h3>판매내역</h3>
-                <span>이전에 판매된 내역입니다.</span>
+                <h3>주문확인</h3>
+                <span>처리할 예약 주문입니다.</span>
                 <div className='order-view-type'>
                     <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
                     |
@@ -84,4 +85,4 @@ function SalesHistory (){
 }
 
 
-export default SalesHistory;
+export default SellerOrderPC;

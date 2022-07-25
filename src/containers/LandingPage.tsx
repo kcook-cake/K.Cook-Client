@@ -10,6 +10,8 @@ import searchIcon from "../assets/search.svg";
 
 import axios from 'axios';
 
+import City from "src/components/landing/City";
+import Location from "src/components/landing/Locations";
 import dDayCount from "./dDayCount";
 
 function LandingPage() {
@@ -44,7 +46,6 @@ function LandingPage() {
   };
 
   const [phoneNumber, setPhone] = useState("");
-
   const handlePhone = (e: any) => {
     setPhone(e.target.value.replace("-", ""));
     const numRegex = /[^0-9]/
@@ -52,12 +53,67 @@ function LandingPage() {
       setPhone(e.target.value.replace("-", ""));
   };
 
+  //지원자 신청 보내기
+  const [failModal, setFailModal] = useState(false);
+  const [failModalContext, setFailModalContext] = useState("");
+  const PostAxios = () => {
+    if (cityIndex < 1) {
+      setFailModalContext("지역을 선택해주세요.");
+      setFailModal(true);
+      setTimeout(() => {
+        setFailModal(false);
+      }, 1000);
+      return;
+    }
+    if (locationIndex < 1) {
+      setFailModalContext("시/군을 선택해주세요.");
+      setFailModal(true);
+      setTimeout(() => {
+        setFailModal(false);
+      }, 1000);
+      return;
+    }
+    if (phoneNumber == "") {
+      setFailModalContext("휴대폰 번호를 입력해주세요.");
+      setFailModal(true);
+      setTimeout(() => {
+        setFailModal(false);
+      }, 1000);
+      return;
+    }
+    axios.post(`/app/applicants`,{
+      cityIndex: cityIndex,
+      locationIndex: locationIndex,
+      phoneNumber: phoneNumber,
+    })
+    .then(res =>{
+      document.location.href = "/";
+      setFailModalContext("신청이 완료되었습니다!");
+      setFailModal(true);
+      setTimeout(() => {
+        setFailModal(false);
+      }, 2000);
+    });
+  }
+
+  const [city, setCity] = useState([]);
+  const [location, setLocation] = useState([]);
+  const [cityIndex, setCityIndex] = useState(0);
+  const [locationIndex, setLocationIndex] = useState(0);
+  const LocationAxios = (i: any) => {
+    setCityIndex(i);
+    axios.get(`/app/locations/${i}`)
+    .then(res =>{
+      setLocation(res.data.result);
+    });
+  }
+  
   useEffect(()=>{
     axios.get(`/app/cities`)
     .then(res =>{
-      // console.log(res);
-        // setData(res.data.result.content);
+      setCity(res.data.result);
     });
+    LocationAxios(0);
   },[]);
   
   return (
@@ -163,6 +219,12 @@ function LandingPage() {
       <div className="get-email-flex">
         <div className="get-email">
           <h1 className="get-email-title">출시 알림 신청하기</h1>
+          {failModal === true ? (
+            <div className="lp-incorrect">
+              {failModalContext}
+            </div>
+            ) :
+          null}
           <p className="get-email-form-title">고객 정보(필수)</p>
           <div style={{ display: "flex", }}>
             <form className="get-email-form">
@@ -177,32 +239,24 @@ function LandingPage() {
               ></input>
             </div>
             <dl>거주 지역</dl>
-            <select className="dropdown-bar-do">
-              {/* <span className="landing-mobile">거주지역</span> */}
-              <option disabled selected>
-                지역 선택
-              </option>
-              <option>서울</option>
-              <option>경기</option>
-              <option>인천</option>
-              <option>강릉</option>
-              <option>부산</option>
-            </select>
-            <select className="dropdown-bar-si">
-              <option disabled selected>
-                시/군 선택
-              </option>
-              <option>서울</option>
-              <option>경기</option>
-              <option>인천</option>
-              <option>강릉</option>
-              <option>부산</option>
-            </select>
+            <City
+              getData={city}
+              LocationAxiosF={LocationAxios}
+            />
+            <Location
+              getData={location}
+              setLocationIndexF={setLocationIndex}
+            />
           </form>
           <div className="landing-pc" style={{ width: "35px", height: "5px", }}></div>
           </div>
           <p className="get-email-sub">개인정보 제공 및 SMS 수신에 동의합니다.</p>
-          <button className="get-email-btn">출시 알림 신청</button>
+          <button
+            className="get-email-btn"
+            onClick={()=>{
+              PostAxios();
+            }}
+          >출시 알림 신청</button>
 
           <footer className="kcook-info">
             케이쿡 | 대표 정예빈 | 입점 문의 : cakeorder.kcook@gmail.com{" "}<br/>

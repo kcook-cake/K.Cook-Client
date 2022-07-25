@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
-import SellerSection from '../components/seller/SellerSection';
-import SellerOrder from '../components/seller/SellerOrder';
-import SalesHistory from '../components/seller/SalesHistory';
-import ProductManagement from '../components/seller/ProductManagement';
-import SellerReview from '../components/seller/SellerReview';
+import '../../src/styles/seller/Seller.scss'
+
+import SellerSection from '../containers/seller/SellerSection';
+import SellerOrder from '../containers/seller/SellerOrder';
+import SalesHistory from '../containers/seller/SalesHistory';
+import ProductManagement from '../containers/seller/ProductManagement';
+import SellerReview from '../containers/seller/SellerReview';
 import SellerStore from '../components/seller/SellerStore';
 
-import '../../src/styles/mypage/Mypage.scss'
-import '../../src/styles/seller/Seller.scss'
 import Pages from './index';
-import FullCalendarApp from 'src/components/seller/FullCalendarApp';
+import FullCalendarApp from '../containers/seller/FullCalendarApp';
 
 const Seller = () =>{
     return(
         <div className="seller-flex">
             <div className="seller">
-                <Router>
+                <>
                     <SellerSection />
                     <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
@@ -24,7 +24,7 @@ const Seller = () =>{
                     <Route exact path="/ProductManagement" component={ProductManagement}/>
                     <Route exact path="/SellerReview" component={SellerReview} />
                     <Route exact path="/SellerStore" component={SellerStore} />
-                </Router> 
+                </> 
             </div>
         </div>
     )

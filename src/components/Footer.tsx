@@ -5,12 +5,13 @@ import '../styles/Footer.scss';
 import designClick from "../utils/designClick";
 
 interface FooterProps {
+    setNumLeftMobileF: any,
     email : string,
     tel : string,
     address : string 
 }
 
-function Footer({ email, tel, address}: FooterProps) { 
+function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) { 
     return (
         <>
         <hr className="footer-hr"/>
@@ -29,6 +30,7 @@ function Footer({ email, tel, address}: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             designClick("Home");
+                            setNumLeftMobileF(1);
                         }}
                     ><dt>홈</dt></Link>
                     <Link
@@ -36,6 +38,7 @@ function Footer({ email, tel, address}: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             designClick("TodaysRec");
+                            setNumLeftMobileF(1);
                         }}
                     ><dt>오늘의 추천</dt></Link>
                     <Link
@@ -43,6 +46,7 @@ function Footer({ email, tel, address}: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             designClick("Cake");
+                            setNumLeftMobileF(1);
                         }}
                     ><dt>케이크</dt></Link>
                     <Link
@@ -50,6 +54,7 @@ function Footer({ email, tel, address}: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             designClick("MoreItem");
+                            setNumLeftMobileF(1);
                         }}
                     ><dt>추가 상품</dt></Link>
                     <Link
@@ -57,6 +62,7 @@ function Footer({ email, tel, address}: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             designClick("CS");
+                            setNumLeftMobileF(1);
                         }}
                     ><dt>고객지원</dt></Link>
                 </dl>

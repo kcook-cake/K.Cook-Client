@@ -53,12 +53,31 @@
   //   display: block;
   // }
   .profile-flex {
-    width: 100%;
-    min-width: 0px;
     margin: none;
   }
   .profile {
-    width: 320px;
     margin: 23px auto;
+    margin-top: 45px;
+  }
+}
+
+@media (max-width: 340px) {
+  .profile-content {
+    padding: 10px 20px;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #eaeaea;
+    color: #868686;
+    font-size: 14px;
+  }
+  .correction-btn {
+    margin-top: 20px;
+    padding: 13px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: $pink;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
   }
 }

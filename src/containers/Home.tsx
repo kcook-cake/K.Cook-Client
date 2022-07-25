@@ -11,13 +11,13 @@ import MainUpdate from './main/MainUpdate';
 
 function Home (){
     return(
-    <Router>
+    <>
         <MainCrousel/>
         <MainRecommend/>
         <MainCake/>
         <MainAd/>
         <MainUpdate/>
-    </Router>   
+    </>
     )
 }
 

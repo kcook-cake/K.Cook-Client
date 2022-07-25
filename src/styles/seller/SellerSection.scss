@@ -1,5 +1,9 @@
 @import "../reset.scss";
 
+.ssp {
+
+}
+
 .seller-section {
   background-color: #fff;
   margin-right: 90px;
@@ -23,7 +27,7 @@
   margin-bottom: 15px;
   padding: 15px 30px;
   display: flex;
-  width: 175px;
+  min-width: 175px;
   height: 50px;
   background-color: #fff;
   border-radius: 25px;
@@ -59,7 +63,7 @@
   bottom: 30px;
   left: 32.5px;
 
-  width: 175px;
+  min-width: 175px;
   height: 50px;
 
   font-size: 14px;
@@ -71,4 +75,10 @@
 
 .icon {
   margin: 0 15px 0 0;
+}
+
+@media (max-width: 767px) {
+  .ssp {
+    display: none;
+  }
 }
