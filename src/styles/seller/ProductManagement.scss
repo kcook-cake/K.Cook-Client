@@ -95,11 +95,27 @@
   }
 }
 
+.spmm-bottom {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .spmp {
     display: none;
   }
-  .spmm {
+  .spmm,
+  .spmm-bottom {
     display: block;
+  }
+
+  .spmm-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 65px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #EA5450;
+    z-index: 999;
   }
 }

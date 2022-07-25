@@ -19,15 +19,16 @@ function SellerOrderMobile (){
         <div className="mp-top product-review ssom mypage-mobile">
             <div className="mprm-box">
                 <div className="title">
-                    주문확인
-                    <div className="ssom-middle-title">처리해야할 예약 입니다.</div>
-                    <div className="ssom-calendar">달력보기</div>
+                    <div className="ssom-front-title">주문확인</div>
+                    <div className="ssom-middle-title">처리할 예약 주문입니다.</div>
+                    <Link to="/FullCalendarApp"><div className="ssom-calendar">달력보기</div></Link>
                 </div>
+                <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
                     <SSOMCard getData={data}/>
                 </div>
             </div>
-    </div>
+        </div>
     )
 }
 
