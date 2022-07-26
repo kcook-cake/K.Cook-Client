@@ -1,0 +1,81 @@
+.spmm-option {
+    .option-input {
+        display: flex;
+        .option-input-left-icon,
+        .option-input-right {
+            opacity: 0;
+        }
+        .option-input-left {
+            // float: left;
+            margin-top: 2px;
+            margin-right: 7px;
+        }
+        .option-input-right {
+            // float: right;
+        }
+    }
+    .option-input:hover {
+        .option-input-left-icon,
+        .option-input-right {
+            opacity: 100;
+        }
+        .option-input-text {
+            width: 98%;
+            border-bottom: 3px solid #333;
+        }
+    }
+}
+
+.spmm,
+.spmm-bottom {
+  .option-input-text {
+    width: 98%;
+    font-size: 15px;
+    border: 1px;
+  }
+
+  .option-input {
+    height: 30px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    // font-size: 25px !important;
+    // background-color: red;
+  }
+
+  .add-price {
+    width: 120px;
+    height: 30px;
+    float: right;
+    border: 1px solid #B2B2B2;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  .option-button {
+    margin: 0; padding: 0;
+    margin-left: 18px;
+
+    color: #9EA4AA;
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+}
+
+.spmmo-option-hr {
+    margin-bottom: 30px;
+    border: 1px solid #DDDDDD;
+    // background-color: #9EA4AA;
+}
+.spmmo-option-button {
+    margin-bottom: 40px;
+    color: #9EA4AA;
+    font-size: 16px;
+    font-weight: 500;
+  // background-color: red;
+}
+
+.option-title {
+    // padding: 0 10px;
+    margin-bottom: 20px;
+}
+.option-add-cake-name {
+}

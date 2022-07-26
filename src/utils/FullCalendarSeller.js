@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $ from 'jquery';
 
-const FullCalendarSeller = (fn) => {
+const FullCalendarSeller = (fn,TF) => {
     // axios
     //     .get(`/app/accounts/auth`, {
     //         headers: {
@@ -59,12 +59,8 @@ const FullCalendarSeller = (fn) => {
             start: '2022-08-28',
         },
     ];
+
     for(var i = 0; i < e.length; i++) {
-        // if (e[i].title == e[i].describe) {
-        //     $(".fc-daygrid-day[data-date='"+e[i].start+"']").css("pointer-events", "none");
-        //     $(".fc-daygrid-day[data-date='"+e[i].start+"']").css("background", "#e6e6e6");
-        //     $(".fc-daygrid-day[data-date='"+e[i].start+"'] .fc-event-main-frame").css("background", "#e6e6e6");
-        // }
         e[i].title = "주문: " + e[i].title + "/" + e[i].describe;
     }
     fn(e);

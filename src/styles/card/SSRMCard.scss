@@ -1,3 +1,102 @@
+//margin 값을 조절해야 안의 내용물이 움직임
+
+
+
+.ssrm,
+.spmm {
+    width: 100%;
+    padding-bottom: 23px;
+    background-color: #FAF4F4;
+    .sprm-box {
+      width: 100%;
+      min-width: 0px;
+      padding: 45px 0px 0px 0px;
+    }
+    .title {
+        padding: 0px 16px;
+        // padding: 0 16px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .content {
+      margin: 0;
+      margin-top: 25px;
+      overflow-y: scroll;
+    }
+}
+
+.sprmcard-date {
+    padding: 0px 16px;
+    margin-left: 9px;
+    margin-bottom: 10px;
+    color: #777777;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sprmcard-box {
+    height: 148px;
+    margin-bottom: 20px;
+
+    background-color: #fff;
+    box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
+    .sprmcard-box-margin {
+        width: 100%;
+        margin: auto;
+        display: flex;
+    }
+    .sprmcard-box-inner {
+        width: 100%; //가운데로 몰고 싶을때는 밑에 꺼랑 바꾸세요
+        // margin: 0 auto; //왼쪽으로
+        padding: 8px 13px 0px 16px;
+        .sprmcard-title {
+            .sprmcard-title-title {
+                overflow:hidden;
+                text-overflow:ellipsis;
+                display:-webkit-box;
+                -webkit-line-clamp:1;
+                -webkit-box-orient:vertical;
+            }
+            .sprmcard-title-content {
+                overflow:hidden;
+                text-overflow:ellipsis;
+                display:-webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient:vertical;
+
+                color: #777777;
+                font-size: 13px;
+                font-weight: 500;
+            }
+            color: black;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .sprmcard-content {
+            margin-top: 10px;
+            padding-right: 13px;
+
+            overflow:hidden;
+            text-overflow:ellipsis;
+            display:-webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient:vertical;
+
+            font-weight: 700;
+        }
+    }
+    .sprmcard-img {
+        img {
+            border-radius: 7px;
+            width: 100px;
+            height: 100px;
+        }
+        margin: 0px 0px 16px 0px; //오른쪽을 16px
+        // margin-right: auto; //오른쪽으로
+        padding-right: 16px;
+    }
+}
+
 .ssrm,
 .spmm {
     width: 100%;
@@ -30,6 +129,10 @@
     font-weight: 600;
 }
 
+.sprmcard-move-tap {
+    width: 100%;
+    text-align: center;
+}
 .ssrmcard-box {
     // width: 100%;
     height: 132px;
@@ -40,7 +143,9 @@
     box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
     .ssrmcard-box-inner {
         height: 100px;
-        margin: auto;
+        width: 100%; //가운데로 몰고싶을때 아래의 것과 바꿔야함
+        // margin: auto;
+        padding-top: 16px;
         padding-left: 16px;
         .ssrmcard-title {
             .ssrmcard-title-date,
@@ -57,6 +162,7 @@
         }
         .ssrmcard-content {
             margin-top: 10px;
+            padding-right: 13px;
 
             overflow:hidden;
             text-overflow:ellipsis;
@@ -74,11 +180,12 @@
             height: 100px;
         }
         margin: 16px 16px 16px 0px;
+        // margin-right: auto;
     }
 }
 
 @media (max-width: 344px) {
-    .ssrmcard-img,
+    .sprm-middle-title,
     .ssrm-middle-title {
         display: none;
     }

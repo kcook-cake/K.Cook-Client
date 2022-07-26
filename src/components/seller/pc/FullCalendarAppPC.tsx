@@ -11,6 +11,8 @@ import '../../../styles/FullCalendarApp.scss';
 
 import FullCalendarSeller from '../../../utils/FullCalendarSeller';
 import isSession from '../../../utils/isSession';
+import designClick from 'src/utils/designClick';
+import sellerDesignClick from 'src/utils/sellerDesignClick';
 
 function FullCalendarAppPC (){
   //모달창
@@ -59,7 +61,7 @@ function FullCalendarAppPC (){
 
     FullCalendarSeller((seller: any)=>{
       setEvents(seller);
-    });
+    }, false);
   }, []);
 
   // /SellerOrder/{id}
@@ -78,6 +80,8 @@ function FullCalendarAppPC (){
               to="/SellerOrder"
               onClick={()=>{
                 $(".seller-section").show();
+                designClick("SellerOrder");
+                sellerDesignClick("SellerOrder");
               }}
             >
               <button className="calendar-button">예약 확인</button> 
@@ -97,6 +101,8 @@ function FullCalendarAppPC (){
           to="/SellerOrder"
           onClick={()=>{
             $(".seller-section").show();
+            designClick("SellerOrder");
+            sellerDesignClick("SellerOrder");
           }}
         >
           <button className='calendar-mypage'>&lt;&nbsp;마이페이지</button>
@@ -110,7 +116,9 @@ function FullCalendarAppPC (){
             className='order-view view-list'
             onClick={()=>{
               $(".seller-section").show();
-              $(".seller-order").css("margin", "0");
+              // $(".seller-order").css("margin", "0");
+              designClick("SellerOrder");
+              sellerDesignClick("SellerOrder");
             }}
           >목록보기</Link>
         </div>
@@ -143,8 +151,8 @@ function FullCalendarAppPC (){
           nowIndicator
           dateClick={(e) => {
             $(".fc-daygrid-day").css("pointer-events", "auto");
-            $(".fc-daygrid-day").css("background", "#fff");
-            $(".fc-event-main-frame").css("background", "#fff");
+            $(".fc-daygrid-day").css("background", "none");
+            $(".fc-event-main-frame").css("background", "none");
             setModalFail(false);
             FullCalendarSeller((seller: any)=>{
               setEvents(seller);

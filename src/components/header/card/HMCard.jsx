@@ -56,49 +56,6 @@ function HMCard({ setNumLeftMobileF }) {
                     {session ? 
                         <div className="hm-link-inner">
                             <Link
-                                to="/SellerOrder"
-                                className="header SellerOrder"
-                                onClick={()=>{
-                                    setNumLeftMobileF(2);
-                                    designClick("SellerOrder");
-                                    $(".hm").hide();
-                                }}
-                            >
-                                판매자로 전환
-                            </Link>
-                        </div>: <></>
-                    }
-                    {session ? 
-                        <div className="hm-link-inner">
-                            <Link
-                                to="/MypageOrder"
-                                className="header MypageOrder"
-                                onClick={()=>{
-                                    setNumLeftMobileF(3);
-                                    designClick("MypageOrder");
-                                    $(".hm").hide();
-                                }}
-                            >
-                                마이페이지
-                            </Link>
-                        </div>:
-                        <div className="hm-link-inner">
-                            <Link
-                                to="/SignUp"
-                                className="header SignUp"
-                                onClick={()=>{
-                                    setNumLeftMobileF(1);
-                                    designClick("SignUp");
-                                    $(".hm").hide();
-                                }}
-                            >
-                                회원가입
-                            </Link>
-                        </div>
-                    }
-                    {session ? 
-                        <div className="hm-link-inner">
-                            <Link
                                 to="/"
                                 className="header"
                                 onClick={() => {
@@ -110,19 +67,34 @@ function HMCard({ setNumLeftMobileF }) {
                                 로그아웃
                             </Link>
                         </div>:
-                        <div className="hm-link-inner">
-                            <Link
-                                to="/Login"
-                                className="header Login"
-                                onClick={()=>{
-                                    setNumLeftMobileF(1);
-                                    designClick("Login");
-                                    $(".hm").hide();
-                                }}
-                            >
-                                로그인
-                            </Link>
-                        </div>
+                        <>
+                            <div className="hm-link-inner">
+                                <Link
+                                    to="/SignUp"
+                                    className="header SignUp"
+                                    onClick={()=>{
+                                        setNumLeftMobileF(1);
+                                        designClick("SignUp");
+                                        $(".hm").hide();
+                                    }}
+                                >
+                                    회원가입
+                                </Link>
+                            </div>
+                            <div className="hm-link-inner">
+                                <Link
+                                    to="/Login"
+                                    className="header Login"
+                                    onClick={()=>{
+                                        setNumLeftMobileF(1);
+                                        designClick("Login");
+                                        $(".hm").hide();
+                                    }}
+                                >
+                                    로그인
+                                </Link>
+                            </div>
+                        </>
                     }
                     <div className="hm-link-inner">
                         <Link
@@ -189,6 +161,36 @@ function HMCard({ setNumLeftMobileF }) {
                             고객지원
                         </Link>
                     </div>
+                    {session ? 
+                        <div className="hm-link-inner">
+                            <Link
+                                to="/SellerOrder"
+                                className="header SellerOrder"
+                                onClick={()=>{
+                                    setNumLeftMobileF(2);
+                                    designClick("SellerOrder");
+                                    $(".hm").hide();
+                                }}
+                            >
+                                판매자로 전환
+                            </Link>
+                        </div>: <></>
+                    }
+                    {session ? 
+                        <div className="hm-link-inner">
+                            <Link
+                                to="/MypageOrder"
+                                className="header MypageOrder"
+                                onClick={()=>{
+                                    setNumLeftMobileF(3);
+                                    designClick("MypageOrder");
+                                    $(".hm").hide();
+                                }}
+                            >
+                                마이페이지
+                            </Link>
+                        </div>: <></>
+                    }
                 </div>
             </div>
         </>

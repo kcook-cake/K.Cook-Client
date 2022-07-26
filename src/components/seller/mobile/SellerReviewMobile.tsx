@@ -25,7 +25,7 @@ function SellerReviewMobile (){
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SSRMCard getData={data}/>
+                    <SSRMCard getData={data} box={false}/>
                 </div>
             </div>
         </div>

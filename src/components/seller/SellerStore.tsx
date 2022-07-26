@@ -10,9 +10,9 @@ function SellerStore (){
                 <h3>스토어 정보</h3>
             </div>
             <div className="profile-list">
-                    <button className="store-img-add">
-                        <AddIcon/>
-                    </button>
+                <button className="store-img-add">
+                    <AddIcon/>
+                </button>
             </div>
             <div className="profile-list">
                 <p className="profile-name">아이디</p>
