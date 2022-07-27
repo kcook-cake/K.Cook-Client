@@ -26,30 +26,30 @@ const FullCalendarSeller = (fn,TF) => {
             id: 1,
             title: '1',
             describe: '10',
-            start: '2022-07-22',
+            start: '2022-07-27',
         },
         {
             id: 2,
             title: '2',
             describe: '10',
-            start: '2022-07-24',
+            start: '2022-07-28',
         },
         { 
             id: 3, 
             title: '2', 
             describe: '10',
-            start: '2022-07-25',
+            start: '2022-07-29',
         },
         { 
             id: 4, 
             title: '0', 
             describe: '0',
-            start: '2022-07-28',
+            start: '2022-07-30',
         },
         { 
             id: 5, 
-            title: '0', 
-            describe: '0',
+            title: '1', 
+            describe: '1',
             start: '2022-08-05',
         },
         { 
@@ -59,10 +59,18 @@ const FullCalendarSeller = (fn,TF) => {
             start: '2022-08-28',
         },
     ];
+    var em = [];
 
     for(var i = 0; i < e.length; i++) {
-        e[i].title = "주문: " + e[i].title + "/" + e[i].describe;
+        if (e[i].title == '0')
+            e[i].borderColor = "rgba(255, 255, 255, 0.0)";
+        else
+            e[i].borderColor = "white";
+        e[i].title = "주문: " + e[i].title + "/" + e[i].describe
     }
+
+    // if (TF) fn(em);
+    // else fn(e);
     fn(e);
 }
 

@@ -158,6 +158,10 @@
 .fc-icon:hover {
     background-color: rgb(10, 10, 10);
 }
+.calendar-modal-blank {
+    width: 5px;
+    height: 10px;
+}
 
 //캘린더 이벤트
 .fc-daygrid-day-events {
@@ -171,8 +175,10 @@
 }
 
 .fc-daygrid-event {
-    border: none !important;
-    background-color: #fff !important;
+    @media (min-width: 768px) {
+        border: none !important; //선
+        background-color: #fff !important; //선
+    }
 }
 .fc-event-title-container {
     margin-right: 7px; //주문: 오른쪽
@@ -374,10 +380,20 @@
         height: 40px;
         line-height: 40px;
         border-radius: 50px !important;
-        filter: invert(100%);
+        filter: invert(0%);
         border: 0;
-        background-color: black; //반전색깔
+        background-color: #EE7774; //반전색깔
     }
+    .fc-icon:hover {
+        // filter: invert(100%);
+        border: 0;
+        background-color: #EE7774;
+    }
+
+    // .fc-icon {
+    //     color: #fff !important;
+    //     background-color: #fff !important;
+    // }
     // .fc-icon:hover {
     //     background-color: rgb(10, 10, 10);
     // }
@@ -385,24 +401,29 @@
     //캘린더 이벤트
     .fc-daygrid-day-events {
         // height: 0px;
-        position:relative;
+        // position:relative;
     }
     .fc-daygrid-event-harness {
-        height: 30px;
+        // display: block;
+        // height: 30px;
         position: absolute;
-        bottom: 30px; //주문: 아래 
-        left: 0px;
-        border-radius: 50%;
-        border: 1px solid #fff !important;
+        bottom: 31px; //주문: 아래
+        left: -2px;
+        border-radius: 50% !important;
+        // border: 1px solid black !important; //선
+        // background-color: black !important;
+    }
+    .fc-daygrid-event {
+        width: 30px;
+        height: 30px;
+        // border: 1px solid black !important;
+        border-radius: 50% !important;
+        background-color: rgba(234, 84, 80, 0.0) !important; //선
     }
     .fc-event-title {
         color: rgba(234, 84, 80, 0.0);
     }
     
-    .fc-daygrid-event {
-        width: 30px;
-        background-color: rgba(234, 84, 80, 0.0) !important;
-    }
     .fc-event-title-container {
         margin-right: 0px; //주문: 오른쪽
         text-align: right;
@@ -422,9 +443,6 @@
     .fc-day-past {
         border: 0 !important;
         background-color:#ea5450 !important;
-        .fc-daygrid-event-harness {
-            // display: none !important;
-        }
     }
     .fc-day-future {
         border: 0 !important;
@@ -471,18 +489,20 @@
         font-size: 12px;
     }
 
+    
     //모달창
     .calendar-modal-flex {
-        // position: absolute;
-
-    }
-    #calendar-modal {
         width: 100%;
         height: 209px;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        position: absolute;
+    }
+    #calendar-modal {
+        position: absolute;
+        width: 100%;
+        height: 209px;
+        // left: 0;
+        // right: 0;
+        // bottom: 0;
         
         border-radius: 50px 50px 0px 0px;
         background-color: #fff;
@@ -490,26 +510,33 @@
         box-shadow: 0px 0px 0px rgb(179, 122, 122);
         z-index: 998;
     }
+    
     .calendar-modal-box {
-        width: 348px;
+        width: 100%;
         margin: auto;
         text-align: center;
     }
     .calendar-modal-box-title {
-        width: 348px;
+        width: 100%;
         margin: auto;
         text-align: center;
         font-weight: 500;
     }
-    .calendar-button {
-        width: 160px;
-        height: 40px;
-        margin: 0px 7px;
+    @media (max-width: 347px) {
+        .calendar-modal-blank {
+            width: 5px;
+            height: 0px;
+        }
+        .calendar-button {
+            // width: 50%;
+            // max-width: 160px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+    }
 
-        color: #ea5450;
-        font-weight: 900;
-
-        border-radius: 8px;
-        border: 2.5px solid #ea5450;
+    // fc-daygrid-event-harness
+    .fc-daygrid-day-top {
+        border-radius: 50%;
     }
 }

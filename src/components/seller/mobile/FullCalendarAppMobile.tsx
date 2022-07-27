@@ -17,9 +17,11 @@ import sellerDesignClick from 'src/utils/sellerDesignClick';
 function FullCalendarAppMobile (){
   //모달창
   const [modalFail, setModalFail] = useState(false);
+  const [modalFuture, setModalFuture] = useState(false);
   const [date, setDate] = useState("");
   const [dateT, setDateT] = useState("");
   const [title, setTitle] = useState("");
+  const [modalHeight, setModalHeight] = useState(0);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
@@ -43,6 +45,10 @@ function FullCalendarAppMobile (){
   const [events, setEvents] = useState([{}]);
 
   useEffect(()=> {
+    const height1 = document.getElementById('header-main-id') as Element;
+    const height2 = document.getElementById('fcam') as Element;
+    setModalHeight(height1.clientHeight+height2.clientHeight);
+
     $(".seller-section").hide();
     $(".seller-order").css("margin", "auto");
     // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
@@ -67,17 +73,18 @@ function FullCalendarAppMobile (){
   }, []);
 
   // /SellerOrder/{id}
+  // style={{ top: (modalHeight-window.pageYOffset-209)+"px", }}
   return(
-    <div className="mp-top seller-order-calendar fcam">
+    <div id="fcam" className="mp-top seller-order-calendar fcam">
       {modalFail ? 
       <div className="calendar-modal-flex">
-        <div id="calendar-modal">
+        <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}>
           <div style={{ width: "5px", height: "35px", }}></div>
           <div className="calendar-modal-box">{date}</div>
           <div style={{ width: "5px", height: "10px", }}></div>
           <div className="calendar-modal-box-title">{title}</div>
           <br/>
-          <div style={{ width: "5px", height: "10px", }}></div>
+          <div className="calendar-modal-blank"></div>
           <div className="calendar-modal-box">
             <Link
               to="/SellerOrder"
@@ -149,15 +156,51 @@ function FullCalendarAppMobile (){
           eventColor="red"
           nowIndicator
           dateClick={(e) => {
+            const height1 = document.getElementById('header-main-id') as Element;
+            const height2 = document.getElementById('fcam') as Element;
+            setModalHeight(height1.clientHeight+height2.clientHeight);
+
+            if (modalFail || e.dayEl.className.split(" ")[3] == "fc-day-past" || e.dayEl.className.split(" ")[3] == "fc-day-today") {
+              $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-number").css("color", "#fff");
+              $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
+              setModalFail(false);
+              return;
+            }
+            setModalFail(true);
+
+            const date = e.dateStr;
+            let d = e.date.toString().split(" ")[0]
+            if(d=='Mon') d="월요일"; 
+            else if(d=='Tue') d="화요일";
+            else if(d=='Wed') d="수요일";
+            else if(d=='Thu') d="목요일";
+            else if(d=='Fri') d="금요일";
+            else if(d=='Sat') d="토요일";
+            else d="일요일";
+            setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
+            setDateT(date);
+
+            // setTitle(e.event._def.title);
+            setTitle("");
+
             $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-number").css("color", "#fff");
-            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-event-harness").css("border-color", "#fff");
-            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-event-harness").css("background", "rgba(234, 84, 80, 0.0)");
-            setModalFail(false);
-            FullCalendarSeller((seller: any)=>{
-              setEvents(seller);
-            });
+            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
+            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#ea5450");
+            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "#fff");
           }}
           eventClick={(e) => {
+            const height1 = document.getElementById('header-main-id') as Element;
+            const height2 = document.getElementById('fcam') as Element;
+            setModalHeight(height1.clientHeight+height2.clientHeight);
+
+            if (modalFail) {
+              $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-number").css("color", "#fff");
+              $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
+              setModalFail(false);
+              return;
+            }
+            setModalFail(true);
+
             const date = e.event.startStr;
             let d = e.event._instance?.range.start.toString().split(" ")[0]
             if(d=='Mon') d="월요일"; 
@@ -171,13 +214,16 @@ function FullCalendarAppMobile (){
             setDateT(date);
             
             setTitle(e.event._def.title);
+
+            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-number").css("color", "#fff");
+            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
             $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#ea5450");
-            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-event-harness").css("border-color", "#ea5450");
-            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-event-harness").css("background", "#fff");
+            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "#fff");
             setModalFail(true);
           }}
         />
       </div>
+      <div style={{ width: "100%", height: "200px", background: "#ea5450", }}></div>
   </div>
 
   )

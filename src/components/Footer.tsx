@@ -16,7 +16,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
         <>
         <hr className="footer-hr"/>
         <div className="footer-flex">
-            <div className="footer">
+            <div id="footer-flex-id" className="footer">
                 <dl>
                     <dt id="footer-kcook" className="footer-title">케이쿡</dt>
                     <dt className="footer-context">

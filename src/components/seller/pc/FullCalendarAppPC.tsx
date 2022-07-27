@@ -154,9 +154,9 @@ function FullCalendarAppPC (){
             $(".fc-daygrid-day").css("background", "none");
             $(".fc-event-main-frame").css("background", "none");
             setModalFail(false);
-            FullCalendarSeller((seller: any)=>{
-              setEvents(seller);
-            });
+            // FullCalendarSeller((seller: any)=>{
+            //   setEvents(seller);
+            // });
           }}
           eventClick={(e) => {
             const date = e.event.startStr;

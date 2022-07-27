@@ -51,7 +51,7 @@ function Header ({ setNumLeftMobileF }) {
 
   // render() {
   return (
-    <div className="header-main">
+    <div id="header-main-id" className="header-main">
       <div className="header-ad-flex">
         <div className="header-ad">
           <span className="header-ad-text">
