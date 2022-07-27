@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import '../../../styles/mypage/OrderHistory.scss';
 import '../../../styles/seller/SellerOrder.scss';
 
+import designClick from 'src/utils/designClick';
+import sellerDesignClick from 'src/utils/sellerDesignClick';
+
 import cake6 from   '../../../assets/cake6.png';
 
 function SellerOrderPC (){
@@ -12,9 +15,24 @@ function SellerOrderPC (){
                 <h3>주문확인</h3>
                 <span>처리할 예약 주문입니다.</span>
                 <div className='order-view-type'>
-                    <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
+                    <Link
+                        to='/FullCalendarApp'
+                        className='order-view view-calander'
+                        onClick={()=>{
+                            designClick("FullCalendarApp");
+                            sellerDesignClick("FullCalendarApp");
+                        }}
+                    >달력보기</Link>
                     |
-                    <Link to='/SellerOrder' className='order-view view-list' style={{ color: "#ea5450", }}>목록보기</Link>
+                    <Link
+                        to='/SellerOrder'
+                        className='order-view view-list'
+                        style={{ color: "#ea5450", }}
+                        onClick={()=>{
+                            designClick("SellerOrder");
+                            sellerDesignClick("SellerOrder");
+                        }}
+                    >목록보기</Link>
                 </div>
             </div>
             <div className="history-contents">

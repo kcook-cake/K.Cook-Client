@@ -9,6 +9,7 @@ import Mypage from './Mypage';
 import Seller from './Seller';
 import Login from './Login';
 import SignUp from './SignUp';
+import FullCalendarApp from '../containers/seller/FullCalendarApp';
 
 import * as designClick from 'src/utils/designClick';
 
@@ -24,19 +25,21 @@ const Pages = () => {
       pathname == "SalesHistory" || 
       pathname == "ProductManagement" || 
       pathname == "SellerReview" || 
-      pathname == "SellerStore" || 
-      pathname == "FullCalendarApp") setNumLeftMobile(2);
+      pathname == "SellerStore" 
+      || pathname == "FullCalendarApp"
+      ) setNumLeftMobile(2);
     else if (
       pathname == "MypageOrder" || 
       pathname == "ProductReview" || 
       pathname == "Membership" || 
       pathname == "Coupon" || 
       pathname == "Profile") setNumLeftMobile(3);
+    // else setNumLeftMobile(4);
   },[]);
 
   return (
     <Router>
-      <HeaderMobile numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile}/>
+      <HeaderMobile numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} />
       <Header setNumLeftMobileF={setNumLeftMobile} />
       <Main />
       {numLeftMobile == 2?
@@ -47,6 +50,16 @@ const Pages = () => {
       }
       <Route exact path="/Login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
+      {/* <Route exact path="/FullCalendarApp" component={FullCalendarApp} /> */}
+      
+      {/* {numLeftMobile == 4?
+        <div className="calendar-seller-flex">
+          <div className="seller">
+            <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
+          </div>
+        </div>:
+        <></>
+      } */}
       <Footer
         setNumLeftMobileF={setNumLeftMobile}
         address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>

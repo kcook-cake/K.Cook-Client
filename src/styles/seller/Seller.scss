@@ -1,3 +1,12 @@
+.calendar-seller-flex {
+  max-width: 1199px;
+  min-width: 815px;
+  margin: auto;
+
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 .seller {
   max-width: 1199px;
   min-width: 815px;

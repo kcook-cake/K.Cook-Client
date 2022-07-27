@@ -49,7 +49,8 @@ function FullCalendarAppMobile (){
     const height2 = document.getElementById('fcam') as Element;
     setModalHeight(height1.clientHeight+height2.clientHeight);
 
-    $(".seller-section").hide();
+    // $(".seller").css("display", "block");
+    // $(".seller-section").hide();
     $(".seller-order").css("margin", "auto");
     // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
     // const yM = yearMonth.textContent;
@@ -77,7 +78,7 @@ function FullCalendarAppMobile (){
   return(
     <div id="fcam" className="mp-top seller-order-calendar fcam">
       {modalFail ? 
-      <div className="calendar-modal-flex">
+      <div className="calendar-modal-flex fcam">
         <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}>
           <div style={{ width: "5px", height: "35px", }}></div>
           <div className="calendar-modal-box">{date}</div>
@@ -166,27 +167,27 @@ function FullCalendarAppMobile (){
               setModalFail(false);
               return;
             }
-            setModalFail(true);
+            // setModalFail(true);
 
-            const date = e.dateStr;
-            let d = e.date.toString().split(" ")[0]
-            if(d=='Mon') d="월요일"; 
-            else if(d=='Tue') d="화요일";
-            else if(d=='Wed') d="수요일";
-            else if(d=='Thu') d="목요일";
-            else if(d=='Fri') d="금요일";
-            else if(d=='Sat') d="토요일";
-            else d="일요일";
-            setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
-            setDateT(date);
+            // const date = e.dateStr;
+            // let d = e.date.toString().split(" ")[0]
+            // if(d=='Mon') d="월요일"; 
+            // else if(d=='Tue') d="화요일";
+            // else if(d=='Wed') d="수요일";
+            // else if(d=='Thu') d="목요일";
+            // else if(d=='Fri') d="금요일";
+            // else if(d=='Sat') d="토요일";
+            // else d="일요일";
+            // setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
+            // setDateT(date);
 
-            // setTitle(e.event._def.title);
-            setTitle("");
+            // // setTitle(e.event._def.title);
+            // setTitle("");
 
-            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-number").css("color", "#fff");
-            $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
-            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#ea5450");
-            $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "#fff");
+            // $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-number").css("color", "#fff");
+            // $(".fc-daygrid-day[data-date='"+dateT+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
+            // $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#ea5450");
+            // $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "#fff");
           }}
           eventClick={(e) => {
             const height1 = document.getElementById('header-main-id') as Element;

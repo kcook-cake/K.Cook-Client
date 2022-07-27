@@ -12,12 +12,23 @@ import SellerStore from '../components/seller/SellerStore';
 import Pages from './index';
 import FullCalendarApp from '../containers/seller/FullCalendarApp';
 
+interface Props {
+    setNumLeftMobileF: any,
+}
+
 const Seller = () =>{
+    const [pathname, setPathname] = useState("");
+    useEffect(()=>{
+        var pathname = window.location.pathname;
+        if (pathname == "/") pathname = "/Home";
+        pathname = pathname.split("/")[1];
+        setPathname(pathname);
+    },[]);
     return(
-        <div className="seller-flex">
+        <div className="seller-flex ">
             <div className="seller">
                 <>
-                    <SellerSection />
+                    <SellerSection/>
                     <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>

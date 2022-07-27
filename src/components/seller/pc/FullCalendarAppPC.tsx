@@ -41,7 +41,7 @@ function FullCalendarAppPC (){
   const [events, setEvents] = useState([{}]);
 
   useEffect(()=> {
-    $(".seller-section").hide();
+    // $(".seller-section").hide();
     $(".seller-order").css("margin", "auto");
     // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
     // const yM = yearMonth.textContent;
@@ -68,7 +68,7 @@ function FullCalendarAppPC (){
   return(
     <div className="mp-top seller-order-calendar fcap">
       {modalFail ? 
-      <div className="calendar-modal-flex" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
+      <div className="calendar-modal-flex fcap" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
         <div className="calendar-modal-top"></div>
         <div id="calendar-modal">
           <div style={{ width: "5px", height: "35px", }}></div>
@@ -79,7 +79,8 @@ function FullCalendarAppPC (){
             <Link
               to="/SellerOrder"
               onClick={()=>{
-                $(".seller-section").show();
+                // $(".seller").css("display", "flex");
+                // $(".seller-section").show();
                 designClick("SellerOrder");
                 sellerDesignClick("SellerOrder");
               }}
@@ -100,7 +101,8 @@ function FullCalendarAppPC (){
         <Link
           to="/SellerOrder"
           onClick={()=>{
-            $(".seller-section").show();
+            // $(".seller").css("display", "flex");
+            // $(".seller-section").show();
             designClick("SellerOrder");
             sellerDesignClick("SellerOrder");
           }}
@@ -115,7 +117,8 @@ function FullCalendarAppPC (){
             to='/SellerOrder'
             className='order-view view-list'
             onClick={()=>{
-              $(".seller-section").show();
+              // $(".seller").css("display", "flex");
+              // $(".seller-section").show();
               // $(".seller-order").css("margin", "0");
               designClick("SellerOrder");
               sellerDesignClick("SellerOrder");

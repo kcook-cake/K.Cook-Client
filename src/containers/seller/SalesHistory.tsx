@@ -9,7 +9,7 @@ import SalesHistoryMobile from 'src/components/seller/mobile/SalesHistoryMobile'
 function SalesHistory (){
     return(
         <>
-            <SalesHistoryPC/>
+            <SalesHistoryPC />
             <SalesHistoryMobile/>
         </>
     )

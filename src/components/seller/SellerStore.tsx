@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/mypage/Profile.scss';
 import '../../styles/seller/SellerStore.scss';
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 
 function SellerStore (){
+    useEffect(()=>{
+        // $(".seller").css("display", "flex");
+    });
     return(
+        <div className="seller-block">
         <div className="seller-store">
             <div className="mypage-top seller-store-top">
                 <h3>스토어 정보</h3>
@@ -39,6 +43,7 @@ function SellerStore (){
                 <input placeholder="서울시 성동구 뚝섬로 123-12" className="profile-content"></input>
             </div>
             <button className="correction-btn">저장하기</button>
+        </div>
         </div>
             
     

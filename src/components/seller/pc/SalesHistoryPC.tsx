@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import designClick from 'src/utils/designClick';
+import sellerDesignClick from 'src/utils/sellerDesignClick';
+
 import '../../../styles/mypage/OrderHistory.scss';
 import '../../../styles/seller/SellerOrder.scss';
 import cake6 from   '../../../assets/cake6.png';
+
+interface Props {
+    setNumLeftMobileF: any,
+}
 
 function SalesHistoryPC (){
     return(
@@ -11,9 +19,24 @@ function SalesHistoryPC (){
                 <h3>판매내역</h3>
                 <span>이전에 판매된 내역입니다.</span>
                 <div className='order-view-type'>
-                    <Link to='/FullCalendarApp' className='order-view view-calander'>달력보기</Link>
+                    <Link
+                        to='/FullCalendarApp'
+                        className='order-view view-calander'
+                        onClick={()=>{
+                            designClick("FullCalendarApp");
+                            sellerDesignClick("FullCalendarApp");
+                        }}
+                    >달력보기</Link>
                     |
-                    <Link to='/SellerOrder' className='order-view view-list' style={{ color: "#ea5450", }}>목록보기</Link>
+                    <Link
+                        to='/SellerOrder'
+                        className='order-view view-list' 
+                        onClick={()=>{
+                            designClick("SalesHistory");
+                            sellerDesignClick("SalesHistory");
+                        }}
+                        style={{ color: "#ea5450", }}
+                    >목록보기</Link>
                 </div>
             </div>
             <div className="history-contents">
