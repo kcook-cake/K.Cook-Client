@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/mypage/OrderHistory.scss';
-import '../../styles/seller/SellerOrder.scss';
+import '../../styles/seller/SSO_SSH.scss';
 
 import cake6 from   '../../assets/cake6.png';
 import SellerOrderPC from 'src/components/seller/pc/SellerOrderPC';
@@ -15,6 +14,5 @@ function SellerOrder (){
         </>
     )
 }
-
 
 export default SellerOrder;

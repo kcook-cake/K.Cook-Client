@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../../styles/card/MMMCard.scss';
+import '../../../../styles/card/mypage/MMS_MC_MobileCard.scss';
 
-interface MPRMCardProps {
+interface Props {
     getData: any,
     box: any,
 }
 
-function MMMCard({getData, box}: MPRMCardProps) {
+function MMS_MC_MobileCard({getData, box}: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
@@ -57,4 +57,4 @@ function MMMCard({getData, box}: MPRMCardProps) {
     );
 }
 
-export default MMMCard;
+export default MMS_MC_MobileCard;

@@ -1,0 +1,17 @@
+@import "../reset.scss";
+
+.sso-pc, .ssh-pc {
+  
+}
+.ssom, .sshm {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .sso-pc, .ssh-pc {
+    display: none;
+  }
+  .ssom, .sshm {
+    display: block;
+  }
+}

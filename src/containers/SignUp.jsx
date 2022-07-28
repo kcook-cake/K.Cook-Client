@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "../styles/SignUp.scss";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
+import $ from "jquery";
+
+import "../styles/common/LoginSignup.scss";
+import "../styles/SignUp.scss";
 
 import PopupDom from "../components/PopupDom.js";
 import PostCode from "../components/PostCode.js";
-import LoginCheckbox from "../components/LoginCheckbox.js";
+import LoginCheckbox from "../components/LoginCheckbox";
 
 import logo from "../assets/logo.png";
 
@@ -251,104 +253,108 @@ function SignUp() {
     }
   };
 
+  useEffect(()=>{
+    $(".hm-pc-flex").hide();
+  },[]);
+
   return (
-    <div className="login">
-      <div className="login-section">
+    <div className="login-flex">
+      <div className="login">
         <img src={logo} className="logo" />
         <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
         
-        <p className="login-list">아이디</p>
+        <p className="login-center">아이디</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="text"
           onChange={handleId}
           value={signInId}
           placeholder="3~20자 입력 / 영어, 숫자만 가능"
         ></input>
         {signInIdFail ?
-          <p className="confirm-text">아이디 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text">아이디 형식이 맞지 않습니다.</p>
           : null
         }
         {signInIdFailD ?
-          <p className="confirm-text">중복된 아이디입니다.</p>
+          <p className="signup-confirm-text">중복된 아이디입니다.</p>
           : null
         }
 
-        <p className="login-list">비밀번호</p>
+        <p className="login-center">비밀번호</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="password"
           onChange={handlePassword}
           value={password}
           placeholder="8자 이상 입력"
         ></input>
         {passwordFail ?
-          <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>비밀번호 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>비밀번호 형식이 맞지 않습니다.</p>
           : null
         }
         <input
-          className="input-id login-input"
+          className="login-input"
           type="password"
           placeholder="비밀번호 재입력"
           onChange={handleCheckPassword}
           value={chPassword}
         ></input>
         {chPasswordFail ?
-          <p className="confirm-text">비밀번호가 일치하지 않습니다.</p>
+          <p className="signup-confirm-text">비밀번호가 일치하지 않습니다.</p>
           : null
         }
         
-        <p className="login-list">생일</p>
+        <p className="login-center">생일</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="date"
           onChange={handleBirthday}
           value={birthday}
           placeholder="yyyy-mm-dd"
         ></input>
-        <p className="confirm-text"></p>
+        <p className="signup-confirm-text"></p>
         {birthdayFail ?
-          <p className="confirm-text">생일 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text">생일 형식이 맞지 않습니다.</p>
           : null
         }
         
-        <p className="login-list">닉네임</p>
+        <p className="login-center">닉네임</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="text"
           onChange={handleNickname}
           value={nickname}
           placeholder="3~20자 입력 / 한글, 영어, 숫자만 가능"
         ></input>
         {nicknameFail ?
-          <p className="confirm-text">닉네임 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text">닉네임 형식이 맞지 않습니다.</p>
           : null
         }
         {nicknameFailD ?
-          <p className="confirm-text">중복된 이름(닉네임)입니다.</p>
+          <p className="signup-confirm-text">중복된 이름(닉네임)입니다.</p>
           : null
         }
 
-        <p className="login-list">이메일</p>
+        <p className="login-center">이메일</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="email"
           onChange={handleEmail}
           value={email}
           placeholder="xxx@xxx.xxx"
         ></input>
         {emailFail ?
-          <p className="confirm-text">이메일 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text">이메일 형식이 맞지 않습니다.</p>
           : null
         }
         {emailFailD ?
-          <p className="confirm-text">중복된 이메일입니다.</p>
+          <p className="signup-confirm-text">중복된 이메일입니다.</p>
           : null
         }
 
-        <p className="login-list">주소</p>
+        <p className="login-center">주소</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="text"
           placeholder="지번, 도로명, 건물명으로 검색"
           onClick={openclosePostCode}
@@ -367,74 +373,64 @@ function SignUp() {
           )}
         </div>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="text"
           placeholder="상세주소 입력"
           onChange={handleAddress}
           value={address}
         ></input>
         {addressFail ?
-          <p className="confirm-text">주소 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text">주소 형식이 맞지 않습니다.</p>
           : null
         }
 
-      <p className="login-list">휴대폰 번호(숫자만)</p>
-        {/* <div className="login-input phone-confirm"> */}
-          <input
-            className="login-input input-num"
-            type="tel"
-            onChange={handlePhone}
-            value={phoneNumber}
-            placeholder="번호 입력"
-          ></input>
-          {phonejwToken == "" ?
-            <></>:
-            <button
-              className="input-btn"
-              onClick={onSMS}
-            >인증문자 발송</button>
-          }
-        {/* </div> */}
+        <p className="login-center">휴대폰 번호(숫자만)</p>
+        <input
+          className="login-input"
+          type="tel"
+          onChange={handlePhone}
+          value={phoneNumber}
+          placeholder="번호 입력"
+        ></input>
+        {phonejwToken == "" ?
+          <></>:
+          <button
+            className="phone-input-btn"
+            onClick={onSMS}
+          >인증문자 발송</button>
+        }
         {phoneFail ?
-          <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
+          <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
           : null
         }
         {phoneSmsFail ?
-          <p className="confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호를 인증하셔야 합니다.</p>
+          <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호를 인증하셔야 합니다.</p>
           : null
         }
-        {/* <div className="login-input phone-confirm">
-          <input
-            className="input-num"
-            type="tel"
-            onChange={handlePhoneSign}
-            value={phoneSign}
-            placeholder="인증번호 입력"
-          ></input>
-          <button
-            className="input-btn"
-            onClick={onSMSCheck}
-          >확인하기</button>
-        </div>
-        {phoneFailD ?
-          <p className="confirm-text">인증번호가 일치하지 않습니다.</p>
-          : null
-        } */}
 
-        <div id="wrap"></div>
+        {/* <div id="wrap"></div> */}
 
-        <div className="agreement">
+        <div className="signup-agreement">
           <input
             type="checkbox"
             id="AgreeAll"
-            onChange={(e) => onCheckAll(e.target.checked)}
+            onChange={(e) => 
+              onCheckAll(e.target.checked)
+            }
           ></input>
           <label for="AgreeAll">전체동의</label>
         </div>
-        <div className="agreement-sub">
-          {checkboxs.map(data => <LoginCheckbox description={data.description} show={data.show} checkedItems={checkedItems} checkedItemHandler={checkedItemHandler} />)}
+        <div className="signup-agreement-sub">
+          {checkboxs.map(data => 
+            <LoginCheckbox 
+              description={data.description} 
+              show={data.show} 
+              checkedItems={checkedItems} 
+              checkedItemHandler={checkedItemHandler} 
+            />
+          )}
         </div>
-        <button 
+        <button
           className="login-btn"
           onClick={onClickSignUp}
           disabled={
@@ -443,6 +439,7 @@ function SignUp() {
         >
         가입하기
         </button>
+
           {failModal === true ? (
             // <CSSTransition
             //   in={modalCSS}
@@ -450,7 +447,7 @@ function SignUp() {
             //   className="wow"
             //   nodeRef={nodeRef}
             // >
-            <div className="iscorrect-login" ref={nodeRef}>
+            <div className="login-iscorrect" ref={nodeRef}>
               회원가입 정보가 일치하지 않습니다.
             </div>
           ) : // </CSSTransition>

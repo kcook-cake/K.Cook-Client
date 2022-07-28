@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import '../../../styles/mypage/ProductReview.scss';
-import '../../../styles/mypage/Membership.scss';
 
-import MMMCard from '../card/MMMCard';
+import MMS_MC_MobileCard from '../card/mobile/MMS_MC_MobileCard';
 
 function MembershipMobile (){
     const [data, setData] = useState([]);
@@ -15,7 +13,7 @@ function MembershipMobile (){
             });
     },[]);
     return(
-        <div className="mp-top mmm mypage-mobile">
+        <div className="mmm mypage-mobile">
             <div className="mmm-box mprm-box">
                 <div className="title">
                     적립금
@@ -25,7 +23,7 @@ function MembershipMobile (){
                     </div>
                 </div>
                 <div className="content">
-                    <MMMCard getData={data} box={true}/>
+                    <MMS_MC_MobileCard getData={data} box={true}/>
                 </div>
             </div>
         </div>

@@ -1,27 +1,13 @@
 @import "../reset.scss";
 
-.spmp {
+.spm-pc {
 
 }
 .spmm {
   display: none;
 }
 
-.management-card {
-  width: 848px;
-  position: relative;
-  margin-bottom: 20px;
-  display: flex;
 
-  height: 230px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-  background-color: #fefefe;
-  // background-color: red;
-}
-.move-tap {
-  padding-left: 380px;
-}
 .management-tap {
   position: absolute;
   right: 0;
@@ -34,12 +20,6 @@
   button {
     padding: 0;
   }
-}
-.management-section {
-  margin: 0 0 0 30px;
-}
-.management-content {
-  display: flex;
 }
 
 // 추가 카드 부분
@@ -99,7 +79,7 @@
 }
 
 @media (max-width: 767px) {
-  .spmp {
+  .spm-pc {
     display: none;
   }
   .spmm,

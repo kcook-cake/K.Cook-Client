@@ -1,10 +1,18 @@
-import React from 'react';
-import '../../../styles/mypage/Coupon.scss';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import MC_PcCard from '../card/pc/MC_PcCard';
 
 function CouponsPC (){
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        axios.get(`/app/cakes`)
+            .then(res =>{
+                setData(res.data.result.content);
+            });
+    },[]);
     return(
-        <div className="mp-top coupon mcp">
-        <div className="mypage-top coupon-top">
+        <div className="seller-mypage-top-flex coupon mcp">
+        <div className="seller-mypage-top coupon-top">
             <h3>내 쿠폰 : 3장</h3>
             <div className="coupon-code">
                 <input placeholder="할인 쿠폰 번호를 입력하세요"></input>
@@ -12,30 +20,7 @@ function CouponsPC (){
             </div>
         </div>
         <div className="coupon-list">
-            <div className="coupon-card">
-                <h3 className="coupon-price">30000원</h3>
-                <p className="coupon-name">오늘만 반값, 여름 특별 할인 쿠폰</p>
-                <div className="coupon-bottom">
-                    <div className="coupon-duedate">D-5</div>
-                    <button className="using-coupon">사용하러 가기 &gt;</button>
-                </div>
-            </div>
-            <div className="coupon-card">
-                <h3 className="coupon-price">30000원</h3>
-                <p className="coupon-name">오늘만 반값, 여름 특별 할인 쿠폰</p>
-                <div className="coupon-bottom">
-                    <div className="coupon-duedate">D-5</div>
-                    <button className="using-coupon">사용하러 가기 &gt;</button>
-                </div>
-            </div>
-            <div className="coupon-card">
-                <h3 className="coupon-price">30000원</h3>
-                <p className="coupon-name">오늘만 반값, 여름 특별 할인 쿠폰</p>
-                <div className="coupon-bottom">
-                    <div className="coupon-duedate">D-5</div>
-                    <button className="using-coupon">사용하러 가기 &gt;</button>
-                </div>
-            </div>
+            <MC_PcCard getData={data} />
             
         </div>
 

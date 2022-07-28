@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import '../../../styles/HeaderMobile.scss';
+import '../../../styles/HMMobile.scss';
 
 import $ from 'jquery';
 
 import isSession from '../../../utils/isSession';
-import designClick from '../../../utils/designClick';
+import LinkClick from '../../../utils/LinkClick';
 
 function HMCard({ setNumLeftMobileF }) {
     //로그인 여부
@@ -25,7 +25,7 @@ function HMCard({ setNumLeftMobileF }) {
         var pathname = window.location.pathname;
         if (pathname == "/") pathname = "/Home";
         pathname = pathname.split("/")[1];
-        designClick(pathname);
+        LinkClick(pathname);
         isSession(
             (s)=>{
             if (s) setSession(s);
@@ -34,30 +34,30 @@ function HMCard({ setNumLeftMobileF }) {
             setAuth(a);
             },
         );
-        $(".header-main").on('scroll touchmove mousewheel', (e) => {
+        $(".header-flex").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
             });
-        $(".hm-title").on('scroll touchmove mousewheel', (e) => {
+        $(".hm-mobile-title").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
             });
-        $(".hm-background").on('scroll touchmove mousewheel', (e) => {
+        $(".hm-mobile-background").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
         });
     }, []);
     return (
         <>
-            <div className="hm-left">
-                <div className="hm-title">케이쿡</div>
+            <div className="hm-mobile-left">
+                <div className="hm-mobile-title">케이쿡</div>
                 <hr/>
-                <div className="hm-link">
+                <div className="hm-mobile-link-flex">
                     {session ? 
-                        <div className="hm-link-inner">
+                        <div className="hm-mobile-link">
                             <Link
                                 to="/"
-                                className="header"
+                                className="header-link Logout"
                                 onClick={() => {
                                     sessionStorage.removeItem("jwToken")
                                     sessionStorage.removeItem("session")
@@ -68,27 +68,27 @@ function HMCard({ setNumLeftMobileF }) {
                             </Link>
                         </div>:
                         <>
-                            <div className="hm-link-inner">
+                            <div className="hm-mobile-link">
                                 <Link
                                     to="/SignUp"
-                                    className="header SignUp"
+                                    className="header-link SignUp"
                                     onClick={()=>{
                                         setNumLeftMobileF(1);
-                                        designClick("SignUp");
-                                        $(".hm").hide();
+                                        LinkClick("SignUp");
+                                        $(".hm-mobile").hide();
                                     }}
                                 >
                                     회원가입
                                 </Link>
                             </div>
-                            <div className="hm-link-inner">
+                            <div className="hm-mobile-link">
                                 <Link
                                     to="/Login"
-                                    className="header Login"
+                                    className="header-link Login"
                                     onClick={()=>{
                                         setNumLeftMobileF(1);
-                                        designClick("Login");
-                                        $(".hm").hide();
+                                        LinkClick("Login");
+                                        $(".hm-mobile").hide();
                                     }}
                                 >
                                     로그인
@@ -96,100 +96,101 @@ function HMCard({ setNumLeftMobileF }) {
                             </div>
                         </>
                     }
-                    <div className="hm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/"
-                            className="header Home"
+                            className="header-link Home"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                designClick("Home");
-                                $(".hm").hide();
+                                LinkClick("Home");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             홈
                         </Link>
                     </div>
-                    <div className="hm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/TodaysRec"
-                            className="header TodaysRec"
+                            className="header-link TodaysRec"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                designClick("TodaysRec");
-                                $(".hm").hide();
+                                LinkClick("TodaysRec");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             오늘의 추천
                         </Link>
                     </div>
-                    <div className="hm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/Cake"
-                            className="header Cake"
+                            className="header-link Cake"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                designClick("Cake");
-                                $(".hm").hide();
+                                LinkClick("Cake");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             케이크
                         </Link>
                     </div>
-                    <div className="hm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/MoreItem"
-                            className="header MoreItem"
+                            className="header-link MoreItem"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                designClick("MoreItem");
-                                $(".hm").hide();
+                                LinkClick("MoreItem");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             추가 상품
                         </Link>
                     </div>
-                    <div className="hm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/CS"
-                            className="header CS"
+                            className="header-link CS"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                designClick("CS");
-                                $(".hm").hide();
+                                LinkClick("CS");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             고객지원
                         </Link>
                     </div>
                     {session ? 
-                        <div className="hm-link-inner">
+                        <>
+                        <div className="hm-mobile-link">
                             <Link
                                 to="/SellerOrder"
-                                className="header SellerOrder"
+                                className="header-link SellerOrder"
                                 onClick={()=>{
                                     setNumLeftMobileF(2);
-                                    designClick("SellerOrder");
-                                    $(".hm").hide();
+                                    LinkClick("SellerOrder");
+                                    $(".hm-mobile").hide();
                                 }}
                             >
                                 판매자로 전환
                             </Link>
-                        </div>: <></>
-                    }
-                    {session ? 
-                        <div className="hm-link-inner">
+                        </div>
+                        <div className="hm-mobile-link">
                             <Link
                                 to="/MypageOrder"
-                                className="header MypageOrder"
+                                className="header-link MypageOrder"
                                 onClick={()=>{
                                     setNumLeftMobileF(3);
-                                    designClick("MypageOrder");
-                                    $(".hm").hide();
+                                    LinkClick("MypageOrder");
+                                    $(".hm-mobile").hide();
                                 }}
                             >
                                 마이페이지
                             </Link>
-                        </div>: <></>
+                        </div>
+                        </>
+                        : <></>
                     }
                 </div>
             </div>

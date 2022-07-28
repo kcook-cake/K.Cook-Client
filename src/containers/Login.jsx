@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Transition, CSSTransition } from "react-transition-group";
-import "../styles/Login.scss";
-
 import axios from "axios";
+import $ from 'jquery';
+
+import "../styles/common/LoginSignup.scss";
+import "../styles/Login.scss";
 
 import isSession from "src/utils/isSession";
 import logo from "../assets/logo.png";
@@ -60,6 +62,7 @@ function Login() {
 
   // 페이지 렌더링 후 가장 처음 호출되는 함수
   useEffect(() => {
+    $(".hm-pc-flex").hide();
     },
     // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
     //업데이트될 때는 useEffect() 실행하지 말아주세요 라는 뜻
@@ -77,35 +80,39 @@ function Login() {
   const nodeRef = React.useRef(null);
 
   return (
-    <div className="login">
-      <form className="login-section" onSubmit={handleSubmit}>
+    <div className="login-flex">
+      <form className="login" onSubmit={handleSubmit}>
         <img src={logo} className="logo" />
-        <h1 className="login-title">나만의 케이크 주문, 케이쿡</h1>
-        <p className="login-list">아이디</p>
+        <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
+        
+        <p className="login-center">아이디</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="text"
           value={signInId}
           placeholder="아이디입력"
-          disabled={disabled}
+          // disabled={disabled}
           onChange={handleInputId}
         ></input>
-        <p className="login-list">비밀번호</p>
+        <p className="login-center">비밀번호</p>
         <input
-          className="input-id login-input"
+          className="login-input"
           type="password"
           value={password}
           placeholder="비밀번호 입력"
           autoComplete="on"
           onChange={handleInputPw}
         ></input>
+
+        {/* id = loginAuto 안쓰이는 중 */}
         <div className="login-sub">
-          <div className="auto-login">
-            <input type="checkbox" id="autoLogin"></input>
-            <label htmlFor="autoLogin">자동 로그인</label>
+          <div className="login-auto">
+            <input type="checkbox" id="loginAuto"></input>
+            <label htmlFor="loginAuto">자동 로그인</label>
           </div>
           <Link to="/">비밀번호찾기</Link>
         </div>
+
         <button
           type="submit"
           className="login-btn"
@@ -116,7 +123,8 @@ function Login() {
         >
           로그인
         </button>
-        <div className="login-go-to-register">
+
+        <div className="login-register">
           아직 계정이 없으신가요?
           <Link to="/SignUp">가입하기</Link>
           {failModal === true ? (
@@ -126,12 +134,13 @@ function Login() {
             //   className="wow"
             //   nodeRef={nodeRef}
             // >
-            <div className="iscorrect-login" ref={nodeRef}>
+            <div className="login-iscorrect" ref={nodeRef}>
               로그인 정보가 일치하지 않습니다.
             </div>
           ) : // </CSSTransition>
           null}
         </div>
+
       </form>
     </div>
   );

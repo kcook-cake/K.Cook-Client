@@ -21,7 +21,7 @@ const LoginCheckbox = ({ description, show, checkedItems, checkedItemHandler }) 
         <div className="check-agreement">
         <input
             type="checkbox"
-            id="autoLogin"
+            id="signupAuto"
             checked={isChecked}
             value={description}
             onChange={e => onCheck(e)}

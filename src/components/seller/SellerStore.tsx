@@ -10,7 +10,7 @@ function SellerStore (){
     return(
         <div className="seller-block">
         <div className="seller-store">
-            <div className="mypage-top seller-store-top">
+            <div className="seller-mypage-top seller-store-top">
                 <h3>스토어 정보</h3>
             </div>
             <div className="profile-list">

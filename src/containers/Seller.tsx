@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
-import '../../src/styles/seller/Seller.scss'
+import '../../src/styles/seller/Seller.scss';
+import '../styles/common/AllSeller.scss';
 
-import SellerSection from '../containers/seller/SellerSection';
+import SellerSection from '../components/seller/SellerSection';
 import SellerOrder from '../containers/seller/SellerOrder';
 import SalesHistory from '../containers/seller/SalesHistory';
 import ProductManagement from '../containers/seller/ProductManagement';
 import SellerReview from '../containers/seller/SellerReview';
 import SellerStore from '../components/seller/SellerStore';
 
-import Pages from './index';
 import FullCalendarApp from '../containers/seller/FullCalendarApp';
-
-interface Props {
-    setNumLeftMobileF: any,
-}
 
 const Seller = () =>{
     const [pathname, setPathname] = useState("");

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import '../../../styles/mypage/OrderHistory.scss';
-import '../../../styles/seller/SellerOrder.scss';
 
-import designClick from '../../../utils/designClick';
-import sellerDesignClick from 'src/utils/sellerDesignClick';
+import LinkClick from '../../../utils/LinkClick';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
 
 import cake6 from   '../../../assets/cake6.png';
-import SSOMCard from '../card/SSOMCard';
+import SSO_SSH_MobileCard from '../card/mobile/SSO_SSH_MobileCard';
 
 function SalesHistoryMobile (){
     const [data, setData] = useState([]);
@@ -19,7 +17,7 @@ function SalesHistoryMobile (){
             });
     },[]);
     return(
-        <div className="mp-top product-review sshm mypage-mobile">
+        <div className="product-review sshm mypage-mobile">
             <div className="mprm-box">
                 <div className="title">
                     <div className="ssom-front-title">판매내역</div>
@@ -27,14 +25,14 @@ function SalesHistoryMobile (){
                     <Link
                         to="/FullCalendarApp"
                         onClick={()=>{
-                            designClick("FullCalendarApp");
-                            sellerDesignClick("FullCalendarApp");
+                            LinkClick("FullCalendarApp");
+                            sellerLinkClick("FullCalendarApp");
                         }}
                     ><div className="ssom-calendar">달력보기</div></Link>
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SSOMCard getData={data}/>
+                    <SSO_SSH_MobileCard getData={data}/>
                 </div>
             </div>
         </div>

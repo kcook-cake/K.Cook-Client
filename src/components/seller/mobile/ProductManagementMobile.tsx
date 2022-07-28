@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import '../../../styles/mypage/OrderHistory.scss';
-import '../../../styles/seller/ProductManagement.scss';
 
-import SSRMCard from '../card/SSRMCard';
-import SPMCardOption from '../card/SPMCardOption';
+import SPM_SSR_MobileCard from '../card/mobile/SPM_SSR_MobileCard';
+import SPM_MobileCard_Add from '../card/mobile/SRM_MobileCard_Add';
 
 import cake6 from   '../../../assets/cake6.png';
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
@@ -42,7 +40,7 @@ function ProductManagementMobile (){
             });
     },[]);
     return(
-        <div className="mp-top spmm mypage-mobile">
+        <div className="spmm mypage-mobile">
             <div className="ssrm-box mprm-box">
                 <div className="title">
                     <div
@@ -52,7 +50,7 @@ function ProductManagementMobile (){
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SSRMCard getData={data} box={true}/>
+                    <SPM_SSR_MobileCard getData={data} box={true}/>
                 </div>
 
                 <div></div> {/* 추가하면 여기에 들어갈 것임 */}
@@ -79,7 +77,7 @@ function ProductManagementMobile (){
                                 <AddIcon />
                             </button>
                             <div className="spmm-option">
-                                <SPMCardOption setAddOptionF={setAddOption} getData={addOption}/>
+                                <SPM_MobileCard_Add setAddOptionF={setAddOption} getData={addOption}/>
                             </div>
                         </div>
                         <div className="sprmcard-img">

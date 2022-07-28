@@ -5,14 +5,12 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import $ from 'jquery';
-import '../../../styles/mypage/OrderHistory.scss';
-import '../../../styles/seller/SellerOrder.scss';
 import '../../../styles/FullCalendarApp.scss';
 
 import FullCalendarSeller from '../../../utils/FullCalendarSeller';
 import isSession from '../../../utils/isSession';
-import designClick from 'src/utils/designClick';
-import sellerDesignClick from 'src/utils/sellerDesignClick';
+import LinkClick from 'src/utils/LinkClick';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
 
 function FullCalendarAppMobile (){
   //모달창
@@ -45,13 +43,13 @@ function FullCalendarAppMobile (){
   const [events, setEvents] = useState([{}]);
 
   useEffect(()=> {
-    const height1 = document.getElementById('header-main-id') as Element;
+    const height1 = document.getElementById('header-flex-id') as Element;
     const height2 = document.getElementById('fcam') as Element;
     setModalHeight(height1.clientHeight+height2.clientHeight);
 
     // $(".seller").css("display", "block");
     // $(".seller-section").hide();
-    $(".seller-order").css("margin", "auto");
+    $(".sso-pc").css("margin", "auto");
     // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
     // const yM = yearMonth.textContent;
     // yearMonth.innerHTML = `${yM?.split("/")[1]}.${yM?.split("/")[0]}`;
@@ -76,7 +74,7 @@ function FullCalendarAppMobile (){
   // /SellerOrder/{id}
   // style={{ top: (modalHeight-window.pageYOffset-209)+"px", }}
   return(
-    <div id="fcam" className="mp-top seller-order-calendar fcam">
+    <div id="fcam" className="seller-order-calendar fcam">
       {modalFail ? 
       <div className="calendar-modal-flex fcam">
         <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}>
@@ -90,8 +88,8 @@ function FullCalendarAppMobile (){
             <Link
               to="/SellerOrder"
               onClick={()=>{
-                designClick("SellerOrder");
-                sellerDesignClick("SellerOrder");
+                LinkClick("SellerOrder");
+                sellerLinkClick("SellerOrder");
               }}
             >
               <button className="calendar-button">예약 확인</button> 
@@ -105,30 +103,17 @@ function FullCalendarAppMobile (){
       </div>
         :<></>
       }
-      <div className="mypage-top-calendar seller-order-top-calendar"> {/* mypage-top */}
+      <div className="seller-order-top-calendar"> {/* mypage-top */}
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
         <Link
           to="/SellerOrder"
           onClick={()=>{
-            designClick("SellerOrder");
-            sellerDesignClick("SellerOrder");
+            LinkClick("SellerOrder");
+            sellerLinkClick("SellerOrder");
           }}
         >
           <button className='calendar-mypage'>&lt;&nbsp;마이페이지</button>
         </Link>
-        {/* <h3 className='calendar-complete'>주문확인</h3>
-        <div className='order-view-type'>
-          <Link to='/FullCalendarApp' className='order-view view-calander' style={{ color: "#ea5450", }}>달력보기</Link>
-          |
-          <Link
-            to='/SellerOrder'
-            className='order-view view-list'
-            onClick={()=>{
-              $(".seller-section").show();
-              $(".seller-order").css("margin", "0");
-            }}
-          >목록보기</Link>
-        </div> */}
       </div>
       <div className="seller-calendar">
         <FullCalendar
@@ -157,7 +142,7 @@ function FullCalendarAppMobile (){
           eventColor="red"
           nowIndicator
           dateClick={(e) => {
-            const height1 = document.getElementById('header-main-id') as Element;
+            const height1 = document.getElementById('header-flex-id') as Element;
             const height2 = document.getElementById('fcam') as Element;
             setModalHeight(height1.clientHeight+height2.clientHeight);
 
@@ -190,7 +175,7 @@ function FullCalendarAppMobile (){
             // $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "#fff");
           }}
           eventClick={(e) => {
-            const height1 = document.getElementById('header-main-id') as Element;
+            const height1 = document.getElementById('header-flex-id') as Element;
             const height2 = document.getElementById('fcam') as Element;
             setModalHeight(height1.clientHeight+height2.clientHeight);
 

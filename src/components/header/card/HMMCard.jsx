@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import '../../../styles/HeaderMobile.scss';
+import '../../../styles/HMMobile.scss';
 
 import $ from 'jquery';
 
 import isSession from '../../../utils/isSession';
-import designClick from '../../../utils/designClick';
-import mypageDesignClick from 'src/utils/mypageDesignClick';
+import LinkClick from '../../../utils/LinkClick';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
 
 function HMMCard({ setNumLeftMobileF }) {
     //pathname, parameter 가져오기
     var pathname = window.location.pathname;
     if (pathname == "/") pathname = "/Home";
     pathname = pathname.split("/")[1];
-    designClick(pathname);
+    LinkClick(pathname);
+    mypageLinkClick(pathname);
     //로그인 여부
     const [session, setSession] = useState(false);
     const [auth, setAuth] = useState({
@@ -35,90 +36,90 @@ function HMMCard({ setNumLeftMobileF }) {
                 setAuth(a);
             },
         );
-        $(".header-main").on('scroll touchmove mousewheel', (e) => {
+        $(".header-flex").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
             });
-        $(".hm-title").on('scroll touchmove mousewheel', (e) => {
+        $(".hm-mobile-title").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
             });
-        $(".hm-background").on('scroll touchmove mousewheel', (e) => {
+        $(".hm-mobile-background").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
         });
     }, []);
     return (
         <>
-            <div className="hmm-left">
-                <div className="hmm-title">케이쿡</div>
+            <div className="hm-mobile-left">
+                <div className="hm-mobile-title">케이쿡</div>
                 <hr/>
-                <div className="hmm-link">
-                    <div className="hmm-link-inner">
+                <div className="hm-mobile-link-flex">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/MypageOrder"
-                            className="header MypageOrder"
+                            className="header-link MypageOrder"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                designClick("MypageOrder");
-                                mypageDesignClick("MypageOrder");
-                                $(".hm").hide();
+                                LinkClick("MypageOrder");
+                                mypageLinkClick("MypageOrder");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             주문내역
                         </Link>
                     </div>
-                    <div className="hmm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/ProductReview"
-                            className="header ProductReview"
+                            className="header-link ProductReview"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                designClick("ProductReview");
-                                mypageDesignClick("ProductReview");
-                                $(".hm").hide();
+                                LinkClick("ProductReview");
+                                mypageLinkClick("ProductReview");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             상품후기
                         </Link>
                     </div>
-                    <div className="hmm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/Membership"
-                            className="header Membership"
+                            className="header-link Membership"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                designClick("Membership");
-                                mypageDesignClick("Membership");
-                                $(".hm").hide();
+                                LinkClick("Membership");
+                                mypageLinkClick("Membership");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             적립금
                         </Link>
                     </div>
-                    <div className="hmm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/Coupon"
-                            className="header Coupon"
+                            className="header-link Coupon"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                designClick("Coupon");
-                                mypageDesignClick("Coupon");
-                                $(".hm").hide();
+                                LinkClick("Coupon");
+                                mypageLinkClick("Coupon");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             쿠폰
                         </Link>
                     </div>
-                    <div className="hmm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/Profile"
-                            className="header Profile"
+                            className="header-link Profile"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                designClick("Profile");
-                                mypageDesignClick("Profile");
-                                $(".hm").hide();
+                                LinkClick("Profile");
+                                mypageLinkClick("Profile");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             회원정보

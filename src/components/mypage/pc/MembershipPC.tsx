@@ -1,11 +1,19 @@
-import React from 'react';
-import '../../../styles/mypage/Membership.scss';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import MMS_PcCard from '../card/pc/MMS_PcCard';
 
 function MembershipPC (){
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        axios.get(`/app/cakes`)
+            .then(res =>{
+                setData(res.data.result.content);
+            });
+    },[]);
     return(
 
-        <div className="mp-top membership mmp">
-            <div className="mypage-top">
+        <div className="seller-mypage-top-flex membership mmp">
+            <div className="seller-mypage-top">
                 <h3>적립금</h3>
                 <span>구매 및 후기 작성으로 현금처럼 쓸 수 있는 포인트를 받으세요</span>
                 <div className="membership-sum">합계 : 
@@ -20,27 +28,8 @@ function MembershipPC (){
                     <div>가격</div>
                     <div>적립금</div>
                 </div>
-                <div className="membership-data">
-                    <div>하트볼터치 곰돌이 케이크</div>
-                    <div>원모먼트</div>
-                    <div>2021. 03. 11</div>
-                    <div>29,000</div>
-                    <div>2,900원</div>
-                </div>
-                <div className="membership-data">
-                    <div>하트볼터치 곰돌이 케이크</div>
-                    <div>원모먼트</div>
-                    <div>2021. 03. 11</div>
-                    <div>29,000</div>
-                    <div>2,900원</div>
-                </div>
-                <div className="membership-data">
-                    <div>하트볼터치 곰돌이 케이크</div>
-                    <div>원모먼트</div>
-                    <div>2021. 03. 11</div>
-                    <div>29,000</div>
-                    <div>2,900원</div>
-                </div>
+
+                <MMS_PcCard getData={data} />
                 <div className="membership-data">
 
                 </div>

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import '../../../styles/seller/SellerReview.scss';
-import '../../../styles/card/SSRMCard.scss';
-import '../../../styles/card/SSOMCard.scss';
 
 import cake6 from   '../../assets/cake6.png';
-import SSRMCard from '../card/SSRMCard';
+import SPM_SSR_MobileCard from '../card/mobile/SPM_SSR_MobileCard';
 
 function SellerReviewMobile (){
     const [data, setData] = useState([]);
@@ -17,7 +14,7 @@ function SellerReviewMobile (){
             });
     },[]);
     return(
-        <div className="mp-top ssrm mypage-mobile">
+        <div className="mypage-mobile ssrm">
             <div className="ssrm-box mprm-box">
                 <div className="title">
                     <div className="ssom-front-title">상품후기</div>
@@ -25,7 +22,7 @@ function SellerReviewMobile (){
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SSRMCard getData={data} box={false}/>
+                    <SPM_SSR_MobileCard getData={data} box={false}/>
                 </div>
             </div>
         </div>

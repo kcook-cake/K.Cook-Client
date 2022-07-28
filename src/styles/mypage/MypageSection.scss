@@ -1,37 +1,33 @@
 @import "../reset.scss";
 
-.msp {
+.ms-flex {
   color: #fff;
   // margin-left: $basic-padding;
   margin-right: 90px;
-}
 
-.side-bar {
-  position: relative;
-  width: 240px;
-  min-height: 100vh;
-  height: 100%;
-  padding-top: 80px;
-  background-color: $pink;
-
-  .name {
-    margin-left: 34px;
-    margin-bottom: 2px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .email {
-    margin-left: 34px;
-    margin-bottom: 60px;
-    font-size: 14px;
+  .icon {
+    margin: 0 15px 0 0;
+    stroke: #fff;
+    text,
+    tspan,
+    circle,
+    line,
+    ellipse,
+    path {
+      stroke: #fff;
+    }
+    text {
+      fill: #fff;
+    }
   }
 }
-.mypage-menu-item {
+
+.ms-menu {
   margin-left: 33px;
   margin-bottom: 20px;
 }
 
-.mypage-menu-link {
+.ms-link {
   margin: 0 0 15px 0;
   padding: 15px 20px;
   display: flex;
@@ -46,52 +42,13 @@
   }
 }
 
-.mypage-icon {
-  margin: 0 15px 0 0;
-  stroke: #fff;
-  text,
-  tspan,
-  circle,
-  line,
-  ellipse,
-  path {
-    stroke: #fff;
-  }
-  text {
-    fill: #fff;
-  }
-}
-
-.customer-center {
-  display: flex;
-  align-items: center;
-  position: absolute;
+.ms-footer {
   bottom: 35px;
   left: 48px;
 }
 
-.mypage-menu-link:focus {
-  background-color: #fff;
-  color: $pink;
-  font-weight: bold;
-  text,
-  circle,
-  path,
-  g,
-  tspan,
-  ellipse,
-  line {
-    stroke: $pink;
-  }
-}
-
-.mypage-menu-item:focus,
-.icon:focus {
-  background-color: #fff;
-}
-
 @media (max-width: 767px) {
-  .msp {
+  .ms-flex {
     display: none;
   }
 }

@@ -1,16 +1,16 @@
 import React from 'react';
-import '../../../styles/card/MPRMCard.scss';
+import '../../../../styles/card/mypage/MPR_MobileCard.scss';
 
 import star from 'src/utils/star';
 
 import { start } from 'repl';
 
 
-interface MPRMCardProps {
+interface Props {
     getData: any
 }
 
-function MPRMCard({getData}: MPRMCardProps) {
+function MPR_MobileCard({getData}: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
@@ -71,4 +71,4 @@ function MPRMCard({getData}: MPRMCardProps) {
     );
 }
 
-export default MPRMCard;
+export default MPR_MobileCard;

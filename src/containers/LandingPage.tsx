@@ -232,7 +232,6 @@ function LandingPage() {
             <div className="input-email">
               {/* <span className="landing-mobile">휴대폰번호</span> */}
               <input
-                className="input-num"
                 type="tel"
                 onChange={handlePhone}
                 value={phoneNumber}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import '../styles/Footer.scss';
 
-import designClick from "../utils/designClick";
+import LinkClick from "../utils/LinkClick";
 
 interface FooterProps {
     setNumLeftMobileF: any,
@@ -29,7 +29,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/"
                         className="footer-right"
                         onClick={()=>{
-                            designClick("Home");
+                            LinkClick("Home");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>홈</dt></Link>
@@ -37,7 +37,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/TodaysRec"
                         className="footer-right"
                         onClick={()=>{
-                            designClick("TodaysRec");
+                            LinkClick("TodaysRec");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>오늘의 추천</dt></Link>
@@ -45,7 +45,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/Cake"
                         className="footer-right"
                         onClick={()=>{
-                            designClick("Cake");
+                            LinkClick("Cake");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>케이크</dt></Link>
@@ -53,7 +53,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/MoreItem"
                         className="footer-right"
                         onClick={()=>{
-                            designClick("MoreItem");
+                            LinkClick("MoreItem");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>추가 상품</dt></Link>
@@ -61,7 +61,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/CS"
                         className="footer-right"
                         onClick={()=>{
-                            designClick("CS");
+                            LinkClick("CS");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>고객지원</dt></Link>

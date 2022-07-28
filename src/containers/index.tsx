@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import '../styles/common/SellerMypage.scss';
 
-import Header from '../components/header/pc/Header';
-import HeaderMobile from './header/HeaderMobile';
+import Header from '../components/header/Header';
+import HMMobile from './header/HMMobile';
 import Main from './Main';
 import Footer from '../components/Footer';
 import Mypage from './Mypage';
@@ -10,8 +11,6 @@ import Seller from './Seller';
 import Login from './Login';
 import SignUp from './SignUp';
 import FullCalendarApp from '../containers/seller/FullCalendarApp';
-
-import * as designClick from 'src/utils/designClick';
 
 const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
@@ -39,8 +38,12 @@ const Pages = () => {
 
   return (
     <Router>
-      <HeaderMobile numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} />
+      <HMMobile numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} />
       <Header setNumLeftMobileF={setNumLeftMobile} />
+      
+      <Route exact path="/Login" component={Login} />
+      <Route exact path="/SignUp" component={SignUp} />
+
       <Main />
       {numLeftMobile == 2?
         <Seller />:<></>
@@ -48,18 +51,7 @@ const Pages = () => {
       {numLeftMobile == 3?
         <Mypage />:<></>
       }
-      <Route exact path="/Login" component={Login} />
-      <Route exact path="/SignUp" component={SignUp} />
-      {/* <Route exact path="/FullCalendarApp" component={FullCalendarApp} /> */}
-      
-      {/* {numLeftMobile == 4?
-        <div className="calendar-seller-flex">
-          <div className="seller">
-            <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
-          </div>
-        </div>:
-        <></>
-      } */}
+
       <Footer
         setNumLeftMobileF={setNumLeftMobile}
         address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>

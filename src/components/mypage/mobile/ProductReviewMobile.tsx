@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import '../../../styles/mypage/ProductReview.scss';
 
-import MPRMCard from '../../../components/mypage/card/MPRMCard';
+import MPR_MobileCard from '../card/mobile/MPR_MobileCard';
 
 function ProductReviewMobile (){
     const [data, setData] = useState([]);
@@ -13,11 +12,11 @@ function ProductReviewMobile (){
             });
     },[]);
     return(
-        <div className="mp-top product-review mprm mypage-mobile">
+        <div className="product-review mprm mypage-mobile">
             <div className="mprm-box">
                 <div className="title">상품후기</div>
                 <div className="content">
-                    <MPRMCard getData={data}/>
+                    <MPR_MobileCard getData={data}/>
                 </div>
             </div>
         </div>

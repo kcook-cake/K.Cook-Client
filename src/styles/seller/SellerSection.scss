@@ -1,29 +1,28 @@
 @import "../reset.scss";
 
-.ssp {
-
-}
-
-.seller-section {
+.ss-flex {
   background-color: #fff;
   margin-right: 90px;
-  // margin-left: $basic-padding;
 }
-.seller-list {
+
+.ss {
   background-color: #f5f5f5;
 }
 
-.seller-icon {
+.ss-icon {
   margin-left: 34px;
 }
 
-.seller-menu {
+.ss-menu-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
+  .icon {
+    margin: 0 15px 0 0;
+  }
 }
 
-.seller-menu-link {
+.ss-link {
   margin-bottom: 15px;
   padding: 15px 30px;
   display: flex;
@@ -36,30 +35,8 @@
   color: #999999;
 }
 
-.seller-menu-link:focus,
-.seller-menu-item:focus {
-  color: #fff;
-  background-color: #ea5450;
-  stroke: #ea5450;
-  text,
-  circle,
-  path,
-  tspan,
-  ellipse,
-  line {
-    stroke: #fff;
-  }
-}
-
-.icon:focus {
-  stroke: #ea5450;
-}
-
-.seller-center {
-  display: flex;
-  align-items: center;
+.ss-footer {
   padding: 15px 30px;
-  position: absolute;
   bottom: 30px;
   left: 32.5px;
 
@@ -73,12 +50,8 @@
   border-radius: 10px;
 }
 
-.icon {
-  margin: 0 15px 0 0;
-}
-
 @media (max-width: 767px) {
-  .ssp {
+  .ss-flex {
     display: none;
   }
 }

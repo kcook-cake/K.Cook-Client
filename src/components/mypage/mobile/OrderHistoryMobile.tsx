@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../../styles/mypage/OrderHistory.scss';
-import '../../../styles/TodaysRec.scss'
 
 import WidthwiseCard from 'src/components/WidthwiseCard';
 import LengthwiseCard from 'src/components/LengthwiseCard';
@@ -17,7 +15,7 @@ function OrderHistoryMobile (){
             });
     },[]);
     return(
-        <div className="mp-top mohm">
+        <div className="mohm">
             <div className="sort-by-rec">
                 <div className="title">주문내역</div>
                 <div className="recommend-contents">

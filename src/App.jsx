@@ -10,15 +10,6 @@ import LandingPage from './containers/LandingPage';
 import isSession from './utils/isSession';
 
 function App() {
-  // useEffect(()=> {
-  //   isSession((props)=>{
-  //     if (props) Header()
-  //   })
-  // }, []);
-
-  // function loginCallBack(login){
-  //   setIsLogin(login);
-  // }
 
 	return (
     <div id='main'>

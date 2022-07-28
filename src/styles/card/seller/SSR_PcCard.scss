@@ -1,0 +1,33 @@
+@import "../../reset.scss";
+
+.ssr-pc-card-flex {
+    margin: 0 0 40px 0;
+
+    .order-time {
+        margin-bottom: 15px;
+        color: #777777;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .ssr-content {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 40px;
+        color: $sub-text;
+        margin-bottom: 20px;
+
+    }
+
+    .ordered-cake {
+        font-size: 12px;
+        color: #777;
+        font-weight: 500;
+        line-height: 22px;
+    } 
+    .review-content {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+    }
+}

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
-import '../../../styles/card/SSRMCard.scss';
-import '../../../styles/card/SPMCardOption.scss';
+import '../../../../styles/card/seller/SPM_MobileCard_Add.scss';
 
 import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
-import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
+import { ReactComponent as DragCBtn } from '../../../../assets/seller/drag-column-btn.svg';
 
 import rightArrow from "../../../assets/right-arrow.svg";
 import { setTokenSourceMapRange } from 'typescript';
 
-interface SSRMCardProps {
+interface Props {
     setAddOptionF: any,
     getData: any,
 }
@@ -27,7 +26,7 @@ interface SSRMCardProps {
 <button className="option-button">항목 추가</button>
 </form> */}
 
-function SPMCardOption({ setAddOptionF, getData, }: SSRMCardProps) {
+function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
     const [num, setNum] = useState(0);
     const handleOptionName = (e: any, optionId: any, ) => {
         getData[optionId-1].optionName = e.target.value;
@@ -131,4 +130,4 @@ function SPMCardOption({ setAddOptionF, getData, }: SSRMCardProps) {
     );
 }
 
-export default SPMCardOption;
+export default SPM_MobileCard_Add;

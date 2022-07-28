@@ -1,0 +1,30 @@
+@import "../../reset.scss";
+
+.sso-ssh-pc-card-flex {
+    width: 841px;    
+    .order-time {
+        margin-bottom: 15px;
+        color: #777777;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .sso-ssh-content {
+        display: flex;
+        flex-direction: row;
+    }
+    .order-content {
+        margin-bottom: 20px;
+    }
+    
+    .pickup-time {
+        margin-top: 5px;
+    }
+    
+    .pay {
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: 300;
+        color: #777777;
+    }
+}

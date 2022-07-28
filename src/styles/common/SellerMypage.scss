@@ -1,0 +1,25 @@
+@import "../reset.scss";
+
+.seller-mypage-top-flex {
+    padding: 90px 0;
+}
+
+.seller-mypage-top {
+    margin-bottom: 70px;
+    h3 {
+      display: inline-block;
+      margin-right: 40px;
+  
+      font-size: 20px;
+      font-weight: 700;
+    }
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #777777;
+    }
+}
+
+@media (max-width: 767px) {
+
+}

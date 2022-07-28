@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../../styles/mypage/Coupon.scss';
 
-import MMMCard from '../card/MMMCard';
+import MMS_MC_MobileCard from '../card/mobile/MMS_MC_MobileCard';
 
 function CouponsMobile (){
     const [data, setData] = useState([]);
@@ -14,7 +13,7 @@ function CouponsMobile (){
     },[]);
 
     return(
-        <div className="mp-top coupon mcm mypage-mobile">
+        <div className="coupon mcm mypage-mobile">
             <div className="mcm-box mprm-box">
                 <div className="title">
                     쿠폰
@@ -23,7 +22,7 @@ function CouponsMobile (){
                     </div>
                 </div>
                 <div className="content">
-                    <MMMCard getData={data} box={false}/>
+                    <MMS_MC_MobileCard getData={data} box={false}/>
                 </div>
             </div>
         </div>

@@ -1,13 +1,13 @@
 import React from 'react';
-import '../../../styles/card/SSOMCard.scss';
+import '../../../../styles/card/seller/SSO_SSH_MobileCard.scss';
 
-import rightArrow from "../../../assets/right-arrow.svg";
+import rightArrow from "../../../../assets/right-arrow.svg";
 
-interface SSOMCardProps {
+interface Props {
     getData: any
 }
 
-function SSOMCard({getData}: SSOMCardProps) {
+function SSO_SSH_MobileCard({getData}: Props) {
     return (
         <>
             <div className="ssomcard-date">어제</div>
@@ -38,4 +38,4 @@ function SSOMCard({getData}: SSOMCardProps) {
     );
 }
 
-export default SSOMCard;
+export default SSO_SSH_MobileCard;

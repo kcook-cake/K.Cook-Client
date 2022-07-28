@@ -1,11 +1,11 @@
-.confirm-text {
+.signup-confirm-text {
   width: 100%;
   text-align: right;
   color: #cc1a1a;
   font-size: 12px;
 }
 
-.input-btn {
+.phone-input-btn {
   margin-right: 6px;
   padding: 4px 12px;
   height: 28px;
@@ -15,13 +15,13 @@
   color: #fff;
   font-weight: 500;
 }
-.phone-confirm {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// .phone-confirm {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
-.agreement {
+.signup-agreement {
   margin: 43px 0 5px;
   display: flex;
   align-items: flex-end;
@@ -33,7 +33,8 @@
     margin-left: 4px;
   }
 }
-.agreement-sub {
+
+.signup-agreement-sub {
   display: flex;
   flex-direction: column;
   button {
@@ -43,6 +44,7 @@
     color: #868686;
   }
 }
+
 .agree-list {
   margin-bottom: 6px;
   padding-left: 7px;

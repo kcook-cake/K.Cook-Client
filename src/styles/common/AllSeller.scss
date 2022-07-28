@@ -1,0 +1,37 @@
+@import "../reset.scss";
+
+.sso-ssh-top {
+    width: 848px;
+}
+
+.ss-fc-link-flex {
+    display: inline-block;
+    float: right;
+    color: #222222;
+    font-size: 16px;
+    font-weight: 700;
+    a {
+      margin: 0 10px;
+    }
+
+    .ss-fc-link {
+        color: #222222;
+    }
+    .ss-fc-link:hover {
+        color: $pink;
+    }
+    .ss-fc-link:focus {
+        color: $pink;
+    }
+}
+
+.ss-all-order-img {
+    margin-right: 35px;
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+}

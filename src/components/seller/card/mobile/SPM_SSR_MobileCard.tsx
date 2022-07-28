@@ -1,15 +1,15 @@
 import React from 'react';
-import '../../../styles/card/SSRMCard.scss';
+import '../../../../styles/card/seller/SPM_SSR_MobileCard.scss';
 
 import rightArrow from "../../../assets/right-arrow.svg";
-import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
+import { ReactComponent as DragBtn } from '../../../../assets/seller/dragbtn.svg';
 
-interface SSRMCardProps {
+interface Props {
     getData: any,
     box: any,
 }
 
-function SSRMCard({getData, box}: SSRMCardProps) {
+function SPM_SSR_MobileCard({getData, box}: Props) {
     return (
         <>
             {box? 
@@ -67,4 +67,4 @@ function SSRMCard({getData, box}: SSRMCardProps) {
     );
 }
 
-export default SSRMCard;
+export default SPM_SSR_MobileCard;

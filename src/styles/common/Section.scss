@@ -1,0 +1,28 @@
+@import "../reset.scss";
+
+.section {
+    position: relative;
+    width: 240px;
+    min-height: 100vh;
+    height: 100%;
+    padding-top: 80px;
+    background-color: $pink;
+  
+    .name {
+      margin-left: 34px;
+      margin-bottom: 2px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .email {
+      margin-left: 34px;
+      margin-bottom: 60px;
+      font-size: 14px;
+    }
+}
+
+.section-footer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+}

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import '../../../styles/HeaderMobile.scss';
+import '../../../styles/HMMobile.scss';
 
 import $ from 'jquery';
 
 import isSession from '../../../utils/isSession';
-import designClick from '../../../utils/designClick';
-import sellerDesignClick from 'src/utils/sellerDesignClick';
+import LinkClick from '../../../utils/LinkClick';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
 
-function HSMCard({ setNumLeftMobileF }) {
+function HMSCard({ setNumLeftMobileF }) {
     //pathname, parameter 가져오기
     var pathname = window.location.pathname;
     if (pathname == "/") pathname = "/Home";
     pathname = pathname.split("/")[1];
-    designClick(pathname);
+    LinkClick(pathname);
+    sellerLinkClick(pathname);
     //로그인 여부
     const [session, setSession] = useState(false);
     const [auth, setAuth] = useState({
@@ -35,90 +36,90 @@ function HSMCard({ setNumLeftMobileF }) {
                 setAuth(a);
             },
         );
-        $(".header-main").on('scroll touchmove mousewheel', (e) => {
+        $(".header-flex").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
             });
-        $(".hm-title").on('scroll touchmove mousewheel', (e) => {
+        $(".hm-mobile-title").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
             });
-        $(".hm-background").on('scroll touchmove mousewheel', (e) => {
+        $(".hm-mobile-background").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();
         });
     }, []);
     return (
         <>
-            <div className="hsm-left">
-                <div className="hsm-title">케이쿡</div>
+            <div className="hm-mobile-left">
+                <div className="hm-mobile-title">케이쿡</div>
                 <hr/>
-                <div className="hsm-link">
-                    <div className="hsm-link-inner">
+                <div className="hm-mobile-link-flex">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/SellerOrder"
-                            className="header SellerOrder"
+                            className="header-link SellerOrder"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                designClick("SellerOrder");
-                                sellerDesignClick("SellerOrder");
-                                $(".hm").hide();
+                                LinkClick("SellerOrder");
+                                sellerLinkClick("SellerOrder");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             주문확인
                         </Link>
                     </div>
-                    <div className="hsm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/SalesHistory"
-                            className="header SalesHistory"
+                            className="header-link SalesHistory"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                designClick("SalesHistory");
-                                sellerDesignClick("SalesHistory");
-                                $(".hm").hide();
+                                LinkClick("SalesHistory");
+                                sellerLinkClick("SalesHistory");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             판매내역
                         </Link>
                     </div>
-                    <div className="hsm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/ProductManagement"
-                            className="header ProductManagement"
+                            className="header-link ProductManagement"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                designClick("ProductManagement");
-                                sellerDesignClick("ProductManagement");
-                                $(".hm").hide();
+                                LinkClick("ProductManagement");
+                                sellerLinkClick("ProductManagement");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             상품관리
                         </Link>
                     </div>
-                    <div className="hsm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/SellerReview"
-                            className="header SellerReview"
+                            className="header-link SellerReview"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                designClick("SellerReview");
-                                sellerDesignClick("SellerReview");
-                                $(".hm").hide();
+                                LinkClick("SellerReview");
+                                sellerLinkClick("SellerReview");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             상품후기
                         </Link>
                     </div>
-                    <div className="hsm-link-inner">
+                    <div className="hm-mobile-link">
                         <Link
                             to="/SellerStore"
-                            className="header SellerStore"
+                            className="header-link SellerStore"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                designClick("SellerStore");
-                                sellerDesignClick("SellerStore");
-                                $(".hm").hide();
+                                LinkClick("SellerStore");
+                                sellerLinkClick("SellerStore");
+                                $(".hm-mobile").hide();
                             }}
                         >
                             스토어 정보
@@ -130,4 +131,4 @@ function HSMCard({ setNumLeftMobileF }) {
     );
 }
 
-export default HSMCard;
+export default HMSCard;
