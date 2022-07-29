@@ -13,11 +13,11 @@ function MembershipMobile (){
             });
     },[]);
     return(
-        <div className="mmm mypage-mobile">
-            <div className="mmm-box mprm-box">
+        <div className="mms-mobile ms-all-mypage">
+            <div className="mms-mobile-box ms-all-box">
                 <div className="title">
                     적립금
-                    <div className="mmm-title-right">
+                    <div className="mms-mobile-title-right">
                         <div style={{ paddingTop: "5px" }}>합계:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                         <div style={{ fontSize: "16px", }}>2,000원</div>
                     </div>

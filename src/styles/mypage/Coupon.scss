@@ -1,17 +1,17 @@
 @import "../reset.scss";
 
-.mcp {
+.mc-pc {
 
 }
-.mcm {
+.mc-mobile {
   display: none;
 }
 
-.coupon-top {
+.mc-pc-top {
   display: flex;
 }
 
-.coupon-code {
+.mc-pc-code {
   margin-left: 150px;
   font-size: 12px;
   input {
@@ -27,16 +27,16 @@
   }
 }
 
-.coupon-list {
+.mc-pc-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 @media (max-width: 767px) {
-  .mcp {
+  .mc-pc {
     display: none;
   }
-  .mcm {
+  .mc-mobile {
     display: block;
   }
 

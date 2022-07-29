@@ -12,8 +12,8 @@ function ProductReviewMobile (){
             });
     },[]);
     return(
-        <div className="product-review mprm mypage-mobile">
-            <div className="mprm-box">
+        <div className="mpr-mobile ms-all-mypage">
+            <div className="ms-all-box">
                 <div className="title">상품후기</div>
                 <div className="content">
                     <MPR_MobileCard getData={data}/>

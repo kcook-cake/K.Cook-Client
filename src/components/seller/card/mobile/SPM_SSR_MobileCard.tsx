@@ -19,7 +19,7 @@ function SPM_SSR_MobileCard({getData, box}: Props) {
                     return (
                         <div className="sprmcard"  key={data.productId}>
                             <div className="sprmcard-box">
-                                <div className="sprmcard-move-tap"><DragBtn/></div>
+                                <div className="spm-mobile-add-move-tap"><DragBtn/></div>
                                 <div className="sprmcard-box-margin">
                                     <div className="sprmcard-box-inner">
                                         <div className="sprmcard-title">

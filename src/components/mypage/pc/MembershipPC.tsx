@@ -12,16 +12,16 @@ function MembershipPC (){
     },[]);
     return(
 
-        <div className="seller-mypage-top-flex membership mmp">
+        <div className="seller-mypage-top-flex mms-pc">
             <div className="seller-mypage-top">
                 <h3>적립금</h3>
                 <span>구매 및 후기 작성으로 현금처럼 쓸 수 있는 포인트를 받으세요</span>
-                <div className="membership-sum">합계 : 
-                    <span className="membership-point">11,600원</span>
+                <div className="mms-pc-sum">합계 : 
+                    <span className="mms-pc-point">11,600원</span>
                 </div>
             </div>
-            <div className="membership-table">
-                <div className="membership-head">
+            <div className="mms-pc-table">
+                <div className="mms-pc-all mms-pc-head">
                     <div>상품명</div>
                     <div>판매자</div>
                     <div>날짜</div>
@@ -30,7 +30,7 @@ function MembershipPC (){
                 </div>
 
                 <MMS_PcCard getData={data} />
-                <div className="membership-data">
+                {/* <div className="membership-data">
 
                 </div>
                 <div className="membership-data">
@@ -38,7 +38,7 @@ function MembershipPC (){
                 </div>
                 <div className="membership-data">
 
-                </div>
+                </div> */}
             </div>
 
         </div>

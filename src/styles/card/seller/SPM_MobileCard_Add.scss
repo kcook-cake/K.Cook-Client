@@ -1,6 +1,13 @@
-.spmm-option {
+.spm-mobile-add-option {
+    // width: 100%;
+
     .option-input {
+        // width: 100%;
+        margin-bottom: 20px;
         display: flex;
+        .option-input-text {
+            width: 98%;
+        }
         .option-input-left-icon,
         .option-input-right {
             opacity: 0;
@@ -13,6 +20,11 @@
         .option-input-right {
             // float: right;
         }
+        .add-price {
+            width: 120px;
+            border-radius: 5px;
+            border: 1px solid #B2B2B2;
+        }
     }
     .option-input:hover {
         .option-input-left-icon,
@@ -24,48 +36,20 @@
             border-bottom: 3px solid #333;
         }
     }
+
+    .option-button {
+        margin: 0 0 20px 17px;
+        font-size: 14px;
+        color: #8b9094;
+    }
 }
 
-.spmm,
-.spmm-bottom {
-  .option-input-text {
-    width: 98%;
-    font-size: 15px;
-    border: 1px;
-  }
-
-  .option-input {
-    height: 30px;
-    line-height: 28px;
-    margin-bottom: 20px;
-    // font-size: 25px !important;
-    // background-color: red;
-  }
-
-  .add-price {
-    width: 120px;
-    height: 30px;
-    float: right;
-    border: 1px solid #B2B2B2;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-  .option-button {
-    margin: 0; padding: 0;
-    margin-left: 18px;
-
-    color: #9EA4AA;
-    font-size: 14px;
-    margin-bottom: 25px;
-  }
-}
-
-.spmmo-option-hr {
+.spm-mobile-add-option-hr {
     margin-bottom: 30px;
     border: 1px solid #DDDDDD;
     // background-color: #9EA4AA;
 }
-.spmmo-option-button {
+.spm-mobile-add-option-button {
     margin-bottom: 40px;
     color: #9EA4AA;
     font-size: 16px;

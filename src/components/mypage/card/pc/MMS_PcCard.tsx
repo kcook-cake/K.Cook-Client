@@ -13,7 +13,7 @@ function MMS_PcCard({getData}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <div className="membership-data">
+                    <div className="mms-pc-all mms-pc-card">
                         <div>하트볼터치 곰돌이 케이크</div>
                         <div>원모먼트</div>
                         <div>2021. 03. 11</div>

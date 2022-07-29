@@ -1,5 +1,12 @@
 @import "./reset.scss";
 
+.pc {
+  display: block;
+}
+.mobile {
+  display: none;
+}
+
 .todays-recommend {
   // margin: 80px $basic-padding;
 
@@ -128,6 +135,12 @@
 }
 
 @media (max-width: 767px) {
+  .pc {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
   // .main-cake {
     .event-contents {
       padding: 0 16px;

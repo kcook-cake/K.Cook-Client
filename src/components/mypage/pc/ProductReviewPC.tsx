@@ -13,7 +13,7 @@ function ProductReviewPC (){
             });
     },[]);
     return(
-        <div className="seller-mypage-top-flex product-review mprp">
+        <div className="seller-mypage-top-flex mpr-pc">
             <div className="seller-mypage-top">
                 <h3>상품후기</h3>
                 <span>후기를 작성하고 포인트를 받으세요</span>

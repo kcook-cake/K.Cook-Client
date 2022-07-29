@@ -13,7 +13,7 @@ function MPR_PcCard({getData}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <div className="review-content">
+                    <div className="mpr-pc-card-flex">
                         <div className="review-img">
                             <img src={cake6}/>
                         </div>    

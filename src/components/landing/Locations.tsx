@@ -10,9 +10,7 @@ function Location({ getData, setLocationIndexF }: LocationProps) {
     return (
         <select
             id="lp-select-location"
-            onClick={()=>{
-                setLocationIndexF($("#lp-select-location option:selected").val());
-            }}
+            onChange={(e)=>{setLocationIndexF(e.target.value)}}
         >
             <option disabled selected>
             시/군 선택

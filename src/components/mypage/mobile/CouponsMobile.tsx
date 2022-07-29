@@ -13,8 +13,8 @@ function CouponsMobile (){
     },[]);
 
     return(
-        <div className="coupon mcm mypage-mobile">
-            <div className="mcm-box mprm-box">
+        <div className="mc-mobile ms-all-mypage">
+            <div className="mcm-box ms-all-box">
                 <div className="title">
                     쿠폰
                     <div className="mcm-title-right">

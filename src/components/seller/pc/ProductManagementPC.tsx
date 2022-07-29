@@ -20,7 +20,7 @@ function ProductManagementPC (){
             });
     },[]);
     return(
-        <div className="seller-mypage-top-flex product-management spm-pc">
+        <div className="seller-mypage-top-flex spm-pc">
             <div className="seller-mypage-top">
                 <h3>상품관리</h3>
                 <span>현재 판매 중인 상품입니다.</span>
@@ -28,10 +28,10 @@ function ProductManagementPC (){
 
             <SPM_PcCard getData={data} />
 
-                <div className="add management-card">
-                    <div className="management-section">
+                <div className="spm-pc-add">
+                    <div className="spm-pc-add-section">
                         <div className="move-tap"><DragBtn/></div>
-                        <div className="management-content">
+                        <div className="spm-pc-add-content">
                             <div className="add-img order-img">
                                 <AddIcon/>
                             </div>    

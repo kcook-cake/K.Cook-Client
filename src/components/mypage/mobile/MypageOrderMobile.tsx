@@ -6,7 +6,7 @@ import LengthwiseCard from 'src/components/LengthwiseCard';
 
 import cake6 from   '../../assets/cake6.png';
 
-function OrderHistoryMobile (){
+function MypageOrderMobile (){
     const [data, setData] = useState([]);
     useEffect(()=>{
         axios.get(`/app/cakes`)
@@ -15,7 +15,7 @@ function OrderHistoryMobile (){
             });
     },[]);
     return(
-        <div className="mohm">
+        <div className="mmo-moobile">
             <div className="sort-by-rec">
                 <div className="title">주문내역</div>
                 <div className="recommend-contents">
@@ -34,4 +34,4 @@ function OrderHistoryMobile (){
 }
 
 
-export default OrderHistoryMobile;
+export default MypageOrderMobile;

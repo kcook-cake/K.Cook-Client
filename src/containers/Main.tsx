@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
-import '../../src/styles/seller/Seller.scss'
 
 import Home from './Home';
 import TodaysRec from './TodaysRec';

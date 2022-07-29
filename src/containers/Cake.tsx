@@ -9,9 +9,16 @@ function Cake (){
     let [data, setData] =useState([]);
 
     useEffect(()=>{
-        axios.get(`/app/cakes`)
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
             .then(res =>{
-                setData(res.data.result.content);
+                var num = 8;
+                if (res.data.result.content.length < 8) num = res.data.result.content.length;
+
+                var changeData: any = [];
+                for (var i = 0; i < num; i++) {
+                    changeData[i] = res.data.result.content[i];
+                }
+                setData(changeData);
             });
     },[]);
     return(

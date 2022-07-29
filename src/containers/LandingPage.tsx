@@ -62,26 +62,27 @@ function LandingPage() {
       setFailModal(true);
       setTimeout(() => {
         setFailModal(false);
-      }, 1000);
+      }, 5000);
       return;
     }
-    if (locationIndex < 1) {
-      setFailModalContext("시/군을 선택해주세요.");
-      setFailModal(true);
-      setTimeout(() => {
-        setFailModal(false);
-      }, 1000);
-      return;
-    }
+    // if (locationIndex < 1) {
+    //   setFailModalContext("시/군을 선택해주세요.");
+    //   setFailModal(true);
+    //   setTimeout(() => {
+    //     setFailModal(false);
+    //   }, 5000);
+    //   return;
+    // }
     if (phoneNumber == "") {
       setFailModalContext("휴대폰 번호를 입력해주세요.");
       setFailModal(true);
       setTimeout(() => {
         setFailModal(false);
-      }, 1000);
+      }, 5000);
       return;
     }
-    axios.post(`/app/applicants`,{
+
+    axios.post(`https://prod.kcook-cake.com/app/applicants`,{
       cityIndex: cityIndex,
       locationIndex: locationIndex,
       phoneNumber: phoneNumber,
@@ -92,7 +93,7 @@ function LandingPage() {
       setFailModal(true);
       setTimeout(() => {
         setFailModal(false);
-      }, 2000);
+      }, 5000);
     });
   }
 
@@ -101,20 +102,28 @@ function LandingPage() {
   const [cityIndex, setCityIndex] = useState(0);
   const [locationIndex, setLocationIndex] = useState(0);
   const LocationAxios = (i: any) => {
+    setLocationIndex(0);
     setCityIndex(i);
-    axios.get(`/app/locations/${i}`)
+    axios.get(`https://prod.kcook-cake.com/app/locations/${i}`)
     .then(res =>{
       setLocation(res.data.result);
     });
   }
   
   useEffect(()=>{
-    axios.get(`/app/cities`)
+    axios.get(`https://prod.kcook-cake.com/app/cities`)
     .then(res =>{
       setCity(res.data.result);
     });
     LocationAxios(0);
   },[]);
+
+  const test = () => {
+    axios.get(`https://prod.kcook-cake.com/app/applicants`)
+    .then(res =>{
+      console.log(res);
+    });
+  };
   
   return (
     <div id="landing" className="landing-page">
@@ -134,6 +143,7 @@ function LandingPage() {
           <br />
           커스텀케이크 주문 플랫폼이 온다.
         </p>
+        <button onClick={()=>{ test(); }}>test</button>
         <div className="end-time" id="end-time">
           {/* {dDayCount} */}
           <div className="end-time-timer">

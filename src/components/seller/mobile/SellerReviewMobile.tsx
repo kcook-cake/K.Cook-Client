@@ -14,11 +14,11 @@ function SellerReviewMobile (){
             });
     },[]);
     return(
-        <div className="mypage-mobile ssrm">
-            <div className="ssrm-box mprm-box">
+        <div className="ssr-mobile">
+            <div className="spm-ssr-mobile-box">
                 <div className="title">
-                    <div className="ssom-front-title">상품후기</div>
-                    <div className="ssom-middle-title">고객분들이 남겨주신 후기입니다.</div>
+                    <div className="spm-ssr-mobile-title-front">상품후기</div>
+                    <div className="spm-ssr-mobile-title-middle">고객분들이 남겨주신 후기입니다.</div>
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">

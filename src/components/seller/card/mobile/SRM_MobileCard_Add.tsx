@@ -51,7 +51,7 @@ function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
     },[]);
     
     return (
-        <>
+        <div className="spm-mobile-add-option">
         {getData.map((option: { optionId: any, optionName: any, optionList: any, })=>{
         return (
             <form className={"option-"+option.optionId}>
@@ -111,9 +111,9 @@ function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
         )
         })
         }
-        <hr className="spmmo-option-hr"/>
+        <hr className="spm-mobile-add-option-hr"/>
         <button
-            className="spmmo-option-button"
+            className="spm-mobile-add-option-button"
             onClick={()=>{
                 getData[getData.length] = {
                     optionId: getData.length+1,
@@ -126,7 +126,7 @@ function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
         >
             + 옵션 추가
         </button>
-        </>
+        </div>
     );
 }
 

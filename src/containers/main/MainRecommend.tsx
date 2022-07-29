@@ -14,7 +14,7 @@ const Recommend = ()=>{
     // console.log(environment.apiUrl);
     useEffect(()=>{
         // axios.get(`https://www.kcook-cake.com/app/cakes`)
-        axios.get(`/app/cakes`)
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
             .then(res =>{
                 setData(res.data.result.content);
             });
@@ -29,7 +29,7 @@ const Recommend = ()=>{
         <div className="recommend-flex">
             <div className="recommend">
                 <div className="recommend-header">
-                    <SectionTitle title="오늘의 추천"/>
+                    <SectionTitle title="오늘의 추천" link="TodaysRec"/>
                 </div>
                 <div className="recommend-contents">
                     <LengthwiseCard getData={data}/>

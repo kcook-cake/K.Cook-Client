@@ -14,9 +14,7 @@ function City({ getData, LocationAxiosF }: CityProps) {
         <select
             id="lp-select-city"
             className="dropdown-bar-do"
-            onClick={()=>{
-                LocationAxiosF($("#lp-select-city option:selected").val());
-            }}
+            onChange={(e)=>{LocationAxiosF(e.target.value)}}
         >
             <option disabled selected>
                 지역 선택

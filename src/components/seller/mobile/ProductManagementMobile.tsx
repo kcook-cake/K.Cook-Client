@@ -40,13 +40,13 @@ function ProductManagementMobile (){
             });
     },[]);
     return(
-        <div className="spmm mypage-mobile">
-            <div className="ssrm-box mprm-box">
+        <div className="spm-mobile">
+            <div className="spm-ssr-mobile-box">
                 <div className="title">
                     <div
-                        className="ssom-front-title"
+                        className="spm-ssr-mobile-title-front"
                     >상품관리</div>
-                    <div className="ssom-middle-title">판매 중인 상품입니다.</div>
+                    <div className="spm-ssr-mobile-title-middle">판매 중인 상품입니다.</div>
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
@@ -56,18 +56,18 @@ function ProductManagementMobile (){
                 <div></div> {/* 추가하면 여기에 들어갈 것임 */}
             </div>
             {addDiv? 
-            <div className="sprmcard">
-                <div className="sprmcard-box sprmcard-box-add">
+            <div className="spm-mobile-add">
+                <div className="spm-mobile-add-box">
                     <div
-                        className="sprmcard-move-tap"
+                        className="spm-mobile-add-move-tap"
                         // onClick={()=>{ setAdd(false); }}
                     >
                         <DragBtn/>
                     </div>
-                    <div className="sprmcard-box-margin">
-                        <div className="sprmcard-box-inner">
+                    <div className="spm-mobile-add-margin-flex">
+                        <div className="spm-mobile-add-margin">
                             <input
-                                className="add-cake-name"
+                                className="spm-mobile-add-cake-name"
                                 placeholder="상품명"
                                 onChange={(e)=>{
                                     handleAddName(e);
@@ -76,12 +76,7 @@ function ProductManagementMobile (){
                             <button className="store-img-add">
                                 <AddIcon />
                             </button>
-                            <div className="spmm-option">
-                                <SPM_MobileCard_Add setAddOptionF={setAddOption} getData={addOption}/>
-                            </div>
-                        </div>
-                        <div className="sprmcard-img">
-                            
+                            <SPM_MobileCard_Add setAddOptionF={setAddOption} getData={addOption}/>
                         </div>
                     </div>
                     <button onClick={()=>{

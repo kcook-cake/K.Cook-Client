@@ -4,7 +4,7 @@ import axios from 'axios';
 import cake6 from   '../../../assets/cake6.png';
 import MMO_PcCard from '../card/pc/MMO_PcCard';
 
-function OrderHistoryPC (){
+function MypageOrderPc (){
     const [data, setData] = useState([]);
     useEffect(()=>{
         axios.get(`/app/cakes`)
@@ -13,7 +13,7 @@ function OrderHistoryPC (){
             });
     },[]);
     return(
-        <div className="seller-mypage-top-flex mohp">
+        <div className="seller-mypage-top-flex moh-pc">
             <div className="seller-mypage-top">
                 <h3>주문내역</h3>
                 <span>이전에 주문하신 내역입니다.</span>
@@ -25,4 +25,4 @@ function OrderHistoryPC (){
 }
 
 
-export default OrderHistoryPC;
+export default MypageOrderPc;

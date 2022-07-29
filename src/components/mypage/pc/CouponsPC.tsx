@@ -11,15 +11,15 @@ function CouponsPC (){
             });
     },[]);
     return(
-        <div className="seller-mypage-top-flex coupon mcp">
-        <div className="seller-mypage-top coupon-top">
+        <div className="seller-mypage-top-flex mc-pc">
+        <div className="seller-mypage-top mc-pc-top">
             <h3>내 쿠폰 : 3장</h3>
-            <div className="coupon-code">
+            <div className="mc-pc-code">
                 <input placeholder="할인 쿠폰 번호를 입력하세요"></input>
                 <button>등록하기</button>
             </div>
         </div>
-        <div className="coupon-list">
+        <div className="mc-pc-list">
             <MC_PcCard getData={data} />
             
         </div>

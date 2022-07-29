@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 import '../../src/styles/mypage/Mypage.scss'
+import '../styles/mypage/AllMypage.scss'
 
-import OrderHistory from '../containers/mypage/OrderHistory';
+import OrderHistory from '../containers/mypage/MypageOrder';
 import ProductReview from '../containers/mypage/ProductReview';
 import Membership from '../containers/mypage/Membership';
 import Coupons from '../containers/mypage/Coupons';

@@ -17,18 +17,18 @@ function SalesHistoryMobile (){
             });
     },[]);
     return(
-        <div className="product-review sshm mypage-mobile">
-            <div className="mprm-box">
+        <div className="ssh-mobile sso-ssh-mobile-flex">
+            <div className="sso-ssh-mobile-box">
                 <div className="title">
-                    <div className="ssom-front-title">판매내역</div>
-                    <div className="ssom-middle-title">처리할 예약 주문입니다.</div>
+                    <div className="sso-mobile-front-title">판매내역</div>
+                    <div className="sso-mobile-middle-title">처리할 예약 주문입니다.</div>
                     <Link
                         to="/FullCalendarApp"
                         onClick={()=>{
                             LinkClick("FullCalendarApp");
                             sellerLinkClick("FullCalendarApp");
                         }}
-                    ><div className="ssom-calendar">달력보기</div></Link>
+                    ><div className="sso-mobile-calendar">달력보기</div></Link>
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">

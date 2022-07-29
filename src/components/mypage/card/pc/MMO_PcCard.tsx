@@ -13,7 +13,7 @@ function MMO_PcCard({getData}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <div className="history-content">
+                    <div className="mmo-pc-card-content">
                         <div className="order-img">
                             <img src={cake6}/>
                         </div>

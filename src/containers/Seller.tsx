@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 import '../../src/styles/seller/Seller.scss';
-import '../styles/common/AllSeller.scss';
+import '../styles/seller/AllSeller.scss';
 
 import SellerSection from '../components/seller/SellerSection';
 import SellerOrder from '../containers/seller/SellerOrder';

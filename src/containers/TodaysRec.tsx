@@ -15,11 +15,38 @@ import event2 from '../assets/event2.png';
 import event3 from '../assets/event3.png';
 
 function TodaysRec (){
-    const [data, setData] = useState([]);
+    const [reviewTodays, setReviewTodays] = useState([]);
+    const [recommendTodays, setRecommendodays] = useState([]);
+    const [eventTodays, setEventTodays] = useState([]);
+
     useEffect(()=>{
-        axios.get(`/app/cakes`)
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
             .then(res =>{
-                setData(res.data.result.content);
+                var num = 8;
+                if (res.data.result.content.length < 8) num = res.data.result.content.length;
+
+                var changeData: any = [];
+                for (var i = 0; i < num; i++) {
+                    changeData[i] = res.data.result.content[i];
+                }
+                setReviewTodays(changeData);
+            });
+
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
+            .then(res =>{
+                var num = 6;
+                if (res.data.result.content.length < 6) num = res.data.result.content.length;
+
+                var changeData: any = [];
+                for (var i = 0; i < num; i++) {
+                    changeData[i] = res.data.result.content[i];
+                }
+                setRecommendodays(changeData);
+            });
+
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
+            .then(res =>{
+                setEventTodays(res.data.result.content);
             });
     },[]);
 
@@ -28,7 +55,7 @@ function TodaysRec (){
             <div className="sort-by-rec">
                 <div className="title">리뷰 별점순</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard getData={data}/>
+                    <LengthwiseCard getData={reviewTodays}/>
                 </div>
                 <div className="pagination">
                     <Link to="/" className="arrow prev" href="#"> &lt;Prev</Link>
@@ -39,10 +66,18 @@ function TodaysRec (){
                 </div>
             </div>
 
-            <div className="sort-by-rec" style={{ marginBottom: "23px", }}>
+            <div className="pc main-cake-flex">
+                <div className="main-cake">
+                    <div className="title">케이쿡 추천 Pick</div>
+                    <div className="cake-contents">
+                        <WidthwiseCard getData={recommendTodays}/>
+                    </div>
+                </div>
+            </div>
+            <div className="mobile sort-by-rec" style={{ marginBottom: "23px", }}>
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard getData={data}/>
+                    <LengthwiseCard getData={recommendTodays}/>
                 </div>
             </div>
             {/* <div className="kcook-pick">
@@ -59,9 +94,9 @@ function TodaysRec (){
                     <a className="view-all">전체 보기 &gt;</a>
                 </div>
                 <div className="event-contents">
-                    <button className="event-arrow event-left">
+                    {/* <button className="event-arrow event-left">
                         <img src={leftArrow}/>
-                    </button>
+                    </button> */}
                     
                     <div className="event-card">
                         <div className="card-img">
@@ -96,9 +131,9 @@ function TodaysRec (){
                         </div>
                     </div>
 
-                    <button className="event-arrow event-right">
+                    {/* <button className="event-arrow event-right">
                         <img src={rightArrow}/>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

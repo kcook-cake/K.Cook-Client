@@ -12,9 +12,16 @@ function MainCake (){
     let [data, setData] =useState([]);
     // console.log(environment.apiUrl);
     useEffect(()=>{
-        axios.get(`/app/cakes`)
+        axios.get(`https://prod.kcook-cake.com/app/cakes`)
             .then(res =>{
-                setData(res.data.result.content);
+                var num = 4;
+                if (res.data.result.content.length < 4) num = res.data.result.content.length;
+
+                var changeData: any = [];
+                for (var i = 0; i < num; i++) {
+                    changeData[i] = res.data.result.content[i];
+                }
+                setData(changeData);
             });
     },[]);
 
@@ -22,7 +29,7 @@ function MainCake (){
         <div className="main-cake-flex">
             <div className="main-cake">
                 <div className="recommend-header">
-                    <SectionTitle title="케이크" link="/Cake" />
+                    <SectionTitle title="케이크" link="Cake" />
                 </div>
                 <div className="cake-contents">
                     <WidthwiseCard getData={data}/>

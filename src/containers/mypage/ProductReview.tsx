@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/mypage/ProductReview.scss';
+import '../../styles/mypage/MMO_MPR.scss';
 
 import ProductReviewPC from 'src/components/mypage/pc/ProductReviewPC';
 import ProductReviewMobile from 'src/components/mypage/mobile/ProductReviewMobile';
