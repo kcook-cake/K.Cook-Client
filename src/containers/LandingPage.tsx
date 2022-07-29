@@ -57,14 +57,14 @@ function LandingPage() {
   const [failModal, setFailModal] = useState(false);
   const [failModalContext, setFailModalContext] = useState("");
   const PostAxios = () => {
-    if (cityIndex < 1) {
-      setFailModalContext("지역을 선택해주세요.");
-      setFailModal(true);
-      setTimeout(() => {
-        setFailModal(false);
-      }, 5000);
-      return;
-    }
+    // if (cityIndex < 1) {
+    //   setFailModalContext("지역을 선택해주세요.");
+    //   setFailModal(true);
+    //   setTimeout(() => {
+    //     setFailModal(false);
+    //   }, 5000);
+    //   return;
+    // }
     // if (locationIndex < 1) {
     //   setFailModalContext("시/군을 선택해주세요.");
     //   setFailModal(true);
@@ -73,23 +73,33 @@ function LandingPage() {
     //   }, 5000);
     //   return;
     // }
-    if (phoneNumber == "") {
-      setFailModalContext("휴대폰 번호를 입력해주세요.");
-      setFailModal(true);
-      setTimeout(() => {
-        setFailModal(false);
-      }, 5000);
-      return;
-    }
+    // if (phoneNumber == "") {
+    //   setFailModalContext("휴대폰 번호를 입력해주세요.");
+    //   setFailModal(true);
+    //   setTimeout(() => {
+    //     setFailModal(false);
+    //   }, 5000);
+    //   return;
+    // }
+
+    // 010-9965-2359
+    var location = null;
+    if (locationIndex != 0) location = locationIndex;
 
     axios.post(`https://prod.kcook-cake.com/app/applicants`,{
       cityIndex: cityIndex,
-      locationIndex: locationIndex,
+      locationIndex: location,
       phoneNumber: phoneNumber,
     })
     .then(res =>{
-      document.location.href = "/";
       setFailModalContext("신청이 완료되었습니다!");
+      setFailModal(true);
+      setTimeout(() => {
+        setFailModal(false);
+        document.location.href = "/";
+      }, 1300);
+    }).catch((error)=> {
+      setFailModalContext(error.response.data.message);
       setFailModal(true);
       setTimeout(() => {
         setFailModal(false);
