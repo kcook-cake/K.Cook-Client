@@ -65,7 +65,7 @@ function Cake (){
                     </select>
                 </div>
                 <div className="sorted-item">
-                    <LengthwiseCard getData={data}/>
+                    <LengthwiseCard getData={data} link="Cake"/>
                 </div>
             </div>
         </div>

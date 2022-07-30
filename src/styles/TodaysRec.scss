@@ -1,7 +1,6 @@
 @import "./reset.scss";
 
 .pc {
-  display: block;
 }
 .mobile {
   display: none;
@@ -20,7 +19,7 @@
   width: 1199px;
   margin: auto;
   // margin-bottom: 115px;
-  padding: 80px 10px;
+  padding: 80px 10px 0px 10px;
   
   .recommend-contents {
     display: grid;
@@ -31,12 +30,15 @@
 
 // 페이지네이션
 .pagination {
-  margin-top: 40px;
-  margin-bottom: 50px;
+  width: 100%;
+  // margin-top: 40px;
+  // margin-bottom: 50px;
   display: block;
-  float: right;
+  // float: right;
+  text-align: right;
   color: #b2b2b2;
   font-size: 18px;
+  // background-color: red;
   .prev {
     padding-right: 25px;
     color: #b2b2b2;
@@ -69,14 +71,53 @@
 }
 
 // 이번달 인기이벤트
+.todays-event-bar {
+  width: 1179px;
+  height: 200px;
+  // margin: auto;
+  position: absolute;
+  .todays-event-bar-left {
+    opacity: 0;
+    float: left;
+    position : absolute;
+    bottom : 0;
+    transition: all 0.3s ease-in;
+  }
+  .todays-event-bar-left:hover {
+    opacity: 100;
+    transition: all 0.2s ease-in;
+  }
+  .todays-event-bar-right {
+    opacity: 0;
+    float: right;
+    position : absolute;
+    bottom : 0;
+    right: 0;
+    transition: all 0.3s ease-in;
+  }
+  .todays-event-bar-right:hover {
+    opacity: 100;
+    transition: all 0.2s ease-in;
+  }
+}
+
 .famous-event {
   width: 1199px;
   margin: auto;
-  // margin-top: 50px;
   padding: 80px 10px;
+  margin-bottom: 80px;
+
+  .event-contents {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 23px;
+  }
+  
   .event-top {
+    padding-bottom: 30px;
     .title {
-      display: inline-block;
+      display: inline;
     }
     .view-all {
       float: right;
@@ -86,23 +127,14 @@
       font-size: 16px;
       font-weight: bold;
     }
-  }
-
-  .event-arrow {
-    margin-bottom: 50px;
-  }
-
-  .event-contents {
-    // max-width: 1199px;
-    // min-width: 825px;
-    display: flex;
-    align-items: center;
-    // background-color: red;
-    // overflow-x: scroll;
+    .pc {
+    }
+    .mobile {
+      display: none;
+    }
   }
   
   .event-card {
-    margin-right: 23px;
     .event-card:last-child {
       margin-right: 12px;
     }
@@ -142,12 +174,6 @@
     display: block;
   }
   // .main-cake {
-    .event-contents {
-      padding: 0 16px;
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-      overflow-x: scroll;
-    }
   // }
 
   .sort-by-rec {
@@ -157,13 +183,22 @@
     .recommend-contents {
       padding: 0 16px;
       grid-template-rows: 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       overflow-x: scroll;
     }
     .title {
       padding: 0 16px;
       font-size: 18px;
       margin-bottom: 0px;
+    }
+  }
+
+  .main-cake-flex {
+    .recommend-contents {
+      padding: 0 16px;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      overflow-x: scroll;
     }
   }
 
@@ -238,6 +273,38 @@
   }
 
   // 이번달 인기이벤트
+  .todays-event-bar {
+    width: 100%;
+    height: 150px;
+    .todays-event-bar-left {
+      opacity: 0;
+      float: left;
+      position : absolute;
+      bottom : 0;
+      transition: all 0.3s ease-in;
+    }
+    .todays-event-bar-left:hover {
+      opacity: 100;
+      transition: all 0.2s ease-in;
+    }
+    .todays-event-bar-right {
+      opacity: 0;
+      float: right;
+      position : absolute;
+      bottom : 0;
+      right: 0;
+      transition: all 0.3s ease-in;
+    }
+    .todays-event-bar-right:hover {
+      opacity: 100;
+      transition: all 0.2s ease-in;
+    }
+
+    img {
+      width: 30px;
+    }
+  }
+
   .event-contents::-webkit-scrollbar {
     // width: 5px;
     height: 8px;
@@ -251,41 +318,53 @@
     border-radius: 10px;
     // box-shadow: inset 0px 0px 5px white;
   }
+
   .famous-event {
     width: 100%;
     padding: 0px;
     padding-bottom: 20px;
-
-    .title::after {
-      position: absolute;
-      background-image: url("../assets/right-arrow.svg");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      width: 30px;
-      height: 30px;
-      content: "";
-    }
+    margin-bottom: 0px;
+    margin-top: 45px;
     .link {
       display: none;
     }
     
     .event-top {
-      // overflow:hidden;
-      // text-overflow:ellipsis;
-      // white-space:nowrap;
+      padding-bottom: 0px;
       .title {
-        margin-bottom: 15px;
-        white-space:nowrap;
+          margin-bottom: 15px;
+          white-space:nowrap;
       }
       .view-all {
+          display: none;
+      }
+      
+      .pc {
         display: none;
+      }
+      .mobile {
+        display: block;
+        img {
+          width: 30px;
+          height: 30px;
+          background-size: 100% 100%;
+          position: absolute;
+        }
       }
     }
 
     .event-contents {
+      height: 230px;
       margin: 0 10px;
       display: flex;
-      align-items: center;
+      padding: 0 16px;
+
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 10px;
+
+      // align-items: center;
       overflow-x: scroll;
 
       .event-arrow {
@@ -294,40 +373,6 @@
         // background-color: red;
         img {
           width: 25px;
-        }
-      }
-
-      .event-card {
-        height: 220px;
-        margin: 0px 5px;
-        .event-card:last-child {
-          margin-right: 12px;
-        }
-        .card-img {
-          // width: 378px;
-          
-          overflow: hidden;
-          img {
-            width: 233px;
-            height: 143px;
-            // width: 100%;
-            // max-width: 378px;
-            // height: 100%;
-          }
-        }
-        
-        .event-card-title {
-          margin-top: 8px;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        
-        .event-date {
-          font-size: 12px;
-          font-weight: 500;
-          span {
-            color: $pink;
-          }
         }
       }
 

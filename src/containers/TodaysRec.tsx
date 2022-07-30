@@ -8,46 +8,35 @@ import SectionTitle from 'src/components/SectionTitle';
 
 import axios from "axios";
 
+import LinkClick from '../utils/LinkClick';
+
+import allow from '../assets/right-arrow.svg';
 import leftArrow from '../assets/left-arrow.svg';
 import rightArrow from '../assets/right-arrow.svg';
 import event1 from '../assets/event1.png';
 import event2 from '../assets/event2.png';
 import event3 from '../assets/event3.png';
+import EventCard from 'src/components/EventCard';
+import getAxios from 'src/utils/getAxios';
 
 function TodaysRec (){
     const [reviewTodays, setReviewTodays] = useState([]);
-    const [recommendTodays, setRecommendodays] = useState([]);
+    const [recommendTodays, setRecommenTdodays] = useState([]);
     const [eventTodays, setEventTodays] = useState([]);
 
+    //0페이지부터 시작한다
+    const [reviewPageTodays, setReviewPageTodays] = useState(0);
+    const [recommendPageTodays, setRecommendPageTodays] = useState(0);
+    const [eventPageTodays, setEventPageTodays] = useState(0);
+
+    const [reviewLengthTodays, setReviewLengthTodays] = useState(0);
+    const [recommendLengthTodays, setRecommendLengthTodays] = useState(0);
+    const [eventLengthTodays, setEventLengthTodays] = useState(0);
+
     useEffect(()=>{
-        axios.get(`https://prod.kcook-cake.com/app/cakes`)
-            .then(res =>{
-                var num = 8;
-                if (res.data.result.content.length < 8) num = res.data.result.content.length;
-
-                var changeData: any = [];
-                for (var i = 0; i < num; i++) {
-                    changeData[i] = res.data.result.content[i];
-                }
-                setReviewTodays(changeData);
-            });
-
-        axios.get(`https://prod.kcook-cake.com/app/cakes`)
-            .then(res =>{
-                var num = 6;
-                if (res.data.result.content.length < 6) num = res.data.result.content.length;
-
-                var changeData: any = [];
-                for (var i = 0; i < num; i++) {
-                    changeData[i] = res.data.result.content[i];
-                }
-                setRecommendodays(changeData);
-            });
-
-        axios.get(`https://prod.kcook-cake.com/app/cakes`)
-            .then(res =>{
-                setEventTodays(res.data.result.content);
-            });
+        getAxios(setReviewTodays, setReviewLengthTodays, "cakes", [], 8, reviewPageTodays, 0);
+        getAxios(setRecommenTdodays, setRecommendLengthTodays, "cakes", [], 6, recommendPageTodays, 0);
+        getAxios(setEventTodays, setEventLengthTodays, "cakes", [], 3, 0, eventPageTodays);
     },[]);
 
     return(
@@ -55,7 +44,7 @@ function TodaysRec (){
             <div className="sort-by-rec">
                 <div className="title">리뷰 별점순</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard getData={reviewTodays}/>
+                    <LengthwiseCard getData={reviewTodays} link="Review"/>
                 </div>
                 <div className="pagination">
                     <Link to="/" className="arrow prev" href="#"> &lt;Prev</Link>
@@ -74,10 +63,10 @@ function TodaysRec (){
                     </div>
                 </div>
             </div>
-            <div className="mobile sort-by-rec" style={{ marginBottom: "23px", }}>
+            <div className="mobile main-cake-flex sort-by-rec" style={{ marginBottom: "23px", }}>
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard getData={recommendTodays}/>
+                    <LengthwiseCard getData={recommendTodays} link="KCOOK"/>
                 </div>
             </div>
             {/* <div className="kcook-pick">
@@ -88,52 +77,48 @@ function TodaysRec (){
             </div> */}
 
             <div className="famous-event">
+                <div className="todays-event-bar">
+                    <button
+                        className="todays-event-bar-left"
+                        onClick={()=>{
+                            if (0 <= eventPageTodays-1) {
+                                getAxios(setEventTodays, setEventLengthTodays, "cakes", [], 3, 0, eventPageTodays-1);
+                                setEventPageTodays(eventPageTodays-1)
+                            }
+                        }}
+                    >
+                        <img src={leftArrow}/>
+                    </button>
+                    <button
+                        className="todays-event-bar-right"
+                        onClick={()=>{
+                            if (eventLengthTodays >= eventPageTodays+1+3) {
+                                getAxios(setEventTodays, setEventLengthTodays, "cakes", [], 3, 0, eventPageTodays+1);
+                                setEventPageTodays(eventPageTodays+1)
+                            }
+                        }}
+                    >
+                        <img src={rightArrow}/>
+                    </button>
+                </div>
                 <div className="event-top">
-                    <div className="title">이번 달 인기 이벤트</div>
+                    <div className="pc title">이번 달 인기 이벤트</div>
+                    <div
+                        className="mobile title"
+                        onClick={()=>{
+                            LinkClick("");
+                            document.location.href = "/"+"";
+                        }}
+                    >
+                        이번 달 인기 이벤트
+                        <img src={allow} />
+                    </div>
                     <Link to="/"className="link"></Link>
                     <a className="view-all">전체 보기 &gt;</a>
                 </div>
-                <div className="event-contents">
-                    {/* <button className="event-arrow event-left">
-                        <img src={leftArrow}/>
-                    </button> */}
-                    
-                    <div className="event-card">
-                        <div className="card-img">
-                            <img src={event1}/>
-                        </div>
-                        <h2 className="event-card-title">오늘 종료! 케이쿡 단독 최저가!</h2>
-                        <div className="event-date">
-                            <span>D-2 </span>
-                            07.22 (목) ~ 07.31(토)
-                        </div>
-                    </div>
-                    
-                    <div className="event-card">
-                        <div className="card-img">
-                            <img src={event2}/>
-                        </div>
-                        <h2 className="event-card-title">선착순 증정 이벤트!</h2>
-                        <div className="event-date">
-                            <span>D-2 </span>
-                            07.22 (목) ~ 07.31(토)
-                        </div>
-                    </div>
 
-                    <div className="event-card">
-                        <div className="card-img">
-                            <img src={event3}/>
-                        </div>
-                        <h2 className="event-card-title">오늘 종료! 케이쿡 단독 최저가!</h2>
-                        <div className="event-date">
-                            <span>D-2 </span>
-                            07.22 (목) ~ 07.31(토)
-                        </div>
-                    </div>
-
-                    {/* <button className="event-arrow event-right">
-                        <img src={rightArrow}/>
-                    </button> */}
+                <div className="event-contents">                    
+                    <EventCard getData={eventTodays} link="" />
                 </div>
             </div>
         </div>

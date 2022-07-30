@@ -22,7 +22,10 @@ function WidthwiseCard({ getData }: LengthwiseCardProps) {
         return (
         <div className="widthwise-card" key={data.productId}>
             <div className="widthwise-card-img">
-                <img src={data.thumbnail} alt="cake-image" width={263.2} height={154.4} />
+                {data.thumbnail == ""?
+                    <div className="widthwise-img-none">~준비중 입니다~</div>:
+                    <img src={data.thumbnail} alt="cake-image" width={263.2} height={154.4} />
+                }
             </div>
             <div className="widthwise-card-info">
                 <div className="card-rating-star">

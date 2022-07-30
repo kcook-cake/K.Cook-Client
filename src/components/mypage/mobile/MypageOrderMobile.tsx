@@ -19,14 +19,14 @@ function MypageOrderMobile (){
             <div className="sort-by-rec">
                 <div className="title">주문내역</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard getData={data}/>
+                    <LengthwiseCard getData={data} link=""/>
                 </div>
             </div>
 
             <div className="sort-by-rec" style={{ marginBottom: "23px", }}>
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="recommend-contents">
-                    <LengthwiseCard getData={data}/>
+                    <LengthwiseCard getData={data} link="KCOOK"/>
                 </div>
             </div>
         </div>

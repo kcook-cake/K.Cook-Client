@@ -8,26 +8,24 @@ import { start } from 'repl';
 
 
 interface Props {
-    getData: any
-
-    // img? : string,
-    // star? : number,
-    // review? : number,
-    // shop : string,
-    // cakename : string ,
-    // minprice : number
+    getData: any,
+    link: string,
 }
 
-function LengthwiseCard({getData}: Props) {
-    console.log(getData);
+function LengthwiseCard({getData, link}: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <Link to="/">
+                    <Link to={"/"+link+"/"+data.productId}>
                         <div className="container" key={data.productId}>
                             <div className="vertical-card">
-                                <img src={data.thumbnail}  alt="cake-image" className="vertical-card-img" width={279.8} height={304}/>
+                                <div className="lengthwise-img">
+                                    {data.thumbnail == ""?
+                                        <div className="lengthwise-img-none">~준비중 입니다~</div>:
+                                        <img src={data.thumbnail}  alt="cake-image" className="vertical-card-img" width={279.8} height={304}/>
+                                    }
+                                </div>
                                 <div className="vertical-card-info">
                                     <div className="card-top-info">
                                         <div className="card-rating-star">

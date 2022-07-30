@@ -21,6 +21,21 @@ function MainCake (){
                 for (var i = 0; i < num; i++) {
                     changeData[i] = res.data.result.content[i];
                 }
+                for (var i = num; i < 4; i++) {
+                    changeData[i] = {
+                        isCake: true,
+                        name: "~준비중 입니다~",
+                        price: 0,
+                        productId: 0,
+                        raiting: ".00",
+                        resultPrice: 0,
+                        reviewCount: 0,
+                        salePrice: 0,
+                        status: "VALID",
+                        storeName: "~준비중 입니다~",
+                        thumbnail: "",
+                    }
+                }
                 setData(changeData);
             });
     },[]);
