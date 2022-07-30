@@ -83,12 +83,9 @@ function LandingPage() {
     // }
 
     // 010-9965-2359
-    var location = null;
-    if (locationIndex != 0) location = locationIndex;
-
     axios.post(`https://prod.kcook-cake.com/app/applicants`,{
       cityIndex: cityIndex,
-      locationIndex: location,
+      locationIndex: locationIndex,
       phoneNumber: phoneNumber,
     })
     .then(res =>{
@@ -153,7 +150,7 @@ function LandingPage() {
           <br />
           커스텀케이크 주문 플랫폼이 온다.
         </p>
-        <button onClick={()=>{ test(); }}>test</button>
+        {/* <button onClick={()=>{ test(); }}>test</button> */}
         <div className="end-time" id="end-time">
           {/* {dDayCount} */}
           <div className="end-time-timer">
@@ -236,6 +233,7 @@ function LandingPage() {
         </span>
       </div>
       <div className="center-footer"></div>
+      
       <div className="get-email-flex">
         <div className="get-email">
           <h1 className="get-email-title">출시 알림 신청하기</h1>
