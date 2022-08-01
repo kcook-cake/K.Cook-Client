@@ -16,6 +16,8 @@ import rightArrow from '../assets/right-arrow.svg';
 import event1 from '../assets/event1.png';
 import event2 from '../assets/event2.png';
 import event3 from '../assets/event3.png';
+
+import KCOOKCard from 'src/components/KCOOKCard';
 import EventCard from 'src/components/EventCard';
 import getAxios from 'src/utils/getAxios';
 
@@ -63,12 +65,7 @@ function TodaysRec (){
                     </div>
                 </div>
             </div>
-            <div className="mobile main-cake-flex sort-by-rec" style={{ marginBottom: "23px", }}>
-                <div className="title">케이쿡 추천 Pick</div>
-                <div className="recommend-contents">
-                    <LengthwiseCard getData={recommendTodays} link="KCOOK"/>
-                </div>
-            </div>
+            <KCOOKCard />
             {/* <div className="kcook-pick">
                 <div className="title">케이쿡 추천 Pick</div>
                 <div className="pick-contents">

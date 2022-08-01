@@ -2,26 +2,132 @@
 
 .cake-flex {
   background-color: #fafafa;
+  .sort-by-rec {
+    padding-top: 0;
+  }
 }
 
 .cake {
   width: 1199px;
   margin: auto;
-  padding: 20px 0px;
+  padding-top: 20px;
+  padding-bottom: 142.4px;
   background-color: #fafafa;
-  .sorted-item {
-    padding: 0 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 20px;
-  }
+  // .sorted-item {
+  //   padding: 0 10px;
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr 1fr 1fr;
+  //   column-gap: 20px;
+  // }
 }
 
 .item-sort-bar {
   width: 1199px;
-  margin-bottom: 40px;
   padding: 0 10px;
+  select {
+    padding-right: 0;
+    background: url('../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
+    background-color: #f5f5f5;
+  }
+  option {
+    border: 0;
+    background-color: #fff;
+  }
 }
+
+.cake-select {
+  width: auto;
+  display: inline-block;
+  margin-right: 4px;
+  .cake-select-button {
+    height: 34px;
+    padding-left: 10px;
+
+    color: #8a8a8a;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 5px 0 0 5px;
+    background-color: #f5f5f5;
+  }
+  .cake-select-img {
+    height: 34px;
+    padding-top: 5px;
+    padding-right: 8px;
+    border-radius: 0 5px 5px 0;
+    background-color: #f5f5f5;
+    img {
+      width: 14px;
+    }
+  }
+}
+.cake-select-absolute {
+  position: absolute;
+  ul{
+    list-style:none;
+    padding-left:0px;
+  }
+  .cake-select-top {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    margin-left: 90px;
+
+    border-bottom: 10px solid #fff;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    // top: -5px; left: 9px;
+    z-index: 999;
+  }
+  .cake-select-ul-2,
+  .cake-select-ul {
+    width: 200px;
+    height: 209px;
+    margin-top: 10px;
+
+    box-shadow: 0px 0px 15px rgb(204, 204, 204);
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  .cake-select-ul-2 {
+    height: 260px;
+  }
+  .cake-select-li {
+    padding: 15.6px 16px;
+
+    color: #8a8a8a;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .cake-select-li:hover {
+    background-color: rgba(234, 84, 80, 0.15);
+  }
+  .cake-select-li-top {
+    border-radius: 10px 10px 0 0;
+  }
+  .cake-select-li-bottom {
+    border-radius: 0 0 10px 10px;
+  }
+}
+.cake-select-bar {
+  width: 100%;
+  height: 25px;
+  margin: 0 10px;
+  margin-top: 14px;
+  // display: none;
+
+  background-color: green;
+}
+
+.cake-search {
+  float: right;
+  font-weight: 500;
+  font-size: 17px;
+  img {
+    width: 15px;
+    margin-right: 3px;
+  }
+}
+
 .dropdown-bar {
   max-width: 83px;
   margin: 2.5px 0px;
@@ -38,36 +144,47 @@
 @media (max-width: 767px) {
   .cake-flex {
     background-color: #fff;
-    margin-bottom: 20px;
+    padding-bottom: 0px;
+    .sort-by-rec {
+      padding: 0;
+    }
+    .main-cake-flex {
+      padding-top: 45px;
+      .title {
+        font-weight: 700;
+      }
+    }
   }
+
   .item-sort-bar {
     width: 100%;
     min-width: 0px;
+    padding-left: 16px;
     margin-bottom: 20px;
   }
 
   .cake {
     width: 100%;
     min-width: 0px;
-    padding: 45px 10px 0px 10px;
+    padding: 24px 10px 0px 10px;
     background-color: #fff;
-    .sorted-item {
-      // width: 100%;
-      padding: 0 16px;
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr 1fr;
-      .container {
-        width: 100%;
-        .vertical-card{
-          width: 100%;
-          height: auto;
-          background-color: #fff;
-        }
-        .vertical-card-img {
-          width: 100%;
-          height: auto;
-        }
-      }
-    }
+    // .sorted-item {
+    //   // width: 100%;
+    //   padding: 0 16px;
+    //   grid-template-rows: 1fr;
+    //   grid-template-columns: 1fr 1fr;
+    //   .container {
+    //     width: 100%;
+    //     .vertical-card{
+    //       width: 100%;
+    //       height: auto;
+    //       background-color: #fff;
+    //     }
+    //     .vertical-card-img {
+    //       width: 100%;
+    //       height: 116px; //auto
+    //     }
+    //   }
+    // }
   }
 }
