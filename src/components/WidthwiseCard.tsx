@@ -21,10 +21,10 @@ function WidthwiseCard({ getData }: LengthwiseCardProps) {
     {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
         return (
         <div className="widthwise-card" key={data.productId}>
-            <div className="widthwise-card-img">
+            <div className="widthwise-card-img-flex">
                 {data.thumbnail == ""?
                     <div className="widthwise-img-none">~준비중 입니다~</div>:
-                    <img src={data.thumbnail} alt="cake-image" width={263.2} height={154.4} />
+                    <img src={data.thumbnail} />
                 }
             </div>
             <div className="widthwise-card-info">
@@ -33,6 +33,9 @@ function WidthwiseCard({ getData }: LengthwiseCardProps) {
                 </div>
                 <div className="card-shop-name">
                     {data.storeName}
+                    <div className="mobile card-review">
+                        {"리뷰 "+data.reviewCount}
+                    </div>
                 </div>
                 <div className="card-cake-name">
                     {data.name}
@@ -40,7 +43,7 @@ function WidthwiseCard({ getData }: LengthwiseCardProps) {
                 <div className="card-minprice">
                     {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"~"}
                 </div>
-                <div className="card-review">
+                <div className="pc card-review">
                     {"리뷰 "+data.reviewCount}
                 </div>
             </div>

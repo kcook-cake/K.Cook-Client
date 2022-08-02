@@ -2,8 +2,13 @@
 
 .cake-flex {
   background-color: #fafafa;
-  .sort-by-rec {
-    padding-top: 0;
+  .cake-contents-flex {
+    padding: 0 10px;
+    .contents {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 16px;
+    }
   }
 }
 
@@ -161,15 +166,33 @@
 @media (max-width: 767px) {
   .cake-flex {
     background-color: #fff;
-    padding-bottom: 0px;
-    .sort-by-rec {
+    // padding-bottom: 0px;
+
+    .cake-contents-flex {
       padding: 0;
+      margin: 0 16px;
+      margin-bottom: 45px;
+      .contents::-webkit-scrollbar {
+        height: 8px;
+      }
+      .contents::-webkit-scrollbar-thumb {
+        background-color: #e6e6e6;
+        border-radius: 10px;
+      }
+      .contents::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        // box-shadow: inset 0px 0px 5px white;
+      }
+      .contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 16px;
+        overflow-x: scroll;
+      }
     }
     .main-cake-flex {
       padding-top: 45px;
-      .title {
-        font-weight: 700;
-      }
     }
   }
 
@@ -177,13 +200,15 @@
     width: 100%;
     min-width: 0px;
     padding-left: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 24px;
   }
 
   .cake {
     width: 100%;
     min-width: 0px;
-    padding: 24px 10px 0px 10px;
+    margin: 0; padding: 0;
+
     background-color: #fff;
     .cake-select-flex {
       margin-bottom: 0;
@@ -259,6 +284,8 @@
   }
   .cake-search {
     margin-top: 10px;
+    margin-right: 20px;
+
     float: right;
     font-weight: 500;
     font-size: 15px;
@@ -273,6 +300,7 @@
   .cake-select-mobile {
     width: 100%;
     height: 100%;
+    top: 0;
 
     position: absolute;
     background-color: #fff;

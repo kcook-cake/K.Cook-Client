@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import '../styles/main/home/Home.scss';
 
 import MainCrousel from '../components/main/Crousel';
-import MainRecommend from './main/MainRecommend';
-import MainCake from './main/MainCake';
+import MainRecommend from './main/home/MainRecommend';
+import MainCake from './main/home/MainCake';
 import MainAd from '../components/main/MainAd';
-import MainUpdate from './main/MainUpdate';
-
-
+import MainUpdate from './main/home/MainUpdate';
 
 function Home (){
     return(

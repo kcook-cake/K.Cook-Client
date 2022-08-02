@@ -14,12 +14,12 @@ interface SectionTitleProps {
 
 function SectionTitle({ title, link }: SectionTitleProps) {
     return (
-        <div className="section-title">
-            <div className="pc title">
+        <div className="section-title-flex">
+            <div className="pc section-title">
                 {title}
             </div>
             <div
-                className="mobile title"
+                className="mobile section-title"
                 onClick={()=>{
                     LinkClick(link);
                     document.location.href = "/"+link;

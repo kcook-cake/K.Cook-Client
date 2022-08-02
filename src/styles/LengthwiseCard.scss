@@ -1,54 +1,63 @@
 @import "./reset.scss";
 
-.container {
-  width: 100%;
-}
-.vertical-card {
+.lengthwise {
   width: 279.8px;
-  margin: 0;
+  height: 479px;
   margin-bottom: 40px;
+
   display: inline-flex;
   flex-direction: column;
-  // width: 298px;
-  height: 479px;
 
-  background-color: fff;
   border-radius: 11px;
   background-color: #fff;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  // & + & {
-  //   margin-left: 20px;
-  // }
-  .lengthwise-img {
+
+  .lengthwise-img-flex {
     width: 279.8px;
     height: 304px;
     margin-bottom: 17px;
+
     border-radius: 10px;
     background-color: #e6e6e6;
+    img {
+      height: 304px;
+    }
   }
   .lengthwise-img-none {
     line-height: 304px;
     text-align: center;
     color: #858997;
   }
+  .lengthwise-img {
+    width: 100%;
+    border-radius: 10px;
+  }
 }
 
-.vertical-card-img {
-  margin-bottom: 17px;
-  width: 100%;
-  border-radius: 10px;
-  // height: 304px;
-}
-
-.vertical-card-info {
-  margin: 0;
-  // padding: 0px;
-  padding-left: 20px; //왜안돼?
+.lengthwise-info {
+  margin-left: 20px;
   font-weight: bold;
 }
+
+.card-rating-star {
+  display: inline-block;
+  img {
+    vertical-align: top;
+    margin-right: 3px;
+    margin-bottom: 16px;
+  }
+}
+.card-review {
+  display: inline;
+  float: right;
+  margin-right: 20px;
+  font-size: 11px;
+  color: #858997;
+}
+
 .card-shop-name {
-  margin-bottom: 2px;
   width: 250px; //270px
+  margin-bottom: 2px;
 
   overflow:hidden;
   text-overflow:ellipsis;
@@ -60,12 +69,12 @@
 }
 .card-cake-name {
   width: 250px; //270px
+  padding-bottom: 10px;
 
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 
-  margin-bottom: 10px;
   color: $sub-text;
   line-height: 18px;
   font-size: 16px;
@@ -75,113 +84,85 @@
   font-size: 20px;
 }
 
-.card-top-info {
-  // margin-bottom: 4px;
-}
-.card-review {
-  display: inline;
-  float: right;
-  margin-right: 20px;
-  font-size: 11px;
-  color: #858997;
-}
-.card-rating-star {
-  display: inline-block;
-  img {
-    vertical-align: top;
-    margin-right: 3px;
-    margin-bottom: 16px;
-  }
-}
-
-
 @media (max-width: 767px) {
-  .container {
+  .lengthwise {
     width: 156px;
-    margin: 15px 0px 0px 0px;
-  }
-  .vertical-card {
-    width: 156px;
-    display: inline-flex;
     height: 262px;
+    margin-bottom: 0px;
+    display: inline-flex;
+
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
 
-    .lengthwise-img {
+    .lengthwise-img-flex {
       width: 156px;
       height: 116px;
       border-radius: 10px;
       background-color: #e6e6e6;
+      img {
+        height: 116px;
+      }
     }
     .lengthwise-img-none {
       line-height: 116px;
       text-align: center;
       color: #858997;
     }
-  }
-  .vertical-card-img {
-    width: 156px;
-    height: 116px;
-  }
-  .vertical-card-info {
-    margin: 0;
-    // padding: 0px;
-    padding-left: 0px; //왜안돼?
-    font-weight: bold;
-  }
-
-  .card-shop-name {
-    margin-bottom: 2px;
-    width: 160px;
-  
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  
-    color: #333333;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 18px;
-  }
-  .card-cake-name {
-    width: 160px;
-
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-
-    margin-bottom: 10px;
-    color: $sub-text;
-    line-height: 18px;
-    font-size: 15px;
-  }
-  .card-minprice {
-    color: $pricetext;
-    font-size: 18px;
-  }
-  
-  .card-top-info {
-    margin-bottom: 0px; //왜안돼
-  }
-  .card-review {
-    height: 13px;
-    // line-height: 26px;
-
-    display: inline;
-    float: right;
-    margin-right: 0px;
-    font-size: 11px;
-    color: #858997;
-  }
-  .card-rating-star {
-    display: inline-block;
-    height: 13px;
-    // line-height: 13px;
-    img {
-      width: 13px;
-      vertical-align: top;
-      margin-right: 3px;
-      margin-bottom: 16px;
+    .lengthwise-img {
+      width: 156px;
+      height: 116px;
     }
   }
+
+  .lengthwise-info {
+    margin: 0;
+    padding-left: 0px; //왜안돼?
+    font-weight: bold;
+    .card-review {
+      height: 13px;
+      margin: 0;
+      display: inline;
   
+      float: right;
+      font-size: 11px;
+      color: #858997;
+    }
+    .card-rating-star {
+      display: inline-block;
+      height: 13px;
+      img {
+        width: 13px;
+        vertical-align: top;
+      }
+    }
+    .card-shop-name {
+      width: 156px;
+    
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    
+      color: #333333;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+    }
+    .card-cake-name {
+      width: 156px;
+      margin-bottom: 10px;
+  
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+  
+      color: $sub-text;
+      line-height: 18px;
+      font-size: 15px;
+
+      border-bottom: 1px solid #eee;
+    }
+    .card-minprice {
+      color: $pricetext;
+      font-size: 18px;
+    }
+  }
 }

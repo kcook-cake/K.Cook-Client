@@ -18,15 +18,15 @@ function LengthwiseCard({getData, link}: Props) {
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
                     <Link to={"/"+link+"/"+data.productId}>
-                        <div className="container" key={data.productId}>
-                            <div className="vertical-card">
-                                <div className="lengthwise-img">
+                        <div className="lengthwise-flex" key={data.productId}>
+                            <div className="lengthwise">
+                                <div className="lengthwise-img-flex">
                                     {data.thumbnail == ""?
                                         <div className="lengthwise-img-none">~준비중 입니다~</div>:
-                                        <img src={data.thumbnail}  alt="cake-image" className="vertical-card-img" width={279.8} height={304}/>
+                                        <img src={data.thumbnail} className="lengthwise-img"/>
                                     }
                                 </div>
-                                <div className="vertical-card-info">
+                                <div className="lengthwise-info">
                                     <div className="card-top-info">
                                         <div className="card-rating-star">
                                             {star(data.raiting)}

@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import LengthwiseCard from '../components/LengthwiseCard';
-import '../../src/styles/main/MainRecommend.scss'
-import '../../src/styles/TodaysRec.scss'
-import WidthwiseCard from '../components/WidthwiseCard';
-import SectionTitle from 'src/components/SectionTitle';
+import '../../../../src/styles/main/todaysrec/TodaysRec.scss'
 
 import axios from "axios";
 
-import LinkClick from '../utils/LinkClick';
-
-import allow from '../assets/right-arrow.svg';
-import leftArrow from '../assets/left-arrow.svg';
-import rightArrow from '../assets/right-arrow.svg';
-import event1 from '../assets/event1.png';
-import event2 from '../assets/event2.png';
-import event3 from '../assets/event3.png';
-
-import KCOOKCard from 'src/components/KCOOKCard';
+import LengthwiseCard from '../../../components/LengthwiseCard';
+import WidthwiseCard from '../../../components/WidthwiseCard';
 import EventCard from 'src/components/EventCard';
+import PickCard from 'src/components/main/PickCard';
 import getAxios from 'src/utils/getAxios';
+import LinkClick from '../../../utils/LinkClick';
+
+import allow from '../../../assets/right-arrow.svg';
+import leftArrow from '../../../assets/left-arrow.svg';
+import rightArrow from '../../../assets/right-arrow.svg';
 
 function TodaysRec (){
     const [reviewTodays, setReviewTodays] = useState([]);
@@ -42,10 +36,10 @@ function TodaysRec (){
     },[]);
 
     return(
-        <div className="todays-recommend">
-            <div className="sort-by-rec">
+        <div className="todaysrec-flex">
+            <div className="todaysrec-review">
                 <div className="title">리뷰 별점순</div>
-                <div className="recommend-contents">
+                <div className="contents">
                     <LengthwiseCard getData={reviewTodays} link="Review"/>
                 </div>
                 <div className="pagination">
@@ -57,26 +51,20 @@ function TodaysRec (){
                 </div>
             </div>
 
-            <div className="pc main-cake-flex">
-                <div className="main-cake">
+            <div className="pc todaysrec-pick">
+                <div>
                     <div className="title">케이쿡 추천 Pick</div>
-                    <div className="cake-contents">
+                    <div className="contents">
                         <WidthwiseCard getData={recommendTodays}/>
                     </div>
                 </div>
             </div>
-            <KCOOKCard />
-            {/* <div className="kcook-pick">
-                <div className="title">케이쿡 추천 Pick</div>
-                <div className="pick-contents">
-                    <WidthwiseCard getData={data}/>
-                </div>
-            </div> */}
+            <PickCard />
 
-            <div className="famous-event">
-                <div className="todays-event-bar">
+            <div className="todaysrec-event">
+                <div className="todaysrec-event-bar">
                     <button
-                        className="todays-event-bar-left"
+                        className="todaysrec-event-bar-left"
                         onClick={()=>{
                             if (0 <= eventPageTodays-1) {
                                 getAxios(setEventTodays, setEventLengthTodays, "cakes", [], 3, 0, eventPageTodays-1);
@@ -87,7 +75,7 @@ function TodaysRec (){
                         <img src={leftArrow}/>
                     </button>
                     <button
-                        className="todays-event-bar-right"
+                        className="todaysrec-event-bar-right"
                         onClick={()=>{
                             if (eventLengthTodays >= eventPageTodays+1+3) {
                                 getAxios(setEventTodays, setEventLengthTodays, "cakes", [], 3, 0, eventPageTodays+1);
@@ -98,7 +86,8 @@ function TodaysRec (){
                         <img src={rightArrow}/>
                     </button>
                 </div>
-                <div className="event-top">
+                
+                <div className="todaysrec-event-top">
                     <div className="pc title">이번 달 인기 이벤트</div>
                     <div
                         className="mobile title"
@@ -110,11 +99,11 @@ function TodaysRec (){
                         이번 달 인기 이벤트
                         <img src={allow} />
                     </div>
-                    <Link to="/"className="link"></Link>
+                    {/* <Link to="/"className="link"></Link> */}
                     <a className="view-all">전체 보기 &gt;</a>
                 </div>
 
-                <div className="event-contents">                    
+                <div className="contents">                    
                     <EventCard getData={eventTodays} link="" />
                 </div>
             </div>

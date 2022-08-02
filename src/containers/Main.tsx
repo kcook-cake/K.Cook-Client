@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
 import Home from './Home';
-import TodaysRec from './TodaysRec';
+import TodaysRec from './main/todaysrec/TodaysRec';
 import Cake from './Cake';
 import MoreItem from './MoreItem';
 import CustomerService from './CS';

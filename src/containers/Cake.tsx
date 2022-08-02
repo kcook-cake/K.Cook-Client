@@ -10,7 +10,7 @@ import X from "../assets/x.svg";
 
 import getAxios from 'src/utils/getAxios';
 import LengthwiseCard from '../components/LengthwiseCard';
-import KCOOKCard from 'src/components/KCOOKCard';
+import PickCard from 'src/components/main/PickCard';
 import CakeBarCard from 'src/components/main/cake/CakeBarCard';
 import CakeBar_MobileCard from 'src/components/main/cake/CakeBar_MobileCard';
 
@@ -503,12 +503,12 @@ function Cake (){
                         </div>
                     }
                 </div>
-                <div className="sort-by-rec">
-                    <div className="recommend-contents">
+                <div className="cake-contents-flex">
+                    <div className="contents">
                         <LengthwiseCard getData={data} link="Review"/>
                     </div>
                 </div>
-                <KCOOKCard/>
+                <PickCard/>
             </div>
         </div>
     )
