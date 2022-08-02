@@ -7,7 +7,7 @@ import '../styles/MoreItem.scss';
 function MoreItem (){
     return(
         <div className="cake-flex">
-            <div className="cake">
+            <div className="cake" style={{ padding: "23px 10px", }}>
                 {/* <div className="item-sort-bar">
                     <select className="dropdown-bar">
                         <option selected>정렬</option>
