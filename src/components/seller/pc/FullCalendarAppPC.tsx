@@ -39,7 +39,7 @@ function FullCalendarAppPC (){
 
   useEffect(()=> {
     // $(".seller-section").hide();
-    $(".sso-pc").css("margin", "auto");
+    // $(".sso-pc").css("margin", "auto");
     // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
     // const yM = yearMonth.textContent;
     // yearMonth.innerHTML = `${yM?.split("/")[1]}.${yM?.split("/")[0]}`;
@@ -63,36 +63,37 @@ function FullCalendarAppPC (){
 
   // /SellerOrder/{id}
   return(
-    <div className="seller-mypage-top-flex seller-order-calendar fcap">
+    <>
       {modalFail ? 
-      <div className="calendar-modal-flex fcap" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
-        <div className="calendar-modal-top"></div>
-        <div id="calendar-modal">
-          <div style={{ width: "5px", height: "35px", }}></div>
-          <div className="calendar-modal-box">{date}</div>
-          <br/>
-          <div style={{ width: "5px", height: "20px", }}></div>
-          <div className="calendar-modal-box">
-            <Link
-              to="/SellerOrder"
-              onClick={()=>{
-                // $(".seller").css("display", "flex");
-                // $(".seller-section").show();
-                LinkClick("SellerOrder");
-                sellerLinkClick("SellerOrder");
-              }}
-            >
-              <button className="calendar-button">예약 확인</button> 
-            </Link>
-            <button 
-              className="calendar-button"
-              onClick={setting}
-            >주문 건수 설정</button> {/* 휴일해제 */}
+        <div className="calendar-modal-flex" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
+          <div className="calendar-modal-top"></div>
+          <div id="calendar-modal">
+            <div style={{ width: "5px", height: "35px", }}></div>
+            <div className="calendar-modal-box">{date}</div>
+            <br/>
+            <div style={{ width: "5px", height: "20px", }}></div>
+            <div className="calendar-modal-box">
+              <Link
+                to="/SellerOrder"
+                onClick={()=>{
+                  // $(".seller").css("display", "flex");
+                  // $(".seller-section").show();
+                  LinkClick("SellerOrder");
+                  sellerLinkClick("SellerOrder");
+                }}
+              >
+                <button className="calendar-button">예약 확인</button> 
+              </Link>
+              <button 
+                className="calendar-button"
+                onClick={setting}
+              >주문 건수 설정</button> {/* 휴일해제 */}
+            </div>
           </div>
         </div>
-      </div>
         :<></>
       }
+    <div className="seller-mypage-top-flex fcap">
       <div className="seller-order-top-calendar"> {/* mypage-top */}
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
         <Link
@@ -183,8 +184,9 @@ function FullCalendarAppPC (){
           }}
         />
       </div>
-  </div>
-
+    </div>
+    <div className="fcap-back" style={{ width: "5px", height: "1160px", }}></div>
+    </>
   )
 }
 

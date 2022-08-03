@@ -10,6 +10,7 @@
     border-radius: 18px;
     //   filter: blur(10px);
     border: solid 1px #ea5450;
+    z-index: 998;
     img {
       width: 130px;
       height: 54.8px;
@@ -74,6 +75,32 @@
     background-color: #525252;
     font-size: 12px;
     color: #fff;
+}
+
+.login-auto-contents {
+    margin-left: 4px;
+    float: right;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"] + label {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #bebebe;
+    border-radius: 6px;
+    position: relative;
+    z-index: 1;
+}
+input[type="checkbox"]:checked + label{
+    width: 18px;
+    height: 18px;
+  
+    border: 2px solid #ea5450;
+    background-color: #ea5450;
+    background: url("../../assets/check.png") no-repeat;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {

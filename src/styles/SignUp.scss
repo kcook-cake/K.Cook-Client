@@ -1,3 +1,14 @@
+
+.login-background {
+  height: 1282.8px;
+  width: 448px;
+  position: absolute;
+
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  z-index: 998;
+}
+
 .signup-confirm-text {
   width: 100%;
   text-align: right;
@@ -15,11 +26,6 @@
   color: #fff;
   font-weight: 500;
 }
-// .phone-confirm {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// }
 
 .signup-agreement {
   margin: 43px 0 5px;
@@ -45,6 +51,48 @@
   }
 }
 
+
+.signup-address {
+  margin-bottom: 6px;
+}
+.signup-adress-top {
+  height: 52px;
+  line-height: 52px;
+  padding-left: 22.5px;
+
+  color: #fff;
+  font-size: 18px;
+  border-radius: 10px 10px 0 0;
+  background-color: #ea5450;
+  img {
+    width: 26px;
+    height: 26px;
+    margin-top: 14px;
+    margin-right: 14px;
+    float: right;
+  }
+}
+
+//주소창
+#popupDom {
+  height: 0px !important;
+  position: absolute;
+  background-color: #ea5450;
+  z-index: 999;
+  .postCodeStyle {
+    height: 466px !important;
+    display: block;
+    width: 100%;
+    
+    border: 1px solid #d8d8d8;
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+
+
+//체크
 .agree-list {
   margin-bottom: 6px;
   padding-left: 7px;
@@ -56,8 +104,44 @@
   label {
     padding-left: 7px;
   }
+  button {
+    margin-top: 5px;
+  }
 }
 .check-agreement {
   display: flex;
   align-items: flex-end;
+}
+
+input[class="signup-checkbox-inner"] + label {
+  width: 17px;
+  height: 17px;
+  margin-top: 5px;
+  margin-left: 12px;
+  display: inline-block;
+  position: relative;
+
+  border: 2px solid #fff;
+  background: url("../assets/check1.png") no-repeat;
+  z-index: 1;
+}
+input[class="signup-checkbox-inner"]:checked + label{
+  width: 17px;
+  height: 17px;
+  border: 2px solid #fff;
+
+  background: url("../assets/check2.png") no-repeat;
+  z-index: 1;
+}
+
+@media (max-width: 371px) {
+  input[class="signup-checkbox-inner"] + label {
+    margin-left: 0px;
+  }
+  .agree-list {
+    font-size: 11px;
+    button {
+      font-size: 10px;
+    }
+  }
 }

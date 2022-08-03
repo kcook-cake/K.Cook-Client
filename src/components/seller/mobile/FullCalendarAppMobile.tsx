@@ -48,7 +48,7 @@ function FullCalendarAppMobile (){
 
     // $(".seller").css("display", "block");
     // $(".seller-section").hide();
-    $(".sso-pc").css("margin", "auto");
+    // $(".sso-pc").css("margin", "auto");
     // const yearMonth = document.querySelector(".fc-toolbar-title") as Element;
     // const yM = yearMonth.textContent;
     // yearMonth.innerHTML = `${yM?.split("/")[1]}.${yM?.split("/")[0]}`;
@@ -73,7 +73,7 @@ function FullCalendarAppMobile (){
   // /SellerOrder/{id}
   // style={{ top: (modalHeight-window.pageYOffset-209)+"px", }}
   return(
-    <div id="fcam" className="seller-order-calendar fcam">
+    <div id="fcam" className="fcam">
       {modalFail ? 
       <div className="calendar-modal-flex fcam">
         <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}>

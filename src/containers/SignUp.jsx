@@ -11,34 +11,37 @@ import PostCode from "../components/PostCode.js";
 import LoginCheckbox from "../components/LoginCheckbox";
 
 import logo from "../assets/logo.png";
+import X from "../assets/address_x.png"
 
 function SignUp() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // 팝업창 열고닫기
   const openclosePostCode = () => {
-    if (isPopupOpen)
+    if (isPopupOpen) 
       setIsPopupOpen(false);
     else
       setIsPopupOpen(true);
   };
   
+  const [isChecked, setIsChecked] = useState(false)
   const [checkedItems, setCheckedItems] = useState([])
-
   const checkboxs = [
-    { description: '서비스 이용약관 동의 (필수)', show: '보기', },
-    { description: '개인정보 수집 및 이용 동의 (필수)', show: '보기', },
-    { description: '만 14세 이상입니다 (필수)', show: '', },
-    { description: '광고성 정보 수신 동의 (선택)', show: '보기', }
+    { id: 1, description: '서비스 이용약관 동의 (필수)', show: '보기', },
+    { id: 2, description: '개인정보 수집 및 이용 동의 (필수)', show: '보기', },
+    { id: 3, description: '만 14세 이상입니다 (필수)', show: '', },
+    { id: 4, description: '광고성 정보 수신 동의 (선택)', show: '보기', }
   ]
 
   //체크박스 전체 선택/해제
   const onCheckAll = (checked) => {
     if (checked) {
+      setIsChecked(true);
       const checkedItemsArray = []
-      checkboxs.forEach(data => checkedItemsArray.push(data.description))
+      checkboxs.forEach(data => checkedItemsArray.push(data.id))
       setCheckedItems(checkedItemsArray)
     } else {
+      setIsChecked(false);
       setCheckedItems([])
     }
   }
@@ -46,15 +49,18 @@ function SignUp() {
   const checkedItemHandler = (code, isChecked) => {
     if (isChecked) {
       setCheckedItems([...checkedItems, code])
-    } else if (!isChecked && checkedItems.find(one => one === code)) {
+    } else {
       const filter = checkedItems.filter(one => one !== code)
       setCheckedItems([...filter])
     }
+
+    console.log(checkedItems);
+    if (checkedItems.length == 4) setIsChecked(false);
+    else if (isChecked && checkedItems.length == 3) setIsChecked(true);
   }
 
   const [failModal, setFailModal] = useState(false);
   const [modalCSS, setModalCSS] = useState(false);
-  const nodeRef = React.useRef(null);
 
   const [phoneFailD, setPhoneFailD] = useState(true);
   const [phoneToken, setPhoneToken] = useState("");
@@ -208,15 +214,13 @@ function SignUp() {
 
   const onClickSignUp = () => {
     if ((signInIdFail || passwordFail || chPasswordFail || birthdayFail || nicknameFail || emailFail || phoneFail || (addressMain === "") || signInIdFailD || nicknameFailD || emailFailD || addressFail) ||
-      (!(checkedItems.find(data => data == '서비스 이용약관 동의 (필수)')) || !(checkedItems.find(data => data === '개인정보 수집 및 이용 동의 (필수)')) || !(checkedItems.find(data => data === '만 14세 이상입니다 (필수)')))) {
-        console.log("a")
+      (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) {
       setFailModal(true);
       setModalCSS(true);
       setTimeout(() => {
         setFailModal(false);
       }, 1000);
     } else {
-      console.log("b")
       axios
         .post("/app/sign-up", {
           address: addressMain,
@@ -254,11 +258,22 @@ function SignUp() {
   };
 
   useEffect(()=>{
+    BackgroundF();
     $(".hm-pc-flex").hide();
   },[]);
 
+  const [backWidth, setBackWidth] = useState(0);
+  const BackgroundF = () => {
+    var n = ($(".login-flex").width() - $(".login").width())/2;
+    setBackWidth(n);
+  };
+
   return (
     <div className="login-flex">
+      {/* {isPopupOpen?
+        <div className="login-background" style={{ left: backWidth-65, }}></div>
+      : null} */}
+
       <div className="login">
         <img src={logo} className="logo" />
         <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
@@ -354,7 +369,7 @@ function SignUp() {
 
         <p className="login-center">주소</p>
         <input
-          className="login-input"
+          className="login-input signup-address"
           type="text"
           placeholder="지번, 도로명, 건물명으로 검색"
           onClick={openclosePostCode}
@@ -362,15 +377,25 @@ function SignUp() {
           value={addressMain}
         >
         </input>
-        <div id="popupDom" style={{ height: '5px', }}>
-          {isPopupOpen && (
+        <div id="popupDom">
+          {isPopupOpen ? 
+          <>
+            <div className="signup-adress-top">
+              주소 검색
+              <img
+                src={X}
+                onClick={()=>{
+                  setIsPopupOpen(false);
+                }} 
+              />
+            </div>
             <PopupDom>
               <PostCode
                 onClose={openclosePostCode}
                 parentCallback={handleAddressMain}
               />
             </PopupDom>
-          )}
+          </> :null}
         </div>
         <input
           className="login-input"
@@ -414,15 +439,18 @@ function SignUp() {
           <input
             type="checkbox"
             id="AgreeAll"
+            checked={isChecked}
             onChange={(e) => 
               onCheckAll(e.target.checked)
             }
           ></input>
-          <label for="AgreeAll">전체동의</label>
+          <label for="AgreeAll"></label>
+          <div className="login-auto-contents">전체동의</div>
         </div>
         <div className="signup-agreement-sub">
           {checkboxs.map(data => 
             <LoginCheckbox 
+              id={data.id}
               description={data.description} 
               show={data.show} 
               checkedItems={checkedItems} 
@@ -440,18 +468,11 @@ function SignUp() {
         가입하기
         </button>
 
-          {failModal === true ? (
-            // <CSSTransition
-            //   in={modalCSS}
-            //   timeout={500}
-            //   className="wow"
-            //   nodeRef={nodeRef}
-            // >
-            <div className="login-iscorrect" ref={nodeRef}>
+          {failModal === true ? 
+            <div className="login-iscorrect">
               회원가입 정보가 일치하지 않습니다.
             </div>
-          ) : // </CSSTransition>
-          null}
+          : null}
       </div>
     </div>
   );

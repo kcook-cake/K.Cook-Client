@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import DaumPostcode from "react-daum-postcode";
 
-interface IProps {
-  parentCallback: (addressMain: string) => void;
-}
+// interface IProps {
+//   parentCallback: (addressMain: string) => void;
+// }
 
 const PostCode = (props) => {
   const [addressMain, setAddressMain] = useState("");
@@ -30,24 +30,14 @@ const PostCode = (props) => {
     props.onClose();
   };
 
-  const postCodeStyle = {
-    display: "block",
-    position: "relative",
-    // top: "10%",
-    width: "100%",
-    height: "300px",
-    padding: "7px 0",
-    border: "1px solid #ddd",
-  };
-
   useEffect(()=>{
     props.parentCallback(addressMain);
   })
 
   return (
-    <div>
-      <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
-    </div>
+    <>
+      <DaumPostcode className="postCodeStyle" onComplete={handlePostCode} />
+    </>
   );
 };
 

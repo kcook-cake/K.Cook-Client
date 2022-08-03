@@ -104,11 +104,11 @@ function Login() {
           onChange={handleInputPw}
         ></input>
 
-        {/* id = loginAuto 안쓰이는 중 */}
         <div className="login-sub">
           <div className="login-auto">
             <input type="checkbox" id="loginAuto"></input>
-            <label htmlFor="loginAuto">자동 로그인</label>
+            <label htmlFor="loginAuto"></label>
+            <div className="login-auto-contents">자동 로그인</div>
           </div>
           <Link to="/">비밀번호찾기</Link>
         </div>
@@ -126,14 +126,8 @@ function Login() {
 
         <div className="login-register">
           아직 계정이 없으신가요?
-          <Link to="/SignUp">가입하기</Link>
+          <Link to="/SignUp" style={{ marginLeft: "4px", }}>가입하기</Link>
           {failModal === true ? (
-            // <CSSTransition
-            //   in={modalCSS}
-            //   timeout={500}
-            //   className="wow"
-            //   nodeRef={nodeRef}
-            // >
             <div className="login-iscorrect" ref={nodeRef}>
               로그인 정보가 일치하지 않습니다.
             </div>
