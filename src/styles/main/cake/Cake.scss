@@ -1,15 +1,21 @@
-@import "./reset.scss";
+@import "../../reset.scss";
+
+/*
+cake-flex
+  cake-select-mobile-flex
+    (Mobile1)cake-select-mobile 5개
+    (Mobile2)cake-select-relative-mobile 5개
+    cake-select-bar-mobile
+  (Pc2)cake-select-absolute 5개
+  cake
+    cake-select-flex
+      (Pc1)cake-select 5개
+      cake-select-bar
+    cake-contents-flex
+*/
 
 .cake-flex {
   background-color: #fafafa;
-  .cake-contents-flex {
-    padding: 0 10px;
-    .contents {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      column-gap: 16px;
-    }
-  }
 }
 
 .cake {
@@ -18,23 +24,16 @@
   padding-top: 20px;
   padding-bottom: 142.4px;
   background-color: #fafafa;
-  // .sorted-item {
-  //   padding: 0 10px;
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr 1fr 1fr;
-  //   column-gap: 20px;
-  // }
-  .cake-select-flex {
-    margin-bottom: 45px;
-  }
 }
 
-.item-sort-bar {
+.cake-select-flex {
   width: 1199px;
   padding: 0 10px;
+  margin-bottom: 45px;
+
   select {
     padding-right: 0;
-    background: url('../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
+    background: url('../../../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
     background-color: #f5f5f5;
   }
   option {
@@ -74,6 +73,16 @@
     }
   }
 }
+
+.cake-contents-flex {
+  padding: 0 10px;
+  .contents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 16px;
+  }
+}
+
 .cake-select-absolute {
   top: 250px;
   position: absolute;
@@ -123,80 +132,22 @@
     border-radius: 0 0 10px 10px;
   }
 }
+
 .cake-select-bar {
   width: 100%;
   height: 25px;
-  margin: 0 10px;
   margin-top: 14px;
   display: flex;
 }
-.cake-bar-card {
-  height: 25px;
-  margin-right: 4px;
-  padding-left: 13px;
-  padding-top: 2px;
-  display: flex;
-
-  color: #fff;
-  font-size: 14px;
-  border-radius: 20px;
-  background-color: #ea5450;
-}
-.cake-bar-delete {
-  width: 14px;
-  margin: 0 10px;
-  margin-bottom: 2px;
-}
 
 
-
-.dropdown-bar {
-  max-width: 83px;
-  margin: 2.5px 0px;
-  margin-right: 5px;
-  padding: 7px 10px;
-
-  color: #8a8a8a;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 6px;
-  background-color: #f5f5f5;
-}
 
 @media (max-width: 767px) {
   .cake-flex {
     background-color: #fff;
-    // padding-bottom: 0px;
-
-    .cake-contents-flex {
-      padding: 0;
-      margin: 0 16px;
-      margin-bottom: 45px;
-      .contents::-webkit-scrollbar {
-        height: 8px;
-      }
-      .contents::-webkit-scrollbar-thumb {
-        background-color: #e6e6e6;
-        border-radius: 10px;
-      }
-      .contents::-webkit-scrollbar-track {
-        background-color: #f5f5f5;
-        border-radius: 10px;
-        // box-shadow: inset 0px 0px 5px white;
-      }
-      .contents {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        column-gap: 16px;
-        overflow-x: scroll;
-      }
-    }
-    .main-cake-flex {
-      padding-top: 45px;
-    }
   }
 
-  .item-sort-bar {
+  .cake-select-flex {
     width: 100%;
     min-width: 0px;
     padding-left: 16px;
@@ -210,9 +161,12 @@
     margin: 0; padding: 0;
 
     background-color: #fff;
-    .cake-select-flex {
-      margin-bottom: 0;
+
+    //PickCard
+    .pick-card {
+      margin: 0 16px;
     }
+
     .pc {
       display: none;
     }
@@ -220,6 +174,31 @@
       display: block;
     }
   }
+
+  .cake-contents-flex {
+    padding: 0;
+    margin: 0 16px;
+    margin-bottom: 45px;
+    .contents::-webkit-scrollbar {
+      height: 8px;
+    }
+    .contents::-webkit-scrollbar-thumb {
+      background-color: #e6e6e6;
+      border-radius: 10px;
+    }
+    .contents::-webkit-scrollbar-track {
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      // box-shadow: inset 0px 0px 5px white;
+    }
+    .contents {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      column-gap: 16px;
+      overflow-x: scroll;
+    }
+  }
+
   .cake-select-absolute {
     left: 10px !important;
     top: 130px;
@@ -236,52 +215,9 @@
       z-index: 999;
     }
   }
-  .cake-select-relative {
-    ul{
-      list-style:none;
-      padding-left:0px;
-    }
-    li {
-      width: 88%;
-      height: 53px;
-      margin: auto;
-      padding-top: 16px;
 
-      color: #8a8a8a;
-      font-size: 13px;
-      font-weight: 500;
-      border-bottom: 1px solid #eeeeee;
-    }
-    // .cake-select-ul-2,
-    // .cake-select-ul {
-    //   width: 200px;
-    //   height: 209px;
-    //   margin-top: 10px;
-  
-    //   box-shadow: 0px 0px 15px rgb(204, 204, 204);
-    //   border-radius: 10px;
-    //   background-color: #fff;
-    // }
-    // .cake-select-ul-2 {
-    //   height: 260px;
-    // }
-    // .cake-select-li {
-    //   padding: 15.6px 16px;
-  
-    //   color: #8a8a8a;
-    //   font-size: 15px;
-    //   font-weight: 500;
-    // }
-    // .cake-select-li:hover {
-    //   background-color: rgba(234, 84, 80, 0.15);
-    // }
-    // .cake-select-li-top {
-    //   border-radius: 10px 10px 0 0;
-    // }
-    // .cake-select-li-bottom {
-    //   border-radius: 0 0 10px 10px;
-    // }
-  }
+
+
   .cake-search {
     margin-top: 10px;
     margin-right: 20px;
@@ -295,9 +231,7 @@
     }
   }
 
-
-
-  .cake-select-mobile {
+  .cake-select-mobile-flex {
     width: 100%;
     height: 100%;
     top: 0;
@@ -323,7 +257,7 @@
       }
     }
 
-    .cake-select-mobile-li {
+    .cake-select-mobile {
       width: 92%;
       height: 53px;
       margin: auto;
@@ -348,26 +282,23 @@
 
       display: flex;
     }
+  }
 
-    .cake-bar-mobile-card {
-      height: 33px;
-      padding-left: 16px;
-      padding-top: 5px;
-      margin-right: 4px;
+  .cake-select-relative-mobile {
+    ul{
+      list-style:none;
+      padding-left:0px;
+    }
+    li {
+      width: 88%;
+      height: 53px;
+      margin: auto;
+      padding-top: 16px;
 
-      color: #ea5450;
-      font-size: 14px;
-
-      display: inline-block;
-      // display: flex;
-      border-radius: 20px;
-      border: 1px solid #ea5450;
-      // background-color: red;
-      img {
-        width: 18px;
-        float: right;
-        margin-top: 2px;
-      }
+      color: #8a8a8a;
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 1px solid #eeeeee;
     }
   }
 }

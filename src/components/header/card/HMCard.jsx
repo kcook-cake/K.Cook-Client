@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import '../../../styles/HMMobile.scss';
+import '../../../styles/header/HMMobile.scss';
 
 import $ from 'jquery';
 

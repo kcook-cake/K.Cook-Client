@@ -5,7 +5,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import $ from 'jquery';
-import '../../../styles/FullCalendarApp.scss';
 
 import FullCalendarSeller from '../../../utils/FullCalendarSeller';
 import isSession from '../../../utils/isSession';

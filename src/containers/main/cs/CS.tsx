@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Cake.scss';
+import '../../../styles/main/cake/Cake.scss';
 
 function CS (){
     return(

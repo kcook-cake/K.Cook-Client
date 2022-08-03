@@ -1,6 +1,7 @@
 import React from 'react';
-import '../../styles/main/MainAd.scss';
-import adimg from '../../assets/main-ad.png';
+import '../../../styles/main/home/MainAd.scss';
+
+import adimg from '../../../assets/main-ad.png';
 
 function MainAd (){
     return(

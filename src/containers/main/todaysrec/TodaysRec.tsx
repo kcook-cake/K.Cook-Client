@@ -6,7 +6,7 @@ import axios from "axios";
 
 import LengthwiseCard from '../../../components/LengthwiseCard';
 import WidthwiseCard from '../../../components/WidthwiseCard';
-import EventCard from 'src/components/EventCard';
+import EventCard from 'src/components/main/todaysrec/EventCard';
 import PickCard from 'src/components/main/PickCard';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from '../../../utils/LinkClick';

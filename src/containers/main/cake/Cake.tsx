@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
-import '../styles/Cake.scss';
+import '../../../styles/main/cake/Cake.scss';
 
 import axios from 'axios';
 
-import search from "../assets/search.svg";
-import selectAllow from "../assets/selectArrow.png";
-import X from "../assets/x.svg";
+import search from "../../../assets/search.svg";
+import selectAllow from "../../../assets/selectArrow.png";
+import X from "../../../assets/x.svg";
 
 import getAxios from 'src/utils/getAxios';
-import LengthwiseCard from '../components/LengthwiseCard';
+import LengthwiseCard from '../../../components/LengthwiseCard';
 import PickCard from 'src/components/main/PickCard';
 import CakeBarCard from 'src/components/main/cake/CakeBarCard';
 import CakeBar_MobileCard from 'src/components/main/cake/CakeBar_MobileCard';
@@ -103,9 +103,10 @@ function Cake (){
     },[]);
     return(
         <div className="cake-flex">
+            {/* Mobile 선택지 창 */}
             {selectMobileTF?
             <>
-                <div className="mobile cake-select-mobile">
+                <div className="mobile cake-select-mobile-flex">
                     <div className="cake-select-mobile-top">
                         <div style={{ marginLeft: "30px", }}></div>
                         <div>상세검색</div>
@@ -114,7 +115,8 @@ function Cake (){
                             <img src={X} />
                         </div>
                     </div>
-                    <div className="cake-select-mobile-li">
+
+                    <div className="cake-select-mobile">
                         맛
                         <div
                             className="cake-select-mobile-button"
@@ -128,7 +130,7 @@ function Cake (){
                         >선택하기</div>
                     </div>
                     {selectTwoShow?
-                    <div className="cake-select-relative">
+                    <div className="cake-select-relative-mobile">
                         <ul className="cake-select-ul">
                             <li
                                 className="cake-select-li-top cake-select-li"
@@ -145,7 +147,7 @@ function Cake (){
                         </ul>
                     </div>: null}
 
-                    <div className="cake-select-mobile-li">
+                    <div className="cake-select-mobile">
                         지역
                         <div
                             className="cake-select-mobile-button"
@@ -159,7 +161,7 @@ function Cake (){
                         >선택하기</div>
                     </div>
                     {selectThreeShow?
-                    <div className="cake-select-relative">
+                    <div className="cake-select-relative-mobile">
                         <ul className="cake-select-ul-2">
                             <li
                                 className="cake-select-li-top cake-select-li"
@@ -179,7 +181,7 @@ function Cake (){
                         </ul>
                     </div>: null}
 
-                    <div className="cake-select-mobile-li">
+                    <div className="cake-select-mobile">
                         이벤트
                         <div
                             className="cake-select-mobile-button"
@@ -193,7 +195,7 @@ function Cake (){
                         >선택하기</div>
                     </div>
                     {selectFourShow?
-                    <div className="cake-select-relative">
+                    <div className="cake-select-relative-mobile">
                         <ul className="cake-select-ul-2">
                             <li
                                 className="cake-select-li-top cake-select-li"
@@ -213,7 +215,7 @@ function Cake (){
                         </ul>
                     </div>: null}
 
-                    <div className="cake-select-mobile-li">
+                    <div className="cake-select-mobile">
                         가격대
                         <div
                             className="cake-select-mobile-button"
@@ -227,7 +229,7 @@ function Cake (){
                         >선택하기</div>
                     </div>
                     {selectFiveShow?
-                    <div className="cake-select-relative">
+                    <div className="cake-select-relative-mobile">
                         <ul className="cake-select-ul-2">
                             <li
                                 className="cake-select-li-top cake-select-li"
@@ -247,6 +249,7 @@ function Cake (){
                         </ul>
                     </div>: null}
 
+                    {/* Mobile 선택지 바 */}
                     <div className="cake-select-bar-mobile">
                         <CakeBar_MobileCard setSelectAllF={setSelectAll} getData={selectAll} />
                         <div
@@ -262,6 +265,7 @@ function Cake (){
             </>
             : null}
 
+            {/* Pc 선택지창 */}
             {selectOneShow?
             <div
                 className="cake-select-absolute"
@@ -390,104 +394,103 @@ function Cake (){
 
             <div className="cake">
                 <div className="cake-select-flex">
-                    <div className="item-sort-bar">
-                        <div className="cake-select">
-                            <div style={{ display: "flex", }}>
-                                <button id="cake-select-one" className="cake-select-button">{selectOne}</button>
-                                <div className="cake-select-img">
-                                    <img
-                                        src={selectAllow}
-                                        onClick={()=>{
-                                            SelectCloseF();
-                                            if (selectOneShow)
-                                                setSelectOneShow(false);
-                                            else
-                                                setSelectOneShow(true);
-                                        }}
-                                    />
-                                </div>
+                    <div className="cake-select">
+                        <div style={{ display: "flex", }}>
+                            <button id="cake-select-one" className="cake-select-button">{selectOne}</button>
+                            <div className="cake-select-img">
+                                <img
+                                    src={selectAllow}
+                                    onClick={()=>{
+                                        SelectCloseF();
+                                        if (selectOneShow)
+                                            setSelectOneShow(false);
+                                        else
+                                            setSelectOneShow(true);
+                                    }}
+                                />
                             </div>
                         </div>
-                        <div
-                            className="mobile cake-search"
-                            onClick={()=>{
-                                setSelectMobileTF(true);
-                            }}
-                        >
-                            <img src={search} />
-                            상세검색
-                        </div>
-
-                        <div className="pc cake-select">
-                            <div style={{ display: "flex", }}>
-                                <button id="cake-select-one" className="cake-select-button">{selectTwo}</button>
-                                <div className="cake-select-img">
-                                    <img
-                                        src={selectAllow}
-                                        onClick={()=>{
-                                            SelectCloseF();
-                                            if (selectTwoShow)
-                                                setSelectTwoShow(false);
-                                            else
-                                                setSelectTwoShow(true);
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pc cake-select">
-                            <div style={{ display: "flex", }}>
-                                <button id="cake-select-three" className="cake-select-button">{selectThree}</button>
-                                <div className="cake-select-img">
-                                    <img
-                                        src={selectAllow}
-                                        onClick={()=>{
-                                            SelectCloseF();
-                                            if (selectThreeShow)
-                                                setSelectThreeShow(false);
-                                            else
-                                                setSelectThreeShow(true);
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pc cake-select">
-                            <div style={{ display: "flex", }}>
-                                <button id="cake-select-four" className="cake-select-button">{selectFour}</button>
-                                <div className="cake-select-img">
-                                    <img
-                                        src={selectAllow}
-                                        onClick={()=>{
-                                            SelectCloseF();
-                                            if (selectFourShow)
-                                                setSelectFourShow(false);
-                                            else
-                                                setSelectFourShow(true);
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pc cake-select">
-                            <div style={{ display: "flex", }}>
-                                <button id="cake-select-five" className="cake-select-button">{selectFive}</button>
-                                <div className="cake-select-img">
-                                    <img
-                                        src={selectAllow}
-                                        onClick={()=>{
-                                            SelectCloseF();
-                                            if (selectFiveShow)
-                                                setSelectFiveShow(false);
-                                            else
-                                                setSelectFiveShow(true);
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                    <div
+                        className="mobile cake-search"
+                        onClick={()=>{
+                            setSelectMobileTF(true);
+                        }}
+                    >
+                        <img src={search} />
+                        상세검색
+                    </div>
+
+                    <div className="pc cake-select">
+                        <div style={{ display: "flex", }}>
+                            <button id="cake-select-one" className="cake-select-button">{selectTwo}</button>
+                            <div className="cake-select-img">
+                                <img
+                                    src={selectAllow}
+                                    onClick={()=>{
+                                        SelectCloseF();
+                                        if (selectTwoShow)
+                                            setSelectTwoShow(false);
+                                        else
+                                            setSelectTwoShow(true);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pc cake-select">
+                        <div style={{ display: "flex", }}>
+                            <button id="cake-select-three" className="cake-select-button">{selectThree}</button>
+                            <div className="cake-select-img">
+                                <img
+                                    src={selectAllow}
+                                    onClick={()=>{
+                                        SelectCloseF();
+                                        if (selectThreeShow)
+                                            setSelectThreeShow(false);
+                                        else
+                                            setSelectThreeShow(true);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pc cake-select">
+                        <div style={{ display: "flex", }}>
+                            <button id="cake-select-four" className="cake-select-button">{selectFour}</button>
+                            <div className="cake-select-img">
+                                <img
+                                    src={selectAllow}
+                                    onClick={()=>{
+                                        SelectCloseF();
+                                        if (selectFourShow)
+                                            setSelectFourShow(false);
+                                        else
+                                            setSelectFourShow(true);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pc cake-select">
+                        <div style={{ display: "flex", }}>
+                            <button id="cake-select-five" className="cake-select-button">{selectFive}</button>
+                            <div className="cake-select-img">
+                                <img
+                                    src={selectAllow}
+                                    onClick={()=>{
+                                        SelectCloseF();
+                                        if (selectFiveShow)
+                                            setSelectFiveShow(false);
+                                        else
+                                            setSelectFiveShow(true);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Pc 선택지 바 */}
                     {selectAll.length == 0?
                         null:
                         <div className="pc cake-select-bar">

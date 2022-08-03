@@ -1,6 +1,6 @@
 import React,  { useEffect, useState }from 'react';
-import '../../../styles/main/MainUpdate.scss'
-import '../../../styles/main/MainRecommend.scss'
+import '../../../styles/main/home/MainUpdate.scss'
+import '../../../styles/main/home/MainRecommend.scss'
 
 import axios from 'axios';
 

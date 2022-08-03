@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
-import Home from './Home';
+import Home from './main/home/Home';
 import TodaysRec from './main/todaysrec/TodaysRec';
-import Cake from './Cake';
-import MoreItem from './MoreItem';
-import CustomerService from './CS';
+import Cake from './main/cake/Cake';
+import MoreItem from './main/moreitem/MoreItem';
+import CustomerService from './main/cs/CS';
 
 const Main = () =>{
     return(

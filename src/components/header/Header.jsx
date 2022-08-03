@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/Header.scss";
+import "../../styles/header/Header.scss";
 
 import isSession from "src/utils/isSession";
 import LinkClick from "src/utils/LinkClick";

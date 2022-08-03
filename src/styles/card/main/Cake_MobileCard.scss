@@ -1,0 +1,42 @@
+
+.cake-bar-delete {
+    width: 14px;
+    margin: 0 10px;
+    margin-bottom: 2px;
+}
+
+//CakeBarCard
+.cake-bar-card {
+    height: 25px;
+    margin-right: 4px;
+    padding-left: 13px;
+    padding-top: 2px;
+    display: flex;
+    
+    color: #fff;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: #ea5450;
+}
+
+//CakeBar_MobileCard
+.cake-bar-mobile-card {
+    height: 33px;
+    padding-left: 16px;
+    padding-top: 5px;
+    margin-right: 4px;
+
+    color: #ea5450;
+    font-size: 14px;
+
+    display: inline-block;
+    // display: flex;
+    border-radius: 20px;
+    border: 1px solid #ea5450;
+    // background-color: red;
+    img {
+        width: 18px;
+        float: right;
+        margin-top: 2px;
+    }
+}

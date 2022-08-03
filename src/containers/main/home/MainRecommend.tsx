@@ -1,7 +1,7 @@
 import React,  { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Url } from 'url';
-import '../../../../src/styles/main/MainRecommend.scss'
+import '../../../styles/main/home/MainRecommend.scss'
 
 import axios from 'axios';
 
