@@ -56,7 +56,7 @@ function Login() {
         setInputId("");
         setTimeout(() => {
           setFailModal(false);
-        }, 1000);
+        }, 5000);
       });
   };
 

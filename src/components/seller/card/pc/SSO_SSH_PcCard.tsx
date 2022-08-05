@@ -18,7 +18,7 @@ function SSO_SSH_PcCard({getData}: Props) {
                         <div className="sso-ssh-content">
                             <div className="ss-all-order-img">
                                 <img src={cake6}/>
-                            </div>    
+                            </div>
                             <div className="order-content">
                                 <div className="order-cake">하트볼터치 곰돌이 케이크</div>
                                 <div className="order-cake-shop">정예빈 | 추가문의없음</div>

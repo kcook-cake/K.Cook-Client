@@ -66,7 +66,6 @@ function SignUp() {
   const [phoneToken, setPhoneToken] = useState("");
   const [phonejwToken, setPhonejwToken] = useState("");
   const onSMS = () => {
-    console.log(phonejwToken)
     axios
       .patch(`/app/accounts/sms-token`, {
         phoneNumber: phoneNumber,
@@ -76,7 +75,6 @@ function SignUp() {
         }
       })
       .then((res) => {
-        console.log(res)
         if (res.isSuccess) {
           setPhoneFailD(false)
           document.location.href = "/";
@@ -88,7 +86,7 @@ function SignUp() {
         setModalCSS(true);
         setTimeout(() => {
           setFailModal(false);
-        }, 1000);
+        }, 5000);
       });
   }
   const onSMSCheck = () => {
@@ -97,7 +95,6 @@ function SignUp() {
         smsToken: phonejwToken,
       })
       .then((res) => {
-        console.log(res)
         if (res.isSuccess) {
           setPhoneFailD(false)
           document.location.href = "/";
@@ -232,7 +229,6 @@ function SignUp() {
           signInId: signInId,
         })
         .then((res) => {
-          console.log(res);
           setPhonejwToken(res.data.result.jwt);
           setPhoneSmsFail(true);
 
@@ -252,7 +248,7 @@ function SignUp() {
           setModalCSS(true);
           setTimeout(() => {
             setFailModal(false);
-          }, 1000);
+          }, 5000);
         });
     }
   };

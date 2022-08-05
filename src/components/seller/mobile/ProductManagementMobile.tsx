@@ -41,7 +41,7 @@ function ProductManagementMobile (){
     },[]);
     return(
         <div className="spm-mobile">
-            <div className="spm-ssr-mobile-box">
+            <div className="spm-mobile-box spm-ssr-mobile-box">
                 <div className="title">
                     <div
                         className="spm-ssr-mobile-title-front"

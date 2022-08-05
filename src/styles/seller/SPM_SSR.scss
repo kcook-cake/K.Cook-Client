@@ -129,39 +129,40 @@ g {
     .ssr-mobile {
         display: block;
         width: 100%;
-        padding-bottom: 23px;
+        padding-bottom: 25px;
         background-color: #FAF4F4;
-    .spm-ssr-mobile-box {
-        width: 100%;
-        min-width: 0px;
-        padding: 45px 0px 0px 0px;
-    }
-    .title {
-        padding: 0px 16px;
-        // padding: 0 16px;
-        font-size: 18px;
-        font-weight: 700;
-        position: relative;
-        margin-left: 8px;
-    }
-    .spm-ssr-mobile-title-front {
-        height: 20px;
-        float: left;
-    }
-    .spm-ssr-mobile-title-middle {
-        margin: 0 0 0 18px;
-        margin-top: 5px;
-        float: left;
+        .spm-ssr-mobile-box {
+            width: 100%;
+            min-width: 0px;
+            padding-top: 45px;
+        }
+        .title {
+            padding: 0px 16px;
+            margin-bottom: 20px;
+            // padding: 0 16px;
+            font-size: 18px;
+            font-weight: 700;
+            position: relative;
+        }
 
-        font-size: 14px;
-        font-weight: 500;
-        color: #777777;
-    }
+        .spm-ssr-mobile-title-front {
+            height: 20px;
+            float: left;
+        }
+        .spm-ssr-mobile-title-middle {
+            margin: 0 0 0 18px;
+            margin-top: 5px;
+            float: left;
 
-    .content {
-        margin: 0;
-        margin-top: 25px;
-        overflow-y: scroll;
+            font-size: 14px;
+            font-weight: 500;
+            color: #777777;
+        }
+
+        .content {
+            // margin: 0;
+            // margin-top: 25px;
+            // overflow-y: scroll;
         }
     }
 

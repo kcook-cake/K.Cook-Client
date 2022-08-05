@@ -65,7 +65,7 @@ function FullCalendarAppPC (){
   return(
     <>
       {modalFail ? 
-        <div className="calendar-modal-flex" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
+        <div className="calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
           <div className="calendar-modal-top"></div>
           <div id="calendar-modal">
             <div style={{ width: "5px", height: "35px", }}></div>
