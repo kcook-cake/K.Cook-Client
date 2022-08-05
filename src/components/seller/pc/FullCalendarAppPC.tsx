@@ -93,7 +93,7 @@ function FullCalendarAppPC (){
         </div>
         :<></>
       }
-    <div className="seller-mypage-top-flex fcap">
+    <div className="fcap">
       <div className="seller-order-top-calendar"> {/* mypage-top */}
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
         <Link
