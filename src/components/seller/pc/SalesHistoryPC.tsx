@@ -9,7 +9,11 @@ import SSO_SSH_PcCard from '../card/pc/SSO_SSH_PcCard';
 
 import cake6 from   '../../../assets/cake6.png';
 
-function SalesHistoryPC (){
+interface Props {
+    getData: any,
+}
+
+function SalesHistoryPC ({getData}:Props){
     const [data, setData] = useState([]);
     useEffect(()=>{
         axios.get(`/app/cakes`)
@@ -44,7 +48,7 @@ function SalesHistoryPC (){
                 </div>
             </div>
 
-            <SSO_SSH_PcCard getData={data}/>
+            <SSO_SSH_PcCard getData={getData}/>
         </div>
     )
 }

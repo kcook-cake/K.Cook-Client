@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MMS_PcCard from '../card/pc/MMS_PcCard';
 
-function MembershipPC (){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
+interface Props {
+    getData: any,
+}
+
+function MembershipPC ({getData}:Props){
+
     return(
 
         <div className="seller-mypage-top-flex mms-pc">
@@ -22,6 +20,7 @@ function MembershipPC (){
             </div>
             <div className="mms-pc-table">
                 <div className="mms-pc-all mms-pc-head">
+                    <div></div>
                     <div>상품명</div>
                     <div>판매자</div>
                     <div>날짜</div>
@@ -29,7 +28,7 @@ function MembershipPC (){
                     <div>적립금</div>
                 </div>
 
-                <MMS_PcCard getData={data} />
+                <MMS_PcCard getData={getData} />
                 {/* <div className="membership-data">
 
                 </div>

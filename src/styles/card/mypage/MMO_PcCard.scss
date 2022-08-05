@@ -2,13 +2,14 @@
 
 .mmo-pc-card-content {
   width: 841px;
+  height: 162px;
+  margin-bottom: 40px;
   display: flex;
-  // background-color: red;
 }
 .order-img {
-  margin-right: 35px;
-  width: 160px;
-  height: 160px;
+  margin-right: 33px;
+  width: 162px;
+  height: 162px;
   overflow: hidden;
   img {
     width: 100%;

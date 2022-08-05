@@ -59,7 +59,9 @@ function TodaysRec (){
                     </div>
                 </div>
             </div>
+            <div className="todaysrec-pick-mobile">
             <PickCard />
+            </div>
 
             <div className="todaysrec-event">
                 <div className="todaysrec-event-bar">

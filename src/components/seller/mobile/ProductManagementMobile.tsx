@@ -12,7 +12,11 @@ import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
 import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
 
-function ProductManagementMobile (){
+interface Props {
+    getData: any,
+}
+
+function ProductManagementMobile ({getData}:Props){
     const [addDiv, setAddDiv] = useState(false);
     const [addName, setAddName] = useState("");
     const [addOption, setAddOption] = useState([
@@ -32,13 +36,6 @@ function ProductManagementMobile (){
         setAddName(e.target.value);
     };
 
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
     return(
         <div className="spm-mobile">
             <div className="spm-mobile-box spm-ssr-mobile-box">
@@ -46,11 +43,11 @@ function ProductManagementMobile (){
                     <div
                         className="spm-ssr-mobile-title-front"
                     >상품관리</div>
-                    <div className="spm-ssr-mobile-title-middle">판매 중인 상품입니다.</div>
+                    <div className="seller-mypage-middle-title">판매 중인 상품입니다.</div>
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SPM_SSR_MobileCard getData={data} box={true}/>
+                    <SPM_SSR_MobileCard getData={getData} box={true}/>
                 </div>
 
                 <div></div> {/* 추가하면 여기에 들어갈 것임 */}

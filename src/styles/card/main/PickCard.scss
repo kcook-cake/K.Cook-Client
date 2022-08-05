@@ -15,24 +15,28 @@
 
     .pick-card {
         margin: 0; padding: 0;
-        .title {
+        .lengthwise-img-none {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .title-card {
             // margin: 0 16px;
             font-size: 18px;
             margin-bottom: 16px;
             font-weight: 700;
         }
-        .contents::-webkit-scrollbar {
+        .contents-card::-webkit-scrollbar {
             height: 8px;
         }
-        .contents::-webkit-scrollbar-thumb {
+        .contents-card::-webkit-scrollbar-thumb {
             background-color: #e6e6e6;
             border-radius: 10px;
         }
-        .contents::-webkit-scrollbar-track {
+        .contents-card::-webkit-scrollbar-track {
             background-color: #f5f5f5;
             border-radius: 10px;
         }
-        .contents {     
+        .contents-card {     
             margin-bottom: 45px; 
             display: grid;
             grid-template-rows: 1fr;

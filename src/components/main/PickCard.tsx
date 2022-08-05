@@ -20,8 +20,8 @@ function PickCard (){
     return(
         <>
             <div className="mobile pick-card">
-                <div className="title">케이쿡 추천 Pick</div>
-                <div className="contents">
+                <div className="title-card">케이쿡 추천 Pick</div>
+                <div className="contents-card">
                     <LengthwiseCard getData={recommendTodays} link="KCOOK"/>
                 </div>
             </div>

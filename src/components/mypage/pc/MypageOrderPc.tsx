@@ -3,15 +3,14 @@ import axios from 'axios';
 
 import cake6 from   '../../../assets/cake6.png';
 import MMO_PcCard from '../card/pc/MMO_PcCard';
+import getAxios from 'src/utils/getAxios';
 
-function MypageOrderPc (){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
+interface Props {
+    getData: any,
+}
+
+function MypageOrderPc ({ getData, }:Props){
+
     return(
         <div className="seller-mypage-top-flex moh-pc">
             <div className="seller-mypage-top">
@@ -19,7 +18,7 @@ function MypageOrderPc (){
                 <span>이전에 주문하신 내역입니다.</span>
             </div>
 
-            <MMO_PcCard getData={data} />
+            <MMO_PcCard getData={getData} />
         </div>
     )
 }

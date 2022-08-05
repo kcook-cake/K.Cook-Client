@@ -8,28 +8,38 @@
 }
 
 .mc-pc-top {
-  display: flex;
+  // display: flex;
 }
 
 .mc-pc-code {
-  margin-left: 150px;
+  width: 590px;
+  height: 57px;
+
+  float: right;
   font-size: 12px;
   input {
-    padding: 20px 22px;
+    width: 440px;
+    padding: 20px 0;
+    padding-left: 22px;
+    // padding: 20px 22px;
     color: #aaaaaa;
     width: 450px;
     border: solid 1px #eaeaea;
   }
   button {
-    background-color: $pink;
+    width: 140px;
+    height: 54px;
+
     color: #fff;
-    padding: 20px 40px;
+    border-bottom: 2px solid #ea5450;
+    background-color: $pink;
   }
 }
 
 .mc-pc-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 18px;
 }
 
 @media (max-width: 767px) {
@@ -43,12 +53,9 @@
   .mcm-title-right {
     width: 141px;
     height: 33px;
-    margin-right: 19px;
     float: right;
 
     text-align: center;
-    // font-size: 12px;
-    // font-weight: 500;
     border-radius: 7px;
     color: #fff;
     background-color: #ea5450;

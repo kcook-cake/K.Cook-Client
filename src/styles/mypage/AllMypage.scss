@@ -2,21 +2,18 @@
 @media (max-width: 767px) {
   .ms-all-mypage {
     width: 100%;
-    margin-bottom: 0px;
     .ms-all-box {
       width: 100%;
       min-width: 0px;
       padding: 45px 16px 0px 16px;
     }
     .title {
-      margin-left: 8px;
+      margin-bottom: 20px;
       font-size: 18px;
       font-weight: 700;
     }
     .content {
-      margin: 0 6px;
-      margin-top: 35px;
-      overflow-y: scroll;
+      margin-bottom: 45px;
     }
   }
 }

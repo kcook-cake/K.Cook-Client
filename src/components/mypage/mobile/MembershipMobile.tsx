@@ -4,14 +4,12 @@ import axios from 'axios';
 
 import MMS_MC_MobileCard from '../card/mobile/MMS_MC_MobileCard';
 
-function MembershipMobile (){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
+interface Props {
+    getData: any,
+}
+
+function MembershipMobile ({getData}:Props) {
+
     return(
         <div className="mms-mobile ms-all-mypage">
             <div className="mms-mobile-box ms-all-box">
@@ -23,7 +21,7 @@ function MembershipMobile (){
                     </div>
                 </div>
                 <div className="content">
-                    <MMS_MC_MobileCard getData={data} box={true}/>
+                    <MMS_MC_MobileCard getData={getData} box={true}/>
                 </div>
             </div>
         </div>

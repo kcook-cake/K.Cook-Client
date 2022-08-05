@@ -5,29 +5,42 @@ import WidthwiseCard from 'src/components/WidthwiseCard';
 import LengthwiseCard from 'src/components/LengthwiseCard';
 
 import cake6 from   '../../assets/cake6.png';
+import PickCard from 'src/components/main/PickCard';
+import getAxios from 'src/utils/getAxios';
 
-function MypageOrderMobile (){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
+interface Props {
+    getData: any,
+}
+
+function MypageOrderMobile ({getData}:Props){
+
     return(
-        <div className="mmo-moobile">
-            <div className="sort-by-rec">
-                <div className="title">주문내역</div>
-                <div className="recommend-contents">
-                    <LengthwiseCard getData={data} link=""/>
+        <div className="mmo-moobile ms-all-mypage">
+            {/* <div className="title2">
+                <div className="sso-mobile-front-title">주문확인</div>
+                <div className="sso-mobile-middle-title">처리할 예약 주문입니다.</div>
+                <Link
+                    to="/FullCalendarApp"
+                    onClick={()=>{
+                        LinkClick("FullCalendarApp");
+                        sellerLinkClick("FullCalendarApp");
+                    }}
+                ><div className="sso-mobile-calendar">달력보기</div></Link>
+            </div> */}
+
+            <div className="ms-all-box mmo-moobile-inner">
+                <div className="title">
+                    <div className="mmo-mobile-front-title">주문내역</div>
+                    <div className="seller-mypage-middle-title">이전에 주문하신 내역입니다.</div>
+                </div>
+                <div style={{ width: "5px", height: "25px", }}></div>
+                <div className="contents">
+                    <LengthwiseCard getData={getData} link=""/>
                 </div>
             </div>
 
-            <div className="sort-by-rec" style={{ marginBottom: "23px", }}>
-                <div className="title">케이쿡 추천 Pick</div>
-                <div className="recommend-contents">
-                    <LengthwiseCard getData={data} link="KCOOK"/>
-                </div>
+            <div className="mmo-pick-card">
+                <PickCard />
             </div>
         </div>
     )

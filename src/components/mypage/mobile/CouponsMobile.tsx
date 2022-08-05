@@ -3,14 +3,11 @@ import axios from 'axios';
 
 import MMS_MC_MobileCard from '../card/mobile/MMS_MC_MobileCard';
 
-function CouponsMobile (){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
+interface Props {
+    getData: any,
+}
+
+function CouponsMobile ({getData}:Props){
 
     return(
         <div className="mc-mobile ms-all-mypage">
@@ -22,7 +19,7 @@ function CouponsMobile (){
                     </div>
                 </div>
                 <div className="content">
-                    <MMS_MC_MobileCard getData={data} box={false}/>
+                    <MMS_MC_MobileCard getData={getData} box={false}/>
                 </div>
             </div>
         </div>

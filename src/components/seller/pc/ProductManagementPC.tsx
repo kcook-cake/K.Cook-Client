@@ -11,14 +11,11 @@ import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-b
 import { Link } from 'react-router-dom';
 import SPM_PcCard from '../card/pc/SPM_PcCard';
 
-function ProductManagementPC (){
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        axios.get(`/app/cakes`)
-            .then(res =>{
-                setData(res.data.result.content);
-            });
-    },[]);
+interface Props {
+    getData: any,
+}
+
+function ProductManagementPC ({getData}:Props){
     return(
         <div className="seller-mypage-top-flex spm-pc">
             <div className="seller-mypage-top">
@@ -26,7 +23,7 @@ function ProductManagementPC (){
                 <span>현재 판매 중인 상품입니다.</span>
             </div>
 
-            <SPM_PcCard getData={data} />
+            <SPM_PcCard getData={getData} />
 
                 <div className="spm-pc-add">
                     <div className="spm-pc-add-section">
