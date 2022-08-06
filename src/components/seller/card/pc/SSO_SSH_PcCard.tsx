@@ -23,7 +23,11 @@ function SSO_SSH_PcCard({getData}: Props) {
                                 <div className="order-cake">하트볼터치 곰돌이 케이크</div>
                                 <div className="order-cake-shop">정예빈 | 추가문의없음</div>
                                 <div className="order-option">
-                                    옵션1. 사이즈 : 1호    옵션2. 맛 : 생크림    옵션3. 맛 : 인절미    옵션4. 하판레터링 : 선택안함    옵션5. 초 : 꼬불꼬불초 
+                                    옵션1. 사이즈 : 1호&nbsp;&nbsp;&nbsp;
+                                    옵션2. 맛 : 생크림&nbsp;&nbsp;&nbsp;
+                                    옵션3. 맛 : 인절미&nbsp;&nbsp;&nbsp;
+                                    옵션4. 하판레터링 : 선택안함&nbsp;&nbsp;&nbsp;
+                                    옵션5. 초 : 꼬불꼬불초&nbsp;&nbsp;&nbsp;
                                     <div className="pickup-time">주문시간 21.08.09 17:00  픽업 예정시간 21.08.11 15:00</div>
                                 </div>
                                 <div className="order-price">17,000원

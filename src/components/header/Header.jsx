@@ -11,6 +11,8 @@ import Xbutton from "../../assets/2477.svg";
 import logo from "../../assets/logo.png";
 import menu from "../../assets/menu.svg";
 import search from "../../assets/search.svg";
+import sellerLinkClick from "src/utils/sellerLinkClick";
+import mypageLinkClick from "src/utils/mypageLinkClick";
 
 function Header ({ setNumLeftMobileF }) {
 
@@ -106,6 +108,7 @@ function Header ({ setNumLeftMobileF }) {
                 to="/SellerOrder"
                 onClick={()=>{
                   setNumLeftMobileF(2);
+                  sellerLinkClick("SellerOrder");
                 }}
               >
                 <button>판매자로 전환</button>
@@ -117,6 +120,7 @@ function Header ({ setNumLeftMobileF }) {
                 to="/MypageOrder"
                 onClick={()=>{
                   setNumLeftMobileF(3);
+                  mypageLinkClick("MypageOrder");
                 }}
               >
                 <button>마이페이지</button>

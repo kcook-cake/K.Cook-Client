@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
-import '../../../../styles/card/seller/SPM_MobileCard_Add.scss';
+import '../../../styles/card/seller/SPMCard_Add.scss';
 
-import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
-import { ReactComponent as DragCBtn } from '../../../../assets/seller/drag-column-btn.svg';
+import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
+import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
 
-import rightArrow from "../../../assets/right-arrow.svg";
+import rightArrow from "../../assets/right-arrow.svg";
 import { setTokenSourceMapRange } from 'typescript';
-
-interface Props {
-    setAddOptionF: any,
-    getData: any,
-}
 
 {/* <form className="option-1">
 <div className="option-size">크기</div>
@@ -26,7 +21,12 @@ interface Props {
 <button className="option-button">항목 추가</button>
 </form> */}
 
-function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
+interface Props {
+    setAddOptionF: any,
+    getData: any,
+}
+
+function SPMCard_Add({ setAddOptionF, getData, }: Props) {
     const [num, setNum] = useState(0);
     const handleOptionName = (e: any, optionId: any, ) => {
         getData[optionId-1].optionName = e.target.value;
@@ -45,9 +45,7 @@ function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
     };
 
     useEffect(()=>{
-        $("#option-title1").val("크기");
-        $("#option-input-text1").val("1호");
-        $("#add-price-1").val(1000);
+
     },[]);
     
     return (
@@ -130,4 +128,4 @@ function SPM_MobileCard_Add({ setAddOptionF, getData, }: Props) {
     );
 }
 
-export default SPM_MobileCard_Add;
+export default SPMCard_Add;

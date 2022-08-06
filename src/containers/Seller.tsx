@@ -6,7 +6,7 @@ import '../styles/seller/AllSeller.scss';
 import SellerSection from '../components/seller/SellerSection';
 import SellerOrder from '../containers/seller/SellerOrder';
 import SalesHistory from '../containers/seller/SalesHistory';
-import ProductManagement from '../containers/seller/ProductManagement';
+import ProductManagement from '../components/seller/ProductManagement';
 import SellerReview from '../containers/seller/SellerReview';
 import SellerStore from '../components/seller/SellerStore';
 

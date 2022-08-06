@@ -6,6 +6,8 @@ import $ from 'jquery';
 
 import isSession from '../../../utils/isSession';
 import LinkClick from '../../../utils/LinkClick';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
 
 function HMCard({ setNumLeftMobileF }) {
     //로그인 여부
@@ -170,6 +172,7 @@ function HMCard({ setNumLeftMobileF }) {
                                 onClick={()=>{
                                     setNumLeftMobileF(2);
                                     LinkClick("SellerOrder");
+                                    sellerLinkClick("SellerOrder");
                                     $(".hm-mobile").hide();
                                 }}
                             >
@@ -183,6 +186,7 @@ function HMCard({ setNumLeftMobileF }) {
                                 onClick={()=>{
                                     setNumLeftMobileF(3);
                                     LinkClick("MypageOrder");
+                                    mypageLinkClick("MypageOrder");
                                     $(".hm-mobile").hide();
                                 }}
                             >

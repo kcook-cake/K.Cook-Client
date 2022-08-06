@@ -18,7 +18,7 @@ function SPM_PcCard({getData}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <div className="spm-pc-add">
+                    <div className="spm-pc-card">
                         <div className="spm-pc-add-section">
                             <div className="move-tap"><DragBtn/></div>
                             <div className="spm-pc-add-content">

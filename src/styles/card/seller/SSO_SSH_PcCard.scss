@@ -1,7 +1,7 @@
 @import "../../reset.scss";
 
 .sso-ssh-pc-card-flex {
-    width: 841px;    
+    width: 841px;
     .order-time {
         margin-bottom: 15px;
         color: #777777;
@@ -10,11 +10,10 @@
     }
 
     .sso-ssh-content {
+        height: 162px;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: row;
-    }
-    .order-content {
-        margin-bottom: 20px;
     }
     
     .pickup-time {

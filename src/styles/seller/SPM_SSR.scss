@@ -10,20 +10,23 @@
 }
 
 //spm에서만
-.spm-pc-add {
+.spm-add {
     width: 848px;
+    height: 100% !important;
     position: relative;
     margin-bottom: 20px;
     display: flex;
   
-    height: 230px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
     background-color: #fefefe;
     // background-color: red;
-    .spm-pc-add-section {
-        margin: 0 0 0 30px;
-    }
+    // .spm-pc-add-section {
+    //     margin: 0 0 0 30px;
+    // }
+    .spm-add2 {
+        margin-left: 30px;
+    } 
     .move-tap {
         padding-left: 380px;
     }
@@ -32,8 +35,6 @@
 .spm-pc-add-content {
     display: flex;
     .ssr-content {
-        width: 549px;
-
         .order-cake {
             margin-bottom: 3px;
             font-size: 18px;
@@ -68,7 +69,7 @@
 // 추가 카드 부분
 
 .add-img {
-    margin: 0 20px 0 0;
+    margin-right: 20px;
     background-color: #ebebeb;
     border-radius: 5px;
     padding: 40px;
@@ -78,14 +79,15 @@
 }
 
 .order-content {
-    width: 549px;
+    width: 562px;
 }
 
 //문제
 .add-cake-name {
     padding-left: 20px;
-    // margin-bottom: 15px;
-    width: 100%;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    width: 549px;
     height: 55px;
     border-radius: 5px 5px 0 0;
     border-bottom: 3px solid #333;
@@ -94,6 +96,7 @@
 
 .add-option {
     margin-top: 25px;
+    margin-left: 13px;
     padding: 20px 0;
     border-top: 1px solid #ddd;
 
@@ -121,6 +124,9 @@ g {
 
 @media (max-width: 767px) {
 
+    .seller-mypage-top-flex {
+        margin: 0;
+    }
     .spm-pc,
     .ssr-pc {
         display: none;
@@ -128,6 +134,10 @@ g {
     .spm-mobile,
     .ssr-mobile {
         display: block;
+    }
+
+    .spm-mobile-flex,
+    .ssr-mobile {
         width: 100%;
         padding-bottom: 45px;
         background-color: #FAF4F4;
@@ -167,28 +177,39 @@ g {
         font-weight: 600;
     }
 
-    .spm-mobile-add-box {
-        height: 100% !important;
-        margin-bottom: 20px;
+    .spm-add {
+        width: 100%;
+        display: block;
 
         background-color: #fff;
         box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
+        .spm-add2 {
+            margin: 0;
+        }
+        .move-tap {
+            width: 100%;
+            padding: 0;
+            text-align: center;
+        }
         .spm-mobile-add-margin-flex {
+            margin: 0;
             width: 100%;
             margin: auto;
             display: flex;
         }
-        .spm-mobile-add-margin {
+        .spm-pc-add-content {
             width: 100%; //가운데로 몰고 싶을때는 밑에 꺼랑 바꾸세요
             // margin: 0 auto; //왼쪽으로
+            display: block;
             padding: 8px 13px 0px 16px;
-
-            .spm-mobile-add-cake-name {
-                padding-left: 20px;
-                margin-bottom: 20px;
-                // margin-bottom: 15px;
+            .add-cake-name {
                 width: 100%;
                 height: 55px;
+                
+                margin: 0; padding: 0;
+                padding-left: 20px;
+                margin-bottom: 20px;
+                
                 border-radius: 5px 5px 0 0;
                 border-bottom: 3px solid #333;
                 background-color: #f1f3f4;
@@ -206,11 +227,6 @@ g {
                 font-weight: 700;
             }
         }
-    }
-
-    .spm-mobile-add-move-tap {
-        width: 100%;
-        text-align: center;
     }
 
     .sprmcard-box-add {
