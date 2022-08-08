@@ -102,6 +102,7 @@ function Cake (){
         getAxios(setData, setLengthTodays, "cakes", [], 8, pageTodays, 0);
     },[]);
     return(
+        <>
         <div className="cake-flex">
             {/* Mobile 선택지 창 */}
             {selectMobileTF?
@@ -495,14 +496,16 @@ function Cake (){
                         null:
                         <div className="pc cake-select-bar">
                             <CakeBarCard setSelectAllF={setSelectAll} getData={selectAll} />
-                            <div
-                                style={{ width: "45px", marginLeft: "10px", color: "#ea5450", }}
-                                onClick={()=>{
-                                    setSelectTwo("맛");setSelectThree("지역");setSelectFour("이벤트");setSelectFive("가격대");
-                                    SelectCloseF();
-                                    setSelectAll([]);
-                                }}
-                            >초기화</div>
+                            <div className="cake-bar-card-all-delete">
+                                <div
+                                    style={{ width: "45px", marginLeft: "10px", color: "#ea5450", }}
+                                    onClick={()=>{
+                                        setSelectTwo("맛");setSelectThree("지역");setSelectFour("이벤트");setSelectFive("가격대");
+                                        SelectCloseF();
+                                        setSelectAll([]);
+                                    }}
+                                >초기화</div>
+                            </div>
                         </div>
                     }
                 </div>
@@ -514,6 +517,7 @@ function Cake (){
                 <PickCard/>
             </div>
         </div>
+        </>
     )
 }
 

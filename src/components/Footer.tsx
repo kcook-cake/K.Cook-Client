@@ -29,6 +29,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/"
                         className="footer-right"
                         onClick={()=>{
+                            $(".hm-pc-flex").show();
                             LinkClick("Home");
                             setNumLeftMobileF(1);
                         }}
@@ -37,6 +38,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/TodaysRec"
                         className="footer-right"
                         onClick={()=>{
+                            $(".hm-pc-flex").show();
                             LinkClick("TodaysRec");
                             setNumLeftMobileF(1);
                         }}
@@ -45,6 +47,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/Cake"
                         className="footer-right"
                         onClick={()=>{
+                            $(".hm-pc-flex").show();
                             LinkClick("Cake");
                             setNumLeftMobileF(1);
                         }}
@@ -53,6 +56,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/MoreItem"
                         className="footer-right"
                         onClick={()=>{
+                            $(".hm-pc-flex").show();
                             LinkClick("MoreItem");
                             setNumLeftMobileF(1);
                         }}
@@ -61,6 +65,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         to="/CS"
                         className="footer-right"
                         onClick={()=>{
+                            $(".hm-pc-flex").show();
                             LinkClick("CS");
                             setNumLeftMobileF(1);
                         }}
@@ -104,8 +109,8 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                 </dl> */}
             </div>
             <div className="footer-bottom">
-                케이쿡  |  대표 000  |  서울특별시 성동구 뚝섬로13길 38 상상플래닛
-                kcook@gmail.com  |  사업자등록번호 : 175-07-01452  |  통신판매업신고
+                케이쿡  |  대표 정예빈  |  서울특별시 동작구 상도로 369, 창신관 313호
+                cakeorder.kcook@gmail.com  |  사업자등록번호 : 175-07-01452  |  통신판매업신고
             </div>
         </div>
         </>

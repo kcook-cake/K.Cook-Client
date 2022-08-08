@@ -92,6 +92,7 @@ function Header ({ setNumLeftMobileF }) {
               onClick={()=>{
                 setNumLeftMobileF(1);
                 LinkClick("Home");
+                $(".hm-pc-flex").show();
               }}
             >
               <img src={search} className="search-icon" />

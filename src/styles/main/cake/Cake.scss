@@ -134,10 +134,17 @@ cake-flex
 }
 
 .cake-select-bar {
+  margin: 0; padding: 0;
   width: 100%;
-  height: 25px;
+  height: 100%;
   margin-top: 14px;
-  display: flex;
+  // display: flex;
+}
+.test {
+  background-color: red;
+}
+.cake-bar-card-all-delete {
+  display: inline-block;
 }
 
 
@@ -279,8 +286,6 @@ cake-flex
       height: 53px;
       margin: auto;
       padding-top: 16px;
-
-      display: flex;
     }
   }
 

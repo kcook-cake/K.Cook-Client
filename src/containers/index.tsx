@@ -54,7 +54,7 @@ const Pages = () => {
 
       <Footer
         setNumLeftMobileF={setNumLeftMobile}
-        address="123 Lorem Ipsum Street Jakarta, Indonesia" tel="+ 72 4500 1240" email="tanahcon@companymail.com"/>
+        address="서울특별시 동작구 상도로 369, 창신관 313호" tel="+ 72 4500 1240" email="cakeorder.kcook@gmail.com"/>
     </Router>    
   );
 };

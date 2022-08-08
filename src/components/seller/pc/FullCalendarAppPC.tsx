@@ -64,35 +64,35 @@ function FullCalendarAppPC (){
   // /SellerOrder/{id}
   return(
     <>
-      {modalFail ? 
-        <div className="calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
-          <div className="calendar-modal-top"></div>
-          <div id="calendar-modal">
-            <div style={{ width: "5px", height: "35px", }}></div>
-            <div className="calendar-modal-box">{date}</div>
-            <br/>
-            <div style={{ width: "5px", height: "20px", }}></div>
-            <div className="calendar-modal-box">
-              <Link
-                to="/SellerOrder"
-                onClick={()=>{
-                  // $(".seller").css("display", "flex");
-                  // $(".seller-section").show();
-                  LinkClick("SellerOrder");
-                  sellerLinkClick("SellerOrder");
-                }}
-              >
-                <button className="calendar-button">예약 확인</button> 
-              </Link>
-              <button 
-                className="calendar-button"
-                onClick={setting}
-              >주문 건수 설정</button> {/* 휴일해제 */}
-            </div>
+    {modalFail ? 
+      <div className="calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
+        <div className="calendar-modal-top"></div>
+        <div id="calendar-modal">
+          <div style={{ width: "5px", height: "35px", }}></div>
+          <div className="calendar-modal-box">{date}</div>
+          <br/>
+          <div style={{ width: "5px", height: "20px", }}></div>
+          <div className="calendar-modal-box">
+            <Link
+              to="/SellerOrder"
+              onClick={()=>{
+                // $(".seller").css("display", "flex");
+                // $(".seller-section").show();
+                LinkClick("SellerOrder");
+                sellerLinkClick("SellerOrder");
+              }}
+            >
+              <button className="calendar-button">예약 확인</button> 
+            </Link>
+            <button 
+              className="calendar-button"
+              onClick={setting}
+            >주문 건수 설정</button> {/* 휴일해제 */}
           </div>
         </div>
-        :<></>
-      }
+      </div>
+      :<></>
+    }
     <div className="fcap">
       <div className="seller-order-top-calendar"> {/* mypage-top */}
         {/* {session ? <div>{auth.accountId}</div> : <></>} */}
@@ -172,8 +172,8 @@ function FullCalendarAppPC (){
             setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
             
             $(".fc-daygrid-day").css("pointer-events", "auto");
-            $(".fc-daygrid-day").css("background", "#fff");
-            $(".fc-event-main-frame").css("background", "#fff");
+            $(".fc-daygrid-day").css("background", "none");
+            $(".fc-event-main-frame").css("background", "none");
             $(".fc-daygrid-day[data-date='"+date+"']").css("pointer-events", "none");
             $(".fc-daygrid-day[data-date='"+date+"']").css("background", "#ea5450");
             $(".fc-daygrid-day[data-date='"+date+"'] .fc-event-main-frame").css("background", "#ea5450");
