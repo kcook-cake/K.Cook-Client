@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 
 import cake6 from   '../../assets/cake6.png';
-import SPM_SSR_MobileCard from '../card/mobile/SPM_SSR_MobileCard';
+import SSR_MobileCard from '../card/mobile/SSR_MobileCard';
 
 interface Props {
     getData: any,
@@ -20,7 +20,7 @@ function SellerReviewMobile ({getData}:Props) {
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SPM_SSR_MobileCard getData={getData} box={false}/>
+                    <SSR_MobileCard getData={getData} />
                 </div>
             </div>
         </div>

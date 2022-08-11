@@ -151,7 +151,7 @@ function FullCalendarAppPC (){
           eventColor="red"
           nowIndicator
           dateClick={(e) => {
-            // $(".fc-daygrid-day-number").css("color", "#999999");
+            $(".fc-daygrid-day-number").css("color", "#999999");
             $(".fc-daygrid-day").css("pointer-events", "auto");
             $(".fc-daygrid-day").css("background", "none");
             $(".fc-event-main-frame").css("background", "none");
@@ -172,7 +172,7 @@ function FullCalendarAppPC (){
             else d="일요일";
             setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
             
-            // $(".fc-daygrid-day-number").css("color", "#999999");
+            $(".fc-daygrid-day-number").css("color", "#999999");
             $(".fc-daygrid-day").css("pointer-events", "auto");
             $(".fc-daygrid-day").css("background", "none");
             $(".fc-event-main-frame").css("background", "none");

@@ -20,7 +20,7 @@ function MPR_PcCard({getData}: Props) {
                         <div className="review-info">
                             <div className="review-cake">하트볼터치 곰돌이 케이크</div>
                             <div className="review-option">
-                            2021. 03. 11  14:00  1호  29,000원
+                                2021. 03. 11  14:00  1호  29,000원
                             </div>
                             <button className="review-button">후기 작성하기 <span>( +적립금 500원)</span></button>
                         </div>

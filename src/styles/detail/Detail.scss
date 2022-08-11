@@ -56,11 +56,15 @@
         text-align: center;
     }
     .detail-store-button {
-        width: 47%;
+        // width: 47%;
+        width: 172px;
         height: 40px;
         margin-bottom: 15px;
         border-radius: 4px;
         background-color: #f7f7f7;
+        // .detail-store-button-box .detail-store-button:nth-child(1) {
+        //     margin-right: 15px;
+        // }
         img {
             width: 14px;
             height: 14px;
@@ -126,7 +130,7 @@
     .detail-top-box {
         width: 100%;
         .detail-store-button {
-            width: 46.2%;
+            width: 48.7%;
         }
     }
 

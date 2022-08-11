@@ -46,11 +46,11 @@ const Detail = () =>{
                             <div className="detail-store-content">#커스텀</div>
                         </div>
                         <div className="detail-store-button-box">
-                            <button className="detail-store-button" style={{ marginRight: "15px", }} >
+                            <button className="detail-store-button" style={{ float: "left", }}>
                                 <img src={TestImg} />
                                 99
                             </button>
-                            <button className="detail-store-button">
+                            <button className="detail-store-button" style={{ float: "right", }}>
                                 <img src={TestImg} />
                                 공유하기
                             </button>
