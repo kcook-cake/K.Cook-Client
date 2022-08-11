@@ -24,7 +24,7 @@ const Recommend = ()=>{
                     <SectionTitle title="오늘의 추천" link="TodaysRec"/>
                 </div>
                 <div className="contents">
-                    <LengthwiseCard getData={data} link="TodaysRec"/>
+                    <LengthwiseCard getData={data} link="Detail"/>
                 </div>
             </div>
         </div>

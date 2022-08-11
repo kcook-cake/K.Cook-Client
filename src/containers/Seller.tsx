@@ -20,6 +20,7 @@ const Seller = () =>{
         pathname = pathname.split("/")[1];
         setPathname(pathname);
     },[]);
+    
     return(
         <div className="seller-flex ">
             <div className="seller">

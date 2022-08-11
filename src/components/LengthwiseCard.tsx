@@ -17,7 +17,8 @@ function LengthwiseCard({getData, link}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <Link to={"/"+link+"/"+data.productId}>
+                    // <Link to={"/"+link+"/"+data.productId}>
+                    <Link to={"/"+link+"/0"}>
                         <div className="lengthwise-flex" key={data.productId}>
                             <div className="lengthwise">
                                 <div className="lengthwise-img-flex">

@@ -11,7 +11,7 @@ import Profile from '../components/mypage/Profile';
 import MypageSection from '../components/mypage/MypageSection';
 
 const Mypage = () =>{
-    return(
+    return (
         <div className="mypage-flex">
             <div className="mypage">
                 <>

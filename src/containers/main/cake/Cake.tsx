@@ -254,7 +254,7 @@ function Cake (){
                     <div className="cake-select-bar-mobile">
                         <CakeBar_MobileCard setSelectAllF={setSelectAll} getData={selectAll} />
                         <div
-                            style={{ width: "45px", marginLeft: "5px", marginTop: "5px", color: "#ea5450", }}
+                            className="cake-bar-card-all-delete"
                             onClick={()=>{
                                 setSelectTwo("맛");setSelectThree("지역");setSelectFour("이벤트");setSelectFive("가격대");
                                 SelectCloseF();
@@ -496,16 +496,14 @@ function Cake (){
                         null:
                         <div className="pc cake-select-bar">
                             <CakeBarCard setSelectAllF={setSelectAll} getData={selectAll} />
-                            <div className="cake-bar-card-all-delete">
-                                <div
-                                    style={{ width: "45px", marginLeft: "10px", color: "#ea5450", }}
-                                    onClick={()=>{
-                                        setSelectTwo("맛");setSelectThree("지역");setSelectFour("이벤트");setSelectFive("가격대");
-                                        SelectCloseF();
-                                        setSelectAll([]);
-                                    }}
-                                >초기화</div>
-                            </div>
+                            <div
+                                className="cake-bar-card-all-delete"
+                                onClick={()=>{
+                                    setSelectTwo("맛");setSelectThree("지역");setSelectFour("이벤트");setSelectFive("가격대");
+                                    SelectCloseF();
+                                    setSelectAll([]);
+                                }}
+                            >초기화</div>
                         </div>
                     }
                 </div>
