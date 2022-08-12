@@ -68,7 +68,15 @@
   .mms-mobile {
     display: block;
   }
-
+  
+  .ms-all-mypage {
+    width: 100%;
+  }
+  .mms-pc-table {
+    width: auto;
+    border-radius: 0;
+    border: 0;
+  }
   .mms-mobile-box {
     .title {
       position: relative;

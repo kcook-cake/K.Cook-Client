@@ -200,7 +200,7 @@ function Header ({ setNumLeftMobileF }) {
               LinkClick("MoreItem")
             }}
           >
-            추가 상품
+            스토어
           </Link>
           <Link
             to="/CS"

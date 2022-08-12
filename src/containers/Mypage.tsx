@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 import '../../src/styles/mypage/Mypage.scss'
 import '../styles/mypage/AllMypage.scss'
 
-import OrderHistory from '../containers/mypage/MypageOrder';
+import MypageOrder from '../containers/mypage/MypageOrder';
 import ProductReview from '../containers/mypage/ProductReview';
 import Membership from '../containers/mypage/Membership';
 import Coupons from '../containers/mypage/Coupons';
@@ -16,7 +16,7 @@ const Mypage = () =>{
             <div className="mypage">
                 <>
                     <MypageSection />
-                    <Route exact path="/MypageOrder" component={OrderHistory} />
+                    <Route exact path="/MypageOrder" component={MypageOrder} />
                     <Route exact path="/ProductReview" component={ProductReview} />
                     <Route exact path="/Membership" component={Membership} />
                     <Route exact path="/Coupon" component={Coupons} />

@@ -33,8 +33,7 @@ function SectionTitle({ title, link }: SectionTitleProps) {
                 className="link"
                 onClick={()=>{
                     LinkClick(link);
-                }}
-            >
+                }}>
                 더보기 &gt;
             </Link>                
         </div>

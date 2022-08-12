@@ -20,7 +20,7 @@ function MainCake (){
         <div className="home-cake-flex">
             <div className="home-cake home">
                 <div className="title">
-                    <SectionTitle title="케이크" link="Cake" />
+                    <SectionTitle title="신상품" link="Cake" />
                 </div>
                 <div className="contents">
                     <WidthwiseCard getData={data}/>

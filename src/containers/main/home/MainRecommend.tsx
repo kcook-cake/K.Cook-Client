@@ -14,14 +14,23 @@ const Recommend = ()=>{
     const [dataLength, setDataLength] = useState([]);
     // console.log(environment.apiUrl);
     useEffect(()=>{
-        getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+        axios
+            .get(`https://prod.kcook-cake.com/app/cakes`)
+            .then((res) => {
+                console.log(res.data.result.content);
+                setData(res.data.result.content);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        // getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 
     return(
         <div className="home-recommend-flex home-flex">
             <div className="home-recommend home">
                 <div className="title">
-                    <SectionTitle title="오늘의 추천" link="TodaysRec"/>
+                    <SectionTitle title="인기상품" link="TodaysRec"/>
                 </div>
                 <div className="contents">
                     <LengthwiseCard getData={data} link="Detail"/>

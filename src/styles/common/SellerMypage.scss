@@ -5,33 +5,33 @@
 }
 
 .seller-mypage-top {
-    margin-bottom: 70px;
-    h3 {
-      display: inline-block;
-      margin-right: 40px;
-  
-      font-size: 20px;
-      font-weight: 700;
-    }
-    span {
-      font-size: 12px;
-      font-weight: 500;
-      color: #777777;
-    }
-}
-
-.seller-mypage-middle-title {
-  margin: 0 0 0 18px;
-  margin-top: 5px;
-  float: left;
-
-  font-size: 12px;
-  font-weight: 500;
-  color: #777777;
+  width: 100%;
+  padding-bottom: 45px;
+  font-size: 18px;
+  text-align: left;
+  // display: flex;
+  margin-bottom: 70px;
+  .mmo-mobile-front-title {
+    float: left;
+    margin-right: 40px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .seller-mypage-middle-title {
+    float: left;
+    padding-top: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #777777;
+  }
 }
 
 @media (max-width: 767px) {
-
+  .seller-mypage-top {
+    .mmo-mobile-front-title {
+      margin-right: 20px;
+    }
+  }
 }
 
 @media (max-width: 294px) {

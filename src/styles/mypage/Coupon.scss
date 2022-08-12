@@ -36,10 +36,18 @@
   }
 }
 
-.mc-pc-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 18px;
+// .mc-pc-list {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   column-gap: 18px;
+// }
+
+.mc {
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -62,6 +70,13 @@
     .mcm-title-button {
       font-size: 14px;
       font-weight: 600;
+    }
+  }
+
+  .mc {
+    .content {
+      grid-template-columns: 1fr;
+      column-gap: 0;
     }
   }
 }

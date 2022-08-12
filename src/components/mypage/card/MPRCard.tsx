@@ -1,14 +1,14 @@
 import React from 'react';
-import '../../../../styles/card/mypage/MPR_PcCard.scss';
+import '../../../styles/card/mypage/MPRCard.scss';
 
 import rightArrow from "../../../../assets/right-arrow.svg";
-import cake6 from   '../../../../assets/cake6.png';
+import cake6 from   '../../../assets/cake6.png';
 
 interface Props {
     getData: any
 }
 
-function MPR_PcCard({getData}: Props) {
+function MPRCard({getData}: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
@@ -22,7 +22,20 @@ function MPR_PcCard({getData}: Props) {
                             <div className="review-option">
                                 2021. 03. 11  14:00  1호  29,000원
                             </div>
-                            <button className="review-button">후기 작성하기 <span>( +적립금 500원)</span></button>
+                            {true? 
+                                <button
+                                    className="review-button-left review-button"
+                                    onClick={()=>{}}>
+                                    미작성
+                                    <span className="pc"> (+적립금 500원)</span>
+                                </button>:
+                                <button
+                                    className="review-button-right review-button" 
+                                    disabled>
+                                    작성완료
+
+                                </button>
+                            }
                         </div>
                     </div>
                 )
@@ -32,4 +45,4 @@ function MPR_PcCard({getData}: Props) {
     );
 }
 
-export default MPR_PcCard;
+export default MPRCard;

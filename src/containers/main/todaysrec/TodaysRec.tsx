@@ -38,7 +38,7 @@ function TodaysRec (){
     return(
         <div className="todaysrec-flex">
             <div className="todaysrec-review">
-                <div className="title">리뷰 별점순</div>
+                <div className="title">최근 구매</div>
                 <div className="contents">
                     <LengthwiseCard getData={reviewTodays} link="Review"/>
                 </div>
@@ -60,7 +60,7 @@ function TodaysRec (){
                 </div>
             </div>
             <div className="todaysrec-pick-mobile">
-            <PickCard />
+                <PickCard />
             </div>
 
             <div className="todaysrec-event">
@@ -96,8 +96,7 @@ function TodaysRec (){
                         onClick={()=>{
                             LinkClick("");
                             document.location.href = "/"+"";
-                        }}
-                    >
+                        }}>
                         이번 달 인기 이벤트
                         <img src={allow} />
                     </div>

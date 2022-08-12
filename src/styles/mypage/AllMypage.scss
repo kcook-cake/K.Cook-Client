@@ -1,7 +1,15 @@
 
+.mypage-top-flex {
+  margin: 90px 0;
+  .ms-all-box {
+    // background-color: red;
+  }
+}
+
 @media (max-width: 767px) {
-  .ms-all-mypage {
+  .mypage-top-flex {
     width: 100%;
+    margin: 0;
     .ms-all-box {
       width: 100%;
       min-width: 0px;

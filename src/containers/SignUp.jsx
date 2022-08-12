@@ -274,7 +274,24 @@ function SignUp() {
         <img src={logo} className="logo" />
         <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
         
-        <p className="login-center">아이디</p>
+        <p className="login-center">이메일</p>
+        <input
+          className="login-input"
+          type="email"
+          onChange={handleEmail}
+          value={email}
+          placeholder="xxx@xxx.xxx"
+        ></input>
+        {emailFail ?
+          <p className="signup-confirm-text">이메일 형식이 맞지 않습니다.</p>
+          : null
+        }
+        {emailFailD ?
+          <p className="signup-confirm-text">중복된 이메일입니다.</p>
+          : null
+        }
+
+        {/* <p className="login-center">아이디</p>
         <input
           className="login-input"
           type="text"
@@ -289,7 +306,7 @@ function SignUp() {
         {signInIdFailD ?
           <p className="signup-confirm-text">중복된 아이디입니다.</p>
           : null
-        }
+        } */}
 
         <p className="login-center">비밀번호</p>
         <input
@@ -315,21 +332,7 @@ function SignUp() {
           : null
         }
         
-        <p className="login-center">생일</p>
-        <input
-          className="login-input"
-          type="date"
-          onChange={handleBirthday}
-          value={birthday}
-          placeholder="yyyy-mm-dd"
-        ></input>
-        <p className="signup-confirm-text"></p>
-        {birthdayFail ?
-          <p className="signup-confirm-text">생일 형식이 맞지 않습니다.</p>
-          : null
-        }
-        
-        <p className="login-center">닉네임</p>
+        <p className="login-center">이름(닉네임)</p>
         <input
           className="login-input"
           type="text"
@@ -346,20 +349,17 @@ function SignUp() {
           : null
         }
 
-        <p className="login-center">이메일</p>
+        <p className="login-center">생일</p>
         <input
           className="login-input"
-          type="email"
-          onChange={handleEmail}
-          value={email}
-          placeholder="xxx@xxx.xxx"
+          type="date"
+          onChange={handleBirthday}
+          value={birthday}
+          placeholder="yyyy-mm-dd"
         ></input>
-        {emailFail ?
-          <p className="signup-confirm-text">이메일 형식이 맞지 않습니다.</p>
-          : null
-        }
-        {emailFailD ?
-          <p className="signup-confirm-text">중복된 이메일입니다.</p>
+        <p className="signup-confirm-text"></p>
+        {birthdayFail ?
+          <p className="signup-confirm-text">생일 형식이 맞지 않습니다.</p>
           : null
         }
 

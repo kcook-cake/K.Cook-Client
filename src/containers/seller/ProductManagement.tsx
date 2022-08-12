@@ -9,9 +9,9 @@ import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../assets/seller/drag-column-btn.svg';
 
 import { Link } from 'react-router-dom';
-import SPMCard from './card/SPMCard';
-import SPMCard_Add from './card/SPMCard_Add';
 import getAxios from 'src/utils/getAxios';
+import SPMCard from 'src/components/seller/card/SPMCard';
+import SPMCard_Add from 'src/components/seller/card/SPMCard_Add';
 
 function ProductManagement () {
 
@@ -52,13 +52,9 @@ function ProductManagement () {
                 <div className="spm-mobile-flex">
                     <div className="spm-ssr-mobile-box">
                         {/* title */}
-                        <div className="pc seller-mypage-top">
-                            <h3>상품관리</h3>
-                            <span>현재 판매 중인 상품입니다.</span>
-                        </div>
-                        <div className="spm-mobile title">
-                            <div className="spm-ssr-mobile-title-front">상품관리</div>
-                            <div className="seller-mypage-middle-title">판매 중인 상품입니다.</div>
+                        <div className="seller-mypage-top">
+                            <div className="mmo-mobile-front-title">상품관리</div>
+                            <div className="seller-mypage-middle-title">현재 판매 중인 상품입니다</div>
                         </div>
                         <div className="spm-mobile" style={{ width: "5px", height: "25px", }}></div>
                         <div className="content">
