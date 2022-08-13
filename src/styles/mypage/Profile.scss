@@ -1,14 +1,8 @@
 @import "../reset.scss";
 
-.mpp {
-
-}
-.mpm {
-  display: none;
-}
-
 .profile {
   margin: 104px auto;
+  padding-bottom: 25px;
 }
 
 .profile-list {
@@ -26,9 +20,10 @@
 }
 
 .profile-content {
-  padding: 10px 20px;
   width: 320px;
   height: 40px;
+  padding: 10px 20px;
+
   border: solid 1px #eaeaea;
   color: #868686;
   font-size: 14px;
@@ -46,12 +41,6 @@
 }
 
 @media (max-width: 767px) {
-  // .mpp {
-  //   display: none;
-  // }
-  // .mpm {
-  //   display: block;
-  // }
   .profile-flex {
     margin: none;
   }

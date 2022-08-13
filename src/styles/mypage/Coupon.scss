@@ -1,17 +1,6 @@
 @import "../reset.scss";
 
-.mc-pc {
-
-}
-.mc-mobile {
-  display: none;
-}
-
-.mc-pc-top {
-  // display: flex;
-}
-
-.mc-pc-code {
+.mc-code {
   width: 590px;
   height: 57px;
 
@@ -36,47 +25,29 @@
   }
 }
 
-// .mc-pc-list {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   column-gap: 18px;
-// }
-
-.mc {
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 18px;
-  }
+.mc-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 18px;
 }
 
+
 @media (max-width: 767px) {
-  .mc-pc {
-    display: none;
-  }
-  .mc-mobile {
-    display: block;
-  }
-
-  .mcm-title-right {
-    width: 141px;
-    height: 33px;
-    float: right;
-
-    text-align: center;
-    border-radius: 7px;
-    color: #fff;
-    background-color: #ea5450;
-    .mcm-title-button {
-      font-size: 14px;
-      font-weight: 600;
+  .mc-code {
+    width: auto; height: auto;
+    input {
+      display: none;
+    }
+    button {
+      width: 141px !important;
+      height: 33px !important;
+      margin-right: 4px;
+      border-radius: 5px;
     }
   }
-
-  .mc {
-    .content {
-      grid-template-columns: 1fr;
-      column-gap: 0;
-    }
+  .mc-content {
+    margin-bottom: 25px;
+    grid-template-columns: 1fr;
+    column-gap: 0;
   }
 }

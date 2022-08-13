@@ -1,12 +1,13 @@
 @import "../../reset.scss";
 
-.mmo-pc-card-content {
+.mmocard {
   width: 841px;
   height: 162px;
   margin-bottom: 40px;
   display: flex;
 }
-.order-img {
+
+.mmocard-img-box {
   margin-right: 33px;
   width: 162px;
   height: 162px;
@@ -17,31 +18,31 @@
   }
 }
   
-.order-content {
+.mmocard-content {
   // width: 100%;
   margin-bottom: 40px;
   color: $sub-text;
 
-  .order-cake {
+  .mmocard-cake {
     margin-bottom: 3px;
     font-size: 18px;
     font-weight: 500;
   }
-  .order-cake-shop {
+  .mmocard-cake-shop {
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: 500;
   }
-  .order-option {
+  .mmocard-option {
     margin-bottom: 5px;
     color: #777777;
     font-size: 12px;
     font-weight: 500;
   }
-  .order-time {
+  .mmocard-time {
     margin-top: 3px;
   }
-  .order-price {
+  .mmocard-price {
     margin-top: 40px;
     font-size: 18px;
     font-weight: 700;
@@ -50,42 +51,42 @@
 }
 
 @media(max-width: 767px) {
-  .mmo-pc-card-content {
+  .mmocard {
     margin: 0;
     width: 156px;
     height: 262px;
     
     display: inline-flex;
     flex-direction: column;
-
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
-    .order-img {
-      width: 156px;
-      height: 116px;
-      margin-bottom: 17px;
+  }
 
-      border-radius: 10px;
-      background-color: #e6e6e6;
-      img {
-        height: 116px;
-      }
+  .mmocard-img-box {
+    width: 156px;
+    height: 116px;
+    margin-bottom: 17px;
+
+    border-radius: 10px;
+    background-color: #e6e6e6;
+    img {
+      height: 116px;
     }
-    .lengthwise-img-none {
+    .mmocard-img-none {
       line-height: 116px;
       text-align: center;
       color: #858997;
     }
-    .lengthwise-img {
+    .mmocard-img {
       width: 156px;
       height: 116px;
     }
   }
 
-  .order-content {
+  .mmocard-content {
     margin: 0;
     padding-left: 0px;
     font-weight: bold;
-    .order-cake {
+    .mmocard-cake {
       width: 156px;
     
       overflow:hidden;
@@ -97,7 +98,7 @@
       font-weight: 500;
       line-height: 18px;
     }
-    .order-cake-shop {
+    .mmocard-cake-shop {
       width: 156px;
       margin-bottom: 5px;
   
@@ -109,7 +110,7 @@
       line-height: 18px;
       font-size: 15px;
     }
-    .order-option {
+    .mmocard-option {
       width: 156px;
       margin-bottom: 10px;
 
@@ -123,7 +124,7 @@
 
       border-bottom: 1px solid #eee;
     }
-    .order-price {
+    .mmocard-price {
       margin: 0;
       color: $pricetext;
       font-size: 18px;

@@ -1,12 +1,12 @@
 @import "../../reset.scss";
   
-.mpr-pc-card-flex {
+.mprcard {
   width: 591px;
   height: 100px;
   display: flex;
   margin-bottom: 20px;
 
-  .review-img {
+  .mprcard-img {
     margin-right: 14px;
     width: 100px;
     min-width: 100px;
@@ -19,21 +19,22 @@
     }
   }
     
-  .review-info {
-    .review-cake {
+  .mprcard-info {
+    .mprcard-cake {
       margin-bottom: 5px;
       font-size: 14px;
       font-weight: 700;
       color: #222222;
     }
-    .review-option {
+    .mprcard-option {
       margin-bottom: 26px;
       
       font-size: 12px;
       font-weight: 700px;
       color: #777777;
     }
-    .review-button {
+    
+    .mprcard-button {
       width: 477px;
       height: 32px;
       text-align: center;
@@ -47,20 +48,20 @@
         font-size: 10px;
       }
     }
-    .review-button-left {
+    .mprcard-button-left {
       background-color: $pink;
     }
-    .review-button-right {
+    .mprcard-button-right {
       background-color: #c4c4c4;
     }
   }
 }
 
 @media (max-width: 767px) {
-  .mpr-pc-card-flex {
+  .mprcard {
     width: 100%;
     margin-bottom: 20px;
-    .review-img {
+    .mprcard-img {
       width: 100px;
       height: 100px;
       border-radius: 5px;
@@ -70,16 +71,12 @@
         height: 100%;
       }
     }
-    // img {
-    //     width: 100px;
-    //     height: 100px;
-    //     border-radius: 5px;
-    // }
-    .review-info {
+
+    .mprcard-info {
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
-      .review-cake {
+      .mprcard-cake {
         width: 100%;
         margin-bottom: 5px;
 
@@ -90,7 +87,7 @@
         font-weight: 600;
         font-size: 15px;
       }
-      .review-option {
+      .mprcard-option {
         width: 100%;
         height: 46px;
         margin-bottom: 5px;
@@ -102,17 +99,18 @@
         font-weight: 500;
         color: #777777;
       }
-      .review-button {
+
+      .mprcard-button {
         padding: 0;
         width: auto; height: auto;
         // margin-left: 10px;
         font-weight: 600;
         background-color: #fff;
       }
-      .review-button-left {
+      .mprcard-button-left {
         color: #ea5450;
       }
-      .review-button-right {
+      .mprcard-button-right {
         color: #333333;
       }
     }

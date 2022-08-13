@@ -1,100 +1,86 @@
 @import "../reset.scss";
 
-.mms-pc {
-
-}
-.mms-mobile {
-  display: none;
-}
-
-.mms-pc-sum {
-  margin-left: 100px;
-  display: inline-block;
-  float: right;
-
+.mms-top-right {
   width: 150px;
   height: 35px;
-  border-radius: 17px;
-  border: solid 1px $pink;
-  line-height: 30px;
+  line-height: 35px;
+
+  display: inline-block;
+  float: right;
   text-align: center;
 
   color: #222222;
   font-size: 12px;
   font-weight: 500;
-  .mms-pc-point {
-    margin-left: 10px;
+  
+  border-radius: 17px;
+  border: solid 1px $pink;
+  .mms-top-price {
+    // margin-left: 10px;
     color: #222222;
     font-size: 14px;
   }
 }
 
-.mms-pc-table {
+.mms-table {
   width: 837px;
   border-radius: 8px;
   border: solid 1px #eff4fa;
-}
-
-.mms-pc-all {
-  display: grid;
-  // width: 100%;
-  height: 60px;
-  grid-template-columns: 0.3fr 2fr 1.2fr 1.2fr 1.2fr 0.7fr;
-  text-align: left;
-  vertical-align: middle;
-  line-height: 60px;
-}
-
-.mms-pc-head {
-  width: 100%;
-
-  font-size: 15px;
-  color: #808080;
-  font-weight: 500;
-  background-color: #f4f4f4;
-}
-
-.membership-data:after {
-  content: "";
-  display: block;
-  width: 100%;
-  margin: 0 auto;
+  .mms-table-all {
+    display: grid;
+    // width: 100%;
+    height: 60px;
+    grid-template-columns: 0.3fr 2fr 1.2fr 1.2fr 1.2fr 0.7fr;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 60px;
+  }
+  .mms-table-head {
+    width: 100%;
+  
+    font-size: 15px;
+    color: #808080;
+    font-weight: 500;
+    background-color: #f4f4f4;
+  }
 }
 
 @media (max-width: 767px) {
-  .mms-pc {
-    display: none;
-  }
-  .mms-mobile {
-    display: block;
+  .mms-top-right {
+    width: auto; height: auto;
+    margin-right: 14px;
+
+    font-size: 14px;
+    border-radius: 17px;
+    border: 0;
+    .mms-top-price {
+      font-size: 16px;
+    }
   }
   
-  .ms-all-mypage {
-    width: 100%;
-  }
-  .mms-pc-table {
+  .mms-table {
     width: auto;
     border-radius: 0;
     border: 0;
-  }
-  .mms-mobile-box {
-    .title {
-      position: relative;
-      // margin-left: 8px;
+    .mms-table-all {
+      width: 100%;
+      height: 73px;
+      line-height: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      vertical-align: bottom;
+      div {
+        margin-top: 5px;
+        margin-left: 15px;
+      }
+    }
+    .mms-table-head {
+      display: none;
+    }
+    .mms-content {
+      margin-bottom: 45px;
     }
   }
-  .mms-mobile-title-right {
-    width: 97px;
-    margin-right: 19px;
 
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    float: right;
-
-    vertical-align: bottom;
-    font-size: 12px;
-    font-weight: 500;
-  }
 }

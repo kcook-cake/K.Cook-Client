@@ -13,24 +13,24 @@ function MPRCard({getData}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <div className="mpr-pc-card-flex">
-                        <div className="review-img">
+                    <div className="mprcard">
+                        <div className="mprcard-img">
                             <img src={cake6}/>
                         </div>    
-                        <div className="review-info">
-                            <div className="review-cake">하트볼터치 곰돌이 케이크</div>
-                            <div className="review-option">
+                        <div className="mprcard-info">
+                            <div className="mprcard-cake">하트볼터치 곰돌이 케이크</div>
+                            <div className="mprcard-option">
                                 2021. 03. 11  14:00  1호  29,000원
                             </div>
                             {true? 
                                 <button
-                                    className="review-button-left review-button"
+                                    className="mprcard-button-left mprcard-button"
                                     onClick={()=>{}}>
                                     미작성
                                     <span className="pc"> (+적립금 500원)</span>
                                 </button>:
                                 <button
-                                    className="review-button-right review-button" 
+                                    className="mprcard-button-right mprcard-button" 
                                     disabled>
                                     작성완료
 

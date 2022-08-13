@@ -14,8 +14,10 @@ import logo from "../assets/logo.png";
 import X from "../assets/address_x.png"
 
 function SignUp() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [failModalText, setFailModalText] = useState("회원가입 정보가 일치하지 않습니다.");
+  const [failModal, setFailModal] = useState(false);
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   // 팝업창 열고닫기
   const openclosePostCode = () => {
     if (isPopupOpen) 
@@ -54,90 +56,58 @@ function SignUp() {
       setCheckedItems([...filter])
     }
 
-    console.log(checkedItems);
     if (checkedItems.length == 4) setIsChecked(false);
     else if (isChecked && checkedItems.length == 3) setIsChecked(true);
   }
 
-  const [failModal, setFailModal] = useState(false);
-  const [modalCSS, setModalCSS] = useState(false);
-
-  const [phoneFailD, setPhoneFailD] = useState(true);
-  const [phoneToken, setPhoneToken] = useState("");
-  const [phonejwToken, setPhonejwToken] = useState("");
+  //핸드폰 인증 함수
+  const [phoneResult, setPhoneResult] = useState(false);
   const onSMS = () => {
     axios
-      .patch(`/app/accounts/sms-token`, {
+      .patch(`https://prod.kcook-cake.com/app/accounts/sms-token`, {
         phoneNumber: phoneNumber,
-      }, {
-        headers: {
-            'X-ACCESS-TOKEN': phonejwToken,
-        }
       })
       .then((res) => {
-        if (res.isSuccess) {
-          setPhoneFailD(false)
-          document.location.href = "/";
-        }
+        setPhoneResult(res.result);
+        if (res.isSuccess) setPhoneSmsFail(false)
       })
       .catch((error) => {
-        console.log(error)
+        setFailModalText(error.response.data.message);
         setFailModal(true);
-        setModalCSS(true);
         setTimeout(() => {
           setFailModal(false);
         }, 5000);
-      });
-  }
-  const onSMSCheck = () => {
-    axios
-      .patch(`/app/accounts/sms-certification`, {
-        smsToken: phonejwToken,
-      })
-      .then((res) => {
-        if (res.isSuccess) {
-          setPhoneFailD(false)
-          document.location.href = "/";
-        }
-      })
-      .catch((error) => {
-        console.log(error)
+        setFailModalText("회원가입 정보가 일치하지 않습니다.");
       });
   }
 
-  const [signInId, setInputId] = useState("");
-  const [password, setInputPw] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhone] = useState("");
-  const [phoneSign, setPhoneSign] = useState("");
+  const [password, setInputPw] = useState("");
   const [chPassword, setCheckPw] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [phoneNumber, setPhone] = useState("");
   const [addressMain, setAddressMain] = useState("");
   const [address, setAddress] = useState("");
 
-  const [signInIdFail, setSignInIdFail] = useState(true);
+  const [emailFail, setEmailFail] = useState(true);
+  const [emailFailD, setEmailFailD] = useState(false); //이메일 중복체크 -> 백엔드에서 확인
   const [passwordFail, setPasswordFail] = useState(true);
   const [chPasswordFail, setCheckPasswordFail] = useState(false);
-  const [birthdayFail, setBirthdayFail] = useState(true);
   const [nicknameFail, setNicknameFail] = useState(true);
-  const [emailFail, setEmailFail] = useState(true);
-  const [phoneFail, setPhoneFail] = useState(true);
-  const [phoneSmsFail, setPhoneSmsFail] = useState(false);
+  const [nicknameFailD, setNicknameFailD] = useState(false); //닉네임 중복체크 -> 백엔드에서 확인
+  const [birthdayFail, setBirthdayFail] = useState(true);
   const [addressFail, setAddressFail] = useState(true);
+  const [phoneFail, setPhoneFail] = useState(true);
+  const [phoneSmsFail, setPhoneSmsFail] = useState(false); //전화번호 인증
 
-  const [signInIdFailD, setSignInIdFailD] = useState(false);
-  const [nicknameFailD, setNicknameFailD] = useState(false);
-  const [emailFailD, setEmailFailD] = useState(false);
-
-  const handleId = (e) => {
-    setInputId(e.target.value);
-
-    const neRegex = /[^a-z0-9]/
-    if (e.target.value.length >= 3 && e.target.value.length <= 20 && !neRegex.test(e.target.value))
-      setSignInIdFail(false)
+  const handleEmail = (e) => {
+    const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    setEmail(e.target.value);
+    if (e.target.value.length >= 3 && e.target.value.length <= 20 && emailRegex.test(e.target.value))
+      setEmailFail(false)
     else
-      setSignInIdFail(true)
+      setEmailFail(true)
   };
 
   const handlePassword = (e) => {
@@ -146,7 +116,6 @@ function SignUp() {
       setPasswordFail(false)
     else
       setPasswordFail(true)
-    console.log(password === chPassword)
     if (password === chPassword)
       setCheckPasswordFail(true)
   };
@@ -159,14 +128,6 @@ function SignUp() {
       setCheckPasswordFail(true)
   };
 
-  const handleBirthday = (e) => {
-    setBirthday(e.target.value);
-    if (e.target.value !== '')
-      setBirthdayFail(false)
-    else
-      setBirthdayFail(true)
-  };
-
   const handleNickname = (e) => {
     const nekRegex = /[^a-z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
     setNickname(e.target.value);
@@ -176,25 +137,24 @@ function SignUp() {
       setNicknameFail(true)
   };
 
-  const handleEmail = (e) => {
-    const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    setEmail(e.target.value);
-    if (e.target.value.length >= 3 && e.target.value.length <= 20 && emailRegex.test(e.target.value))
-      setEmailFail(false)
+  const handleBirthday = (e) => {
+    setBirthday(e.target.value);
+    if (e.target.value !== '')
+      setBirthdayFail(false)
     else
-      setEmailFail(true)
+      setBirthdayFail(true)
   };
 
   const handlePhone = (e) => {
     setPhone(e.target.value.replace("-", ""));
-    if (e.target.value.length !== 0)
+    if (e.target.value.length !== 0) {
       setPhoneFail(false)
-    else
+      setPhoneSmsFail(true)
+    }
+    else{
       setPhoneFail(true)
-  };
-
-  const handlePhoneSign = (e) => {
-    setPhoneSign(e.target.value);
+      setPhoneSmsFail(false)
+    }
   };
 
   const handleAddressMain = (addressMain) => {
@@ -210,46 +170,38 @@ function SignUp() {
   };
 
   const onClickSignUp = () => {
-    if ((signInIdFail || passwordFail || chPasswordFail || birthdayFail || nicknameFail || emailFail || phoneFail || (addressMain === "") || signInIdFailD || nicknameFailD || emailFailD || addressFail) ||
-      (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) {
+    if ((emailFail || passwordFail || chPasswordFail || nicknameFail || birthdayFail || (addressMain === "") || addressFail) || phoneFail || phoneSmsFail ||
+      (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) 
+    {
       setFailModal(true);
-      setModalCSS(true);
       setTimeout(() => {
         setFailModal(false);
-      }, 1000);
+      }, 5000);
     } else {
-      axios
-        .post("/app/sign-up", {
-          address: addressMain,
-          dateOfBirth: birthday,
-          email: email,
-          nickname: nickname,
-          password: password,
-          phoneNumber: phoneNumber,
-          signInId: signInId,
-        })
-        .then((res) => {
-          setPhonejwToken(res.data.result.jwt);
-          setPhoneSmsFail(true);
+      // axios
+      //   .post("/app/sign-up", {
+      //     address: addressMain,
+      //     dateOfBirth: birthday,
+      //     email: email,
+      //     nickname: nickname,
+      //     password: password,
+      //     phoneNumber: phoneNumber,
+      //   })
+      //   .then((res) => {
+      //     // setPhonejwToken(res.data.result.jwt);
+      //     setPhoneSmsFail(true);
 
-          //성공시 메인으로 이동
-          // sessionStorage.setItem("authenticated", authenticated);
-        })
-        .catch((error) => {
-          console.log(error.response.data.message)
-          if (error.response.data.message === '중복된 이메일입니다.') {
-            setEmailFailD(true)
-          } else if (error.response.data.message === '중복된 아이디입니다.') {
-            setSignInIdFailD(true)
-          } else if (error.response.data.message === '중복된 닉네임입니다.') {
-            setNicknameFailD(true)
-          }
-          setFailModal(true);
-          setModalCSS(true);
-          setTimeout(() => {
-            setFailModal(false);
-          }, 5000);
-        });
+      //     //성공시 메인으로 이동
+      //     // sessionStorage.setItem("authenticated", authenticated);
+      //   })
+      //   .catch((error) => {
+      //     setFailModalText(error.response.data.message);
+      //     setFailModal(true);
+      //     setTimeout(() => {
+      //       setFailModal(false);
+      //     }, 5000);
+      //   });
+      // setFailModalText("회원가입 정보가 일치하지 않습니다.");
     }
   };
 
@@ -266,10 +218,6 @@ function SignUp() {
 
   return (
     <div className="login-flex">
-      {/* {isPopupOpen?
-        <div className="login-background" style={{ left: backWidth-65, }}></div>
-      : null} */}
-
       <div className="login">
         <img src={logo} className="logo" />
         <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
@@ -290,23 +238,6 @@ function SignUp() {
           <p className="signup-confirm-text">중복된 이메일입니다.</p>
           : null
         }
-
-        {/* <p className="login-center">아이디</p>
-        <input
-          className="login-input"
-          type="text"
-          onChange={handleId}
-          value={signInId}
-          placeholder="3~20자 입력 / 영어, 숫자만 가능"
-        ></input>
-        {signInIdFail ?
-          <p className="signup-confirm-text">아이디 형식이 맞지 않습니다.</p>
-          : null
-        }
-        {signInIdFailD ?
-          <p className="signup-confirm-text">중복된 아이디입니다.</p>
-          : null
-        } */}
 
         <p className="login-center">비밀번호</p>
         <input
@@ -406,20 +337,18 @@ function SignUp() {
         }
 
         <p className="login-center">휴대폰 번호(숫자만)</p>
-        <input
-          className="login-input"
-          type="tel"
-          onChange={handlePhone}
-          value={phoneNumber}
-          placeholder="번호 입력"
-        ></input>
-        {phonejwToken == "" ?
-          <></>:
+        <div className="login-input signup-phone">
+          <input
+            type="tel"
+            onChange={handlePhone}
+            value={phoneNumber}
+            placeholder="번호 입력"
+          ></input>
           <button
             className="phone-input-btn"
             onClick={onSMS}
           >인증문자 발송</button>
-        }
+        </div>
         {phoneFail ?
           <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
           : null
@@ -458,15 +387,15 @@ function SignUp() {
           className="login-btn"
           onClick={onClickSignUp}
           disabled={
-            signInId.length >= 3 && password.length >= 8 ? false : true
+            email.length >= 3 && password.length >= 8 ? false : true
           }
         >
         가입하기
         </button>
 
-          {failModal === true ? 
+          {failModal? 
             <div className="login-iscorrect">
-              회원가입 정보가 일치하지 않습니다.
+              {failModalText}
             </div>
           : null}
       </div>

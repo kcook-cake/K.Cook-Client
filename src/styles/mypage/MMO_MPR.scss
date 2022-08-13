@@ -1,73 +1,28 @@
 @import "../reset.scss";
 
-.pc {
-}
-.mobile {
-    display: none;
-}
-
-.moh-pc,
-.mpr-pc {
-
-}
-.mmo-moobile,
-.mpr-mobile {
-  display: none;
-}
-
 @media (max-width: 767px) {
-    .pc {
-        display: none;
-    }
-    .mobile {
-        display: block;
-    }
-
-    .moh-pc,
-    .mpr-pc {
-        display: none;
-    }
-
-    .ms-all-box {
-        .contents::-webkit-scrollbar {
+    //mmo
+        .mmo-content::-webkit-scrollbar {
             height: 8px;
         }
-        .contents::-webkit-scrollbar-thumb {
+        .mmo-content::-webkit-scrollbar-thumb {
             background-color: #e6e6e6;
             border-radius: 10px;
         }
-        .contents::-webkit-scrollbar-track {
+        .mmo-content::-webkit-scrollbar-track {
             background-color: #f5f5f5;
             border-radius: 10px;
         }
-        .contents {
+        .mmo-content {
             margin-bottom: 45px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             column-gap: 16px;
             overflow-x: scroll;
         }
-    }
-    .mmo-moobile {
-        width: 100%;
-        display: block;
-        .title {
-            margin-bottom: 20px;
-        }
-    }
-    .mmo-pick-card {
-        margin: 0 16px;
-    }
 
-    .mpr-mobile {
-        width: 100%;
-        display: block;
-    }
-
-    .mmo-moobile,
-    .mpr-mobile {
-        .mmo-mobile-front-title {
-            float: left;
-        }
+    //mpr
+    .mpr-content {
+        margin-bottom: 45px;
     }
 }

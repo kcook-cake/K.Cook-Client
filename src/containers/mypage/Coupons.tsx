@@ -14,17 +14,17 @@ function Coupons (){
 
     return(
         <>
-        <div className="mypage-top-flex mmo mc">
+        <div className="mc seller-mypage-top-flex">
             <div className="ms-all-box">
                 <div className="seller-mypage-top">
-                    <div className="mmo-mobile-front-title">쿠폰</div>
-                    <div className="pc mc-pc-code">
+                    <div className="seller-mypage-front-title">쿠폰</div>
+                    <div className="mc-code">
                         <input placeholder="할인 쿠폰 번호를 입력하세요"></input>
-                    <button>등록하기</button>
+                        <button className="mc-button">등록하기</button>
+                    </div>
                 </div>
-                </div>
-                <div className="mmo-mobile" style={{ width: "5px", height: "25px", }}></div>
-                <div className="content">
+                <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
+                <div className="mc-content">
                     <MCCard getData={data} />
                 </div>
             </div>

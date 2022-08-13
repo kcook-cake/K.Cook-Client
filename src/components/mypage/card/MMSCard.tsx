@@ -14,29 +14,16 @@ function MMSCard({getData}: Props) {
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
                     <>
-                    <div className="pc mms-pc-all mms-pc-card">
-                        <div></div>
-                        <div>하트볼터치 곰돌이 케이크</div>
-                        <div>원모먼트</div>
-                        <div>2021. 03. 11</div>
-                        <div>29,000</div>
-                        <div>2,900원</div>
-                    </div>
-
-                    <div className="mobile mmmcard"  key={data.productId}>
-                        <div className="mmmcard-box">
-                            <div className="mmmcard-title">
-                                하트볼터치 곰돌이 케이크
-                            </div>
-                            <div className="mmmcard-content">
-                                <div className="mmmcard-date">
-                                    2021.03.11 | 29,000원
-                                    <div className="mmmcard-price">
-                                        +2,900원
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="mms-table-all mms-table-card">
+                        <div className="pc"></div>
+                        <div className="mmscard-title">하트볼터치 곰돌이 케이크</div>
+                        <div className="mmscard-company">원모먼트</div>
+                        <div className="pc">2021.03.11</div>
+                        <div className="pc">29,000</div>
+                        <div className="mobile mmscard-date">
+                            2021.03.11 | 29,000원
                         </div>
+                        <div className="mmscard-price">+2,900원</div>
                     </div>
                     </>
                 )

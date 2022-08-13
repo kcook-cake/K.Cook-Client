@@ -15,19 +15,19 @@ function Membership (){
 
     return(
         <> 
-        <div className="mypage-top-flex mmo">
+        <div className="mmo seller-mypage-top-flex">
             <div className="ms-all-box">
                 <div className="seller-mypage-top">
-                    <div className="mmo-mobile-front-title">적립금</div>
+                    <div className="seller-mypage-front-title">적립금</div>
                     <div className="pc seller-mypage-middle-title">구매 및 후기 작성으로 현금처럼 쓸 수 있는 포인트를 받으세요</div>
-                    <div className="pc mms-pc-sum">
-                        합계 : 
-                        <span className="mms-pc-point">11,600원</span>
+                    <div className="mms-top-right">
+                        합계&nbsp;:&nbsp;&nbsp; 
+                        <span className="mms-top-price">11,600원</span>
                     </div>
                 </div>
                 <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
-                <div className="mms-pc-table">
-                    <div className="pc mms-pc-all mms-pc-head">
+                <div className="mms-table">
+                    <div className="pc mms-table-all mms-table-head">
                         <div></div>
                         <div>상품명</div>
                         <div>판매자</div>
@@ -36,7 +36,7 @@ function Membership (){
                         <div>적립금</div>
                     </div>
 
-                    <div className="content">
+                    <div className="mypage-content">
                         <MMSCard getData={data} />
                     </div>
                 </div>

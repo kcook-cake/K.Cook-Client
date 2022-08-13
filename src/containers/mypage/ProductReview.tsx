@@ -15,18 +15,15 @@ function ProductReview (){
 
     return(
         <>
-        <div className="mypage-top-flex mmo">
+        <div className="seller-mypage-top-flex">
             <div className="ms-all-box">
                 <div className="seller-mypage-top">
-                    <div className="mmo-mobile-front-title">상품후기</div>
+                    <div className="seller-mypage-front-title">상품후기</div>
                     <div className="seller-mypage-middle-title">후기를 작성하고 포인트를 받으세요</div>
                 </div>
-                <div className="mmo-mobile" style={{ width: "5px", height: "25px", }}></div>
-                <div className="content">
+                <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
+                <div className="mypage-content">
                     <MPRCard getData={data} />
-                </div>
-                <div className="mmo-moobile">
-                    {/* <PickCard /> */}
                 </div>
             </div>
         </div>

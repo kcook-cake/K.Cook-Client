@@ -17,17 +17,17 @@ function MypageOrder (){
 
     return(
         <>
-        <div className="mypage-top-flex mmo">
+        <div className="seller-mypage-top-flex">
             <div className="ms-all-box">
                 <div className="seller-mypage-top">
-                    <div className="mmo-mobile-front-title">주문내역</div>
+                    <div className="seller-mypage-front-title">주문내역</div>
                     <div className="seller-mypage-middle-title">이전에 주문하신 내역입니다</div>
                 </div>
-                <div className="mmo-mobile" style={{ width: "5px", height: "25px", }}></div>
-                <div className="contents">
+                <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
+                <div className="mypage-content mmo-content">
                     <MMOCard getData={data} />
                 </div>
-                <div className="mmo-moobile">
+                <div className="mobile">
                     <PickCard />
                 </div>
             </div>

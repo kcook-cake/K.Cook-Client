@@ -51,7 +51,6 @@ function Login() {
       })
       .catch((error) => {
         setFailModal(true);
-        setModalCSS(true);
         setInputPw("");
         setInputId("");
         setTimeout(() => {

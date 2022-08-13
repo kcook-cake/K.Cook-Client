@@ -134,6 +134,12 @@ input[class="signup-checkbox-inner"]:checked + label{
   z-index: 1;
 }
 
+.signup-phone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 371px) {
   input[class="signup-checkbox-inner"] + label {
     margin-left: 0px;

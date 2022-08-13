@@ -79,7 +79,7 @@ function SellerOrder (){
         <>
             <div className="seller-mypage-top-flex sso-pc">
                 <div className="seller-mypage-top sso-ssh-top">
-                    <div className="mmo-mobile-front-title">주문확인</div>
+                    <div className="seller-mypage-front-title">주문확인</div>
                     <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
                     <div className='ss-fc-link-flex'>
                         <Link
@@ -108,7 +108,7 @@ function SellerOrder (){
             <div className="sso-mobile sso-ssh-mobile-flex">
                 <div className="sso-ssh-mobile-box">
                     <div className="seller-mypage-top">
-                        <div className="mmo-mobile-front-title">주문확인</div>
+                        <div className="seller-mypage-front-title">주문확인</div>
                         <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
                         <Link
                             to="/FullCalendarApp"

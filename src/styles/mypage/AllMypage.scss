@@ -1,27 +1,11 @@
 
-.mypage-top-flex {
-  margin: 90px 0;
-  .ms-all-box {
-    // background-color: red;
-  }
-}
-
-@media (max-width: 767px) {
-  .mypage-top-flex {
-    width: 100%;
-    margin: 0;
+@media(max-width: 767px) {
     .ms-all-box {
-      width: 100%;
-      min-width: 0px;
-      padding: 45px 16px 0px 16px;
+        width: 100%;
+        min-width: 0px;
+        padding: 45px 16px 0px 16px;
     }
-    .title {
-      margin-bottom: 20px;
-      font-size: 18px;
-      font-weight: 700;
+    .mypage-content {
+        margin-bottom: 45px;
     }
-    .content {
-      margin-bottom: 45px;
-    }
-  }
 }

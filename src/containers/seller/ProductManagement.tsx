@@ -53,7 +53,7 @@ function ProductManagement () {
                     <div className="spm-ssr-mobile-box">
                         {/* title */}
                         <div className="seller-mypage-top">
-                            <div className="mmo-mobile-front-title">상품관리</div>
+                            <div className="seller-mypage-front-title">상품관리</div>
                             <div className="seller-mypage-middle-title">현재 판매 중인 상품입니다</div>
                         </div>
                         <div className="spm-mobile" style={{ width: "5px", height: "25px", }}></div>

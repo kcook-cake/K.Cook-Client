@@ -76,7 +76,7 @@ function SellerReview (){
         <>
         <div className="seller-mypage-top-flex seller-review ssr-pc">
             <div className="seller-mypage-top">
-                <div className="mmo-mobile-front-title">상품후기</div>
+                <div className="seller-mypage-front-title">상품후기</div>
                 <div className="seller-mypage-middle-title">고객분들이 남겨주신 후기입니다</div>
             </div>
             <SSR_PcCard getData={data} />
@@ -84,7 +84,7 @@ function SellerReview (){
         <div className="ssr-mobile">
             <div className="spm-ssr-mobile-box">
                 <div className="seller-mypage-top">
-                    <div className="mmo-mobile-front-title">상품후기</div>
+                    <div className="seller-mypage-front-title">상품후기</div>
                     <div className="seller-mypage-middle-title">고객분들이 남겨주신 후기입니다</div>
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>

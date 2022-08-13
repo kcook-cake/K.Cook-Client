@@ -1,17 +1,23 @@
 @import "../reset.scss";
 
+.pc {
+}
+.mobile {
+    display: none;
+}
+
 .seller-mypage-top-flex {
-    margin: 90px 0;
+  margin: 90px 0;
 }
 
 .seller-mypage-top {
-  width: 100%;
+  width: 837px;
   padding-bottom: 45px;
   font-size: 18px;
   text-align: left;
   // display: flex;
   margin-bottom: 70px;
-  .mmo-mobile-front-title {
+  .seller-mypage-front-title {
     float: left;
     margin-right: 40px;
     font-size: 20px;
@@ -27,8 +33,30 @@
 }
 
 @media (max-width: 767px) {
+  .pc {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+
+  .seller-mypage-top-flex {
+    width: 100%;
+    margin: 0;
+    .title {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .content {
+      margin-bottom: 45px;
+    }
+  }
+
   .seller-mypage-top {
-    .mmo-mobile-front-title {
+    width: 100%;
+    padding-bottom: 25px;
+    .seller-mypage-front-title {
       margin-right: 20px;
     }
   }
