@@ -22,7 +22,7 @@ function LoginFind() {
             phoneNumber: phone,
         })
         .then((res) => {
-            setPhoneResult(res.result);
+            setPhoneResult(res.data.result);
         })
         .catch((error) => {
             // setFailModalText(error.response.data.message);

@@ -12,6 +12,14 @@
 }
 
 @media (max-width: 767px) {
+  .sso-ssh-top {
+    width: 100%;
+  }
+
+  .sso-ssh-bar {
+    display: none !important;
+  }
+
   .sso-pc, .ssh-pc {
     display: none;
   }

@@ -68,7 +68,7 @@ function SignUp() {
         phoneNumber: phoneNumber,
       })
       .then((res) => {
-        setPhoneResult(res.result);
+        setPhoneResult(res.data.result);
       })
       .catch((error) => {
         // setFailModalText(error.response.data.message);
@@ -170,21 +170,10 @@ function SignUp() {
   };
 
   const handlePhoneSms = (e) => {
-    console.log(e.target.value);
-    console.log(phoneResult);
     setPhoneSms(e.target.value);
   };
 
   const onClickSignUp = () => {
-    console.log(emailFail);
-    console.log(passwordFail);
-    console.log(chPasswordFail);
-    console.log(nicknameFail);
-    console.log(birthdayFail);
-    console.log(addressMain);
-    console.log(phoneFail);
-    console.log(phoneSmsFail);
-    console.log((!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3))));
     if (emailFail || passwordFail || chPasswordFail || nicknameFail || birthdayFail || (addressMain === "") || addressFail || phoneFail || phoneSmsFail ||
       (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) 
     {

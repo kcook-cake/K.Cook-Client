@@ -1,25 +1,53 @@
 
-.spm-pc-card {
+.spmcard {
     width: 848px;
+    height: 230px;
     position: relative;
     margin-bottom: 20px;
     display: flex;
   
-    height: 230px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
     background-color: #fefefe;
-    // background-color: red;
-    .spm-pc-add-section {
-        margin: 0 0 0 30px;
-    }
-    .move-tap {
-        padding-left: 380px;
+    .spmcard-box {
+        width: 100%;
+        margin-left: 30px;
+        .spmcard-box-inner {
+            display: flex;
+        }
+        .move-tap {
+            padding-left: 380px;
+        }
+        .spmcard-content {
+            width: 76%;
+            padding: 8px 13px 0px 16px;
+            color: black;
+            font-size: 18px;
+            font-weight: 500;
+            .spmcard-cake {
+                overflow:hidden;
+                text-overflow:ellipsis;
+                display:-webkit-box;
+                -webkit-line-clamp:1;
+                -webkit-box-orient:vertical;
+            }
+            .spmcard-cake-shop {
+                overflow:hidden;
+                text-overflow:ellipsis;
+                display:-webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient:vertical;
+
+                // color: #777777;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
     }
 }
 
 @media(max-width: 767px) {
-    .spm-pc-card {
+    .spmcard {
         width: 100%;
         height: 148px;
         margin-bottom: 20px;
@@ -27,66 +55,25 @@
         border-radius: 0px;
         background-color: #fff;
         box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
-        // .spm-pc-add-content {
-        //     width: 100%;
-        //     margin: auto;
-        //     display: flex;
-        // }
-        .spm-pc-add-section {
-            width: 100%;
+        .spmcard-box {
             margin: 0;
-        }
-        .move-tap {
-            padding: 0;
-            text-align: center;
-        }
-        .ssr-content {
-            width: 100%; //가운데로 몰고 싶을때는 밑에 꺼랑 바꾸세요
-            // margin: 0 auto; //왼쪽으로
-            padding: 8px 13px 0px 16px;
-            .order-cake {
-                overflow:hidden;
-                text-overflow:ellipsis;
-                display:-webkit-box;
-                -webkit-line-clamp:1;
-                -webkit-box-orient:vertical;
+            .spmcard-box-inner {
+                display: block;
             }
-            .order-cake-shop {
-                overflow:hidden;
-                text-overflow:ellipsis;
-                display:-webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient:vertical;
-
-                color: #777777;
-                font-size: 13px;
-                font-weight: 500;
+            .move-tap {
+                padding: 0;
+                text-align: center;
             }
-            // .sprmcard-content {
-            //     margin-top: 10px;
-            //     padding-right: 13px;
-    
-            //     overflow:hidden;
-            //     text-overflow:ellipsis;
-            //     display:-webkit-box;
-            //     -webkit-line-clamp:2;
-            //     -webkit-box-orient:vertical;
-    
-            //     font-weight: 700;
-            // }
-            color: black;
-            font-size: 16px;
-            font-weight: 700;
-        }
-        .ss-all-order-img {
-            img {
-                border-radius: 7px;
-                width: 100px;
-                height: 100px;
+            .spmcard-content {
+                padding: 8px 13px 0px 16px;
+                font-size: 16px;
+                font-weight: 700;
+                .spmcard-cake-shop {
+                    color: #777777;
+                    font-size: 13px;
+                    font-weight: 500;
+                }
             }
-            margin: 0px 0px 16px 0px; //오른쪽을 16px
-            // margin-right: auto; //오른쪽으로
-            padding-right: 16px;
         }
     }
 }

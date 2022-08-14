@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/seller/SPM_SSR.scss';
 
 import getAxios from 'src/utils/getAxios';
-import SSR_PcCard from 'src/components/seller/card/pc/SSR_PcCard';
-import SSR_MobileCard from 'src/components/seller/card/mobile/SSR_MobileCard';
+import SSRCard from 'src/components/seller/card/SSRCard';
 
 function SellerReview (){
     const [data, setData] = useState([
@@ -74,22 +73,15 @@ function SellerReview (){
 
     return(
         <>
-        <div className="seller-mypage-top-flex seller-review ssr-pc">
-            <div className="seller-mypage-top">
-                <div className="seller-mypage-front-title">상품후기</div>
-                <div className="seller-mypage-middle-title">고객분들이 남겨주신 후기입니다</div>
-            </div>
-            <SSR_PcCard getData={data} />
-        </div>
-        <div className="ssr-mobile">
-            <div className="spm-ssr-mobile-box">
-                <div className="seller-mypage-top">
+        <div className="seller-mypage-top-flex">
+            <div className="ss-all-box">
+                <div className="seller-mypage-top spm-ssr-title">
                     <div className="seller-mypage-front-title">상품후기</div>
                     <div className="seller-mypage-middle-title">고객분들이 남겨주신 후기입니다</div>
                 </div>
-                <div style={{ width: "5px", height: "25px", }}></div>
-                <div className="content">
-                    <SSR_MobileCard getData={data} />
+                <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
+                <div className="seller-content">
+                    <SSRCard getData={data} />
                 </div>
             </div>
         </div>

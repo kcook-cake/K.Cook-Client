@@ -49,28 +49,25 @@ function SPMCard_Add({ setAddOptionF, getData, }: Props) {
     },[]);
     
     return (
-        <div className="spm-mobile-add-option">
+        <div className="spmcard-add">
         {getData.map((option: { optionId: any, optionName: any, optionList: any, })=>{
         return (
-            <form className={"option-"+option.optionId}>
-                {/* <div className="option-size">{option.optionName}</div> */}
-                <div className="option-title">
-                    <input
-                        id={"option-title"+option.optionId}
-                        className="option-add-cake-name add-cake-name"
-                        placeholder={"옵션"+option.optionId+" 이름"}
-                        onChange={(e)=> {handleOptionName(e, option.optionId)}}
-                    />
-                </div>
+            <form id={"spmcard-add-"+option.optionId}>
+                <input
+                    className="spm-add-title"
+                    placeholder={"옵션"+option.optionId+" 이름"}
+                    onChange={(e)=> {handleOptionName(e, option.optionId)}}
+                />
                 <>
                 {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
                 return (
-                    <div className="option-input">
-                        <div className="option-input-left"><DragCBtn className="option-input-left-icon"/></div>
+                    <div className="spmcard-add-input">
+                        <div className="spmcard-add-input-left">
+                            <DragCBtn className="spmcard-add-input-left-icon"/>
+                        </div>
                         <div style={{ width: "100%", }}>
                             <input
-                                id={"option-input-text"+option.optionId}
-                                className="option-input-text"
+                                className="spmcard-add-input-text"
                                 type="text"
                                 name={"name"+optionList.optionListId}
                                 placeholder="품목 입력"
@@ -78,20 +75,19 @@ function SPMCard_Add({ setAddOptionF, getData, }: Props) {
                             />
                         </div>
                         <input
-                            id={"add-price-"+optionList.optionListId}
-                            className="add-price"
+                            className="spmcard-add-input-price"
                             type="number"
                             min="0"
                             placeholder="+0원"
                             onChange={(e)=>{handleOptionListPrice(e, option.optionId, optionList.optionListId)}}
                         />
-                        <div className="option-input-right">x</div>
+                        <div className="spmcard-add-input-right">x</div>
                     </div>
                 )
                 })
                 }
                 <div
-                    className="option-button"
+                    className="spmcard-add-input-button"
                     onClick={()=>{
                         // console.log(getData.length);
                         // console.log(getData[getData.length].optionList);
@@ -109,9 +105,9 @@ function SPMCard_Add({ setAddOptionF, getData, }: Props) {
         )
         })
         }
-        <hr className="spm-mobile-add-option-hr"/>
+        <hr className="spmcard-add-hr"/>
         <button
-            className="spm-mobile-add-option-button"
+            className="spmcard-add-button"
             onClick={()=>{
                 getData[getData.length] = {
                     optionId: getData.length+1,

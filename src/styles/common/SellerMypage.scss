@@ -32,6 +32,12 @@
   }
 }
 
+.seller-mypage-ss-mp {
+  width: 100%;
+  margin-bottom: 45px;
+  font-size: 18px;
+}
+
 @media (max-width: 767px) {
   .pc {
     display: none;
@@ -55,6 +61,7 @@
 
   .seller-mypage-top {
     width: 100%;
+    margin: 0;
     padding-bottom: 25px;
     .seller-mypage-front-title {
       margin-right: 20px;

@@ -1,9 +1,5 @@
 @import "../reset.scss";
 
-// .sso-ssh-top {
-//     width: 848px;
-// }
-
 .ss-fc-link-flex {
     display: inline-block;
     float: right;
@@ -25,7 +21,7 @@
     }
 }
 
-.ss-all-order-img {
+.ss-all-img {
     margin-right: 35px;
     width: 160px;
     height: 160px;
@@ -33,5 +29,39 @@
     img {
       width: 100%;
       height: 100%;
+    }
+}
+
+@media(max-width: 767px) {
+    .ss-fc-link {
+        margin-top: 2px;
+        float: right;
+
+        font-size: 16px;
+        font-weight: 700;
+        text-align: right;
+        color: #222222;
+    }
+
+    .ss-all-box {
+        width: 100%;
+        min-width: 0px;
+        padding-top: 45px;
+        background-color: #faf4f4;  
+    }
+
+    .seller-content {
+        padding-bottom: 25px;
+    }
+
+    .ss-all-img {
+        width: 100px;
+        height: 100px;
+        margin-right: 16px;
+        float: right;
+        img {
+            border-radius: 7px;
+            width: 100%;
+        }
     }
 }

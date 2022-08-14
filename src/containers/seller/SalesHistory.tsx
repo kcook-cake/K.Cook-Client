@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import '../../styles/seller/SSO_SSH.scss';
 
 import getAxios from 'src/utils/getAxios';
-import SSO_SSH_PcCard from 'src/components/seller/card/pc/SSO_SSH_PcCard';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
-import SSO_SSH_MobileCard from 'src/components/seller/card/mobile/SSO_SSH_MobileCard';
+import SSO_SSH_Card from 'src/components/seller/card/SSO_SSH_Card';
 
 function SalesHistory (){
     const [data, setData] = useState([
@@ -102,7 +101,7 @@ function SalesHistory (){
                 </div>
             </div>
 
-            <SSO_SSH_PcCard getData={data}/>
+            <SSO_SSH_Card getData={data}/>
         </div>
         <div className="ssh-mobile sso-ssh-mobile-flex">
             <div className="sso-ssh-mobile-box">
@@ -119,7 +118,7 @@ function SalesHistory (){
                 </div>
                 <div style={{ width: "5px", height: "25px", }}></div>
                 <div className="content">
-                    <SSO_SSH_MobileCard getData={data}/>
+                    <SSO_SSH_Card getData={data}/>
                 </div>
             </div>
         </div>

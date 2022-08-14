@@ -1,0 +1,97 @@
+@import "../../reset.scss";
+
+.ssrcard {
+    .ssrcard-time {
+        margin-bottom: 15px;
+        color: #777777;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .ssrcard-box {
+        height: 162px;
+        flex-direction: row;
+        display: flex;
+        color: $sub-text;
+        margin-bottom: 20px;
+        .ssrcard-img {
+            width: 162px;
+            height: 162px;
+            margin-right: 33px;
+            img {
+                width: 100%;
+            }
+        }
+        .ssrcard-box-inner {
+            height: 100px;
+            width: 77%;
+            .ssrcard-title {
+                color: #777777;
+                font-size: 13px;
+            }
+            .ssrcard-content {
+                margin-top: 10px;
+                padding-right: 13px;
+    
+                overflow:hidden;
+                text-overflow:ellipsis;
+                display:-webkit-box;
+                -webkit-line-clamp:5;
+                -webkit-box-orient:vertical;
+    
+                font-weight: 700;
+            }
+        }
+
+    }
+}
+
+@media(max-width: 767px) {
+    //margin 값을 조절해야 안의 내용물이 움직임
+    .spm-ssr-date {
+        padding: 0px 16px;
+        margin-bottom: 10px;
+
+        color: #777777;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .ssrcard-box {
+        height: 132px !important;
+        display: block !important;
+        background-color: #fff;
+        box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
+        .ssrcard-img {
+            width: 100px !important;
+            height: 100px !important;
+            margin: 16px 16px 16px 0px !important;
+            float: right;
+            img {
+                width: 100%;
+                border-radius: 7px;
+            }
+        }
+        
+        .ssrcard-box-inner {
+            height: 100px;
+            width: 100%; //가운데로 몰고싶을때 아래의 것과 바꿔야함
+            
+            padding-top: 16px;
+            padding-left: 16px;
+            .ssrcard-title {
+                .ssrcard-title-date,
+                .ssrcard-title-front {
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    display:-webkit-box;
+                    -webkit-line-clamp:1;
+                    -webkit-box-orient:vertical;
+                }
+            }
+            .ssrcard-content {
+                -webkit-line-clamp:2 !important;
+            }
+        }
+    }
+}

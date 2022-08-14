@@ -18,28 +18,24 @@ function SPMCard({getData}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
-                    <div className="spm-pc-card">
-                        <div className="spm-pc-add-section">
+                    <div className="spmcard">
+                        <div className="spmcard-box">
                             <div className="move-tap"><DragBtn/></div>
-                            <div className="spm-pc-add-content">
-                                
-                                <div className="pc ss-all-order-img">
+                            <div className="spmcard-box-inner">
+                                <div className="ss-all-img">
                                     <img src={cake6}/>
                                 </div>    
-                                <div className="ssr-content">
-                                    <div className="order-cake">하트볼터치 곰돌이 케이크</div>
-                                    <div className="order-cake-shop">호수 : 1호, 2호, 3호, 4호</div>
-                                    <div className="order-cake-shop">맛 : 생크림, 스트로베리, 고구마</div>
-                                    {/* <div className="order-cake-shop">기타</div> */}
+                                <div className="spmcard-content">
+                                    <div className="spmcard-cake">하트볼터치 곰돌이 케이크</div>
+                                    <div className="spmcard-cake-shop">호수 : 1호, 2호, 3호, 4호</div>
+                                    <div className="spmcard-cake-shop">맛 : 생크림, 스트로베리, 고구마</div>
+                                    {/* <div className="spmcard-cake-shop">기타</div> */}
                                 </div>
-                                <div className="mobile ss-all-order-img">
-                                    <img src={cake6}/>
-                                </div>    
                             </div>
                         </div>
-                        <div className="pc management-tap">
-                            <button className="delete-btn"><CloseBtn/></button>
-                            <button className="copy-btn"><CopyBtn/></button>
+                        <div className="pc spm-tap">
+                            <button><CloseBtn/></button>
+                            <button><CopyBtn/></button>
                         </div>
                     </div>
                 )

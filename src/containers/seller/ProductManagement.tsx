@@ -49,94 +49,89 @@ function ProductManagement () {
     return(
         <>
             <div className="seller-mypage-top-flex">
-                <div className="spm-mobile-flex">
-                    <div className="spm-ssr-mobile-box">
-                        {/* title */}
-                        <div className="seller-mypage-top">
-                            <div className="seller-mypage-front-title">상품관리</div>
-                            <div className="seller-mypage-middle-title">현재 판매 중인 상품입니다</div>
-                        </div>
-                        <div className="spm-mobile" style={{ width: "5px", height: "25px", }}></div>
-                        <div className="content">
-                            <SPMCard getData={data} />
-                        </div>
-
-                        {addDiv? 
-                        <div className="spm-add">
-                            <div className="spm-add2">
-                                <div
-                                    className="move-tap"
-                                    // onClick={()=>{ setAdd(false); }}
-                                >
-                                    <DragBtn/>
-                                </div>
-                                <div className="spm-mobile-add-margin-flex">
-                                    <div className="spm-pc-add-content">
-                                        <div className="spm-pc add-img order-img">
-                                            <AddIcon/>
-                                        </div>
-                                        <div>
-                                            <input
-                                                className="add-cake-name"
-                                                placeholder="상품명"
-                                                onChange={(e)=>{
-                                                    handleAddName(e);
-                                                }}
-                                            />
-                                            <button className="spm-mobile store-img-add">
-                                                <AddIcon />
-                                            </button>
-                                            <SPMCard_Add setAddOptionF={setAddOption} getData={addOption}/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="spm-pc management-tap">
-                                <button
-                                    className="delete-btn"
-                                    onClick={()=>{
-                                        setAddDiv(false);
-                                    }}
-                                >
-                                    <CloseBtn/>
-                                </button>
-                                <button className="copy-btn"><CopyBtn/></button>
-                            </div>
-                            <div className="spm-mobile">
-                                <button onClick={()=>{
-                                    console.log(addName);
-                                    console.log(addOption);
-                                }}>
-                                    추가
-                                </button>
-                                <button onClick={()=>{
-                                    setAddName("");
-                                    setAddOption ([{
-                                        optionId: 1,
-                                        optionName: "크기",
-                                        optionList: [
-                                            {
-                                                optionListId: 1,
-                                                optionListName: "1호",
-                                                optionListPrice: 1000,
-                                            },
-                                        ],
-                                    }])
-                                    setAddDiv(false);
-                                }}>
-                                    삭제
-                                </button>
-                            </div>
-                        </div>
-                        :null}
+                <div className="ss-all-box">
+                    {/* title */}
+                    <div className="seller-mypage-top spm-ssr-title">
+                        <div className="seller-mypage-front-title">상품관리</div>
+                        <div className="seller-mypage-middle-title">현재 판매 중인 상품입니다</div>
                     </div>
+                    <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
+                    <div className="seller-content">
+                        <SPMCard getData={data} />
+                    </div>
+
+                    {addDiv? 
+                    <div className="spm-add">
+                        <div className="spm-add-inner">
+                            <div
+                                className="move-tap"
+                                // onClick={()=>{ setAdd(false); }}
+                            >
+                                <DragBtn/>
+                            </div>
+                            <div className="spm-add-content">
+                                <div className="pc spm-add-img">
+                                    <AddIcon/>
+                                </div>
+                                <div>
+                                    <input
+                                        className="spm-add-title"
+                                        placeholder="상품명"
+                                        onChange={(e)=>{
+                                            handleAddName(e);
+                                        }}
+                                    />
+                                    <button className="mobile spm-add-img-m">
+                                        <AddIcon />
+                                    </button>
+                                    <SPMCard_Add setAddOptionF={setAddOption} getData={addOption}/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="pc spm-tap">
+                            <button
+                                onClick={()=>{
+                                    setAddDiv(false);
+                                }}
+                            >
+                                <CloseBtn/>
+                            </button>
+                            <button><CopyBtn/></button>
+                        </div>
+                        <div className="mobile">
+                            <button onClick={()=>{
+                                console.log(addName);
+                                console.log(addOption);
+                            }}>
+                                추가
+                            </button>
+                            <button onClick={()=>{
+                                setAddName("");
+                                setAddOption ([{
+                                    optionId: 1,
+                                    optionName: "크기",
+                                    optionList: [
+                                        {
+                                            optionListId: 1,
+                                            optionListName: "1호",
+                                            optionListPrice: 1000,
+                                        },
+                                    ],
+                                }])
+                                setAddDiv(false);
+                            }}>
+                                삭제
+                            </button>
+                        </div>
+                    </div>
+                    :null}
                 </div>
 
                 {/* addButton */}
-                <div className="spm-pc">
+                <div className="pc">
                     <div
-                        className="option-add-btn"
+                        className="spm-btn"
                         onClick={()=>{
                             setAddDiv(true);
                         }}
@@ -144,20 +139,20 @@ function ProductManagement () {
                         <AddIcon/>
                     </div>
                 </div>
-                <div className="spm-mobile">
-                    <div className="spmm-bottom">
-                        <button className="spmm-bottom-inner spmm-bottom-left">
+                <div className="mobile">
+                    <div className="spm-bottom">
+                        <button className="spm-bottom-inner spm-bottom-left">
                             <img src={cake6}/>
                         </button>
                         <button
-                            className="spmm-bottom-inner spmm-bottom-middle"
+                            className="spm-bottom-inner spm-bottom-middle"
                             onClick={()=>{
                                 setAddDiv(true);
                             }}
                         >
                             <img src={cake6}/>
                         </button>
-                        <button className="spmm-bottom-inner spmm-bottom-right">
+                        <button className="spm-bottom-inner spm-bottom-right">
                             <img src={cake6}/>
                         </button>
                     </div>
