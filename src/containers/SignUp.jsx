@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import $ from "jquery";
+import $, { htmlPrefilter } from "jquery";
 
 import "../styles/common/LoginSignup.scss";
 import "../styles/SignUp.scss";
@@ -61,7 +61,7 @@ function SignUp() {
   }
 
   //핸드폰 인증 함수
-  const [phoneResult, setPhoneResult] = useState(false);
+  const [phoneResult, setPhoneResult] = useState("");
   const onSMS = () => {
     axios
       .patch(`https://prod.kcook-cake.com/app/accounts/sms-token`, {
@@ -69,15 +69,14 @@ function SignUp() {
       })
       .then((res) => {
         setPhoneResult(res.result);
-        if (res.isSuccess) setPhoneSmsFail(false)
       })
       .catch((error) => {
-        setFailModalText(error.response.data.message);
+        // setFailModalText(error.response.data.message);
         setFailModal(true);
         setTimeout(() => {
           setFailModal(false);
         }, 5000);
-        setFailModalText("회원가입 정보가 일치하지 않습니다.");
+        // setFailModalText("회원가입 정보가 일치하지 않습니다.");
       });
   }
 
@@ -86,9 +85,10 @@ function SignUp() {
   const [chPassword, setCheckPw] = useState("");
   const [nickname, setNickname] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [phoneNumber, setPhone] = useState("");
   const [addressMain, setAddressMain] = useState("");
   const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneSms, setPhoneSms] = useState("");
 
   const [emailFail, setEmailFail] = useState(true);
   const [emailFailD, setEmailFailD] = useState(false); //이메일 중복체크 -> 백엔드에서 확인
@@ -145,18 +145,6 @@ function SignUp() {
       setBirthdayFail(true)
   };
 
-  const handlePhone = (e) => {
-    setPhone(e.target.value.replace("-", ""));
-    if (e.target.value.length !== 0) {
-      setPhoneFail(false)
-      setPhoneSmsFail(true)
-    }
-    else{
-      setPhoneFail(true)
-      setPhoneSmsFail(false)
-    }
-  };
-
   const handleAddressMain = (addressMain) => {
     setAddressMain(addressMain);
     if (addressMain !== '')
@@ -169,8 +157,35 @@ function SignUp() {
     setAddress(e.target.value);
   };
 
+  const handlePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value.replace("-", ""));
+    if (e.target.value.length !== 0) {
+      setPhoneFail(false)
+      setPhoneSmsFail(true)
+    }
+    else{
+      setPhoneFail(true)
+      setPhoneSmsFail(false)
+    }
+  };
+
+  const handlePhoneSms = (e) => {
+    console.log(e.target.value);
+    console.log(phoneResult);
+    setPhoneSms(e.target.value);
+  };
+
   const onClickSignUp = () => {
-    if ((emailFail || passwordFail || chPasswordFail || nicknameFail || birthdayFail || (addressMain === "") || addressFail) || phoneFail || phoneSmsFail ||
+    console.log(emailFail);
+    console.log(passwordFail);
+    console.log(chPasswordFail);
+    console.log(nicknameFail);
+    console.log(birthdayFail);
+    console.log(addressMain);
+    console.log(phoneFail);
+    console.log(phoneSmsFail);
+    console.log((!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3))));
+    if (emailFail || passwordFail || chPasswordFail || nicknameFail || birthdayFail || (addressMain === "") || addressFail || phoneFail || phoneSmsFail ||
       (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) 
     {
       setFailModal(true);
@@ -178,30 +193,27 @@ function SignUp() {
         setFailModal(false);
       }, 5000);
     } else {
-      // axios
-      //   .post("/app/sign-up", {
-      //     address: addressMain,
-      //     dateOfBirth: birthday,
-      //     email: email,
-      //     nickname: nickname,
-      //     password: password,
-      //     phoneNumber: phoneNumber,
-      //   })
-      //   .then((res) => {
-      //     // setPhonejwToken(res.data.result.jwt);
-      //     setPhoneSmsFail(true);
-
-      //     //성공시 메인으로 이동
-      //     // sessionStorage.setItem("authenticated", authenticated);
-      //   })
-      //   .catch((error) => {
-      //     setFailModalText(error.response.data.message);
-      //     setFailModal(true);
-      //     setTimeout(() => {
-      //       setFailModal(false);
-      //     }, 5000);
-      //   });
-      // setFailModalText("회원가입 정보가 일치하지 않습니다.");
+      axios
+        .post("https://prod.kcook-cake.com/app/sign-up", {
+          address: addressMain + " " + address,
+          dateOfBirth: birthday,
+          email: email,
+          nickname: nickname,
+          password: password,
+          phoneNumber: phoneNumber,
+        })
+        .then((res) => {
+          sessionStorage.setItem("jwToken", res.data.result.jwt);
+          document.location.href = "/";
+        })
+        .catch((error) => {
+          setFailModalText(error.response.data.message);
+          setFailModal(true);
+          setTimeout(() => {
+            setFailModal(false);
+          }, 5000);
+          setFailModalText("회원가입 정보가 일치하지 않습니다.");
+        });
     }
   };
 
@@ -340,7 +352,7 @@ function SignUp() {
         <div className="login-input signup-phone">
           <input
             type="tel"
-            onChange={handlePhone}
+            onChange={handlePhoneNumber}
             value={phoneNumber}
             placeholder="번호 입력"
           ></input>
@@ -353,6 +365,20 @@ function SignUp() {
           <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
           : null
         }
+        <div className="login-input signup-phone">
+          <input
+            type="number"
+            onChange={handlePhoneSms}
+            value={phoneSms}
+            placeholder="인증번호 입력"
+          ></input>
+          <button
+            className="phone-input-btn"
+            onClick={()=>{
+              if ((phoneSms == phoneResult) && phoneSms != "") setPhoneSmsFail(false);
+            }}
+          >확인하기</button>
+        </div>
         {phoneSmsFail ?
           <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호를 인증하셔야 합니다.</p>
           : null

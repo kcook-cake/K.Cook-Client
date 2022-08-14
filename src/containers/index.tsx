@@ -12,6 +12,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import FullCalendarApp from '../containers/seller/FullCalendarApp';
 import Detail from './detail/Detail';
+import LoginFind from './LoginFind';
 
 const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
@@ -42,6 +43,7 @@ const Pages = () => {
       <HMMobile numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} />
       <Header setNumLeftMobileF={setNumLeftMobile} />
       <Route exact path="/Login" component={Login} />
+      <Route exact path="/LoginFind" component={LoginFind} />
       <Route exact path="/SignUp" component={SignUp} />
 
       <Route exact path="/Detail/:id" component={Detail} />

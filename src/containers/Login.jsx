@@ -27,36 +27,30 @@ function Login() {
 
   const onClickLogin = () => {
     axios
-      .post(`/app/sign-in`, {
+      .post(`https://prod.kcook-cake.com/app/sign-in`, {
         password: password,
-        signInId: signInId,
+        email: signInId,
       })
       .then((res) => {
-        // axios.defaults.headers.common['Authorization'] = `Bearer ${res.result.jwt}`;
-        // setTimeout() //로그인 연장
-
-        //성공시 메인으로 이동
         sessionStorage.setItem("jwToken", res.data.result.jwt);
-        // sessionStorage.setItem("session", true);
-        // isSession((isChecked) => {
-        //   if(isChecked) document.location.href = "/";
-        // });
         document.location.href = "/";
-
-        // setAuthorizationToken(res.data.result.jwt);
-        // setTimeout(() => {
-        //   document.location.href = "/";
-        // }, 1000);
-
       })
       .catch((error) => {
         setFailModal(true);
         setInputPw("");
-        setInputId("");
         setTimeout(() => {
           setFailModal(false);
         }, 5000);
       });
+  };
+
+  const handleSubmit = async (event) => {
+    //눌러도 여러번 호출 못하게
+    setDisabled(true);
+    //새로고침 방지
+    event.preventDefault();
+    await new Promise((r) => setTimeout(r, 10000));
+    setDisabled(false);
   };
 
   // 페이지 렌더링 후 가장 처음 호출되는 함수
@@ -68,23 +62,13 @@ function Login() {
     []
   );
 
-  const handleSubmit = async (event) => {
-    //눌러도 여러번 호출 못하게
-    setDisabled(true);
-    //새로고침 방지
-    event.preventDefault();
-    await new Promise((r) => setTimeout(r, 10000));
-    setDisabled(false);
-  };
-  const nodeRef = React.useRef(null);
-
   return (
     <div className="login-flex">
       <form className="login" onSubmit={handleSubmit}>
         <img src={logo} className="logo" />
         <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
         
-        <p className="login-center">아이디</p>
+        <p className="login-center">이메일</p>
         <input
           className="login-input"
           type="text"
@@ -109,7 +93,7 @@ function Login() {
             <label htmlFor="loginAuto"></label>
             <div className="login-auto-contents">자동 로그인</div>
           </div>
-          <Link to="/">비밀번호찾기</Link>
+          <Link to="/LoginFind">비밀번호찾기</Link>
         </div>
 
         <button
@@ -127,7 +111,7 @@ function Login() {
           아직 계정이 없으신가요?
           <Link to="/SignUp" style={{ marginLeft: "4px", }}>가입하기</Link>
           {failModal === true ? (
-            <div className="login-iscorrect" ref={nodeRef}>
+            <div className="login-iscorrect">
               로그인 정보가 일치하지 않습니다.
             </div>
           ) : // </CSSTransition>
