@@ -77,57 +77,40 @@ function SellerOrder (){
     return(
         <>
             <div className="seller-mypage-top-flex">
-                <div className="seller-mypage-top sso-ssh-top">
-                    <div className="seller-mypage-front-title">주문확인</div>
-                    <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
-                    <div className='ss-fc-link-flex'>
-                        <Link
-                            to='/FullCalendarApp'
-                            className='ss-fc-link'
-                            onClick={()=>{
-                                LinkClick("FullCalendarApp");
-                                sellerLinkClick("FullCalendarApp");
-                            }}
-                        >달력보기</Link>
-                        <div
-                            className="pc sso-ssh-bar"
-                            style={{ display: "inline-block"}}>|
-                        </div>
-                        <Link
-                            to='/SellerOrder'
-                            className='pc ss-fc-link'
-                            style={{ color: "#ea5450", }}
-                            onClick={()=>{
-                                LinkClick("SellerOrder");
-                                sellerLinkClick("SellerOrder");
-                            }}
-                        >목록보기</Link>
-                    </div>
-                </div>
-
-                <div className="content">
-                    <SSO_SSH_Card getData={data}/>
-                </div>
-            </div>
-            {/* <div className="sso-mobile sso-ssh-mobile-flex">
                 <div className="sso-ssh-mobile-box">
-                    <div className="seller-mypage-top">
+                    <div className="seller-mypage-top sso-ssh-top">
                         <div className="seller-mypage-front-title">주문확인</div>
                         <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
-                        <Link
-                            to="/FullCalendarApp"
-                            onClick={()=>{
-                                LinkClick("FullCalendarApp");
-                                sellerLinkClick("FullCalendarApp");
-                            }}
-                        ><div className="ss-fc-link">달력보기</div></Link>
+                        <div className='ss-fc-link-flex'>
+                            <Link
+                                to='/FullCalendarApp'
+                                className='ss-fc-link'
+                                onClick={()=>{
+                                    LinkClick("FullCalendarApp");
+                                    sellerLinkClick("FullCalendarApp");
+                                }}
+                            >달력보기</Link>
+                            <div
+                                className="pc ss-fc-link-bar"
+                                style={{ display: "inline-block"}}>|
+                            </div>
+                            <Link
+                                to='/SellerOrder'
+                                className='pc ss-fc-link'
+                                style={{ color: "#ea5450", }}
+                                onClick={()=>{
+                                    LinkClick("SellerOrder");
+                                    sellerLinkClick("SellerOrder");
+                                }}
+                            >목록보기</Link>
+                        </div>
                     </div>
-                    <div style={{ width: "5px", height: "25px", }}></div>
-                    <div className="content">
+                    <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
+                    <div className="sso-ssh-content">
                         <SSO_SSH_Card getData={data}/>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

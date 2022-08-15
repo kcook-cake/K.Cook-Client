@@ -74,7 +74,7 @@ function SellerReview (){
     return(
         <>
         <div className="seller-mypage-top-flex">
-            <div className="ss-all-box">
+            <div className="spm-ssr-mobile-box">
                 <div className="seller-mypage-top spm-ssr-title">
                     <div className="seller-mypage-front-title">상품후기</div>
                     <div className="seller-mypage-middle-title">고객분들이 남겨주신 후기입니다</div>

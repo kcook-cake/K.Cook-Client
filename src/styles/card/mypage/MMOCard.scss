@@ -7,16 +7,17 @@
   display: flex;
 }
 
-.mmocard-img-box {
-  margin-right: 33px;
-  width: 162px;
-  height: 162px;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
+// .mmocard-img-box {
+//   margin-right: 33px;
+//   width: 162px;
+//   height: 162px;
+//   overflow: hidden;
+//   font-size: 16px;
+//   img {
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
   
 .mmocard-content {
   // width: 100%;
@@ -61,26 +62,26 @@
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
   }
 
-  .mmocard-img-box {
-    width: 156px;
-    height: 116px;
-    margin-bottom: 17px;
+  // .mmocard-img-box {
+  //   width: 156px;
+  //   height: 116px;
+  //   margin-bottom: 17px;
 
-    border-radius: 10px;
-    background-color: #e6e6e6;
-    img {
-      height: 116px;
-    }
-    .mmocard-img-none {
-      line-height: 116px;
-      text-align: center;
-      color: #858997;
-    }
-    .mmocard-img {
-      width: 156px;
-      height: 116px;
-    }
-  }
+  //   border-radius: 10px;
+  //   background-color: #e6e6e6;
+  //   img {
+  //     height: 116px;
+  //   }
+  //   .mmocard-img-none {
+  //     line-height: 116px;
+  //     text-align: center;
+  //     color: #858997;
+  //   }
+  //   .mmocard-img {
+  //     width: 156px;
+  //     height: 116px;
+  //   }
+  // }
 
   .mmocard-content {
     margin: 0;

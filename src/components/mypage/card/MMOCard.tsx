@@ -14,11 +14,10 @@ function MMOCard({getData}: Props) {
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
                     <div className="mmocard">
-                        <div className="mmocard-img-box">
-                            <img src={data.thumbnail} className="mmocard-img"/>
+                        <div className="mypage-img-box">
                             {data.thumbnail == ""?
-                                <div className="mmocard-img-none">~준비중 입니다~</div>:
-                                <img src={data.thumbnail} className="mmocard-img"/>
+                                <div className="mypage-img-none">~준비중 입니다~</div>:
+                                <img src={data.thumbnail} className="mypage-img"/>
                             }
                         </div>
                         <div className="mmocard-content">

@@ -1,4 +1,25 @@
 
+.mypage-img-box {
+    width: 162px;
+    height: 162px;
+    margin-right: 33px;
+  
+    font-size: 16px;
+    background-color: #e6e6e6;
+    img {
+      width: 100%;
+    }
+    .mypage-img-none {
+      line-height: 162px;
+      text-align: center;
+      color: #858997;
+    }
+    .mypage-img {
+      width: 162px;
+      height: 162px;
+    }
+}
+
 @media(max-width: 767px) {
     .ms-all-box {
         width: 100%;
@@ -7,5 +28,26 @@
     }
     .mypage-content {
         margin-bottom: 45px;
+    }
+
+    .mypage-img-box {
+        width: 156px;
+        height: 116px;
+        margin-bottom: 17px;
+    
+        border-radius: 10px;
+        background-color: #e6e6e6;
+        img {
+          height: 116px;
+        }
+        .mypage-img-none {
+          line-height: 116px;
+          text-align: center;
+          color: #858997;
+        }
+        .mypage-img {
+          width: 156px;
+          height: 116px;
+        }
     }
 }

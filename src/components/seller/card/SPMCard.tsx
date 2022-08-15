@@ -22,8 +22,11 @@ function SPMCard({getData}: Props) {
                         <div className="spmcard-box">
                             <div className="move-tap"><DragBtn/></div>
                             <div className="spmcard-box-inner">
-                                <div className="ss-all-img">
-                                    <img src={cake6}/>
+                                <div className="seller-img-box">
+                                    {data.thumbnail == ""?
+                                        <div className="seller-img-none">~준비중~</div>:
+                                        <img src={data.thumbnail} className="seller-img"/>
+                                    }
                                 </div>    
                                 <div className="spmcard-content">
                                     <div className="spmcard-cake">하트볼터치 곰돌이 케이크</div>

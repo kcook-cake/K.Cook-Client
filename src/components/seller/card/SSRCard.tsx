@@ -37,8 +37,11 @@ function SSRCard({ getData, }: Props) {
                                 <div className="ssrcard">
                                     <div className="pc ssrcard-time">오늘 15:00</div>
                                     <div className="ssrcard-box">
-                                        <div className="ss-all-img" style={{ marginTop: "16px", }}>
-                                            <img src={cake6}/>
+                                        <div className="seller-img-box ssrcard-img">
+                                            {data.thumbnail == ""?
+                                                <div className="seller-img-none">~준비중~</div>:
+                                                <img src={data.thumbnail} className="seller-img"/>
+                                            }
                                         </div>
                                         <div className="ssrcard-box-inner">
                                             <div className="ssrcard-title">

@@ -1,12 +1,5 @@
 @import "../reset.scss";
 
-.sso-pc, .ssh-pc {
-  
-}
-.sso-mobile, .ssh-mobile {
-  display: none;
-}
-
 .sso-ssh-top {
   width: 848px;
 }
@@ -16,51 +9,7 @@
     width: 100%;
   }
 
-  .sso-ssh-bar {
-    display: none !important;
-  }
-
-  .sso-pc, .ssh-pc {
-    display: none;
-  }
-  .sso-mobile, .ssh-mobile {
-    display: block;
-  }
-
-  .sso-ssh-mobile-flex {
-    width: 100%;
-    margin-bottom: 0px;
-    .sso-ssh-mobile-box {
-      width: 100%;
-      min-width: 0px;
-      padding: 45px 16px 0px 16px;
-    }
-    .title2 {
-      width: 100%;
-      margin-bottom: 20px;
-
-      font-size: 18px;
-      font-weight: 700;
-    }
-    .content {
-      // margin: 0 6px;
-      // overflow-y: scroll;
-      margin-bottom: 45px;
-    }
-
-    .sso-mobile-front-title {
-      float: left;
-    }
-    .sso-mobile-calendar {
-        // margin-right: 20px;
-        // width: 100%;
-        margin-top: 2px;
-        float: right;
-
-        font-size: 16px;
-        font-weight: 700;
-        text-align: right;
-        color: #222222;
-    }
+  .sso-ssh-content {
+    margin-bottom: 45px;
   }
 }

@@ -14,14 +14,6 @@
         display: flex;
         color: $sub-text;
         margin-bottom: 20px;
-        .ssrcard-img {
-            width: 162px;
-            height: 162px;
-            margin-right: 33px;
-            img {
-                width: 100%;
-            }
-        }
         .ssrcard-box-inner {
             height: 100px;
             width: 77%;
@@ -63,14 +55,7 @@
         background-color: #fff;
         box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
         .ssrcard-img {
-            width: 100px !important;
-            height: 100px !important;
-            margin: 16px 16px 16px 0px !important;
-            float: right;
-            img {
-                width: 100%;
-                border-radius: 7px;
-            }
+            margin-top: 16px;
         }
         
         .ssrcard-box-inner {

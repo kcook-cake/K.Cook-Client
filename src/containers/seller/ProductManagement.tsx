@@ -49,7 +49,7 @@ function ProductManagement () {
     return(
         <>
             <div className="seller-mypage-top-flex">
-                <div className="ss-all-box">
+                <div className="spm-ssr-mobile-box">
                     {/* title */}
                     <div className="seller-mypage-top spm-ssr-title">
                         <div className="seller-mypage-front-title">상품관리</div>
