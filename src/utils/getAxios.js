@@ -21,8 +21,14 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
             var changeData = [];
             for (var i = num1; i < num2; i++) {
                 changeData[i] = res.data.result.content[i];
+                changeData[i] += {
+                    num: i,
+                };
             }
             for (var i = num2; i < num3; i++) {
+                changeData[i] = {
+                    num: i,
+                };
                 changeData[i] = {
                     isCake: true,
                     name: "~준비중 입니다~",

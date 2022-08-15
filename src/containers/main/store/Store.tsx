@@ -15,9 +15,9 @@ import PickCard from 'src/components/main/PickCard';
 import CakeBarCard from 'src/components/main/cake/CakeBarCard';
 import CakeBar_MobileCard from 'src/components/main/cake/CakeBar_MobileCard';
 import Cake_Store_TitleCard from 'src/components/main/Cake_Store_TitleCard';
-import CakeCard from 'src/components/main/cake/CakeCard';
+import StoreCard from 'src/components/main/store/StoreCard';
 
-function Cake (){
+function Store (){
     //선택지 기타 등등
     //선택지 가로 위치 계산
     const [width, setWidth] = useState(0);
@@ -32,14 +32,12 @@ function Cake (){
         setSelectTwoShow(false);
         setSelectThreeShow(false);
         setSelectFourShow(false);
-        setSelectFiveShow(false);
     };
 
     const [selectOneNum, setSelectOneNum] = useState(0);
     const [selectTwoNum, setSelectTwoNum] = useState(0);
     const [selectThreeNum, setSelectThreeNum] = useState(0);
     const [selectFourNum, setSelectFourNum] = useState(0);
-    const [selectFiveNum, setSelectFiveNum] = useState(0);
 
     //선택지
     const [selectOneShow, setSelectOneShow] = useState(false);
@@ -56,11 +54,9 @@ function Cake (){
     const [selectTwoShow, setSelectTwoShow] = useState(false);
     const [selectTwo, setSelectTwo] = useState("지역");
     const [selectThreeShow, setSelectThreeShow] = useState(false);
-    const [selectThree, setSelectThree] = useState("맛");
+    const [selectThree, setSelectThree] = useState("시/군");
     const [selectFourShow, setSelectFourShow] = useState(false);
-    const [selectFour, setSelectFour] = useState("이벤트");
-    const [selectFiveShow, setSelectFiveShow] = useState(false);
-    const [selectFive, setSelectFive] = useState("가격대");
+    const [selectFour, setSelectFour] = useState("지하철");
     const SelectF = (n: number, str: string, length: number, ) => {
         if (SelectBarF(str)) {
             var selectAllData: any = selectAll;
@@ -75,15 +71,11 @@ function Cake (){
             setSelectThreeNum(length);
             setSelectThree(str);
             setSelectThreeShow(false);
-        } else if (n == 4) {
+        } else {
             setSelectFourNum(length);
             setSelectFour(str);
             setSelectFourShow(false);
-        } else {
-            setSelectFiveNum(length);
-            setSelectFive(str);
-            setSelectFiveShow(false);
-        }
+        } 
     };
 
     //선택지바
@@ -104,12 +96,12 @@ function Cake (){
     const [pageTodays, setPageTodays] = useState(0);
     const [lengthTodays, setLengthTodays] = useState(0);
     useEffect(()=>{
-        getAxios(setData, setLengthTodays, "cakes", [], 24, pageTodays, 0);
+        getAxios(setData, setLengthTodays, "cakes", [], 18, pageTodays, 0);
     },[]);
 
     return(
         <>
-        <div className="cake-flex">
+        <div className="cake-flex store-flex">
             {/* Mobile 선택지 창 */}
             {selectMobileTF?
             <>
@@ -158,7 +150,7 @@ function Cake (){
                     </div>: null}
 
                     <div className="cake-select-mobile">
-                        맛
+                        시/군
                         <div
                             className="cake-select-mobile-button"
                             onClick={()=>{
@@ -189,7 +181,7 @@ function Cake (){
                     </div>: null}
 
                     <div className="cake-select-mobile">
-                        이벤트
+                        지하철
                         <div
                             className="cake-select-mobile-button"
                             onClick={()=>{
@@ -222,48 +214,14 @@ function Cake (){
                         </ul>
                     </div>: null}
 
-                    <div className="cake-select-mobile">
-                        가격대
-                        <div
-                            className="cake-select-mobile-button"
-                            onClick={()=>{
-                                SelectCloseF();
-                                if (selectFiveShow)
-                                    setSelectFiveShow(false);
-                                else
-                                    setSelectFiveShow(true);
-                            }}
-                        >선택하기</div>
-                    </div>
-                    {selectFiveShow?
-                    <div className="cake-select-relative-mobile">
-                        <ul className="cake-select-ul-2">
-                            <li
-                                className="cake-select-li-top cake-select-li"
-                                onClick={()=>{SelectF(5, "~3만 원", 10);}}>~3만 원</li>
-                            <li
-                                className="cake-select-li"
-                                onClick={()=>{SelectF(5, "3~5만 원", 15);}}>3~5만 원</li>
-                            <li
-                                className="cake-select-li"
-                                onClick={()=>{SelectF(5, "5~7만 원", 15);}}>5~7만 원</li>
-                            <li
-                                className="cake-select-li"
-                                onClick={()=>{SelectF(5, "7~10만 원", 20);}}>7~10만 원</li>
-                            <li
-                                className="cake-select-li-bottom cake-select-li"
-                                onClick={()=>{SelectF(5, "10만 원~", 15);}}>10만 원~</li>
-                        </ul>
-                    </div>: null}
-
                     {/* Mobile 선택지 바 */}
                     <div className="cake-select-bar-mobile">
                         <CakeBar_MobileCard setSelectAllF={setSelectAll} getData={selectAll} />
                         <div
                             className="cake-bar-card-all-delete"
                             onClick={()=>{
-                                setSelectTwo("맛");setSelectThree("지역");setSelectFour("이벤트");setSelectFive("가격대");
-                                setSelectTwoNum(0);setSelectThreeNum(0);setSelectFourNum(0);setSelectFiveNum(0);
+                                setSelectTwo("지역");setSelectThree("시/군");setSelectFour("지하철");
+                                setSelectTwoNum(0);setSelectThreeNum(0);setSelectFourNum(0);
                                 SelectCloseF();
                                 setSelectAll([]);
                             }}
@@ -375,32 +333,8 @@ function Cake (){
                         onClick={()=>{SelectF(4, "크리스마스", 35);}}>크리스마스</li>
                 </ul>
             </div>: null}
-            {selectFiveShow?
-            <div
-                className="pc cake-select-absolute"
-                style={{ left: (width+175+selectTwoNum+selectThreeNum+selectFourNum+selectFiveNum)+"px", }}
-            >
-                <div className="cake-select-top"></div>
-                <ul className="cake-select-ul-2">
-                    <li
-                        className="cake-select-li-top cake-select-li"
-                        onClick={()=>{SelectF(5, "~3만 원", 10);}}>~3만 원</li>
-                    <li
-                        className="cake-select-li"
-                        onClick={()=>{SelectF(5, "3~5만 원", 15);}}>3~5만 원</li>
-                    <li
-                        className="cake-select-li"
-                        onClick={()=>{SelectF(5, "5~7만 원", 15);}}>5~7만 원</li>
-                    <li
-                        className="cake-select-li"
-                        onClick={()=>{SelectF(5, "7~10만 원", 20);}}>7~10만 원</li>
-                    <li
-                        className="cake-select-li-bottom cake-select-li"
-                        onClick={()=>{SelectF(5, "10만 원~", 15);}}>10만 원~</li>
-                </ul>
-            </div>: null}
 
-            <div className="cake">
+            <div className="cake store">
                 <div className="cake-select-flex">
                     <div className="cake-select cake-select-one-flex">
                         <div style={{ display: "flex", }}>
@@ -480,23 +414,6 @@ function Cake (){
                             </div>
                         </div>
                     </div>
-                    <div className="pc cake-select">
-                        <div style={{ display: "flex", }}>
-                            <button id="cake-select-five" className="cake-select-button">{selectFive}</button>
-                            <div className="cake-select-img">
-                                <img
-                                    src={selectAllow}
-                                    onClick={()=>{
-                                        SelectCloseF();
-                                        if (selectFiveShow)
-                                            setSelectFiveShow(false);
-                                        else
-                                            setSelectFiveShow(true);
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    </div>
 
                     {/* Pc 선택지 바 */}
                     {selectAll.length == 0?
@@ -506,8 +423,8 @@ function Cake (){
                             <div
                                 className="cake-bar-card-all-delete"
                                 onClick={()=>{
-                                    setSelectTwo("지역");setSelectThree("맛");setSelectFour("이벤트");setSelectFive("가격대");
-                                    setSelectTwoNum(0);setSelectThreeNum(0);setSelectFourNum(0);setSelectFiveNum(0);
+                                    setSelectTwo("지역");setSelectThree("시/군");setSelectFour("지하철");
+                                    setSelectTwoNum(0);setSelectThreeNum(0);setSelectFourNum(0);
                                     SelectCloseF();
                                     setSelectAll([]);
                                 }}
@@ -515,10 +432,10 @@ function Cake (){
                         </div>
                     }
                 </div>
-                <div className="cake-store-contents cake-contents-flex">
+                <div className="cake-store-contents store-contents-flex">
                     <Cake_Store_TitleCard detail={cakeDetail} setDetailF={setCakeDetail}/>
                     <div className="contents">
-                        <CakeCard getData={data} cakeDetail={cakeDetail} link="Review"/>
+                        <StoreCard getData={data} cakeDetail={cakeDetail} link="Review"/>
                     </div>
                     <div className={"pagination cake-store-"+(cakeDetail? "dummy": "")}>
                         <Link to="/" className="arrow prev" href="#"> &lt;Prev</Link>
@@ -537,4 +454,4 @@ function Cake (){
 
 
 
-export default Cake;
+export default Store;

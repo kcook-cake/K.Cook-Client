@@ -53,11 +53,11 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         }}
                     ><dt>케이크</dt></Link>
                     <Link
-                        to="/MoreItem"
+                        to="/Store"
                         className="footer-right"
                         onClick={()=>{
                             $(".hm-pc-flex").show();
-                            LinkClick("MoreItem");
+                            LinkClick("Store");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>추가 상품</dt></Link>

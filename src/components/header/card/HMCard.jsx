@@ -139,11 +139,11 @@ function HMCard({ setNumLeftMobileF }) {
                     </div>
                     <div className="hm-mobile-link">
                         <Link
-                            to="/MoreItem"
-                            className="header-link MoreItem"
+                            to="/Store"
+                            className="header-link Store"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                LinkClick("MoreItem");
+                                LinkClick("Store");
                                 $(".hm-mobile").hide();
                             }}
                         >

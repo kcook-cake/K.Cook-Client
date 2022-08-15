@@ -1,4 +1,4 @@
-@import "../../reset.scss";
+@import "../reset.scss";
 
 /*
 cake-flex
@@ -15,7 +15,10 @@ cake-flex
 */
 
 .cake-flex {
-  background-color: #fafafa;
+    background-color: #fafafa;
+}
+.store-flex {
+    background-color: #fff;
 }
 
 .cake {
@@ -25,15 +28,18 @@ cake-flex
   padding-bottom: 142.4px;
   background-color: #fafafa;
 }
+.store {
+    background-color: #fff;
+}
 
 .cake-select-flex {
   width: 1199px;
   padding: 0 10px;
-  margin-bottom: 45px;
+  margin-bottom: 40px;
 
   select {
     padding-right: 0;
-    background: url('../../../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
+    background: url('../../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
     background-color: #f5f5f5;
   }
   option {
@@ -73,13 +79,53 @@ cake-flex
     }
   }
 }
+.cake-select-one-flex {
+  float: right;
+}
 
 .cake-contents-flex {
+    .contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 16px;
+    }
+}
+.store-contents-flex {
+    .contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 16px;
+    }
+}
+.cake-store-contents {
   padding: 0 10px;
-  .contents {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 16px;
+
+  .pagination {
+    width: 100%;
+    margin-bottom: 47.5px;
+    display: block;
+
+    text-align: center;
+    color: #b2b2b2;
+    font-size: 18px;
+
+    .prev {
+      padding-right: 25px;
+      color: #b2b2b2;
+      font-size: 18px;
+    }
+    .next {
+      color: $pink;
+      font-size: 18px;
+    }
+    .pagi {
+      padding-right: 25px;
+      color: #b2b2b2;
+      font-size: 18px;
+    }
+    .active {
+      color: $pink;
+    }
   }
 }
 
@@ -151,7 +197,10 @@ cake-flex
   color: #ea5450;
 }
 
-
+.cake-store-card-dummy,
+.cake-store-dummy {
+  display: none !important;
+}
 
 @media (max-width: 767px) {
   .cake-flex {
@@ -162,7 +211,6 @@ cake-flex
     width: 100%;
     min-width: 0px;
     padding-left: 16px;
-    margin-bottom: 30px;
     margin-top: 24px;
   }
 
@@ -170,7 +218,6 @@ cake-flex
     width: 100%;
     min-width: 0px;
     margin: 0; padding: 0;
-
     background-color: #fff;
 
     //PickCard
@@ -186,7 +233,29 @@ cake-flex
     }
   }
 
+  .cake-select-one-flex {
+    float: none;
+  }
+
   .cake-contents-flex {
+    .contents {
+        margin-bottom: 23px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 16px;
+        overflow-x: scroll;
+    }
+  }
+  .store-contents-flex {
+    .contents {
+        margin-bottom: 23px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 16px;
+        overflow-x: scroll;
+    }
+  }
+  .cake-store-contents {
     padding: 0;
     margin: 0 16px;
     margin-bottom: 45px;
@@ -202,11 +271,35 @@ cake-flex
       border-radius: 10px;
       // box-shadow: inset 0px 0px 5px white;
     }
-    .contents {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      column-gap: 16px;
-      overflow-x: scroll;
+
+
+    // 페이지네이션
+    .pagination {
+      margin: 0; padding: 0;
+      margin-bottom: 45px;
+      display: block;
+
+      float: none;
+      text-align: center;
+      color: #b2b2b2;
+      font-size: 15px;
+      .prev {
+        padding-right: 25px;
+        color: #b2b2b2;
+        font-size: 15px;
+      }
+      .next {
+        color: $pink;
+        font-size: 15px;
+      }
+      .pagi {
+        padding-right: 25px;
+        color: #b2b2b2;
+        font-size: 15px;
+      }
+      .active {
+        color: $pink;
+      }
     }
   }
 

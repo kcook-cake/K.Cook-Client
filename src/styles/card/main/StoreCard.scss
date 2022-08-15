@@ -1,0 +1,140 @@
+@import "../../reset.scss";
+
+.storecard {
+    width: 382px;
+    height: 330px;
+    margin-bottom: 40px;
+
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #fff;
+    .storecard-img-flex {
+        width: 382px;
+        height: 250px;
+        margin-bottom: 5px;
+
+        background-color: #e6e6e6;
+        img {
+        height: 250px;
+        }
+    }
+    .storecard-img-none {
+        line-height: 382px;
+        text-align: center;
+        color: #858997;
+    }
+    .storecard-img {
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+.storecard-info {
+    .card-top-info {
+        
+    }
+    .card-shop-name {
+        width: 382px; //270px
+        margin-bottom: 2px;
+    
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    
+        color: $sub-text;
+        font-size: 12px;
+        line-height: 18px;
+        background-color: red;
+    }
+    .card-cake-name {
+        width: 250px; //270px
+        padding-bottom: 10px;
+    
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    
+        color: $sub-text;
+        line-height: 18px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 767px) {
+  .storecard {
+    width: 156px;
+    height: 262px;
+    margin-bottom: 0px;
+    display: inline-flex;
+
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
+
+    .storecard-img-flex {
+      width: 156px;
+      height: 116px;
+      border-radius: 10px;
+      background-color: #e6e6e6;
+      img {
+        height: 116px;
+      }
+    }
+    .storecard-img-none {
+      line-height: 116px;
+      text-align: center;
+      color: #858997;
+    }
+    .storecard-img {
+      width: 156px;
+      height: 116px;
+    }
+  }
+
+  .storecard-info {
+    margin: 0;
+    padding-left: 0px; //왜안돼?
+    font-weight: bold;
+    .card-review {
+      height: 13px;
+      margin: 0;
+      display: inline;
+  
+      float: right;
+      font-size: 11px;
+      color: #858997;
+    }
+    .card-rating-star {
+      display: inline-block;
+      height: 13px;
+      img {
+        width: 13px;
+        vertical-align: top;
+      }
+    }
+    .card-shop-name {
+      width: 156px;
+    
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    
+      color: #333333;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+    }
+    .card-cake-name {
+      width: 156px;
+      margin-bottom: 10px;
+  
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+  
+      color: $sub-text;
+      line-height: 18px;
+      font-size: 15px;
+
+      border-bottom: 1px solid #eee;
+    }
+  }
+}

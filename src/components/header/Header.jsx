@@ -193,11 +193,11 @@ function Header ({ setNumLeftMobileF }) {
             케이크
           </Link>
           <Link
-            to="/MoreItem"
-            className="header-link MoreItem"
+            to="/Store"
+            className="header-link Store"
             onClick={()=>{
               setNumLeftMobileF(1);
-              LinkClick("MoreItem")
+              LinkClick("Store")
             }}
           >
             스토어
