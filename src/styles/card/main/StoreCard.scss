@@ -19,7 +19,7 @@
         }
     }
     .storecard-img-none {
-        line-height: 382px;
+        line-height: 250px;
         text-align: center;
         color: #858997;
     }
@@ -31,32 +31,32 @@
 
 .storecard-info {
     .card-top-info {
-        
+        margin-bottom: 5px;
+        color: #333333;
+        font-size: 12px;
     }
     .card-shop-name {
         width: 382px; //270px
-        margin-bottom: 2px;
+        margin-bottom: 5px;
     
         overflow:hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
     
         color: $sub-text;
-        font-size: 12px;
-        line-height: 18px;
-        background-color: red;
+        font-size: 16px;
+        font-weight: 600;
+        // line-height: 18px;
     }
     .card-cake-name {
-        width: 250px; //270px
-        padding-bottom: 10px;
+        width: 382px; //270px
     
         overflow:hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
     
-        color: $sub-text;
-        line-height: 18px;
-        font-size: 16px;
+        color: #777777;
+        font-size: 14px;
     }
 }
 
