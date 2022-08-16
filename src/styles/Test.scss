@@ -28,6 +28,7 @@
     margin: auto;
     position:relative;
     background-color: #fff;
+    background-color: yellow;
     .test-inner{
         width:1199px;
         height:600px;
@@ -44,6 +45,12 @@
         position:absolute;
         top:0;
         left:0;
+
+        // margin-bottom: 23px;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        // column-gap: 16px;
+        // overflow-x: scroll;
     }
 }
 
@@ -52,7 +59,7 @@
 }
 
 .testcard > div {
-    width:279.8px;
-    height:479px;
+    width: 580px;
+    height: 190px;
     background-color: yellowgreen;
 }

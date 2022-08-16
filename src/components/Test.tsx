@@ -139,7 +139,8 @@ function Test({ }: Props) {
                                         <li
                                             className="testcard"
                                             style={{
-                                                left: (306.7*idx-27.4*parseInt((idx/4).toString())),
+                                                top: idx%2==0? 0: 200,
+                                                left: idx%2==0? (309.9*idx-40*parseInt((idx/4).toString())) : (309.9*(idx-1)-40*parseInt((idx/4).toString())),
                                                 transform: `translateX(${slidePx}px)`,
                                                 transition: "0.5s ease",
                                             }}
