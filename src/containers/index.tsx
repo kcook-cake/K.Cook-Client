@@ -14,6 +14,8 @@ import FullCalendarApp from '../containers/seller/FullCalendarApp';
 import Detail from './detail/Detail';
 import LoginFind from './LoginFind';
 
+import Test from '../components/Test';
+
 const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
   useEffect(()=>{
@@ -45,6 +47,7 @@ const Pages = () => {
       <Route exact path="/Login" component={Login} />
       <Route exact path="/LoginFind" component={LoginFind} />
       <Route exact path="/SignUp" component={SignUp} />
+      <Route exact path="/Test" component={Test} />
 
       <Route exact path="/Detail/:id" component={Detail} />
       <Route exact path="/TodayRec/:id" component={Detail} />
