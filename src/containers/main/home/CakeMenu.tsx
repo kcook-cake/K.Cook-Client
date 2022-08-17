@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import '../../../styles/main/home/MainCake.scss'
-import '../../../styles/main/home/MainRecommend.scss'
+import React,  { useEffect, useState }from 'react';
+import '../../../styles/main/home/CakeMenu.scss'
 
 import axios from 'axios';
 
+import LengthwiseCard from '../../../components/LengthwiseCard';
 import SectionTitle from '../../../components/SectionTitle';
-import WidthwiseCard from '../../../components/WidthwiseCard';
 import getAxios from 'src/utils/getAxios';
 
-function MainCake (){
+function CakeMenu (){
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState([]);
 
@@ -17,13 +16,13 @@ function MainCake (){
     },[]);
 
     return(
-        <div className="home-cake-flex">
-            <div className="home-cake home">
+        <div className="home-flex">
+            <div className="cake-store-menu cakemenu home">
                 <div className="title">
-                    <SectionTitle title="신상품" link="Cake" />
+                    <SectionTitle title="케이크" link="Cake"/>
                 </div>
                 <div className="contents">
-                    <WidthwiseCard getData={data}/>
+                    <LengthwiseCard getData={data} link="Cake"/>
                 </div>
             </div>
         </div>
@@ -31,4 +30,4 @@ function MainCake (){
 }
 
 
-export default MainCake;
+export default CakeMenu;

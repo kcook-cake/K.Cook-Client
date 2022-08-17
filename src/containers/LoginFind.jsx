@@ -19,7 +19,6 @@ function LoginFind() {
     const [phoneResult, setPhoneResult] = useState("1111");
     const onSMS = () => {
         axios
-            setTimeout(() => {
             .patch(`https://prod.kcook-cake.com/app/accounts/email/sms-token`, {
                 email: email,
             })

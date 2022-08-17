@@ -46,21 +46,10 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
             fn(changeData);
         })
         .catch((error) => {
-            // const data = res.data.result.content;
-            // fnPage(data.length);
-
-            var num1 = page*num+pageAdd;
-            // var num2 = data.length;
-            // var num3 = (page+1)*num+pageAdd;
-            // if (num2 > num3) num2 = num3;
-
             var changeData = [];
-            // for (var i = num1; i < num2; i++) {
-            //     changeData[i] = res.data.result.content[i];
-            //     changeData[i] += {
-            //         num: i,
-            //     };
-            // }
+            console.log(num);
+            console.log((page+1)*num+pageAdd);
+            console.log(changeData);
             for (var i = 0; i < (page+1)*num+pageAdd; i++) {
                 changeData[i] = {
                     isCake: true,

@@ -1,1 +1,0 @@
-export var numLeftMobile = 1;

@@ -7,12 +7,12 @@ import LinkClick from '../utils/LinkClick';
 
 import allow from '../assets/right-arrow.svg';
 
-interface SectionTitleProps {
+interface Props {
     title : string,
     link? : string
 }
 
-function SectionTitle({ title, link }: SectionTitleProps) {
+function SectionTitle({ title, link }: Props) {
     return (
         <div className="section-title-flex">
             <div className="pc section-title">
@@ -35,7 +35,7 @@ function SectionTitle({ title, link }: SectionTitleProps) {
                     LinkClick(link);
                 }}>
                 더보기 &gt;
-            </Link>                
+            </Link>
         </div>
     );
 }

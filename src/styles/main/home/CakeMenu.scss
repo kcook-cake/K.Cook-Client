@@ -1,0 +1,21 @@
+
+.storemenu {
+    background-color: #fff;
+}
+
+.cake-store-menu {
+    .contents {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .storemenu {
+        padding-bottom: 45px;
+    }
+    .cake-store-menu {
+        .contents {
+            padding: 0;
+        }
+    }
+}
