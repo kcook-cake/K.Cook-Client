@@ -8,6 +8,7 @@ import $ from 'jquery';
 
 import isSession from "src/utils/isSession";
 import logo from "../assets/logo.png";
+import LinkClick from "src/utils/LinkClick";
 
 function LoginFind() {
     const [failModalText, setFailModalText] = useState("정보가 일치하지 않습니다.");
@@ -15,33 +16,32 @@ function LoginFind() {
     const [page, setPage] = useState(true);
 
     //핸드폰 인증 함수
-    const [phoneResult, setPhoneResult] = useState("");
+    const [phoneResult, setPhoneResult] = useState("1111");
     const onSMS = () => {
         axios
-        .patch(`https://prod.kcook-cake.com/app/accounts/sms-token`, {
-            phoneNumber: phone,
-        })
-        .then((res) => {
-            setPhoneResult(res.data.result);
-        })
-        .catch((error) => {
-            // setFailModalText(error.response.data.message);
-            setFailModal(true);
             setTimeout(() => {
-            setFailModal(false);
-            }, 5000);
-            // setFailModalText("회원가입 정보가 일치하지 않습니다.");
-        });
+            .patch(`https://prod.kcook-cake.com/app/accounts/email/sms-token`, {
+                email: email,
+            })
+            .then((res) => {
+                setPhoneResult(res.data.result);
+            })
+            .catch((error) => {
+                // setFailModalText(error.response.data.message);
+                setFailModal(true);
+                setTimeout(() => {
+                setFailModal(false);
+                }, 5000);
+                // setFailModalText("회원가입 정보가 일치하지 않습니다.");
+            });
     }
 
     const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
     const [phoneSms, setPhoneSms] = useState("");
     const [password, setPassword] = useState("");
     const [chPassword, setCheckPw] = useState("");
 
     const [emailFail, setEmailFail] = useState(true);
-    const [phoneFail, setPhoneFail] = useState(true);
     const [phoneSmsFail, setPhoneSmsFail] = useState(false);
     const [passwordFail, setPasswordFail] = useState(true);
     const [chPasswordFail, setCheckPwFail] = useState(false);
@@ -49,20 +49,12 @@ function LoginFind() {
     const handleEmail = (e) => {
         const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
         setEmail(e.target.value);
-        if (e.target.value.length >= 3 && e.target.value.length <= 20 && emailRegex.test(e.target.value))
+        if (e.target.value.length >= 3 && e.target.value.length <= 20 && emailRegex.test(e.target.value)) {
             setEmailFail(false)
-        else
+            setPhoneSmsFail(true)
+        } else {
             setEmailFail(true)
-    };
-    const handlePhone = (e) => {
-        setPhone(e.target.value.replace("-", ""));
-        if (e.target.value.length !== 0) {
-          setPhoneFail(false)
-          setPhoneSmsFail(true)
-        }
-        else{
-          setPhoneFail(true)
-          setPhoneSmsFail(false)
+            setPhoneSmsFail(false)
         }
     };
     const handlePhoneSms = (e) => {
@@ -87,12 +79,13 @@ function LoginFind() {
     };
 
     const Find = () => {
-        if (emailFail || phoneFail || phoneSmsFail) {
+        if (emailFail || phoneSmsFail) {
             setFailModal(true);
             setTimeout(() => {
               setFailModal(false);
             }, 5000);
-        } else setPage(false);
+        } else
+            setPage(false);
     };
     const Change = () => {
         if (passwordFail || chPasswordFail) {
@@ -101,8 +94,23 @@ function LoginFind() {
               setFailModal(false);
             }, 5000);
         } else {
-            document.location.href = "/Login";
-            //axios -> 비밀번호 바꿔주는 것으로
+            axios
+                .patch(`https://prod.kcook-cake.com/app/accounts/email/password`, {
+                    email: email,
+                    password: password,
+                })
+                .then((res) => {
+                    if (res.data.isSuccess)
+                        document.location.href = "/Login";
+                })
+                .catch((error) => {
+                    // setFailModalText(error.response.data.message);
+                    setFailModal(true);
+                    setTimeout(() => {
+                    setFailModal(false);
+                    }, 5000);
+                    // setFailModalText("회원가입 정보가 일치하지 않습니다.");
+                });
         }
     };
 
@@ -119,6 +127,7 @@ function LoginFind() {
     // 페이지 렌더링 후 가장 처음 호출되는 함수
     useEffect(() => {
         $(".hm-pc-flex").hide();
+        LinkClick("Login");
     },[]);
 
     return (
@@ -131,33 +140,20 @@ function LoginFind() {
                 <p className="login-sub-title">가입하신 이메일 주소와 휴대폰 번호를 인증해 주세요. 비밀번호를 재설정할 수 있습니다.</p>
                 
                 <p className="login-center">이메일</p>
-                <input
-                className="login-input"
-                type="email"
-                  onChange={handleEmail}
-                  value={email}
-                placeholder="xxx@xxx.xxx"
-                ></input>
-                {emailFail ?
-                    <p className="signup-confirm-text">이메일 형식이 맞지 않습니다.</p>
-                    : null
-                }
-
-                <p className="login-center">휴대폰 번호(숫자만)</p>
                 <div className="login-input signup-phone">
-                <input
-                    type="tel"
-                    onChange={handlePhone}
-                    value={phone}
-                    placeholder="번호 입력"
-                ></input>
-                <button
-                    className="phone-input-btn"
-                    onClick={onSMS}
-                >인증문자 발송</button>
+                    <input
+                        type="email"
+                        onChange={handleEmail}
+                        value={email}
+                        placeholder="xxx@xxx.xxx"
+                    ></input>
+                    <button
+                        className="phone-input-btn"
+                        onClick={onSMS}
+                    >인증문자 발송</button>
                 </div>
-                {phoneFail ?
-                    <p className="signup-confirm-text" style={{ margin: '0px 0px 3px 0px', }}>전화번호 형식이 맞지 않습니다.</p>
+                {emailFail ?
+                    <p className="signup-confirm-text" style={{ marginBottom: '3px', }}>이메일 형식이 맞지 않습니다.</p>
                     : null
                 }
                 <div className="login-input signup-phone">
@@ -168,9 +164,10 @@ function LoginFind() {
                     placeholder="인증번호 입력"
                 ></input>
                 <button
-                    className="phone-input-btn"
+                    className="phone-input-btn phone-sms-input-btn"
                     onClick={()=>{
                       if ((phoneSms == phoneResult) && phoneSms != "") setPhoneSmsFail(false);
+                      else setPhoneSmsFail(true);
                     }}
                 >확인하기</button>
                 </div>

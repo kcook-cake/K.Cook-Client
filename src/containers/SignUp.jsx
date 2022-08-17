@@ -362,7 +362,7 @@ function SignUp() {
             placeholder="인증번호 입력"
           ></input>
           <button
-            className="phone-input-btn"
+            className="phone-input-btn phone-sms-input-btn"
             onClick={()=>{
               if ((phoneSms == phoneResult) && phoneSms != "") setPhoneSmsFail(false);
             }}
