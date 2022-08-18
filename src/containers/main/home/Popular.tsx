@@ -14,7 +14,7 @@ import { createImportSpecifier } from 'typescript';
 
 const Popular = ()=>{
     const [data, setData] = useState([]);
-    const [dataLength, setDataLength] = useState([]);
+    const [dataLength, setDataLength] = useState(0);
 
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);

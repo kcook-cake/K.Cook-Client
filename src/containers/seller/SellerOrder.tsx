@@ -68,7 +68,7 @@ function SellerOrder (){
         },
     ]);
     // const [data, setData] = useState([]);
-    // const [dataLength, setDataLength] = useState([]);
+    // const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
     //     getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);

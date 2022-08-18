@@ -46,6 +46,7 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
             fn(changeData);
         })
         .catch((error) => {
+            fnPage((page+1)*num+pageAdd);
             var changeData = [];
             for (var i = 0; i < (page+1)*num+pageAdd; i++) {
                 changeData[i] = {

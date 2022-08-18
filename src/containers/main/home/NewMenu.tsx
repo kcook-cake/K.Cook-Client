@@ -11,7 +11,7 @@ import NewMenuCard from 'src/components/main/home/NewMenuCard';
 
 function NewMenu (){
     const [data, setData] = useState([]);
-    const [dataLength, setDataLength] = useState([]);
+    const [dataLength, setDataLength] = useState(0);
 
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);

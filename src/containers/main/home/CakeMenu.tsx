@@ -9,7 +9,7 @@ import getAxios from 'src/utils/getAxios';
 
 function CakeMenu (){
     const [data, setData] = useState([]);
-    const [dataLength, setDataLength] = useState([]);
+    const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
         getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);

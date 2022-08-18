@@ -1,79 +1,157 @@
 
+#spm-none-1 {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spm-option-title {
+    width: auto;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.spm-title {
+    width: 549px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 .spmcard {
-    width: 848px;
-    height: 230px;
-    position: relative;
+    display: flex;
+}
+
+.spmcard-button {
+    margin-bottom: 40px;
+    padding-left: 15px;
+    color: #9EA4AA;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+//update
+// .spmcard-update {
+.spmcard-update-input {
+    width: auto;
+    margin-left: 15px;
     margin-bottom: 20px;
     display: flex;
-  
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-    background-color: #fefefe;
-    .spmcard-box {
-        width: 100%;
-        margin-left: 30px;
-        .spmcard-box-inner {
-            display: flex;
-        }
-        .move-tap {
-            padding-left: 380px;
-        }
-        .spmcard-content {
-            width: 76%;
-            padding: 8px 13px 0px 16px;
-            color: black;
-            font-size: 18px;
-            font-weight: 500;
-            .spmcard-cake {
-                overflow:hidden;
-                text-overflow:ellipsis;
-                display:-webkit-box;
-                -webkit-line-clamp:1;
-                -webkit-box-orient:vertical;
-            }
-            .spmcard-cake-shop {
-                overflow:hidden;
-                text-overflow:ellipsis;
-                display:-webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient:vertical;
+    .spmcard-update-input-text {
+        width: 98%;
+    }
+    .spmcard-update-input-left-icon,
+    .spmcard-update-input-right {
+        opacity: 0;
+        padding-left: 5px;
+    }
+    .spmcard-update-input-left-icon {
+        width: 12px;
+    }
+    .spmcard-update-input-left {
+        // float: left;
+        margin-top: 2px;
+        margin-right: 7px;
+    }
+    .spmcard-update-input-right {
+        padding-right: 5px;
+    }
+    .spmcard-update-input-price {
+        width: 120px;
+        padding-right: 10px;
 
-                // color: #777777;
-                font-size: 15px;
-                font-weight: 400;
-            }
-        }
+        text-align: right;
+        border-radius: 5px;
+        border: 1px solid #B2B2B2;
+    }
+}
+.spmcard-update-input:hover {
+    .spmcard-update-input-left-icon,
+    .spmcard-update-input-right {
+        opacity: 100;
+    }
+    .spmcard-update-input-text {
+        width: 98%;
+        border-bottom: 3px solid #333;
     }
 }
 
+.spmcard-update-input-button {
+    margin: 0 0 20px 17px;
+    padding-left: 20px;
+    display: flex;
+
+    font-size: 14px;
+    color: #8b9094;
+}
+.spmcard-update-input-top {
+    width: 561px;
+}
+
+
+
+.spmcard-update-hr {
+    margin-left: 13px;
+    color: #9EA4AA;
+}
+
+.spmcard-update-hr {
+    margin-bottom: 30px;
+    border: 1px solid #DDDDDD;
+    // background-color: #9EA4AA;
+}
+.spmcard-update-button {
+    margin-left: 15px;
+    margin-bottom: 16px;
+    color: #9EA4AA;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 @media(max-width: 767px) {
-    .spmcard {
-        width: 100%;
-        height: 148px;
-        margin-bottom: 20px;
-    
-        border-radius: 0px;
-        background-color: #fff;
-        box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
-        .spmcard-box {
-            margin: 0;
-            .spmcard-box-inner {
-                display: block;
-            }
-            .move-tap {
-                padding: 0;
-                text-align: center;
-            }
-            .spmcard-content {
-                padding: 8px 13px 0px 16px;
-                font-size: 16px;
-                font-weight: 700;
-                .spmcard-cake-shop {
-                    color: #777777;
-                    font-size: 13px;
-                    font-weight: 500;
-                }
-            }
+    .spmcard-update-input {
+        width: auto;
+    }
+    .spmcard-update-input-top {
+        width: auto;
+    }
+
+    .spm-option-title {
+        margin-right: 5px;
+        margin-bottom: 2px;
+
+        overflow: hidden;
+        text-overflow:ellipsis;
+        display:-webkit-box;
+        -webkit-line-clamp:4;
+        -webkit-box-orient:vertical;
+        
+        color: #777777;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .spm-title {
+        width: auto;
+        margin: 0;
+        margin-bottom: 5px;
+
+        overflow: hidden;
+        text-overflow:ellipsis;
+        display:-webkit-box;
+        -webkit-line-clamp:1;
+        -webkit-box-orient:vertical;
+
+        overflow:hidden;
+        color: #000;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .spmcard-update-input {
+        .spmcard-update-input-right {
+            padding-right: 2px;
         }
     }
 }

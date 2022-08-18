@@ -6,7 +6,7 @@ import MCCard from 'src/components/mypage/card/MCCard';
 
 function Coupons (){
     const [data, setData] = useState([]);
-    const [dataLength, setDataLength] = useState([]);
+    const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
         getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);

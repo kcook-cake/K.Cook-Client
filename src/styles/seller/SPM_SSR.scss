@@ -1,7 +1,8 @@
 @import "../reset.scss";
 
 //spm에서만
-.spm-add {
+.spm-add,
+.spm-add2 {
     width: 848px;
     height: 100% !important;
     position: relative;
@@ -17,9 +18,12 @@
     .move-tap {
         padding-left: 380px;
     }
-    .spm-add-content {
+    .spm-add-content,
+    .spm-add-content2 {
         display: flex;
-        .spm-add-img {
+        margin-bottom: 24px;
+        .spm-add-img,
+        .spm-add-img2 {
             width: 160px;
             height: 160px;
             margin-right: 20px;
@@ -30,14 +34,37 @@
         }
         //문제
         .spm-add-title {
+            width: 549px;
+            height: 55px;
+
             padding-left: 20px;
             margin-left: 15px;
             margin-bottom: 20px;
-            width: 549px;
-            height: 55px;
+
             border-radius: 5px 5px 0 0;
             border-bottom: 3px solid #333;
             background-color: #f1f3f4;
+        }
+        .spm-add-subtitle {
+            width: 545px;
+        }
+        .spm-add-main-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .spm-add-right {
+            opacity: 0;
+            font-size: 18px;
+            padding-top: 12px;
+            padding-left: 5px;
+        }
+        .spmcard-option-update {
+            display: flex;
+        }
+        .spmcard-option-update:hover {
+            .spm-add-right {
+                opacity: 100;
+            }
         }
     }
 }
@@ -77,8 +104,10 @@
     //spm에서만
     .spm-add {
         width: 100%;
+        // height: 148px !important;
         display: block;
 
+        border-radius: 0;
         background-color: #fff;
         box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
         .spm-add-inner {
@@ -92,7 +121,8 @@
         .spm-add-content {
             width: 100%;
             margin: auto;
-            padding: 8px 13px 0px 16px;
+            // margin-bottom: 24px;
+            padding: 8px 13px 24px 16px;
             display: block;
             .spm-add-title {
                 width: 100%;
@@ -106,10 +136,76 @@
                 border-bottom: 3px solid #333;
                 background-color: #f1f3f4;
             }
-            .spm-add-img-m {
-                margin: 0 0 30px 0;
+            .spm-add-img {
                 height: 120px;
                 width: 120px;
+                padding-top: 20px; padding-left: 20px;
+                margin-bottom: 30px;
+
+                background-color: #ebebeb;
+                border-radius: 5px;
+            }
+        }
+    }
+    .spm-add2 {
+        width: 100%;
+        height: 148px !important;
+        margin-bottom: 20px;
+        display: block;
+
+        border-radius: 0;
+        background-color: #fff;
+        box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
+        .spm-add-inner {
+            margin: 0;
+        }
+        .move-tap {
+            width: 100%;
+            padding: 0;
+            text-align: center;
+        }
+        .spm-add-content {
+            width: 100%;
+            margin: auto;
+            // margin-bottom: 24px;
+            padding: 8px 13px 24px 16px;
+            display: block;
+            .spm-add-title {
+                width: 100%;
+                height: 55px;
+                
+                margin: 0; padding: 0;
+                padding-left: 20px;
+                margin-bottom: 20px;
+                
+                border-radius: 5px 5px 0 0;
+                border-bottom: 3px solid #333;
+                background-color: #f1f3f4;
+            }
+            .spm-add-img {
+                height: 120px;
+                width: 120px;
+                padding-top: 20px; padding-left: 20px;
+                margin-bottom: 30px;
+
+                background-color: #ebebeb;
+                border-radius: 5px;
+            }
+        }
+        .spm-add-content2 {
+            width: 100%;
+            // margin: auto;
+            // margin-bottom: 24px;
+            padding: 0 16px 16px 16px;
+            display: block;
+            .spm-add-img2 {
+                height: 100px;
+                width: 100px;
+                padding-top: 11px; padding-left: 11px;
+
+                // position: absolute;
+                // right: 0;
+                float: right;
                 background-color: #ebebeb;
                 border-radius: 5px;
             }
@@ -134,8 +230,8 @@
         .spm-bottom-inner {
             margin-top: 10px;
             img {
-            width: 30px;
-            height: 30px;
+                width: 30px;
+                height: 30px;
             }
         }
 
