@@ -12,10 +12,9 @@ interface Props {
     getData: any,
     resize: number,
     slidePx: number,
-    link: string,
 }
 
-function PopularCard({getData, resize, slidePx, link, }: Props) {
+function PopularCard({getData, resize, slidePx, }: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{

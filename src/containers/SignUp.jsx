@@ -71,12 +71,11 @@ function SignUp() {
         setPhoneResult(res.data.result);
       })
       .catch((error) => {
-        // setFailModalText(error.response.data.message);
+        setFailModalText("전화번호를 정확히 입력해주세요.");
         setFailModal(true);
         setTimeout(() => {
           setFailModal(false);
         }, 5000);
-        // setFailModalText("회원가입 정보가 일치하지 않습니다.");
       });
   }
 
@@ -177,6 +176,7 @@ function SignUp() {
     if (emailFail || passwordFail || chPasswordFail || nicknameFail || birthdayFail || (addressMain === "") || addressFail || phoneFail || phoneSmsFail ||
       (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) 
     {
+      setFailModalText("회원가입 정보가 일치하지 않습니다.");
       setFailModal(true);
       setTimeout(() => {
         setFailModal(false);
@@ -192,7 +192,7 @@ function SignUp() {
           phoneNumber: phoneNumber,
         })
         .then((res) => {
-          sessionStorage.setItem("jwToken", res.data.result.jwt);
+          // sessionStorage.setItem("jwToken", res.data.result.jwt);
           document.location.href = "/";
         })
         .catch((error) => {
@@ -201,7 +201,6 @@ function SignUp() {
           setTimeout(() => {
             setFailModal(false);
           }, 5000);
-          setFailModalText("회원가입 정보가 일치하지 않습니다.");
         });
     }
   };

@@ -6,7 +6,6 @@ import "../styles/Login.scss";
 import axios from "axios";
 import $ from 'jquery';
 
-import isSession from "src/utils/isSession";
 import logo from "../assets/logo.png";
 import LinkClick from "src/utils/LinkClick";
 
@@ -24,14 +23,18 @@ function LoginFind() {
             })
             .then((res) => {
                 setPhoneResult(res.data.result);
-            })
-            .catch((error) => {
-                // setFailModalText(error.response.data.message);
+                setFailModalText("인증번호가 발송되었습니다.");
                 setFailModal(true);
                 setTimeout(() => {
                 setFailModal(false);
                 }, 5000);
-                // setFailModalText("회원가입 정보가 일치하지 않습니다.");
+            })
+            .catch((error) => {
+                setFailModalText("정보가 일치하지 않습니다.");
+                setFailModal(true);
+                setTimeout(() => {
+                setFailModal(false);
+                }, 5000);
             });
     }
 
@@ -79,6 +82,7 @@ function LoginFind() {
 
     const Find = () => {
         if (emailFail || phoneSmsFail) {
+            setFailModalText("이메일과 인증번호를 정확히 입력해주세요.");
             setFailModal(true);
             setTimeout(() => {
               setFailModal(false);
@@ -88,6 +92,7 @@ function LoginFind() {
     };
     const Change = () => {
         if (passwordFail || chPasswordFail) {
+            setFailModalText("비밀번호를 정확히 입력해주세요.");
             setFailModal(true);
             setTimeout(() => {
               setFailModal(false);
@@ -103,12 +108,11 @@ function LoginFind() {
                         document.location.href = "/Login";
                 })
                 .catch((error) => {
-                    // setFailModalText(error.response.data.message);
+                    setFailModalText("정보가 일치하지 않습니다.");
                     setFailModal(true);
                     setTimeout(() => {
-                    setFailModal(false);
+                        setFailModal(false);
                     }, 5000);
-                    // setFailModalText("회원가입 정보가 일치하지 않습니다.");
                 });
         }
     };

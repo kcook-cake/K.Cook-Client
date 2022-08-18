@@ -47,9 +47,6 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
         })
         .catch((error) => {
             var changeData = [];
-            console.log(num);
-            console.log((page+1)*num+pageAdd);
-            console.log(changeData);
             for (var i = 0; i < (page+1)*num+pageAdd; i++) {
                 changeData[i] = {
                     isCake: true,

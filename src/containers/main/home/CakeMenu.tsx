@@ -1,5 +1,5 @@
 import React,  { useEffect, useState }from 'react';
-import '../../../styles/main/home/CakeMenu.scss'
+import '../../../styles/main/home/CakeStoreMenu.scss'
 
 import axios from 'axios';
 

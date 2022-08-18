@@ -35,7 +35,11 @@ function Header ({ setNumLeftMobileF }) {
     pathname = pathname.split("/")[1];
     LinkClick(pathname);
 
+    var jwToken = undefined;
+    if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+    else jwToken = sessionStorage.jwToken;
     isSession(
+      jwToken,
       (s)=>{
         if (s) setSession(s);
       },
@@ -140,9 +144,10 @@ function Header ({ setNumLeftMobileF }) {
             {session ?
               <button
                 onClick={() => {
+                  localStorage.removeItem("jwToken")
                   sessionStorage.removeItem("jwToken")
-                  sessionStorage.removeItem("session")
-                  if (sessionStorage.session === undefined) document.location.href = "/";
+                  if (localStorage.jwToken === undefined || sessionStorage.jwToken === undefined)
+                    document.location.href = "/";
                 }}
               >로그아웃</button>:
               <Link

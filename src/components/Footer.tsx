@@ -60,7 +60,7 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                             LinkClick("Store");
                             setNumLeftMobileF(1);
                         }}
-                    ><dt>추가 상품</dt></Link>
+                    ><dt>스토어</dt></Link>
                     <Link
                         to="/CS"
                         className="footer-right"

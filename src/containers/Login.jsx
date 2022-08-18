@@ -7,7 +7,6 @@ import $ from 'jquery';
 import "../styles/common/LoginSignup.scss";
 import "../styles/Login.scss";
 
-import isSession from "src/utils/isSession";
 import logo from "../assets/logo.png";
 
 function Login() {
@@ -26,13 +25,17 @@ function Login() {
   };
 
   const onClickLogin = () => {
+    console.log($("#loginAuto").is(':checked'));
     axios
       .post(`https://prod.kcook-cake.com/app/sign-in`, {
         password: password,
         email: signInId,
       })
       .then((res) => {
-        sessionStorage.setItem("jwToken", res.data.result.jwt);
+        if ($("#loginAuto").is(':checked')) 
+          localStorage.setItem("jwToken", res.data.result.jwt);
+        else
+          sessionStorage.setItem("jwToken", res.data.result.jwt);
         document.location.href = "/";
       })
       .catch((error) => {

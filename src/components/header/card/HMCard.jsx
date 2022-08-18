@@ -28,7 +28,12 @@ function HMCard({ setNumLeftMobileF }) {
         if (pathname == "/") pathname = "/Home";
         pathname = pathname.split("/")[1];
         LinkClick(pathname);
+        
+        var jwToken = undefined;
+        if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+        else jwToken = sessionStorage.jwToken;
         isSession(
+          jwToken,
             (s)=>{
             if (s) setSession(s);
             },
@@ -61,9 +66,10 @@ function HMCard({ setNumLeftMobileF }) {
                                 to="/"
                                 className="header-link Logout"
                                 onClick={() => {
+                                    localStorage.removeItem("jwToken")
                                     sessionStorage.removeItem("jwToken")
-                                    sessionStorage.removeItem("session")
-                                    if (sessionStorage.session === undefined) document.location.href = "/";
+                                    if (localStorage.jwToken === undefined || sessionStorage.jwToken === undefined)
+                                        document.location.href = "/";
                                 }}
                             >
                                 로그아웃
@@ -147,7 +153,7 @@ function HMCard({ setNumLeftMobileF }) {
                                 $(".hm-mobile").hide();
                             }}
                         >
-                            추가 상품
+                            스토어
                         </Link>
                     </div>
                     <div className="hm-mobile-link">

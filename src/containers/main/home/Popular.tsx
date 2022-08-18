@@ -73,7 +73,7 @@ const Popular = ()=>{
                 </div>
                 <div className="popular-inner">
                     <ul className="popular-contents">
-                        <PopularCard getData={data} resize={resize} slidePx={slidePx} link="" />
+                        <PopularCard getData={data} resize={resize} slidePx={slidePx} />
                     </ul>
                 </div>
             </div>

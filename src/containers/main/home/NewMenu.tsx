@@ -68,7 +68,7 @@ function NewMenu (){
                     </div>
                     <div className="newmenu-inner">
                         <ul className="newmenu-contents">
-                            <NewMenuCard getData={data} resize={resize} slidePx={slidePx} link="" />
+                            <NewMenuCard getData={data} resize={resize} slidePx={slidePx} />
                         </ul>
                     </div>
             </div>

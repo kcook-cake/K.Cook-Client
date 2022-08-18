@@ -7,7 +7,6 @@ import axios from "axios";
 
 import Pages from './containers/index';
 import LandingPage from './containers/LandingPage';
-import isSession from './utils/isSession';
 
 function App() {
 

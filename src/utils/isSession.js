@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import $ from 'jquery';
 // window.$ = $;
-const isSession = (fn, fn2) => {
+const isSession = (jwToken, fn, fn2) => {
     // sessionStorage.removeItem('jwToken')
     axios
         .get(`/app/accounts/auth`, {
             headers: {
-                'X-ACCESS-TOKEN': sessionStorage.jwToken,
+                'X-ACCESS-TOKEN': jwToken,
             }
         })
         .then((res) => {
@@ -16,7 +16,6 @@ const isSession = (fn, fn2) => {
             if(fn2 != null) fn2(res.data.result);
         })
         .catch((error) => {
-            // console.log(error.response.data.isSuccess)
             sessionStorage.removeItem("jwToken");
             if(fn != null) fn(false);
         });

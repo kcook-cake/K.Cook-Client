@@ -56,7 +56,11 @@ function FullCalendarAppMobile (){
     // today.innerHTML = `Today`;
     // $(".fc-day-today .fc-daygrid-day-frame .fc-daygrid-day-top .fc-daygrid-day-number").css("font-weight", "600");
 
+    var jwToken = undefined;
+    if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+    else jwToken = sessionStorage.jwToken;
     isSession(
+      jwToken,
       (s:any)=>{
         if (s) setSession(s);
       },

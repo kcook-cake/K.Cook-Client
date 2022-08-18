@@ -28,7 +28,11 @@ function HMSCard({ setNumLeftMobileF }) {
     });
 
     useEffect(()=> {
+        var jwToken = undefined;
+        if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+        else jwToken = sessionStorage.jwToken;
         isSession(
+          jwToken,
             (s)=>{
                 if (s) setSession(s);
             },
