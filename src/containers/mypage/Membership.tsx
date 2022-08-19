@@ -4,12 +4,16 @@ import '../../styles/mypage/Membership.scss';
 import getAxios from 'src/utils/getAxios';
 
 import MMSCard from 'src/components/mypage/card/MMSCard';
+import LinkClick from 'src/utils/LinkClick';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
 
 function Membership (){
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
+        LinkClick("Membership");
+        mypageLinkClick("Membership");
         getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 

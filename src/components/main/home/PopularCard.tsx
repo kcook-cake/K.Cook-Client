@@ -19,7 +19,7 @@ function PopularCard({getData, resize, slidePx, }: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
                 return (
-                    <>
+                    // <Link to="/Cake/0">
                         <li
                             className="popularcard-flex"
                             style={{
@@ -46,7 +46,7 @@ function PopularCard({getData, resize, slidePx, }: Props) {
                                 </div>
                             </div>
                         </li>
-                    </>
+                    // </Link>
                 );
             })}
         </>

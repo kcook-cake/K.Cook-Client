@@ -3,12 +3,16 @@ import '../../styles/mypage/Coupon.scss';
 
 import getAxios from 'src/utils/getAxios';
 import MCCard from 'src/components/mypage/card/MCCard';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
+import LinkClick from 'src/utils/LinkClick';
 
 function Coupons (){
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
+        LinkClick("Coupon");
+        mypageLinkClick("Coupon");
         getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 

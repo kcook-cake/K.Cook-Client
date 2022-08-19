@@ -90,7 +90,6 @@ function Test({ }: Props) {
 
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);
-
     const [resize, setResize] = useState(0);
 
     const handleResize = () => {

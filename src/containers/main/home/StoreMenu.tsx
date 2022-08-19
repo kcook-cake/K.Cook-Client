@@ -6,13 +6,14 @@ import axios from 'axios';
 import LengthwiseCard from '../../../components/LengthwiseCard';
 import SectionTitle from '../../../components/SectionTitle';
 import getAxios from 'src/utils/getAxios';
+import StoreCard from 'src/components/main/store/StoreCard';
 
 function StoreMenu (){
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
-        getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+        getAxios(setData, setDataLength, "cakes", [], 3, 0, 0);
     },[]);
 
     return(
@@ -22,7 +23,7 @@ function StoreMenu (){
                     <SectionTitle title="스토어" link="Store"/>
                 </div>
                 <div className="contents">
-                    <LengthwiseCard getData={data} link="Store"/>
+                    <StoreCard getData={data} cakeDetail={false}/>
                 </div>
             </div>
         </div>

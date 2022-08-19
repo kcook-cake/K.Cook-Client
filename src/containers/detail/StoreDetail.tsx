@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/detail/Detail.scss';
+import '../../styles/detail/StoreDetail.scss';
 
 import DetailAd from "../../assets/detail-ad.png";
 import TestImg from "../../assets/searchIcon.png";
@@ -8,7 +8,7 @@ import LengthwiseCard from 'src/components/LengthwiseCard';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 
-const Detail = () =>{
+const StoreDetail = () =>{
     const [height, setHeight] = useState(0);
 
     const [data, setData] = useState([]);
@@ -17,7 +17,7 @@ const Detail = () =>{
     const [lengthTodays, setLengthTodays] = useState(0);
     useEffect(()=>{
         $(".hm-pc-flex").show();
-        LinkClick("Detail");
+        LinkClick("Store");
         if ($(".seller-flex").height() != null) setHeight(Number($(".seller-flex").height()));
 
         getAxios(setData, setLengthTodays, "cakes", [], 8, pageTodays, 0);
@@ -34,7 +34,8 @@ const Detail = () =>{
                     <div className="detail-top-box">
                         <div className="detail-store-name">원모먼트</div>
                         <div className="detail-store-ad">연리단길 지역 판매량 1위!ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
-                        <div className="detail-store-address">서울시 용산구 이태원로 111-11ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                        <div className="detail-store-address">서울 용산구 이태원로55길 111</div> {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
+                        <div id="map" style={{ height: "200px", marginBottom: "20px", }}></div>
                         <div className="detail-store-content-box">
                             <div className="detail-store-content">#특별한날</div>
                             <div className="detail-store-content">#기념일</div>
@@ -73,4 +74,4 @@ const Detail = () =>{
 }
 
 
-export default Detail;
+export default StoreDetail;

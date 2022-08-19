@@ -4,12 +4,16 @@ import '../../styles/mypage/MMO_MPR.scss';
 import cake6 from   '../../assets/cake6.png';
 import getAxios from 'src/utils/getAxios';
 import MPRCard from 'src/components/mypage/card/MPRCard';
+import LinkClick from 'src/utils/LinkClick';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
 
 function ProductReview (){
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
+        LinkClick("ProductReview");
+        mypageLinkClick("ProductReview");
         getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 

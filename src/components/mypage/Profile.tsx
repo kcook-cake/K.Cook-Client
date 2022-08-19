@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import LinkClick from 'src/utils/LinkClick';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
 import '../../styles/mypage/Profile.scss';
 
 function Profile (){
+    useEffect(()=>{
+        LinkClick("Profile");
+        mypageLinkClick("Profile");
+    },[]);
     return(
         <div className="profile">
             <div className="seller-mypage-ss-mp">

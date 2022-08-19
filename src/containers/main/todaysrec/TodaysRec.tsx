@@ -30,6 +30,7 @@ function TodaysRec (){
     const [eventLengthTodays, setEventLengthTodays] = useState(0);
 
     useEffect(()=>{
+        LinkClick("TodaysRec");
         getAxios(setReviewTodays, setReviewLengthTodays, "cakes", [], 8, reviewPageTodays, 0);
         getAxios(setRecommenTdodays, setRecommendLengthTodays, "cakes", [], 6, recommendPageTodays, 0);
         getAxios(setEventTodays, setEventLengthTodays, "cakes", [], 3, 0, eventPageTodays);

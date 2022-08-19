@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/mypage/Profile.scss';
 import '../../styles/seller/SellerStore.scss';
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
+import LinkClick from 'src/utils/LinkClick';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
 
 function SellerStore (){
     useEffect(()=>{
+        LinkClick("SellerStore");
+        sellerLinkClick("SellerStore");
         // $(".seller").css("display", "flex");
     });
     return(

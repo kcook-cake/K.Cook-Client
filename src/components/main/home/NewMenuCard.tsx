@@ -16,7 +16,7 @@ interface Props {
 
 function NewMenuCard({getData, resize, slidePx, }: Props) {
     return (
-        <>
+        <Link to="/Cake/0">
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
                 return (
                     <>
@@ -61,7 +61,7 @@ function NewMenuCard({getData, resize, slidePx, }: Props) {
                     </>
                 );
             })}
-        </>
+        </Link>
     );
 }
 

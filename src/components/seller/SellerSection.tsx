@@ -37,12 +37,7 @@ function SellerSection (){
                     <div className="ss-menu" >
                         <Link
                             to="/SellerOrder"
-                            className="ss-link SellerOrder"
-                            onClick={()=>{
-                                LinkClick("SellerOrder");
-                                sellerLinkClick("SellerOrder");
-                            }}
-                        >
+                            className="ss-link SellerOrder">
                             <Menu className="icon"/>
                             <span>주문확인 </span>
                         </Link>
@@ -50,12 +45,7 @@ function SellerSection (){
                     <div className="ss-menu" >
                         <Link
                             to="/SalesHistory"
-                            className="ss-link SalesHistory"
-                            onClick={()=>{
-                                LinkClick("SalesHistory");
-                                sellerLinkClick("SalesHistory");
-                            }}
-                        >
+                            className="ss-link SalesHistory">
                             <Coin className="icon"/>
                             <span>판매내역 </span>
                         </Link>
@@ -63,12 +53,7 @@ function SellerSection (){
                     <div className="ss-menu" >
                         <Link
                            to="/ProductManagement"
-                           className="ss-link ProductManagement"
-                           onClick={()=>{
-                            LinkClick("ProductManagement");
-                            sellerLinkClick("ProductManagement");
-                        }}
-                        >
+                           className="ss-link ProductManagement">
                             <Cube className="icon"/>
                             <span>상품관리 </span>
                         </Link>
@@ -76,12 +61,7 @@ function SellerSection (){
                     <div className="ss-menu" >
                         <Link
                             to="/SellerReview"
-                            className="ss-link SellerReview"
-                            onClick={()=>{
-                                LinkClick("SellerReview");
-                                sellerLinkClick("SellerReview");
-                            }}
-                        >
+                            className="ss-link SellerReview">
                             <SpeechBubble className="icon"/>
                             <span>상품후기 </span>
                         </Link>
@@ -89,12 +69,7 @@ function SellerSection (){
                     <div className="ss-menu" >
                         <Link
                             to="/SellerStore"
-                            className="ss-link SellerStore"
-                            onClick={()=>{
-                                LinkClick("SellerStore");
-                                sellerLinkClick("SellerStore");
-                            }}
-                        >
+                            className="ss-link SellerStore">
                             <SettingIcon className="icon"/>
                             <span>스토어 정보</span>
                         </Link>

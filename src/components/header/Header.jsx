@@ -80,7 +80,6 @@ function Header ({ setNumLeftMobileF }) {
               to="/"
               onClick={()=>{
                 setNumLeftMobileF(1);
-                LinkClick("Home");
                 $(".hm-pc-flex").show();
               }}
             >
@@ -95,7 +94,6 @@ function Header ({ setNumLeftMobileF }) {
               to="/"
               onClick={()=>{
                 setNumLeftMobileF(1);
-                LinkClick("Home");
                 $(".hm-pc-flex").show();
               }}
             >
@@ -113,7 +111,6 @@ function Header ({ setNumLeftMobileF }) {
                 to="/SellerOrder"
                 onClick={()=>{
                   setNumLeftMobileF(2);
-                  sellerLinkClick("SellerOrder");
                 }}
               >
                 <button>판매자로 전환</button>
@@ -125,7 +122,6 @@ function Header ({ setNumLeftMobileF }) {
                 to="/MypageOrder"
                 onClick={()=>{
                   setNumLeftMobileF(3);
-                  mypageLinkClick("MypageOrder");
                 }}
               >
                 <button>마이페이지</button>
@@ -134,7 +130,6 @@ function Header ({ setNumLeftMobileF }) {
                 to="/SignUp"
                 onClick={()=>{
                   setNumLeftMobileF(1);
-                  LinkClick("SignUp");
                   $(".hm-pc-flex").hide();
                 }}
               >
@@ -154,7 +149,6 @@ function Header ({ setNumLeftMobileF }) {
                 to="/Login"
                 onClick={()=>{
                   setNumLeftMobileF(1);
-                  LinkClick("Login");
                   $(".hm-pc-flex").hide();
                 }}
               >
@@ -172,7 +166,6 @@ function Header ({ setNumLeftMobileF }) {
             className="header-link Home"
             onClick={()=>{
               setNumLeftMobileF(1);
-              LinkClick("Home")
             }}
           >
             홈
@@ -182,7 +175,6 @@ function Header ({ setNumLeftMobileF }) {
             className="header-link TodaysRec"
             onClick={()=>{
               setNumLeftMobileF(1);
-              LinkClick("TodaysRec")
             }}
           >
             오늘의 추천
@@ -192,7 +184,6 @@ function Header ({ setNumLeftMobileF }) {
             className="header-link Cake"
             onClick={()=>{
               setNumLeftMobileF(1);
-              LinkClick("Cake")
             }}
           >
             케이크
@@ -202,7 +193,6 @@ function Header ({ setNumLeftMobileF }) {
             className="header-link Store"
             onClick={()=>{
               setNumLeftMobileF(1);
-              LinkClick("Store")
             }}
           >
             스토어
@@ -212,7 +202,6 @@ function Header ({ setNumLeftMobileF }) {
             className="header-link CS"
             onClick={()=>{
               setNumLeftMobileF(1);
-              LinkClick("CS")
             }}
           >
             고객지원

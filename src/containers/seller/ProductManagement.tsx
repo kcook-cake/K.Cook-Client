@@ -13,8 +13,62 @@ import { Link } from 'react-router-dom';
 import getAxios from 'src/utils/getAxios';
 import SPMCard from 'src/components/seller/card/SPMCard';
 import SPMCard_Add from 'src/components/seller/card/SPMCard_Add';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
+import LinkClick from 'src/utils/LinkClick';
 
 function ProductManagement () {
+    LinkClick("ProductManagement");
+    sellerLinkClick("ProductManagement");
+
+    const Add = () => {
+        axios
+            .post(`https://prod.kcook-cake.com/app/products`, {
+                isCake: true,
+                name: "유니아 케이크",
+                newOptionsList: [
+                {
+                    "additionalCost": 1000,
+                    "category": "TASTE",
+                    "contents": "초코",
+                    "title": "맛"
+                },
+                {
+                    "additionalCost": 1500,
+                    "category": "TASTE",
+                    "contents": "딸기",
+                    "title": "맛"
+                },
+                {
+                    "additionalCost": 2000,
+                    "category": "TASTE",
+                    "contents": "바나나",
+                    "title": "맛"
+                },
+                {
+                    "additionalCost": 1000,
+                    "category": "CANDLE",
+                    "contents": "촛불",
+                    "title": "초"
+                },
+                ],
+                price: 50000,
+                salePrice: 0
+            })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+
+            });
+        axios
+            .get(`https://prod.kcook-cake.com/app/additional-products`)
+            .then((res) => {
+                console.log(res.data.result.content);
+            })
+            .catch((error) => {
+
+            });
+    }
 
     const [num, setNum] = useState(0);
     const [addDiv, setAddDiv] = useState(false);
@@ -45,7 +99,7 @@ function ProductManagement () {
             name: "케이크1",
             thumbnail: "",
             list:
-            [   
+            [
                 {
                     optionId: 1,
                     optionName: "크기",
@@ -225,7 +279,7 @@ function ProductManagement () {
                                 className="move-tap"
                                 onClick={()=>{
                                     alert("추가"); //addOption, addName
-                                    //axios.add
+                                    Add();
                                 }}>
                                 <DragBtn/>
                             </div>

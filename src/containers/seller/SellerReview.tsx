@@ -4,6 +4,8 @@ import '../../styles/seller/SPM_SSR.scss';
 
 import getAxios from 'src/utils/getAxios';
 import SSRCard from 'src/components/seller/card/SSRCard';
+import sellerLinkClick from 'src/utils/sellerLinkClick';
+import LinkClick from 'src/utils/LinkClick';
 
 function SellerReview (){
     const [data, setData] = useState([
@@ -68,6 +70,8 @@ function SellerReview (){
     // const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
+        LinkClick("SellerReview");
+        sellerLinkClick("SellerReview");
         // getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 

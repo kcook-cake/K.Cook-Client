@@ -6,12 +6,16 @@ import getAxios from 'src/utils/getAxios';
 import LengthwiseCard from 'src/components/LengthwiseCard';
 import PickCard from 'src/components/main/PickCard';
 import MMOCard from 'src/components/mypage/card/MMOCard';
+import mypageLinkClick from 'src/utils/mypageLinkClick';
+import LinkClick from 'src/utils/LinkClick';
 
 function MypageOrder (){
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
+        LinkClick("MypageOrder");
+        mypageLinkClick("MypageOrder");
         getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 

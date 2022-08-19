@@ -82,7 +82,6 @@ function HMCard({ setNumLeftMobileF }) {
                                     className="header-link SignUp"
                                     onClick={()=>{
                                         setNumLeftMobileF(1);
-                                        LinkClick("SignUp");
                                         $(".hm-mobile").hide();
                                     }}
                                 >
@@ -95,7 +94,6 @@ function HMCard({ setNumLeftMobileF }) {
                                     className="header-link Login"
                                     onClick={()=>{
                                         setNumLeftMobileF(1);
-                                        LinkClick("Login");
                                         $(".hm-mobile").hide();
                                     }}
                                 >
@@ -110,7 +108,6 @@ function HMCard({ setNumLeftMobileF }) {
                             className="header-link Home"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                LinkClick("Home");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -123,7 +120,6 @@ function HMCard({ setNumLeftMobileF }) {
                             className="header-link TodaysRec"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                LinkClick("TodaysRec");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -136,7 +132,6 @@ function HMCard({ setNumLeftMobileF }) {
                             className="header-link Cake"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                LinkClick("Cake");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -149,7 +144,6 @@ function HMCard({ setNumLeftMobileF }) {
                             className="header-link Store"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                LinkClick("Store");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -162,7 +156,6 @@ function HMCard({ setNumLeftMobileF }) {
                             className="header-link CS"
                             onClick={()=>{
                                 setNumLeftMobileF(1);
-                                LinkClick("CS");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -177,8 +170,6 @@ function HMCard({ setNumLeftMobileF }) {
                                 className="header-link SellerOrder"
                                 onClick={()=>{
                                     setNumLeftMobileF(2);
-                                    LinkClick("SellerOrder");
-                                    sellerLinkClick("SellerOrder");
                                     $(".hm-mobile").hide();
                                 }}
                             >
@@ -191,8 +182,6 @@ function HMCard({ setNumLeftMobileF }) {
                                 className="header-link MypageOrder"
                                 onClick={()=>{
                                     setNumLeftMobileF(3);
-                                    LinkClick("MypageOrder");
-                                    mypageLinkClick("MypageOrder");
                                     $(".hm-mobile").hide();
                                 }}
                             >

@@ -30,7 +30,6 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             $(".hm-pc-flex").show();
-                            LinkClick("Home");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>홈</dt></Link>
@@ -39,7 +38,6 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             $(".hm-pc-flex").show();
-                            LinkClick("TodaysRec");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>오늘의 추천</dt></Link>
@@ -48,7 +46,6 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             $(".hm-pc-flex").show();
-                            LinkClick("Cake");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>케이크</dt></Link>
@@ -57,7 +54,6 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             $(".hm-pc-flex").show();
-                            LinkClick("Store");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>스토어</dt></Link>
@@ -66,7 +62,6 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         className="footer-right"
                         onClick={()=>{
                             $(".hm-pc-flex").show();
-                            LinkClick("CS");
                             setNumLeftMobileF(1);
                         }}
                     ><dt>고객지원</dt></Link>

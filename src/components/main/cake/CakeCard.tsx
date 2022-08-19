@@ -10,16 +10,15 @@ import { start } from 'repl';
 interface Props {
     getData: any,
     cakeDetail: any,
-    link: string,
 }
 
-function CakeCard({getData, cakeDetail, link}: Props) {
+function CakeCard({getData, cakeDetail}: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
                 return (
                     // <Link to={"/"+link+"/"+data.productId}>
-                    <Link className={"cake-store-card-"+((idx > 7)&&cakeDetail? "dummy": "")} to={"/"+link+"/0"}>
+                    <a className={"cake-store-card-"+((idx > 7)&&cakeDetail? "dummy": "")} href={"/Cake/0"}>
                         <div className="cakecard-flex" key={data.productId}>
                             <div className="cakecard">
                                 <div className="cakecard-img-flex">
@@ -39,7 +38,7 @@ function CakeCard({getData, cakeDetail, link}: Props) {
                                 </div>
                             </div>
                         </div>
-                    </Link>
+                    </a>
                 )
                 })
             }

@@ -10,7 +10,7 @@ import ProductManagement from '../containers/seller/ProductManagement';
 import SellerReview from '../containers/seller/SellerReview';
 import SellerStore from '../components/seller/SellerStore';
 
-import FullCalendarApp from '../containers/seller/FullCalendarApp';
+import FullCalendarApp from './seller/FullCalendarApp';
 
 const Seller = () =>{
     const [pathname, setPathname] = useState("");
@@ -26,7 +26,8 @@ const Seller = () =>{
             <div className="seller">
                 <>
                     <SellerSection/>
-                    <Route exact path="/FullCalendarApp" component={FullCalendarApp} />
+                    <Route exact path="/SSOCalendar" component={FullCalendarApp} />
+                    <Route exact path="/SSHCalendar" component={FullCalendarApp} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>
                     <Route exact path="/ProductManagement" component={ProductManagement}/>

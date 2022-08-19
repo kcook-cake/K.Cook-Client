@@ -65,8 +65,6 @@ function HMSCard({ setNumLeftMobileF }) {
                             className="header-link SellerOrder"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                LinkClick("SellerOrder");
-                                sellerLinkClick("SellerOrder");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -79,8 +77,6 @@ function HMSCard({ setNumLeftMobileF }) {
                             className="header-link SalesHistory"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                LinkClick("SalesHistory");
-                                sellerLinkClick("SalesHistory");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -93,8 +89,6 @@ function HMSCard({ setNumLeftMobileF }) {
                             className="header-link ProductManagement"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                LinkClick("ProductManagement");
-                                sellerLinkClick("ProductManagement");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -107,8 +101,6 @@ function HMSCard({ setNumLeftMobileF }) {
                             className="header-link SellerReview"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                LinkClick("SellerReview");
-                                sellerLinkClick("SellerReview");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -121,8 +113,6 @@ function HMSCard({ setNumLeftMobileF }) {
                             className="header-link SellerStore"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
-                                LinkClick("SellerStore");
-                                sellerLinkClick("SellerStore");
                                 $(".hm-mobile").hide();
                             }}
                         >

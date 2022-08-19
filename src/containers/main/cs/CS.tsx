@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import LinkClick from 'src/utils/LinkClick';
 import '../../../styles/main/CakeStore.scss';
 
 function CS (){
+    useEffect(()=>{
+        LinkClick("CS");
+    },[]);
     return(
         <div className="cake-flex">
             <div className="cake" style={{ padding: "23px 10px", }}>

@@ -65,8 +65,6 @@ function HMMCard({ setNumLeftMobileF }) {
                             className="header-link MypageOrder"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                LinkClick("MypageOrder");
-                                mypageLinkClick("MypageOrder");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -79,8 +77,6 @@ function HMMCard({ setNumLeftMobileF }) {
                             className="header-link ProductReview"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                LinkClick("ProductReview");
-                                mypageLinkClick("ProductReview");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -93,8 +89,6 @@ function HMMCard({ setNumLeftMobileF }) {
                             className="header-link Membership"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                LinkClick("Membership");
-                                mypageLinkClick("Membership");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -107,8 +101,6 @@ function HMMCard({ setNumLeftMobileF }) {
                             className="header-link Coupon"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                LinkClick("Coupon");
-                                mypageLinkClick("Coupon");
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -121,8 +113,6 @@ function HMMCard({ setNumLeftMobileF }) {
                             className="header-link Profile"
                             onClick={()=>{
                                 setNumLeftMobileF(3);
-                                LinkClick("Profile");
-                                mypageLinkClick("Profile");
                                 $(".hm-mobile").hide();
                             }}
                         >

@@ -16,6 +16,7 @@ import CakeBarCard from 'src/components/main/cake/CakeBarCard';
 import CakeBar_MobileCard from 'src/components/main/cake/CakeBar_MobileCard';
 import Cake_Store_TitleCard from 'src/components/main/Cake_Store_TitleCard';
 import StoreCard from 'src/components/main/store/StoreCard';
+import LinkClick from 'src/utils/LinkClick';
 
 function Store (){
     //선택지 기타 등등
@@ -96,6 +97,7 @@ function Store (){
     const [pageTodays, setPageTodays] = useState(0);
     const [lengthTodays, setLengthTodays] = useState(0);
     useEffect(()=>{
+        LinkClick("Store");
         getAxios(setData, setLengthTodays, "cakes", [], 18, pageTodays, 0);
     },[]);
 
@@ -435,7 +437,7 @@ function Store (){
                 <div className="cake-store-contents store-contents-flex">
                     <Cake_Store_TitleCard detail={cakeDetail} setDetailF={setCakeDetail}/>
                     <div className="contents">
-                        <StoreCard getData={data} cakeDetail={cakeDetail} link="Review"/>
+                        <StoreCard getData={data} cakeDetail={cakeDetail}/>
                     </div>
                     <div className={"pagination cake-store-"+(cakeDetail? "dummy": "")}>
                         <Link to="/" className="arrow prev" href="#"> &lt;Prev</Link>

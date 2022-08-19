@@ -10,11 +10,11 @@ import Mypage from './Mypage';
 import Seller from './Seller';
 import Login from './Login';
 import SignUp from './SignUp';
-import FullCalendarApp from '../containers/seller/FullCalendarApp';
-import Detail from './detail/Detail';
 import LoginFind from './LoginFind';
 
 import Test from '../components/Test';
+import StoreDetail from './detail/StoreDetail';
+import CakeDetail from './detail/CakeDetail';
 
 const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
@@ -49,16 +49,19 @@ const Pages = () => {
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/Test" component={Test} />
 
-      <Route exact path="/Detail/:id" component={Detail} />
-      <Route exact path="/TodayRec/:id" component={Detail} />
-      <Route exact path="/Review/:id" component={Detail} />
+      <Route exact path="/Cake/:id" component={CakeDetail} />
+      <Route exact path="/Store/:id" component={StoreDetail} />
 
-      <Main />
+      {/* <Main /> */}
+      {/* <Seller />
+      <Mypage /> */}
       {numLeftMobile == 2?
-        <Seller />:<></>
+        <Seller />
+        :<></>
       }
       {numLeftMobile == 3?
-        <Mypage />:<></>
+        <Mypage />
+        :<></>
       }
 
       <Footer

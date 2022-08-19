@@ -70,6 +70,8 @@ function SalesHistory (){
     // const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
+        LinkClick("SalesHistory");
+        sellerLinkClick("SalesHistory");
         // getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
     },[]);
 
@@ -82,13 +84,10 @@ function SalesHistory (){
                         <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
                     <div className='ss-fc-link-flex'>
                         <Link
-                            to='/FullCalendarApp'
-                            className='ss-fc-link'
-                            onClick={()=>{
-                                LinkClick("FullCalendarApp");
-                                sellerLinkClick("FullCalendarApp");
-                            }}
-                        >달력보기</Link>
+                            to='/SSHCalendar'
+                            className='ss-fc-link'>
+                            달력보기
+                        </Link>
                         <div
                             className="pc ss-fc-link-bar"
                             style={{ display: "inline-block"}}>|
@@ -96,12 +95,9 @@ function SalesHistory (){
                         <Link
                             to='/SellerOrder'
                             className='pc ss-fc-link'
-                            style={{ color: "#ea5450", }}
-                            onClick={()=>{
-                                LinkClick("SellerOrder");
-                                sellerLinkClick("SellerOrder");
-                            }}
-                        >목록보기</Link>
+                            style={{ color: "#ea5450", }}>
+                            목록보기
+                        </Link>
                     </div>
                 </div>
                 <div className="mobile" style={{ width: "5px", height: "25px", }}></div>

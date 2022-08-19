@@ -49,6 +49,12 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
     useEffect(()=>{
     },[]);
     
+    // {
+    //     additionalCost: 0,
+    //     category: "SIZE",
+    //     contents: "1호",
+    //     title: "크기"
+    // },
     return (
         <div className="spmcard-update">
         {addOption.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, })=>{

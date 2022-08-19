@@ -6,6 +6,7 @@ import axios from 'axios';
 import LengthwiseCard from '../../../components/LengthwiseCard';
 import SectionTitle from '../../../components/SectionTitle';
 import getAxios from 'src/utils/getAxios';
+import CakeCard from 'src/components/main/cake/CakeCard';
 
 function CakeMenu (){
     const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ function CakeMenu (){
                     <SectionTitle title="케이크" link="Cake"/>
                 </div>
                 <div className="contents">
-                    <LengthwiseCard getData={data} link="Cake"/>
+                    <CakeCard getData={data} cakeDetail={false}/>
                 </div>
             </div>
         </div>

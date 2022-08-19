@@ -85,7 +85,7 @@
 
 .spm-btn {
     svg {
-        margin-left: 50%;
+        margin-left: 45%;
     }
     path,
     circle,
@@ -196,11 +196,12 @@
             width: 100%;
             // margin: auto;
             // margin-bottom: 24px;
-            padding: 0 16px 16px 16px;
+            padding: 0 16px 16px 0;
             display: block;
             .spm-add-img2 {
                 height: 100px;
                 width: 100px;
+                margin: 0;
                 padding-top: 11px; padding-left: 11px;
 
                 // position: absolute;

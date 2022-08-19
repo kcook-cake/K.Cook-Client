@@ -37,12 +37,7 @@ function MypageSection (){
                     <div className="ms-menu" >
                         <Link
                             to="/MypageOrder"
-                            className="ms-link MypageOrder"
-                            onClick={()=>{
-                                LinkClick("MypageOrder");
-                                mypageLinkClick("MypageOrder");
-                            }}
-                        >
+                            className="ms-link MypageOrder">
                             <Menu className="icon"/>
                             <span>주문내역</span>
                         </Link>
@@ -50,12 +45,7 @@ function MypageSection (){
                     <div className="ms-menu" >
                         <Link
                             to="/ProductReview"
-                            className="ms-link ProductReview"
-                            onClick={()=>{
-                                LinkClick("ProductReview");
-                                mypageLinkClick("ProductReview");
-                            }}
-                        >
+                            className="ms-link ProductReview">
                             <SpeechBubble className="icon"/>
                             <span>상품후기</span>
                         </Link>
@@ -63,12 +53,7 @@ function MypageSection (){
                     <div className="ms-menu" >
                         <Link
                             to="/Membership"
-                            className="ms-link Membership"
-                            onClick={()=>{
-                                LinkClick("Membership");
-                                mypageLinkClick("Membership");
-                            }}
-                        >
+                            className="ms-link Membership">
                             <Coin className="icon"/>
                             <span> 적립금</span>
                         </Link>
@@ -76,12 +61,7 @@ function MypageSection (){
                     <div className="ms-menu" >
                         <Link
                             to="/Coupon"
-                            className="ms-link Coupon"
-                            onClick={()=>{
-                                LinkClick("Coupon");
-                                mypageLinkClick("Coupon");
-                            }}
-                        >
+                            className="ms-link Coupon">
                             <CPicon className="icon"/>
                             <span>쿠폰 </span>
                         </Link>
@@ -89,12 +69,7 @@ function MypageSection (){
                     <div className="ms-menu" >
                         <Link
                             to="/Profile"
-                            className="ms-link Profile"
-                            onClick={()=>{
-                                LinkClick("Profile");
-                                mypageLinkClick("Profile");
-                            }}
-                        >
+                            className="ms-link Profile">
                             <SettingIcon className="icon"/>
                             <span>회원정보</span>
                         </Link>
