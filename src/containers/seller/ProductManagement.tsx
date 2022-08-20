@@ -20,59 +20,61 @@ function ProductManagement () {
     LinkClick("ProductManagement");
     sellerLinkClick("ProductManagement");
 
+    //Add
     const Add = () => {
+        var index = 0;
+        var c = "";
+        var jlength = 0;
+        for (var i=0; i< addOption.length; i++) {
+            if (i-1 < 0) index = i;
+            else index = i-1;
+
+            if (addOption[i].optionName == "크기") c = "SIZE";
+            else if (addOption[i].optionName == "맛") c = "TASTE";
+            else if (addOption[i].optionName == "레터링") c = "LOWER_LETTERING";
+            else if (addOption[i].optionName == "색상") c = "COLOR";
+            else if (addOption[i].optionName == "초") c = "CANDLE";
+            else c = "ETC";
+
+            if (addOption[i].optionDirect) jlength = addOption[i].optionList.length-1;
+            else jlength = addOption[i].optionList.length;
+
+            for (var j=0; j < jlength; j++) {
+                addBack[(j+1)+i*addOption[index].optionList.length-1] = {
+                    additionalCost: addOption[i].optionList[j].optionListPrice,
+                    category: c,
+                    contents: addOption[i].optionList[j].optionListName,
+                    title: addOption[i].optionName,
+                };
+            }
+            if (addOption[i].optionDirect) {
+                addBack[(jlength+1)+i*addOption[index].optionList.length-1] = {
+                    additionalCost: addOption[i].optionList[jlength].optionListPrice,
+                    category: c,
+                    contents: "기타&"+addOption[i].optionDirectText,
+                    title: addOption[i].optionName,
+                };
+            }
+        }
         axios
             .post(`https://prod.kcook-cake.com/app/products`, {
                 isCake: true,
-                name: "유니아 케이크",
-                newOptionsList: [
-                {
-                    "additionalCost": 1000,
-                    "category": "TASTE",
-                    "contents": "초코",
-                    "title": "맛"
-                },
-                {
-                    "additionalCost": 1500,
-                    "category": "TASTE",
-                    "contents": "딸기",
-                    "title": "맛"
-                },
-                {
-                    "additionalCost": 2000,
-                    "category": "TASTE",
-                    "contents": "바나나",
-                    "title": "맛"
-                },
-                {
-                    "additionalCost": 1000,
-                    "category": "CANDLE",
-                    "contents": "촛불",
-                    "title": "초"
-                },
-                ],
-                price: 50000,
-                salePrice: 0
+                name: addName,
+                newOptionsList: addBack,
+                price: addPrice,
+                salePrice: 0,
             })
             .then((res) => {
-                console.log(res);
+                if (res.data.isSuccess) alert("추가 완료");
+                document.location.href = "/ProductManagement";
             })
             .catch((error) => {
-
-            });
-        axios
-            .get(`https://prod.kcook-cake.com/app/additional-products`)
-            .then((res) => {
-                console.log(res.data.result.content);
-            })
-            .catch((error) => {
-
             });
     }
-
     const [num, setNum] = useState(0);
     const [addDiv, setAddDiv] = useState(false);
     const [addName, setAddName] = useState("");
+    const [addPrice, setAddPrice] = useState(0);
     const [addOption, setAddOption] = useState([
         {
             optionId: 1,
@@ -81,23 +83,26 @@ function ProductManagement () {
                 {
                     optionListId: 1,
                     optionListName: "1호",
-                    optionListPrice: 1000,
+                    optionListPrice: 0,
                 },
             ],
             optionDirect: false,
             optionDirectText: "",
         },
     ]);
-
+    const [addBack, setAddBack] = useState<any>([]);
     const handleAddName = (e: any, ) => {
         setAddName(e.target.value);
+    };
+    const handleAddPrice = (e: any, ) => {
+        setAddPrice(e.target.value);
     };
 
     const [update, setUpdate] = useState([]);
     const [updateOption, setUpdateOption] = useState([
         {
             name: "케이크1",
-            thumbnail: "",
+            image: "",
             list:
             [
                 {
@@ -145,7 +150,7 @@ function ProductManagement () {
         },
         {
             name: "케이크2",
-            thumbnail: "",
+            image: "",
             list:
             [   
                 {
@@ -168,7 +173,7 @@ function ProductManagement () {
     const [data, setData] = useState([
         {
             name: "케이크1",
-            thumbnail: "",
+            image: "",
             list:
             [   
                 {
@@ -216,7 +221,7 @@ function ProductManagement () {
         },
         {
             name: "케이크2",
-            thumbnail: "",
+            image: "",
             list:
             [   
                 {
@@ -254,8 +259,6 @@ function ProductManagement () {
             // ud[i] = data[i].list;
             // setUpdateOption(ud);
         }
-        console.log(data);
-        console.log(updateOption);
     },[]);
 
     return(
@@ -275,14 +278,11 @@ function ProductManagement () {
                     {addDiv? 
                     <div className="spm-add">
                         <div className="spm-add-inner">
-                            <div
+                            <button
                                 className="move-tap"
-                                onClick={()=>{
-                                    alert("추가"); //addOption, addName
-                                    Add();
-                                }}>
+                                onClick={Add}>
                                 <DragBtn/>
-                            </div>
+                            </button>
                             <div className="spm-add-content">
                                 <div className="spm-add-img">
                                     <AddIcon/>
@@ -292,9 +292,7 @@ function ProductManagement () {
                                         <input
                                             className="spm-add-main-title spm-add-title"
                                             placeholder="상품명"
-                                            onChange={(e)=>{
-                                                handleAddName(e);
-                                            }}
+                                            onChange={handleAddName}
                                         />
                                         <div id="spm-none-1" className="spmcard-update-input-right">x</div>
                                         <div id="spm-none-1" className="spmcard-update-input-right">x</div>
@@ -322,8 +320,8 @@ function ProductManagement () {
                                             type="text"
                                             min="0"
                                             placeholder="0원"
-                                            // value={optionList.optionListPrice}
-                                            // onChange={(e)=>{handleOptionListPrice(e, idx, option.optionId, optionList.optionListId)}}
+                                            value={addPrice+"원"}
+                                            onChange={handleAddPrice}
                                         />
                                         <div id="spm-none-1" className="spmcard-update-input-right">x</div>
                                     </div>

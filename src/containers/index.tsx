@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; HashRouter
 import '../styles/common/SellerMypage.scss';
 
 import Header from '../components/header/Header';
@@ -52,7 +53,7 @@ const Pages = () => {
       <Route exact path="/Cake/:id" component={CakeDetail} />
       <Route exact path="/Store/:id" component={StoreDetail} />
 
-      {/* <Main /> */}
+      <Main />
       {/* <Seller />
       <Mypage /> */}
       {numLeftMobile == 2?

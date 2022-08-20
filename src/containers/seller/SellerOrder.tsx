@@ -22,7 +22,7 @@ function SellerOrder (){
             salePrice: 0,
             status: "VALID",
             storeName: "유니아케이크",
-            thumbnail: "",
+            image: "",
         },
         {
             date: "2022-08-01",
@@ -36,7 +36,7 @@ function SellerOrder (){
             salePrice: 0,
             status: "VALID",
             storeName: "유니아케이크",
-            thumbnail: "",
+            image: "",
         },
         {
             date: "2022-08-01",
@@ -50,7 +50,7 @@ function SellerOrder (){
             salePrice: 0,
             status: "VALID",
             storeName: "유니아케이크",
-            thumbnail: "",
+            image: "",
         },
         {
             date: "2022-08-04",
@@ -64,7 +64,7 @@ function SellerOrder (){
             salePrice: 0,
             status: "VALID",
             storeName: "유니아케이크",
-            thumbnail: "",
+            image: "",
         },
     ]);
     // const [data, setData] = useState([]);

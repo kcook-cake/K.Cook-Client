@@ -18,13 +18,13 @@ interface LengthwiseCardProps {
 function WidthwiseCard({ getData }: LengthwiseCardProps) { 
     return (
         <>
-    {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+    {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
         return (
         <div className="widthwise-card" key={data.productId}>
             <div className="widthwise-card-img-flex">
-                {data.thumbnail == ""?
+                {data.image == null?
                     <div className="widthwise-img-none">~준비중 입니다~</div>:
-                    <img src={data.thumbnail} />
+                    <img src={data.image} />
                 }
             </div>
             <div className="widthwise-card-info">

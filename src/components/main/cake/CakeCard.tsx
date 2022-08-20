@@ -15,16 +15,15 @@ interface Props {
 function CakeCard({getData, cakeDetail}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
+            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
                 return (
-                    // <Link to={"/"+link+"/"+data.productId}>
                     <a className={"cake-store-card-"+((idx > 7)&&cakeDetail? "dummy": "")} href={"/Cake/0"}>
                         <div className="cakecard-flex" key={data.productId}>
                             <div className="cakecard">
                                 <div className="cakecard-img-flex">
-                                    {data.thumbnail == ""?
+                                    {data.image == null?
                                         <div className="cakecard-img-none">~준비중 입니다~</div>:
-                                        <img src={data.thumbnail} className="cakecard-img"/>
+                                        <img src={data.image} className="cakecard-img"/>
                                     }
                                 </div>
                                 <div className="cakecard-info">

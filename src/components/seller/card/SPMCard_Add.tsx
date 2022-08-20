@@ -82,7 +82,7 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
                     </div>
                 </div>
                 <>
-                {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
+                {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, }, )=>{
                 return (
                     <div className="spmcard-update-input">
                         <div

@@ -18,22 +18,13 @@ function SectionTitle({ title, link }: Props) {
             <div className="pc section-title">
                 {title}
             </div>
-            <div
-                className="mobile section-title"
-                onClick={()=>{
-                    LinkClick(link);
-                    document.location.href = "/"+link;
-                }}
-            >
+            <div className="mobile section-title">
                 {title}
                 <img src={allow} />
             </div>
             <Link
                 to={"/"+link}
-                className="link"
-                onClick={()=>{
-                    LinkClick(link);
-                }}>
+                className="link">
                 더보기 &gt;
             </Link>
         </div>

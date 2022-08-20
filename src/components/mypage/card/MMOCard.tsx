@@ -11,13 +11,13 @@ interface Props {
 function MMOCard({getData}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
                     <div className="mmocard">
                         <div className="mypage-img-box">
-                            {data.thumbnail == ""?
+                            {data.image == null?
                                 <div className="mypage-img-none">~준비중 입니다~</div>:
-                                <img src={data.thumbnail} className="mypage-img"/>
+                                <img src={data.image} className="mypage-img"/>
                             }
                         </div>
                         <div className="mmocard-content">

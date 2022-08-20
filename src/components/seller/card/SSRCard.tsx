@@ -32,15 +32,15 @@ function SSRCard({ getData, }: Props) {
                 (
                     <>
                         <div className={"mobile spm-ssr-date spm-ssr-date-"+index}>{key}</div>
-                        {data[key].map((data: { thumbnail: any, })=>{
+                        {data[key].map((data: { image: any, })=>{
                             return (
                                 <div className="ssrcard">
                                     <div className="pc ssrcard-time">오늘 15:00</div>
                                     <div className="ssrcard-box">
                                         <div className="seller-img-box ssrcard-img">
-                                            {data.thumbnail == ""?
+                                            {data.image == ""?
                                                 <div className="seller-img-none">~준비중~</div>:
-                                                <img src={data.thumbnail} className="seller-img"/>
+                                                <img src={data.image} className="seller-img"/>
                                             }
                                         </div>
                                         <div className="ssrcard-box-inner">

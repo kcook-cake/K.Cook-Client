@@ -50,7 +50,7 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
     
     return (
         <>
-        {updateOption.map((data: { name: any, thumbnail: any, list: any, }, idx: any, )=>{
+        {updateOption.map((data: { name: any, image: any, list: any, }, idx: any, )=>{
             return (
             <>
                 {update[idx]?
@@ -62,7 +62,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                 update[idx] = false;
                                 setNum(num+1);
                                 setUpdateF(update);
-                                console.log(updateOption);
                                 alert("업데이트"); //updateOption
                                 // setUpdateOptionF(getData); //안에 내용 초기화..
                                 // axios.update
@@ -168,7 +167,7 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                         className="spmcard-update-input-price"
                                                         type="text"
                                                         min="0"
-                                                        // placeholder="0원"
+                                                        placeholder="0원"
                                                         value={optionList.optionListPrice+"원"}
                                                         onChange={(e)=>{handleOptionListPrice(e, idx, option.optionId, optionList.optionListId)}}
                                                     />

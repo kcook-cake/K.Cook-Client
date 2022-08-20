@@ -13,8 +13,7 @@ function HMMCard({ setNumLeftMobileF }) {
     var pathname = window.location.pathname;
     if (pathname == "/") pathname = "/Home";
     pathname = pathname.split("/")[1];
-    LinkClick(pathname);
-    mypageLinkClick(pathname);
+
     //로그인 여부
     const [session, setSession] = useState(false);
     const [auth, setAuth] = useState({

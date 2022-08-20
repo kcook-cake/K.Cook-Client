@@ -31,15 +31,15 @@ function SSO_SSH_Card ({getData}: Props) {
                 (
                     <>
                         <div className={"mobile sso-ssh-card-date sso-ssh-card-date-"+index}>{key}</div>
-                        {data[key].map((data: { thumbnail: any, })=>{
+                        {data[key].map((data: { image: any, })=>{
                             return (
                                 <div className="sso-ssh-card">
                                     <div className="pc sso-ssh-card-date">오늘 15:00</div>
                                     <div className="sso-ssh-card-box">
                                         <div className="pc seller-img-box">
-                                            {data.thumbnail == ""?
+                                            {data.image == ""?
                                                 <div className="seller-img-none">~준비중 입니다~</div>:
-                                                <img src={data.thumbnail} className="seller-img"/>
+                                                <img src={data.image} className="seller-img"/>
                                             }
                                             {/* <img src={cake6}/> */}
                                         </div>

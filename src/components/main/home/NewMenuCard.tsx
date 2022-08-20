@@ -17,7 +17,7 @@ interface Props {
 function NewMenuCard({getData, resize, slidePx, }: Props) {
     return (
         <Link to="/Cake/0">
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
+            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
                 return (
                     <>
                         <li
@@ -31,9 +31,9 @@ function NewMenuCard({getData, resize, slidePx, }: Props) {
                             >
                             <div className="newmenucard-card" key={data.productId}>
                                 <div className="newmenucard-card-img-flex">
-                                    {data.thumbnail == ""?
+                                    {data.image == null?
                                         <div className="newmenucard-img-none">~준비중 입니다~</div>:
-                                        <img src={data.thumbnail} />
+                                        <img src={data.image} />
                                     }
                                 </div>
                                 <div className="newmenucard-card-info">

@@ -24,8 +24,6 @@ function MypageSection (){
         //pathname, parameter 가져오기
         var pathname = window.location.pathname;
         pathname = pathname.split("/")[1];
-        LinkClick(pathname);
-        mypageLinkClick(pathname);
     },[]);
 
     return(

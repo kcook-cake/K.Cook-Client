@@ -15,14 +15,14 @@ interface Props {
 function EventCard({getData, link}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
                 return (
                     <Link to={"/"+link+"/"+data.productId}>
                         <div className="event-card">
                             <div className="card-img">
-                                {data.thumbnail == ""?
+                                {data.image == ""?
                                     <div className="event-card-img-none">~준비중 입니다~</div>:
-                                    <img src={data.thumbnail} alt="cake-image"/>
+                                    <img src={data.image} alt="cake-image"/>
                                 }
                             </div>
                             <h2 className="event-card-title">오늘 종료! 케이쿡 단독 최저가!</h2>

@@ -10,6 +10,7 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
     axios
         .get(`https://prod.kcook-cake.com/app/` + link + listLink)
         .then((res) => {
+            console.log(res.data.result.content);
             const data = res.data.result.content;
             fnPage(data.length);
 
@@ -21,15 +22,10 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
             var changeData = [];
             for (var i = num1; i < num2; i++) {
                 changeData[i] = res.data.result.content[i];
-                changeData[i] += {
-                    num: i,
-                };
             }
             for (var i = num2; i < num3; i++) {
                 changeData[i] = {
-                    num: i,
-                };
-                changeData[i] = {
+                    image: null,
                     isCake: true,
                     name: "~준비중 입니다~",
                     price: 0,
@@ -40,7 +36,6 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
                     salePrice: 0,
                     status: "VALID",
                     storeName: "~준비중 입니다~",
-                    thumbnail: "",
                 }
             }
             fn(changeData);
@@ -50,6 +45,7 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
             var changeData = [];
             for (var i = 0; i < (page+1)*num+pageAdd; i++) {
                 changeData[i] = {
+                    image: null,
                     isCake: true,
                     name: "~준비중 입니다~",
                     price: 0,
@@ -60,7 +56,6 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
                     salePrice: 0,
                     status: "VALID",
                     storeName: "~준비중 입니다~",
-                    thumbnail: "",
                 }
             }
             fn(changeData);

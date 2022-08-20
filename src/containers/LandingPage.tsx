@@ -15,6 +15,44 @@ import Location from "src/components/landing/Locations";
 import dDayCount from "./dDayCount";
 
 function LandingPage() {
+  const [loginShow, setLoginShow] = useState(false);
+  const [signInId, setInputId] = useState("");
+  const [password, setInputPw] = useState("");
+  const [disabled, setDisabled] = useState(false);
+  // const [failModal, setFailModal] = useState(false);
+  const [modalCSS, setModalCSS] = useState(false);
+  const handleInputId = (e: any,) => {
+    setInputId(e.target.value);
+  };
+  //onChange 될때마다 그 값을 handleInputId 메서드로 setInputId에 값을 변경한다.
+  //setInputId 는 signInId의 값을 변경한다.
+  const handleInputPw = (e: any) => {
+    setInputPw(e.target.value);
+  };
+
+  const onClickLogin = () => {
+    console.log($("#loginAuto").is(':checked'));
+    axios
+      .post(`https://prod.kcook-cake.com/app/sign-in`, {
+        password: password,
+        email: signInId,
+      })
+      .then((res) => {
+        if ($("#loginAuto").is(':checked')) 
+          localStorage.setItem("jwToken", res.data.result.jwt);
+        else
+          sessionStorage.setItem("jwToken", res.data.result.jwt);
+        document.location.href = "/";
+      })
+      .catch((error) => {
+        setFailModal(true);
+        setInputPw("");
+        setTimeout(() => {
+          setFailModal(false);
+        }, 5000);
+      });
+  };
+
   // 디데이
   useEffect(()=>{
     getdDay();
@@ -134,10 +172,48 @@ function LandingPage() {
   
   return (
     <div id="landing" className="landing-page">
+      {loginShow?
+        <div id="landing" className="landing-page" style={{ top: "50px", position: "absolute", }}>
+          <p className="login-center">이메일</p>
+          <input
+            className="login-input"
+            type="text"
+            value={signInId}
+            placeholder="아이디입력"
+            // disabled={disabled}
+            onChange={handleInputId}
+          ></input>
+          <p className="login-center">비밀번호</p>
+          <input
+            className="login-input"
+            type="password"
+            value={password}
+            placeholder="비밀번호 입력"
+            autoComplete="on"
+            onChange={handleInputPw}
+          ></input>
+          <button
+            type="submit"
+            className="login-btn"
+            onClick={onClickLogin}
+            disabled={
+              signInId.length !== 0 && password.length >= 8 ? false : true
+            }
+          >
+            로그인
+          </button>
+        </div> : <></>
+      }
       <header className="landing-header">
-        <img src={menuIcon} alt="menu" className="menu landing-mobile" />
+        <img src={menuIcon} alt="menu" className="menu" 
+        onClick={()=>{
+          if(loginShow)
+            setLoginShow(false);
+          else
+            setLoginShow(true);
+        }}/> {/* landing-mobile */}
         <img src={logo} alt="logo" className="logo"/>
-        <img src={searchIcon} alt="search" className="search landing-mobile"/>
+        <img src={searchIcon} alt="search" className="search"/> {/* landing-mobile */}
       </header>
 
       <div className="intro">
@@ -277,7 +353,7 @@ function LandingPage() {
 
           <footer className="kcook-info">
             케이쿡 | 대표 정예빈 | 입점 문의 : cakeorder.kcook@gmail.com{" "}<br/>
-            서울특별시 동작구 상도로 369 창신관 313호
+            서울특별시 동작구 상도로55길 8, 402호
           </footer>
         </div>
       </div>

@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Transition, CSSTransition } from "react-transition-group";
-import axios from "axios";
-import $ from 'jquery';
+import "../styles/LandingPage.scss";
+import "../styles/LandingSky-Spring.scss";
 
-import "../styles/common/LoginSignup.scss";
-import "../styles/Login.scss";
+import logo from "../assets/logo.webp";
+import introKcook from "../assets/intro-kcook.svg";
+import coupon from "../assets/coupon.webp";
+import menuIcon from "../assets/icon-menu.svg";
+import searchIcon from "../assets/search.svg";
 
-import logo from "../assets/logo.png";
+import axios from 'axios';
 
-function Login() {
+import City from "src/components/landing/City";
+import Location from "src/components/landing/Locations";
+import isSession from "src/utils/isSession";
+
+function Block() {
+
   const [signInId, setInputId] = useState("");
   const [password, setInputPw] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [failModal, setFailModal] = useState(false);
   const [modalCSS, setModalCSS] = useState(false);
-  const handleInputId = (e) => {
+  const handleInputId = (e: any,) => {
     setInputId(e.target.value);
   };
   //onChange 될때마다 그 값을 handleInputId 메서드로 setInputId에 값을 변경한다.
   //setInputId 는 signInId의 값을 변경한다.
-  const handleInputPw = (e) => {
+  const handleInputPw = (e: any) => {
     setInputPw(e.target.value);
   };
 
@@ -47,30 +53,10 @@ function Login() {
       });
   };
 
-  const handleSubmit = async (event) => {
-    //눌러도 여러번 호출 못하게
-    setDisabled(true);
-    //새로고침 방지
-    event.preventDefault();
-    await new Promise((r) => setTimeout(r, 10000));
-    setDisabled(false);
-  };
 
-  // 페이지 렌더링 후 가장 처음 호출되는 함수
-  useEffect(() => {
-    $(".hm-pc-flex").hide();
-    },
-    // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
-    //업데이트될 때는 useEffect() 실행하지 말아주세요 라는 뜻
-    []
-  );
-
+  
   return (
-    <div className="login-flex">
-      <form className="login" onSubmit={handleSubmit}>
-        <img src={logo} className="logo" />
-        <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
-        
+    <div id="landing" className="landing-page">
         <p className="login-center">이메일</p>
         <input
           className="login-input"
@@ -89,17 +75,7 @@ function Login() {
           autoComplete="on"
           onChange={handleInputPw}
         ></input>
-
-        <div className="login-sub">
-          <div className="login-auto">
-            <input type="checkbox" id="loginAuto"></input>
-            <label htmlFor="loginAuto"></label>
-            <div className="login-auto-contents">자동 로그인</div>
-          </div>
-          <Link to="/LoginFind">비밀번호찾기</Link>
-        </div>
-
-        <div
+        <button
           type="submit"
           className="login-btn"
           onClick={onClickLogin}
@@ -108,22 +84,9 @@ function Login() {
           }
         >
           로그인
-        </div>
-
-        <button className="login-register">
-          아직 계정이 없으신가요?
-          <Link to="/SignUp" style={{ marginLeft: "4px", }}>가입하기</Link>
-          {failModal === true ? (
-            <div className="login-iscorrect">
-              로그인 정보가 일치하지 않습니다.
-            </div>
-          ) : // </CSSTransition>
-          null}
         </button>
-
-      </form>
     </div>
   );
 }
 
-export default Login;
+export default Block;

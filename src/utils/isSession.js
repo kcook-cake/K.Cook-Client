@@ -5,13 +5,12 @@ import axios from "axios";
 const isSession = (jwToken, fn, fn2) => {
     // sessionStorage.removeItem('jwToken')
     axios
-        .get(`/app/accounts/auth`, {
+        .get(`https://prod.kcook-cake.com/app/accounts/auth`, {
             headers: {
                 'X-ACCESS-TOKEN': jwToken,
             }
         })
         .then((res) => {
-            // console.log(res.data.isSuccess)
             if(fn != null) fn(res.data.isSuccess);
             if(fn2 != null) fn2(res.data.result);
         })

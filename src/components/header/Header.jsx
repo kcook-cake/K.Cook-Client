@@ -33,7 +33,6 @@ function Header ({ setNumLeftMobileF }) {
     var pathname = window.location.pathname;
     if (pathname == "/") pathname = "/Home";
     pathname = pathname.split("/")[1];
-    LinkClick(pathname);
 
     var jwToken = undefined;
     if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;

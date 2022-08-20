@@ -15,16 +15,15 @@ interface Props {
 function LengthwiseCard({getData, link}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, thumbnail: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
+            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
                 return (
-                    // <Link to={"/"+link+"/"+data.productId}>
                     <Link to={"/"+link+"/0"}>
                         <div className="lengthwise-flex" key={data.productId}>
                             <div className="lengthwise">
                                 <div className="lengthwise-img-flex">
-                                    {data.thumbnail == ""?
+                                    {data.image == null?
                                         <div className="lengthwise-img-none">~준비중 입니다~</div>:
-                                        <img src={data.thumbnail} className="lengthwise-img"/>
+                                        <img src={data.image} className="lengthwise-img"/>
                                     }
                                 </div>
                                 <div className="lengthwise-info">
