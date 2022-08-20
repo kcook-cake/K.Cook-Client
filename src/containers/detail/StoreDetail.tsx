@@ -90,7 +90,7 @@ const StoreDetail = () =>{
                 </div>
                 <img src={DetailAd} className="store-detail-ad" />
 
-                <div className="store-detail home">
+                <div className="store-detail-cakelist home">
                     <div className="store-detail-title-flex">
                         <div className="store-detail-title">케이크</div>
                         <div className="store-detail-btn">

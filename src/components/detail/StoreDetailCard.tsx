@@ -24,7 +24,7 @@ function StoreDetailCard({getData, resize, slidePx, }: Props) {
                             className="store-detail-card-flex"
                             style={{
                                 top: idx%2==0||resize<=767 ? 0: 500,
-                                left: resize<=767? (345*idx): idx%2==0? (150*idx+10) : (150*(idx-1)+10),
+                                left: resize<=767? (170*idx): idx%2==0? (150*idx+10) : (150*(idx-1)+10),
                                 transform: `translateX(${slidePx}px)`,
                                 transition: "0.5s ease",
                             }}

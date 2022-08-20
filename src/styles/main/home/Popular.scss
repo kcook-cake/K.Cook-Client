@@ -56,23 +56,23 @@
 }
 
 @media (max-width: 767px) {
-  .popular-flex {
-        .popular {
-            padding: 0 16px;
-        }
-        .popular-title-flex {
-            padding: 0;
-            height: 42px;
-        }
-        .popular-title {
-            font-size: 18px;
-        }
-        .popular-btn {
-            display: none;
-        }
-  }
+    .popular-flex {
+            .popular {
+                padding: 0 16px;
+            }
+            .popular-title-flex {
+                padding: 0;
+                height: 42px;
+            }
+            .popular-title {
+                font-size: 18px;
+            }
+            .popular-btn {
+                display: none;
+            }
+    }
 
-  .popular {
+    .popular {
         width: 100%;
         height: auto;
         background-color: #fff;
