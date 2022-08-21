@@ -188,7 +188,7 @@ function Header ({ setNumLeftMobileF }) {
             케이크
           </Link>
           <Link
-            to="/pickit/Store"
+            to="/Store"
             className="header-link Store"
             onClick={()=>{
               setNumLeftMobileF(1);
