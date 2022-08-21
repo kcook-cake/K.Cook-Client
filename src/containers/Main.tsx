@@ -10,7 +10,7 @@ import CustomerService from './main/cs/CS';
 const Main = () =>{
     return(
         <>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/pickit/" component={Home} />
             <Route exact path="/TodaysRec" component={TodaysRec} />
             <Route exact path="/Cake" component={Cake} />
             <Route exact path="/Store" component={Store} />

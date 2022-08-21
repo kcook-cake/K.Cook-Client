@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/card/mypage/MMSCard.scss';
+import '../../../styles/mypage/card/MMSCard.scss';
 
 import rightArrow from "../../../../assets/right-arrow.svg";
 import cake6 from   '../../../../assets/cake6.png';

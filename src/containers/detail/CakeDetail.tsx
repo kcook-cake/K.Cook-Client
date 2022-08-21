@@ -4,7 +4,6 @@ import '../../styles/detail/StoreDetail.scss';
 import DetailAd from "../../assets/detail-ad.png";
 import TestImg from "../../assets/searchIcon.png";
 
-import LengthwiseCard from 'src/components/LengthwiseCard';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 

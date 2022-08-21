@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/WidthwiseCard.scss';
-import '../styles/LengthwiseCard.scss';
+import '../../styles/main/WidthwiseCard.scss';
+import '../../styles/main/LengthwiseCard.scss';
 
 import star from 'src/utils/star';
 

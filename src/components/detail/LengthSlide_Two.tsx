@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/card/main/PopularCard.scss';
+import '../../styles/main/LengthSlide.scss';
 
 import star from 'src/utils/star';
 
@@ -14,28 +14,29 @@ interface Props {
     slidePx: number,
 }
 
-function PopularCard({getData, resize, slidePx, }: Props) {
+function LengthSlide_Two({getData, resize, slidePx, }: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
                 return (
                     <Link to="/Cake/0">
                         <li
-                            className="popularcard-flex"
+                            className="lengthslide-flex"
                             style={{
-                                left: resize<=767? ((176)*idx) : (300*idx+10),
+                                top: idx%2==0||resize<=767 ? 0: 500,
+                                left: resize<=767? (170*idx): idx%2==0? (150*idx+10) : (150*(idx-1)+10),
                                 transform: `translateX(${slidePx}px)`,
                                 transition: "0.5s ease",
                             }}
                             >
-                            <div className="popularcard">
-                                <div className="popularcard-img-flex">
+                            <div className="lengthslide">
+                                <div className="lengthslide-img-flex">
                                     {data.image == null?
-                                        <div className="popularcard-img-none">~준비중 입니다~</div>:
-                                        <img src={data.image} className="popularcard-img"/>
+                                        <div className="lengthslide-img-none">~준비중 입니다~</div>:
+                                        <img src={data.image} className="lengthslide-img"/>
                                     }
                                 </div>
-                                <div className="popularcard-info">
+                                <div className="lengthslide-info">
                                     <div className="card-top-info">
                                         <div className="card-rating-star">{star(data.raiting)}</div>
                                         <div className="card-review">{"리뷰 "+data.reviewCount}</div>
@@ -53,4 +54,4 @@ function PopularCard({getData, resize, slidePx, }: Props) {
     );
 }
 
-export default PopularCard;
+export default LengthSlide_Two;

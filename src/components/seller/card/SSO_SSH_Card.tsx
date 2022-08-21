@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/card/seller/SSO_SSH_Card.scss';
+import '../../../styles/seller/card/SSO_SSH_Card.scss';
 
 import rightArrow from "../../../assets/right-arrow.svg";
 import cake6 from   '../../../assets/cake6.png';

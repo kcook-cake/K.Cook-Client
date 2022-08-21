@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/card/main/NewMenuCard.scss';
+import '../../styles/card/WidthSlide.scss';
 
 import star from 'src/utils/star';
 
@@ -14,14 +14,14 @@ interface Props {
     slidePx: number,
 }
 
-function NewMenuCard({getData, resize, slidePx, }: Props) {
+function WidthSlide({getData, resize, slidePx, }: Props) {
     return (
         <Link to="/Cake/0">
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
                 return (
                     <>
                         <li
-                            className="newmenucard"
+                            className="widthslide"
                             style={{
                                 top: idx%2==0||resize<=767 ? 0: 200,
                                 left: resize<=767? (345*idx): idx%2==0? (299.8*idx+10) : (299.8*(idx-1)+10),
@@ -29,20 +29,20 @@ function NewMenuCard({getData, resize, slidePx, }: Props) {
                                 transition: "0.5s ease",
                             }}
                             >
-                            <div className="newmenucard-card" key={data.productId}>
-                                <div className="newmenucard-card-img-flex">
+                            <div className="widthslide-card" key={data.productId}>
+                                <div className="widthslide-card-img-flex">
                                     {data.image == null?
-                                        <div className="newmenucard-img-none">~준비중 입니다~</div>:
+                                        <div className="widthslide-img-none">~준비중 입니다~</div>:
                                         <img src={data.image} />
                                     }
                                 </div>
-                                <div className="newmenucard-card-info">
+                                <div className="widthslide-card-info">
                                     <div className="card-rating-star">
                                         {star(data.raiting)}
                                     </div>
                                     <div className="card-shop-name">
                                         {data.storeName}
-                                        <div className="newmenucard-mobile card-review">
+                                        <div className="widthslide-mobile card-review">
                                             {"리뷰 "+data.reviewCount}
                                         </div>
                                     </div>
@@ -52,7 +52,7 @@ function NewMenuCard({getData, resize, slidePx, }: Props) {
                                     <div className="card-minprice">
                                         {data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"~"}
                                     </div>
-                                    <div className="newmenucard-pc card-review">
+                                    <div className="widthslide-pc card-review">
                                         {"리뷰 "+data.reviewCount}
                                     </div>
                                 </div>
@@ -65,4 +65,4 @@ function NewMenuCard({getData, resize, slidePx, }: Props) {
     );
 }
 
-export default NewMenuCard;
+export default WidthSlide;

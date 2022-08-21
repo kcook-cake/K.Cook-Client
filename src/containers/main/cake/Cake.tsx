@@ -10,13 +10,12 @@ import selectAllow from "../../../assets/selectArrow.png";
 import X from "../../../assets/x.svg";
 
 import getAxios from 'src/utils/getAxios';
-import LengthwiseCard from '../../../components/LengthwiseCard';
 import PickCard from 'src/components/main/PickCard';
 import CakeBarCard from 'src/components/main/cake/CakeBarCard';
 import CakeBar_MobileCard from 'src/components/main/cake/CakeBar_MobileCard';
-import Cake_Store_TitleCard from 'src/components/main/Cake_Store_TitleCard';
-import CakeCard from 'src/components/main/cake/CakeCard';
+import CakeCard from 'src/components/main/CakeCard';
 import LinkClick from 'src/utils/LinkClick';
+import CakeStoreTitle from 'src/components/main/CakeStoreTitle';
 
 function Cake (){
     //선택지 기타 등등
@@ -518,7 +517,7 @@ function Cake (){
                     }
                 </div>
                 <div className="cake-store-contents cake-contents-flex">
-                    <Cake_Store_TitleCard detail={cakeDetail} setDetailF={setCakeDetail}/>
+                    <CakeStoreTitle detail={cakeDetail} setDetailF={setCakeDetail}/>
                     <div className="contents">
                         <CakeCard getData={data} cakeDetail={cakeDetail} />
                     </div>

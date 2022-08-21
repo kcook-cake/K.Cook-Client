@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import LengthwiseCard from '../../components/LengthwiseCard';
-import '../../../src/styles/card/main/Cake_Store_TitleCard.scss'
+import '../../../src/styles/main/CakeStoreTitle.scss'
 
 import getAxios from 'src/utils/getAxios';
 
@@ -10,7 +9,7 @@ interface Props {
     setDetailF: any,
 }
 
-function Cake_Store_TitleCard ({ detail, setDetailF, }:Props){
+function CakeStoreTitle ({ detail, setDetailF, }:Props){
 
     return(
         <>
@@ -29,7 +28,7 @@ function Cake_Store_TitleCard ({ detail, setDetailF, }:Props){
 
 
 
-export default Cake_Store_TitleCard;
+export default CakeStoreTitle;
 
 
 

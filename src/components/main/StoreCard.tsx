@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/card/main/StoreCard.scss';
+import '../../styles/main/StoreCard.scss';
 
 import star from 'src/utils/star';
 
@@ -17,7 +17,7 @@ function StoreCard({getData, cakeDetail}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
                 return (
-                    <a className={"cake-store-card-"+((idx > 5)&&cakeDetail? "dummy": "")} href={"/Store/0"}>
+                    <a className={"cake-store-card-"+((idx > 5)&&cakeDetail? "dummy": "")} href={"/pickit/Store/0"}>
                         <div className="storecard-flex" key={data.productId}>
                             <div className="storecard">
                                 <div className="storecard-img-flex">

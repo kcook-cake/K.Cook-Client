@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
-import '../../../styles/card/seller/SPMCard_Add.scss';
+import '../../../styles/seller/card/SPMCard_Add.scss';
 
 import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';

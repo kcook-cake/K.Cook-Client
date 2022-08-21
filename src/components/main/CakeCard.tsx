@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../../styles/card/main/CakeCard.scss';
+import '../../styles/main/CakeCard.scss';
 
 import star from 'src/utils/star';
 
@@ -12,7 +12,7 @@ interface Props {
     cakeDetail: any,
 }
 
-function CakeCard({getData, cakeDetail}: Props) {
+function CakeCard({ getData, cakeDetail, }: Props) {
     return (
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/card/seller/SPMCard.scss';
+import '../../../styles/seller/card/SPMCard.scss';
 
 import cake6 from   '../../../assets/cake6.png';
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/LengthwiseCard.scss';
+import '../../styles/main/LengthwiseCard.scss';
 
 import star from 'src/utils/star';
 

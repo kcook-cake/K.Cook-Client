@@ -1,8 +1,8 @@
 @import "../../reset.scss";
 
-.popular-flex {
+.popularmenu-flex {
   width: 100%;
-  .popular-title-flex {
+  .popularmenu-title-flex {
       width: 100%;
       height: 69px;
       padding: 0 10px;
@@ -11,16 +11,16 @@
       font-size: 18px;
       font-weight: 600;
   }
-  .popular-title {
+  .popularmenu-title {
     float: left;
     color: #222222;
     font-size: 24px;
   }
-  .popular-btn {
+  .popularmenu-btn {
       float: right;
       display: flex;
   }
-  .popular-btn-arrow {
+  .popularmenu-btn-arrow {
       width: 30px;
       font-size: 20px;
       font-weight: 800;
@@ -29,20 +29,20 @@
   }
 }
 
-.popular {
+.popularmenu {
   width: 1199px;
   height: 699.5px;
   margin: auto;
 
   position: relative;
   background-color: #fafafa;
-  .popular-inner{
+  .popularmenu-inner{
         width: 1199px;
         height: 699.5px;
         position: relative;
         overflow: hidden;
     }
-    .popular-contents {
+    .popularmenu-contents {
         list-style: none;
         padding-left: 0px;
 
@@ -56,42 +56,42 @@
 }
 
 @media (max-width: 767px) {
-    .popular-flex {
-            .popular {
+    .popularmenu-flex {
+            .popularmenu {
                 padding: 0 16px;
             }
-            .popular-title-flex {
+            .popularmenu-title-flex {
                 padding: 0;
                 height: 42px;
             }
-            .popular-title {
+            .popularmenu-title {
                 font-size: 18px;
             }
-            .popular-btn {
+            .popularmenu-btn {
                 display: none;
             }
     }
 
-    .popular {
+    .popularmenu {
         width: 100%;
         height: auto;
         background-color: #fff;
-        .popular-inner{
+        .popularmenu-inner{
             width: 100%;
             height: 270px;
         }
-        .popular-contents::-webkit-scrollbar {
+        .popularmenu-contents::-webkit-scrollbar {
             height: 8px;
         }
-        .popular-contents::-webkit-scrollbar-thumb {
+        .popularmenu-contents::-webkit-scrollbar-thumb {
             background-color: #e6e6e6;
             border-radius: 10px;
         }
-        .popular-contents::-webkit-scrollbar-track {
+        .popularmenu-contents::-webkit-scrollbar-track {
             background-color: #f5f5f5;
             border-radius: 10px;
         }
-        .popular-contents {
+        .popularmenu-contents {
             // height: 270px;
             overflow-x: scroll;
         }

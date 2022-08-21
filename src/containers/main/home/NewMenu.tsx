@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import '../../../styles/main/home/PopularMenu.scss'
 import '../../../styles/main/home/NewMenu.scss'
-import '../../../styles/main/home/Popular.scss'
 
 import axios from 'axios';
 
-import SectionTitle from '../../../components/SectionTitle';
-import WidthwiseCard from '../../../components/WidthwiseCard';
 import getAxios from 'src/utils/getAxios';
-import NewMenuCard from 'src/components/main/home/NewMenuCard';
+import LengthSlide_One from 'src/components/main/LengthSlide_One';
 
 function NewMenu (){
     const [data, setData] = useState([]);
@@ -33,44 +31,46 @@ function NewMenu (){
     }, []);
 
     return(
-        <div className="newmenu-flex">
-            <div className="newmenu home">
-                    <div className="newmenu-title-flex">
-                        <div className="newmenu-title">신상품</div>
-                        <div className="newmenu-btn">                        
-                            <div>{num}/5</div>
-                            <button
-                                className="newmenu-btn-arrow"
-                                onClick={()=>{
-                                    setNum(num-1);
-                                    setSlidePx(slidePx+1199);
-                                    if (num == 1) {
-                                        setNum(5);
-                                        setSlidePx(-4796);
-                                    }
-                                }}
-                                style={{ marginLeft: "5px", }}
-                                >&lt;
-                            </button>
-                            <button 
-                                className="newmenu-btn-arrow"
-                                onClick={()=>{
-                                    setNum(num+1);
-                                    setSlidePx(slidePx-1199);
-                                    if (num == 5) {
-                                        setNum(1);
-                                        setSlidePx(0);
-                                    }
-                                }}
-                                >&gt;
-                            </button>
-                        </div>
+        <div className="popularmenu-flex home-flex newmenu-flex">
+            <div className="popularmenu home newmenu">
+                <div className="popularmenu-title-flex">
+                    <div className="popularmenu-title">신상품</div>
+                    <div className="popularmenu-btn">
+                        <div>{num}/5</div>
+                        <button
+                            className="popularmenu-btn-arrow"
+                            onClick={()=>{
+                                setNum(num-1);
+                                if (resize<=767) setSlidePx(slidePx+704);
+                                else setSlidePx(slidePx+1199);
+                                if (num == 1) {
+                                    setNum(5);
+                                    setSlidePx(-4796);
+                                }
+                            }}
+                            style={{ marginLeft: "5px", }}
+                            >&lt;
+                        </button>
+                        <button 
+                            className="popularmenu-btn-arrow"
+                            onClick={()=>{
+                                setNum(num+1);
+                                if (resize<=767) setSlidePx(slidePx-704);
+                                else setSlidePx(slidePx-1199);
+                                if (num == 5) {
+                                    setNum(1);
+                                    setSlidePx(0);
+                                }
+                            }}
+                            >&gt;
+                        </button>
                     </div>
-                    <div className="newmenu-inner">
-                        <ul className="newmenu-contents">
-                            <NewMenuCard getData={data} resize={resize} slidePx={slidePx} />
-                        </ul>
-                    </div>
+                </div>
+                <div className="popularmenu-inner">
+                    <ul className="popularmenu-contents">
+                        <LengthSlide_One getData={data} resize={resize} slidePx={slidePx} />
+                    </ul>
+                </div>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/card/main/Cake_MobileCard.scss'
+import '../../../styles/main/cake/Cake_MobileCard.scss'
 
 import Delete from '../../../assets/cake-bar-mobile-delete.svg';
 

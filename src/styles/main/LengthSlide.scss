@@ -1,17 +1,17 @@
-@import "../../reset.scss";
+@import "../reset.scss";
 
 
-.popularcard-flex {
+.lengthslide-flex {
     position:absolute;
 }
 
-.popularcard-flex > div {
+.lengthslide-flex > div {
     width:279.8px;
     height:460.5px;
     background-color: #fff;
 }
 
-.popularcard {
+.lengthslide {
     width: 279.8px;
     height: 479px;
     margin-bottom: 40px;
@@ -23,7 +23,7 @@
     background-color: #fff;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
-    .popularcard-img-flex {
+    .lengthslide-img-flex {
         width: 279.8px;
         height: 304px;
         margin-bottom: 17px;
@@ -34,18 +34,18 @@
         height: 304px;
         }
     }
-    .popularcard-img-none {
+    .lengthslide-img-none {
         line-height: 304px;
         text-align: center;
         color: #858997;
     }
-    .popularcard-img {
+    .lengthslide-img {
         width: 100%;
         border-radius: 10px;
     }
 }
 
-.popularcard-info {
+.lengthslide-info {
     margin-left: 20px;
     font-weight: bold;
     .card-review {
@@ -95,18 +95,18 @@
 }
 
 @media (max-width: 767px) {
-    .popularcard-flex > div {
+    .lengthslide-flex > div {
         width: 156px;
         height: 262px;
     }
 
-    .popularcard {
+    .lengthslide {
         width: 156px;
         height: 262px;
         margin-bottom: 0px;
         display: inline-flex;
         box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
-        .popularcard-img-flex {
+        .lengthslide-img-flex {
             width: 156px;
             height: 116px;
             border-radius: 10px;
@@ -115,18 +115,18 @@
                 height: 116px;
             }
         }
-        .popularcard-img-none {
+        .lengthslide-img-none {
             line-height: 116px;
             text-align: center;
             color: #858997;
         }
-        .popularcard-img {
+        .lengthslide-img {
             width: 156px;
             height: 116px;
         }
     }
 
-    .popularcard-info {
+    .lengthslide-info {
         margin: 0;
         padding-left: 0px; //왜안돼?
         font-weight: bold;

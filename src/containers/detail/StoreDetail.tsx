@@ -6,12 +6,9 @@ import '../../styles/detail/StoreDetail.scss';
 import DetailAd from "../../assets/detail-ad.png";
 import TestImg from "../../assets/searchIcon.png";
 
-import LengthwiseCard from 'src/components/LengthwiseCard';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
-import CakeCard from 'src/components/main/cake/CakeCard';
-import PopularCard from 'src/components/main/home/PopularCard';
-import StoreDetailCard from 'src/components/detail/StoreDetailCard';
+import LengthSlide_Two from 'src/components/detail/LengthSlide_Two';
 
 const StoreDetail = () =>{
     const [maxNum, setMaxNum] = useState(0);
@@ -63,8 +60,7 @@ const StoreDetail = () =>{
                         <div className="store-detail-store-name">원모먼트</div>
                         <div className="store-detail-store-ad">연리단길 지역 판매량 1위!ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
                         <div className="store-detail-store-address">서울 용산구 이태원로55길 111</div> {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
-                        <div id="map" style={{ height: "200px", marginBottom: "20px", }}></div>
-                        {/* <div id="map" style={{height: "500px"}}></div> */}
+                        <div id="main-map" style={{ height: "200px", marginBottom: "20px", }}></div>
                         <div className="store-detail-store-content-box">
                             <div className="store-detail-store-content">#특별한날</div>
                             <div className="store-detail-store-content">#기념일</div>
@@ -126,7 +122,7 @@ const StoreDetail = () =>{
                     </div>
                     <div className="store-detail-inner">
                         <ul className="store-detail-contents">
-                            <StoreDetailCard getData={data} resize={resize} slidePx={slidePx} />
+                            <LengthSlide_Two getData={data} resize={resize} slidePx={slidePx} />
                         </ul>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/card/seller/SSRCard.scss';
+import '../../../styles/seller/card/SSRCard.scss';
 
 import rightArrow from "../../../assets/right-arrow.svg";
 import { ReactComponent as DragBtn } from '../../../../assets/seller/dragbtn.svg';

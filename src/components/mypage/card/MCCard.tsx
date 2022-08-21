@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/card/mypage/MCCard.scss';
+import '../../../styles/mypage/card/MCCard.scss';
 
 interface Props {
     getData: any

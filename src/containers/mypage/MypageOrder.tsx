@@ -3,7 +3,6 @@ import '../../styles/mypage/MMO_MPR.scss';
 
 import cake6 from   '../../assets/cake6.png';
 import getAxios from 'src/utils/getAxios';
-import LengthwiseCard from 'src/components/LengthwiseCard';
 import PickCard from 'src/components/main/PickCard';
 import MMOCard from 'src/components/mypage/card/MMOCard';
 import mypageLinkClick from 'src/utils/mypageLinkClick';

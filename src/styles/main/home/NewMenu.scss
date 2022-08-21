@@ -1,101 +1,113 @@
 @import "../../reset.scss";
 
-.newmenu-flex {
-    width: 100%;
-    .newmenu-title-flex {
-        width: 100%;
-        height: 69px;
-                padding: 0 10px;
-
-        color: #ea5450;
-        font-size: 18px;
-        font-weight: 600;
-    }
-    .newmenu-title {
-        float: left;
-        color: #222222;
-        font-size: 24px;
-    }
-    .newmenu-btn {
-        float: right;
-        display: flex;
-    }
-    .newmenu-btn-arrow {
-        width: 30px;
-        font-size: 20px;
-        font-weight: 800;
-        // border-radius: 5px;
-        border: 1px solid #ea5450;
-    }
-}
-
+.newmenu-flex,
 .newmenu {
-    width:1199px;
-    height:600px;
-    margin: auto;
-    padding: 80px 0;
-
-    position:relative;
-    background-color: #fff;
-    .newmenu-inner{
-        width:1199px;
-        height:600px;
-        position:relative;
-        overflow:hidden;
-    }
-    .newmenu-contents {
-        list-style:none;
-
-        width:100%;
-        height:100%;
-        
-        position:absolute;
-        top:0;
-        left:0;
-    }
+    background-color: #fff !important;
 }
 
-@media (max-width: 767px) {
+@media(max-width: 767px) {
     .newmenu-flex {
-        padding-bottom: 45px;
-        .newmenu {
-            padding: 0 16px;
-        }
-        .newmenu-title-flex {
-            padding: 0;
-            height: 42px;
-        }
-        .newmenu-title {
-            font-size: 18px;
-        }
-        .newmenu-btn {
-            display: none;
-        }
-    }
-
-    .newmenu {
-        padding: 0;
-        padding-bottom: 45px;
-        width: 100%;
-        height: auto;
-        background-color: #fff;
-        .newmenu-inner{
-            width: 100%;
-            height: 325px;
-        }
-        .newmenu-contents::-webkit-scrollbar {
-            height: 8px;
-        }
-        .newmenu-contents::-webkit-scrollbar-thumb {
-            background-color: #e6e6e6;
-            border-radius: 10px;
-        }
-        .newmenu-contents::-webkit-scrollbar-track {
-            background-color: #f5f5f5;
-            border-radius: 10px;
-        }
-        .newmenu-contents {
-            overflow-x: scroll;
-        }
+        padding-top: 0;
     }
 }
+
+//WidthSlide 사용할때
+// .newmenu-flex {
+//     width: 100%;
+//     .newmenu-title-flex {
+//         width: 100%;
+//         height: 69px;
+//                 padding: 0 10px;
+
+//         color: #ea5450;
+//         font-size: 18px;
+//         font-weight: 600;
+//     }
+//     .newmenu-title {
+//         float: left;
+//         color: #222222;
+//         font-size: 24px;
+//     }
+//     .newmenu-btn {
+//         float: right;
+//         display: flex;
+//     }
+//     .newmenu-btn-arrow {
+//         width: 30px;
+//         font-size: 20px;
+//         font-weight: 800;
+//         // border-radius: 5px;
+//         border: 1px solid #ea5450;
+//     }
+// }
+
+// .newmenu {
+//     width:1199px;
+//     height:600px;
+//     margin: auto;
+//     padding: 80px 0;
+
+//     position:relative;
+//     background-color: #fff;
+//     .newmenu-inner{
+//         width:1199px;
+//         height:600px;
+//         position:relative;
+//         overflow:hidden;
+//     }
+//     .newmenu-contents {
+//         list-style:none;
+
+//         width:100%;
+//         height:100%;
+        
+//         position:absolute;
+//         top:0;
+//         left:0;
+//     }
+// }
+
+// @media (max-width: 767px) {
+//     .newmenu-flex {
+//         padding-bottom: 45px;
+//         .newmenu {
+//             padding: 0 16px;
+//         }
+//         .newmenu-title-flex {
+//             padding: 0;
+//             height: 42px;
+//         }
+//         .newmenu-title {
+//             font-size: 18px;
+//         }
+//         .newmenu-btn {
+//             display: none;
+//         }
+//     }
+
+//     .newmenu {
+//         padding: 0;
+//         padding-bottom: 45px;
+//         width: 100%;
+//         height: auto;
+//         background-color: #fff;
+//         .newmenu-inner{
+//             width: 100%;
+//             height: 325px;
+//         }
+//         .newmenu-contents::-webkit-scrollbar {
+//             height: 8px;
+//         }
+//         .newmenu-contents::-webkit-scrollbar-thumb {
+//             background-color: #e6e6e6;
+//             border-radius: 10px;
+//         }
+//         .newmenu-contents::-webkit-scrollbar-track {
+//             background-color: #f5f5f5;
+//             border-radius: 10px;
+//         }
+//         .newmenu-contents {
+//             overflow-x: scroll;
+//         }
+//     }
+// }
