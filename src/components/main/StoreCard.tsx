@@ -17,7 +17,7 @@ function StoreCard({getData, cakeDetail}: Props) {
         <>
             {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
                 return (
-                    <a className={"cake-store-card-"+((idx > 5)&&cakeDetail? "dummy": "")} href={"/pickit/Store/0"}>
+                    <Link className={"cake-store-card-"+((idx > 5)&&cakeDetail? "dummy": "")} to={"/pickit/Store/0"}>
                         <div className="storecard-flex" key={data.productId}>
                             <div className="storecard">
                                 <div className="storecard-img-flex">
@@ -33,7 +33,7 @@ function StoreCard({getData, cakeDetail}: Props) {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 )
                 })
             }
