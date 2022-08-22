@@ -34,7 +34,7 @@ function SellerSection (){
                 <div className="ss-menu-flex">
                     <div className="ss-menu" >
                         <Link
-                            to="/SellerOrder"
+                            to="/SSOCalendar"
                             className="ss-link SellerOrder">
                             <Menu className="icon"/>
                             <span>주문확인 </span>
@@ -42,7 +42,7 @@ function SellerSection (){
                     </div>
                     <div className="ss-menu" >
                         <Link
-                            to="/SalesHistory"
+                            to="/SSHCalendar"
                             className="ss-link SalesHistory">
                             <Coin className="icon"/>
                             <span>판매내역 </span>

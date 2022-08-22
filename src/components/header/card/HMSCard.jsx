@@ -59,7 +59,7 @@ function HMSCard({ setNumLeftMobileF }) {
                 <div className="hm-mobile-link-flex">
                     <div className="hm-mobile-link">
                         <Link
-                            to="/SellerOrder"
+                            to="/SSOCalendar"
                             className="header-link SellerOrder"
                             onClick={()=>{
                                 setNumLeftMobileF(2);
@@ -71,7 +71,7 @@ function HMSCard({ setNumLeftMobileF }) {
                     </div>
                     <div className="hm-mobile-link">
                         <Link
-                            to="/SalesHistory"
+                            to="/SSHCalendar"
                             className="header-link SalesHistory"
                             onClick={()=>{
                                 setNumLeftMobileF(2);

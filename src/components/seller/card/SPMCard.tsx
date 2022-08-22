@@ -45,7 +45,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
     };
 
     useEffect(()=>{
-
     },[]);
     
     return (
@@ -107,10 +106,10 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                         className="spmcard-update-input-price"
                                         type="text"
                                         min="0"
-                                        placeholder="0원"
+                                        placeholder="0"
                                         // value={optionList.optionListPrice}
                                         // onChange={(e)=>{handleOptionListPrice(e, idx, option.optionId, optionList.optionListId)}}
-                                    />
+                                    />원
                                     <div id="spm-none-1" className="spmcard-update-input-right">x</div>
                                 </div>
                                     <>
@@ -167,10 +166,10 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                         className="spmcard-update-input-price"
                                                         type="text"
                                                         min="0"
-                                                        placeholder="0원"
-                                                        value={optionList.optionListPrice+"원"}
+                                                        placeholder="0"
+                                                        value={optionList.optionListPrice}
                                                         onChange={(e)=>{handleOptionListPrice(e, idx, option.optionId, optionList.optionListId)}}
-                                                    />
+                                                    />원
                                                     <div
                                                         id={"spm-none-"+optionList.optionListId}
                                                         className="spmcard-update-input-right"

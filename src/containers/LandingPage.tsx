@@ -65,7 +65,7 @@ function LandingPage() {
   const [seconds, setSeconds] = useState(0);
   // 디데이
   const getdDay = () => {
-    const setDate = new Date("2022-09-05T01:00:00+0900");
+    const setDate = new Date("2022-09-30T01:00:00+0900");
     const setDateYear = setDate.getFullYear();
     const setDateMonth = setDate.getMonth() + 1;
     const setDateDay = setDate.getDate();
@@ -352,8 +352,8 @@ function LandingPage() {
           >출시 알림 신청</button>
 
           <footer className="kcook-info">
-            케이쿡 | 대표 정예빈 | 입점 문의 : cakeorder.kcook@gmail.com{" "}<br/>
-            서울특별시 동작구 상도로55길 8, 402호
+            케이쿡 | 대표 정예빈 | 입점 문의 : kcookcake@naver.com{" "}<br/>
+            서울특별시 동작구 상도로55길 8, 402호 | 서울특별시 동작구 상도로 369, 창신관 313호
           </footer>
         </div>
       </div>

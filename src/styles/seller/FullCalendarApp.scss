@@ -1,49 +1,47 @@
 @import "../reset.scss";
 
 @media(min-width: 768px) {
-.sfc {
-    width: 1199px;
-    height: 1160px;
-    padding-top: 90px;
-    padding-left: 10px;
-    padding-right: 10px;
-    position: absolute;
-    background-color: #fff;
-    //캘린더 크기설정
-    .fc-view-harness {
-        width: 1175px !important;
-        // width: 1162.2px !important;
-        // width: 1199px !important;
-        height: 730px !important;
-        margin: auto !important;
-    }
-    .seller-calendar {
-        padding: 21px 2px 2px 2px;
-        
-        .fc-toolbar-chunk {
-            display: flex; // 일렬로 나란히
-            align-items: center; // 수직 가운데 정렬
-            text-align: center;
-            color: #222222;
-            font-size: 12px;
+    .sfc {
+        width: 100%;
+        height: 1160px;
+        padding-top: 90px;
+        // padding-left: 10px;
+        // padding-right: 10px;
+        // position: absolute;
+        background-color: #fff;
+        //캘린더 크기설정
+        .fc-view-harness {
+            width: 100% !important;
+            // width: 1162.2px !important;
+            // width: 1199px !important;
+            height: 730px !important;
+            margin: auto !important;
         }
-        border-radius: 8px;
-        box-shadow: 0px 0px 5px rgb(223, 223, 223);
+        .seller-calendar {
+            padding: 21px 2px 2px 2px;
+            
+            .fc-toolbar-chunk {
+                display: flex; // 일렬로 나란히
+                align-items: center; // 수직 가운데 정렬
+                text-align: center;
+                color: #222222;
+                font-size: 12px;
+            }
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgb(223, 223, 223);
+        }
+
+        
+        .seller-mypage-top {
+            padding: 0;
+        }
     }
-}
 }
 
 .fcam {
     display: none;
 }
 
-.seller-order-top-calendar {
-    // width: 1199px;
-    display: flex;
-    margin-bottom: 36px;
-    // width: 1162.2px;
-    // width: 1199px;
-}
 .mypage-top-calendar {
     margin-bottom: 36px;
     h3 {
@@ -167,7 +165,7 @@
         }
     }
     .fc-event-main-frame {
-        width: 155px !important;
+        width: 115px !important;
         // background-color: rgb(0, 0, 0, 0) !important;
         // float: right !important;
     }
@@ -381,16 +379,25 @@
             margin-bottom: 0px;
         }
 
-    //     // //////////////////////
+        ////////////////////
 
-        .seller-order-top-calendar {
-            // width: 1162.2px;
+        .seller-mypage-top {
             width: 100%;
             height: 50px;
-            margin-bottom: 0;
             line-height: 50px;
+            padding: 0 16px;
+            // color: #fff;
             background-color: #EE7774;
         }
+        .ss-fc-link {
+            margin: 0;
+        }
+        .seller-mypage-front-title,
+        .ss-fc-link-right {
+            color: #fff;
+            font-weight: 500;
+        }
+
         .mypage-top-calendar {
             margin-bottom: 0px;
             h3 {

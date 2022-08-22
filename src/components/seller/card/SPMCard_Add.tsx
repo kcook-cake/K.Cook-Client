@@ -46,6 +46,9 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
         setAddOptionF(addOption);
     };
 
+    const [startDrag, setStartDrag] = useState(0);
+    const [endDrag, setEndDrag] = useState(0);
+    const [draggingSectionId, setDraggingSectionId] = useState(null);// 1
     useEffect(()=>{
     },[]);
     
@@ -87,7 +90,60 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
                     <div className="spmcard-update-input">
                         <div
                             id={option.optionDirect&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
-                            className="spmcard-update-input-left">
+                            className="spmcard-update-input-left"
+                            onMouseOver={(e)=>{
+                                // console.log("onMouseOver");
+                                // console.log(e.clientX);
+                            }}
+                            onDragStart={(e)=>{
+                                setStartDrag(e.clientY);
+                            }}
+                            onDragEnter={(e)=>{
+                                // console.log("onDragEnter");
+                                // console.log(e.clientX);
+                            }}
+                            onDrag={(e)=>{
+                                //447 510
+                                // if (e.clientY == 0) return;
+                                // console.log("onDrag");
+                                // console.log(e.clientY);
+                            }}
+                            onDragOver={(e)=>{
+                                // console.log("onDragOver");
+                                // console.log(e.clientX);
+                            }}
+                            onDragEnd={(e)=>{
+                                //Math.ceil() 올림 Math.floor() 내림, Math.abs() 절댓값
+                                if (56 <= startDrag-e.clientY && startDrag-e.clientY <= 92*option.optionList.length
+                                    && (optionList.optionListId-1 != 0)) {
+                                    var data = addOption[option.optionId-1].optionList[optionList.optionListId-1];
+                                    console.log(data);
+                                    addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId-1;
+                                    addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = data.optionListId+1;
+                                    console.log(data);
+
+                                    // data = addOption[option.optionId-1].optionList[optionList.optionListId-1];
+                                    // addOption[option.optionId-1].optionList[optionList.optionListId-1] = addOption[option.optionId-1].optionList[optionList.optionListId];
+                                    // addOption[option.optionId-1].optionList[optionList.optionListId] = data;
+                                } else if (-92 <= startDrag-e.clientY && startDrag-e.clientY <= -56 
+                                    && ((optionList.optionListId != option.optionList.length && !option.optionDirect) 
+                                    || (optionList.optionListId != option.optionList.length-1 && option.optionDirect))) {
+
+                                    addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId+1;
+                                    addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = data.optionListId-1;
+
+                                    data = addOption[option.optionId-1].optionList[optionList.optionListId-1];
+                                    addOption[option.optionId-1].optionList[optionList.optionListId-1] = addOption[option.optionId-1].optionList[optionList.optionListId-2];
+                                    addOption[option.optionId-1].optionList[optionList.optionListId-2] = data;
+                                }
+                                // setNum(num+1);
+                                // setAddOptionF(addOption);
+                                console.log(addOption);
+                            }}
+                            onMouseOut={(e)=>{
+                                // console.log("onMouseOut");
+                                // console.log(e.clientX);
+                            }} draggable={true}>
                             <DragCBtn className="spmcard-update-input-left-icon"/>
                         </div>
                         <div style={{ width: "100%", }}>
@@ -110,25 +166,29 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
                             className="spmcard-update-input-price"
                             type="text"
                             min="0"
-                            placeholder="0원"
-                            value={optionList.optionListPrice+"원"}
+                            placeholder="0"
+                            value={optionList.optionListPrice}
                             onChange={(e)=>{handleOptionListPrice(e, option.optionId, optionList.optionListId)}}
-                        />
+                        />원
                         <div
                             id={"spm-none-"+optionList.optionListId}
                             className="spmcard-update-input-right"
                             onClick={()=>{
+                                console.log(addOption);
                                 for (var i = optionList.optionListId-1; i < option.optionList.length-1; i++) {
                                     addOption[option.optionId-1].optionList[i] = addOption[option.optionId-1].optionList[i+1];
                                     addOption[option.optionId-1].optionList[i].optionListId = i+1;
                                 }
-                                addOption[option.optionId-1].optionList.pop();
-                                if (!(option.optionDirect&&option.optionList.length==optionList.optionListId))
+                                if ((option.optionDirect&&option.optionList.length==optionList.optionListId))
                                     addOption[option.optionId-1].optionDirect = false;
+                                addOption[option.optionId-1].optionList.pop();
+
+                                console.log(addOption);
                                 setNum(num+1);
                                 setAddOptionF(addOption);
                             }}>x
                         </div>
+                        
                     </div>
                 )
                 })

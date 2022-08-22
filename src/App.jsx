@@ -38,15 +38,16 @@ function App() {
     );
   }, []);
 
+  //Pages만 사용하면 지도가 보임
 	return (
     <div id='main'>
       {/* <PC> */}
       {/* <LandingPage/> */}
-      {/* {session?
-      <Pages/>:
-      <LandingPage/>
-      } */}
-      <Pages/>
+      {session?
+        <Pages/>:
+        <LandingPage/>
+      }
+      {/* <Pages/> */}
       {/* </PC>
       <Mobile>
       </Mobile> */}

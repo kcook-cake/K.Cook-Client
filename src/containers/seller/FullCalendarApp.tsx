@@ -51,7 +51,7 @@ function FullCalendarApp (){
     };
 
     useEffect(() => {
-        $(".fc-daygrid-day").css("background", "none");
+        // $(".fc-daygrid-day").css("background", "none");
         const height1 = document.getElementById('header-flex-id') as Element;
         const height2 = document.getElementById('sfc') as Element;
         setModalHeight(height1.clientHeight+height2.clientHeight);
@@ -136,22 +136,22 @@ function FullCalendarApp (){
                 </div>
                 :<></>
             }
-            <div className="seller-order-top-calendar"> {/* mypage-top */}
-                {/* {session ? <div>{auth.accountId}</div> : <></>} */}
-                <Link to="/SellerOrder">
-                <button className='calendar-mypage'>&lt;&nbsp;마이페이지</button>
-                </Link>
-                <h3 className='fcap calendar-complete'>{pathname=="SSOCalendar"? '주문확인': '판매내역'}</h3>
-                <div className='fcap ss-fc-link-flex'>
+            <div className="seller-mypage-top sso-ssh-top">
+                <div className="seller-mypage-front-title">{pathname=="SSOCalendar"? '주문확인': '판매내역'}</div>
+                <div className='ss-fc-link-flex'>
                     <Link
                         to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
-                        className='ss-fc-link' style={{ color: "#ea5450", }}>
+                        className='pc ss-fc-link'
+                        style={{ color: "#ea5450", }}>
                         달력보기
                     </Link>
-                    |
+                    <div
+                        className="pc ss-fc-link-bar"
+                        style={{ display: "inline-block"}}>|
+                    </div>
                     <Link
                         to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
-                        className='ss-fc-link'>
+                        className='ss-fc-link ss-fc-link-right'>
                         목록보기
                     </Link>
                 </div>
@@ -271,7 +271,7 @@ function FullCalendarApp (){
                 />
             </div>
         </div>
-        <div className="fcap-back" style={{ width: "5px", height: "1160px", }}></div>
+        {/* <div className="fcap-back" style={{ width: "5px", height: "1160px", }}></div> */}
         {/* <FullCalendarAppMobile /> */}
     </>
   )

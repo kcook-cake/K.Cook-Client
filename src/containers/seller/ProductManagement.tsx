@@ -319,10 +319,10 @@ function ProductManagement () {
                                             className="spmcard-update-input-price"
                                             type="text"
                                             min="0"
-                                            placeholder="0원"
-                                            value={addPrice+"원"}
+                                            placeholder="0"
+                                            value={addPrice}
                                             onChange={handleAddPrice}
-                                        />
+                                        />원
                                         <div id="spm-none-1" className="spmcard-update-input-right">x</div>
                                     </div>
                                     <SPMCard_Add addOption={addOption} setAddOptionF={setAddOption}/>

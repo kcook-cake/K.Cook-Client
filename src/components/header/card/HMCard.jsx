@@ -165,7 +165,7 @@ function HMCard({ setNumLeftMobileF }) {
                         <>
                         <div className="hm-mobile-link">
                             <Link
-                                to="/SellerOrder"
+                                to="/SSOCalendar"
                                 className="header-link SellerOrder"
                                 onClick={()=>{
                                     setNumLeftMobileF(2);
