@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import $ from 'jquery';
-import '../../styles/detail/StoreDetail.scss';
+import 'src/styles/detail/StoreDetail.scss';
 
 import DetailAd from "../../assets/detail-ad.png";
 import TestImg from "../../assets/searchIcon.png";
@@ -84,7 +84,7 @@ const StoreDetail = () =>{
                         <button className="store-detail-store-button-bottom">주문하기</button>
                     </div>
                 </div>
-                <img src={DetailAd} className="store-detail-ad" />
+                <img src={"."+DetailAd} className="store-detail-ad" />
 
                 <div className="store-detail-cakelist home">
                     <div className="store-detail-title-flex">

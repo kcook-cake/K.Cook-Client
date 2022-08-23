@@ -4,7 +4,6 @@ import '../../styles/main/card/LengthSlide.scss';
 
 import star from 'src/utils/star';
 
-import { start } from 'repl';
 import MakePrice from 'src/utils/MakePrice';
 
 
@@ -38,7 +37,7 @@ function LengthSlide_Two({getData, resize, slidePx, }: Props) {
                                 </div>
                                 <div className="lengthslide-info">
                                     <div className="card-top-info">
-                                        <div className="card-rating-star">{star(data.raiting)}</div>
+                                        <div className="card-rating-star">{star(data.raiting, ".")}</div>
                                         <div className="card-review">{"리뷰 "+data.reviewCount}</div>
                                     </div>
                                     <div className="card-shop-name">{data.storeName}</div>

@@ -17,9 +17,7 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 
 function ProductManagement () {
-    LinkClick("ProductManagement");
-    sellerLinkClick("ProductManagement");
-
+    console.log("추가");
     //Add
     const Add = () => {
         var index = 0;
@@ -56,20 +54,20 @@ function ProductManagement () {
                 };
             }
         }
-        axios
-            .post(`https://prod.kcook-cake.com/app/products`, {
-                isCake: true,
-                name: addName,
-                newOptionsList: addBack,
-                price: addPrice,
-                salePrice: 0,
-            })
-            .then((res) => {
-                if (res.data.isSuccess) alert("추가 완료");
-                document.location.href = "/ProductManagement";
-            })
-            .catch((error) => {
-            });
+        // axios
+        //     .post(`https://prod.kcook-cake.com/app/products`, {
+        //         isCake: true,
+        //         name: addName,
+        //         newOptionsList: addBack,
+        //         price: addPrice,
+        //         salePrice: 0,
+        //     })
+        //     .then((res) => {
+        //         if (res.data.isSuccess) alert("추가 완료");
+        //         document.location.href = "/ProductManagement";
+        //     })
+        //     .catch((error) => {
+        //     });
     }
     const [num, setNum] = useState(0);
     const [addDiv, setAddDiv] = useState(false);
@@ -246,6 +244,8 @@ function ProductManagement () {
     ]);
     const [dataLength, setDataLength] = useState(0);
     useEffect(()=>{
+        LinkClick("ProductManagement");
+        sellerLinkClick("ProductManagement");
         // $("#option-title1").val("크기");
         // $("#option-input-text1").val("1호");
         // $("#add-price-1").val(1000);
