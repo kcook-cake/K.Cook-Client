@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "../../../styles/main/home/MainCrousel.scss";
 
 import getAxios from "src/utils/getAxios";
@@ -10,13 +10,21 @@ function Crousel() {
   //0페이지부터 시작한다
   const [pageTodays, setPageTodays] = useState(0);
   const [lengthTodays, setLengthTodays] = useState(0);
-  useEffect(()=>{
-      getAxios(setData, setLengthTodays, "cakes", [], 4, pageTodays, 0);
-  },[]);
+  useEffect(() => {
+    getAxios(setData, setLengthTodays, "cakes", [], 4, pageTodays, 0);
+    // axios
+    // .get(`https://prod.kcook-cake.com/app/cakes`)
+    // .then((res) => {
+    //   console.log(res);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
+  }, []);
 
   return (
     <div className="crousel">
-      <BannerSlider getData={data}/>
+      <BannerSlider getData={data} />
     </div>
   );
 }

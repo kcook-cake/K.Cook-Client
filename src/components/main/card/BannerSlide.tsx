@@ -41,16 +41,7 @@ export default function ya({ getData }: Props) {
     prevArrow: <PrevArrow />,
 
     appendDots: (dots: any) => (
-      <div
-        style={{
-          width: "100%",
-          position: "absolute",
-          bottom: "24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div>
         <ul> {dots} </ul>
       </div>
     ),
