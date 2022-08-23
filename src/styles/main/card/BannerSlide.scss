@@ -2,156 +2,155 @@
 
 /* Slider */
 .main-crousel {
-    position: relative;
-  
-    display: block;
-    box-sizing: border-box;
-  
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
-  
-    width: 100vw;
-  }
-  
-  .main-crousel > .slick-list {
-    position: relative;
-  
-    display: block;
-    overflow: hidden;
-  
-    margin: 0;
-    padding: 0;
-  }
-  .main-crousel > .slick-list:focus {
-    outline: none;
-  }
-  .main-crousel > .slick-list.dragging {
-    cursor: pointer;
-    cursor: hand;
-  }
-  
-  .main-crousel .slick-track,
-  .main-crousel .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  
-  .main-crousel .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-  
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .main-crousel .slick-track:before,
-  .main-crousel .slick-track:after {
-    display: table;
-  
-    content: "";
-  }
-  .main-crousel .slick-track:after {
-    clear: both;
-  }
-  .main-crousel .slick-loading .slick-track {
-    visibility: hidden;
-  }
-  
-  .main-crousel .slick-slide {
-    display: none;
-    float: left;
-  
-    height: 100%;
-    min-height: 1px;
-  }
-  .main-crousel [dir="rtl"] .slick-slide {
-    float: right;
-  }
-  .main-crousel .slick-slide img {
-    display: block;
-  }
-  .main-crousel .slick-slide.slick-loading img {
-    display: none;
-  }
-  .main-crousel .slick-slide.dragging img {
-    pointer-events: none;
-  }
-  .main-crousel .slick-initialized .slick-slide {
-    display: block;
-  }
-  .main-crousel .slick-loading .slick-slide {
-    visibility: hidden;
-  }
-  .main-crousel .slick-vertical .slick-slide {
-    display: block;
-  
-    height: auto;
-  
-    border: 1px solid transparent;
-  }
-  .main-crousel .slick-arrow.slick-hidden {
-    display: none;
-  }
-  
-  /* dots css 추가 */
-  
-  // 점들의 높이를 변경하고싶다면 아래에
-  // margin -bottom값을 주면 됨
-  .main-crousel .dots_custom {
-    display: inline-block;
-    vertical-align: middle;
-    margin: auto 0;
-    padding: 0;
-  }
-  
-  .main-crousel .dots_custom > ul {
-    height: 14px;
-    object-fit: contain;
-  
-    padding: 0 !important;
-  }
-  
-  .main-crousel .dots_custom > ul > li {
-    list-style: none;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 5px;
-    padding: 0;
-  }
-  
-  .main-crousel .dots_custom > ul > li button {
-    border: none;
-    background: #fafafa;
-    color: transparent;
-    cursor: pointer;
-    display: block;
-    height: 14px;
-    width: 14px;
-    border-radius: 100%;
-    padding: 0;
-  }
-  
-  .main-crousel .dots_custom li.slick-active button {
-    width: 16px;
-    height: 16px;
-    background-color: transparent;
-    border: 4px solid #fafafa;
-  
-    position: relative;
-    top: 3px;
+  position: relative;
+
+  display: block;
+  box-sizing: border-box;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  width: 100vw;
+}
+
+.main-crousel > .slick-list {
+  position: relative;
+
+  display: block;
+  overflow: hidden;
+
+  margin: 0;
+  padding: 0;
+}
+.main-crousel > .slick-list:focus {
+  outline: none;
+}
+.main-crousel > .slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.main-crousel .slick-track,
+.main-crousel .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.main-crousel .slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-crousel .slick-track:before,
+.main-crousel .slick-track:after {
+  display: table;
+
+  content: "";
+}
+.main-crousel .slick-track:after {
+  clear: both;
+}
+.main-crousel .slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.main-crousel .slick-slide {
+  float: left;
+
+  height: 100%;
+  min-height: 1px;
+}
+.main-crousel [dir="rtl"] .slick-slide {
+  float: right;
+}
+.main-crousel .slick-slide img {
+  display: block;
+}
+.main-crousel .slick-slide.slick-loading img {
+  display: none;
+}
+.main-crousel .slick-slide.dragging img {
+  pointer-events: none;
+}
+.main-crousel .slick-initialized .slick-slide {
+  display: block;
+}
+.main-crousel .slick-loading .slick-slide {
+  visibility: hidden;
+}
+.main-crousel .slick-vertical .slick-slide {
+  display: block;
+
+  height: auto;
+
+  border: 1px solid transparent;
+}
+.main-crousel .slick-arrow.slick-hidden {
+  display: none;
+}
+
+/* dots css 추가 */
+
+// 점들의 높이를 변경하고싶다면 아래에
+// margin -bottom값을 주면 됨
+.main-crousel .dots_custom {
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto 0;
+  padding: 0;
+}
+
+.main-crousel .dots_custom > ul {
+  height: 14px;
+  object-fit: contain;
+
+  padding: 0 !important;
+}
+
+.main-crousel .dots_custom > ul > li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0;
+}
+
+.main-crousel .dots_custom > ul > li button {
+  border: none;
+  background: #fafafa;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  height: 14px;
+  width: 14px;
+  border-radius: 100%;
+  padding: 0;
+}
+
+.main-crousel .dots_custom li.slick-active button {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 4px solid #fafafa;
+
+  position: relative;
+  top: 3px;
 }
 
 //Banner-Theme
