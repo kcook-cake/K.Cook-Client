@@ -42,7 +42,7 @@ function LandingPage() {
           localStorage.setItem("jwToken", res.data.result.jwt);
         else
           sessionStorage.setItem("jwToken", res.data.result.jwt);
-        document.location.href = "/";
+        document.location.href ="/";
       })
       .catch((error) => {
         setFailModal(true);

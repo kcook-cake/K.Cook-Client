@@ -44,6 +44,7 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
         setUpdateOptionF(updateOption);
     };
 
+    const [startDrag, setStartDrag] = useState(0);
     useEffect(()=>{
     },[]);
     
@@ -113,7 +114,7 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                     <div id="spm-none-1" className="spmcard-update-input-right">x</div>
                                 </div>
                                     <>
-                                    {data.list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, })=>{
+                                    {data.list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, optionImage: any, })=>{
                                     return (
                                         <form id={"spmcard-update-"+option.optionId} className="spmcard-update">
                                             <div className="spmcard-option-update">
@@ -143,7 +144,44 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                 <div className="spmcard-update-input">
                                                     <div
                                                         id={option.optionDirect&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
-                                                        className="spmcard-update-input-left">
+                                                        className="spmcard-update-input-left"
+                                                        onDragStart={(e)=>{
+                                                            setStartDrag(e.clientY);
+                                                        }}
+                                                        onDragEnd={(e)=>{
+                                                            var n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
+                                                            //Math.ceil() 올림 Math.floor() 내림, Math.abs() 절댓값
+                                                            if (56 <= startDrag-e.clientY && n <= option.optionList.length
+                                                                && (optionList.optionListId-1 != 0)) {
+                            
+                                                                    for (var i=n+1; i>1; i--) {
+                                                                        updateOption[idx].list[option.optionId-1].optionList[optionList.optionListId-i].optionListId = optionList.optionListId-(i-2);
+                                                                    }
+                                                                    updateOption[idx].list[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId-n;
+                                                                    updateOption[idx].list[option.optionId-1].optionList.sort((a:any, b:any) => {
+                                                                        if (a.optionListId < b.optionListId) return -1;
+                                                                        if (a.optionListId > b.optionListId) return 1;
+                                                                        return 0;
+                                                                    });
+                                                            }
+                                                            else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
+                                                                && ((optionList.optionListId != option.optionList.length && !option.optionDirect) 
+                                                                || (optionList.optionListId != option.optionList.length-1 && option.optionDirect))) {
+                            
+                                                                    for (var i=n; i>0; i--) {
+                                                                        updateOption[idx].list[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
+                                                                    }
+                                                                    updateOption[idx].list[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId+n;
+                                                                    updateOption[idx].list[option.optionId-1].optionList.sort((a:any, b:any) => {
+                                                                        if (a.optionListId < b.optionListId) return -1;
+                                                                        if (a.optionListId > b.optionListId) return 1;
+                                                                        return 0;
+                                                                    });
+                                                            }
+                                                            setNum(num+1);
+                                                            setUpdateOptionF(updateOption);
+                                                        }}
+                                                        draggable={true}>
                                                         <DragCBtn className="spmcard-update-input-left-icon"/>
                                                     </div>
                                                     <div style={{ width: "100%", }}>
@@ -151,7 +189,7 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                             className="spmcard-update-input-text"
                                                             type="text"
                                                             name={"name"+optionList.optionListId}
-                                                            placeholder={option.optionDirect&&option.optionList.length==optionList.optionListId? "직접 입력": "품목"+optionList.optionListId+" 입력"}
+                                                            placeholder={option.optionDirect&&option.optionList.length==optionList.optionListId? (option.optionImage? "이미지 입력": "텍스트 입력") : "품목"+optionList.optionListId+" 입력"}
                                                             value={option.optionDirect&&option.optionList.length==optionList.optionListId? option.optionDirectText: optionList.optionListName}
                                                             onChange={(e)=>{
                                                                 if (option.optionDirect&&option.optionList.length==optionList.optionListId)
@@ -215,7 +253,25 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                             updateOption[idx].list[option.optionId-1].optionDirect = true;
                                                             setNum(num+1);
                                                             setUpdateOptionF(updateOption);
-                                                        }}>'직접 입력' 추가
+                                                        }}>'텍스트' 추가
+                                                    </div>
+                                                    </>}
+                                                {option.optionDirect? null:
+                                                    <>
+                                                    <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
+                                                    <div
+                                                        style={{ color: "#ea5450", }}
+                                                        onClick={()=>{
+                                                            updateOption[idx].list[option.optionId-1].optionList[option.optionList.length] = {
+                                                                optionListId: option.optionList.length+1,
+                                                                optionListName: "",
+                                                                optionListPrice: 0,
+                                                            };
+                                                            updateOption[idx].list[option.optionId-1].optionDirect = true;
+                                                            updateOption[idx].list[option.optionId-1].optionImage = true;
+                                                            setNum(num+1);
+                                                            setUpdateOptionF(updateOption);
+                                                        }}>'이미지' 추가
                                                     </div>
                                                     </>}
                                             </div>

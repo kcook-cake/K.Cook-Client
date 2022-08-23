@@ -51,7 +51,7 @@ function ProductManagement () {
                 addBack[(jlength+1)+i*addOption[index].optionList.length-1] = {
                     additionalCost: addOption[i].optionList[jlength].optionListPrice,
                     category: c,
-                    contents: "기타&"+addOption[i].optionDirectText,
+                    contents: (addOption[i].optionImage? "이미지&":"텍스트&")+addOption[i].optionDirectText,
                     title: addOption[i].optionName,
                 };
             }
@@ -88,6 +88,7 @@ function ProductManagement () {
             ],
             optionDirect: false,
             optionDirectText: "",
+            optionImage: false,
         },
     ]);
     const [addBack, setAddBack] = useState<any>([]);
@@ -132,6 +133,7 @@ function ProductManagement () {
                     ],
                     optionDirect: true,
                     optionDirectText: "",
+                    optionImage: true,
                 },
                 {
                     optionId: 2,
@@ -145,6 +147,7 @@ function ProductManagement () {
                     ],
                     optionDirect: false,
                     optionDirectText: "",
+                    optionImage: false,
                 },
             ],
         },
@@ -163,8 +166,9 @@ function ProductManagement () {
                             optionListPrice: 1000,
                         },
                     ],
-                    optionDirect: false,
+                    optionDirect: true,
                     optionDirectText: "",
+                    optionImage: false,
                 }
             ],
         },

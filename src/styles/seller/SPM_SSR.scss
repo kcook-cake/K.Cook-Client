@@ -25,9 +25,10 @@
         .spm-add-img,
         .spm-add-img2 {
             width: 160px;
-            height: 160px;
+            height: 176px;
             margin-right: 20px;
             padding: 40px;
+            padding-top: 50px;
 
             border-radius: 5px;
             background-color: #ebebeb;
@@ -137,9 +138,10 @@
                 background-color: #f1f3f4;
             }
             .spm-add-img {
-                height: 120px;
+                height: 132px;
                 width: 120px;
-                padding-top: 20px; padding-left: 20px;
+                padding: 20px; 
+                padding-top: 27px;
                 margin-bottom: 30px;
 
                 background-color: #ebebeb;
@@ -149,7 +151,7 @@
     }
     .spm-add2 {
         width: 100%;
-        height: 148px !important;
+        height: 159px !important;
         margin-bottom: 20px;
         display: block;
 
@@ -182,15 +184,6 @@
                 border-bottom: 3px solid #333;
                 background-color: #f1f3f4;
             }
-            .spm-add-img {
-                height: 120px;
-                width: 120px;
-                padding-top: 20px; padding-left: 20px;
-                margin-bottom: 30px;
-
-                background-color: #ebebeb;
-                border-radius: 5px;
-            }
         }
         .spm-add-content2 {
             width: 100%;
@@ -199,10 +192,11 @@
             padding: 0 16px 16px 0;
             display: block;
             .spm-add-img2 {
-                height: 100px;
+                height: 111px;
                 width: 100px;
                 margin: 0;
-                padding-top: 11px; padding-left: 11px;
+                padding: 11px;
+                padding-top: 15px;
 
                 // position: absolute;
                 // right: 0;

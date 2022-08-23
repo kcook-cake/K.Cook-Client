@@ -92,17 +92,19 @@ function TodaysRec (){
                 
                 <div className="todaysrec-event-top">
                     <div className="pc title">이번 달 인기 이벤트</div>
-                    <div
-                        className="mobile title"
-                        onClick={()=>{
-                            LinkClick("");
-                            document.location.href = "/"+"";
-                        }}>
-                        이번 달 인기 이벤트
-                        <img src={allow} />
-                    </div>
+                    <Link to="/">
+                        <div
+                            className="mobile title"
+                            onClick={()=>{
+                                LinkClick("");
+                                document.location.href = "/"+"";
+                            }}>
+                            이번 달 인기 이벤트
+                            <img src={allow} />
+                        </div>
+                    </Link>
                     {/* <Link to="/"className="link"></Link> */}
-                    <a className="view-all">전체 보기 &gt;</a>
+                    <Link to="/" className="view-all">전체 보기 &gt;</Link>
                 </div>
 
                 <div className="contents">                    
