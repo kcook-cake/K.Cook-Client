@@ -3,9 +3,9 @@ import '../../../styles/main/home/CakeStoreMenu.scss'
 
 import axios from 'axios';
 
-import SectionTitle from '../../../components/main/SectionTitle';
+import SectionTitle from '../../../components/main/card/SectionTitle';
 import getAxios from 'src/utils/getAxios';
-import CakeCard from 'src/components/main/CakeCard';
+import CakeCard from 'src/components/main/card/CakeCard';
 
 function CakeMenu (){
     const [data, setData] = useState([]);

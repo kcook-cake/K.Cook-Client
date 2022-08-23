@@ -1,12 +1,12 @@
 import React,  { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Url } from 'url';
-import '../../../styles/main/home/PopularMenu.scss'
+import 'src/styles/main/home/PopularMenu.scss'
 
 import axios from 'axios';
 
 import getAxios from 'src/utils/getAxios';
-import LengthSlide_One from 'src/components/main/LengthSlide_One';
+import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
 
 const PopularMenu = ()=>{
     const [data, setData] = useState([]);

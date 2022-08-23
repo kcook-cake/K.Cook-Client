@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import '../../../src/styles/main/CakeStoreTitle.scss'
+import 'src/styles/main/card/CakeStoreTitle.scss'
 
 import getAxios from 'src/utils/getAxios';
 

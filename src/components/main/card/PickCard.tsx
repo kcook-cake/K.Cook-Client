@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import LengthwiseCard from '../main/LengthwiseCard';
-import '../../../src/styles/main/PickCard.scss'
+import LengthwiseCard from 'src/components/main/card/LengthwiseCard';
+import 'src/styles/main/card/PickCard.scss'
 // import '../../../src/styles/main/MainRecommend.scss'
 // import '../../../src/styles/TodaysRec.scss'
 // import '../../../src/styles/Cake.scss'

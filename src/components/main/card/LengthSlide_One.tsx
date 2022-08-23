@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/main/LengthSlide.scss';
+import 'src/styles/main/card/LengthSlide.scss';
 
 import star from 'src/utils/star';
 

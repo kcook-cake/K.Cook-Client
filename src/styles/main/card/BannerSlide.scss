@@ -1,0 +1,319 @@
+/* 배너 슬라이드*/
+
+/* Slider */
+.main-crousel {
+    position: relative;
+  
+    display: block;
+    box-sizing: border-box;
+  
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+  
+    width: 100vw;
+  }
+  
+  .main-crousel > .slick-list {
+    position: relative;
+  
+    display: block;
+    overflow: hidden;
+  
+    margin: 0;
+    padding: 0;
+  }
+  .main-crousel > .slick-list:focus {
+    outline: none;
+  }
+  .main-crousel > .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+  
+  .main-crousel .slick-track,
+  .main-crousel .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .main-crousel .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .main-crousel .slick-track:before,
+  .main-crousel .slick-track:after {
+    display: table;
+  
+    content: "";
+  }
+  .main-crousel .slick-track:after {
+    clear: both;
+  }
+  .main-crousel .slick-loading .slick-track {
+    visibility: hidden;
+  }
+  
+  .main-crousel .slick-slide {
+    display: none;
+    float: left;
+  
+    height: 100%;
+    min-height: 1px;
+  }
+  .main-crousel [dir="rtl"] .slick-slide {
+    float: right;
+  }
+  .main-crousel .slick-slide img {
+    display: block;
+  }
+  .main-crousel .slick-slide.slick-loading img {
+    display: none;
+  }
+  .main-crousel .slick-slide.dragging img {
+    pointer-events: none;
+  }
+  .main-crousel .slick-initialized .slick-slide {
+    display: block;
+  }
+  .main-crousel .slick-loading .slick-slide {
+    visibility: hidden;
+  }
+  .main-crousel .slick-vertical .slick-slide {
+    display: block;
+  
+    height: auto;
+  
+    border: 1px solid transparent;
+  }
+  .main-crousel .slick-arrow.slick-hidden {
+    display: none;
+  }
+  
+  /* dots css 추가 */
+  
+  // 점들의 높이를 변경하고싶다면 아래에
+  // margin -bottom값을 주면 됨
+  .main-crousel .dots_custom {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto 0;
+    padding: 0;
+  }
+  
+  .main-crousel .dots_custom > ul {
+    height: 14px;
+    object-fit: contain;
+  
+    padding: 0 !important;
+  }
+  
+  .main-crousel .dots_custom > ul > li {
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0;
+  }
+  
+  .main-crousel .dots_custom > ul > li button {
+    border: none;
+    background: #fafafa;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    padding: 0;
+  }
+  
+  .main-crousel .dots_custom li.slick-active button {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 4px solid #fafafa;
+  
+    position: relative;
+    top: 3px;
+}
+
+//Banner-Theme
+// @charset 'UTF-8';
+
+/* Arrows */
+.main-crousel .slick-prev,
+.main-crousel .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  line-height: 0;
+
+  display: block;
+
+  padding: 0;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+
+  cursor: pointer;
+
+  color: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  z-index: 999;
+}
+
+.main-crousel .slick-prev > img,
+.main-crousel .slick-next > img {
+  width: 40px;
+  height: 80px;
+  opacity: 0.5;
+}
+
+.main-crousel .slick-prev:hover:before,
+.main-crousel .slick-prev:focus:before,
+.main-crousel .slick-next:hover:before,
+.main-crousel .slick-next:focus:before {
+  opacity: 1;
+}
+.main-crousel .slick-prev.slick-disabled:before,
+.main-crousel .slick-next.slick-disabled:before {
+  opacity: 0.25;
+}
+
+.main-crousel .slick-prev:before,
+.main-crousel .slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+
+  opacity: 0.75;
+  color: black !important;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-crousel .slick-prev {
+  left: 50.1px;
+
+  width: 30px;
+}
+.main-crousel [dir="rtl"] .slick-prev {
+  right: 0;
+  left: auto;
+}
+
+.main-crousel .slick-next {
+  right: 50.1px;
+}
+.main-crousel [dir="rtl"] .slick-next {
+  right: auto;
+  left: -25px;
+}
+
+/* Dots */
+.main-crousel .slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+
+.main-crousel .slick-dots {
+  position: absolute;
+  bottom: -25px;
+
+  display: block;
+
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+
+  text-align: center;
+}
+.main-crousel .slick-dots li {
+  position: relative;
+
+  display: inline-block;
+
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  padding: 0;
+
+  cursor: pointer;
+}
+.main-crousel .slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+
+  display: block;
+
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+.main-crousel .slick-dots li button:hover,
+.main-crousel .slick-dots li button:focus {
+  outline: none;
+}
+.main-crousel .slick-dots li button:hover:before,
+.main-crousel .slick-dots li button:focus:before {
+  opacity: 1;
+}
+.main-crousel .slick-dots li button:before {
+  font-family: "slick";
+  font-size: 6px;
+  line-height: 20px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 20px;
+  height: 20px;
+
+  content: "•";
+  text-align: center;
+
+  opacity: 0.25;
+  color: black;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.main-crousel .slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: black;
+}
+
+.slick-list {
+  width: 100%;
+  height: 568px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/main/CakeCard.scss';
+import '../../../styles/main/card/CakeCard.scss';
 
 import star from 'src/utils/star';
 

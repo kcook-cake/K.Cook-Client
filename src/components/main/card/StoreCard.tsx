@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/main/StoreCard.scss';
+import 'src/styles/main/card/StoreCard.scss';
 
 import star from 'src/utils/star';
 

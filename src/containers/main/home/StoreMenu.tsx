@@ -4,8 +4,8 @@ import '../../../styles/main/home/CakeStoreMenu.scss'
 import axios from 'axios';
 
 import getAxios from 'src/utils/getAxios';
-import SectionTitle from '../../../components/main/SectionTitle';
-import StoreCard from 'src/components/main/StoreCard';
+import SectionTitle from 'src/components/main/card/SectionTitle';
+import StoreCard from 'src/components/main/card/StoreCard';
 
 function StoreMenu (){
     const [data, setData] = useState([]);

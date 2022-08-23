@@ -1,4 +1,4 @@
-@import "../reset.scss";
+@import "../../reset.scss";
 
 /*
 cake-flex
@@ -39,7 +39,7 @@ cake-flex
 
   select {
     padding-right: 0;
-    background: url('../../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
+    background: url('../../../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
     background-color: #f5f5f5;
   }
   option {

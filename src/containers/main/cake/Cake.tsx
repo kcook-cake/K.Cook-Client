@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 import $ from 'jquery';
-import '../../../styles/main/CakeStore.scss';
+import 'src/styles/main/card/CakeStore.scss';
 
 import axios from 'axios';
 
@@ -10,12 +10,12 @@ import selectAllow from "../../../assets/selectArrow.png";
 import X from "../../../assets/x.svg";
 
 import getAxios from 'src/utils/getAxios';
-import PickCard from 'src/components/main/PickCard';
+import PickCard from 'src/components/main/card/PickCard';
 import CakeBarCard from 'src/components/main/cake/CakeBarCard';
 import CakeBar_MobileCard from 'src/components/main/cake/CakeBar_MobileCard';
-import CakeCard from 'src/components/main/CakeCard';
+import CakeCard from 'src/components/main/card/CakeCard';
 import LinkClick from 'src/utils/LinkClick';
-import CakeStoreTitle from 'src/components/main/CakeStoreTitle';
+import CakeStoreTitle from 'src/components/main/card/CakeStoreTitle';
 
 function Cake (){
     //선택지 기타 등등

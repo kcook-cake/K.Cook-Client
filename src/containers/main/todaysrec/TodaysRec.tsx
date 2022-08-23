@@ -4,10 +4,10 @@ import '../../../../src/styles/main/todaysrec/TodaysRec.scss'
 
 import axios from "axios";
 
-import LengthwiseCard from '../../../components/main/LengthwiseCard';
-import WidthwiseCard from '../../../components/main/WidthwiseCard';
+import LengthwiseCard from 'src/components/main/card/LengthwiseCard';
+import WidthwiseCard from 'src/components/main/card/WidthwiseCard';
 import EventCard from 'src/components/main/todaysrec/EventCard';
-import PickCard from 'src/components/main/PickCard';
+import PickCard from 'src/components/main/card/PickCard';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from '../../../utils/LinkClick';
 

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import '../../styles/SectionTitle.scss'
+import 'src/styles/main/card/SectionTitle.scss'
 
-import LinkClick from '../../utils/LinkClick';
+import LinkClick from '../../../utils/LinkClick';
 
-import allow from '../../assets/right-arrow.svg';
+import allow from '../../../assets/right-arrow.svg';
 
 interface Props {
     title : string,
