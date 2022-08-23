@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../../../styles/seller/card/SPMCard.scss';
 
 import cake6 from   '../../../assets/cake6.png';
@@ -311,17 +312,18 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                     <div className="pc spm-tap">
                         <button
                             onClick={()=>{
-                                alert("삭제");
-                                // setAddDiv(false);
+                                update[idx] = false;
+                                setNum(num+1);
+                                setUpdateF(update); 
                             }}>
                             <CloseBtn/>
                         </button>
-                        <button
+                        {/* <button
                             onClick={()=>{
                                 alert("복제");
                             }}>
                             <CopyBtn/>
-                        </button>
+                        </button> */}
                     </div>
                 </div>:
                 <div className="spm-add2">
@@ -394,6 +396,15 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                             }}>
                             <CopyBtn/>
                         </button>
+                        <Link to="/ProductManagement/0">
+                            <div
+                                // onClick={()=>{
+                                //     document.location.href ="/ProductManagement/0";
+                                // }}
+                                >
+                                <CopyBtn/>
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 }

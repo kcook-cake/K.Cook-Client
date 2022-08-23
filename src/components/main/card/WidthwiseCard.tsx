@@ -29,7 +29,7 @@ function WidthwiseCard({ getData }: LengthwiseCardProps) {
             </div>
             <div className="widthwise-card-info">
                 <div className="card-rating-star">
-                    {star(data.raiting)}
+                    {star(data.raiting, "")}
                 </div>
                 <div className="card-shop-name">
                     {data.storeName}

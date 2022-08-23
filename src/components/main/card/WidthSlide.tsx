@@ -38,7 +38,7 @@ function WidthSlide({getData, resize, slidePx, }: Props) {
                                 </div>
                                 <div className="widthslide-card-info">
                                     <div className="card-rating-star">
-                                        {star(data.raiting)}
+                                        {star(data.raiting, "")}
                                     </div>
                                     <div className="card-shop-name">
                                         {data.storeName}
