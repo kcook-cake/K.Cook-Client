@@ -291,6 +291,18 @@
     border-radius: 8px;
     border: 2.5px solid #ea5450;
 }
+.calendar-btn-p {
+    padding-top: 5px;
+    padding-left: 47px;
+    float: left;
+}
+// .calendar-btn-p-right {
+//     padding-left: 40px;
+// }
+.calendar-btn-div {
+    font-size: 8px;
+    float: right;
+}
 
 
 @media (max-width: 767px) {
@@ -645,6 +657,9 @@
                 // max-width: 160px;
                 height: 30px;
                 margin-bottom: 5px;
+            }
+            .calendar-btn-p {
+                padding-top: 2px;
             }
         }
 

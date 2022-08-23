@@ -20,6 +20,7 @@ function FullCalendarApp (){
     const [date, setDate] = useState("");
     const [dateT, setDateT] = useState("");
     const [title, setTitle] = useState("");
+    const [updateNum, setUpdateNum] = useState(0);
     const [modalHeight, setModalHeight] = useState(0);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
@@ -102,12 +103,32 @@ function FullCalendarApp (){
                 <div style={{ width: "5px", height: "20px", }}></div>
                 <div className="calendar-modal-box">
                     <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                    <button className="calendar-button">예약 확인</button> 
+                        <button className="calendar-button">
+                            <p className="calendar-btn-p">예약확인</p>
+                            <div className="calendar-btn-div" style={{  opacity: "0", }}><div>∧</div><div>∨</div></div>
+                        </button> 
                     </Link>
                     <button 
                     className="calendar-button"
                     onClick={setting}
-                    >주문 건수 설정</button> {/* 휴일해제 */}
+                    >
+                    <p className="calendar-btn-p calendar-btn-p-right"
+                        style={{ 
+                            paddingLeft: (pathname=="SSOCalendar"? "47px": "40px"),
+                        }}>주문 {updateNum}건</p>
+                    <div className="calendar-btn-div"
+                        style={{ 
+                            opacity: (pathname=="SSOCalendar"? "100": "0"),
+                            pointerEvents: (pathname=="SSOCalendar"? "auto": "none"),
+                        }}>
+                        <div onClick={()=>{
+                            setUpdateNum(updateNum+1); //나중에 axios update
+                        }}>∧</div>
+                        <div onClick={()=>{
+                            setUpdateNum(updateNum-1);
+                        }}>∨</div>
+                    </div>
+                    </button> {/* 휴일해제 */}
                 </div>
             </div>
         </div>
@@ -125,12 +146,32 @@ function FullCalendarApp (){
                         <div className="calendar-modal-blank"></div>
                         <div className="calendar-modal-box">
                             <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                            <button className="calendar-button">예약 확인</button> 
+                                <button className="calendar-button">
+                                    <p className="calendar-btn-p">예약확인</p>
+                                    <div className="calendar-btn-div" style={{  opacity: "0", }}><div>∧</div><div>∨</div></div>
+                                </button> 
                             </Link>
                             <button 
                             className="calendar-button"
                             onClick={setting}
-                            >주문 건수 설정</button> {/* 휴일해제 */}
+                            >
+                                <p className="calendar-btn-p calendar-btn-p-right"
+                                    style={{ 
+                                        paddingLeft: (pathname=="SSOCalendar"? "47px": "40px"),
+                                    }}>주문 {updateNum}건</p>
+                                <div className="calendar-btn-div"
+                                    style={{ 
+                                        opacity: (pathname=="SSOCalendar"? "100": "0"),
+                                        pointerEvents: (pathname=="SSOCalendar"? "auto": "none"),
+                                    }}>
+                                    <div onClick={()=>{
+                                        setUpdateNum(updateNum+1); //나중에 axios update
+                                    }}>∧</div>
+                                    <div onClick={()=>{
+                                        setUpdateNum(updateNum-1);
+                                    }}>∨</div>
+                                </div>
+                            </button> {/* 휴일해제 */}
                         </div>
                     </div>
                 </div>
@@ -224,6 +265,7 @@ function FullCalendarApp (){
                             else d="일요일";
                             
                             setTitle(e.event._def.title);
+                            setUpdateNum(parseInt(e.event._def.title.split("/")[1]));
                             setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
                             setDateT(date);
                 
@@ -256,6 +298,7 @@ function FullCalendarApp (){
                         else d="일요일";
                         
                         setTitle(e.event._def.title);
+                        setUpdateNum(parseInt(e.event._def.title.split("/")[1]));
                         setDate(date.split("-")[1]+"월 "+date.split("-")[2]+"일 "+d);
                         setDateT(date);
 
