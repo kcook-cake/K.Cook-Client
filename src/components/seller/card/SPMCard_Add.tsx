@@ -113,40 +113,40 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
                                 // console.log(e.clientX);
                             }}
                             onDragEnd={(e)=>{
+                                var n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
+                                console.log(n);
+                                console.log(startDrag-e.clientY);
+
                                 //Math.ceil() 올림 Math.floor() 내림, Math.abs() 절댓값
-                                var num = Math.abs(Math.ceil((startDrag-e.clientY)/50)); //92로 하면.. if가 되고 50으로 하면 else if가 됨
-                                console.log(num);
-                                console.log(option.optionList.length);
-                                if (56 <= startDrag-e.clientY && startDrag-e.clientY <= 92*option.optionList.length
+                                if (56 <= startDrag-e.clientY && n <= option.optionList.length
                                     && (optionList.optionListId-1 != 0)) {
 
-                                        for (var i=num+1; i>1; i--) {
+                                        for (var i=n+1; i>1; i--) {
                                             addOption[option.optionId-1].optionList[optionList.optionListId-i].optionListId = optionList.optionListId-(i-2);
                                         }
-                                        addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId-num;
+                                        addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId-n;
                                         addOption[option.optionId-1].optionList.sort((a:any, b:any) => {
                                             if (a.optionListId < b.optionListId) return -1;
                                             if (a.optionListId > b.optionListId) return 1;
                                             return 0;
                                         });
-                                } else if (-92*option.optionList.length <= startDrag-e.clientY && startDrag-e.clientY <= -56 
+                                }
+                                else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
                                     && ((optionList.optionListId != option.optionList.length && !option.optionDirect) 
                                     || (optionList.optionListId != option.optionList.length-1 && option.optionDirect))) {
 
-                                    for (var i=0; i<num; i++) {
-                                        console.log(i);
-                                        addOption[option.optionId-1].optionList[optionList.optionListId+i].optionListId = optionList.optionListId+i;
-                                    }
-                                    addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId+num;
-                                    addOption[option.optionId-1].optionList.sort((a:any, b:any) => {
-                                        if (a.optionListId < b.optionListId) return -1;
-                                        if (a.optionListId > b.optionListId) return 1;
-                                        return 0;
-                                    });
+                                        for (var i=n; i>0; i--) {
+                                            addOption[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
+                                        }
+                                        addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId+n;
+                                        addOption[option.optionId-1].optionList.sort((a:any, b:any) => {
+                                            if (a.optionListId < b.optionListId) return -1;
+                                            if (a.optionListId > b.optionListId) return 1;
+                                            return 0;
+                                        });
                                 }
                                 setNum(num+1);
                                 setAddOptionF(addOption);
-                                console.log(addOption);
                             }}
                             onMouseOut={(e)=>{
                                 // console.log("onMouseOut");
@@ -182,7 +182,6 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
                             id={"spm-none-"+optionList.optionListId}
                             className="spmcard-update-input-right"
                             onClick={()=>{
-                                console.log(addOption);
                                 for (var i = optionList.optionListId-1; i < option.optionList.length-1; i++) {
                                     addOption[option.optionId-1].optionList[i] = addOption[option.optionId-1].optionList[i+1];
                                     addOption[option.optionId-1].optionList[i].optionListId = i+1;
@@ -191,7 +190,6 @@ function SPMCard_Add({ addOption, setAddOptionF, }: Props) {
                                     addOption[option.optionId-1].optionDirect = false;
                                 addOption[option.optionId-1].optionList.pop();
 
-                                console.log(addOption);
                                 setNum(num+1);
                                 setAddOptionF(addOption);
                             }}>x
