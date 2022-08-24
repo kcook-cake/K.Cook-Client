@@ -10,40 +10,48 @@ import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
 import { ReactComponent as SettingIcon } from '../../../assets/seller/spr-setting.svg';
 import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
+import leftArrow from "../../../assets/left-arrow.svg";
+import rightArrow from "../../../assets/right-arrow.svg";
 
 interface Props {
     getData: any,
+    getImage: any,
+
     update: any,
     updateOption: any,
+    updateImageModal: any,
+    updateImage: any,
+    updateImageNum: any,
+    resize: any,
+
     setDataF: any,
-    setUpdateOptionF: any,
-    setUpdateF: any,
+    setImageF: any,
 }
 
-function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, setUpdateF, }: Props) {
+function SPMCard({ 
+    getData, getImage,
+    update, updateOption, updateImageModal, updateImage, updateImageNum, 
+    resize, 
+    setDataF, setImageF, }: Props) {
     const [num, setNum] = useState(0);
     
     const handleAddName = (e: any, idx: any, ) => {
         updateOption[idx].name = e.target.value;
         setNum(num+1);
-        setUpdateOptionF(updateOption);
     };
     const handleOptionName = (e: any, idx:any, optionId: any, ) => {
         updateOption[idx].list[optionId-1].optionName = e.target.value;
         setNum(num+1);
-        setUpdateOptionF(updateOption);
     };
     const handleOptionListName = (e: any, idx:any, optionId: any, optionListId: any, ) => {
         updateOption[idx].list[optionId-1].optionList[optionListId-1].optionListName = e.target.value;
         setNum(num+1);
-        setUpdateOptionF(updateOption);
     };
     const handleOptionListPrice = (e: any, idx:any, optionId: any, optionListId: any, ) => {
         var evalue = e.target.value;
         if (evalue === "NaN") evalue = "0";
         updateOption[idx].list[optionId-1].optionList[optionListId-1].optionListPrice = parseInt(evalue);
         setNum(num+1);
-        setUpdateOptionF(updateOption);
     };
 
     const [startDrag, setStartDrag] = useState(0);
@@ -56,6 +64,83 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
             return (
             <>
                 {update[idx]?
+                <>
+                <div className="spm-modal">
+                    {updateImageModal[idx]? 
+                    <>
+                        <div
+                            className="spm-modal-background"
+                            style={{ top: window.pageYOffset, }}>
+                        </div>
+                        <div
+                            className="spm-modal-box"
+                            style={{ 
+                                top: (resize<=767? 
+                                    (window.innerHeight-530<0? window.pageYOffset : window.pageYOffset+(window.innerHeight-530)/2 ): 
+                                    (window.innerHeight-775<0? window.pageYOffset : window.pageYOffset+(window.innerHeight-775)/2 ))}}>
+                            <div className="spm-modal-title">이미지 등록</div>
+                            <div className="spm-modal-subtitle">대표이미지(1장)</div>
+                            <div
+                                className="spm-modal-img-inner"
+                                onClick={()=>{
+                                    //addImage[0] = 사진 링크 넣기
+                                }}>
+                                {updateImage[idx][0]==""?
+                                    <div className="spm-add-img"><AddIcon/></div>:
+                                    <img src={updateImage[idx][0]} />
+                                }
+                            </div>
+                            <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
+                            <div className="spm-modal-img-box">
+                                <div className="spm-modal-img-inner">
+                                    {updateImage[idx][1]==""?
+                                        <div className="spm-add-img"><AddIcon/></div>:
+                                        <img src={updateImage[idx][1]} />
+                                    }
+                                </div>
+                                <div className="spm-modal-img-inner">
+                                    {updateImage[idx][2]==""?
+                                        <div className="spm-add-img"><AddIcon/></div>:
+                                        <img src={updateImage[idx][2]} />
+                                    }
+                                </div>
+                                <div className="spm-modal-img-inner">
+                                    {updateImage[idx][3]==""?
+                                        <div className="spm-add-img"><AddIcon/></div>:
+                                        <img src={updateImage[idx][3]} />
+                                    }
+                                </div>
+                                <div className="spm-modal-img-inner">
+                                    {updateImage[idx][4]==""?
+                                        <div className="spm-add-img"><AddIcon/></div>:
+                                        <img src={updateImage[idx][4]} />
+                                    }
+                                </div>
+                            </div>
+                            <div className="mprdetail-content-btn-box">
+                                <button
+                                    className="mprdetail-content-btn"
+                                    onClick={()=>{
+                                        updateImageModal[idx] = false;
+                                        setNum(num+1);
+                                    }}>
+                                    등록
+                                </button>
+                                <button
+                                    className="mprdetail-content-btn mprdetail-content-btn-left"
+                                    onClick={()=>{
+                                        updateImageModal[idx] = false;
+                                        updateImage[idx] = getImage[idx];
+                                        setNum(num+1);
+                                    }}>
+                                    취소
+                                </button>
+                            </div>
+                        </div>
+                    </>
+                    :null}
+                </div>
+
                 <div className="spm-add">
                     <div className="spm-add-inner">
                         <div
@@ -63,16 +148,40 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                             onClick={()=>{
                                 update[idx] = false;
                                 setNum(num+1);
-                                setUpdateF(update);
                                 alert("업데이트"); //updateOption
-                                // setUpdateOptionF(getData); //안에 내용 초기화..
                                 // axios.update
                             }}>
                             <DragBtn/>
                         </div>
                         <div className="spm-add-content">
-                            <div className="spm-add-img">
-                                <AddIcon/>
+                            <div
+                                className="spm-modal-img-inner"
+                                onClick={()=>{
+                                    updateImageModal[idx] = true;
+                                    setNum(num+1);
+                                }}>
+                                    {updateImage[idx][updateImageNum[idx]]==""?
+                                        <div className="spm-add-img"><AddIcon/></div>:
+                                        <img src={updateImage[idx][updateImageNum[idx]]} />
+                                    }
+                            </div>
+                            <div className="spm-add-arrow-box">
+                                <img
+                                    src={leftArrow}
+                                    onClick={()=>{
+                                        if (updateImageNum[idx] != 0) updateImageNum[idx]--;
+                                        else updateImageNum[idx] = 4;
+                                        setNum(num+1);
+                                    }}/>
+                                <img
+                                    src={rightArrow}
+                                    onClick={()=>{
+                                        if (updateImageNum[idx] != 4) updateImageNum[idx]++;
+                                        else updateImageNum[idx] = 0;
+                                        setNum(num+1);
+                                    }}
+                                    style={{ float: "right", }}/>
+                                <div className="spm-add-arrow-num">{updateImageNum[idx]+1}/5</div>
                             </div>
                             <div>
                                 <div style={{ display: "flex"}}>
@@ -136,7 +245,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                         }
                                                         updateOption[idx].list.pop();
                                                         setNum(num+1);
-                                                        setUpdateOptionF(updateOption);
                                                     }}>x
                                                 </div>
                                             </div>
@@ -181,7 +289,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                                     });
                                                             }
                                                             setNum(num+1);
-                                                            setUpdateOptionF(updateOption);
                                                         }}
                                                         draggable={true}>
                                                         <DragCBtn className="spmcard-update-input-left-icon"/>
@@ -198,7 +305,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                                     updateOption[idx].list[option.optionId-1].optionDirectText = e.target.value;
                                                                 else handleOptionListName(e, idx, option.optionId, optionList.optionListId);
                                                                 setNum(num+1);
-                                                                setUpdateOptionF(updateOption);
                                                             }}
                                                         />
                                                     </div>
@@ -222,7 +328,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                             if (!(option.optionDirect&&option.optionList.length==optionList.optionListId))
                                                                 updateOption[idx].list[option.optionId-1].optionDirect = false;
                                                             setNum(num+1);
-                                                            setUpdateOptionF(updateOption);
                                                         }}>x
                                                     </div>
                                                 </div>
@@ -238,7 +343,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                             optionListPrice: 0,
                                                         };
                                                         setNum(num+1);
-                                                        setUpdateOptionF(updateOption);
                                                     }}>+&nbsp;품목 추가
                                                 </div>
                                                 {option.optionDirect? null:
@@ -254,7 +358,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                             };
                                                             updateOption[idx].list[option.optionId-1].optionDirect = true;
                                                             setNum(num+1);
-                                                            setUpdateOptionF(updateOption);
                                                         }}>'텍스트' 추가
                                                     </div>
                                                     </>}
@@ -272,7 +375,6 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                             updateOption[idx].list[option.optionId-1].optionDirect = true;
                                                             updateOption[idx].list[option.optionId-1].optionImage = true;
                                                             setNum(num+1);
-                                                            setUpdateOptionF(updateOption);
                                                         }}>'이미지' 추가
                                                     </div>
                                                     </>}
@@ -299,8 +401,9 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                                                 optionDirect: false,
                                                 optionDirectText: "",
                                             };
+                                            console.log(getData);
+                                            console.log(updateOption);
                                             setNum(num+1);
-                                            setUpdateOptionF(updateOption);
                                         }}
                                     >
                                         + 옵션 추가
@@ -313,9 +416,9 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                     <div className="pc spm-tap">
                         <button
                             onClick={()=>{
+                                alert("닫기");
                                 update[idx] = false;
                                 setNum(num+1);
-                                setUpdateF(update); 
                             }}>
                             <CloseBtn/>
                         </button>
@@ -326,7 +429,9 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                             <CopyBtn/>
                         </button> */}
                     </div>
-                </div>:
+                </div>
+                </>:
+
                 <div className="spm-add2">
                     <div className="spm-add-inner">
                         <div
@@ -334,21 +439,47 @@ function SPMCard({ getData, update, updateOption, setDataF, setUpdateOptionF, se
                             onClick={()=>{
                                 update[idx] = true;
                                 setNum(num+1);
-                                setUpdateF(update); 
+                                // setUpdateF(update); 
                             }}>
                             <DragBtn/>
                         </div>
                         <div className="spm-add-content2">
-                            <div className="spm-add-img2" > {/*style={{ float: "right",}}*/} 
-                                <AddIcon/>
+                            <div
+                                className="spm-modal-img-inner2"
+                                onClick={()=>{
+                                    updateImageModal[idx] = true;
+                                    setNum(num+1);
+                                }}>
+                                    {getImage[idx][updateImageNum[idx]]==""?
+                                        <div className="spm-add-img2"><AddIcon/></div>:
+                                        <img src={getImage[idx][updateImageNum[idx]]} />
+                                    }
+                            </div>
+                            <div className="spm-add-arrow-box2">
+                                <img
+                                    src={leftArrow}
+                                    onClick={()=>{
+                                        if (updateImageNum[idx] != 0) updateImageNum[idx]--;
+                                        else updateImageNum[idx] = 4;
+                                        setNum(num+1);
+                                    }}/>
+                                <img
+                                    src={rightArrow}
+                                    onClick={()=>{
+                                        if (updateImageNum[idx] != 4) updateImageNum[idx]++;
+                                        else updateImageNum[idx] = 0;
+                                        setNum(num+1);
+                                    }}
+                                    style={{ float: "right", }}/>
+                                <div className="spm-add-arrow-num">{updateImageNum[idx]+1}/5</div>
                             </div>
                             <div className="spm-option-title">
-                                <div className="spm-title">{data.name}</div>
+                                <div className="spm-title">{getData[idx].name}</div>
                                 {/* <button className="mobile spm-add-img-m">
                                     <AddIcon />
                                 </button> */}
                                 <>
-                                    {data.list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, })=>{
+                                    {getData[idx].list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, })=>{
                                         return (
                                             <>
                                             {/* <form id={"spmcard-"+option.optionId} className="spmcard"> */}

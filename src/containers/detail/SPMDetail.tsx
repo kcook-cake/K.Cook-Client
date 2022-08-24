@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import "../../styles/detail/MPRDetail.scss";
+import "../../styles/detail/SPMDetail.scss";
 
 import selectAllow from "src/assets/selectArrow.png";
 
@@ -439,7 +439,7 @@ const MPRDetail = () => {
               />
             </div>
 
-            <div className="mprdetail-content-btn-box">
+            <div className="mprdetail-content-btn-box" style={{ marginTop: "16px", }}>
               <button className="mprdetail-content-btn">등록</button>
               <button className="mprdetail-content-btn mprdetail-content-btn-left">
                 취소

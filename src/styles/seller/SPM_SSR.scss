@@ -22,17 +22,7 @@
     .spm-add-content2 {
         display: flex;
         margin-bottom: 24px;
-        .spm-add-img,
-        .spm-add-img2 {
-            width: 160px;
-            height: 176px;
-            margin-right: 20px;
-            padding: 40px;
-            padding-top: 50px;
 
-            border-radius: 5px;
-            background-color: #ebebeb;
-        }
         //문제
         .spm-add-title {
             width: 549px;
@@ -67,7 +57,39 @@
                 opacity: 100;
             }
         }
+        .spm-add-arrow-box,
+        .spm-add-arrow-box2 {
+            width: 160px;
+            margin-top: 70px;
+            position: absolute;
+            img {
+                opacity: 0;
+                transition: all 0.3s ease-in;
+            }
+            img:hover {
+                opacity: 100;
+                transition: all 0.3s ease-in;
+            }
+            .spm-add-arrow-num {
+                width: 100%;
+                margin-top: 33px;
+                padding-right: 10px;
+                text-align: right;
+                // background-color: #fff;
+            }
+        }
     }
+}
+.spm-add-img,
+.spm-add-img2 {
+    width: 160px;
+    height: 176px;
+    margin-right: 20px;
+    padding: 40px;
+    padding-top: 50px;
+
+    border-radius: 5px;
+    background-color: #ebebeb;
 }
 
 .spm-tap {
@@ -94,6 +116,57 @@
         stroke: #ebebeb;
     }
 }
+
+//이미지 모달창
+.spm-modal-background {
+    width: 100%;
+    min-width: 1199px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.281);
+    z-index: 998;
+}
+.spm-modal-box {
+    width: 775px;
+    height: 631px;
+    padding: 45px;
+    position: absolute;
+
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
+    background-color: #fff;
+    z-index: 999;
+}
+.spm-modal-title {
+    margin-bottom: 17px;
+    color: #222222;
+    font-size: 20px;
+    font-weight: 700;
+}
+.spm-modal-subtitle {
+    margin-bottom: 7.5px;
+    color: #222222;
+    font-weight: 500;
+}
+.spm-modal-img-box {
+    display: flex;
+    column-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.spm-modal-img-inner,
+.spm-modal-img-inner2 {
+    width: 160px;
+    height: 176px;
+    margin-bottom: 26.5px;
+    img {
+        width: 160px;
+        height: 176px;
+        border-radius: 5px;
+    }
+}
+
+
 
 //ssr에서만
 
@@ -137,17 +210,17 @@
                 border-bottom: 3px solid #333;
                 background-color: #f1f3f4;
             }
-            .spm-add-img {
-                height: 132px;
-                width: 120px;
-                padding: 20px; 
-                padding-top: 27px;
-                margin-bottom: 30px;
-
-                background-color: #ebebeb;
-                border-radius: 5px;
-            }
         }
+    }
+    .spm-add-img {
+        height: 111px;
+        width: 100px;
+        padding: 9px; 
+        padding-top: 18px;
+        margin-bottom: 30px;
+
+        background-color: #ebebeb;
+        border-radius: 5px;
     }
     .spm-add2 {
         width: 100%;
@@ -191,20 +264,20 @@
             // margin-bottom: 24px;
             padding: 0 16px 16px 0;
             display: block;
-            .spm-add-img2 {
-                height: 111px;
-                width: 100px;
-                margin: 0;
-                padding: 11px;
-                padding-top: 15px;
-
-                // position: absolute;
-                // right: 0;
-                float: right;
-                background-color: #ebebeb;
-                border-radius: 5px;
-            }
         }
+    }
+    .spm-add-img2 {
+        height: 111px;
+        width: 100px;
+        margin: 0;
+        padding: 11px;
+        padding-top: 15px;
+
+        // position: absolute;
+        // right: 0;
+        float: right;
+        background-color: #ebebeb;
+        border-radius: 5px;
     }
 
     .spm-bottom {
@@ -236,5 +309,74 @@
         .spm-bottom-right {
             margin-right: 20px;
         }
+    }
+
+    //이미지 모달창
+    .spm-modal-background {
+        width: 100%;
+        min-width: 0px;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.281);
+        z-index: 998;
+    }
+    .spm-modal-box {
+        width: 100%;
+        height: 480px;
+        padding: 25px;
+        position: absolute;
+
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
+        background-color: #fff;
+        z-index: 999;
+    }
+    .spm-modal-title {
+        margin-bottom: 17px;
+        color: #222222;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .spm-modal-subtitle {
+        margin-bottom: 7.5px;
+        color: #222222;
+        font-weight: 500;
+    }
+    .spm-modal-img-box::-webkit-scrollbar {
+        height: 8px;
+    }
+    .spm-modal-img-box::-webkit-scrollbar-thumb {
+        background-color: #e6e6e6;
+        border-radius: 10px;
+    }
+    .spm-modal-img-box::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
+        border-radius: 10px;
+    }
+    .spm-modal-img-box {
+        column-gap: 11px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        overflow-x: scroll;
+    }
+    .spm-modal-img-inner,
+    .spm-modal-img-inner2 {
+        width: 100px;
+        height: 111px;
+        margin-bottom: 10px;
+        img {
+            width: 100px;
+            height: 111px;
+        }
+    }
+    .spm-modal-img-inner2 {
+        float: right;
+    }
+    .spm-add-arrow-box,
+    .spm-add-arrow-box2 {
+        display: none;
+    }
+    .mprdetail-content-btn-box {
+        margin-top: 25px;
     }
 }

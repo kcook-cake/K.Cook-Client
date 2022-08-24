@@ -11,7 +11,7 @@ import SellerReview from '../containers/seller/SellerReview';
 import SellerStore from '../components/seller/SellerStore';
 
 import FullCalendarApp from './seller/FullCalendarApp';
-import MPRDetail from './detail/MPRDetail';
+import MPRDetail from './detail/SPMDetail';
 
 const Seller = () =>{
     const [pathname, setPathname] = useState("");

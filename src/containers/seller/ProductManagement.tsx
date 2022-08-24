@@ -8,6 +8,8 @@ import { ReactComponent as CloseBtn } from '../../assets/seller/closebtn.svg';
 import { ReactComponent as CopyBtn } from '../../assets/seller/copybtn.svg';
 import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../assets/seller/drag-column-btn.svg';
+import leftArrow from "../../assets/left-arrow.svg";
+import rightArrow from "../../assets/right-arrow.svg";
 
 import { Link } from 'react-router-dom';
 import getAxios from 'src/utils/getAxios';
@@ -17,9 +19,10 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 
 function ProductManagement () {
-    console.log("추가");
     //Add
     const Add = () => {
+        alert("추가");
+        //addImage사용하면 이미지 넘길 수 있음
         var index = 0;
         var c = "";
         var jlength = 0;
@@ -69,8 +72,10 @@ function ProductManagement () {
         //     .catch((error) => {
         //     });
     }
-    const [num, setNum] = useState(0);
     const [addDiv, setAddDiv] = useState(false);
+    const [addImageModal, setAddImageModal] = useState(false);
+    const [addImage, setAddImage] = useState(["https://www.codingfactory.net/wp-content/uploads/abc.jpg","https://t1.daumcdn.net/cfile/tistory/99D8553E5E09328C19", "", "", ""]);
+    const [addImageNum, setAddImageNum] = useState(0);
     const [addName, setAddName] = useState("");
     const [addPrice, setAddPrice] = useState(0);
     const [addOption, setAddOption] = useState([
@@ -97,13 +102,21 @@ function ProductManagement () {
         setAddPrice(e.target.value);
     };
 
-    const [update, setUpdate] = useState([]);
-    const [updateOption, setUpdateOption] = useState([
+    const [update, setUpdate] = useState<any>([]);
+    const [updateImageModal, setUpdateImageModal] = useState<any>([]);
+    const [updateImage, setUpdateImage] = useState<any>([]);
+    const [updateImageNum, setUpdateImageNum] = useState<any>([]);
+    const [updateOption, setUpdateOption] = useState<any>([]);
+    const [image, setImage] = useState([
+        ["https://www.codingfactory.net/wp-content/uploads/abc.jpg","","","",""],
+        ["","","","",""],
+    ]);
+    const [data, setData] = useState([
         {
             name: "케이크1",
             image: "",
             list:
-            [
+            [   
                 {
                     optionId: 1,
                     optionName: "크기",
@@ -164,109 +177,120 @@ function ProductManagement () {
                             optionListPrice: 1000,
                         },
                     ],
-                    optionDirect: true,
+                    optionDirect: false,
                     optionDirectText: "",
                     optionImage: false,
                 }
             ],
         },
     ]);
-    const [direct, setDirect] = useState([]);
-    const [data, setData] = useState([
-        {
-            name: "케이크1",
-            image: "",
-            list:
-            [   
-                {
-                    optionId: 1,
-                    optionName: "크기",
-                    optionList: [
-                        {
-                            optionListId: 1,
-                            optionListName: "1호",
-                            optionListPrice: 1000,
-                        },
-                        {
-                            optionListId: 2,
-                            optionListName: "2호",
-                            optionListPrice: 1000,
-                        },
-                        {
-                            optionListId: 3,
-                            optionListName: "3호",
-                            optionListPrice: 1000,
-                        },
-                        {
-                            optionListId: 4,
-                            optionListName: "",
-                            optionListPrice: 0,
-                        },
-                    ],
-                    optionDirect: true,
-                    optionDirectText: "",
-                },
-                {
-                    optionId: 2,
-                    optionName: "맛",
-                    optionList: [
-                        {
-                            optionListId: 1,
-                            optionListName: "딸기",
-                            optionListPrice: 1000,
-                        },
-                    ],
-                    optionDirect: false,
-                    optionDirectText: "",
-                },
-            ],
-        },
-        {
-            name: "케이크2",
-            image: "",
-            list:
-            [   
-                {
-                    optionId: 1,
-                    optionName: "크기",
-                    optionList: [
-                        {
-                            optionListId: 1,
-                            optionListName: "1호",
-                            optionListPrice: 1000,
-                        },
-                    ],
-                    optionDirect: false,
-                    optionDirectText: "",
-                }
-            ],
-        },
-    ]);
-    const [dataLength, setDataLength] = useState(0);
-    useEffect(()=>{
+
+    const [resize, setResize] = useState(0);
+    const handleResize = () => {
+        setResize(window.innerWidth);
+    };
+    useEffect(() => {
         LinkClick("ProductManagement");
         sellerLinkClick("ProductManagement");
-        // $("#option-title1").val("크기");
-        // $("#option-input-text1").val("1호");
-        // $("#add-price-1").val(1000);
-        // getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
-        var u: any = update;
-        var d: any = [];
+        setResize(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+
         for (var i=0; i< data.length; i++) { //dataLength
-            u[i] = false;
-            setUpdate(u);
-            d[i] = [];
-            for (var j=0; j< data[i].list.length; j++) {
-                // d[i][j] = data[i].list[j]
-                // setDirect();
-            }
-            // ud[i] = data[i].list;
-            // setUpdateOption(ud);
+            update[i] = false;
+            updateImageModal[i] = false;
+            updateImage[i] = ["","","","",""];
+            updateImageNum[i] = 0;
+            // d[i] = [];
+            // for (var j=0; j< data[i].list.length; j++) {
+            //     d[i][j] = data[i].list[j]
+            //     setDirect();
+            // }
+        }
+        setUpdateImage(image);
+        setUpdateOption(data); //getData와 updateOption이 자꾸 연결됨
+
+        if(resize>767) {
+            $(".spm-modal").on('scroll touchmove mousewheel', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
         }
     },[]);
 
     return(
         <>
+            <div className="spm-modal">
+                {addImageModal? 
+                <>
+                    <div
+                        className="spm-modal-background"
+                        style={{ top: window.pageYOffset, }}>
+                    </div>
+                    <div
+                        className="spm-modal-box"
+                        style={{ 
+                            top: (resize<=767? 
+                                (window.innerHeight-530<0? window.pageYOffset : window.pageYOffset+20 ): 
+                                (window.innerHeight-775<0? window.pageYOffset : window.pageYOffset+(window.innerHeight-775)/2 ))}}>
+                        <div className="spm-modal-title">이미지 등록</div>
+                        <div className="spm-modal-subtitle">대표이미지(1장)</div>
+                        <div
+                            className="spm-modal-img-inner"
+                            onClick={()=>{
+                                //addImage[0] = 사진 링크 넣기
+                            }}>
+                            {addImage[0]==""?
+                                <div className="spm-add-img"><AddIcon/></div>:
+                                <img src={addImage[0]} />
+                            }
+                        </div>
+                        <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
+                        <div className="spm-modal-img-box">
+                            <div className="spm-modal-img-inner">
+                                {addImage[1]==""?
+                                    <div className="spm-add-img"><AddIcon/></div>:
+                                    <img src={addImage[1]} />
+                                }
+                            </div>
+                            <div className="spm-modal-img-inner">
+                                {addImage[2]==""?
+                                    <div className="spm-add-img"><AddIcon/></div>:
+                                    <img src={addImage[2]} />
+                                }
+                            </div>
+                            <div className="spm-modal-img-inner">
+                                {addImage[3]==""?
+                                    <div className="spm-add-img"><AddIcon/></div>:
+                                    <img src={addImage[3]} />
+                                }
+                            </div>
+                            <div className="spm-modal-img-inner">
+                                {addImage[4]==""?
+                                    <div className="spm-add-img"><AddIcon/></div>:
+                                    <img src={addImage[4]} />
+                                }
+                            </div>
+                        </div>
+                        <div className="mprdetail-content-btn-box">
+                            <button
+                                className="mprdetail-content-btn"
+                                onClick={()=>setAddImageModal(false)}>
+                                등록
+                            </button>
+                            <button
+                                className="mprdetail-content-btn mprdetail-content-btn-left"
+                                onClick={()=>{
+                                    setAddImageModal(false);
+                                    setAddImage(["","","","",""]);
+                                }}>
+                                취소
+                            </button>
+                        </div>
+                    </div>
+                </>
+                :null}
+            </div>
+
             <div className="seller-mypage-top-flex">
                 <div className="spm-ssr-mobile-box">
                     {/* title */}
@@ -276,7 +300,12 @@ function ProductManagement () {
                     </div>
                     <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
                     <div className="seller-content">
-                        <SPMCard getData={data} update={update} setDataF={setData} updateOption={updateOption} setUpdateOptionF={setUpdateOption} setUpdateF={setUpdate}/>
+                        <SPMCard 
+                            getData={data} getImage={image}
+                            update={update} updateOption={updateOption} updateImageModal={updateImageModal} updateImage={updateImage} updateImageNum={updateImageNum}
+                            resize={resize}
+                            setDataF={setData} setImageF={setImage}
+                        />
                     </div>
 
                     {addDiv? 
@@ -288,8 +317,29 @@ function ProductManagement () {
                                 <DragBtn/>
                             </button>
                             <div className="spm-add-content">
-                                <div className="spm-add-img">
-                                    <AddIcon/>
+                                <div
+                                    className="spm-modal-img-inner"
+                                    onClick={()=>setAddImageModal(true)}>
+                                        {addImage[addImageNum]==""?
+                                            <div className="spm-add-img"><AddIcon/></div>:
+                                            <img src={addImage[addImageNum]} />
+                                        }
+                                </div>
+                                <div className="spm-add-arrow-box">
+                                    <img
+                                        src={leftArrow}
+                                        onClick={()=>{
+                                            if (addImageNum != 0) setAddImageNum(addImageNum-1);
+                                            else setAddImageNum(4);
+                                        }}/>
+                                    <img
+                                        src={rightArrow}
+                                        onClick={()=>{
+                                            if (addImageNum != 4) setAddImageNum(addImageNum+1);
+                                            else setAddImageNum(0);
+                                        }}
+                                        style={{ float: "right", }}/>
+                                    <div className="spm-add-arrow-num">{addImageNum+1}/5</div>
                                 </div>
                                 <div>
                                     <div style={{ display: "flex", }}>
@@ -324,7 +374,6 @@ function ProductManagement () {
                                             type="text"
                                             min="0"
                                             placeholder="0"
-                                            value={addPrice}
                                             onChange={handleAddPrice}
                                         />원
                                         <div id="spm-none-1" className="spmcard-update-input-right">x</div>
