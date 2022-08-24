@@ -17,6 +17,8 @@ import StoreCard from 'src/components/main/card/StoreCard';
 import LinkClick from 'src/utils/LinkClick';
 import CakeStoreTitle from 'src/components/main/card/CakeStoreTitle';
 
+import classNames from 'classnames';
+
 function Store() {
   //선택지 기타 등등
   //선택지 가로 위치 계산
@@ -99,6 +101,10 @@ function Store() {
     LinkClick('Store');
     getAxios(setData, setLengthTodays, 'cakes', [], 18, pageTodays, 0);
   }, []);
+
+  /* 지역클릭->시/군 보이게 & 지하철흐리게 */
+  const [cityBtnOn, setCityOn] = useState(false);
+  const [subwayBtnOn, setSubwayBtnOn] = useState(false);
 
   return (
     <>
@@ -540,7 +546,12 @@ function Store() {
               상세검색
             </div>
 
-            <div className="pc cake-select">
+            <div
+              className={classNames('pc', 'cake-select', {
+                use: cityBtnOn,
+                nouse: subwayBtnOn,
+              })}
+            >
               <div style={{ display: 'flex' }}>
                 <button id="cake-select-three" className="cake-select-button">
                   {selectTwo}
@@ -552,29 +563,40 @@ function Store() {
                       SelectCloseF();
                       if (selectTwoShow) setSelectTwoShow(false);
                       else setSelectTwoShow(true);
+                      setCityOn((prev) => !prev);
+                      setSubwayBtnOn(false);
                     }}
                   />
                 </div>
               </div>
             </div>
-            <div className="pc cake-select">
-              <div style={{ display: 'flex' }}>
-                <button id="cake-select-two" className="cake-select-button">
-                  {selectThree}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      SelectCloseF();
-                      if (selectThreeShow) setSelectThreeShow(false);
-                      else setSelectThreeShow(true);
-                    }}
-                  />
+
+            {cityBtnOn ? (
+              <div className="pc cake-select">
+                <div style={{ display: 'flex' }}>
+                  <button id="cake-select-two" className="cake-select-button">
+                    {selectThree}
+                  </button>
+                  <div className="cake-select-img">
+                    <img
+                      src={selectAllow}
+                      onClick={() => {
+                        SelectCloseF();
+                        if (selectThreeShow) setSelectThreeShow(false);
+                        else setSelectThreeShow(true);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="pc cake-select">
+            ) : null}
+
+            <div
+              className={classNames('pc', 'cake-select', {
+                use: subwayBtnOn,
+                nouse: cityBtnOn,
+              })}
+            >
               <div style={{ display: 'flex' }}>
                 <button id="cake-select-four" className="cake-select-button">
                   {selectFour}
@@ -586,6 +608,8 @@ function Store() {
                       SelectCloseF();
                       if (selectFourShow) setSelectFourShow(false);
                       else setSelectFourShow(true);
+                      setSubwayBtnOn((prev) => !prev);
+                      setCityOn(false);
                     }}
                   />
                 </div>

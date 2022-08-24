@@ -1,4 +1,4 @@
-@import "../../reset.scss";
+@import '../../reset.scss';
 
 /*
 cake-flex
@@ -15,10 +15,10 @@ cake-flex
 */
 
 .cake-flex {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 .store-flex {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .cake {
@@ -29,7 +29,7 @@ cake-flex
   background-color: #fafafa;
 }
 .store {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .cake-select-flex {
@@ -39,7 +39,8 @@ cake-flex
 
   select {
     padding-right: 0;
-    background: url('../../../assets/selectArrow.png') no-repeat 97% 50%/15px auto;
+    background: url('../../../assets/selectArrow.png') no-repeat 97% 50%/15px
+      auto;
     background-color: #f5f5f5;
   }
   option {
@@ -47,7 +48,6 @@ cake-flex
     background-color: #fff;
   }
   .pc {
-
   }
   .mobile {
     display: none;
@@ -84,18 +84,18 @@ cake-flex
 }
 
 .cake-contents-flex {
-    .contents {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 16px;
-    }
+  .contents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 16px;
+  }
 }
 .store-contents-flex {
-    .contents {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 16px;
-    }
+  .contents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 16px;
+  }
 }
 .cake-store-contents {
   padding: 0 10px;
@@ -132,9 +132,9 @@ cake-flex
 .cake-select-absolute {
   top: 250px;
   position: absolute;
-  ul{
-    list-style:none;
-    padding-left:0px;
+  ul {
+    list-style: none;
+    padding-left: 0px;
   }
   .cake-select-top {
     position: absolute;
@@ -180,7 +180,8 @@ cake-flex
 }
 
 .cake-select-bar {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   margin-top: 14px;
@@ -217,7 +218,8 @@ cake-flex
   .cake {
     width: 100%;
     min-width: 0px;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
     background-color: #fff;
 
     //PickCard
@@ -239,20 +241,20 @@ cake-flex
 
   .cake-contents-flex {
     .contents {
-        margin-bottom: 23px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        column-gap: 16px;
-        overflow-x: scroll;
+      margin-bottom: 23px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      column-gap: 16px;
+      overflow-x: scroll;
     }
   }
   .store-contents-flex {
     .contents {
-        margin-bottom: 23px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        column-gap: 16px;
-        overflow-x: scroll;
+      margin-bottom: 23px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      column-gap: 16px;
+      overflow-x: scroll;
     }
   }
   .cake-store-contents {
@@ -272,10 +274,10 @@ cake-flex
       // box-shadow: inset 0px 0px 5px white;
     }
 
-
     // 페이지네이션
     .pagination {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       margin-bottom: 45px;
       display: block;
 
@@ -311,7 +313,7 @@ cake-flex
       width: 0px;
       height: 0px;
       margin-left: 40px;
-  
+
       border-bottom: 10px solid #fff;
       border-left: 9px solid transparent;
       border-right: 9px solid transparent;
@@ -319,8 +321,6 @@ cake-flex
       z-index: 999;
     }
   }
-
-
 
   .cake-search {
     margin-top: 10px;
@@ -387,9 +387,9 @@ cake-flex
   }
 
   .cake-select-relative-mobile {
-    ul{
-      list-style:none;
-      padding-left:0px;
+    ul {
+      list-style: none;
+      padding-left: 0px;
     }
     li {
       width: 88%;
@@ -403,4 +403,17 @@ cake-flex
       border-bottom: 1px solid #eeeeee;
     }
   }
+}
+
+/* 8/24 추가 스토어- 지역,지하철 버튼 흐리게  */
+.cake-select.use button,
+.cake-select.use .cake-select-img {
+  filter: invert(0.2);
+  color: #212529;
+  //  background-color: purple !important;
+}
+
+// nouse - 지하철
+.pc.cake-select.nouse {
+  opacity: 0.6;
 }
