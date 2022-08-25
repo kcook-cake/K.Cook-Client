@@ -12,6 +12,7 @@ import LoginCheckbox from "../components/LoginCheckbox";
 
 import logo from "../assets/logo.png";
 import X from "../assets/address_x.png"
+import LinkClick from "src/utils/LinkClick";
 
 function SignUp() {
   const [failModalText, setFailModalText] = useState("회원가입 정보가 일치하지 않습니다.");
@@ -208,6 +209,7 @@ function SignUp() {
   useEffect(()=>{
     BackgroundF();
     $(".hm-pc-flex").hide();
+    LinkClick("SignUp");
   },[]);
 
   const [backWidth, setBackWidth] = useState(0);
@@ -407,11 +409,11 @@ function SignUp() {
         가입하기
         </button>
 
-          {failModal? 
-            <div className="login-iscorrect">
-              {failModalText}
-            </div>
-          : null}
+        {failModal? 
+          <div className="login-iscorrect">
+            {failModalText}
+          </div>
+        : null}
       </div>
     </div>
   );
