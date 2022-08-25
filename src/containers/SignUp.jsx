@@ -12,6 +12,7 @@ import LoginCheckbox from "../components/LoginCheckbox";
 
 import logo from "../assets/logo.png";
 import X from "../assets/address_x.png"
+import LinkClick from "src/utils/LinkClick";
 
 function SignUp() {
   const [failModalText, setFailModalText] = useState("회원가입 정보가 일치하지 않습니다.");
@@ -69,6 +70,13 @@ function SignUp() {
       })
       .then((res) => {
         setPhoneResult(res.data.result);
+        if (res.data.isSuccess) {
+          setFailModalText("인증번호를 확인해주세요.");
+          setFailModal(true);
+          setTimeout(() => {
+            setFailModal(false);
+          }, 5000);
+        }
       })
       .catch((error) => {
         setFailModalText("전화번호를 정확히 입력해주세요.");
@@ -184,7 +192,7 @@ function SignUp() {
     } else {
       axios
         .post("https://prod.kcook-cake.com/app/sign-up", {
-          address: addressMain + " " + address,
+          address: addressMain + ", " + address,
           dateOfBirth: birthday,
           email: email,
           nickname: nickname,
@@ -208,6 +216,7 @@ function SignUp() {
   useEffect(()=>{
     BackgroundF();
     $(".hm-pc-flex").hide();
+    LinkClick("SignUp");
   },[]);
 
   const [backWidth, setBackWidth] = useState(0);
@@ -407,11 +416,11 @@ function SignUp() {
         가입하기
         </button>
 
-          {failModal? 
-            <div className="login-iscorrect">
-              {failModalText}
-            </div>
-          : null}
+        {failModal? 
+          <div className="login-iscorrect">
+            {failModalText}
+          </div>
+        : null}
       </div>
     </div>
   );

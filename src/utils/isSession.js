@@ -15,6 +15,7 @@ const isSession = (jwToken, fn, fn2) => {
             if(fn2 != null) fn2(res.data.result);
         })
         .catch((error) => {
+            localStorage.removeItem("jwToken");
             sessionStorage.removeItem("jwToken");
             if(fn != null) fn(false);
         });

@@ -8,6 +8,7 @@ import "../styles/common/LoginSignup.scss";
 import "../styles/Login.scss";
 
 import logo from "../assets/logo.png";
+import LinkClick from "src/utils/LinkClick";
 
 function Login() {
   const [signInId, setInputId] = useState("");
@@ -59,6 +60,7 @@ function Login() {
   // 페이지 렌더링 후 가장 처음 호출되는 함수
   useEffect(() => {
     $(".hm-pc-flex").hide();
+    LinkClick("Login");
     },
     // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
     //업데이트될 때는 useEffect() 실행하지 말아주세요 라는 뜻
@@ -105,8 +107,7 @@ function Login() {
           onClick={onClickLogin}
           disabled={
             signInId.length !== 0 && password.length >= 8 ? false : true
-          }
-        >
+          }>
           로그인
         </div>
 
