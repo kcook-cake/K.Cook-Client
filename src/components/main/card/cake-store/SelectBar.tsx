@@ -1,14 +1,14 @@
 import React from 'react';
-import '../../../styles/main/cake/Cake_MobileCard.scss';
+import 'src/styles/main/card/cake-store/SelectBar.scss';
 
-import Delete from '../../../assets/cake-bar-delete.svg';
+import Delete from '../../../../assets/cake-bar-delete.svg';
 
 interface Props {
   getData: any;
   setSelectAllF: any;
 }
 
-function CakeBarCard({ getData, setSelectAllF }: Props) {
+function SelectBar({ getData, setSelectAllF }: Props) {
   return (
     <>
       {getData.map((data: {}) => {
@@ -36,4 +36,4 @@ function CakeBarCard({ getData, setSelectAllF }: Props) {
   );
 }
 
-export default CakeBarCard;
+export default SelectBar;

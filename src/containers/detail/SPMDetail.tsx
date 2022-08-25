@@ -5,87 +5,58 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "../../styles/detail/SPMDetail.scss";
 
 import selectAllow from "src/assets/selectArrow.png";
+import search from 'src/assets/search.svg';
 
 import getAxios from "src/utils/getAxios";
 import LinkClick from "src/utils/LinkClick";
 import sellerLinkClick from "src/utils/sellerLinkClick";
-import CakeBarCard from "src/components/main/cake/CakeBarCard";
+import SelectWindow from "src/components/main/card/cake-store/SelectWindow";
+import SelectBar from "src/components/main/card/cake-store/SelectBar";
+import SelectBox from "src/components/main/card/cake-store/SelectBox";
 
 const MPRDetail = () => {
-  //선택지 기타 등등
+  const [num, setNum] = useState(0);
+
   //선택지 가로 위치 계산
   const [width, setWidth] = useState(0);
   const SelectCloseF = () => {
     var n1: any = $(".seller-flex").width();
     var n2: any = $(".seller").width();
-
     if ((n1 - n2) / 2 < 0) setWidth(0);
     else setWidth((n1 - n2) / 2);
 
-    setSelectOneShow(false);
-    setSelectTwoShow(false);
-    setSelectThreeShow(false);
-    setSelectFourShow(false);
-    setSelectFiveShow(false);
-  };
-
-  const [selectOneNum, setSelectOneNum] = useState(0);
-  const [selectTwoNum, setSelectTwoNum] = useState(0);
-  const [selectThreeNum, setSelectThreeNum] = useState(0);
-  const [selectFourNum, setSelectFourNum] = useState(0);
-  const [selectFiveNum, setSelectFiveNum] = useState(0);
-
-  //선택지
-  const [selectOneShow, setSelectOneShow] = useState(false);
-  const [selectOne, setSelectOne] = useState("정렬");
-  const SelectOneF = (str: string, num: number, length: number) => {
-    // $('.cake-select-li').css('color', '#8a8a8a');
-    $("#cake-select-li-" + num).css("color", "#ea5450");
-    setSelectOneNum(length);
-    setSelectOne(str);
-    setSelectOneShow(false);
-  };
-
-  const [selectAll, setSelectAll] = useState([]);
-  const [selectTwoShow, setSelectTwoShow] = useState(false);
-  const [selectTwo, setSelectTwo] = useState("지역");
-  const [selectThreeShow, setSelectThreeShow] = useState(false);
-  const [selectThree, setSelectThree] = useState("맛");
-  const [selectFourShow, setSelectFourShow] = useState(false);
-  const [selectFour, setSelectFour] = useState("이벤트");
-  const [selectFiveShow, setSelectFiveShow] = useState(false);
-  const [selectFive, setSelectFive] = useState("가격대");
-  const SelectF = (n: number, str: string, length: number) => {
-    if (SelectBarF(str)) {
-      var selectAllData: any = selectAll;
-      selectAllData[selectAll.length] = str;
-      setSelectAll(selectAllData);
+    for (var i=1; i<5; i++) {
+      selectWindow[i][0] = false;
     }
-    if (n == 2) {
-      setSelectTwoNum(length);
-      setSelectTwo(str);
-      setSelectTwoShow(false);
-    } else if (n == 3) {
-      setSelectThreeNum(length);
-      setSelectThree(str);
-      setSelectThreeShow(false);
-    } else if (n == 4) {
-      setSelectFourNum(length);
-      setSelectFour(str);
-      setSelectFourShow(false);
-    } else {
-      setSelectFiveNum(length);
-      setSelectFive(str);
-      setSelectFiveShow(false);
-    }
+    setNum(num+1);
   };
+
+  //선택지창
+  const [selectWindow, setSelectWindow] = useState([
+    [false, "", 0],
+    [false, "지역", 0],
+    [false, "맛", 0],
+    [false, "이벤트", 0],
+    [false, "가격대", 0],
+  ]);
 
   //선택지바
-  const SelectBarF = (str: string) => {
-    for (var i = 0; i < selectAll.length; i++) {
-      if (selectAll[i] == str) return false;
-    }
-    return true;
+  const [selectAll, setSelectAll] = useState([]);
+
+  //선택지 모바일
+  const [selectMobileTF, setSelectMobileTF] = useState(false);
+
+
+
+  //편집기
+  const [startDrag, setStartDrag] = useState(0);
+  const [ckHeight, setCkHeight] = useState(286);
+
+
+
+  const [resize, setResize] = useState(0);
+  const handleResize = () => {
+    setResize(window.innerWidth);
   };
 
   const [data, setData] = useState([]);
@@ -95,222 +66,26 @@ const MPRDetail = () => {
   useEffect(() => {
     LinkClick("ProductManagement");
     sellerLinkClick("ProductManagement");
+
+    setResize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
   }, []);
 
   return (
     <>
-      {selectTwoShow ? (
-        <div
-          className="pc cake-select-absolute"
-          style={{ left: width + 300 + selectTwoNum + "px" }}
-        >
-          <div className="cake-select-top"></div>
-          <ul className="cake-select-ul-2">
-            <li
-              className="cake-select-li-top cake-select-li"
-              onClick={() => {
-                SelectF(2, "서울", 0);
-              }}
-            >
-              서울
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(2, "경기", 0);
-              }}
-            >
-              경기
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(2, "인천", 0);
-              }}
-            >
-              인천
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(2, "강릉", 0);
-              }}
-            >
-              강릉
-            </li>
-            <li
-              className="cake-select-li-bottom cake-select-li"
-              onClick={() => {
-                SelectF(2, "부산", 0);
-              }}
-            >
-              부산
-            </li>
-          </ul>
-        </div>
-      ) : null}
-      {selectThreeShow ? (
-        <div
-          className="pc cake-select-absolute"
-          style={{ left: width + 360 + selectTwoNum + selectThreeNum + "px" }}
-        >
-          <div className="cake-select-top"></div>
-          <ul className="cake-select-ul">
-            <li
-              className="cake-select-li-top cake-select-li"
-              onClick={() => {
-                SelectF(3, "생크림", 30);
-              }}
-            >
-              생크림
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(3, "크림치즈", 40);
-              }}
-            >
-              크림치즈
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(3, "초코", 12);
-              }}
-            >
-              초코
-            </li>
-            <li
-              className="cake-select-li-bottom cake-select-li"
-              onClick={() => {
-                SelectF(3, "과일", 12);
-              }}
-            >
-              과일
-            </li>
-          </ul>
-        </div>
-      ) : null}
-      {selectFourShow ? (
-        <div
-          className="pc cake-select-absolute"
-          style={{
-            left:
-              width +
-              435 +
-              selectTwoNum +
-              selectThreeNum +
-              selectFourNum +
-              "px",
-          }}
-        >
-          <div className="cake-select-top"></div>
-          <ul className="cake-select-ul-2">
-            <li
-              className="cake-select-li-top cake-select-li"
-              onClick={() => {
-                SelectF(4, "생일", -15);
-              }}
-            >
-              생일
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(4, "커플 기념일", 35);
-              }}
-            >
-              커플 기념일
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(4, "어버이날", 15);
-              }}
-            >
-              어버이날
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(4, "돌잔치", 0);
-              }}
-            >
-              돌잔치
-            </li>
-            <li
-              className="cake-select-li-bottom cake-select-li"
-              onClick={() => {
-                SelectF(4, "크리스마스", 35);
-              }}
-            >
-              크리스마스
-            </li>
-          </ul>
-        </div>
-      ) : null}
-      {selectFiveShow ? (
-        <div
-          className="pc cake-select-absolute"
-          style={{
-            left:
-              width +
-              520 +
-              selectTwoNum +
-              selectThreeNum +
-              selectFourNum +
-              selectFiveNum +
-              "px",
-          }}
-        >
-          <div className="cake-select-top"></div>
-          <ul className="cake-select-ul-2">
-            <li
-              className="cake-select-li-top cake-select-li"
-              onClick={() => {
-                SelectF(5, "~3만 원", 10);
-              }}
-            >
-              ~3만 원
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(5, "3~5만 원", 15);
-              }}
-            >
-              3~5만 원
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(5, "5~7만 원", 15);
-              }}
-            >
-              5~7만 원
-            </li>
-            <li
-              className="cake-select-li"
-              onClick={() => {
-                SelectF(5, "7~10만 원", 20);
-              }}
-            >
-              7~10만 원
-            </li>
-            <li
-              className="cake-select-li-bottom cake-select-li"
-              onClick={() => {
-                SelectF(5, "10만 원~", 15);
-              }}
-            >
-              10만 원~
-            </li>
-          </ul>
-        </div>
-      ) : null}
+      {/* 선택지창 */}
+      {resize>767 || selectMobileTF?
+          <SelectWindow
+              cakestoreTF={false} width={width+345} height={515}
+              num={num} setNumF={setNum}
+              setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF}
+              selectAll={selectAll} selectWindow={selectWindow} />
+          :null
+      }
 
-      <div className="seller-mypage-top-flex mprdetail-flex">
+      <div className="seller-mypage-top-flex spmdetail-flex">
         <div className="sso-ssh-mobile-box">
+          
           <div className="seller-mypage-top sso-ssh-top">
             <div className="seller-mypage-front-title">상품관리</div>
             <div className="seller-mypage-middle-title">
@@ -319,115 +94,71 @@ const MPRDetail = () => {
           </div>
           <div
             className="mobile"
-            style={{ width: "5px", height: "25px" }}
-          ></div>
-          <div className="mprdetail-title">
+            style={{ width: "5px", height: "25px" }}>
+          </div>
+
+          <div className="spmdetail-title">
             상품 상세페이지 설정&nbsp;
             <div style={{ paddingTop: "3px", fontSize: "14px" }}>▼</div>
           </div>
-          <div className="mprdetail-content">
-            <div className="mprdetail-content-title">
+
+          <div className="spmdetail-content">
+            <div className="spmdetail-content-title">
               하트 볼터치 곰돌이 케이크
             </div>
-            <div className="mprdetail-content-subtitle">#검색 필터 설정</div>
+            <div className="spmdetail-content-subtitle">#검색 필터 설정</div>
 
-            <div className="pc cake-select">
-              <div style={{ display: "flex" }}>
-                <button id="cake-select-three" className="cake-select-button">
-                  {selectTwo}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      SelectCloseF();
-                      if (selectTwoShow) setSelectTwoShow(false);
-                      else setSelectTwoShow(true);
-                    }}
-                  />
-                </div>
+            {/* 선택지 박스 */}
+            {resize> 767?
+              <SelectBox cakestoreTF={true} selectWindow={selectWindow} SelectCloseF={SelectCloseF} />:            
+              <div
+                className="mobile spmdetail-search"
+                onClick={() => {
+                  setSelectMobileTF(true);
+                }}>
+                <img src={search} />
+                상세검색
               </div>
-            </div>
-            <div className="pc cake-select">
-              <div style={{ display: "flex" }}>
-                <button id="cake-select-two" className="cake-select-button">
-                  {selectThree}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      SelectCloseF();
-                      if (selectThreeShow) setSelectThreeShow(false);
-                      else setSelectThreeShow(true);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="pc cake-select">
-              <div style={{ display: "flex" }}>
-                <button id="cake-select-four" className="cake-select-button">
-                  {selectFour}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      SelectCloseF();
-                      if (selectFourShow) setSelectFourShow(false);
-                      else setSelectFourShow(true);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="pc cake-select">
-              <div style={{ display: "flex" }}>
-                <button id="cake-select-five" className="cake-select-button">
-                  {selectFive}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      SelectCloseF();
-                      if (selectFiveShow) setSelectFiveShow(false);
-                      else setSelectFiveShow(true);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Pc 선택지 바 */}
-            {selectAll.length == 0 ? null : (
-              <div className="pc cake-select-bar">
-                <CakeBarCard setSelectAllF={setSelectAll} getData={selectAll} />
+            }
+            
+            {/* 선택지 바 */}
+            {selectAll.length != 0?
                 <div
-                  className="cake-bar-card-all-delete"
-                  onClick={() => {
-                    setSelectTwo("지역");
-                    setSelectThree("맛");
-                    setSelectFour("이벤트");
-                    setSelectFive("가격대");
-                    setSelectTwoNum(0);
-                    setSelectThreeNum(0);
-                    setSelectFourNum(0);
-                    setSelectFiveNum(0);
-                    SelectCloseF();
-                    setSelectAll([]);
-                  }}
-                >
-                  초기화
-                </div>
-              </div>
-            )}
+                    className="cake-select-bar spmdetail-select-bar">
+                    <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
+                    <div
+                        className="cake-bar-card-all-delete"
+                        onClick={()=>{
+                            SelectCloseF();
 
-            <div className="mprdetail-content-subtitle">#상세 페이지 내용</div>
-            <div className="mprdetail-ck">
+                            selectWindow[1][1] = "지역";
+                            selectWindow[2][1] = "맛";
+                            selectWindow[3][1] = "이벤트";
+                            selectWindow[4][1] = "가격대";
+                            
+                            for (var i=1; i<5; i++) {
+                                selectWindow[i][2] = 0;
+                            }
+        
+                            setSelectAll([]);
+                        }}
+                    >초기화</div>
+                </div>
+            :null}
+
+            <div className="spmdetail-content-subtitle">#상세 페이지 내용</div>
+            <div className="spmdetail-ck">
               <CKEditor
                 editor={ClassicEditor}
                 data="<p></p>"
+                onInit={(editor) => {
+                  editor.ui
+                    .getEditableElement()
+                    .parentElement.insertBefore(
+                      editor.ui.view.toolbar.element,
+                      editor.ui.getEditableElement()
+                    );
+                }}
                 onReady={(editor) => {
                   // You can store the 'editor' and use when it is needed.
                 }}
@@ -437,11 +168,22 @@ const MPRDetail = () => {
                 onBlur={(event, editor) => {}}
                 onFocus={(event, editor) => {}}
               />
+              <div
+                className="spmdetail-ck-bottom"
+                onDragStart={(e)=>{
+                  setStartDrag(e.clientY);
+                }}
+                onDragEnd={(e)=>{
+                  setCkHeight(ckHeight+(e.clientY-startDrag));
+                  $(".ck-content").css("height", ckHeight);
+                }}
+                draggable={true}>
+              </div>
             </div>
 
-            <div className="mprdetail-content-btn-box" style={{ marginTop: "16px", }}>
-              <button className="mprdetail-content-btn">등록</button>
-              <button className="mprdetail-content-btn mprdetail-content-btn-left">
+            <div className="spmdetail-content-btn-box" style={{ marginTop: "16px", }}>
+              <button className="spmdetail-content-btn">등록</button>
+              <button className="spmdetail-content-btn spmdetail-content-btn-left">
                 취소
               </button>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LinkClick from 'src/utils/LinkClick';
-import 'src/styles/main/card/CakeStore.scss';
+import 'src/styles/main/CakeStore.scss';
 
 function CS (){
     useEffect(()=>{

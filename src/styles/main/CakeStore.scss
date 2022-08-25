@@ -1,8 +1,8 @@
-@import '../../reset.scss';
+@import '../reset.scss';
 
 /*
 cake-flex
-  cake-select-mobile-flex
+  
     (Mobile1)cake-select-mobile 5개
     (Mobile2)cake-select-relative-mobile 5개
     cake-select-bar-mobile
@@ -39,7 +39,7 @@ cake-flex
 
   select {
     padding-right: 0;
-    background: url('../../../assets/selectArrow.png') no-repeat 97% 50%/15px
+    background: url('../../assets/selectArrow.png') no-repeat 97% 50%/15px
       auto;
     background-color: #f5f5f5;
   }
@@ -129,73 +129,8 @@ cake-flex
   }
 }
 
-.cake-select-absolute {
-  top: 250px;
-  position: absolute;
-  ul {
-    list-style: none;
-    padding-left: 0px;
-  }
-  .cake-select-top {
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    margin-left: 90px;
-
-    border-bottom: 10px solid #fff;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    // top: -5px; left: 9px;
-    z-index: 999;
-  }
-  .cake-select-ul-2,
-  .cake-select-ul {
-    width: 200px;
-    height: 209px;
-    margin-top: 10px;
-
-    box-shadow: 0px 0px 15px rgb(204, 204, 204);
-    border-radius: 10px;
-    background-color: #fff;
-  }
-  .cake-select-ul-2 {
-    height: 260px;
-  }
-  .cake-select-li {
-    padding: 15.6px 16px;
-
-    color: #8a8a8a;
-    font-size: 15px;
-    font-weight: 500;
-  }
-  .cake-select-li:hover {
-    background-color: rgba(234, 84, 80, 0.15);
-  }
-  .cake-select-li-top {
-    border-radius: 10px 10px 0 0;
-  }
-  .cake-select-li-bottom {
-    border-radius: 0 0 10px 10px;
-  }
-}
-
-.cake-select-bar {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  margin-top: 14px;
-  // display: flex;
-}
 .test {
   background-color: red;
-}
-.cake-bar-card-all-delete {
-  width: 45px;
-  margin-left: 5px;
-  margin-top: 5px;
-  display: inline-block;
-  color: #ea5450;
 }
 
 .cake-store-card-dummy,
@@ -211,8 +146,8 @@ cake-flex
   .cake-select-flex {
     width: 100%;
     min-width: 0px;
-    padding-left: 16px;
     margin-top: 24px;
+    padding: 0;
   }
 
   .cake {
@@ -237,6 +172,7 @@ cake-flex
 
   .cake-select-one-flex {
     float: none;
+    margin-left: 16px;
   }
 
   .cake-contents-flex {
@@ -305,23 +241,6 @@ cake-flex
     }
   }
 
-  .cake-select-absolute {
-    left: 10px !important;
-    top: 130px;
-    .cake-select-top {
-      position: absolute;
-      width: 0px;
-      height: 0px;
-      margin-left: 40px;
-
-      border-bottom: 10px solid #fff;
-      border-left: 9px solid transparent;
-      border-right: 9px solid transparent;
-      // top: -5px; left: 9px;
-      z-index: 999;
-    }
-  }
-
   .cake-search {
     margin-top: 10px;
     margin-right: 20px;
@@ -342,6 +261,7 @@ cake-flex
 
     position: absolute;
     background-color: #fff;
+    z-index: 997 !important;
 
     .cake-select-mobile-top {
       width: 100%;

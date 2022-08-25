@@ -178,7 +178,6 @@
     //spm에서만
     .spm-add {
         width: 100%;
-        // height: 148px !important;
         display: block;
 
         border-radius: 0;
@@ -323,7 +322,7 @@
     }
     .spm-modal-box {
         width: 100%;
-        height: 480px;
+        height: 530px;
         padding: 25px;
         position: absolute;
 
@@ -369,12 +368,38 @@
             height: 111px;
         }
     }
+    .spm-modal-img-inner {
+        width: 120px;
+        height: 132px;
+        img {
+            width: 120px;
+            height: 132px;
+        }
+    }
+    .spm-add-img {
+        width: 120px;
+        height: 132px;
+        padding: 20px;
+        padding-top: 27px;
+        img {
+            width: 120px;
+            height: 132px;
+        }
+    }
     .spm-modal-img-inner2 {
         float: right;
     }
-    .spm-add-arrow-box,
-    .spm-add-arrow-box2 {
-        display: none;
+    .spm-add-arrow-box {
+        width: 120px !important;
+        height: 132px !important;
+        margin-top: -90px !important;
+        position: absolute !important;
+        img {
+            width: 30px;
+        }
+    }
+    .spm-add-arrow-num {
+        margin-top: 18px !important;
     }
     .mprdetail-content-btn-box {
         margin-top: 25px;

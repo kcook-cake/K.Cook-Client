@@ -455,7 +455,7 @@ function SPMCard({
                                         <img src={getImage[idx][updateImageNum[idx]]} />
                                     }
                             </div>
-                            <div className="spm-add-arrow-box2">
+                            {/* <div className="spm-add-arrow-box2">
                                 <img
                                     src={leftArrow}
                                     onClick={()=>{
@@ -472,7 +472,7 @@ function SPMCard({
                                     }}
                                     style={{ float: "right", }}/>
                                 <div className="spm-add-arrow-num">{updateImageNum[idx]+1}/5</div>
-                            </div>
+                            </div> */}
                             <div className="spm-option-title">
                                 <div className="spm-title">{getData[idx].name}</div>
                                 {/* <button className="mobile spm-add-img-m">
