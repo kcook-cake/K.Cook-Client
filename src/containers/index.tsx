@@ -16,6 +16,7 @@ import LoginFind from './LoginFind';
 import Test from '../components/Test';
 import StoreDetail from './detail/StoreDetail';
 import CakeDetail from './detail/CakeDetail';
+import SignOut from './SignOut';
 
 const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
@@ -48,6 +49,7 @@ const Pages = () => {
       <Route exact path="/Login" component={Login} />
       <Route exact path="/LoginFind" component={LoginFind} />
       <Route exact path="/SignUp" component={SignUp} />
+      <Route exact path="/SignOut" component={SignOut} />
       <Route exact path="/Test" component={Test} />
 
       <Route exact path="/Cake/:id" component={CakeDetail} />

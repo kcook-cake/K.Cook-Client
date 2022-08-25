@@ -198,8 +198,7 @@ function LandingPage() {
             onClick={onClickLogin}
             disabled={
               signInId.length !== 0 && password.length >= 8 ? false : true
-            }
-          >
+            }>
             로그인
           </button>
         </div> : <></>

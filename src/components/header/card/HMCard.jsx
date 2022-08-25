@@ -60,33 +60,33 @@ function HMCard({ setNumLeftMobileF }) {
                 <hr/>
                 <div className="hm-mobile-link-flex">
                     {session ? 
-                        <div className="hm-mobile-link">
-                            <Link
-                                to="/"
-                                className="header-link Logout"
-                                onClick={() => {
-                                    localStorage.removeItem("jwToken")
-                                    sessionStorage.removeItem("jwToken")
-                                    if (localStorage.jwToken === undefined || sessionStorage.jwToken === undefined)
-                                        document.location.href = "/";
-                                }}
-                            >
-                                로그아웃
-                            </Link>
-                        </div>:
                         <>
                             <div className="hm-mobile-link">
                                 <Link
-                                    to="/SignUp"
-                                    className="header-link SignUp"
-                                    onClick={()=>{
-                                        setNumLeftMobileF(1);
-                                        $(".hm-mobile").hide();
-                                    }}
-                                >
-                                    회원가입
+                                    to="/"
+                                    className="header-link Logout"
+                                    onClick={() => {
+                                        localStorage.removeItem("jwToken")
+                                        sessionStorage.removeItem("jwToken")
+                                        if (localStorage.jwToken === undefined || sessionStorage.jwToken === undefined)
+                                            document.location.href = "/";
+                                    }}>
+                                    로그아웃
                                 </Link>
                             </div>
+                            <div className="hm-mobile-link">
+                                <Link
+                                    to="/SignOUt"
+                                    className="header-link SignOut"
+                                    onClick={() => {
+                                        setNumLeftMobileF(1);
+                                        $(".hm-mobile").hide();
+                                    }}>
+                                    회원탈퇴
+                                </Link>
+                            </div>
+                        </>:
+                        <>
                             <div className="hm-mobile-link">
                                 <Link
                                     to="/Login"
@@ -94,9 +94,19 @@ function HMCard({ setNumLeftMobileF }) {
                                     onClick={()=>{
                                         setNumLeftMobileF(1);
                                         $(".hm-mobile").hide();
-                                    }}
-                                >
+                                    }}>
                                     로그인
+                                </Link>
+                            </div>
+                            <div className="hm-mobile-link">
+                                <Link
+                                    to="/SignUp"
+                                    className="header-link SignUp"
+                                    onClick={()=>{
+                                        setNumLeftMobileF(1);
+                                        $(".hm-mobile").hide();
+                                    }}>
+                                    회원가입
                                 </Link>
                             </div>
                         </>
@@ -108,8 +118,7 @@ function HMCard({ setNumLeftMobileF }) {
                             onClick={()=>{
                                 setNumLeftMobileF(1);
                                 $(".hm-mobile").hide();
-                            }}
-                        >
+                            }}>
                             홈
                         </Link>
                     </div>
@@ -120,8 +129,7 @@ function HMCard({ setNumLeftMobileF }) {
                             onClick={()=>{
                                 setNumLeftMobileF(1);
                                 $(".hm-mobile").hide();
-                            }}
-                        >
+                            }}>
                             오늘의 추천
                         </Link>
                     </div>
@@ -132,8 +140,7 @@ function HMCard({ setNumLeftMobileF }) {
                             onClick={()=>{
                                 setNumLeftMobileF(1);
                                 $(".hm-mobile").hide();
-                            }}
-                        >
+                            }}>
                             케이크
                         </Link>
                     </div>
@@ -144,8 +151,7 @@ function HMCard({ setNumLeftMobileF }) {
                             onClick={()=>{
                                 setNumLeftMobileF(1);
                                 $(".hm-mobile").hide();
-                            }}
-                        >
+                            }}>
                             스토어
                         </Link>
                     </div>
@@ -156,8 +162,7 @@ function HMCard({ setNumLeftMobileF }) {
                             onClick={()=>{
                                 setNumLeftMobileF(1);
                                 $(".hm-mobile").hide();
-                            }}
-                        >
+                            }}>
                             고객지원
                         </Link>
                     </div>
@@ -170,8 +175,7 @@ function HMCard({ setNumLeftMobileF }) {
                                 onClick={()=>{
                                     setNumLeftMobileF(2);
                                     $(".hm-mobile").hide();
-                                }}
-                            >
+                                }}>
                                 판매자로 전환
                             </Link>
                         </div>
@@ -182,8 +186,7 @@ function HMCard({ setNumLeftMobileF }) {
                                 onClick={()=>{
                                     setNumLeftMobileF(3);
                                     $(".hm-mobile").hide();
-                                }}
-                            >
+                                }}>
                                 마이페이지
                             </Link>
                         </div>
