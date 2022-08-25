@@ -103,9 +103,53 @@ function Store() {
   }, []);
 
   /* 지역클릭->시/군 보이게 & 지하철흐리게 */
-  const [cityBtnOn, setCityOn] = useState(false);
+  const [cityBtnOn, setCityBtnOn] = useState(false);
   const [subwayBtnOn, setSubwayBtnOn] = useState(false);
 
+  // 모바일 상세정보 지역,지하철 버튼 진하게/흐리게
+  const [mobileCityBtnOn, setMobileCityBtnOn] = useState(false);
+  const [mobileSubwayBtnOn, setMobileSubwayBtnOn] = useState(false);
+
+  // 초기화 버튼
+  // 배열초기화는 주석처리해둠 <-- 넣어두면 자동초기화할때 무한루프
+  const onResetCakeSelect = () => {
+    setSelectTwo('지역');
+    setSelectThree('시/군');
+    setSelectFour('지하철');
+    setSelectTwoNum(0);
+    setSelectThreeNum(0);
+    setSelectFourNum(0);
+    SelectCloseF();
+    //    setSelectAll([]);
+
+    //    setCityBtnOn(false);
+    //    setSubwayBtnOn(false);
+  };
+
+  /* 빨간버튼 다 사라지면 자동 초기화 */
+  useEffect(() => {
+    // (빨간버튼) 빈배열인지 체크
+    if (Array.isArray(selectAll) && selectAll.length === 0) {
+      onResetCakeSelect();
+      setCityBtnOn(false);
+      setSubwayBtnOn(false);
+    }
+  }, [selectAll]);
+
+  const onRevertToSubway = () => {
+    if (
+      cityBtnOn === true ||
+      (Array.isArray(selectAll) && selectAll.length !== 0 && cityBtnOn) ||
+      selectTwo !== '지역'
+    ) {
+      setSelectAll([]);
+      setSelectFourShow(true);
+      //      setCityBtnOn(false);
+    }
+  };
+
+  console.log('select', selectAll);
+  console.log('citybyn on');
   return (
     <>
       <div className="cake-flex store-flex">
@@ -124,8 +168,11 @@ function Store() {
                   <img src={X} />
                 </div>
               </div>
-
-              <div className="cake-select-mobile">
+              <div
+                className={classNames('cake-select-mobile', {
+                  nouse: mobileSubwayBtnOn,
+                })}
+              >
                 지역
                 <div
                   className="cake-select-mobile-button"
@@ -133,6 +180,8 @@ function Store() {
                     SelectCloseF();
                     if (selectTwoShow) setSelectTwoShow(false);
                     else setSelectTwoShow(true);
+                    setMobileCityBtnOn((prev) => !prev);
+                    setMobileSubwayBtnOn(false);
                   }}
                 >
                   선택하기
@@ -185,7 +234,13 @@ function Store() {
                 </div>
               ) : null}
 
-              <div className="cake-select-mobile">
+              {/* 시/군 모바일 탭버튼 */}
+
+              <div
+                className={classNames('cake-select-mobile', {
+                  nouse: mobileSubwayBtnOn,
+                })}
+              >
                 시/군
                 <div
                   className="cake-select-mobile-button"
@@ -198,7 +253,7 @@ function Store() {
                   선택하기
                 </div>
               </div>
-              {selectThreeShow ? (
+              {selectThreeShow && (
                 <div className="cake-select-relative-mobile">
                   <ul className="cake-select-ul">
                     <li
@@ -235,9 +290,15 @@ function Store() {
                     </li>
                   </ul>
                 </div>
-              ) : null}
+              )}
 
-              <div className="cake-select-mobile">
+              {/* 지하철 모바일 탭버튼 */}
+              <div
+                className={classNames('cake-select-mobile', {
+                  nouse: mobileCityBtnOn,
+                })}
+              >
+                {/* <div className="cake-select-mobile"> */}
                 지하철
                 <div
                   className="cake-select-mobile-button"
@@ -245,12 +306,14 @@ function Store() {
                     SelectCloseF();
                     if (selectFourShow) setSelectFourShow(false);
                     else setSelectFourShow(true);
+                    setMobileSubwayBtnOn((prev) => !prev);
+                    setMobileCityBtnOn(false);
                   }}
                 >
                   선택하기
                 </div>
               </div>
-              {selectFourShow ? (
+              {selectFourShow && (
                 <div className="cake-select-relative-mobile">
                   <ul className="cake-select-ul-2">
                     <li
@@ -295,8 +358,7 @@ function Store() {
                     </li>
                   </ul>
                 </div>
-              ) : null}
-
+              )}
               {/* Mobile 선택지 바 */}
               <div className="cake-select-bar-mobile">
                 <CakeBar_MobileCard
@@ -306,14 +368,11 @@ function Store() {
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {
-                    setSelectTwo('지역');
-                    setSelectThree('시/군');
-                    setSelectFour('지하철');
-                    setSelectTwoNum(0);
-                    setSelectThreeNum(0);
-                    setSelectFourNum(0);
-                    SelectCloseF();
+                    onResetCakeSelect();
+
                     setSelectAll([]);
+                    setCityBtnOn(false);
+                    setSubwayBtnOn(false);
                   }}
                 >
                   초기화
@@ -546,10 +605,11 @@ function Store() {
               상세검색
             </div>
 
+            {/* PC-지역 버튼 */}
             <div
               className={classNames('pc', 'cake-select', {
-                use: cityBtnOn,
-                nouse: subwayBtnOn,
+                use: cityBtnOn || selectTwo !== '지역',
+                nouse: subwayBtnOn || selectFour !== '지하철',
               })}
             >
               <div style={{ display: 'flex' }}>
@@ -563,7 +623,7 @@ function Store() {
                       SelectCloseF();
                       if (selectTwoShow) setSelectTwoShow(false);
                       else setSelectTwoShow(true);
-                      setCityOn((prev) => !prev);
+                      setCityBtnOn((prev) => !prev);
                       setSubwayBtnOn(false);
                     }}
                   />
@@ -571,7 +631,8 @@ function Store() {
               </div>
             </div>
 
-            {cityBtnOn ? (
+            {/* PC-시/군 버튼 */}
+            {selectTwoShow !== false || selectTwo !== '지역' ? (
               <div className="pc cake-select">
                 <div style={{ display: 'flex' }}>
                   <button id="cake-select-two" className="cake-select-button">
@@ -591,10 +652,11 @@ function Store() {
               </div>
             ) : null}
 
+            {/* PC-지하철 버튼*/}
             <div
               className={classNames('pc', 'cake-select', {
-                use: subwayBtnOn,
-                nouse: cityBtnOn,
+                use: subwayBtnOn || selectFour !== '지하철',
+                nouse: cityBtnOn || selectTwo !== '지역',
               })}
             >
               <div style={{ display: 'flex' }}>
@@ -604,12 +666,16 @@ function Store() {
                 <div className="cake-select-img">
                   <img
                     src={selectAllow}
+                    alt="cake-select-img"
                     onClick={() => {
+                      onRevertToSubway();
+                      //
+                      setSubwayBtnOn((prev) => !prev);
+                      setCityBtnOn(false);
+
                       SelectCloseF();
                       if (selectFourShow) setSelectFourShow(false);
                       else setSelectFourShow(true);
-                      setSubwayBtnOn((prev) => !prev);
-                      setCityOn(false);
                     }}
                   />
                 </div>
@@ -623,14 +689,11 @@ function Store() {
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {
-                    setSelectTwo('지역');
-                    setSelectThree('시/군');
-                    setSelectFour('지하철');
-                    setSelectTwoNum(0);
-                    setSelectThreeNum(0);
-                    setSelectFourNum(0);
-                    SelectCloseF();
+                    onResetCakeSelect();
+
                     setSelectAll([]);
+                    setCityBtnOn(false);
+                    setSubwayBtnOn(false);
                   }}
                 >
                   초기화

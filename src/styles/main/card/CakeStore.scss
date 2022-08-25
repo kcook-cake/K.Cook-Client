@@ -406,6 +406,7 @@ cake-flex
 }
 
 /* 8/24 추가 스토어- 지역,지하철 버튼 흐리게  */
+
 .cake-select.use button,
 .cake-select.use .cake-select-img {
   filter: invert(0.2);
@@ -413,7 +414,12 @@ cake-flex
   //  background-color: purple !important;
 }
 
-// nouse - 지하철
+// nouse - 지하철,지역
 .pc.cake-select.nouse {
-  opacity: 0.6;
+  opacity: 0.4;
+}
+
+// mobile nouse
+.cake-select-mobile.nouse {
+  opacity: 0.2;
 }
