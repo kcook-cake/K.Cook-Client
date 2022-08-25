@@ -136,6 +136,10 @@ function Store() {
     }
   }, [selectAll]);
 
+  // 아래 두개 리버트 기능
+  // 동작할때 지직거리는것 때문에
+  // 비동기로 바꿀 예정
+
   const onRevertToSubway = () => {
     if (
       cityBtnOn === true ||
@@ -143,13 +147,22 @@ function Store() {
       selectTwo !== '지역'
     ) {
       setSelectAll([]);
-      setSelectFourShow(true);
+      //   setSelectFourShow(true);
       //      setCityBtnOn(false);
     }
   };
 
-  console.log('select', selectAll);
-  console.log('citybyn on');
+  const onRevertToCity = () => {
+    if (
+      subwayBtnOn === true ||
+      (Array.isArray(selectAll) && selectAll.length !== 0 && subwayBtnOn) ||
+      selectFour !== '지하철'
+    ) {
+      setSelectAll([]);
+      //      setSelectTwoShow(true);
+    }
+  };
+
   return (
     <>
       <div className="cake-flex store-flex">
@@ -620,6 +633,8 @@ function Store() {
                   <img
                     src={selectAllow}
                     onClick={() => {
+                      onRevertToCity();
+
                       SelectCloseF();
                       if (selectTwoShow) setSelectTwoShow(false);
                       else setSelectTwoShow(true);
