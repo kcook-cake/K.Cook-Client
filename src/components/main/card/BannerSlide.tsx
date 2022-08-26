@@ -2,15 +2,18 @@ import Slider from 'react-slick';
 
 import leftArrow from '../../../assets/left-arrow.svg';
 import rightArrow from '../../../assets/right-arrow.svg';
-import Crousel1 from '../../../assets/crousel1.jpg';
+// import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
+import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 
 import 'src/styles/main/card/BannerSlide.scss';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import isSession from 'src/utils/isSession';
 // import "./banner-theme.scss";
 
 interface Props {
   getData: any;
+  isManager?: any;
 }
 
 //
@@ -31,7 +34,7 @@ const PrevArrow = (props: any) => {
   );
 };
 
-export default function BannerSlider({ getData }: Props) {
+export default function BannerSlider({ getData, isManager }: Props) {
   const [webImgUrl, SetWebImgUrl] = useState('');
 
   var settings = {
@@ -54,19 +57,7 @@ export default function BannerSlider({ getData }: Props) {
     // 해당 컴포넌트에 css 파일을 불러온다.
   };
 
-  /* 
-서버에서 받은 데이터를
-배열에 넣고 map함수를 이용해서 
-
-array.map((data)=> {
-  <div>
-    <img src={data.img} alt="profile" />
-  </div>
-})
- 
-하면 될듯
-*/
-
+  // 배너 데이터 받기
   async function getBannerData() {
     var res = await axios.get('https://prod.kcook-cake.com/app/banner/static');
 
@@ -75,8 +66,60 @@ array.map((data)=> {
   }
   getBannerData();
 
+  // 배너 등록 페이지
+  const [isBannerAdd, setIsBannerAdd] = useState(false);
+  const hello = () => {
+    if (isManager) {
+      console.log('관리자');
+      console.log('이제 배너추가');
+      setIsBannerAdd(true);
+    } else {
+      console.log('손님');
+      setIsBannerAdd(false);
+    }
+  };
+
   return (
     <div>
+      {isManager ? <button onClick={hello}>배너 등록</button> : null}
+      {isBannerAdd ? (
+        <div className="spm-modal">
+          <>
+            <div
+              className="spm-modal-background"
+              style={{ top: window.pageYOffset }}
+            ></div>
+            <div className="spm-modal-box">
+              <div className="spm-modal-title">이미지 등록</div>
+              <div className="spm-modal-subtitle">대표이미지(1장)</div>
+              <div
+                className="spm-modal-img-inner"
+                onClick={() => {
+                  //addImage[0] = 사진 링크 넣기
+                }}
+              >
+                <div className="spm-add-img">
+                  <AddIcon />
+                </div>
+              </div>
+              <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
+              <div className="spm-modal-img-box">
+                <div className="spm-modal-img-inner"></div>
+                <div className="spm-modal-img-inner"></div>
+                <div className="spm-modal-img-inner"></div>
+                <div className="spm-modal-img-inner"></div>
+              </div>
+              <div className="mprdetail-content-btn-box">
+                <button className="mprdetail-content-btn">등록</button>
+                <button className="mprdetail-content-btn mprdetail-content-btn-left">
+                  취소
+                </button>
+              </div>
+            </div>
+          </>
+        </div>
+      ) : null}
+
       <Slider {...settings} className="main-crousel">
         {getData.map(
           (
