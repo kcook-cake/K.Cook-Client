@@ -11,7 +11,7 @@ import SellerReview from '../containers/seller/SellerReview';
 import SellerStore from '../components/seller/SellerStore';
 
 import FullCalendarApp from './seller/FullCalendarApp';
-import MPRDetail from './detail/SPMDetail';
+import SPMDetail from './detail/SPMDetail';
 
 const Seller = () =>{
     const [pathname, setPathname] = useState("");
@@ -32,7 +32,7 @@ const Seller = () =>{
                     <Route exact path="/SellerOrder" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>
                     <Route exact path="/ProductManagement" component={ProductManagement}/>
-                    <Route exact path="/ProductManagement/:id" component={MPRDetail}/>
+                    <Route exact path="/ProductManagement/:id" component={SPMDetail}/>
                     <Route exact path="/SellerReview" component={SellerReview} />
                     <Route exact path="/SellerStore" component={SellerStore} />
                 </> 

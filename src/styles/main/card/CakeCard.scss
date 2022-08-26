@@ -87,29 +87,29 @@
 @media (max-width: 767px) {
   .cakecard {
     width: 156px;
-    height: 262px;
-    margin-bottom: 0px;
+    height: 300px;
+    margin-bottom: 10px;
     display: inline-flex;
 
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
 
     .cakecard-img-flex {
       width: 156px;
-      height: 116px;
+      height: 171.6px;
       border-radius: 10px;
       background-color: #e6e6e6;
       img {
-        height: 116px;
+        height: 171.6px;
       }
     }
     .cakecard-img-none {
-      line-height: 116px;
+      line-height: 171.6px;
       text-align: center;
       color: #858997;
     }
     .cakecard-img {
       width: 156px;
-      height: 116px;
+      height: 171.6px;
     }
   }
 

@@ -10,8 +10,10 @@ import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
 import { ReactComponent as SettingIcon } from '../../../assets/seller/spr-setting.svg';
 import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
+
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
+import setting from "../../../assets/seller/spm-setting.png";
 
 interface Props {
     getData: any,
@@ -117,9 +119,9 @@ function SPMCard({
                                     }
                                 </div>
                             </div>
-                            <div className="mprdetail-content-btn-box">
+                            <div className="spmdetail-content-btn-box">
                                 <button
-                                    className="mprdetail-content-btn"
+                                    className="spmdetail-content-btn"
                                     onClick={()=>{
                                         updateImageModal[idx] = false;
                                         setNum(num+1);
@@ -127,7 +129,7 @@ function SPMCard({
                                     등록
                                 </button>
                                 <button
-                                    className="mprdetail-content-btn mprdetail-content-btn-left"
+                                    className="spmdetail-content-btn spmdetail-content-btn-left"
                                     onClick={()=>{
                                         updateImageModal[idx] = false;
                                         updateImage[idx] = getImage[idx];
@@ -511,16 +513,16 @@ function SPMCard({
                         </div>
                     </div>
 
-                    <div className="pc spm-tap">
+                    <div className="spm-tap">
                         <button
                             onClick={()=>{
                                 alert("삭제");
                                 // setAddDiv(false);
-                            }}
-                        >
+                            }}>
                             <CloseBtn/>
                         </button>
                         <button
+                            className="spm-tap-btn"
                             onClick={()=>{
                                 alert("복제");
                             }}>
@@ -528,11 +530,12 @@ function SPMCard({
                         </button>
                         <Link to="/ProductManagement/0">
                             <div
+                                className="spm-tap-btn"
                                 // onClick={()=>{
                                 //     document.location.href ="/ProductManagement/0";
                                 // }}
                                 >
-                                <CopyBtn/>
+                                <img src={setting}/>
                             </div>
                         </Link>
                     </div>

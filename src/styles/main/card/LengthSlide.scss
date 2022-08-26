@@ -97,32 +97,32 @@
 @media (max-width: 767px) {
     .lengthslide-flex > div {
         width: 156px;
-        height: 262px;
+        height: 280px;
     }
 
     .lengthslide {
         width: 156px;
-        height: 262px;
-        margin-bottom: 0px;
+        height: 280px;
+        margin-bottom: 10px;
         display: inline-flex;
         box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
         .lengthslide-img-flex {
             width: 156px;
-            height: 116px;
+            height: 171.6px;
             border-radius: 10px;
             background-color: #e6e6e6;
             img {
-                height: 116px;
+                height: 171.6px;
             }
         }
         .lengthslide-img-none {
-            line-height: 116px;
+            line-height: 171.6px;
             text-align: center;
             color: #858997;
         }
         .lengthslide-img {
             width: 156px;
-            height: 116px;
+            height: 171.6px;
         }
     }
 

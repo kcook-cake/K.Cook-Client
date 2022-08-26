@@ -15,7 +15,7 @@ import SelectWindow from "src/components/main/card/cake-store/SelectWindow";
 import SelectBar from "src/components/main/card/cake-store/SelectBar";
 import SelectBox from "src/components/main/card/cake-store/SelectBox";
 
-const MPRDetail = () => {
+const SPMDetail = () => {
   const [num, setNum] = useState(0);
   const NumF = () => {
     setNum(num + 1);
@@ -216,9 +216,11 @@ const MPRDetail = () => {
 
             <div className="spmdetail-content-btn-box" style={{ marginTop: "16px", }}>
               <button className="spmdetail-content-btn">등록</button>
-              <button className="spmdetail-content-btn spmdetail-content-btn-left">
-                취소
-              </button>
+              <Link to="/ProductManagement">
+                <button className="spmdetail-content-btn spmdetail-content-btn-left">
+                  취소
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -227,4 +229,4 @@ const MPRDetail = () => {
   );
 };
 
-export default MPRDetail;
+export default SPMDetail;
