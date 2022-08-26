@@ -1,4 +1,5 @@
-.cake-select-absolute {
+.cake-select-absolute,
+.cake-select-absolute-one {
     top: 250px;
     position: absolute;
     ul {
@@ -20,7 +21,7 @@
     .cake-select-ul-2,
     .cake-select-ul {
       width: 200px;
-      height: 209px;
+      // height: 209px;
       margin-top: 10px;
   
       box-shadow: 0px 0px 15px rgb(204, 204, 204);
@@ -28,7 +29,7 @@
       background-color: #fff;
     }
     .cake-select-ul-2 {
-      height: 260px;
+      // height: 260px;
     }
     .cake-select-li {
       padding: 15.6px 16px;
@@ -49,52 +50,56 @@
 }
 
 @media(max-width:767px) {
-    .cake-select-absolute {
-        position: static !important;
-        ul {
-          list-style: none;
-          padding-left: 0;
+  .cake-select-absolute-one {
+    top: 130px !important;
+    left: 0 !important;
+  }
+  .cake-select-absolute {
+      position: static !important;
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      li {
+          width: 88%;
+          height: 53px;
+          margin: auto;
+          padding-top: 16px;
+    
+          color: #8a8a8a;
+          font-size: 13px;
+          font-weight: 500;
+          border-bottom: 1px solid #eeeeee;
+      }
+      .cake-select-top {
+          display: none !important;
         }
-        li {
-            width: 88%;
-            height: 53px;
-            margin: auto;
-            padding-top: 16px;
+      .cake-select-ul-2,
+      .cake-select-ul {
+          width: 100%;
+          height: 209px;
+          margin-top: 0;
       
-            color: #8a8a8a;
-            font-size: 13px;
-            font-weight: 500;
-            border-bottom: 1px solid #eeeeee;
-        }
-        .cake-select-top {
-            display: none !important;
-          }
-        .cake-select-ul-2,
-        .cake-select-ul {
-            width: 100%;
-            height: 209px;
-            margin-top: 0;
-        
-            box-shadow: 0 0 0 rgb(204, 204, 204);
-            border-radius: 10px;
-            background-color: #fff;
-        }
-        .cake-select-ul-2 {
-            height: 260px;
-        }
-        .cake-select-li {
-            padding: 15.6px 0;
-        
-            color: #8a8a8a;
-            font-size: 15px;
-            font-weight: 500;
-        }
-        .cake-select-li:hover {
-            background-color: #fff;
-        }
-        .cake-select-li-top,
-        .cake-select-li-bottom {
-            border-radius: 0;
-        }
-    }
+          box-shadow: 0 0 0 rgb(204, 204, 204);
+          border-radius: 10px;
+          background-color: #fff;
+      }
+      .cake-select-ul-2 {
+          height: 260px;
+      }
+      .cake-select-li {
+          padding: 15.6px 0;
+      
+          color: #8a8a8a;
+          font-size: 15px;
+          font-weight: 500;
+      }
+      .cake-select-li:hover {
+          background-color: #fff;
+      }
+      .cake-select-li-top,
+      .cake-select-li-bottom {
+          border-radius: 0;
+      }
+  }
 }

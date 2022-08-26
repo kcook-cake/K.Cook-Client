@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import classNames from 'classnames';
+import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/main/CakeStore.scss';
-
-import axios from 'axios';
 
 import search from '../../../assets/search.svg';
 import selectAllow from '../../../assets/selectArrow.png';
@@ -15,12 +15,17 @@ import StoreCard from 'src/components/main/card/StoreCard';
 import LinkClick from 'src/utils/LinkClick';
 import CakeStoreTitle from 'src/components/main/card/cake-store/CakeStoreTitle';
 
-import classNames from 'classnames';
 import SelectBar from 'src/components/main/card/cake-store/SelectBar';
 import SelectWindow from 'src/components/main/card/cake-store/SelectWindow';
+import SelectBoxOne from 'src/components/main/card/cake-store/SelectBoxOne';
+import SelectBox from 'src/components/main/card/cake-store/SelectBox';
+import SelectWindowOne from 'src/components/main/card/cake-store/SelectWindowOne';
 
 function Store() {
   const [num, setNum] = useState(0);
+  const NumF = () => {
+    setNum(num + 1);
+  };
 
   //선택지 가로 위치 계산
   const [width, setWidth] = useState(0);
@@ -36,6 +41,11 @@ function Store() {
     setNum(num + 1);
   };
 
+
+  const [selectDataOne, setSelectDataOne] = useState([["인기순", "최신순", "판매량순", "낮은 가격순", "높은 가격순"]]);
+  const [selectData, setSelectData] = useState([[], [], [], []]);
+
+  const [selectBox, setSelectBox] = useState([false, false, false])
   //선택지창
   const [selectWindow, setSelectWindow] = useState([
     [false, '정렬', 0],
@@ -49,86 +59,10 @@ function Store() {
 
   //선택지 모바일
   const [selectMobileTF, setSelectMobileTF] = useState(false);
-
   //더보기
   const [cakeDetail, setCakeDetail] = useState(true);
 
-  /* 지역클릭->시/군 보이게 & 지하철흐리게 */
-  const [cityBtnOn, setCityBtnOn] = useState(false);
-  const [subwayBtnOn, setSubwayBtnOn] = useState(false);
 
-  // 모바일 상세정보 지역,지하철 버튼 진하게/흐리게
-  const [mobileCityBtnOn, setMobileCityBtnOn] = useState(false);
-  const [mobileSubwayBtnOn, setMobileSubwayBtnOn] = useState(false);
-
-  // 초기화 버튼
-  // 배열초기화는 주석처리해둠 <-- 넣어두면 자동초기화할때 무한루프
-  const onResetCakeSelect = () => {
-    selectWindow[1][1] = '지역';
-    selectWindow[2][1] = '시/군';
-    selectWindow[3][1] = '지하철';
-    for (var i = 1; i < 4; i++) selectWindow[i][3] = 0;
-    SelectCloseF();
-  };
-
-  // 지역 <ㅡ> 지하철 리버트 기능
-
-  // 리버트 기능 생성
-  async function revertToSubway() {
-    let promise = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(true), 500);
-      setCityBtnOn(false);
-      selectWindow[1][1] = '지역';
-    });
-
-    let result = await promise; // 프라미스가 이행될 때까지 기다림 (*)
-    selectWindow[3][0] = Boolean(result);
-  }
-
-  async function revertToCity() {
-    let promise = new Promise((resolve, reject) => {
-      //      setSelectAll([]);
-      setTimeout(() => resolve(true), 1000);
-      setSubwayBtnOn(false);
-      selectWindow[3][1] = '지하철';
-    });
-
-    let result = await promise; // 프라미스가 이행될 때까지 기다림 (*) result는 0.5초후에 "true"가 할당됨.
-    selectWindow[2][0] = Boolean(result);
-  }
-
-  // onClick에 넣을 리버트 조건문 생성
-  const onRevertToSubway = () => {
-    if (
-      cityBtnOn === true ||
-      (Array.isArray(selectAll) && selectAll.length !== 0) ||
-      selectWindow[1][1] !== '지역'
-    ) {
-      revertToSubway();
-      //   setSelectFourShow(true);
-      //      setCityBtnOn(false);
-    }
-  };
-  const onRevertToCity = () => {
-    if (
-      subwayBtnOn === true ||
-      (Array.isArray(selectAll) && selectAll.length !== 0 && subwayBtnOn) ||
-      selectWindow[3][1] !== '지하철'
-    ) {
-      revertToCity();
-      //      setSelectTwoShow(true);
-    }
-  };
-
-  /* 빨간버튼 다 사라지면 자동 초기화 */
-  useEffect(() => {
-    // (빨간버튼) 빈배열인지 체크
-    if (Array.isArray(selectAll) && selectAll.length === 0) {
-      onResetCakeSelect();
-      setCityBtnOn(false);
-      setSubwayBtnOn(false);
-    }
-  }, [selectAll]);
 
   const [resize, setResize] = useState(0);
   const handleResize = () => {
@@ -146,27 +80,28 @@ function Store() {
     window.addEventListener('resize', handleResize);
 
     getAxios(setData, setLengthTodays, 'cakes', [], 18, pageTodays, 0);
+    axios
+      .get(`https://prod.kcook-cake.com/app/cities`)
+      .then(res =>{
+        setSelectData([res.data.result, [], [
+          "서울역",
+          "광명사거리역",
+        ], []]);
+      });
   }, []);
-
-  const [revert, setRevert] = useState(0);
 
   return (
     <>
       <div className="cake-flex store-flex">
         {/* 선택지창 */}
-        {resize > 767 || selectMobileTF ? (
+        <SelectWindowOne width={width} NumF={NumF} selectWindow={selectWindow} selectDataOne={selectDataOne}/>
+        {resize > 767 || selectMobileTF ?
           <SelectWindow
-            cakestoreTF={false}
-            width={width}
-            height={250}
-            num={num}
-            setNumF={setNum}
-            setSelectMobileTF={setSelectMobileTF}
-            SelectCloseF={SelectCloseF}
-            selectAll={selectAll}
-            selectWindow={selectWindow}
-          />
-        ) : null}
+            cakestoreTF={false} width={width} height={250} NumF={NumF}
+            selectAll={selectAll} selectBox={selectBox} selectWindow={selectWindow}
+            selectDataOne={selectDataOne} selectData={selectData}
+            setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
+        :null}
 
         <div className="cake store">
           <div className="cake-select-flex">
@@ -180,137 +115,37 @@ function Store() {
               상세검색
             </div>
 
-            <div className="cake-select cake-select-one-flex">
-              <div style={{ display: 'flex' }}>
-                <button id="cake-select-one" className="cake-select-button">
-                  {selectWindow[0][1]}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      SelectCloseF();
-                      if (selectWindow[0][0]) selectWindow[0][0] = false;
-                      else selectWindow[0][0] = true;
-                      setNum(num + 1);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* PC-지역 버튼 */}
-            <div
-              className={classNames('pc', 'cake-select', {
-                use: cityBtnOn || selectWindow[1][1] !== '지역',
-                nouse: subwayBtnOn || selectWindow[3][1] !== '지하철',
-              })}
-            >
-              <div style={{ display: 'flex' }}>
-                <button id="cake-select-three" className="cake-select-button">
-                  {selectWindow[1][1]}
-                </button>
-                <div className="cake-select-img">
-                  <img
-                    src={selectAllow}
-                    onClick={() => {
-                      onRevertToCity();
-
-                      SelectCloseF();
-                      if (selectWindow[1][0]) selectWindow[1][0] = false;
-                      else selectWindow[1][0] = true;
-                      setNum(num + 1);
-
-                      //                      setCityBtnOn((prev) => !prev);
-                      // setSubwayBtnOn(false);
-                      console.log('subwayBtnOn', subwayBtnOn);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            {/* PC-시/군 버튼 */}
-            {selectWindow[1][0] !== false || selectWindow[1][1] !== '지역' ? (
-              <div
-                className="pc cake-select"
-                onClick={() => {
-                  SelectCloseF();
-                  if (selectWindow[2][0]) selectWindow[2][0] = false;
-                  else selectWindow[2][0] = true;
-                  setNum(num + 1);
-                }}
-              >
-                <div style={{ display: 'flex' }}>
-                  <button id="cake-select-two" className="cake-select-button">
-                    {selectWindow[2][1]}
-                  </button>
-                  <div className="cake-select-img">
-                    <img src={selectAllow} />
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {/* PC-지하철 버튼*/}
-            <div
-              className={classNames('pc', 'cake-select', {
-                use: subwayBtnOn || selectWindow[3][1] !== '지하철',
-                nouse: cityBtnOn || selectWindow[1][1] !== '지역',
-              })}
-              onClick={() => {
-                onRevertToSubway();
-
-                setSubwayBtnOn((prev) => !prev);
-                setCityBtnOn(false);
-
-                SelectCloseF();
-                if (selectWindow[3][0]) selectWindow[3][0] = false;
-                else selectWindow[3][0] = true;
-                setNum(num + 1);
-              }}
-            >
-              <div style={{ display: 'flex' }}>
-                <button id="cake-select-four" className="cake-select-button">
-                  {selectWindow[3][1]}
-                </button>
-                <div className="cake-select-img">
-                  <img src={selectAllow} alt="cake-select-img" />
-                </div>
-              </div>
-            </div>
+            {/* 선택지박스 */}
+            <SelectBoxOne selectWindow={selectWindow} SelectCloseF={SelectCloseF} />
+            <SelectBox 
+              cakestoreTF={false} NumF={NumF} 
+              selectBox={selectBox} selectWindow={selectWindow}
+              SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
 
             {/* 선택지 바 */}
-            {(resize > 767 || selectMobileTF) && selectAll.length !== 0 ? (
-              <div
-                className="cake-select-bar"
-                style={{
-                  marginTop: resize > 767 ? 10 : 50 * 2,
-                }}
-              >
-                <SelectBar
-                  setSelectAllF={setSelectAll}
-                  getData={selectAll}
-                  //        revert={revert}
-                />
+            {selectAll.length != 0?
                 <div
-                  className="cake-bar-card-all-delete"
-                  onClick={() => {
-                    SelectCloseF();
-
-                    selectWindow[1][1] = '지역';
-                    selectWindow[2][1] = '시/군';
-                    selectWindow[3][1] = '지하철';
-
-                    for (var i = 1; i < 4; i++) {
-                      selectWindow[i][2] = 0;
-                    }
-
-                    setSelectAll([]);
-                  }}
-                >
-                  초기화
+                    className="cake-select-bar">
+                    <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
+                    <div
+                        className="cake-bar-card-all-delete"
+                        onClick={()=>{
+                          SelectCloseF();
+                          setSelectBox([false, false, false]);
+      
+                          selectWindow[1][1] = '지역';
+                          selectWindow[2][1] = '시/군';
+                          selectWindow[3][1] = '지하철';
+      
+                          for (var i = 1; i < 4; i++) {
+                            selectWindow[i][2] = 0;
+                          }
+      
+                          setSelectAll([]);
+                        }}
+                    >초기화</div>
                 </div>
-              </div>
-            ) : null}
+            :null}
           </div>
 
           <div className="cake-store-contents store-contents-flex">

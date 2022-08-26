@@ -9,7 +9,6 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
   axios
     .get(`https://prod.kcook-cake.com/app/` + link + listLink)
     .then((res) => {
-      console.log(res.data.result.content);
       const data = res.data.result.content;
       fnPage(data.length);
 

@@ -24,9 +24,6 @@ const PostCode = (props) => {
     }
 
     setAddressMain(fullAddress.split('(')[0]);
-    // console.log(data);
-    // console.log(fullAddress); //메인
-    // console.log(data.zonecode); //우편번호
     props.onClose();
   };
 

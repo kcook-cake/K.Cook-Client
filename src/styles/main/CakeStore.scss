@@ -1,19 +1,5 @@
 @import '../reset.scss';
 
-/*
-cake-flex
-  
-    (Mobile1)cake-select-mobile 5개
-    (Mobile2)cake-select-relative-mobile 5개
-    cake-select-bar-mobile
-  (Pc2)cake-select-absolute 5개
-  cake
-    cake-select-flex
-      (Pc1)cake-select 5개
-      cake-select-bar
-    cake-contents-flex
-*/
-
 .cake-flex {
   background-color: #fafafa;
 }
@@ -138,6 +124,11 @@ cake-flex
   display: none !important;
 }
 
+// nouse - 지하철,지역
+.store-nouse {
+  opacity: 0.4;
+}
+
 @media (max-width: 767px) {
   .cake-flex {
     background-color: #fff;
@@ -147,6 +138,7 @@ cake-flex
     width: 100%;
     min-width: 0px;
     margin-top: 24px;
+    margin-bottom: 20px;
     padding: 0;
   }
 
@@ -297,13 +289,6 @@ cake-flex
       font-size: 15px;
       font-weight: 500;
     }
-
-    .cake-select-bar-mobile {
-      width: 92%;
-      height: 53px;
-      margin: auto;
-      padding-top: 16px;
-    }
   }
 
   .cake-select-relative-mobile {
@@ -323,23 +308,8 @@ cake-flex
       border-bottom: 1px solid #eeeeee;
     }
   }
-}
 
-/* 8/24 추가 스토어- 지역,지하철 버튼 흐리게  */
-
-.cake-select.use button,
-.cake-select.use .cake-select-img {
-  filter: invert(0.2);
-  color: #212529;
-  //  background-color: purple !important;
-}
-
-// nouse - 지하철,지역
-.pc.cake-select.nouse {
-  opacity: 0.4;
-}
-
-// mobile nouse
-.cake-select-mobile.nouse {
-  opacity: 0.2;
+  .store-nouse {
+    opacity: 0.4;
+  }
 }

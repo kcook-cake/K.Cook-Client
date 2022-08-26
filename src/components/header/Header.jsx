@@ -71,6 +71,7 @@ function Header({ setNumLeftMobileF }) {
               to="/"
               onClick={() => {
                 setNumLeftMobileF(1);
+                $(".hm-pc-flex").show();
               }}
             >
               <img src={logo} className="logo-icon" />

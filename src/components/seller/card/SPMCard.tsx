@@ -401,8 +401,6 @@ function SPMCard({
                                                 optionDirect: false,
                                                 optionDirectText: "",
                                             };
-                                            console.log(getData);
-                                            console.log(updateOption);
                                             setNum(num+1);
                                         }}
                                     >
