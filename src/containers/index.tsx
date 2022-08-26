@@ -10,8 +10,9 @@ import Footer from '../components/Footer';
 import Mypage from './Mypage';
 import Seller from './Seller';
 import Login from './Login';
-import SignUp from './SignUp';
 import LoginFind from './LoginFind';
+import SignUp from './SignUp';
+import SignOut from './SignOut';
 
 import Test from '../components/Test';
 import StoreDetail from './detail/StoreDetail';

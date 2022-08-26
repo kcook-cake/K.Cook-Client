@@ -7,6 +7,7 @@ const LinkClick = (i) => {
     $(".header-link").css("padding-bottom", "0px");
     $(".header-link").css("border-bottom", "0px solid #ea5450");
 
+    console.log(".header-link."+i);
     $(".header-link."+i).css("color", "#ea5450");
     $(".header-link."+i).css("padding-bottom", "3px");
     $(".header-link."+i).css("border-bottom", "3px solid #ea5450");
