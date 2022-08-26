@@ -70,6 +70,13 @@ function SignUp() {
       })
       .then((res) => {
         setPhoneResult(res.data.result);
+        if (res.data.isSuccess) {
+          setFailModalText("인증번호를 확인해주세요.");
+          setFailModal(true);
+          setTimeout(() => {
+            setFailModal(false);
+          }, 5000);
+        }
       })
       .catch((error) => {
         setFailModalText("전화번호를 정확히 입력해주세요.");
@@ -185,7 +192,7 @@ function SignUp() {
     } else {
       axios
         .post("https://prod.kcook-cake.com/app/sign-up", {
-          address: addressMain + " " + address,
+          address: addressMain + ", " + address,
           dateOfBirth: birthday,
           email: email,
           nickname: nickname,

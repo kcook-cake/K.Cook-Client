@@ -1,43 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "../../styles/header/Header.scss";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../../styles/header/Header.scss';
 
-import isSession from "src/utils/isSession";
-import LinkClick from "src/utils/LinkClick";
-import axios from "axios";
+import isSession from 'src/utils/isSession';
+import LinkClick from 'src/utils/LinkClick';
+import axios from 'axios';
 import $ from 'jquery';
 
-import Xbutton from "../../assets/2477.svg";
-import logo from "../../assets/logo.png";
-import menu from "../../assets/menu.svg";
-import search from "../../assets/search.svg";
+import Xbutton from '../../assets/2477.svg';
+import logo from '../../assets/logo.png';
+import menu from '../../assets/menu.svg';
+import search from '../../assets/search.svg';
 
-function Header ({ setNumLeftMobileF }) {
-
+function Header({ setNumLeftMobileF }) {
   //로그인 여부
   const [session, setSession] = useState(false);
   const [auth, setAuth] = useState({
     accountId: 0,
-    address: "",
-    dateOfBirth: "",
-    email: "",
-    nickname: "",
-    phoneNumber: "",
-    signInId: "",
+    address: '',
+    dateOfBirth: '',
+    email: '',
+    nickname: '',
+    phoneNumber: '',
+    signInId: '',
   });
 
-  useEffect(()=> {
+  useEffect(() => {
     var jwToken = undefined;
     if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
     else jwToken = sessionStorage.jwToken;
     isSession(
       jwToken,
-      (s)=>{
+      (s) => {
         if (s) setSession(s);
       },
-      (a)=>{
+      (a) => {
         setAuth(a);
-      },
+      }
     );
   }, []);
 
@@ -50,7 +49,7 @@ function Header ({ setNumLeftMobileF }) {
           </span>
           <div className="header-ad-button">
             <span>오늘 하루 그만 보기 </span>
-            <img src={Xbutton}/>
+            <img src={Xbutton} />
           </div>
         </div>
       </div>
@@ -59,17 +58,21 @@ function Header ({ setNumLeftMobileF }) {
         <div className="header-top">
           <div className="header-top-left">
             <button>
-              <img src={menu} className="menu-icon" 
-                              onClick={()=>{
-                                $(".hm-mobile").show();
-                              }}/>
+              <img
+                src={menu}
+                className="menu-icon"
+                onClick={() => {
+                  $('.hm-mobile').show();
+                }}
+              />
             </button>
 
             <Link
               to="/"
-              onClick={()=>{
+              onClick={() => {
                 setNumLeftMobileF(1);
-              }}>
+              }}
+            >
               <img src={logo} className="logo-icon" />
             </Link>
 
@@ -79,65 +82,76 @@ function Header ({ setNumLeftMobileF }) {
 
             <Link
               to="/"
-              onClick={()=>{
+              onClick={() => {
                 setNumLeftMobileF(1);
-              }}>
+              }}
+            >
               <img src={search} className="search-icon" />
             </Link>
-
           </div>
 
           <div className="header-top-right">
-            {session ?
+            {session ? (
               <>
                 <button>{auth.nickname}님 환영합니다</button>
                 <Link
                   to="/SSOCalendar"
-                  onClick={()=>{
+                  onClick={() => {
                     setNumLeftMobileF(2);
-                  }}>
+                  }}
+                >
                   <button>판매자로 전환</button>
                 </Link>
                 <Link
                   to="/MypageOrder"
-                  onClick={()=>{
+                  onClick={() => {
                     setNumLeftMobileF(3);
-                  }}>
+                  }}
+                >
                   <button>마이페이지</button>
                 </Link>
                 <Link
                   to="/SignOut"
-                  onClick={()=>{
+                  onClick={() => {
                     setNumLeftMobileF(1);
-                  }}>
+                  }}
+                >
                   <button>회원탈퇴</button>
                 </Link>
                 <button
                   onClick={() => {
-                    localStorage.removeItem("jwToken")
-                    sessionStorage.removeItem("jwToken")
-                    if (localStorage.jwToken === undefined || sessionStorage.jwToken === undefined)
-                      document.location.href = "/";
+                    localStorage.removeItem('jwToken');
+                    sessionStorage.removeItem('jwToken');
+                    if (
+                      localStorage.jwToken === undefined ||
+                      sessionStorage.jwToken === undefined
+                    )
+                      document.location.href = '/';
                   }}
-                >로그아웃</button>
-              </>:
+                >
+                  로그아웃
+                </button>
+              </>
+            ) : (
               <>
                 <Link
                   to="/SignUp"
-                  onClick={()=>{
+                  onClick={() => {
                     setNumLeftMobileF(1);
-                  }}>
+                  }}
+                >
                   <button>회원가입</button>
                 </Link>
                 <Link
                   to="/Login"
-                  onClick={()=>{
+                  onClick={() => {
                     setNumLeftMobileF(1);
-                  }}>
+                  }}
+                >
                   <button>로그인</button>
                 </Link>
               </>
-            }
+            )}
           </div>
         </div>
       </div>
@@ -147,41 +161,46 @@ function Header ({ setNumLeftMobileF }) {
           <Link
             to="/"
             className="header-link Home"
-            onClick={()=>{
+            onClick={() => {
               setNumLeftMobileF(1);
-            }}>
+            }}
+          >
             홈
           </Link>
           <Link
             to="/TodaysRec"
             className="header-link TodaysRec"
-            onClick={()=>{
+            onClick={() => {
               setNumLeftMobileF(1);
-            }}>
+            }}
+          >
             오늘의 추천
           </Link>
           <Link
             to="/Cake"
             className="header-link Cake"
-            onClick={()=>{
+            onClick={() => {
               setNumLeftMobileF(1);
-            }}>
+            }}
+          >
             케이크
           </Link>
           <Link
             to="/Store"
             className="header-link Store"
-            onClick={()=>{
+            onClick={() => {
               setNumLeftMobileF(1);
-            }}>
+            }}
+          >
             스토어
           </Link>
           <Link
             to="/CS"
             className="header-link CS"
-            onClick={()=>{
+            onClick={() => {
               setNumLeftMobileF(1);
-            }}>
+            }}
+          >
             고객지원
           </Link>
         </div>
