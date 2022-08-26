@@ -17,12 +17,11 @@ function Header({ setNumLeftMobileF }) {
   const [session, setSession] = useState(false);
   const [auth, setAuth] = useState({
     accountId: 0,
-    address: '',
-    dateOfBirth: '',
-    email: '',
-    nickname: '',
-    phoneNumber: '',
-    signInId: '',
+    address: "",
+    dateOfBirth: "",
+    email: "",
+    nickname: "",
+    phoneNumber: "",
   });
 
   useEffect(() => {

@@ -80,7 +80,7 @@ function HMCard({ setNumLeftMobileF }) {
               </div>
               <div className="hm-mobile-link">
                 <Link
-                  to="/SignOUt"
+                  to="/SignOut"
                   className="header-link SignOut"
                   onClick={() => {
                     setNumLeftMobileF(1);
