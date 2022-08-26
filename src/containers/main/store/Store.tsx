@@ -84,7 +84,7 @@ function Store() {
     let result = await promise; // 프라미스가 이행될 때까지 기다림 (*)
     selectWindow[3][0] = Boolean(result);
   }
-  // setSelectAll([]);
+
   async function revertToCity() {
     let promise = new Promise((resolve, reject) => {
       //      setSelectAll([]);
@@ -147,6 +147,8 @@ function Store() {
 
     getAxios(setData, setLengthTodays, 'cakes', [], 18, pageTodays, 0);
   }, []);
+
+  const [revert, setRevert] = useState(0);
 
   return (
     <>
@@ -277,14 +279,18 @@ function Store() {
             </div>
 
             {/* 선택지 바 */}
-            {(resize > 767 || selectMobileTF) && selectAll.length != 0 ? (
+            {(resize > 767 || selectMobileTF) && selectAll.length !== 0 ? (
               <div
                 className="cake-select-bar"
                 style={{
                   marginTop: resize > 767 ? 10 : 50 * 2,
                 }}
               >
-                <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
+                <SelectBar
+                  setSelectAllF={setSelectAll}
+                  getData={selectAll}
+                  //        revert={revert}
+                />
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {

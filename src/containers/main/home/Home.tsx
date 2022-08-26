@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '../../../styles/main/home/Home.scss';
 
 import MainCrousel from '../../../components/main/home/Crousel';
@@ -10,22 +10,20 @@ import StoreMenu from './StoreMenu';
 import LinkClick from 'src/utils/LinkClick';
 import PopularMenu from './PopularMenu';
 
-function Home (){
-    useEffect(()=>{
-        LinkClick("Home");
-    },[]);
-    return(
+function Home() {
+  useEffect(() => {
+    LinkClick('Home');
+  }, []);
+  return (
     <>
-        <MainCrousel/>
-        <PopularMenu/>
-        <NewMenu/>
-        <MainAd/>
-        <CakeMenu/>
-        <StoreMenu/>
+      <MainCrousel />
+      <PopularMenu />
+      <NewMenu />
+      <MainAd />
+      <CakeMenu />
+      <StoreMenu />
     </>
-    )
+  );
 }
-
-
 
 export default Home;

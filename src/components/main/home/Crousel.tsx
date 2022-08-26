@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "../../../styles/main/home/MainCrousel.scss";
+import React, { useState, useEffect } from 'react';
+import '../../../styles/main/home/MainCrousel.scss';
 
-import getAxios from "src/utils/getAxios";
+import getAxios from 'src/utils/getAxios';
+import axios from 'axios';
 
-import BannerSlider from "../card/BannerSlide";
+import BannerSlider from '../card/BannerSlide';
 
 function Crousel() {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ function Crousel() {
   const [pageTodays, setPageTodays] = useState(0);
   const [lengthTodays, setLengthTodays] = useState(0);
   useEffect(() => {
-    getAxios(setData, setLengthTodays, "cakes", [], 4, pageTodays, 0);
+    getAxios(setData, setLengthTodays, 'cakes', [], 4, pageTodays, 0);
     // axios
     // .get(`https://prod.kcook-cake.com/app/cakes`)
     // .then((res) => {

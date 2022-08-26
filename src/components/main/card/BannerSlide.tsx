@@ -1,10 +1,12 @@
-import Slider from "react-slick";
+import Slider from 'react-slick';
 
-import leftArrow from "../../../assets/left-arrow.svg";
-import rightArrow from "../../../assets/right-arrow.svg";
-import Crousel1 from "../../../assets/crousel1.jpg";
+import leftArrow from '../../../assets/left-arrow.svg';
+import rightArrow from '../../../assets/right-arrow.svg';
+import Crousel1 from '../../../assets/crousel1.jpg';
 
-import "src/styles/main/card/BannerSlide.scss";
+import 'src/styles/main/card/BannerSlide.scss';
+import axios from 'axios';
+import { useState } from 'react';
 // import "./banner-theme.scss";
 
 interface Props {
@@ -29,7 +31,9 @@ const PrevArrow = (props: any) => {
   );
 };
 
-export default function ya({ getData }: Props) {
+export default function BannerSlider({ getData }: Props) {
+  const [webImgUrl, SetWebImgUrl] = useState('');
+
   var settings = {
     dots: true, // 밑에 점
     infinite: true, // 콘텐츠 끝까지 갔을때 처음 콘텐츠를 가져와 반복
@@ -45,7 +49,7 @@ export default function ya({ getData }: Props) {
         <ul> {dots} </ul>
       </div>
     ),
-    dotsClass: "dots_custom",
+    dotsClass: 'dots_custom',
     // dotsClass에 dots를 커스텀 해줄 class명을 넣어준 뒤
     // 해당 컴포넌트에 css 파일을 불러온다.
   };
@@ -62,6 +66,14 @@ array.map((data)=> {
  
 하면 될듯
 */
+
+  async function getBannerData() {
+    var res = await axios.get('https://prod.kcook-cake.com/app/banner/static');
+
+    const webImageUrl = res.data.result.webImageUrl;
+    SetWebImgUrl(webImageUrl);
+  }
+  getBannerData();
 
   return (
     <div>
@@ -85,7 +97,7 @@ array.map((data)=> {
           ) => {
             return (
               <>
-                <img src={Crousel1} alt="profile" />
+                <img src={webImgUrl} alt="profile" />
                 {/* {data.image == ""? 
                     <div className="lengthwise-img-none">~준비중 입니다~</div>:
                     <img src={data.image}/>
