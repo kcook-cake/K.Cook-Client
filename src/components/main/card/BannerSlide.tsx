@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import leftArrow from '../../../assets/left-arrow.svg';
 import rightArrow from '../../../assets/right-arrow.svg';
 // import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
-import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 
 import 'src/styles/main/card/BannerSlide.scss';
 import axios from 'axios';
@@ -13,7 +12,6 @@ import isSession from 'src/utils/isSession';
 
 interface Props {
   getData: any;
-  isManager?: any;
 }
 
 //
@@ -34,7 +32,7 @@ const PrevArrow = (props: any) => {
   );
 };
 
-export default function BannerSlider({ getData, isManager }: Props) {
+export default function BannerSlider({ getData, }: Props) {
   const [bannerData, SetbannerData] = useState<any[]>([]);
 
   var settings = {
@@ -72,77 +70,11 @@ export default function BannerSlider({ getData, isManager }: Props) {
     getBannerData();
   }, []);
 
-  // 배너 등록 페이지
-  const [isBannerAdd, setIsBannerAdd] = useState(false);
-  const hello = () => {
-    if (isManager) {
-      setIsBannerAdd(true);
-    } else {
-      setIsBannerAdd(false);
-    }
-  };
-
   return (
     <div>
-      {isManager ? <button onClick={hello}>배너 등록</button> : null}
-      {isBannerAdd && (
-        <div className="spm-modal">
-          <>
-            <div
-              className="spm-modal-background"
-              style={{ top: window.pageYOffset }}
-            ></div>
-            <div className="spm-modal-box">
-              <div className="spm-modal-title">이미지 등록</div>
-              <div className="spm-modal-subtitle">대표이미지(1장)</div>
-              <div
-                className="spm-modal-img-inner"
-                onClick={() => {
-                  //addImage[0] = 사진 링크 넣기
-                }}
-              >
-                <div className="spm-add-img">
-                  <AddIcon />
-                </div>
-              </div>
-              <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
-              <div className="spm-modal-img-box">
-                <div className="spm-modal-img-inner"></div>
-                <div className="spm-modal-img-inner"></div>
-                <div className="spm-modal-img-inner"></div>
-                <div className="spm-modal-img-inner"></div>
-              </div>
-              <div className="mprdetail-content-btn-box">
-                <button className="mprdetail-content-btn">등록</button>
-                <button className="mprdetail-content-btn mprdetail-content-btn-left">
-                  취소
-                </button>
-              </div>
-            </div>
-          </>
-        </div>
-      )}
+
 
       <Slider {...settings} className="main-crousel">
-        {/*  {getData.map(
-          (
-            data: {
-              productId: any;
-              name: any;
-              storeName: any;
-              price: any;
-              raiting: any;
-              image: any;
-              status: any;
-              isCake: any;
-              resultPrice: any;
-              salePrice: any;
-              reviewCount: any;
-            },
-            idx: any
-          ) => {}
-        )} */}
-
         {bannerData.map((data) => {
           return (
             <>

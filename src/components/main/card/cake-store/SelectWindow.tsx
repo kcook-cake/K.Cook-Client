@@ -76,45 +76,6 @@ export default function SelectWindow({
             .then(res =>{
                 console.log(res.data.SearchSTNBySubwayLineInfo.row);
             });
-        // axios
-        //     ({
-        //         url:`http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/100///1호선`,
-        //         method: 'get', // 기본값
-        //         // baseURL: 'http://openapi.seoul.go.kr:8088',
-        //         // proxy: {
-        //         //     protocol: 'http',
-        //         //     host: 'openapi.seoul.go.kr',
-        //         //     port: 8088,
-        //         //     // auth: {
-        //         //     //   username: 'mikeymike',
-        //         //     //   password: 'rapunz3l'
-        //         //     // }
-        //         // },
-        //     })
-        //     .then(res =>{
-        //         for (var i=0; i<res.data.row.length; i++) {
-        //             selectData[3][i] = res.data.row[i].STATION_NM;
-        //         }
-        //         NumF();
-        //     });
-
-        // $.ajax({
-        //     type: "GET",
-        //     url: "http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/100///1호선",
-        //     // beforeSend: function (xhr) {
-        //     //     xhr.setRequestHeader ("Authorization", "Bearer " + localStorage.getItem('token'));
-        //     // },
-        //     success: (res)=>{
-        //       console.log(res);
-        //     },
-        //     error: ()=>{},
-        //   })
-        // fetch('http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/100///'+str)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //     console.log(res);
-        //     });
-
         selectData[3][0] = "지하철역";
         selectData[3][1] = "지하철역";
         NumF();
