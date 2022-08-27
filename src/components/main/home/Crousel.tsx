@@ -44,8 +44,6 @@ function Crousel() {
       }
     );
   }, []);
-  console.log(auth);
-  //console.log(auth.accountId);
 
   type Employee = {
     accountId?: number;
@@ -64,8 +62,6 @@ function Crousel() {
       setManager(false);
     }
   }, [obj.auth.accountId]);
-  console.log('obj.auth.accountId', obj.auth.accountId);
-  console.log('isManager', isManager);
 
   // accountId가 true면 모달창 생성 <<
   return (

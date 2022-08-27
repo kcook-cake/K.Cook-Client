@@ -35,7 +35,7 @@ const PrevArrow = (props: any) => {
 };
 
 export default function BannerSlider({ getData, isManager }: Props) {
-  const [webImgUrl, SetWebImgUrl] = useState('');
+  const [bannerData, SetbannerData] = useState<any[]>([]);
 
   var settings = {
     dots: true, // 밑에 점
@@ -59,22 +59,25 @@ export default function BannerSlider({ getData, isManager }: Props) {
 
   // 배너 데이터 받기
   async function getBannerData() {
-    var res = await axios.get('https://prod.kcook-cake.com/app/banner/static');
+    var res = await axios.get(
+      'https://prod.kcook-cake.com/app/banner/carousel'
+    );
+    SetbannerData(res.data.result);
 
-    const webImageUrl = res.data.result.webImageUrl;
-    SetWebImgUrl(webImageUrl);
+    // const webImageUrl = res.data.result.webImageUrl;
+    //  SetbannerData(webImageUrl);
   }
-  getBannerData();
+
+  useEffect(() => {
+    getBannerData();
+  }, []);
 
   // 배너 등록 페이지
   const [isBannerAdd, setIsBannerAdd] = useState(false);
   const hello = () => {
     if (isManager) {
-      console.log('관리자');
-      console.log('이제 배너추가');
       setIsBannerAdd(true);
     } else {
-      console.log('손님');
       setIsBannerAdd(false);
     }
   };
@@ -82,7 +85,7 @@ export default function BannerSlider({ getData, isManager }: Props) {
   return (
     <div>
       {isManager ? <button onClick={hello}>배너 등록</button> : null}
-      {isBannerAdd ? (
+      {isBannerAdd && (
         <div className="spm-modal">
           <>
             <div
@@ -118,10 +121,10 @@ export default function BannerSlider({ getData, isManager }: Props) {
             </div>
           </>
         </div>
-      ) : null}
+      )}
 
       <Slider {...settings} className="main-crousel">
-        {getData.map(
+        {/*  {getData.map(
           (
             data: {
               productId: any;
@@ -137,18 +140,17 @@ export default function BannerSlider({ getData, isManager }: Props) {
               reviewCount: any;
             },
             idx: any
-          ) => {
-            return (
-              <>
-                <img src={webImgUrl} alt="profile" />
-                {/* {data.image == ""? 
-                    <div className="lengthwise-img-none">~준비중 입니다~</div>:
-                    <img src={data.image}/>
-                  } */}
-              </>
-            );
-          }
-        )}
+          ) => {}
+        )} */}
+
+        {bannerData.map((data) => {
+          return (
+            <>
+              <img src={data.webImageUrl} alt="profile" />
+              <span>{data.orders}</span>
+            </>
+          );
+        })}
       </Slider>
     </div>
   );
