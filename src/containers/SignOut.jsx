@@ -36,7 +36,7 @@ function SignOut() {
       else jwToken = sessionStorage.jwToken;
 
       axios
-        .delete(
+        .patch(
           `https://prod.kcook-cake.com/app/accounts/auth`,
           {
             password: password,
@@ -82,8 +82,7 @@ function SignOut() {
         <img src={logo} className="logo" />
         <h1 className="login-title">&nbsp;&nbsp;나만의 케이크 주문, 케이쿡</h1>
         <p className="login-sub-title">
-          가입하신 이메일 주소와 휴대폰 번호를 인증해 주세요. 비밀번호를
-          재설정할 수 있습니다.
+          회원탈퇴를 할 수 있습니다. 비밀번호를 입력해주세요.
         </p>
 
         <p className="login-center">비밀번호</p>

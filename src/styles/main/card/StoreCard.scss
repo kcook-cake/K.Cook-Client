@@ -30,12 +30,12 @@
 }
 
 .storecard-info {
-    .card-top-info {
+    .card-top {
         margin-bottom: 5px;
         color: #333333;
         font-size: 12px;
     }
-    .card-shop-name {
+    .card-title {
         width: 382px; //270px
         margin-bottom: 5px;
     
@@ -48,7 +48,7 @@
         font-weight: 600;
         // line-height: 18px;
     }
-    .card-cake-name {
+    .card-location {
         width: 382px; //270px
     
         overflow:hidden;
@@ -62,30 +62,30 @@
 
 @media (max-width: 767px) {
   .storecard {
-    width: 156px;
-    height: 262px;
-    margin-bottom: 0px;
+    width: 191px;
+    height: 190px;
+    margin-bottom: 10px;
     display: inline-flex;
 
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
 
     .storecard-img-flex {
-      width: 156px;
-      height: 116px;
-      border-radius: 10px;
+      width: 191px;
+      height: 125px;
+      border-radius: 0;
       background-color: #e6e6e6;
       img {
-        height: 116px;
+        height: 125px;
       }
     }
     .storecard-img-none {
-      line-height: 116px;
+      line-height: 125px;
       text-align: center;
       color: #858997;
     }
     .storecard-img {
-      width: 156px;
-      height: 116px;
+      width: 191px;
+      height: 125px;
     }
   }
 
@@ -93,25 +93,23 @@
     margin: 0;
     padding-left: 0px; //왜안돼?
     font-weight: bold;
-    .card-review {
-      height: 13px;
-      margin: 0;
-      display: inline;
+    .card-top {
+      margin-bottom: 0;
+    }
+    .card-title {
+      width: 191px;
+      margin-bottom: 0;
   
-      float: right;
-      font-size: 11px;
-      color: #858997;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+  
+      color: $sub-text;
+      line-height: 18px;
+      font-size: 15px
     }
-    .card-rating-star {
-      display: inline-block;
-      height: 13px;
-      img {
-        width: 13px;
-        vertical-align: top;
-      }
-    }
-    .card-shop-name {
-      width: 156px;
+    .card-location {
+      width: 191px;
     
       overflow:hidden;
       text-overflow:ellipsis;
@@ -121,20 +119,6 @@
       font-size: 12px;
       font-weight: 500;
       line-height: 18px;
-    }
-    .card-cake-name {
-      width: 156px;
-      margin-bottom: 10px;
-  
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-  
-      color: $sub-text;
-      line-height: 18px;
-      font-size: 15px;
-
-      border-bottom: 1px solid #eee;
     }
   }
 }

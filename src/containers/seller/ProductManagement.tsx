@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import cake6 from '../../assets/cake6.png';
@@ -10,8 +11,8 @@ import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../assets/seller/drag-column-btn.svg';
 import leftArrow from '../../assets/left-arrow.svg';
 import rightArrow from '../../assets/right-arrow.svg';
+import addIcon from "../../assets/seller/spm-add.png";
 
-import { Link } from 'react-router-dom';
 import getAxios from 'src/utils/getAxios';
 import SPMCard from 'src/components/seller/card/SPMCard';
 import SPMCard_Add from 'src/components/seller/card/SPMCard_Add';
@@ -251,16 +252,14 @@ function ProductManagement() {
                     : window.innerHeight - 775 < 0
                     ? window.pageYOffset
                     : window.pageYOffset + (window.innerHeight - 775) / 2,
-              }}
-            >
+              }}>
               <div className="spm-modal-title">이미지 등록</div>
               <div className="spm-modal-subtitle">대표이미지(1장)</div>
               <div
                 className="spm-modal-img-inner"
                 onClick={() => {
                   //addImage[0] = 사진 링크 넣기
-                }}
-              >
+                }}>
                 {addImage[0] == '' ? (
                   <div className="spm-add-img">
                     <AddIcon />
@@ -308,20 +307,18 @@ function ProductManagement() {
                   )}
                 </div>
               </div>
-              <div className="mprdetail-content-btn-box">
+              <div className="spmdetail-content-btn-box">
                 <button
-                  className="mprdetail-content-btn"
-                  onClick={() => setAddImageModal(false)}
-                >
+                  className="spmdetail-content-btn"
+                  onClick={() => setAddImageModal(false)}>
                   등록
                 </button>
                 <button
-                  className="mprdetail-content-btn mprdetail-content-btn-left"
+                  className="spmdetail-content-btn spmdetail-content-btn-left"
                   onClick={() => {
                     setAddImageModal(false);
                     setAddImage(['', '', '', '', '']);
-                  }}
-                >
+                  }}>
                   취소
                 </button>
               </div>
@@ -492,17 +489,16 @@ function ProductManagement() {
               className="spm-bottom-inner spm-bottom-middle"
               onClick={() => {
                 setAddDiv(true);
-              }}
-            >
+              }}>
               {/* <AddSmalllIcon/> */}
-              <img src={cake6} />
+              <img src={addIcon}/>
             </button>
             <button
               className="spm-bottom-inner spm-bottom-right"
               onClick={() => {
                 setAddDiv(false);
-              }}
-            >
+                for (var i=0; i< update.length; i++) update[i] = false;
+              }}>
               <CloseBtn />
             </button>
           </div>

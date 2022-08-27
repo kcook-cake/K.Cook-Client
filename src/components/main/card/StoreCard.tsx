@@ -27,9 +27,9 @@ function StoreCard({getData, cakeDetail}: Props) {
                                     }
                                 </div>
                                 <div className="storecard-info">
-                                    <div className="card-top-info">원모먼트</div>
-                                    <div className="card-shop-name">{data.storeName}</div>
-                                    <div className="card-cake-name">{data.name}</div>
+                                    <div className="card-top">원모먼트</div>
+                                    <div className="card-title">제목</div>
+                                    <div className="card-location">위치</div>
                                 </div>
                             </div>
                         </div>

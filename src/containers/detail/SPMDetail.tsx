@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import axios from 'axios';
 import "../../styles/detail/SPMDetail.scss";
 
 import selectAllow from "src/assets/selectArrow.png";
@@ -14,8 +15,11 @@ import SelectWindow from "src/components/main/card/cake-store/SelectWindow";
 import SelectBar from "src/components/main/card/cake-store/SelectBar";
 import SelectBox from "src/components/main/card/cake-store/SelectBox";
 
-const MPRDetail = () => {
+const SPMDetail = () => {
   const [num, setNum] = useState(0);
+  const NumF = () => {
+    setNum(num + 1);
+  };
 
   //선택지 가로 위치 계산
   const [width, setWidth] = useState(0);
@@ -30,6 +34,11 @@ const MPRDetail = () => {
     }
     setNum(num+1);
   };
+
+
+
+  const [selectDataOne, setSelectDataOne] = useState([["인기순", "최신순", "판매량순", "낮은 가격순", "높은 가격순"]]);
+  const [selectData, setSelectData] = useState([[], [], [], []]);
 
   //선택지창
   const [selectWindow, setSelectWindow] = useState([
@@ -69,19 +78,40 @@ const MPRDetail = () => {
 
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
+    axios
+      .get(`https://prod.kcook-cake.com/app/cities`)
+      .then(res =>{
+          setSelectData([res.data.result, [
+              "생크림",
+              "크림치즈",
+              "초코",
+              "과일",
+          ], [
+              "생일",
+              "커플 기념일",
+              "어버이날",
+              "돌잔치",
+              "크리스마스",
+          ], [
+              "~3만 원",
+              "3~5만 원",
+              "5~7만 원",
+              "7~10만 원",
+              "10만 원~",
+          ]]);
+      });
   }, []);
 
   return (
     <>
       {/* 선택지창 */}
       {resize>767 || selectMobileTF?
-          <SelectWindow
-              cakestoreTF={false} width={width+345} height={515}
-              num={num} setNumF={setNum}
-              setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF}
-              selectAll={selectAll} selectWindow={selectWindow} />
-          :null
-      }
+        <SelectWindow
+          cakestoreTF={true} width={width+345} height={515} NumF={NumF}
+          selectAll={selectAll} selectBox={[false, false, false]} selectWindow={selectWindow}
+          selectDataOne={selectDataOne} selectData={selectData}
+          setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
+      :null}
 
       <div className="seller-mypage-top-flex spmdetail-flex">
         <div className="sso-ssh-mobile-box">
@@ -110,7 +140,10 @@ const MPRDetail = () => {
 
             {/* 선택지 박스 */}
             {resize> 767?
-              <SelectBox cakestoreTF={true} selectWindow={selectWindow} SelectCloseF={SelectCloseF} />:            
+              <SelectBox 
+                cakestoreTF={true} NumF={NumF}
+                selectBox={[false, false, false]} selectWindow={selectWindow} 
+                SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>:            
               <div
                 className="mobile spmdetail-search"
                 onClick={() => {
@@ -183,9 +216,11 @@ const MPRDetail = () => {
 
             <div className="spmdetail-content-btn-box" style={{ marginTop: "16px", }}>
               <button className="spmdetail-content-btn">등록</button>
-              <button className="spmdetail-content-btn spmdetail-content-btn-left">
-                취소
-              </button>
+              <Link to="/ProductManagement">
+                <button className="spmdetail-content-btn spmdetail-content-btn-left">
+                  취소
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -194,4 +229,4 @@ const MPRDetail = () => {
   );
 };
 
-export default MPRDetail;
+export default SPMDetail;

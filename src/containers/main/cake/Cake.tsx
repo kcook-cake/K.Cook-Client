@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
+import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/main/CakeStore.scss';
-
-import axios from 'axios';
 
 import search from "../../../assets/search.svg";
 import selectAllow from "../../../assets/selectArrow.png";
@@ -17,9 +16,14 @@ import CakeStoreTitle from 'src/components/main/card/cake-store/CakeStoreTitle';
 import SelectWindow from 'src/components/main/card/cake-store/SelectWindow';
 import SelectBar from 'src/components/main/card/cake-store/SelectBar';
 import SelectBox from 'src/components/main/card/cake-store/SelectBox';
+import SelectBoxOne from 'src/components/main/card/cake-store/SelectBoxOne';
+import SelectWindowOne from 'src/components/main/card/cake-store/SelectWindowOne';
 
 function Cake (){
     const [num, setNum] = useState(0);
+    const NumF = () => {
+        setNum(num + 1);
+    };
 
     //선택지 가로 위치 계산
     const [width, setWidth] = useState(0);
@@ -37,6 +41,9 @@ function Cake (){
 
 
 
+    const [selectDataOne, setSelectDataOne] = useState([["인기순", "최신순", "판매량순", "낮은 가격순", "높은 가격순"]]);
+    const [selectData, setSelectData] = useState([[], [], [], []]);
+
     //선택지창
     const [selectWindow, setSelectWindow] = useState([
         [false, "정렬", 0],
@@ -50,11 +57,11 @@ function Cake (){
 
     //선택지 모바일
     const [selectMobileTF, setSelectMobileTF] = useState(false);
-
     //더보기
     const [cakeDetail, setCakeDetail] = useState(true);
     
     
+
     const [resize, setResize] = useState(0);
     const handleResize = () => {
       setResize(window.innerWidth);
@@ -71,20 +78,42 @@ function Cake (){
         window.addEventListener('resize', handleResize);
 
         getAxios(setData, setLengthTodays, "cakes", [], 24, pageTodays, 0);
+        axios
+            .get(`https://prod.kcook-cake.com/app/cities`)
+            .then(res =>{
+                setSelectData([res.data.result, [
+                    "생크림",
+                    "크림치즈",
+                    "초코",
+                    "과일",
+                ], [
+                    "생일",
+                    "커플 기념일",
+                    "어버이날",
+                    "돌잔치",
+                    "크리스마스",
+                ], [
+                    "~3만 원",
+                    "3~5만 원",
+                    "5~7만 원",
+                    "7~10만 원",
+                    "10만 원~",
+                ]]);
+            });
     },[]);
 
     return(
         <>
         <div className="cake-flex">
             {/* 선택지창 */}
+            <SelectWindowOne width={width} NumF={NumF} selectWindow={selectWindow} selectDataOne={selectDataOne} />
             {resize>767 || selectMobileTF?
                 <SelectWindow
-                    cakestoreTF={true} width={width} height={250}
-                    num={num} setNumF={setNum}
-                    setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF}
-                    selectAll={selectAll} selectWindow={selectWindow} />
-                :null
-            }
+                    cakestoreTF={true} width={width} height={250} NumF={NumF}
+                    selectAll={selectAll} selectBox={[false, false, false]} selectWindow={selectWindow}
+                    selectDataOne={selectDataOne} selectData={selectData}
+                    setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
+            :null}
 
             <div className="cake">
                 <div className="cake-select-flex">
@@ -98,15 +127,16 @@ function Cake (){
                     </div>
 
                     {/* 선택지 박스 */}
-                    <SelectBox cakestoreTF={true} selectWindow={selectWindow} SelectCloseF={SelectCloseF} />
+                    <SelectBoxOne selectWindow={selectWindow} SelectCloseF={SelectCloseF} />
+                    <SelectBox 
+                        cakestoreTF={true} NumF={NumF}
+                        selectBox={[false, false, false]} selectWindow={selectWindow} 
+                        SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
 
                     {/* 선택지 바 */}
-                    {(resize>767 || selectMobileTF) && selectAll.length != 0?
+                    {selectAll.length != 0?
                         <div
-                            className="cake-select-bar"
-                            style={{
-                                marginTop: resize>767? 10 : 50*3,
-                            }}>
+                            className="cake-select-bar">
                             <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
                             <div
                                 className="cake-bar-card-all-delete"

@@ -166,6 +166,13 @@
     }
 }
 
+.spm-tap-btn {
+    img {
+        width: 19px;
+        margin: 5px 0 0 3.3px;
+    }
+}
+
 
 
 //ssr에서만
@@ -225,13 +232,15 @@
         width: 100%;
         height: 159px !important;
         margin-bottom: 20px;
-        display: block;
+        display: flex;
 
         border-radius: 0;
         background-color: #fff;
         box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
         .spm-add-inner {
+            width: 100%;
             margin: 0;
+            margin-right: 36px;
         }
         .move-tap {
             width: 100%;
@@ -265,6 +274,10 @@
             display: block;
         }
     }
+    .spm-tap {
+        float: right !important;
+    }
+
     .spm-add-img2 {
         height: 111px;
         width: 100px;
@@ -401,7 +414,24 @@
     .spm-add-arrow-num {
         margin-top: 18px !important;
     }
-    .mprdetail-content-btn-box {
+    .spmdetail-content-btn-box {
         margin-top: 25px;
+    }
+
+    .spm-bottom-middle {
+        img {
+            width: 18px !important;
+            height: 18px !important;
+        }
+    }
+
+    .spm-tap-btn {
+        margin-top: 30px;
+    }
+}
+
+@media(max-width:288px) {
+    .spmdetail-content-btn {
+        width: 89.5px !important;
     }
 }

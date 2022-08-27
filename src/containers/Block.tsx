@@ -31,7 +31,6 @@ function Block() {
   };
 
   const onClickLogin = () => {
-    console.log($("#loginAuto").is(':checked'));
     axios
       .post(`https://prod.kcook-cake.com/app/sign-in`, {
         password: password,

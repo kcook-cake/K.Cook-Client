@@ -7,6 +7,9 @@
 
 .profile-list {
   margin-bottom: 20px;
+  input {
+    color: #000;
+  }
   .password-set {
     display: flex;
     flex-direction: column;

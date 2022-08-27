@@ -31,7 +31,6 @@ function LandingPage() {
   };
 
   const onClickLogin = () => {
-    console.log($("#loginAuto").is(':checked'));
     axios
       .post(`https://prod.kcook-cake.com/app/sign-in`, {
         password: password,
@@ -166,7 +165,6 @@ function LandingPage() {
   const test = () => {
     axios.get(`https://prod.kcook-cake.com/app/applicants`)
     .then(res =>{
-      console.log(res);
     });
   };
   
