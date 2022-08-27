@@ -83,14 +83,11 @@ function Store() {
     axios
       .get(`https://prod.kcook-cake.com/app/cities`)
       .then(res =>{
-        setSelectData([res.data.result, [], [], []]);
-      });
-      //466d5944556364703834526c75516a
-    axios
-      .get(`https://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/5///1호선`)
-      .then(res =>{
-        console.log(res);
-        // setSelectData([res.data.result, [], [], []]);
+        setSelectData([res.data.result, [], [
+          "1호선", "2호선", "3호선", "4호선", "5호선", "6호선", "7호선", "8호선", "9호선",
+          "경춘선", "공항철도", "분당선", "수인선", "신분당선", "에버라인", "의정부","경강선", "자기부상", "우이신설", "서해선",
+          "인천1호선", "인천2호선", "경의중앙선", "김포골드",
+        ], []]);
       });
   }, []);
 

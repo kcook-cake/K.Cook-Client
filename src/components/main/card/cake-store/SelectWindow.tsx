@@ -31,10 +31,14 @@ export default function SelectWindow({
         setSelectMobileTF, SelectCloseF, setSelectAllF,
     }: Props) {
 
+    const [citySubway, setCitySubway] = useState("");
+
     //선택지창
     const SelectF = (n: number, str: string, length: number) => {
-        if (SelectBarF(str))
-        selectAll[selectAll.length] = str;
+        if (SelectBarF(str)) {
+            if (cakestoreTF) selectAll[selectAll.length] = str;
+            else if (n==3 || n==5) selectAll[selectAll.length] = citySubway+" "+str;
+        }
         selectWindow[n-1] = [false, str, length];
         NumF();
     };
@@ -55,7 +59,18 @@ export default function SelectWindow({
                 NumF();
             });
     };
-    const SubwayF = (i: any, ) => {
+    const SubwayF = (str: any, ) => {
+        //466d5944556364703834526c75516a
+        axios
+            .get(`https://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/100///` + str)
+            .then(res =>{
+                for (var i=0; i<res.data.row.length; i++) {
+                    selectData[3][i] = res.data.row[i].STATION_NM;
+                }
+                NumF();
+            });
+        selectData[3][0] = "지하철역";
+        selectData[3][1] = "지하철역";
         NumF();
     };
 
@@ -108,6 +123,7 @@ export default function SelectWindow({
                                 onClick={()=>{
                                     SelectF(2, data.cityName, 8*data.cityName.length);
                                     if(!cakestoreTF) {
+                                        setCitySubway(data.cityName);
                                         selectWindow[2] = [false, "시/군", 8];
                                         LocationF(data.cityId);
                                     };
@@ -168,7 +184,7 @@ export default function SelectWindow({
                                                     "cake-select-li-top": idx == 0,
                                                     "cake-select-li-bottom": idx == selectData[1].length-1,
                                                 })}
-                                                onClick={()=>{SelectF(3, data.locationName, 8*data.locationName.length);}}>
+                                                onClick={()=>{SelectF(3, data.locationName, 8*data.locationName.length); }}>
                                                 {data.locationName}
                                             </li>
                                         )
@@ -220,6 +236,7 @@ export default function SelectWindow({
                                 onClick={()=>{
                                     SelectF(4, data, 8*data.length);
                                     if(!cakestoreTF) {
+                                        setCitySubway(data);
                                         selectWindow[4] = [false, "지하철역", 8];
                                         SubwayF(data);
                                     };
@@ -256,7 +273,7 @@ export default function SelectWindow({
                     <>
                         <div className="cake-select-top"></div>
                         <ul className="cake-select-ul" style={{ height: (52.2)*selectData[3].length, }}>
-                            {cakestoreTF?
+                            {/* {cakestoreTF? */}
                                 <>
                                     {selectData[3].map((data: any, idx: any, )=>{
                                         return (
@@ -271,7 +288,8 @@ export default function SelectWindow({
                                         )
                                         })
                                     }
-                                </>:
+                                </>
+                                {/* :
                                 <>
                                     {selectData[3].map((data: { locationId: any, locationName: any, }, idx: any, )=>{
                                         return (
@@ -286,8 +304,8 @@ export default function SelectWindow({
                                         )
                                         })
                                     }
-                                </>
-                            }
+                                </> */}
+                            {/* } */}
                         </ul>
                     </>
                 }
