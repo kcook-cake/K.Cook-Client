@@ -43,11 +43,11 @@ function App() {
     <div id='main'>
       {/* <PC> */}
       {/* <LandingPage/> */}
-      {session?
+      {/* {session?
         <Pages/>:
         <LandingPage/>
-      }
-      {/* <Pages/> */}
+      } */}
+      <Pages/>
       {/* </PC>
       <Mobile>
       </Mobile> */}

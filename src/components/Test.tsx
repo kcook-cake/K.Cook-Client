@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import $ from 'jquery';
 import '../styles/Test.scss'
 
@@ -103,6 +104,7 @@ function Test({ }: Props) {
     useEffect(() => {
         setResize(window.innerWidth);
         window.addEventListener("resize", handleResize);
+
     }, []);
 
     return (

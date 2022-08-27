@@ -40,7 +40,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "set HTTPS=true&&set SSL_CRT_FILE=cert.pem&&set SSL_KEY_FILE=key.pem&&react-scripts start",
+    "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -64,7 +64,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://prod.kcook-cake.com",
+  "proxy": "",
   "devDependencies": {
     "@types/jquery": "^3.5.14",
     "prettier-eslint": "^13.0.0",
