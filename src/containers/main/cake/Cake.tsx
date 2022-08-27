@@ -84,14 +84,23 @@ function Cake (){
                 setSelectData([res.data.result, [
                     "생크림",
                     "크림치즈",
-                    "초코",
-                    "과일",
+                    "버터크림",
+                    "앙금",
                 ], [
-                    "생일",
-                    "커플 기념일",
-                    "어버이날",
-                    "돌잔치",
+                    "친구/애인",
+                    "부모님",
+                    "어린이",
+                    "할로윈데이",
+                    "빼빼로데이",
                     "크리스마스",
+                    "입학/졸업/취업",
+                    "명절",
+                    "발렌타인/화이트데이",
+                    "어버이날/스승의날",
+                    "돌/환갑/칠순잔치",
+                    "프로포즈/브라이덜샤워",
+                    "연애인",
+                    "기업"
                 ], [
                     "~3만 원",
                     "3~5만 원",
@@ -130,7 +139,7 @@ function Cake (){
                     <SelectBoxOne selectWindow={selectWindow} SelectCloseF={SelectCloseF} />
                     <SelectBox 
                         cakestoreTF={true} NumF={NumF}
-                        selectBox={[false, false, false]} selectWindow={selectWindow} 
+                        selectBox={[false, false, false, false]} selectWindow={selectWindow} 
                         SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
 
                     {/* 선택지 바 */}

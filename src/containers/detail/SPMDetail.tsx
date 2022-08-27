@@ -142,7 +142,7 @@ const SPMDetail = () => {
             {resize> 767?
               <SelectBox 
                 cakestoreTF={true} NumF={NumF}
-                selectBox={[false, false, false]} selectWindow={selectWindow} 
+                selectBox={[false, false, false, false]} selectWindow={selectWindow} 
                 SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>:            
               <div
                 className="mobile spmdetail-search"

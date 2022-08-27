@@ -55,6 +55,9 @@ export default function SelectWindow({
                 NumF();
             });
     };
+    const SubwayF = (i: any, ) => {
+        NumF();
+    };
 
     return (
         <>
@@ -117,6 +120,7 @@ export default function SelectWindow({
                 </ul>
             </div>: null}
 
+
             {cakestoreTF || selectBox[1] ?
                 <div className="mobile cake-select-mobile">
                     {cakestoreTF? "맛" : "시/군"}
@@ -124,8 +128,8 @@ export default function SelectWindow({
                         className="cake-select-mobile-button"
                         onClick={()=>{
                         SelectCloseF();
-                        if (selectWindow[2][0]) selectWindow[2][0] = false;
-                        else selectWindow[2][0] = true;
+                            if (selectWindow[2][0]) selectWindow[2][0] = false;
+                            else selectWindow[2][0] = true;
                         }}>
                         선택하기
                     </div>
@@ -177,10 +181,12 @@ export default function SelectWindow({
                 }
             </div>: null}
 
+
+
             <div className={classNames('mobile', 'cake-select-mobile', {
                     "store-nouse": selectBox[2],
                 })}>
-                {cakestoreTF? "이벤트" : "지하철"}
+                {cakestoreTF? "이벤트" : "지하철노선"}
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
@@ -211,7 +217,13 @@ export default function SelectWindow({
                                     "cake-select-li-top": idx == 0,
                                     "cake-select-li-bottom": idx == selectData[2].length-1,
                                 })}
-                                onClick={()=>{SelectF(4, data, 8*data.length);}}>
+                                onClick={()=>{
+                                    SelectF(4, data, 8*data.length);
+                                    if(!cakestoreTF) {
+                                        selectWindow[4] = [false, "지하철역", 8];
+                                        SubwayF(data);
+                                    };
+                                }}>
                                 {data}
                             </li>
                         )
@@ -220,10 +232,10 @@ export default function SelectWindow({
                 </ul>
             </div>: null}
 
-            {selectWindow[4][1] == ""? null:
-            <>
+            
+            {cakestoreTF || selectBox[3] ?
                 <div className="mobile cake-select-mobile">
-                    가격대
+                    {cakestoreTF? "가격대" : "지하철역"}
                     <div
                         className="cake-select-mobile-button"
                         onClick={()=>{
@@ -234,29 +246,54 @@ export default function SelectWindow({
                         선택하기
                     </div>
                 </div>
-                {selectWindow[4][0]?
-                <div
-                    className="cake-select-absolute"
-                    style={{ top: height, left: (width+175+selectWindow[1][2]+selectWindow[2][2]+selectWindow[3][2]+selectWindow[4][2]), }}>
-                    <div className="cake-select-top"></div>
-                    <ul className="cake-select-ul" style={{ height: (52.2)*selectData[2].length, }}>
-                        {selectData[3].map((data: any, idx: any, )=>{
-                            return (
-                                <li
-                                    className={classNames("cake-select-li", {
-                                        "cake-select-li-top": idx == 0,
-                                        "cake-select-li-bottom": idx == selectData[3].length-1,
-                                    })}
-                                    onClick={()=>{SelectF(5, data, 8*data.length);}}>
-                                    {data}
-                                </li>
-                            )
-                            })
-                        }
-                    </ul>
-                </div>: null}
-            </>
-            }
+            :null}
+            {selectWindow[4][0]?
+            <div
+                className="cake-select-absolute"
+                style={{ top: height, left: cakestoreTF? (width+175+selectWindow[1][2]+selectWindow[2][2]+selectWindow[3][2]+selectWindow[4][2]): (width+15+selectWindow[1][2]+selectWindow[3][2]+selectWindow[4][2]), }}>
+                {!cakestoreTF && selectData[3].length == 1?
+                    null:
+                    <>
+                        <div className="cake-select-top"></div>
+                        <ul className="cake-select-ul" style={{ height: (52.2)*selectData[3].length, }}>
+                            {cakestoreTF?
+                                <>
+                                    {selectData[3].map((data: any, idx: any, )=>{
+                                        return (
+                                            <li
+                                                className={classNames("cake-select-li", {
+                                                    "cake-select-li-top": idx == 0,
+                                                    "cake-select-li-bottom": idx == selectData[3].length-1,
+                                                })}
+                                                onClick={()=>{SelectF(5, data, 8*data.length);}}>
+                                                {data}
+                                            </li>
+                                        )
+                                        })
+                                    }
+                                </>:
+                                <>
+                                    {selectData[3].map((data: { locationId: any, locationName: any, }, idx: any, )=>{
+                                        return (
+                                            <li
+                                                className={classNames("cake-select-li", {
+                                                    "cake-select-li-top": idx == 0,
+                                                    "cake-select-li-bottom": idx == selectData[3].length-1,
+                                                })}
+                                                onClick={()=>{SelectF(5, data.locationName, 8*data.locationName.length);}}>
+                                                {data.locationName}
+                                            </li>
+                                        )
+                                        })
+                                    }
+                                </>
+                            }
+                        </ul>
+                    </>
+                }
+            </div>: null}
+            
+
         </div>
         </>
     );

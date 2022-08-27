@@ -34,6 +34,7 @@ export default function SelectBox({
                     SelectCloseF();
                     if (!cakestoreTF) {
                         selectBox[1] = true;
+                        selectBox[3] = false;
                         if (!selectBox[2]) setSelectAllF([]);
                         selectBox[0] = false;
                         selectBox[2] = true;
@@ -79,6 +80,7 @@ export default function SelectBox({
                     SelectCloseF();
                     if (!cakestoreTF) {
                         selectBox[1] = false;
+                        selectBox[3] = true;
                         if (!selectBox[0]) setSelectAllF([]);
                         selectBox[0] = true;
                         selectBox[2] = false;
@@ -97,9 +99,8 @@ export default function SelectBox({
                 </div>
             </div>
 
-            {selectWindow[4][1] == ""?
-                null:
-                <div 
+            {cakestoreTF || selectBox[3] ?
+                <div
                     className="pc cake-select"
                     onClick={() => {
                         SelectCloseF();
@@ -107,7 +108,7 @@ export default function SelectBox({
                         else selectWindow[4][0] = true;
                     }}>
                     <div style={{ display: "flex" }}>
-                        <button id="cake-select-five" className="cake-select-button">
+                        <button id="cake-select-two" className="cake-select-button">
                             {selectWindow[4][1]}
                         </button>
                         <div className="cake-select-img">
@@ -115,7 +116,7 @@ export default function SelectBox({
                         </div>
                     </div>
                 </div>
-            }
+            :null}
         </>
     );
 }

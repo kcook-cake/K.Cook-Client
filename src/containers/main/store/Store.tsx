@@ -45,14 +45,14 @@ function Store() {
   const [selectDataOne, setSelectDataOne] = useState([["인기순", "최신순", "판매량순", "낮은 가격순", "높은 가격순"]]);
   const [selectData, setSelectData] = useState([[], [], [], []]);
 
-  const [selectBox, setSelectBox] = useState([false, false, false])
+  const [selectBox, setSelectBox] = useState([false, false, false, false])
   //선택지창
   const [selectWindow, setSelectWindow] = useState([
     [false, '정렬', 0],
     [false, '지역', 0],
     [false, '시/군', 0],
-    [false, '지하철', 0],
-    [false, '', 0],
+    [false, '지하철노선', 0],
+    [false, '지하철역', 0],
   ]);
   //선택지바
   const [selectAll, setSelectAll] = useState([]);
@@ -83,10 +83,14 @@ function Store() {
     axios
       .get(`https://prod.kcook-cake.com/app/cities`)
       .then(res =>{
-        setSelectData([res.data.result, [], [
-          "서울역",
-          "광명사거리역",
-        ], []]);
+        setSelectData([res.data.result, [], [], []]);
+      });
+      //466d5944556364703834526c75516a
+    axios
+      .get(`https://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/5///1호선`)
+      .then(res =>{
+        console.log(res);
+        // setSelectData([res.data.result, [], [], []]);
       });
   }, []);
 
