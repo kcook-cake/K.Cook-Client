@@ -36,10 +36,12 @@ export default function SelectWindow({
     //선택지창
     const SelectF = (n: number, str: string, length: number) => {
         if (SelectBarF(str)) {
-            if (cakestoreTF) selectAll[selectAll.length] = str;
-            else if (n==3 || n==5) selectAll[selectAll.length] = citySubway+" "+str;
+            if (!cakestoreTF && (n==3 || n==5)) selectAll[selectAll.length] = citySubway+" "+str;
+            else selectAll[selectAll.length] = str;
+            // if (cakestoreTF) selectAll[selectAll.length] = str;
+            // else if (n==3 || n==5) selectAll[selectAll.length] = citySubway+" "+str;
         }
-        selectWindow[n-1] = [false, str, length];
+        selectWindow[n-1] = [false, str, 14*length];
         NumF();
     };
 
@@ -59,25 +61,24 @@ export default function SelectWindow({
                 NumF();
             });
     };
-    // async function SubwayF(str: any,) {
-    //     try {
-    //       const res = await axios.get("http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/100///1호선");
-    //       console.log(res);
-    //     }
-    //     catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
     const SubwayF = (str: any, ) => {
-        console.log(str);
-        //466d5944556364703834526c75516a
-        axios
-            .get(`http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/5///서울역`)
-            .then(res =>{
-                console.log(res.data.SearchSTNBySubwayLineInfo.row);
-            });
-        selectData[3][0] = "지하철역";
-        selectData[3][1] = "지하철역";
+        if (str == "인천1호선") str = "인천선";
+            
+        if (str == "수인선") {
+            selectData[3] = ["달월", "월곶", "소래포구", "인천논현", "호구포", "남동인더스파크", "원인재", "연수", "송도", "신포", "인하대", "숭의(인하대병원)"];
+        } else if (str == "경의중앙선") {
+            selectData[3] = ["청량리", "회기", "지평", "임진강"];
+        } else if (str == "자기부상") {
+            selectData[3] = ["장기주차장", "합동청사", "파라다이스시티", "워터파크", "용유", ];
+        } else {
+            //466d5944556364703834526c75516a
+            axios
+                .get(`http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/99/ / /`+str)
+                .then(res =>{
+                    for (var i=0; i<res.data.SearchSTNBySubwayLineInfo.row.length; i++)
+                        selectData[3][i] = res.data.SearchSTNBySubwayLineInfo.row[i].STATION_NM;
+                });
+        }
         NumF();
     };
 
@@ -103,6 +104,7 @@ export default function SelectWindow({
                         SelectCloseF();
                         if (!cakestoreTF) {
                             selectBox[1] = true;
+                            selectBox[3] = false;
                             if (!selectBox[2]) setSelectAllF([]);
                             selectBox[0] = false;
                             selectBox[2] = true;
@@ -117,7 +119,7 @@ export default function SelectWindow({
             {selectWindow[1][0]?
             <div
                 className="cake-select-absolute"
-                style={{ top: height, left: (width-45+selectWindow[1][2]), }}>
+                style={{ top: height, left: (width-75+selectWindow[1][2]), }}> {/* -90에서 시작 */}
                 <div className="cake-select-top"></div>
                 <ul className="cake-select-ul" style={{ height: (52.2)*selectData[0].length, }}>
                     {selectData[0].map((data: { cityId: any, cityName: any, }, idx: any, )=>{
@@ -128,7 +130,7 @@ export default function SelectWindow({
                                     "cake-select-li-bottom": idx == selectData[0].length-1,
                                 })}
                                 onClick={()=>{
-                                    SelectF(2, data.cityName, 8*data.cityName.length);
+                                    SelectF(2, data.cityName, data.cityName.length);
                                     if(!cakestoreTF) {
                                         setCitySubway(data.cityName);
                                         selectWindow[2] = [false, "시/군", 8];
@@ -161,7 +163,7 @@ export default function SelectWindow({
             {selectWindow[2][0]?
             <div
                 className="cake-select-absolute"
-                style={{ top: height, left: (width+15+selectWindow[1][2]+selectWindow[2][2]), }}>
+                style={{ top: height, left: (width-30+selectWindow[1][2]+selectWindow[2][2]), }}>
                 {!cakestoreTF && selectData[1].length == 1?
                     null:
                     <>
@@ -176,7 +178,7 @@ export default function SelectWindow({
                                                     "cake-select-li-top": idx == 0,
                                                     "cake-select-li-bottom": idx == selectData[1].length-1,
                                                 })}
-                                                onClick={()=>{SelectF(3, data, 8*data.length);}}>
+                                                onClick={()=>{SelectF(3, data, data.length);}}>
                                                 {data}
                                             </li>
                                         )
@@ -191,7 +193,7 @@ export default function SelectWindow({
                                                     "cake-select-li-top": idx == 0,
                                                     "cake-select-li-bottom": idx == selectData[1].length-1,
                                                 })}
-                                                onClick={()=>{SelectF(3, data.locationName, 8*data.locationName.length); }}>
+                                                onClick={()=>{SelectF(3, data.locationName, data.locationName.length); }}>
                                                 {data.locationName}
                                             </li>
                                         )
@@ -216,6 +218,7 @@ export default function SelectWindow({
                         SelectCloseF();
                         if (!cakestoreTF) {
                             selectBox[1] = false;
+                            selectBox[3] = true;
                             if (!selectBox[0]) setSelectAllF([]);
                             selectBox[0] = true;
                             selectBox[2] = false;
@@ -230,7 +233,7 @@ export default function SelectWindow({
             {selectWindow[3][0]?
             <div
                 className="cake-select-absolute"
-                style={{ top: height, left: cakestoreTF? (width+95+selectWindow[1][2]+selectWindow[2][2]+selectWindow[3][2]): (width+35+selectWindow[1][2]+selectWindow[3][2]) }}>
+                style={{ top: height, left: width+(cakestoreTF?10:-35)+selectWindow[1][2]+(cakestoreTF?selectWindow[2][2]:0)+selectWindow[3][2] }}>
                 <div className="cake-select-top"></div>
                 <ul className="cake-select-ul" style={{ height: (52.2)*selectData[2].length, }}>
                     {selectData[2].map((data: any, idx: any, )=>{
@@ -241,11 +244,11 @@ export default function SelectWindow({
                                     "cake-select-li-bottom": idx == selectData[2].length-1,
                                 })}
                                 onClick={()=>{
-                                    SelectF(4, data, 8*data.length);
+                                    SelectF(4, data, data.length-data.split("/").length+1);
                                     if(!cakestoreTF) {
                                         setCitySubway(data);
                                         selectWindow[4] = [false, "지하철역", 8];
-                                        SubwayF(data);
+                                        SubwayF(data, );
                                     };
                                 }}>
                                 {data}
@@ -274,13 +277,12 @@ export default function SelectWindow({
             {selectWindow[4][0]?
             <div
                 className="cake-select-absolute"
-                style={{ top: height, left: cakestoreTF? (width+175+selectWindow[1][2]+selectWindow[2][2]+selectWindow[3][2]+selectWindow[4][2]): (width+15+selectWindow[1][2]+selectWindow[3][2]+selectWindow[4][2]), }}>
+                style={{ top: height, left: width+(cakestoreTF?50:5)+selectWindow[1][2]+(cakestoreTF?selectWindow[2][2]:0)+selectWindow[3][2]+selectWindow[4][2], }}>
                 {!cakestoreTF && selectData[3].length == 1?
                     null:
                     <>
                         <div className="cake-select-top"></div>
                         <ul className="cake-select-ul" style={{ height: (52.2)*selectData[3].length, }}>
-                            {/* {cakestoreTF? */}
                                 <>
                                     {selectData[3].map((data: any, idx: any, )=>{
                                         return (
@@ -289,30 +291,13 @@ export default function SelectWindow({
                                                     "cake-select-li-top": idx == 0,
                                                     "cake-select-li-bottom": idx == selectData[3].length-1,
                                                 })}
-                                                onClick={()=>{SelectF(5, data, 8*data.length);}}>
+                                                onClick={()=>{SelectF(5, data, cakestoreTF? data.length-2: data.length);}}>
                                                 {data}
                                             </li>
                                         )
                                         })
                                     }
                                 </>
-                                {/* :
-                                <>
-                                    {selectData[3].map((data: { locationId: any, locationName: any, }, idx: any, )=>{
-                                        return (
-                                            <li
-                                                className={classNames("cake-select-li", {
-                                                    "cake-select-li-top": idx == 0,
-                                                    "cake-select-li-bottom": idx == selectData[3].length-1,
-                                                })}
-                                                onClick={()=>{SelectF(5, data.locationName, 8*data.locationName.length);}}>
-                                                {data.locationName}
-                                            </li>
-                                        )
-                                        })
-                                    }
-                                </> */}
-                            {/* } */}
                         </ul>
                     </>
                 }

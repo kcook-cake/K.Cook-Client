@@ -47,10 +47,10 @@ function Cake (){
     //선택지창
     const [selectWindow, setSelectWindow] = useState([
         [false, "정렬", 0],
-        [false, "지역", 0],
-        [false, "맛", 0],
-        [false, "이벤트", 0],
-        [false, "가격대", 0],
+        [false, "지역", 28],
+        [false, "맛", 14],
+        [false, "이벤트", 42],
+        [false, "가격대", 42],
     ]);
     //선택지바
     const [selectAll, setSelectAll] = useState([]);

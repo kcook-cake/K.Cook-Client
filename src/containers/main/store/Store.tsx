@@ -49,10 +49,10 @@ function Store() {
   //선택지창
   const [selectWindow, setSelectWindow] = useState([
     [false, '정렬', 0],
-    [false, '지역', 0],
-    [false, '시/군', 0],
-    [false, '지하철노선', 0],
-    [false, '지하철역', 0],
+    [false, '지역', 28],
+    [false, '시/군', 42],
+    [false, '지하철노선', 70],
+    [false, '지하철역', 56],
   ]);
   //선택지바
   const [selectAll, setSelectAll] = useState([]);
@@ -85,8 +85,9 @@ function Store() {
       .then(res =>{
         setSelectData([res.data.result, [], [
           "1호선", "2호선", "3호선", "4호선", "5호선", "6호선", "7호선", "8호선", "9호선",
-          "경춘선", "공항철도", "분당선", "수인선", "신분당선", "에버라인", "의정부","경강선", "자기부상", "우이신설", "서해선",
-          "인천1호선", "인천2호선", "경의중앙선", "김포골드",
+          "경강선", "경의선", "경춘선", "공항철도", "김포","서해선", "수인분당선", "신림선", "신분당선", "용인", "우이신설", "의정부", "자기부상",
+          "인천1호선", "인천2호선",
+          "수인선", "경의중앙선",
         ], []]);
       });
   }, []);
@@ -132,13 +133,14 @@ function Store() {
                         className="cake-bar-card-all-delete"
                         onClick={()=>{
                           SelectCloseF();
-                          setSelectBox([false, false, false]);
+                          setSelectBox([false, false, false, false]);
       
                           selectWindow[1][1] = '지역';
                           selectWindow[2][1] = '시/군';
-                          selectWindow[3][1] = '지하철';
+                          selectWindow[3][1] = '지하철노선';
+                          selectWindow[4][1] = '지하철역';
       
-                          for (var i = 1; i < 4; i++) {
+                          for (var i = 1; i < 5; i++) {
                             selectWindow[i][2] = 0;
                           }
       
