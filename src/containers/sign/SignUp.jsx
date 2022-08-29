@@ -28,7 +28,7 @@ function SignUp() {
   };
   
   const [isChecked, setIsChecked] = useState(false);
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState([1,2]);
   const checkboxs = [
     { id: 1, description: '서비스 이용약관 동의 (필수)', show: '보기', },
     { id: 2, description: '개인정보 수집 및 이용 동의 (필수)', show: '보기', },

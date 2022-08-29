@@ -19,12 +19,10 @@ import SPMCard_Add from 'src/components/seller/card/SPMCard_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import ImageModal from 'src/components/seller/card/image-modal/ImageModal';
+import SPM_Update from 'src/components/seller/card/SRM_Update';
 
 function ProductManagement() {
   const [num, setNum] = useState(0);
-  const NumF = () => {
-    setNum(num + 1);
-  };
 
   //Add
   const Add = () => {
@@ -118,12 +116,10 @@ function ProductManagement() {
     setAddPrice(e.target.value);
   };
 
-  const [update, setUpdate] = useState<any>([]);
-  const [updateImageModal, setUpdateImageModal] = useState<any>([]);
-  const [updateImage, setUpdateImage] = useState<any>([]);
-  const [updateImageNum, setUpdateImageNum] = useState<any>([]);
-  const [updateOption, setUpdateOption] = useState<any>([]);
-  const [image, setImage] = useState([
+
+
+  const [oriShow, setOriShow] = useState<any>([]);
+  const [oriImage, setOriImage] = useState([
     [
       'https://www.codingfactory.net/wp-content/uploads/abc.jpg',
       '',
@@ -133,10 +129,11 @@ function ProductManagement() {
     ],
     ['', '', '', '', ''],
   ]);
-  const [data, setData] = useState([
+  const [oriData, setOriData] = useState([
     {
       name: '케이크1',
       image: '',
+      price: 1000,
       list: [
         {
           optionId: 1,
@@ -186,6 +183,7 @@ function ProductManagement() {
     {
       name: '케이크2',
       image: '',
+      price: 0,
       list: [
         {
           optionId: 1,
@@ -209,26 +207,17 @@ function ProductManagement() {
   const handleResize = () => {
     setResize(window.innerWidth);
   };
+
   useEffect(() => {
     LinkClick('ProductManagement');
     sellerLinkClick('ProductManagement');
+
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    for (var i = 0; i < data.length; i++) {
-      //dataLength
-      update[i] = false;
-      updateImageModal[i] = false;
-      updateImage[i] = ['', '', '', '', ''];
-      updateImageNum[i] = 0;
-      // d[i] = [];
-      // for (var j=0; j< data[i].list.length; j++) {
-      //     d[i][j] = data[i].list[j]
-      //     setDirect();
-      // }
+    for (var i=0; i < oriData.length; i++) {
+      oriShow[i] = true;
     }
-    setUpdateImage(image);
-    setUpdateOption(data); //getData와 updateOption이 자꾸 연결됨
 
     if (resize > 767) {
       $('.spm-modal').on('scroll touchmove mousewheel', (e) => {
@@ -240,8 +229,8 @@ function ProductManagement() {
 
   return (
     <>
-      <ImageModal 
-        NumF={NumF} resize={resize} 
+      <ImageModal
+        num={num} setNum={setNum} resize={resize}
         imageModalShow={addImageModal} setImageModalShowF={setAddImageModal}
         imageData={addImage} setImageDataF={setAddImage} />
 
@@ -260,18 +249,22 @@ function ProductManagement() {
             style={{ width: '5px', height: '25px' }}>
           </div>
           <div className="seller-content">
-            <SPMCard
-              getData={data}
-              getImage={image}
-              update={update}
-              updateOption={updateOption}
-              updateImageModal={updateImageModal}
-              updateImage={updateImage}
-              updateImageNum={updateImageNum}
-              resize={resize}
-              setDataF={setData}
-              setImageF={setImage}
-            />
+            {oriData.map((data: any, idx: any, )=>{
+              return(
+                <>
+                  {oriShow[idx]?
+                    <SPMCard
+                      idx={idx} num={num} setNum={setNum}
+                      oriShow={oriShow} oriData={oriData} oriImage={oriImage}
+                    />:
+                    <SPM_Update
+                      idx={idx} num={num} setNum={setNum} resize={resize}
+                      oriShow={oriShow} getUpdateData={oriData[idx]} getUpdateImage={oriImage[idx]}
+                    />
+                  }
+                </>
+              );
+            })}
           </div>
 
           {addDiv ? (
@@ -331,9 +324,6 @@ function ProductManagement() {
                         x
                       </div>
                     </div>
-                    {/* <button className="mobile spm-add-img-m">
-                                        <AddIcon />
-                                    </button> */}
                     <div className="spmcard-update-input spmcard-update-input-top">
                       <div
                         id="spm-none-1"
@@ -394,8 +384,7 @@ function ProductManagement() {
             className="spm-btn"
             onClick={() => {
               setAddDiv(true);
-            }}
-          >
+            }}>
             <AddIcon />
           </div>
         </div>
@@ -417,7 +406,7 @@ function ProductManagement() {
               className="spm-bottom-inner spm-bottom-right"
               onClick={() => {
                 setAddDiv(false);
-                for (var i=0; i< update.length; i++) update[i] = false;
+                // for (var i=0; i< update.length; i++) update[i] = false;
               }}>
               <CloseBtn />
             </button>

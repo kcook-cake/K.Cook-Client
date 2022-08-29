@@ -4,7 +4,8 @@ import 'src/styles/seller/card/image-modal/ImageModal.scss';
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
 interface Props {
-    NumF: any,
+    num: any,
+    setNum: any,
     resize: any,
 
     imageModalShow: any,
@@ -18,11 +19,13 @@ type userType = {
     [key: string]: any;
 }
 
-function ImageModal ({ 
-        NumF, resize, 
+function ImageModal ({
+        num, setNum, resize,
         imageModalShow, setImageModalShowF, 
-        imageData, setImageDataF, 
+        imageData, setImageDataF,
     }: Props) {
+    const [image, setImage] = useState(imageData);
+    // const [image, setImage] = useState(['', '', '', '', '']);
 
     useEffect(()=>{
     },[]);
@@ -52,7 +55,7 @@ function ImageModal ({
                     onClick={() => {
                     //addImage[0] = 사진 링크 넣기
                     }}>
-                    {imageData[0] == '' ? (
+                    {image[0] == '' ? (
                     <div
                         className="spm-add-img"
                         onClick={()=>{
@@ -61,45 +64,45 @@ function ImageModal ({
                         <AddIcon />
                     </div>
                     ) : (
-                    <img src={imageData[0]} />
+                    <img src={image[0]} />
                     )}
                 </div>
                 <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
                 <div className="spm-modal-img-box">
                     <div className="spm-modal-img-inner">
-                    {imageData[1] == '' ? (
+                    {image[1] == '' ? (
                         <div className="spm-add-img">
                         <AddIcon />
                         </div>
                     ) : (
-                        <img src={imageData[1]} />
+                        <img src={image[1]} />
                     )}
                     </div>
                     <div className="spm-modal-img-inner">
-                    {imageData[2] == '' ? (
+                    {image[2] == '' ? (
                         <div className="spm-add-img">
                         <AddIcon />
                         </div>
                     ) : (
-                        <img src={imageData[2]} />
+                        <img src={image[2]} />
                     )}
                     </div>
                     <div className="spm-modal-img-inner">
-                    {imageData[3] == '' ? (
+                    {image[3] == '' ? (
                         <div className="spm-add-img">
                         <AddIcon />
                         </div>
                     ) : (
-                        <img src={imageData[3]} />
+                        <img src={image[3]} />
                     )}
                     </div>
                     <div className="spm-modal-img-inner">
-                    {imageData[4] == '' ? (
+                    {image[4] == '' ? (
                         <div className="spm-add-img">
                         <AddIcon />
                         </div>
                     ) : (
-                        <img src={imageData[4]} />
+                        <img src={image[4]} />
                     )}
                     </div>
                 </div>
@@ -107,15 +110,20 @@ function ImageModal ({
                     <button
                         className="spmdetail-content-btn"
                         onClick={() => {
+                            console.log(imageData);
+                            setImageDataF(image);
                             setImageModalShowF(false);
+                            console.log(imageData);
+                            setNum(num+1);
                         }}>
                         등록
                     </button>
                     <button
                         className="spmdetail-content-btn spmdetail-content-btn-left"
                         onClick={() => {
-                            setImageDataF(['', '', '', '', '']);
+                            setImage(imageData);
                             setImageModalShowF(false);
+                            setNum(num+1);
                         }}>
                         취소
                     </button>

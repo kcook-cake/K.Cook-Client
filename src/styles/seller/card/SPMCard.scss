@@ -1,4 +1,10 @@
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    padding-right: 5px;
+}
+
 #spm-none-1 {
     opacity: 0;
     pointer-events: none;
@@ -63,7 +69,7 @@
     }
     .spmcard-update-input-price {
         width: 120px;
-        padding-right: 5px;
+        // padding-right: 5px;
 
         text-align: right;
         border-radius: 5px;
