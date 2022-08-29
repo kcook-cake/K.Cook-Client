@@ -4,10 +4,10 @@ import { Transition, CSSTransition } from "react-transition-group";
 import axios from "axios";
 import $ from 'jquery';
 
-import "../styles/common/LoginSignup.scss";
-import "../styles/Login.scss";
+import "src/styles/common/LoginSignup.scss";
+import "src/styles/sign/Login.scss";
 
-import logo from "../assets/logo.png";
+import logo from "src/assets/logo.png";
 import LinkClick from "src/utils/LinkClick";
 
 function Login() {

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import '../styles/Footer.scss';
-
-import LinkClick from "../utils/LinkClick";
+import 'src/styles/footer/Footer.scss';
 
 interface FooterProps {
     setNumLeftMobileF: any,

@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../styles/LandingPage.scss";
-import "../styles/LandingSky-Spring.scss";
-
-import logo from "../assets/logo.webp";
-import introKcook from "../assets/intro-kcook.svg";
-import coupon from "../assets/coupon.webp";
-import menuIcon from "../assets/icon-menu.svg";
-import searchIcon from "../assets/search.svg";
-
 import axios from 'axios';
-
-import City from "src/components/landing/City";
-import Location from "src/components/landing/Locations";
-import isSession from "src/utils/isSession";
+import "src/styles/landing/LandingPage.scss";
+import "src/styles/landing/LandingSky-Spring.scss";
 
 function Block() {
 

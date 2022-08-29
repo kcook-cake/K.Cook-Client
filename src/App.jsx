@@ -6,7 +6,7 @@ import './styles/reset.scss';
 import axios from "axios";
 
 import Pages from './containers/index';
-import LandingPage from './containers/LandingPage';
+import LandingPage from './containers/landing/LandingPage';
 import Block from './containers/Block';
 import isSession from './utils/isSession';
 
