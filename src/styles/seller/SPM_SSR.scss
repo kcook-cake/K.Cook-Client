@@ -91,6 +91,18 @@
     border-radius: 5px;
     background-color: #ebebeb;
 }
+.spm-add-add-img {
+    width: 160px !important;
+    padding: 0 !important;
+    display: inline-block;
+
+    background-color: #ebebeb;
+    cursor: pointer;
+}
+.spm-add-add-img-icon {
+    padding-top: 50px !important;
+    padding-left: 40px !important;
+}
 
 .spm-tap {
     position: absolute;
@@ -219,8 +231,8 @@
         }
     }
     .spm-add-img {
-        height: 111px;
         width: 100px;
+        height: 111px;
         padding: 9px; 
         padding-top: 18px;
         margin-bottom: 30px;
@@ -228,6 +240,19 @@
         background-color: #ebebeb;
         border-radius: 5px;
     }
+    .spm-add-add-img {
+        width: 111px !important;
+        padding: 0 !important;
+        display: inline-block;
+    
+        background-color: #ebebeb;
+        cursor: pointer;
+    }
+    .spm-add-add-img-icon {
+        padding-top: 28px !important;
+        padding-left: 15px !important;
+    }
+
     .spm-add2 {
         width: 100%;
         height: 159px !important;

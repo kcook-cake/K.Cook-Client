@@ -29,48 +29,48 @@ export function AddDataForm() {
   };
 
   // 저장하기 버튼
-  const handleClick = (e) => {
-    const formdata = new FormData();
-    formdata.append('uploadImage', files[0]);
+  // const handleClick = (e) => {
+  //   const formdata = new FormData();
+  //   formdata.append('uploadImage', files[0]);
 
-    // formdata의 key 확인
-    for (let key of formdata.keys()) {
-      console.log('key', key);
-    }
+  //   // formdata의 key 확인
+  //   for (let key of formdata.keys()) {
+  //     console.log('key', key);
+  //   }
 
-    // formdata의 "value", 확인
-    for (let value of formdata.values()) {
-      console.log('value', value);
-    }
+  //   // formdata의 "value", 확인
+  //   for (let value of formdata.values()) {
+  //     console.log('value', value);
+  //   }
 
-    const config = {
-      Headers: {
-        'content-type': 'multipart/form-data',
-        // x-access : ~~~
-      },
-    };
+  //   const config = {
+  //     Headers: {
+  //       'content-type': 'multipart/form-data',
+  //       // x-access : ~~~
+  //     },
+  //   };
 
-    // 토큰넣고 보내면 완?
-    var jwToken = undefined;
-    if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-    else jwToken = sessionStorage.jwToken;
+  //   // 토큰넣고 보내면 완?
+  //   var jwToken = undefined;
+  //   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+  //   else jwToken = sessionStorage.jwToken;
 
-    axios
-      .post('https://prod.kcook-cake.com/app/banner/carousel', {
-        'bannerListReq[0].connectedUrl': '',
-        'bannerListReq[0].mobileImage': formdata,
-        'bannerListReq[0].orders': changeBannerNum,
-        'bannerListReq[0].webImage': formdata,
-        'X-ACCESS-TOKEN': '',
-      })
-      .then(
-        alert('배너 등록에 성공했습니다.')
-        // 모달창 닫기
-      )
-      .catch((e) => {
-        console.log('케이쿡 axios post시도시에 발생하는 e에러', e);
-      });
-  };
+  //   axios
+  //     .post('https://prod.kcook-cake.com/app/banner/carousel', {
+  //       'bannerListReq[0].connectedUrl': '',
+  //       'bannerListReq[0].mobileImage': formdata,
+  //       'bannerListReq[0].orders': changeBannerNum,
+  //       'bannerListReq[0].webImage': formdata,
+  //       'X-ACCESS-TOKEN': '',
+  //     })
+  //     .then(
+  //       alert('배너 등록에 성공했습니다.')
+  //       // 모달창 닫기
+  //     )
+  //     .catch((e) => {
+  //       console.log('케이쿡 axios post시도시에 발생하는 e에러', e);
+  //     });
+  // };
 
   /* 폼데이터 생성/post등록 방법2
 const formData = new FormData();
@@ -85,6 +85,10 @@ formData.append("files", event.target.files[0]);
   data: formData,
 }).then(...); 
 */
+
+  const UpdateF = () => {
+
+  };
 
   // 배너등록 이미지 미리보기
   const [bannerImgThumbnail, setBannerImgThumbnail] = useState();
@@ -162,7 +166,7 @@ formData.append("files", event.target.files[0]);
         </button>
         <p>{changeBannerNum && `${changeBannerNum}번 배너 변경`}</p>
       </div>
-      <button onClick={handleClick}>저장하기</button>
+      <button onClick={UpdateF}>저장하기</button>
     </>
   );
 }
