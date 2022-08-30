@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import classNames from 'classnames';
 import axios from 'axios';
+import classNames from 'classnames';
 import 'src/styles/seller/card/image-modal/ImageModal.scss';
+import 'src/styles/main/card/image-modal/ImageModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
@@ -31,7 +32,8 @@ function ImageModal ({
     else jwToken = sessionStorage.jwToken;
 
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const [image, setImage] = useState(imageData);
+    const [image, setImage] = useState<any>(imageData);
+    // const [imageOne, setImageOne] = useState(imageData[0]);
 
     const UpdateImageF = useCallback((e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
         if (!e.target.files) return;
@@ -72,59 +74,58 @@ function ImageModal ({
             {imageModalShow ? (
             <>
                 <div
-                className="spm-modal-background"
-                style={{ top: window.pageYOffset }}>
+                    className="spm-modal-background"
+                    style={{ top: window.pageYOffset }}>
                 </div>
 
                 <div
-                className="spm-modal-box"
-                style={{
-                    top:
-                    resize <= 767 ? 
-                    window.innerHeight - 530 < 0 ? window.pageYOffset : window.pageYOffset + 20 : 
-                    window.innerHeight - 775 < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - 775) / 2,
+                    className="spm-modal-box"
+                    style={{
+                        top:
+                            resize <= 767 ? 
+                            window.innerHeight - 530 < 0 ? window.pageYOffset : window.pageYOffset + 20 : 
+                            window.innerHeight - 775 < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - 775) / 2,
+                        left: resize <= 767 ? 0 : (resize-775) / 2,
                 }}>
                 <div className="spm-modal-title">이미지 등록</div>
                 <div className="spm-modal-subtitle">대표이미지(1장)</div>
-                <div className="spm-modal-img-inner">
-                    <div className="spm-modal-img-inner">
-                        <label                             
-                            className={classNames("spm-add-img spm-add-add-img", {
-                                "spm-add-add-img-icon": image[0] == '',
-                            })} 
-                            htmlFor="spm-file-0">
-                            {image[0] == '' ?
-                                <AddIcon/>:
-                                <img src={image[0]} />
-                            }
-                        </label>
-                        <input
-                            id="home-file-0"
-                            type="file"
-                            accept="image/*"
-                            ref={inputRef}
-                            onChange={(e)=>UpdateImageF(e, 0)}
-                        />
-                    </div>
+                <div className="spm-modal-img-inner home-modal-img-inner home-modal-img-inner-one">
+                    <label                             
+                        className={classNames("spm-add-img home-add-img", {
+                            "home-add-img-icon": image[0] == '',
+                        })} 
+                        htmlFor="home-file-0">
+                        {image[0] == '' ?
+                            <AddIcon/>:
+                            <img src={image[0]} />
+                        }
+                    </label>
+                    <input
+                        id="home-file-0"
+                        type="file"
+                        accept="image/*"
+                        ref={inputRef}
+                        onChange={(e)=>UpdateImageF(e, 0)}
+                    />
                 </div>
 
                 <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
-                <div className="spm-modal-img-box">
-                    {[1, 2, 3, 4].map((data: any, )=>{
+                <div className="home-modal-img-box">
+                    {[1, 2, 3].map((data: any,)=>{
                         return (
-                            <div className="spm-modal-img-inner">
+                            <div className="spm-modal-img-inner home-modal-img-inner">
                                 <label                             
-                                    className={classNames("spm-add-img spm-add-add-img", {
-                                        "spm-add-add-img-icon": image[data] == '',
+                                    className={classNames("spm-add-img home-add-img", {
+                                        "home-add-img-icon": image[data] == '',
                                     })} 
-                                    htmlFor={"spm-file-"+data}>
+                                    htmlFor={"home-file-"+data}>
                                     {image[data] == '' ?
                                         <AddIcon/>:
                                         <img src={image[data]} />
                                     }
                                 </label>
                                 <input
-                                    id={"spm-file-"+data}
+                                    id={"home-file-"+data}
                                     type="file"
                                     accept="image/*"
                                     ref={inputRef}
@@ -134,26 +135,15 @@ function ImageModal ({
                         );
                     })}
                 </div>
-
-                <div className="spmdetail-content-btn-box">
+                <div className="spmdetail-content-btn-box home-btn-box">
                     <button
                         className="spmdetail-content-btn"
                         onClick={() => {
-                            setImageDataF(image);
                             setImageModalShowF(false);
                             setNum(num+1);
                         }}>
                         닫기
                     </button>
-                    {/* <button
-                        className="spmdetail-content-btn spmdetail-content-btn-left"
-                        onClick={() => {
-                            setImage(imageData);
-                            setImageModalShowF(false);
-                            setNum(num+1);
-                        }}>
-                        취소
-                    </button> */}
                 </div>
                 </div>
             </>

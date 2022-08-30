@@ -55,31 +55,13 @@ export default function BannerSlider({ getData, }: Props) {
     // 해당 컴포넌트에 css 파일을 불러온다.
   };
 
-  // 배너 데이터 받기
-  async function getBannerData() {
-    var res = await axios.get(
-      'https://prod.kcook-cake.com/app/banner/carousel'
-    );
-    SetbannerData(res.data.result);
-
-    // const webImageUrl = res.data.result.webImageUrl;
-    //  SetbannerData(webImageUrl);
-  }
-
-  useEffect(() => {
-    getBannerData();
-  }, []);
-
   return (
     <div>
-
-
       <Slider {...settings} className="main-crousel">
-        {bannerData.map((data) => {
+        {getData.map((data: any,) => {
           return (
             <>
-              <img src={data.webImageUrl} alt="profile" />
-              <span>{data.orders}</span>
+              <img src={data} alt="profile" />
             </>
           );
         })}
