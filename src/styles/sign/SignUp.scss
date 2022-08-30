@@ -128,7 +128,7 @@ input[class="signup-checkbox-inner"] + label {
   position: relative;
 
   border: 2px solid #fff;
-  background: url("../assets/check1.png") no-repeat;
+  background: url("../../assets/check1.png") no-repeat;
   z-index: 1;
 }
 input[class="signup-checkbox-inner"]:checked + label{
@@ -136,7 +136,7 @@ input[class="signup-checkbox-inner"]:checked + label{
   height: 17px;
   border: 2px solid #fff;
 
-  background: url("../assets/check2.png") no-repeat;
+  background: url("../../assets/check2.png") no-repeat;
   z-index: 1;
 }
 

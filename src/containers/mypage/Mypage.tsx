@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
-import '../../src/styles/mypage/Mypage.scss'
-import '../styles/mypage/AllMypage.scss'
+import 'src/styles/mypage/Mypage.scss'
+import 'src/styles/mypage/AllMypage.scss'
 
-import MypageOrder from '../containers/mypage/MypageOrder';
-import ProductReview from '../containers/mypage/ProductReview';
-import Membership from '../containers/mypage/Membership';
-import Coupons from '../containers/mypage/Coupons';
-import Profile from '../components/mypage/Profile';
-import MypageSection from '../components/mypage/MypageSection';
+import MypageOrder from './MypageOrder';
+import ProductReview from './ProductReview';
+import Membership from './Membership';
+import Coupons from './Coupons';
+import Profile from '../../components/mypage/Profile';
+import MypageSection from '../../components/mypage/MypageSection';
 
 const Mypage = () =>{
     return (

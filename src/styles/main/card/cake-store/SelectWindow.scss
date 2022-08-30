@@ -23,14 +23,27 @@
       width: 200px;
       // height: 209px;
       margin-top: 10px;
-  
+
+      overflow: hidden;
       box-shadow: 0px 0px 15px rgb(204, 204, 204);
       border-radius: 10px;
       background-color: #fff;
     }
-    .cake-select-ul-2 {
-      // height: 260px;
+    .select-window-ul-long::-webkit-scrollbar {
+      width: 8px;
     }
+    .select-window-ul-long::-webkit-scrollbar-thumb {
+      background-color: #a5a5a5;
+      border-radius: 10px;
+    }
+    .select-window-ul-long::-webkit-scrollbar-track {
+      background-color: #e6e6e6;
+      border-radius: 10px;
+    }
+    .select-window-ul-long {
+      overflow-y: scroll;
+    }
+
     .cake-select-li {
       padding: 15.6px 16px;
   

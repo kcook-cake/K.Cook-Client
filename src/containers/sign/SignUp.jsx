@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import $, { htmlPrefilter } from "jquery";
 
-import "../styles/common/LoginSignup.scss";
-import "../styles/SignUp.scss";
+import "src/styles/common/LoginSignup.scss";
+import "src/styles/sign/SignUp.scss";
 
-import PopupDom from "../components/PopupDom.js";
-import PostCode from "../components/PostCode.js";
-import LoginCheckbox from "../components/LoginCheckbox";
+import PopupDom from "src/components/sign/PopupDom.js";
+import PostCode from "src/components/sign/PostCode.js";
+import LoginCheckbox from "src/components/sign/LoginCheckbox";
 
-import logo from "../assets/logo.png";
-import X from "../assets/address_x.png"
+import logo from "src/assets/logo.png";
+import X from "src/assets/address_x.png"
 import LinkClick from "src/utils/LinkClick";
 
 function SignUp() {
@@ -27,8 +27,8 @@ function SignUp() {
       setIsPopupOpen(true);
   };
   
-  const [isChecked, setIsChecked] = useState(false)
-  const [checkedItems, setCheckedItems] = useState([])
+  const [isChecked, setIsChecked] = useState(false);
+  const [checkedItems, setCheckedItems] = useState([1,2]);
   const checkboxs = [
     { id: 1, description: '서비스 이용약관 동의 (필수)', show: '보기', },
     { id: 2, description: '개인정보 수집 및 이용 동의 (필수)', show: '보기', },

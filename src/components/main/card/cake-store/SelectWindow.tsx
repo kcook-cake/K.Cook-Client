@@ -121,14 +121,15 @@ export default function SelectWindow({
                 className="cake-select-absolute"
                 style={{ top: height, left: (width-75+selectWindow[1][2]), }}> {/* -90에서 시작 */}
                 <div className="cake-select-top"></div>
-                <ul className="cake-select-ul" style={{ height: (52.2)*selectData[0].length, }}>
+                <ul className={classNames("cake-select-ul", {
+                        "select-window-ul-long" : selectData[0].length>5,
+                    })}
+                    style={{ height: selectData[0].length>5? 52.2*5 : (52.2)*selectData[0].length, }}>
+                    
                     {selectData[0].map((data: { cityId: any, cityName: any, }, idx: any, )=>{
                         return (
                             <li
-                                className={classNames("cake-select-li", {
-                                    "cake-select-li-top": idx == 0,
-                                    "cake-select-li-bottom": idx == selectData[0].length-1,
-                                })}
+                                className="cake-select-li"
                                 onClick={()=>{
                                     SelectF(2, data.cityName, data.cityName.length);
                                     if(!cakestoreTF) {
@@ -168,16 +169,16 @@ export default function SelectWindow({
                     null:
                     <>
                         <div className="cake-select-top"></div>
-                        <ul className="cake-select-ul" style={{ height: (52.2)*selectData[1].length, }}>
+                        <ul className={classNames("cake-select-ul", {
+                            "select-window-ul-long" : selectData[1].length>5,
+                        })}
+                        style={{ height: selectData[1].length>5? 52.2*5 : (52.2)*selectData[1].length, }}>
                             {cakestoreTF?
                                 <>
                                     {selectData[1].map((data: any, idx: any, )=>{
                                         return (
                                             <li
-                                                className={classNames("cake-select-li", {
-                                                    "cake-select-li-top": idx == 0,
-                                                    "cake-select-li-bottom": idx == selectData[1].length-1,
-                                                })}
+                                                className="cake-select-li"
                                                 onClick={()=>{SelectF(3, data, data.length);}}>
                                                 {data}
                                             </li>
@@ -189,10 +190,7 @@ export default function SelectWindow({
                                     {selectData[1].map((data: { locationId: any, locationName: any, }, idx: any, )=>{
                                         return (
                                             <li
-                                                className={classNames("cake-select-li", {
-                                                    "cake-select-li-top": idx == 0,
-                                                    "cake-select-li-bottom": idx == selectData[1].length-1,
-                                                })}
+                                                className="cake-select-li"
                                                 onClick={()=>{SelectF(3, data.locationName, data.locationName.length); }}>
                                                 {data.locationName}
                                             </li>
@@ -235,14 +233,14 @@ export default function SelectWindow({
                 className="cake-select-absolute"
                 style={{ top: height, left: width+(cakestoreTF?10:-35)+selectWindow[1][2]+(cakestoreTF?selectWindow[2][2]:0)+selectWindow[3][2] }}>
                 <div className="cake-select-top"></div>
-                <ul className="cake-select-ul" style={{ height: (52.2)*selectData[2].length, }}>
+                <ul className={classNames("cake-select-ul", {
+                        "select-window-ul-long" : selectData[2].length>5,
+                    })}
+                    style={{ height: selectData[2].length>5? 52.2*5 : (52.2)*selectData[2].length, }}>
                     {selectData[2].map((data: any, idx: any, )=>{
                         return (
                             <li
-                                className={classNames("cake-select-li", {
-                                    "cake-select-li-top": idx == 0,
-                                    "cake-select-li-bottom": idx == selectData[2].length-1,
-                                })}
+                                className="cake-select-li"
                                 onClick={()=>{
                                     SelectF(4, data, data.length-data.split("/").length+1);
                                     if(!cakestoreTF) {
@@ -282,15 +280,15 @@ export default function SelectWindow({
                     null:
                     <>
                         <div className="cake-select-top"></div>
-                        <ul className="cake-select-ul" style={{ height: (52.2)*selectData[3].length, }}>
+                        <ul className={classNames("cake-select-ul", {
+                            "select-window-ul-long" : selectData[3].length>5,
+                        })}
+                        style={{ height: selectData[3].length>5? 52.2*5 : (52.2)*selectData[3].length, }}>
                                 <>
                                     {selectData[3].map((data: any, idx: any, )=>{
                                         return (
                                             <li
-                                                className={classNames("cake-select-li", {
-                                                    "cake-select-li-top": idx == 0,
-                                                    "cake-select-li-bottom": idx == selectData[3].length-1,
-                                                })}
+                                                className="cake-select-li"
                                                 onClick={()=>{SelectF(5, data, cakestoreTF? data.length-2: data.length);}}>
                                                 {data}
                                             </li>

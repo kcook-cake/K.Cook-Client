@@ -111,8 +111,7 @@ function Store() {
               className="mobile cake-search"
               onClick={() => {
                 setSelectMobileTF(true);
-              }}
-            >
+              }}>
               <img src={search} />
               상세검색
             </div>
@@ -140,9 +139,10 @@ function Store() {
                           selectWindow[3][1] = '지하철노선';
                           selectWindow[4][1] = '지하철역';
       
-                          for (var i = 1; i < 5; i++) {
-                            selectWindow[i][2] = 0;
-                          }
+                          selectWindow[1][2] = 28;
+                          selectWindow[2][2] = 42;
+                          selectWindow[3][2] = 70;
+                          selectWindow[4][2] = 56;
       
                           setSelectAll([]);
                         }}

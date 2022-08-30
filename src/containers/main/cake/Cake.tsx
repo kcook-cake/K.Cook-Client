@@ -157,9 +157,10 @@ function Cake (){
                                     selectWindow[3][1] = "이벤트";
                                     selectWindow[4][1] = "가격대";
                                     
-                                    for (var i=1; i<5; i++) {
-                                        selectWindow[i][2] = 0;
-                                    }
+                                    selectWindow[1][2] = 28;
+                                    selectWindow[2][2] = 14;
+                                    selectWindow[3][2] = 42;
+                                    selectWindow[4][2] = 42;
                 
                                     setSelectAll([]);
                                 }}

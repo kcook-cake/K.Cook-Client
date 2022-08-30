@@ -5,18 +5,18 @@ import '../styles/common/SellerMypage.scss';
 
 import Header from '../components/header/Header';
 import HMMobile from './header/HMMobile';
-import Main from './Main';
-import Footer from '../components/Footer';
-import Mypage from './Mypage';
-import Seller from './Seller';
-import Login from './Login';
-import LoginFind from './LoginFind';
-import SignUp from './SignUp';
+import Main from './main/Main';
+import Footer from '../components/footer/Footer';
+import Mypage from './mypage/Mypage';
+import Seller from './seller/Seller';
+import Login from 'src/containers/sign/Login';
+import LoginFind from 'src/containers/sign/LoginFind';
+import SignUp from 'src/containers/sign/SignUp';
+import SignOut from 'src/containers/sign/SignOut';
 
 import Test from '../components/Test';
 import StoreDetail from './detail/StoreDetail';
 import CakeDetail from './detail/CakeDetail';
-import SignOut from './SignOut';
 
 const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
