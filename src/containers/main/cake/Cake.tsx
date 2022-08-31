@@ -18,6 +18,7 @@ import SelectBar from 'src/components/main/card/cake-store/SelectBar';
 import SelectBox from 'src/components/main/card/cake-store/SelectBox';
 import SelectBoxOne from 'src/components/main/card/cake-store/SelectBoxOne';
 import SelectWindowOne from 'src/components/main/card/cake-store/SelectWindowOne';
+import cakeGetAxios from 'src/utils/cakeGetAxios';
 
 function Cake() {
   const [num, setNum] = useState(0);
@@ -65,17 +66,21 @@ function Cake() {
     setResize(window.innerWidth);
   };
 
+
+
+  const [link, setLink] = useState('cakes');
+  const [page, setPage] = useState(1);
+
   const [data, setData] = useState([]);
-  //0페이지부터 시작한다
-  const [pageTodays, setPageTodays] = useState(0);
-  const [lengthTodays, setLengthTodays] = useState(0);
+  const [dataLength, setDataLength] = useState(0);
   useEffect(() => {
     LinkClick('Cake');
 
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    getAxios(setData, setLengthTodays, 'cakes', [], 24, pageTodays, 0);
+    cakeGetAxios(setData, setDataLength, 'cakes', 1, 24);
+
     axios.get(`https://prod.kcook-cake.com/app/cities`).then((res) => {
       setSelectData([
         res.data.result,

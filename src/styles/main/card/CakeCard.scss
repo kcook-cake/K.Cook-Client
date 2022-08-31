@@ -57,15 +57,17 @@
 
 .card-shop-name {
   width: 250px; //270px
+  // height: 100px;
   margin-bottom: 2px;
 
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 
-  color: $sub-text;
+  color: #000;
   font-size: 12px;
   line-height: 18px;
+  // background-color: red;
 }
 .card-cake-name {
   width: 250px; //270px

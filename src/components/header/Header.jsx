@@ -28,6 +28,8 @@ function Header({ setNumLeftMobileF }) {
     var jwToken = undefined;
     if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
     else jwToken = sessionStorage.jwToken;
+    console.log(jwToken);
+    
     isSession(
       jwToken,
       (s) => {
