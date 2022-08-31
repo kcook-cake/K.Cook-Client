@@ -81,7 +81,7 @@ function Crousel() {
         onClick={
           auth.accountId==31 ? ()=>setBannerShow(true) : ()=>{}
         }>
-        <BannerSlider getData={image} />
+        <BannerSlider auth={auth.accountId==31} getData={image} />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import Slider from 'react-slick';
-
+import { Link } from 'react-router-dom';
 import leftArrow from '../../../assets/left-arrow.svg';
 import rightArrow from '../../../assets/right-arrow.svg';
 // import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
@@ -11,6 +11,7 @@ import isSession from 'src/utils/isSession';
 // import "./banner-theme.scss";
 
 interface Props {
+  auth: any;
   getData: any;
 }
 
@@ -32,7 +33,7 @@ const PrevArrow = (props: any) => {
   );
 };
 
-export default function BannerSlider({ getData, }: Props) {
+export default function BannerSlider({ auth, getData, }: Props) {
   const [bannerData, SetbannerData] = useState<any[]>([]);
 
   var settings = {
@@ -61,7 +62,12 @@ export default function BannerSlider({ getData, }: Props) {
         {getData.map((data: any,) => {
           return (
             <>
-              <img src={data} alt="profile" />
+              {auth?
+                <img src={data} alt="profile" />:
+                <Link to="/Cake">
+                  <img src={data} alt="profile" />
+                </Link>
+              }
             </>
           );
         })}
