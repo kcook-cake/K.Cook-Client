@@ -46,9 +46,9 @@ function ImageModal ({
             url: '/app/banner/carousel',
             method: 'POST',
             data: {
-                "bannerListReq[0].connectedUrl": "https://www.kcook-cake.com/",
+                "bannerListReq[0].connectedUrl": "https://k-cook-s3.s3.ap-northeast-2.amazonaws.com/banner/",
                 "bannerListReq[0].mobileImage": formData,
-                "bannerListReq[0].orders": idx+1,
+                "bannerListReq[0].orders": 1,
                 "bannerListReq[0].webImage": formData,
             },
             headers: {
