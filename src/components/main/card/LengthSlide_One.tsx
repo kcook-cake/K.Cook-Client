@@ -16,9 +16,25 @@ interface Props {
 function LengthSlide_One({ getData, resize, slidePx, }: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
+            {getData.map((data: {                     
+                    image: any,
+                    name: any,
+                    price: any,
+                    storeName: any,
+
+                    productId: any,
+                    popularRank: any,
+
+                    status: any,
+                    isCake: any, 
+
+                    raiting: any,
+                    salePrice: any,
+                    resultPrice: any,
+                    reviewCount: any,
+                }, idx: any, )=>{
                 return (
-                    <Link to="/Cake/0">
+                    <Link to={"/Cake/"+data.productId}>
                         <li
                             className="lengthslide-flex"
                             style={{
