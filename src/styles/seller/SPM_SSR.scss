@@ -1,95 +1,19 @@
 @import "../reset.scss";
 
-//spm에서만
-.spm-add,
-.spm-add2 {
-    width: 848px;
-    height: 100% !important;
-    position: relative;
-    margin-bottom: 20px;
-    display: flex;
-  
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-    background-color: #fefefe;
-    .spm-add-inner {
-        margin-left: 30px;
-    }
-    .move-tap {
-        padding-left: 380px;
-    }
-    .spm-add-content,
-    .spm-add-content2 {
-        display: flex;
-        margin-bottom: 24px;
-
-        //문제
-        .spm-add-title {
-            width: 549px;
-            height: 55px;
-
-            padding-left: 20px;
-            margin-left: 15px;
-            margin-bottom: 20px;
-
-            border-radius: 5px 5px 0 0;
-            border-bottom: 3px solid #333;
-            background-color: #f1f3f4;
-        }
-        .spm-add-subtitle {
-            width: 545px;
-        }
-        .spm-add-main-title {
-            font-size: 15px;
-            font-weight: 600;
-        }
-        .spm-add-right {
-            opacity: 0;
-            font-size: 18px;
-            padding-top: 12px;
-            padding-left: 5px;
-        }
-        .spmcard-option-update {
-            display: flex;
-        }
-        .spmcard-option-update:hover {
-            .spm-add-right {
-                opacity: 100;
-            }
-        }
-        .spm-add-arrow-box,
-        .spm-add-arrow-box2 {
-            width: 160px;
-            margin-top: 70px;
-            position: absolute;
-            img {
-                opacity: 0;
-                transition: all 0.3s ease-in;
-            }
-            img:hover {
-                opacity: 100;
-                transition: all 0.3s ease-in;
-            }
-            .spm-add-arrow-num {
-                width: 100%;
-                margin-top: 33px;
-                padding-right: 10px;
-                text-align: right;
-                // background-color: #fff;
-            }
-        }
-    }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    padding-right: 5px;
 }
-.spm-add-img,
-.spm-add-img2 {
-    width: 160px;
-    height: 176px;
-    margin-right: 20px;
-    padding: 40px;
-    padding-top: 50px;
 
-    border-radius: 5px;
-    background-color: #ebebeb;
+#spm-none-1 {
+    opacity: 0;
+    pointer-events: none;
+}
+
+//spm에서만
+.move-tap {
+    padding-left: 380px;
 }
 .spm-add-add-img {
     width: 160px !important;
@@ -118,9 +42,9 @@
     }
 }
 
-.spm-btn {
-    svg {
-        margin-left: 45%;
+.spm-bottom {
+    .spm-bottom-inner {
+        width: 100%;
     }
     path,
     circle,
@@ -129,65 +53,9 @@
     }
 }
 
-//이미지 모달창
-.spm-modal-background {
-    width: 100%;
-    min-width: 1199px;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.281);
-    z-index: 998;
-}
-.spm-modal-box {
-    width: 775px;
-    height: 631px;
-    padding: 45px;
-    position: absolute;
-
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
-    background-color: #fff;
-    z-index: 999;
-}
-.spm-modal-title {
-    margin-bottom: 17px;
-    color: #222222;
-    font-size: 20px;
-    font-weight: 700;
-}
-.spm-modal-subtitle {
-    margin-bottom: 7.5px;
-    color: #222222;
-    font-weight: 500;
-}
-.spm-modal-img-box {
-    display: flex;
-    column-gap: 15px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.spm-modal-img-inner,
-.spm-modal-img-inner2 {
-    width: 160px;
-    height: 176px;
-    margin-bottom: 26.5px;
-    img {
-        width: 160px;
-        height: 176px;
-        border-radius: 5px;
-    }
-}
-
-.spm-tap-btn {
-    img {
-        width: 19px;
-        margin: 5px 0 0 3.3px;
-    }
-}
-
-
-
 //ssr에서만
+
+
 
 @media (max-width: 767px) {
     .spm-ssr-title {
@@ -195,126 +63,8 @@
     }
 
     //spm에서만
-    .spm-add {
+    .move-tap {
         width: 100%;
-        display: block;
-
-        border-radius: 0;
-        background-color: #fff;
-        box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
-        .spm-add-inner {
-            margin: 0;
-        }
-        .move-tap {
-            width: 100%;
-            padding: 0;
-            text-align: center;
-        }
-        .spm-add-content {
-            width: 100%;
-            margin: auto;
-            // margin-bottom: 24px;
-            padding: 8px 13px 24px 16px;
-            display: block;
-            .spm-add-title {
-                width: 100%;
-                height: 55px;
-                
-                margin: 0; padding: 0;
-                padding-left: 20px;
-                margin-bottom: 20px;
-                
-                border-radius: 5px 5px 0 0;
-                border-bottom: 3px solid #333;
-                background-color: #f1f3f4;
-            }
-        }
-    }
-    .spm-add-img {
-        width: 100px;
-        height: 111px;
-        padding: 9px; 
-        padding-top: 18px;
-        margin-bottom: 30px;
-
-        background-color: #ebebeb;
-        border-radius: 5px;
-    }
-    .spm-add-add-img {
-        width: 111px !important;
-        padding: 0 !important;
-        display: inline-block;
-    
-        background-color: #ebebeb;
-        cursor: pointer;
-    }
-    .spm-add-add-img-icon {
-        padding-top: 28px !important;
-        padding-left: 15px !important;
-    }
-
-    .spm-add2 {
-        width: 100%;
-        height: 159px !important;
-        margin-bottom: 20px;
-        display: flex;
-
-        border-radius: 0;
-        background-color: #fff;
-        box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
-        .spm-add-inner {
-            width: 100%;
-            margin: 0;
-            margin-right: 36px;
-        }
-        .move-tap {
-            width: 100%;
-            padding: 0;
-            text-align: center;
-        }
-        .spm-add-content {
-            width: 100%;
-            margin: auto;
-            // margin-bottom: 24px;
-            padding: 8px 13px 24px 16px;
-            display: block;
-            .spm-add-title {
-                width: 100%;
-                height: 55px;
-                
-                margin: 0; padding: 0;
-                padding-left: 20px;
-                margin-bottom: 20px;
-                
-                border-radius: 5px 5px 0 0;
-                border-bottom: 3px solid #333;
-                background-color: #f1f3f4;
-            }
-        }
-        .spm-add-content2 {
-            width: 100%;
-            // margin: auto;
-            // margin-bottom: 24px;
-            padding: 0 16px 16px 0;
-            display: block;
-        }
-    }
-    .spm-tap {
-        float: right !important;
-    }
-
-    .spm-add-img2 {
-        height: 111px;
-        width: 100px;
-        margin: 0;
-        padding: 11px;
-        padding-top: 15px;
-
-        // position: absolute;
-        // right: 0;
-        float: right;
-        background-color: #ebebeb;
-        border-radius: 5px;
     }
 
     .spm-bottom {
@@ -333,6 +83,7 @@
         background-color: #EA5450;
 
         .spm-bottom-inner {
+            width: auto;
             margin-top: 10px;
             img {
                 width: 30px;
@@ -343,120 +94,14 @@
         .spm-bottom-left {
             margin-left: 20px;
         }
+        .spm-bottom-middle {
+            img {
+                width: 18px !important;
+                height: 18px !important;
+            }
+        }
         .spm-bottom-right {
             margin-right: 20px;
         }
-    }
-
-    //이미지 모달창
-    .spm-modal-background {
-        width: 100%;
-        min-width: 0px;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.281);
-        z-index: 998;
-    }
-    .spm-modal-box {
-        width: 100%;
-        height: 530px;
-        padding: 25px;
-        position: absolute;
-
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
-        background-color: #fff;
-        z-index: 999;
-    }
-    .spm-modal-title {
-        margin-bottom: 17px;
-        color: #222222;
-        font-size: 20px;
-        font-weight: 700;
-    }
-    .spm-modal-subtitle {
-        margin-bottom: 7.5px;
-        color: #222222;
-        font-weight: 500;
-    }
-    .spm-modal-img-box::-webkit-scrollbar {
-        height: 8px;
-    }
-    .spm-modal-img-box::-webkit-scrollbar-thumb {
-        background-color: #e6e6e6;
-        border-radius: 10px;
-    }
-    .spm-modal-img-box::-webkit-scrollbar-track {
-        background-color: #f5f5f5;
-        border-radius: 10px;
-    }
-    .spm-modal-img-box {
-        column-gap: 11px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        overflow-x: scroll;
-    }
-    .spm-modal-img-inner,
-    .spm-modal-img-inner2 {
-        width: 100px;
-        height: 111px;
-        margin-bottom: 10px;
-        img {
-            width: 100px;
-            height: 111px;
-        }
-    }
-    .spm-modal-img-inner {
-        width: 120px;
-        height: 132px;
-        img {
-            width: 120px;
-            height: 132px;
-        }
-    }
-    .spm-add-img {
-        width: 120px;
-        height: 132px;
-        padding: 20px;
-        padding-top: 27px;
-        img {
-            width: 120px;
-            height: 132px;
-        }
-    }
-    .spm-modal-img-inner2 {
-        float: right;
-    }
-    .spm-add-arrow-box {
-        width: 120px !important;
-        height: 132px !important;
-        margin-top: -90px !important;
-        position: absolute !important;
-        img {
-            width: 30px;
-        }
-    }
-    .spm-add-arrow-num {
-        margin-top: 18px !important;
-    }
-    .spmdetail-content-btn-box {
-        margin-top: 25px;
-    }
-
-    .spm-bottom-middle {
-        img {
-            width: 18px !important;
-            height: 18px !important;
-        }
-    }
-
-    .spm-tap-btn {
-        margin-top: 30px;
-    }
-}
-
-@media(max-width:288px) {
-    .spmdetail-content-btn {
-        width: 89.5px !important;
     }
 }

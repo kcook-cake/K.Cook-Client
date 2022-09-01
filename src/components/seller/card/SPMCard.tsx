@@ -36,8 +36,8 @@ function SPMCard({
     
     return (
         <>
-            <div className="spm-add2">
-                <div className="spm-add-inner">
+            <div className="spmcard">
+                <div className="spmcard-inner">
                     <div
                         className="move-tap"
                         onClick={()=>{
@@ -46,32 +46,32 @@ function SPMCard({
                         }}>
                         <DragBtn/>
                     </div>
-                    <div className="spm-add-content2">
-                        <div className="spm-modal-img-inner2">
+                    <div className="spmcard-content">
+                        <div className="spmcard-img">
                             {oriImage[idx][0]==""?
-                                <div className="spm-add-img2"><AddIcon/></div>:
+                                <div className="spmcard-img-inner"><AddIcon/></div>:
                                 <img src={oriImage[idx][0]} />
                             }
                         </div>
-                        <div className="spm-option-title">
-                            <div className="spm-title">{oriData[idx].name}</div>
-                                {oriData[idx].list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, })=>{
-                                    return (
-                                        <>
-                                            {option.optionName}:&nbsp;
-                                            {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
-                                                return (
-                                                    <>
-                                                        {optionList.optionListName}
-                                                        {(optionList.optionListId==option.optionList.length)? null: <>,&nbsp;</>}
-                                                        {optionList.optionListId==option.optionList.length-1&&option.optionDirect? (option.optionDirectText==""? "직접 입력": option.optionDirectText): null}
-                                                    </>
-                                                );
-                                            })}
-                                            <br/>
-                                        </>
-                                    );
-                                })}
+                        <div className="spmcard-content-inner">
+                            <div className="spmcard-title">{oriData[idx].name}</div>
+                            {oriData[idx].list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, })=>{
+                                return (
+                                    <>
+                                        {option.optionName}:&nbsp;
+                                        {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
+                                            return (
+                                                <>
+                                                    {optionList.optionListName}
+                                                    {(optionList.optionListId==option.optionList.length)? null: <>,&nbsp;</>}
+                                                    {optionList.optionListId==option.optionList.length-1&&option.optionDirect? (option.optionDirectText==""? "직접 입력": option.optionDirectText): null}
+                                                </>
+                                            );
+                                        })}
+                                        <br/>
+                                    </>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -85,14 +85,14 @@ function SPMCard({
                         <CloseBtn/>
                     </button>
                     <button
-                        className="spm-tap-btn"
+                        className="spmcard-tap-btn"
                         onClick={()=>{
                             alert("복제");
                         }}>
                         <CopyBtn/>
                     </button>
                     <Link to="/ProductManagement/0">
-                        <div className="spm-tap-btn">
+                        <div className="spmcard-tap-btn">
                             <img src={setting}/>
                         </div>
                     </Link>

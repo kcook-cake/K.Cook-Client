@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import '../../../styles/seller/card/SPMCard.scss';
+import '../../../styles/seller/card/SPM_Add_Update.scss';
 
 import cake6 from   '../../../assets/cake6.png';
 
@@ -91,8 +91,8 @@ function SPM_Update({
                 imageData={updateImage} setImageDataF={setUpdateImage}
             />
 
-            <div className="spm-add">
-                <div className="spm-add-inner">
+            <div className="spm-add-update">
+                <div className="spm-add-update-inner">
                     <div
                         className="move-tap"
                         onClick={()=>{
@@ -103,18 +103,18 @@ function SPM_Update({
                         }}>
                         <DragBtn/>
                     </div>
-                    <div className="spm-add-content">
+                    <div className="spm-add-update-content">
                         <div
-                            className="spm-modal-img-inner"
+                            className="spm-add-update-img"
                             onClick={()=>{
                                 setUpdateImageModal(true);
                             }}>
                                 {updateImage[updateImageNum]==""?
-                                    <div className="spm-add-img"><AddIcon/></div>:
+                                    <div className="spm-add-update-img-inner"><AddIcon/></div>:
                                     <img src={updateImage[updateImageNum]} />
                                 }
                         </div>
-                        <div className="spm-add-arrow-box">
+                        <div className="spm-add-update-arrow">
                             <img
                                 src={leftArrow}
                                 onClick={()=>{
@@ -128,54 +128,50 @@ function SPM_Update({
                                     else setUpdateImageNum(0);
                                 }}
                                 style={{ float: "right", }}/>
-                            <div className="spm-add-arrow-num">{updateImageNum+1}/5</div>
+                            <div className="spm-add-update-arrow-num">{updateImageNum+1}/5</div>
                         </div>
-                        <div>
+
+                        <div> {/* spmcard-content-inner */}
                             <div style={{ display: "flex"}}>
                                 <input
                                     id="spm-update-name"
-                                    className="spm-add-main-title spm-add-title"
+                                    className="spm-add-update-main-title spm-add-update-title"
                                     placeholder="상품명"
                                     onChange={handleAddName}
                                 />
-                                <div id="spm-none-1" className="spmcard-update-input-right">x</div>
-                                <div id="spm-none-1" className="spmcard-update-input-right">x</div>
+                                <div className="spm-add-update-right">x</div>
                             </div>
-                            <div className="spmcard-update-input spmcard-update-input-top">
-                                <div id="spm-none-1" className="spmcard-update-input-left">
-                                    <DragCBtn className="spmcard-update-input-left-icon"/>
+                            <div className="spm-add-update-price">
+                                <div className="spm-add-update-item-left">
+                                    <DragCBtn className="spm-add-update-item-left-icon"/>
                                 </div>
                                 <div style={{ width: "100%", }}>
-                                    <input
-                                        id="spm-none-1"
-                                        className="spmcard-update-input-text"
-                                        type="text"
-                                    />
+                                    <input className="spm-add-update-item-text"/>
                                 </div>
                                 <input
                                     id="spm-update-price"
-                                    className="spmcard-update-input-price"
+                                    className="spm-add-update-price-inner"
                                     type="number"
                                     min="0"
                                     placeholder="0"
                                 />원
-                                <div id="spm-none-1" className="spmcard-update-input-right">x</div>
+                                <div className="spm-add-update-right">x</div>
                             </div>
                             <>
                                 {updateData.list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, optionImage: any, })=>{
                                     return (
-                                        <form className="spmcard-update">
-                                            <div className="spmcard-option-update">
+                                        <form>
+                                            <div className="spm-add-update-option">
                                                 <input
                                                     id={"spm-update-option-"+option.optionId}
-                                                    className="spm-add-title spm-add-subtitle"
+                                                    className="spm-add-update-title"
                                                     placeholder={"옵션"+option.optionId+" 이름"}
                                                     // value={option.optionName}
                                                     onChange={(e)=> {handleOptionName(e, option.optionId)}}
                                                 />
                                                 <div
                                                     id={"spm-none-"+option.optionId}
-                                                    className="spm-add-right"
+                                                    className="spm-add-update-right"
                                                     onClick={()=>{
                                                         for (var i = option.optionId-1; i < updateData.list.length-1; i++) {
                                                             updateData.list[i] = updateData.list[i+1];
@@ -189,10 +185,10 @@ function SPM_Update({
 
                                             {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
                                                 return (
-                                                    <div className="spmcard-update-input">
+                                                    <div className="spm-add-update-item">
                                                         <div
                                                             id={option.optionDirect&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
-                                                            className="spmcard-update-input-left"
+                                                            className="spm-add-update-item-left"
                                                             onDragStart={(e)=>{
                                                                 setStartDrag(e.clientY);
                                                             }}
@@ -229,12 +225,12 @@ function SPM_Update({
                                                                 setNum(num+1);
                                                             }}
                                                             draggable={true}>
-                                                            <DragCBtn className="spmcard-update-input-left-icon"/>
+                                                            <DragCBtn className="spm-add-update-item-left-icon"/>
                                                         </div>
                                                         <div style={{ width: "100%", }}>
                                                             <input
                                                                 id={"spm-update-name-option-list-"+option.optionId+"-"+optionList.optionListId}
-                                                                className="spmcard-update-input-text"
+                                                                className="spm-add-update-item-text"
                                                                 type="text"
                                                                 name={"name"+optionList.optionListId}
                                                                 placeholder={option.optionDirect&&option.optionList.length==optionList.optionListId? (option.optionImage? "이미지 입력": "텍스트 입력") : "품목"+optionList.optionListId+" 입력"}
@@ -249,7 +245,7 @@ function SPM_Update({
                                                         </div>
                                                         <input
                                                             id={"spm-update-price-option-list-"+option.optionId+"-"+optionList.optionListId}
-                                                            className="spmcard-update-input-price"
+                                                            className="spm-add-update-item-price"
                                                             type="number"
                                                             min="0"
                                                             placeholder="0"
@@ -258,7 +254,7 @@ function SPM_Update({
                                                         />원
                                                         <div
                                                             id={"spm-none-"+optionList.optionListId}
-                                                            className="spmcard-update-input-right"
+                                                            className="spm-add-update-item-right"
                                                             onClick={()=>{
                                                                 for (var i = optionList.optionListId-1; i < option.optionList.length-1; i++) {
                                                                     updateData.list[option.optionId-1].optionList[i] = updateData.list[option.optionId-1].optionList[i+1];
@@ -273,7 +269,7 @@ function SPM_Update({
                                                     </div>
                                                 );
                                             })}
-                                            <div className="spmcard-update-input-button">
+                                            <div className="spm-add-update-item-button">
                                                 <div
                                                     onClick={()=>{
                                                         updateData.list[option.optionId-1].optionList[option.optionList.length] = {
@@ -325,9 +321,9 @@ function SPM_Update({
                                         </form>
                                     );
                                 })}
-                                <hr className="spmcard-update-hr"/>
+                                <hr className="spm-add-update-hr"/>
                                 <button
-                                    className="spmcard-update-button"
+                                    className="spm-add-update-button"
                                     onClick={()=>{
                                         updateData.list[updateData.list.length] = {
                                             optionId: updateData.list.length+1,
@@ -354,18 +350,11 @@ function SPM_Update({
                 <div className="pc spm-tap">
                     <button
                         onClick={()=>{
-                            alert("닫기");
                             oriShow[idx] = true;
                             setNum(num+1);
                         }}>
                         <CloseBtn/>
                     </button>
-                    {/* <button
-                        onClick={()=>{
-                            alert("복제");
-                        }}>
-                        <CopyBtn/>
-                    </button> */}
                 </div>
             </div>
             </>
