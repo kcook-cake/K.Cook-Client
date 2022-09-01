@@ -1,4 +1,8 @@
 
+.spm-modal-img-inner input {
+    display: none;
+}
+
 //이미지 모달창
 .spm-modal-background {
     width: 100%;
@@ -27,6 +31,7 @@
     font-weight: 700;
 }
 .spm-modal-subtitle {
+    margin-top:15px;
     margin-bottom: 7.5px;
     color: #222222;
     font-weight: 500;
@@ -36,6 +41,33 @@
     column-gap: 15px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+
+
+.spm-add-add-img {
+    width: 160px;
+    height: 176px;
+    padding: 0;
+    display: inline-block;
+
+    background-color: #ebebeb;
+    cursor: pointer;
+    img {
+        width: 160px;
+        height: 176px;
+        border-radius: 5px;
+    }
+}
+.spm-add-add-img-icon {
+    padding-top: 50px !important;
+    padding-left: 40px !important;
+}
+
+.spm-modal-btn-box {
+    margin-top: 25px;
+}
+
+
 
 @media(max-width:767px) {
     //이미지 모달창

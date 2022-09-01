@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import axios from 'axios';
 // import 'src/styles/seller/card/image-modal/ImageModal.scss';
 
-import 'src/containers/main/home/popularmenuModal.scss';
+import 'src/styles/main/home/popularmenuModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
@@ -37,17 +37,15 @@ function PopularmenuModal({
       url: '/app/products/popularity',
       method: 'PATCH',
       data: {
-        updatePopularityReq: {
-          popularities: [
-            {
-              cakeId: cakeId,
-              popularityRank: popularRank,
-            },
-          ],
-        },
-        headers: {
-          'X-ACCESS-TOKEN': jwToken,
-        },
+        popularities: [
+          {
+            cakeId: cakeId,
+            popularityRank: popularRank,
+          },
+        ],
+      },
+      headers: {
+        'X-ACCESS-TOKEN': jwToken,
       },
     })
       .then((res) => {

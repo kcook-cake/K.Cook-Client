@@ -117,7 +117,7 @@ function ImageModal ({
                                 <label                             
                                     className={classNames("spm-add-img home-add-img", {
                                         "home-add-img-icon": image[data] == '',
-                                    })} 
+                                    })}
                                     htmlFor={"home-file-"+data}>
                                     {image[data] == '' ?
                                         <AddIcon/>:
@@ -135,7 +135,7 @@ function ImageModal ({
                         );
                     })}
                 </div>
-                <div className="spmdetail-content-btn-box home-btn-box">
+                <div className="spmdetail-content-btn-box spm-modal-btn-box">
                     <button
                         className="spmdetail-content-btn"
                         onClick={() => {

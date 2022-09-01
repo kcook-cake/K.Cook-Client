@@ -99,7 +99,7 @@ function ImageModal ({
                             }
                         </label>
                         <input
-                            id="home-file-0"
+                            id="spm-file-0"
                             type="file"
                             accept="image/*"
                             ref={inputRef}
@@ -137,7 +137,7 @@ function ImageModal ({
 
                 <div className="spmdetail-content-btn-box">
                     <button
-                        className="spmdetail-content-btn"
+                        className="spmdetail-content-btn spm-modal-btn-box"
                         onClick={() => {
                             setImageDataF(image);
                             setImageModalShowF(false);
