@@ -33,9 +33,7 @@ const PrevArrow = (props: any) => {
   );
 };
 
-export default function BannerSlider({ auth, getData, }: Props) {
-  const [bannerData, SetbannerData] = useState<any[]>([]);
-
+export default function BannerSlider({ auth, getData }: Props) {
   var settings = {
     dots: true, // 밑에 점
     infinite: true, // 콘텐츠 끝까지 갔을때 처음 콘텐츠를 가져와 반복
@@ -59,15 +57,16 @@ export default function BannerSlider({ auth, getData, }: Props) {
   return (
     <div>
       <Slider {...settings} className="main-crousel">
-        {getData.map((data: any,) => {
+        {getData.map((data: any) => {
           return (
             <>
-              {auth?
-                <img src={data} alt="profile" />:
+              {auth ? (
+                <img src={data} alt="profile" />
+              ) : (
                 <Link to="/Cake">
                   <img src={data} alt="profile" />
                 </Link>
-              }
+              )}
             </>
           );
         })}

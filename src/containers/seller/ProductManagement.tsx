@@ -11,7 +11,7 @@ import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../assets/seller/drag-column-btn.svg';
 import leftArrow from '../../assets/left-arrow.svg';
 import rightArrow from '../../assets/right-arrow.svg';
-import addIcon from "../../assets/seller/spm-add.png";
+import addIcon from '../../assets/seller/spm-add.png';
 
 import getAxios from 'src/utils/getAxios';
 import SPMCard from 'src/components/seller/card/SPMCard';
@@ -116,8 +116,6 @@ function ProductManagement() {
     setAddPrice(e.target.value);
   };
 
-
-
   const [oriShow, setOriShow] = useState<any>([]);
   const [oriImage, setOriImage] = useState([
     [
@@ -215,7 +213,7 @@ function ProductManagement() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    for (var i=0; i < oriData.length; i++) {
+    for (var i = 0; i < oriData.length; i++) {
       oriShow[i] = true;
     }
 
@@ -230,9 +228,14 @@ function ProductManagement() {
   return (
     <>
       <ImageModal
-        num={num} setNum={setNum} resize={resize}
-        imageModalShow={addImageModal} setImageModalShowF={setAddImageModal}
-        imageData={addImage} setImageDataF={setAddImage} />
+        num={num}
+        setNum={setNum}
+        resize={resize}
+        imageModalShow={addImageModal}
+        setImageModalShowF={setAddImageModal}
+        imageData={addImage}
+        setImageDataF={setAddImage}
+      />
 
       <div className="seller-mypage-top-flex">
         <div className="spm-ssr-mobile-box">
@@ -246,22 +249,32 @@ function ProductManagement() {
 
           <div
             className="mobile"
-            style={{ width: '5px', height: '25px' }}>
-          </div>
+            style={{ width: '5px', height: '25px' }}
+          ></div>
           <div className="seller-content">
-            {oriData.map((data: any, idx: any, )=>{
-              return(
+            {oriData.map((data: any, idx: any) => {
+              return (
                 <>
-                  {oriShow[idx]?
+                  {oriShow[idx] ? (
                     <SPMCard
-                      idx={idx} num={num} setNum={setNum}
-                      oriShow={oriShow} oriData={oriData} oriImage={oriImage}
-                    />:
-                    <SPM_Update
-                      idx={idx} num={num} setNum={setNum} resize={resize}
-                      oriShow={oriShow} getUpdateData={oriData[idx]} getUpdateImage={oriImage[idx]}
+                      idx={idx}
+                      num={num}
+                      setNum={setNum}
+                      oriShow={oriShow}
+                      oriData={oriData}
+                      oriImage={oriImage}
                     />
-                  }
+                  ) : (
+                    <SPM_Update
+                      idx={idx}
+                      num={num}
+                      setNum={setNum}
+                      resize={resize}
+                      oriShow={oriShow}
+                      getUpdateData={oriData[idx]}
+                      getUpdateImage={oriImage[idx]}
+                    />
+                  )}
                 </>
               );
             })}
@@ -384,7 +397,8 @@ function ProductManagement() {
             className="spm-btn"
             onClick={() => {
               setAddDiv(true);
-            }}>
+            }}
+          >
             <AddIcon />
           </div>
         </div>
@@ -398,21 +412,22 @@ function ProductManagement() {
               className="spm-bottom-inner spm-bottom-middle"
               onClick={() => {
                 setAddDiv(true);
-              }}>
+              }}
+            >
               {/* <AddSmalllIcon/> */}
-              <img src={addIcon}/>
+              <img src={addIcon} />
             </button>
             <button
               className="spm-bottom-inner spm-bottom-right"
               onClick={() => {
                 setAddDiv(false);
                 // for (var i=0; i< update.length; i++) update[i] = false;
-              }}>
+              }}
+            >
               <CloseBtn />
             </button>
           </div>
         </div>
-        
       </div>
     </>
   );

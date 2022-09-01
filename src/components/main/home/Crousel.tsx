@@ -23,21 +23,19 @@ function Crousel() {
   const [session, setSession] = useState(false);
   const [auth, setAuth] = useState({
     accountId: 0,
-    address: "",
-    dateOfBirth: "",
-    email: "",
-    nickname: "",
-    phoneNumber: "",
+    address: '',
+    dateOfBirth: '',
+    email: '',
+    nickname: '',
+    phoneNumber: '',
   });
 
-
-  const [isManager, setManager] = useState(false);
   // 배너 등록 페이지
   const [bannerShow, setBannerShow] = useState(false);
   const [bannerImage, setBannerImage] = useState<any>([]);
 
   const [image, setImage] = useState<any>([]);
-  
+
   const [resize, setResize] = useState(0);
   const handleResize = () => {
     setResize(window.innerWidth);
@@ -59,29 +57,29 @@ function Crousel() {
       }
     );
 
-    axios
-      .get(`https://prod.kcook-cake.com/app/banner/carousel`)
-      .then((res)=>{
-        for (var i=0; i<4; i++) 
-          image[i] = res.data.result[i].webImageUrl;
-        setBannerImage(image);
-      })
+    axios.get(`https://prod.kcook-cake.com/app/banner/carousel`).then((res) => {
+      for (var i = 0; i < 4; i++) image[i] = res.data.result[i].webImageUrl;
+      setBannerImage(image);
+    });
   }, []);
 
-  // accountId가 true면 모달창 생성 <<
   return (
     <>
       <ImageModal
-        num={num} setNum={setNum} resize={resize}
-        imageModalShow={bannerShow} setImageModalShowF={setBannerShow}
-        imageData={image} setImageDataF={setBannerImage} />
-      
+        num={num}
+        setNum={setNum}
+        resize={resize}
+        imageModalShow={bannerShow}
+        setImageModalShowF={setBannerShow}
+        imageData={image}
+        setImageDataF={setBannerImage}
+      />
+
       <div
         className="crousel"
-        onClick={
-          auth.accountId==31 ? ()=>setBannerShow(true) : ()=>{}
-        }>
-        <BannerSlider auth={auth.accountId==31} getData={image} />
+        onClick={auth.accountId == 31 ? () => setBannerShow(true) : () => {}}
+      >
+        <BannerSlider auth={auth.accountId == 31} getData={image} />
       </div>
     </>
   );
