@@ -6,11 +6,9 @@ import axios from 'axios';
 
 import getAxios from 'src/utils/getAxios';
 import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
+import homeGetAxios from './homeGetAxios';
 
 function NewMenu (){
-    const [data, setData] = useState([]);
-    const [dataLength, setDataLength] = useState(0);
-
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);
 
@@ -23,11 +21,14 @@ function NewMenu (){
         }
         setResize(window.innerWidth);
     };
-  
+
+    const [data, setData] = useState([]);
     useEffect(() => {
-        getAxios(setData, setDataLength, "cakes", [], 20, 0, 0);
         setResize(window.innerWidth);
         window.addEventListener("resize", handleResize);
+
+        var changeData: any = [];
+        homeGetAxios(setData, changeData, "products/update", 1);
     }, []);
 
     return(

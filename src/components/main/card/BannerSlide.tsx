@@ -1,5 +1,5 @@
 import Slider from 'react-slick';
-
+import { Link } from 'react-router-dom';
 import leftArrow from '../../../assets/left-arrow.svg';
 import rightArrow from '../../../assets/right-arrow.svg';
 // import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
@@ -11,6 +11,7 @@ import isSession from 'src/utils/isSession';
 // import "./banner-theme.scss";
 
 interface Props {
+  auth: any;
   getData: any;
 }
 
@@ -32,9 +33,7 @@ const PrevArrow = (props: any) => {
   );
 };
 
-export default function BannerSlider({ getData, }: Props) {
-  const [bannerData, SetbannerData] = useState<any[]>([]);
-
+export default function BannerSlider({ auth, getData }: Props) {
   var settings = {
     dots: true, // 밑에 점
     infinite: true, // 콘텐츠 끝까지 갔을때 처음 콘텐츠를 가져와 반복
@@ -55,31 +54,19 @@ export default function BannerSlider({ getData, }: Props) {
     // 해당 컴포넌트에 css 파일을 불러온다.
   };
 
-  // 배너 데이터 받기
-  async function getBannerData() {
-    var res = await axios.get(
-      'https://prod.kcook-cake.com/app/banner/carousel'
-    );
-    SetbannerData(res.data.result);
-
-    // const webImageUrl = res.data.result.webImageUrl;
-    //  SetbannerData(webImageUrl);
-  }
-
-  useEffect(() => {
-    getBannerData();
-  }, []);
-
   return (
     <div>
-
-
       <Slider {...settings} className="main-crousel">
-        {bannerData.map((data) => {
+        {getData.map((data: any) => {
           return (
             <>
-              <img src={data.webImageUrl} alt="profile" />
-              <span>{data.orders}</span>
+              {auth ? (
+                <img src={data} alt="profile" />
+              ) : (
+                <Link to="/Cake">
+                  <img src={data} alt="profile" />
+                </Link>
+              )}
             </>
           );
         })}

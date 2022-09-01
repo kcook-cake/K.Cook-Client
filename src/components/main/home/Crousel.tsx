@@ -7,37 +7,34 @@ import BannerSlider from '../card/BannerSlide';
 import isSession from 'src/utils/isSession';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
-import AddDataForm from './addBanner';
+import ImageModal from 'src/components/main/card/image-modal/ImageModal';
 
 function Crousel() {
-  const [data, setData] = useState([]);
-  //0페이지부터 시작한다
-  const [pageTodays, setPageTodays] = useState(0);
-  const [lengthTodays, setLengthTodays] = useState(0);
-  useEffect(() => {
-    getAxios(setData, setLengthTodays, 'cakes', [], 4, pageTodays, 0);
-    // axios
-    // .get(`https://prod.kcook-cake.com/app/cakes`)
-    // .then((res) => {
-    //   console.log(res);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // });
-  }, []);
+  const [num, setNum] = useState(0);
 
-  // 배너 모달창 용도
+  const [files, setFiles] = useState('');
+  const onLoadFile = (e: any) => {
+    const file = e.target.files;
+    console.log(file);
+    setFiles(file);
+  };
+
   // 로그인 여부
   const [session, setSession] = useState(false);
-  const [auth, setAuth] = useState({});
-  const [isManager, setManager] = useState(false);
-  const [image, setImage] = useState([
-    'https://www.codingfactory.net/wp-content/uploads/abc.jpg',
-    '',
-    '',
-    '',
-    '',
-  ]);
+  const [auth, setAuth] = useState({
+    accountId: 0,
+    address: '',
+    dateOfBirth: '',
+    email: '',
+    nickname: '',
+    phoneNumber: '',
+  });
+
+  // 배너 등록 페이지
+  const [bannerShow, setBannerShow] = useState(false);
+  const [bannerImage, setBannerImage] = useState<any>([]);
+
+  const [image, setImage] = useState<any>([]);
 
   const [resize, setResize] = useState(0);
   const handleResize = () => {
@@ -59,149 +56,30 @@ function Crousel() {
         setAuth(a);
       }
     );
+
+    axios.get(`https://prod.kcook-cake.com/app/banner/carousel`).then((res) => {
+      for (var i = 0; i < 4; i++) image[i] = res.data.result[i].webImageUrl;
+      setBannerImage(image);
+    });
   }, []);
 
-  type Employee = {
-    accountId?: number;
-    [key: string]: any;
-  };
-
-  const obj: Employee = {
-    auth,
-  };
-
-  // 관리자라면 isManager = true
-  useEffect(() => {
-    if (Number(obj.auth.accountId) === 31) {
-      setManager(true);
-    } else {
-      setManager(false);
-    }
-  }, [obj.auth.accountId]);
-
-  // 배너 등록 페이지
-  const [isBannerAdd, setIsBannerAdd] = useState(false);
-  const hello = () => {
-    if (isManager) {
-      setIsBannerAdd(true);
-    } else {
-      setIsBannerAdd(false);
-    }
-  };
-
-  const [files, setFiles] = useState('');
-  const onLoadFile = (e: any) => {
-    const file = e.target.files;
-    console.log(file);
-    setFiles(file);
-  };
-
-  // accountId가 true면 모달창 생성 <<
   return (
     <>
-      {isBannerAdd && (
-        <>
-          <div
-            className="spm-modal-background"
-            style={{ top: window.pageYOffset }}
-          ></div>
-          <div
-            className="spm-modal-box"
-            style={{
-              top:
-                resize <= 767
-                  ? window.innerHeight - 530 < 0
-                    ? window.pageYOffset
-                    : window.pageYOffset + 20
-                  : window.innerHeight - 775 < 0
-                  ? window.pageYOffset
-                  : window.pageYOffset + (window.innerHeight - 775) / 2,
-              left: (resize - 775) / 2 + 'px',
-            }}
-          >
-            <div className="spm-modal-title">배너 등록</div>
-            {/*   <div className="spm-modal-subtitle">대표이미지(1장)</div>
-              <div
-                className="spm-modal-img-inner"
-                onClick={() => {
-                  //addImage[0] = 사진 링크 넣기
-                }}>
-                {image[0] == '' ? (
-                  <div className="spm-add-img">
-                    <AddIcon />
-                  </div>
-                ) : (
-                  <img src={image[0]} />
-                )}
-              </div> 
-            <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
-            <div className="spm-modal-img-box">
-              <div className="spm-modal-img-inner">
-                {image[1] == '' ? (
-                  <div className="spm-add-img">
-                    <AddIcon />
-                  </div>
-                ) : (
-                  <img src={image[1]} />
-                )}
-              </div>
-              <div className="spm-modal-img-inner">
-                {image[2] == '' ? (
-                  <div className="spm-add-img">
-                    <AddIcon />
-                  </div>
-                ) : (
-                  <img src={image[2]} />
-                )}
-              </div>
-              <div className="spm-modal-img-inner">
-                {image[3] == '' ? (
-                  <div className="spm-add-img">
-                    <AddIcon />
-                  </div>
-                ) : (
-                  <img src={image[3]} />
-                )}
-              </div>
-              </div>
-              
-            <div className="spm-modal-img-inner">
-              {image[4] == '' ? (
-                <>
-                  <div className="spm-add-img">
-                    <AddIcon />
-                  </div>
-                </>
-              ) : (
-                <img src={image[4]} />
-                )}
-            </div>
-              */}
+      <ImageModal
+        num={num}
+        setNum={setNum}
+        resize={resize}
+        imageModalShow={bannerShow}
+        setImageModalShowF={setBannerShow}
+        imageData={image}
+        setImageDataF={setBannerImage}
+      />
 
-            <AddDataForm />
-
-            <div className="spmdetail-content-btn-box">
-              <button
-                className="spmdetail-content-btn"
-                onClick={() => setIsBannerAdd(false)}
-              >
-                등록
-              </button>
-              <button
-                className="spmdetail-content-btn spmdetail-content-btn-left"
-                onClick={() => {
-                  setIsBannerAdd(false);
-                  setImage(['', '', '', '', '']);
-                }}
-              >
-                취소
-              </button>
-            </div>
-          </div>
-        </>
-      )}
-      <div className="crousel" onClick={isManager ? hello : () => {}}>
-        <BannerSlider getData={data} />
+      <div
+        className="crousel"
+        onClick={auth.accountId == 31 ? () => setBannerShow(true) : () => {}}
+      >
+        <BannerSlider auth={auth.accountId == 31} getData={image} />
       </div>
     </>
   );

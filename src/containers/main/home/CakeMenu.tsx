@@ -12,7 +12,7 @@ function CakeMenu (){
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
-        getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+        getAxios(setData, setDataLength, "representative-cake", [], 4, 0, 0);
     },[]);
 
     return(
