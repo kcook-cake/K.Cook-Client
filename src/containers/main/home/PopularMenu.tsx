@@ -90,13 +90,9 @@ const PopularMenu = () => {
             <div className="popularmenu-title">인기상품</div>
           )}
           <PopularmenuModal
-            num={num}
-            setNum={setNum}
-            resize={resize}
+            //  resize={resize}
             imageModalShow={modalShow}
             setImageModalShowF={setModalShow}
-            imageData={image}
-            setImageDataF={setBannerImage}
           />
           <div className="popularmenu-btn">
             <div>{num}/5</div>

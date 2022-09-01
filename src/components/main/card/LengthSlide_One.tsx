@@ -13,7 +13,6 @@ interface Props {
 }
 
 function LengthSlide_One({ getData, resize, slidePx }: Props) {
-  console.log('getDatagetDatagetDatagetData', getData);
   return (
     <>
       {getData.map(
