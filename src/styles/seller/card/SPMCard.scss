@@ -1,16 +1,55 @@
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    padding-right: 5px;
+// spmcard-inner
+// move-tap
+// spmcard-content
+//   spmcard-img
+//   spmcard-content-inner
+//     spmcard-title
+//     (option)
+// spm-tap
+
+.spmcard {
+    width: 848px;
+    height: 100% !important;
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+  
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+    background-color: #fefefe;
 }
 
-#spm-none-1 {
-    opacity: 0;
-    pointer-events: none;
+.spmcard-inner {
+    margin-left: 30px;
+}
+.spmcard-content {
+    display: flex;
+    margin-bottom: 24px;
 }
 
-.spm-option-title {
+.spmcard-img {
+    width: 160px;
+    height: 176px;
+    margin-bottom: 26.5px;
+    img {
+        width: 160px;
+        height: 176px;
+        border-radius: 5px;
+    }
+}
+.spmcard-img-inner {
+    width: 160px;
+    height: 176px;
+    margin-right: 20px;
+    padding: 40px;
+    padding-top: 50px;
+
+    border-radius: 5px;
+    background-color: #ebebeb;
+}
+
+.spmcard-content-inner {
     width: auto;
     font-size: 16px;
     font-weight: 400;
@@ -18,116 +57,72 @@ input::-webkit-inner-spin-button {
     margin-right: 5px;
     margin-bottom: 5px;
 }
-.spm-title {
+
+.spmcard-title {
     width: 549px;
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: 600;
 }
 
-.spmcard {
-    display: flex;
-}
-
-.spmcard-button {
-    margin-bottom: 40px;
-    padding-left: 15px;
-    color: #9EA4AA;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-
-//update
-// .spmcard-update {
-.spmcard-update-input {
-    width: auto;
-    height: 25px !important;
-    margin-left: 15px;
-    margin-bottom: 20px;
-    display: flex;
-
-    font-size: 14px !important;
-    .spmcard-update-input-text {
-        width: 98%;
+.spmcard-tap-btn {
+    img {
+        width: 19px;
+        margin: 5px 0 0 3.3px;
     }
-    .spmcard-update-input-left-icon,
-    .spmcard-update-input-right {
-        opacity: 0;
-        padding-left: 5px;
-    }
-    .spmcard-update-input-left-icon {
-        width: 12px;
-    }
-    .spmcard-update-input-left {
-        // float: left;
-        margin-top: 2px;
-        margin-right: 7px;
-    }
-    .spmcard-update-input-right {
-        padding-right: 5px;
-    }
-    .spmcard-update-input-price {
-        width: 120px;
-        // padding-right: 5px;
-
-        text-align: right;
-        border-radius: 5px;
-        border: 1px solid #B2B2B2;
-    }
-}
-.spmcard-update-input:hover {
-    .spmcard-update-input-left-icon,
-    .spmcard-update-input-right {
-        opacity: 100;
-    }
-    .spmcard-update-input-text {
-        width: 98%;
-        border-bottom: 3px solid #333;
-    }
-}
-
-.spmcard-update-input-button {
-    margin: 0 0 20px 17px;
-    padding-left: 20px;
-    display: flex;
-
-    font-size: 14px;
-    color: #8b9094;
-}
-.spmcard-update-input-top {
-    width: 561px;
-}
-
-
-
-.spmcard-update-hr {
-    margin-left: 13px;
-    color: #9EA4AA;
-}
-
-.spmcard-update-hr {
-    margin-bottom: 30px;
-    border: 1px solid #DDDDDD;
-    // background-color: #9EA4AA;
-}
-.spmcard-update-button {
-    margin-left: 15px;
-    margin-bottom: 16px;
-    color: #9EA4AA;
-    font-size: 16px;
-    font-weight: 500;
 }
 
 @media(max-width: 767px) {
-    .spmcard-update-input {
-        width: auto;
-    }
-    .spmcard-update-input-top {
-        width: auto;
+    .spmcard {
+        width: 100%;
+        height: 159px !important;
+        margin-bottom: 20px;
+        display: flex;
+
+        border-radius: 0;
+        background-color: #fff;
+        box-shadow: 0px 1px 3px rgb(212, 212, 212), 0px -1px 3px rgb(212, 212, 212);
     }
 
-    .spm-option-title {
+    .spmcard-inner {
+        width: 100%;
+        margin: 0;
+        margin-right: 36px;
+    }
+    .spmcard-content {
+        width: 100%;
+        margin: auto;
+        padding: 0 16px 16px 0;
+
+        display: block;
+    }
+
+    .spmcard-img-inner {
+        height: 111px;
+        width: 100px;
+        margin: 0;
+        padding: 11px;
+        padding-top: 15px;
+
+        // position: absolute;
+        // right: 0;
+        float: right;
+        background-color: #ebebeb;
+        border-radius: 5px;
+    }
+
+    .spmcard-img {
+        width: 100px;
+        height: 111px;
+        margin-bottom: 10px;
+        float: right;
+        img {
+            width: 100px;
+            height: 111px;
+        }
+    }
+
+    .spmcard-content-inner {
         margin-right: 5px;
         margin-bottom: 2px;
 
@@ -141,7 +136,8 @@ input::-webkit-inner-spin-button {
         font-size: 13px;
         font-weight: 400;
     }
-    .spm-title {
+
+    .spmcard-title {
         width: auto;
         margin: 0;
         margin-bottom: 5px;
@@ -158,9 +154,7 @@ input::-webkit-inner-spin-button {
         font-weight: 600;
     }
 
-    .spmcard-update-input {
-        .spmcard-update-input-right {
-            padding-right: 2px;
-        }
+    .spmcard-tap-btn {
+        margin-top: 30px;
     }
 }
