@@ -46,15 +46,12 @@ function PopularmenuModal({
           ],
         },
         headers: {
-          'Content-Type': 'multipart/form-data',
           'X-ACCESS-TOKEN': jwToken,
         },
       },
     })
       .then((res) => {
-        //        console.log('res :: ', res);
-        // console.log('cakeId', cakeId);
-        // console.log('popularRank', popularRank);
+        console.log('res :: ', res);
 
         // PATCH한 뒤, 초기화
         setCakeId(0);
@@ -62,9 +59,6 @@ function PopularmenuModal({
       })
       .catch((err) => {
         console.error('err :: ', err);
-
-        // console.log('cakeId', cakeId);
-        // console.log('popularRank', popularRank);
       });
   }
 
