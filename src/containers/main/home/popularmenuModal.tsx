@@ -28,8 +28,8 @@ function PopularmenuModal({
   else jwToken = sessionStorage.jwToken;
 
   // 인기상품 변경하기 위한 patch 함수
-  const [cakeId, setCakeId] = useState(0);
-  const [popularRank, setPopularRank] = useState(0);
+  const [cakeId, setCakeId] = useState(undefined);
+  const [popularRank, setPopularRank] = useState(undefined);
 
   function UpdatePopImg() {
     axios({
@@ -53,8 +53,8 @@ function PopularmenuModal({
         console.log('res :: ', res);
 
         // PATCH한 뒤, 초기화
-        setCakeId(0);
-        setPopularRank(0);
+        setCakeId(undefined);
+        setPopularRank(undefined);
       })
       .catch((err) => {
         console.error('err :: ', err);
@@ -123,8 +123,8 @@ function PopularmenuModal({
                     setImageModalShowF(false);
 
                     // 닫기 눌렀을때, 초기화
-                    setCakeId(0);
-                    setPopularRank(0);
+                    setCakeId(undefined);
+                    setPopularRank(undefined);
                   }}
                 >
                   닫기

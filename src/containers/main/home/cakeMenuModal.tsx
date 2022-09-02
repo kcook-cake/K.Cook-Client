@@ -57,7 +57,7 @@ function CakeMenuModal({
         setCakeIds([]);
       })
       .catch((err) => {
-        console.error('err :: ', err);
+        console.log('err :: ', err);
       });
   }
 
