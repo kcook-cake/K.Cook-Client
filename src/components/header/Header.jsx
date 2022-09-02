@@ -17,19 +17,18 @@ function Header({ setNumLeftMobileF }) {
   const [session, setSession] = useState(false);
   const [auth, setAuth] = useState({
     accountId: 0,
-    address: "",
-    dateOfBirth: "",
-    email: "",
-    nickname: "",
-    phoneNumber: "",
+    address: '',
+    dateOfBirth: '',
+    email: '',
+    nickname: '',
+    phoneNumber: '',
   });
 
   useEffect(() => {
     var jwToken = undefined;
     if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
     else jwToken = sessionStorage.jwToken;
-    console.log(jwToken);
-    
+
     isSession(
       jwToken,
       (s) => {
@@ -72,7 +71,7 @@ function Header({ setNumLeftMobileF }) {
               to="/"
               onClick={() => {
                 setNumLeftMobileF(1);
-                $(".hm-pc-flex").show();
+                $('.hm-pc-flex').show();
               }}
             >
               <img src={logo} className="logo-icon" />

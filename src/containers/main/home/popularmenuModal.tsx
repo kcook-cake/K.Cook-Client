@@ -44,6 +44,7 @@ function PopularmenuModal({
           },
         ],
       },
+
       headers: {
         'X-ACCESS-TOKEN': jwToken,
       },
@@ -120,6 +121,10 @@ function PopularmenuModal({
                   className="spmdetail-content-btn"
                   onClick={() => {
                     setImageModalShowF(false);
+
+                    // 닫기 눌렀을때, 초기화
+                    setCakeId(0);
+                    setPopularRank(0);
                   }}
                 >
                   닫기

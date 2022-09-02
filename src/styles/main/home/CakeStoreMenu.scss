@@ -1,21 +1,41 @@
-
 .storemenu {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .cake-store-menu {
-    .contents {
-        padding: 0 10px;
-    }
+  .contents {
+    padding: 0 10px;
+  }
+}
+
+// 케이크 - 상품 변경 Btn 수정
+.title > button {
+  position: relative;
+  left: -5px;
+  top: -5px;
+
+  color: #495057;
+  margin-left: 15px;
+  border: 1px solid #868e96;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+
+    color: #e9ecef;
+    background-color: #868e96;
+  }
 }
 
 @media (max-width: 767px) {
-    .storemenu {
-        padding-bottom: 45px;
+  .storemenu {
+    padding-bottom: 45px;
+  }
+  .cake-store-menu {
+    .contents {
+      padding: 0;
     }
-    .cake-store-menu {
-        .contents {
-            padding: 0;
-        }
-    }
+  }
 }

@@ -1,0 +1,32 @@
+.spm-modal-input {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.spm-modal-cakeIds-input {
+  margin-bottom: 50px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.spm-modal-cakeIds-input > label {
+  margin-right: 35px;
+}
+
+.spm-modal-cakeIds-input > input {
+  width: 300px;
+  height: 50px;
+  border: solid 2px #d2691e;
+  border-radius: 8px;
+
+  &::placeholder {
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 15px;
+  }
+}
+
+.spmdetail-content-btn-box > button {
+  margin-right: 15px;
+}
