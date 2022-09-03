@@ -10,18 +10,18 @@ import StoreMenu from './StoreMenu';
 import LinkClick from 'src/utils/LinkClick';
 import PopularMenu from './PopularMenu';
 
-function Home() {
+function Home(session: any, auth: any, ) {
   useEffect(() => {
     LinkClick('Home');
   }, []);
   return (
     <>
-      <MainCrousel />
-      <PopularMenu />
+      <MainCrousel session={session} auth={auth} />
+      <PopularMenu session={session} auth={auth} />
       <NewMenu />
       <MainAd />
-      <CakeMenu />
-      <StoreMenu />
+      <CakeMenu session={session} auth={auth} />
+      <StoreMenu session={session} auth={auth} />
     </>
   );
 }

@@ -9,10 +9,15 @@ import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
 
 import isSession from 'src/utils/isSession';
-import ImageModal from 'src/components/main/card/image-modal/ImageModal';
-import PopularmenuModal from './popularmenuModal';
+import ImageModal from 'src/components/main/home/image-modal/ImageModal';
+import PopularmenuModal from 'src/components/main/home/image-modal/PopularMenuModal';
 
-const PopularMenu = () => {
+interface Props {
+  session: any,
+  auth: any,
+}
+
+const PopularMenu = ({session, auth}: Props) => {
   const [num, setNum] = useState(1);
   const [slidePx, setSlidePx] = useState(0);
 
@@ -34,32 +39,6 @@ const PopularMenu = () => {
     homeGetAxios(setData, changeData, 'popular-products', 1);
   }, []);
 
-  // 인기상품 이미지 추가 모달창
-  // 로그인확인
-  const [session, setSession] = useState(false);
-  const [auth, setAuth] = useState({
-    accountId: 0,
-    address: '',
-    dateOfBirth: '',
-    email: '',
-    nickname: '',
-    phoneNumber: '',
-  });
-
-  var jwToken: any = undefined;
-  if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-  else jwToken = sessionStorage.jwToken;
-  useEffect(() => {
-    isSession(
-      jwToken,
-      (s: any) => {
-        if (s) setSession(s);
-      },
-      (a: any) => {
-        setAuth(a);
-      }
-    );
-  }, [jwToken]);
 
   // 모달창 생성용 값
   const [modalShow, setModalShow] = useState(false);

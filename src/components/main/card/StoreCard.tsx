@@ -15,10 +15,19 @@ interface Props {
 function StoreCard({getData, cakeDetail}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any)=>{
+            {getData.map((data: { 
+                image: any,
+                accountName: any,
+                address: any,
+                area: any,
+                contact: any,
+                name: any,
+                status: any,
+                storeId: any,
+             }, idx: any)=>{
                 return (
                     <Link className={"cake-store-card-"+((idx > 5)&&cakeDetail? "dummy": "")} to={"/Store/0"}>
-                        <div className="storecard-flex" key={data.productId}>
+                        <div className="storecard-flex" key={data.storeId}>
                             <div className="storecard">
                                 <div className="storecard-img-flex">
                                     {data.image == null?
@@ -27,9 +36,9 @@ function StoreCard({getData, cakeDetail}: Props) {
                                     }
                                 </div>
                                 <div className="storecard-info">
-                                    <div className="card-top">원모먼트</div>
-                                    <div className="card-title">제목</div>
-                                    <div className="card-location">위치</div>
+                                    <div className="card-top">{data.accountName}</div>
+                                    <div className="card-title">{data.name}</div>
+                                    <div className="card-location">{data.address}</div>
                                 </div>
                             </div>
                         </div>

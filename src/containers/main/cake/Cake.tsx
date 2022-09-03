@@ -72,14 +72,13 @@ function Cake() {
   const [page, setPage] = useState(1);
 
   const [data, setData] = useState([]);
-  const [dataLength, setDataLength] = useState(0);
   useEffect(() => {
     LinkClick('Cake');
 
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    cakeGetAxios(setData, setDataLength, 'cakes', 1, 24);
+    cakeGetAxios(setData, 'cakes', 1, 24);
 
     axios.get(`https://prod.kcook-cake.com/app/cities`).then((res) => {
       setSelectData([

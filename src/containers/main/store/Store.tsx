@@ -20,6 +20,7 @@ import SelectWindow from 'src/components/main/card/cake-store/SelectWindow';
 import SelectBoxOne from 'src/components/main/card/cake-store/SelectBoxOne';
 import SelectBox from 'src/components/main/card/cake-store/SelectBox';
 import SelectWindowOne from 'src/components/main/card/cake-store/SelectWindowOne';
+import storeGetAxios from 'src/utils/storeGetAxios';
 
 function Store() {
   const [num, setNum] = useState(0);
@@ -79,7 +80,7 @@ function Store() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    getAxios(setData, setLengthTodays, 'cakes', [], 18, pageTodays, 0);
+    storeGetAxios(setData, 'stores/account/auth', 1, 18);
     axios
       .get(`https://prod.kcook-cake.com/app/cities`)
       .then(res =>{

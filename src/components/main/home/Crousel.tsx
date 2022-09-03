@@ -7,9 +7,14 @@ import BannerSlider from '../card/BannerSlide';
 import isSession from 'src/utils/isSession';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
-import ImageModal from 'src/components/main/card/image-modal/ImageModal';
+import ImageModal from 'src/components/main/home/image-modal/ImageModal';
 
-function Crousel() {
+interface Props {
+  session: any,
+  auth: any,
+}
+
+function Crousel({session, auth}: Props) {
   const [num, setNum] = useState(0);
 
   const [files, setFiles] = useState('');
@@ -18,17 +23,6 @@ function Crousel() {
     console.log(file);
     setFiles(file);
   };
-
-  // 로그인 여부
-  const [session, setSession] = useState(false);
-  const [auth, setAuth] = useState({
-    accountId: 0,
-    address: '',
-    dateOfBirth: '',
-    email: '',
-    nickname: '',
-    phoneNumber: '',
-  });
 
   // 배너 등록 페이지
   const [bannerShow, setBannerShow] = useState(false);
@@ -43,19 +37,6 @@ function Crousel() {
   useEffect(() => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
-
-    var jwToken = undefined;
-    if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-    else jwToken = sessionStorage.jwToken;
-    isSession(
-      jwToken,
-      (s: any) => {
-        if (s) setSession(s);
-      },
-      (a: any) => {
-        setAuth(a);
-      }
-    );
 
     axios.get(`https://prod.kcook-cake.com/app/banner/carousel`).then((res) => {
       for (var i = 0; i < 4; i++) image[i] = res.data.result[i].webImageUrl;

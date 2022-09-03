@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $ from "jquery";
 
-const cakeGetAxios = (fn, link, page, num) => {
+const storeGetAxios = (fn, link, page, num) => {
     var p = "";
     if (page != 0) p = "?page="+page;
 
     axios
         .get(`https://prod.kcook-cake.com/app/` + link + p)
         .then((res) => {
+            console.log(res);
             const data = res.data.result.content;
 
             var changeData = [];
@@ -18,12 +19,13 @@ const cakeGetAxios = (fn, link, page, num) => {
             for (var i = data.length; i < num; i++) {
                 changeData[i] = {
                     image: null,
+                    accountName: "~준비중 입니다~",
+                    address: "~준비중 입니다~",
+                    area: "~준비중 입니다~",
+                    contact: "~준비중 입니다~",
                     name: "~준비중 입니다~",
-                    price: 0,
-                    storeName: "~준비중 입니다~",
-
-                    productId: 0,
-                    popularRank: 0,
+                    status: "BLACKLIST",
+                    storeId: 0
                 };
             }
             fn(changeData);
@@ -33,16 +35,17 @@ const cakeGetAxios = (fn, link, page, num) => {
             for (var i = 0; i < num; i++) {
                 changeData[i] = {
                     image: null,
+                    accountName: "~준비중 입니다~",
+                    address: "~준비중 입니다~",
+                    area: "~준비중 입니다~",
+                    contact: "~준비중 입니다~",
                     name: "~준비중 입니다~",
-                    price: 0,
-                    storeName: "~준비중 입니다~",
-
-                    productId: 0,
-                    popularRank: 0,
+                    status: "BLACKLIST",
+                    storeId: 0
                 };
             }
             fn(changeData);
         });
 };
 
-export default cakeGetAxios;
+export default storeGetAxios;
