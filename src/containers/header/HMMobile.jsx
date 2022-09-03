@@ -9,12 +9,12 @@ import HMCard from "../../components/header/card/HMCard";
 import HMSCard from "src/components/header/card/HMSCard";
 import HMMCard from "src/components/header/card/HMMCard";
 
-function HMMobile ({ numLeftMobile, setNumLeftMobileF }) {
+function HMMobile ({ session, auth, numLeftMobile, setNumLeftMobileF }) {
     useEffect(()=> {
     }, []);
     return (
         <div className="hm-mobile">
-            {numLeftMobile == 1? <HMCard setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
+            {numLeftMobile == 1? <HMCard session={session} auth={auth} setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
             {numLeftMobile == 2? <HMSCard setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
             {numLeftMobile == 3? <HMMCard setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
             <div

@@ -8,7 +8,6 @@ import axios from 'axios';
 import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
 
-import isSession from 'src/utils/isSession';
 import ImageModal from 'src/components/main/home/image-modal/ImageModal';
 import PopularmenuModal from 'src/components/main/home/image-modal/PopularMenuModal';
 
@@ -50,9 +49,10 @@ const PopularMenu = ({session, auth}: Props) => {
     <div className="popularmenu-flex home-flex">
       <div className="popularmenu home">
         <div className="popularmenu-title-flex">
+          <div className="popularmenu-title">
           {auth.accountId == 31 ? (
             <>
-              <div className="popularmenu-title">
+              <>
                 인기상품
                 <button
                   onClick={
@@ -63,16 +63,17 @@ const PopularMenu = ({session, auth}: Props) => {
                 >
                   상품 변경
                 </button>
-              </div>
+              </>
             </>
           ) : (
-            <div className="popularmenu-title">인기상품</div>
+            <>인기상품</>
           )}
           <PopularmenuModal
             //  resize={resize}
             imageModalShow={modalShow}
             setImageModalShowF={setModalShow}
           />
+          </div>
           <div className="popularmenu-btn">
             <div>{num}/5</div>
             <button

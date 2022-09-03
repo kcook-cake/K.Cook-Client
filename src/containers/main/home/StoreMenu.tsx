@@ -8,7 +8,6 @@ import SectionTitle from 'src/components/main/card/SectionTitle';
 import StoreCard from 'src/components/main/card/StoreCard';
 import storeGetAxios from 'src/utils/storeGetAxios';
 import StoreMenuModal from 'src/components/main/home/image-modal/StoreMenuModal';
-import isSession from 'src/utils/isSession';
 
 interface Props {
     session: any,

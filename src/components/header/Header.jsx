@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/header/Header.scss';
 
-import isSession from 'src/utils/isSession';
-import LinkClick from 'src/utils/LinkClick';
 import axios from 'axios';
 import $ from 'jquery';
 
@@ -12,33 +10,7 @@ import logo from '../../assets/logo.png';
 import menu from '../../assets/menu.svg';
 import search from '../../assets/search.svg';
 
-function Header({ setNumLeftMobileF }) {
-  //로그인 여부
-  const [session, setSession] = useState(false);
-  const [auth, setAuth] = useState({
-    accountId: 0,
-    address: '',
-    dateOfBirth: '',
-    email: '',
-    nickname: '',
-    phoneNumber: '',
-  });
-
-  useEffect(() => {
-    var jwToken = undefined;
-    if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-    else jwToken = sessionStorage.jwToken;
-
-    isSession(
-      jwToken,
-      (s) => {
-        if (s) setSession(s);
-      },
-      (a) => {
-        setAuth(a);
-      }
-    );
-  }, []);
+function Header({ session, auth, setNumLeftMobileF }) {
 
   return (
     <div id="header-flex-id" className="header-flex">

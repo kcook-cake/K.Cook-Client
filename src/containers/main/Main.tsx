@@ -6,7 +6,6 @@ import TodaysRec from './todaysrec/TodaysRec';
 import Cake from './cake/Cake';
 import Store from './store/Store';
 import CustomerService from './cs/CS';
-import isSession from 'src/utils/isSession';
 
 interface Props {
     session: any,

@@ -4,22 +4,12 @@ import '../../styles/seller/SellerStore.scss';
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import isSession from 'src/utils/isSession';
 
-function SellerStore (){
+function SellerStore (session: any, auth: any,){
     const [failModalText, setFailModalText] = useState("수정 정보가 일치하지 않습니다.");
     const [failModal, setFailModal] = useState(false);
 
-    //로그인 여부
-    const [session, setSession] = useState(false);
-    const [auth, setAuth] = useState({
-        accountId: 0,
-        address: "",
-        dateOfBirth: "",
-        email: "",
-        nickname: "",
-        phoneNumber: "",
-    });
+
 
     const [email, setEmail] = useState("");
     const [pastPw, setPastPw] = useState("");
@@ -100,23 +90,6 @@ function SellerStore (){
     useEffect(() => {
         LinkClick("SellerStore");
         sellerLinkClick("SellerStore");
-
-        var jwToken = undefined;
-        if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-        else jwToken = sessionStorage.jwToken;
-        isSession(
-            jwToken,
-            (s: any, ) => {
-                if (s) setSession(s);
-            },
-            (a: any, ) => {
-                setAuth(a);
-                setEmail(a.email); setEmailFail(false);
-                setNickname(a.nickname); setNicknameFail(false);
-                setAddress(a.address);
-                setPhone(a.phoneNumber); setPhoneFail(false);
-            }
-        );
     },[]);
     return(
         <div className="seller-block">

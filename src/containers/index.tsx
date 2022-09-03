@@ -76,10 +76,12 @@ const Pages = () => {
   return (
     <Router>
       <HMMobile
-        numLeftMobile={numLeftMobile}
-        setNumLeftMobileF={setNumLeftMobile}
-      />
-      <Header setNumLeftMobileF={setNumLeftMobile} />
+        session={session} auth={auth}
+        numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} />
+      <Header
+        session={session} auth={auth} 
+        setNumLeftMobileF={setNumLeftMobile} />
+      
       <Route exact path="/Login" component={Login} />
       <Route exact path="/LoginFind" component={LoginFind} />
       <Route exact path="/SignUp" component={SignUp} />
@@ -90,10 +92,9 @@ const Pages = () => {
       <Route exact path="/Store/:id" component={StoreDetail} />
 
       <Main session={session} auth={auth} />
-      {/* <Seller />
-      <Mypage /> */}
-      {numLeftMobile == 2 ? <Seller /> : <></>}
-      {numLeftMobile == 3 ? <Mypage /> : <></>}
+
+      {numLeftMobile == 2 ? <Seller session={session} auth={auth} /> : <></>}
+      {numLeftMobile == 3 ? <Mypage session={session} auth={auth} /> : <></>}
 
       <Footer
         setNumLeftMobileF={setNumLeftMobile}

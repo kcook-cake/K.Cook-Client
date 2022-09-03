@@ -7,7 +7,6 @@ import SectionTitle from 'src/components/main/card/SectionTitle';
 import getAxios from 'src/utils/getAxios';
 import CakeCard from 'src/components/main/card/CakeCard';
 
-import isSession from 'src/utils/isSession';
 import CakeMenuModal from 'src/components/main/home/image-modal/CakeMenuModal';
 import cakeGetAxios from 'src/utils/cakeGetAxios';
 

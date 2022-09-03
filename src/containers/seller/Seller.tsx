@@ -13,13 +13,13 @@ import SellerStore from '../../components/seller/SellerStore';
 import FullCalendarApp from './FullCalendarApp';
 import SPMDetail from '../detail/SPMDetail';
 
-const Seller = () =>{
-    const [pathname, setPathname] = useState("");
+interface Props {
+    session: any,
+    auth: any,
+}
+
+const Seller = ({ session, auth, }: Props) =>{
     useEffect(()=>{
-        var pathname = window.location.pathname;
-        if (pathname == "/") pathname = "/Home";
-        pathname = pathname.split("/")[1];
-        setPathname(pathname);
     },[]);
     
     return(
@@ -27,14 +27,14 @@ const Seller = () =>{
             <div className="seller">
                 <>
                     <SellerSection/>
-                    <Route exact path="/SSOCalendar" component={FullCalendarApp} />
-                    <Route exact path="/SSHCalendar" component={FullCalendarApp} />
+                    <Route exact path="/SSOCalendar" component={()=>FullCalendarApp(session, auth)} />
+                    <Route exact path="/SSHCalendar" component={()=>FullCalendarApp(session, auth)} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>
                     <Route exact path="/ProductManagement" component={ProductManagement}/>
                     <Route exact path="/ProductManagement/:id" component={SPMDetail}/>
                     <Route exact path="/SellerReview" component={SellerReview} />
-                    <Route exact path="/SellerStore" component={SellerStore} />
+                    <Route exact path="/SellerStore" component={()=>SellerStore(session, auth)} />
                 </> 
             </div>
         </div>

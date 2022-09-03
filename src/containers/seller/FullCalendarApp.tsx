@@ -8,11 +8,10 @@ import $ from 'jquery';
 import '../../styles/seller/FullCalendarApp.scss';
 
 import FullCalendarSeller from '../../utils/FullCalendarSeller';
-import isSession from '../../utils/isSession';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 
-function FullCalendarApp (){
+function FullCalendarApp (session: any, auth: any,){
 
     //모달창
     const [modalFail, setModalFail] = useState(false);
@@ -28,18 +27,6 @@ function FullCalendarApp (){
     const setting = () => {
         console.log(window.pageYOffset)
     }
-
-    //사용자
-    const [session, setSession] = useState(false);
-    const [auth, setAuth] = useState({
-        accountId: 0,
-        address: "",
-        dateOfBirth: "",
-        email: "",
-        nickname: "",
-        phoneNumber: "",
-        signInId: "",
-    });
 
     //판매자 정보
     const [events, setEvents] = useState([{}]);
@@ -71,19 +58,6 @@ function FullCalendarApp (){
             LinkClick("SalesHistory");
             sellerLinkClick("SalesHistory");
         }
-
-        var jwToken = undefined;
-        if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-        else jwToken = sessionStorage.jwToken;
-        isSession(
-        jwToken,
-        (s:any)=>{
-            if (s) setSession(s);
-        },
-        (a:any)=>{
-            setAuth(a);
-        },
-        );
 
         FullCalendarSeller((seller: any)=>{
         setEvents(seller);

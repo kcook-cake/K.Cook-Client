@@ -4,40 +4,11 @@ import '../../../styles/header/HMMobile.scss';
 
 import $ from 'jquery';
 
-import isSession from '../../../utils/isSession';
 import LinkClick from '../../../utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 
 function HMSCard({ setNumLeftMobileF }) {
-    //pathname, parameter 가져오기
-    var pathname = window.location.pathname;
-    if (pathname == "/") pathname = "/Home";
-    pathname = pathname.split("/")[1];
-    //로그인 여부
-    const [session, setSession] = useState(false);
-    const [auth, setAuth] = useState({
-        accountId: 0,
-        address: "",
-        dateOfBirth: "",
-        email: "",
-        nickname: "",
-        phoneNumber: "",
-        signInId: "",
-    });
-
     useEffect(()=> {
-        var jwToken = undefined;
-        if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-        else jwToken = sessionStorage.jwToken;
-        isSession(
-          jwToken,
-            (s)=>{
-                if (s) setSession(s);
-            },
-            (a)=>{
-                setAuth(a);
-            },
-        );
         $(".header-flex").on('scroll touchmove mousewheel', (e) => {
             e.preventDefault();
             e.stopPropagation();

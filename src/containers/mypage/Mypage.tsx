@@ -10,7 +10,12 @@ import Coupons from './Coupons';
 import Profile from '../../components/mypage/Profile';
 import MypageSection from '../../components/mypage/MypageSection';
 
-const Mypage = () =>{
+interface Props {
+    session: any,
+    auth: any,
+}
+
+const Mypage = ({ session, auth, }: Props) =>{
     return (
         <div className="mypage-flex">
             <div className="mypage">
@@ -20,7 +25,7 @@ const Mypage = () =>{
                     <Route exact path="/ProductReview" component={ProductReview} />
                     <Route exact path="/Membership" component={Membership} />
                     <Route exact path="/Coupon" component={Coupons} />
-                    <Route exact path="/Profile" component={Profile} />
+                    <Route exact path="/Profile" component={()=>Profile(session, auth)} />
                 </>
             </div>
         </div>

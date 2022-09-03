@@ -7,7 +7,6 @@ import rightArrow from '../../../assets/right-arrow.svg';
 import 'src/styles/main/card/BannerSlide.scss';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import isSession from 'src/utils/isSession';
 // import "./banner-theme.scss";
 
 interface Props {
