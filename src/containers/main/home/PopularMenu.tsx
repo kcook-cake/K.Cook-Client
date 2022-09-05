@@ -12,11 +12,11 @@ import ImageModal from 'src/components/main/home/image-modal/ImageModal';
 import PopularmenuModal from 'src/components/main/home/image-modal/PopularMenuModal';
 
 interface Props {
-  session: any,
-  auth: any,
+  session: any;
+  auth: any;
 }
 
-const PopularMenu = ({session, auth}: Props) => {
+const PopularMenu = ({ session, auth }: Props) => {
   const [num, setNum] = useState(1);
   const [slidePx, setSlidePx] = useState(0);
 
@@ -38,7 +38,6 @@ const PopularMenu = ({session, auth}: Props) => {
     homeGetAxios(setData, changeData, 'popular-products', 1);
   }, []);
 
-
   // 모달창 생성용 값
   const [modalShow, setModalShow] = useState(false);
 
@@ -48,31 +47,25 @@ const PopularMenu = ({session, auth}: Props) => {
   return (
     <div className="popularmenu-flex home-flex">
       <div className="popularmenu home">
+        {auth.accountId == 31 && (
+          <button
+            onClick={
+              auth.accountId == 31
+                ? () => setModalShow((prev) => !prev)
+                : () => {}
+            }
+          >
+            상품 변경
+          </button>
+        )}
         <div className="popularmenu-title-flex">
           <div className="popularmenu-title">
-          {auth.accountId == 31 ? (
-            <>
-              <>
-                인기상품
-                <button
-                  onClick={
-                    auth.accountId == 31
-                      ? () => setModalShow((prev) => !prev)
-                      : () => {}
-                  }
-                >
-                  상품 변경
-                </button>
-              </>
-            </>
-          ) : (
-            <>인기상품</>
-          )}
-          <PopularmenuModal
-            //  resize={resize}
-            imageModalShow={modalShow}
-            setImageModalShowF={setModalShow}
-          />
+            인기상품
+            <PopularmenuModal
+              //  resize={resize}
+              imageModalShow={modalShow}
+              setImageModalShowF={setModalShow}
+            />
           </div>
           <div className="popularmenu-btn">
             <div>{num}/5</div>
