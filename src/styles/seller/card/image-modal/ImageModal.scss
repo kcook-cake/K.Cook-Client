@@ -1,131 +1,126 @@
-
 .spm-modal-img-inner input {
-    display: none;
+  display: none;
 }
 
 //이미지 모달창
 .spm-modal-background {
+  width: 100%;
+  min-width: 1199px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.281);
+  z-index: 998;
+}
+.spm-modal-box {
+  width: 775px;
+  height: 631px;
+  padding: 45px;
+  position: absolute;
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
+  background-color: #fff;
+  z-index: 999;
+}
+.spm-modal-title {
+  margin-bottom: 17px;
+  color: #222222;
+  font-size: 20px;
+  font-weight: 700;
+}
+.spm-modal-subtitle {
+  margin-top: 15px;
+  margin-bottom: 7.5px;
+  color: #222222;
+  font-weight: 500;
+}
+.spm-modal-img-box {
+  display: flex;
+  column-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.spm-add-add-img {
+  width: 160px;
+  height: 176px;
+  padding: 0;
+  display: inline-block;
+
+  background-color: #ebebeb;
+  cursor: pointer;
+  img {
+    width: 160px;
+    height: 176px;
+    border-radius: 5px;
+  }
+}
+.spm-add-add-img-icon {
+  padding-top: 50px !important;
+  padding-left: 40px !important;
+}
+
+.spm-modal-btn-box {
+  margin-top: 25px;
+}
+
+@media (max-width: 767px) {
+  //이미지 모달창
+  .spm-modal-background {
     width: 100%;
-    min-width: 1199px;
+    min-width: 0px;
     height: 100%;
     left: 0;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.281);
     z-index: 998;
-}
-.spm-modal-box {
-    width: 775px;
-    height: 631px;
-    padding: 45px;
+  }
+  .spm-modal-box {
+    width: 100%;
+    // height: 530px;
+    padding: 25px;
     position: absolute;
 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
     background-color: #fff;
     z-index: 999;
-}
-.spm-modal-title {
+  }
+  .spm-modal-title {
     margin-bottom: 17px;
     color: #222222;
     font-size: 20px;
     font-weight: 700;
-}
-.spm-modal-subtitle {
-    margin-top:15px;
+  }
+  .spm-modal-subtitle {
     margin-bottom: 7.5px;
     color: #222222;
     font-weight: 500;
-}
-.spm-modal-img-box {
-    display: flex;
-    column-gap: 15px;
+  }
+  .spm-modal-img-box::-webkit-scrollbar {
+    height: 8px;
+  }
+  .spm-modal-img-box::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    border-radius: 10px;
+  }
+  .spm-modal-img-box::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+  .spm-modal-img-box {
+    column-gap: 11px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+    overflow-x: scroll;
+  }
 
-
-
-.spm-add-add-img {
-    width: 160px;
-    height: 176px;
-    padding: 0;
-    display: inline-block;
-
-    background-color: #ebebeb;
-    cursor: pointer;
-    img {
-        width: 160px;
-        height: 176px;
-        border-radius: 5px;
-    }
-}
-.spm-add-add-img-icon {
-    padding-top: 50px !important;
-    padding-left: 40px !important;
-}
-
-.spm-modal-btn-box {
+  .spmdetail-content-btn-box {
     margin-top: 25px;
+  }
 }
 
-
-
-@media(max-width:767px) {
-    //이미지 모달창
-    .spm-modal-background {
-        width: 100%;
-        min-width: 0px;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.281);
-        z-index: 998;
-    }
-    .spm-modal-box {
-        width: 100%;
-        height: 530px;
-        padding: 25px;
-        position: absolute;
-
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
-        background-color: #fff;
-        z-index: 999;
-    }
-    .spm-modal-title {
-        margin-bottom: 17px;
-        color: #222222;
-        font-size: 20px;
-        font-weight: 700;
-    }
-    .spm-modal-subtitle {
-        margin-bottom: 7.5px;
-        color: #222222;
-        font-weight: 500;
-    }
-    .spm-modal-img-box::-webkit-scrollbar {
-        height: 8px;
-    }
-    .spm-modal-img-box::-webkit-scrollbar-thumb {
-        background-color: #e6e6e6;
-        border-radius: 10px;
-    }
-    .spm-modal-img-box::-webkit-scrollbar-track {
-        background-color: #f5f5f5;
-        border-radius: 10px;
-    }
-    .spm-modal-img-box {
-        column-gap: 11px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        overflow-x: scroll;
-    }
-
-    .spmdetail-content-btn-box {
-        margin-top: 25px;
-    }
-}
-
-@media(max-width:288px) {
-    .spmdetail-content-btn {
-        width: 89.5px !important;
-    }
+@media (max-width: 288px) {
+  .spmdetail-content-btn {
+    width: 89.5px !important;
+  }
 }
