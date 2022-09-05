@@ -10,19 +10,6 @@ import leftArrow from 'src/assets/left-arrow.svg';
 import rightArrow from 'src/assets/right-arrow.svg';
 import ImageModal from './image-modal/ImageModal';
 
-{/* <form className="option-1">
-<div className="option-size">크기</div>
-<div className="option-input">
-    <input type="radio" name="name-1" value="1호" /> 1호
-    <input type="number" min="0" className="add-price" placeholder="+0원"/>
-</div>
-<div className="option-input">
-    <input type="radio" name="name-1" value="1호" /> 2호
-    <input type="number" min="0" className="add-price" placeholder="+0원"/>
-</div>
-<button className="option-button">항목 추가</button>
-</form> */}
-
 interface Props {
     num: any,
     setNum: any,
@@ -112,9 +99,8 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
               optionListPrice: 0,
             },
           ],
-          optionDirect: false,
-          optionDirectText: '',
           optionImage: false,
+          optionImageText: '',
         },
       ]);
     const [addBack, setAddBack] = useState<any>([]);
@@ -128,6 +114,11 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
     const [num, setNum] = useState(0);
     const handleOptionName = (e: any, optionId: any, ) => {
         addOption[optionId-1].optionName = e.target.value;
+        setNum(num+1);
+        setAddOption(addOption);
+    };
+    const handleOptionListNameText = (e: any, optionId: any, optionListId: any, ) => {
+        addOption[optionId-1].optionList[optionListId-1].optionListName = "텍스트&"+e.target.value;
         setNum(num+1);
         setAddOption(addOption);
     };
@@ -145,7 +136,6 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
     };
 
     const [startDrag, setStartDrag] = useState(0);
-    const [draggingSectionId, setDraggingSectionId] = useState(null);// 1
     useEffect(()=>{
     },[]);
     
@@ -158,9 +148,9 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
 
             <div className="spm-add-update">
               <div className="spm-add-update-inner">
-                <button className="move-tap" onClick={Add}>
+                <div className="move-tap" onClick={Add}>
                     <DragBtn />
-                </button>
+                </div>
 
                 <div className="spm-add-update-content">
                     <div
@@ -211,8 +201,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                             </div>
                             <input
                                 className="spm-add-update-price-inner"
-                                type="text"
-                                min="0"
+                                type="number"
                                 placeholder="0"
                                 onChange={handleAddPrice}
                             />
@@ -220,7 +209,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                             <div className="spm-add-update-item-right">x</div>
                         </div>
 
-                        {addOption.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, optionImage: any, })=>{
+                        {addOption.map((option: { optionId: any, optionName: any, optionList: any, optionImage: any, optionImageText: any, })=>{
                             return (
                                 <form>
                                     <div className="spm-add-update-option">
@@ -249,7 +238,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                             return (
                                                 <div className="spm-add-update-item">
                                                     <div
-                                                        id={option.optionDirect&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
+                                                        id={option.optionImage&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
                                                         className="spm-add-update-item-left"
                                                         onDragStart={(e)=>{
                                                             setStartDrag(e.clientY);
@@ -270,8 +259,8 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                         return 0;
                                                                     });
                                                             } else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
-                                                                && ((optionList.optionListId != option.optionList.length && !option.optionDirect) 
-                                                                || (optionList.optionListId != option.optionList.length-1 && option.optionDirect))) {
+                                                                && ((optionList.optionListId != option.optionList.length && !option.optionImage) 
+                                                                || (optionList.optionListId != option.optionList.length-1 && option.optionImage))) {
 
                                                                     for (var i=n; i>0; i--) {
                                                                         addOption[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
@@ -294,12 +283,20 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                             className="spm-add-update-item-text"
                                                             type="text"
                                                             name={"name"+optionList.optionListId}
-                                                            placeholder={option.optionDirect&&option.optionList.length==optionList.optionListId? (option.optionImage? "이미지 입력": "텍스트 입력") : "품목"+optionList.optionListId+" 입력"}
-                                                            value={option.optionDirect&&option.optionList.length==optionList.optionListId? option.optionDirectText : optionList.optionListName}
+                                                            placeholder={
+                                                                optionList.optionListName.split("&")[0] == "텍스트"? 
+                                                                    "텍스트 입력": (option.optionImage&&option.optionList.length==optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
+                                                            value={
+                                                                optionList.optionListName.split("&")[0] == "텍스트"? 
+                                                                    optionList.optionListName.split("&")[1]: (option.optionImage&&option.optionList.length==optionList.optionListId? option.optionImageText : optionList.optionListName)}
                                                             onChange={(e)=>{
-                                                                if (option.optionDirect&&option.optionList.length==optionList.optionListId)
-                                                                    addOption[option.optionId-1].optionDirectText = e.target.value;
-                                                                else handleOptionListName(e, option.optionId, optionList.optionListId)
+                                                                if (option.optionImage&&option.optionList.length==optionList.optionListId)
+                                                                    addOption[option.optionId-1].optionImageText = e.target.value;
+                                                                else if (optionList.optionListName.split("&")[0] == "텍스트") 
+                                                                    handleOptionListNameText(e, option.optionId, optionList.optionListId);
+                                                                else  
+                                                                    handleOptionListName(e, option.optionId, optionList.optionListId);
+
                                                                 setNum(num+1);
                                                                 setAddOption(addOption);
                                                             }}
@@ -307,8 +304,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                     </div>
                                                     <input
                                                         className="spm-add-update-item-price"
-                                                        type="text"
-                                                        min="0"
+                                                        type="number"
                                                         placeholder="0"
                                                         value={optionList.optionListPrice}
                                                         onChange={(e)=>{handleOptionListPrice(e, option.optionId, optionList.optionListId)}}
@@ -321,8 +317,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                 addOption[option.optionId-1].optionList[i] = addOption[option.optionId-1].optionList[i+1];
                                                                 addOption[option.optionId-1].optionList[i].optionListId = i+1;
                                                             }
-                                                            if ((option.optionDirect&&option.optionList.length==optionList.optionListId)) {
-                                                                addOption[option.optionId-1].optionDirect = false;
+                                                            if ((option.optionImage&&option.optionList.length==optionList.optionListId)) {
                                                                 addOption[option.optionId-1].optionImage = false;
                                                             }
                                                             addOption[option.optionId-1].optionList.pop();
@@ -347,7 +342,26 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                     setAddOption(addOption);
                                                 }}>+&nbsp;품목 추가
                                             </div>
-                                            {option.optionDirect? null:
+                                            <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
+                                            <div
+                                                style={{ color: "#ea5450", }}
+                                                onClick={()=>{
+                                                    addOption[option.optionId-1].optionList[option.optionList.length] = {
+                                                        optionListId: option.optionList.length+1,
+                                                        optionListName: "",
+                                                        optionListPrice: 0,
+                                                    };
+                                                    if (option.optionImage)
+                                                        addOption[option.optionId-1].optionList[option.optionList.length-2].optionListName = "텍스트&"
+                                                    else 
+                                                        addOption[option.optionId-1].optionList[option.optionList.length-1].optionListName = "텍스트&"
+
+                                                    setNum(num+1);
+                                                    setAddOption(addOption);
+                                                }}>'텍스트' 추가
+                                            </div>
+                                            
+                                            {option.optionImage? null:
                                             <>
                                                 <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
                                                 <div
@@ -358,26 +372,8 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                             optionListName: "",
                                                             optionListPrice: 0,
                                                         };
-                                                        addOption[option.optionId-1].optionDirect = true;
-                                                        setNum(num+1);
-                                                        setAddOption(addOption);
-                                                    }}>'텍스트' 추가
-                                                </div>
-                                            </>
-                                            }
-                                            {option.optionDirect? null:
-                                            <>
-                                                <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
-                                                <div
-                                                    style={{ color: "#ea5450", }}
-                                                    onClick={()=>{
-                                                        addOption[option.optionId-1].optionList[option.optionList.length] = {
-                                                            optionListId: option.optionList.length+1,
-                                                            optionListName: "",
-                                                            optionListPrice: 0,
-                                                        };
-                                                        addOption[option.optionId-1].optionDirect = true;
                                                         addOption[option.optionId-1].optionImage = true;
+
                                                         setNum(num+1);
                                                         setAddOption(addOption);
                                                     }}>'이미지' 추가
@@ -404,8 +400,8 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                             optionListPrice: 0,
                                         },
                                     ],
-                                    optionDirect: false,
-                                    optionDirectText: "",
+                                    optionImage: false,
+                                    optionImageText: "",
                                 };
                                 setNum(num+1);
                                 setAddOption(addOption);

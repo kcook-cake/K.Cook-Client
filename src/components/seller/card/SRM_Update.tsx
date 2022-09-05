@@ -35,16 +35,23 @@ function SPM_Update({
     
     const handleAddName = (e: any, ) => {
         updateData.name = e.target.value;
+        console.log(updateData);
     };
+    const handleAddPrice = (e: any, ) => {
+        updateData.price = e.target.value;
+    };
+    
     const handleOptionName = (e: any, optionId: any, ) => {
         updateData.list[optionId-1].optionName = e.target.value;
+    };
+    const handleOptionListNameText = (e: any, optionId: any, optionListId: any, ) => {
+        updateData.list[optionId-1].optionList[optionListId-1].optionListName = "텍스트&"+e.target.value;
     };
     const handleOptionListName = (e: any, optionId: any, optionListId: any, ) => {
         updateData.list[optionId-1].optionList[optionListId-1].optionListName = e.target.value;
     };
     const handleOptionListPrice = (e: any, optionId: any, optionListId: any, ) => {
         var evalue = e.target.value;
-        if (evalue === "NaN") evalue = "0";
         updateData.list[optionId-1].optionList[optionListId-1].optionListPrice = parseInt(evalue);
     };
 
@@ -73,7 +80,12 @@ function SPM_Update({
         for (var i=0; i<updateData.list.length; i++) {
             $('#spm-update-option-'+(i+1)).val(updateData.list[i].optionName);
             for (var j=0; j<updateData.list[i].optionList.length; j++) {
-                $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListName);
+                if (updateData.list[i].optionList[j].optionListName.split("&")[0] == "텍스트")
+                    $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListName.split("&")[1]);
+                else if (updateData.list[i].optionImage&&updateData.list[i].optionList.length==updateData.list[i].optionList[j].optionListId)
+                    $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionImageText);
+                else
+                    $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListName);
                 $('#spm-update-price-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListPrice);
                 // if (updateData.list[i].optionDirect&&updateData.list[i].optionList.length==updateData.list[i].optionList[j].optionListId)
                 //     $('#spm-update-price-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionDirectText);
@@ -109,10 +121,10 @@ function SPM_Update({
                             onClick={()=>{
                                 setUpdateImageModal(true);
                             }}>
-                                {updateImage[updateImageNum]==""?
-                                    <div className="spm-add-update-img-inner"><AddIcon/></div>:
-                                    <img src={updateImage[updateImageNum]} />
-                                }
+                            {updateImage[updateImageNum]==""?
+                                <div className="spm-add-update-img-inner"><AddIcon/></div>:
+                                <img src={updateImage[updateImageNum]} />
+                            }
                         </div>
                         <div className="spm-add-update-arrow">
                             <img
@@ -152,13 +164,13 @@ function SPM_Update({
                                     id="spm-update-price"
                                     className="spm-add-update-price-inner"
                                     type="number"
-                                    min="0"
                                     placeholder="0"
+                                    onChange={handleAddPrice}
                                 />원
                                 <div className="spm-add-update-right">x</div>
                             </div>
                             <>
-                                {updateData.list.map((option: { optionId: any, optionName: any, optionList: any, optionDirect: any, optionDirectText: any, optionImage: any, })=>{
+                                {updateData.list.map((option: { optionId: any, optionName: any, optionList: any, optionImage: any, optionImageText: any, })=>{
                                     return (
                                         <form>
                                             <div className="spm-add-update-option">
@@ -187,7 +199,7 @@ function SPM_Update({
                                                 return (
                                                     <div className="spm-add-update-item">
                                                         <div
-                                                            id={option.optionDirect&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
+                                                            id={option.optionImage&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
                                                             className="spm-add-update-item-left"
                                                             onDragStart={(e)=>{
                                                                 setStartDrag(e.clientY);
@@ -209,8 +221,8 @@ function SPM_Update({
                                                                         });
                                                                 }
                                                                 else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
-                                                                    && ((optionList.optionListId != option.optionList.length && !option.optionDirect) 
-                                                                    || (optionList.optionListId != option.optionList.length-1 && option.optionDirect))) {
+                                                                    && ((optionList.optionListId != option.optionList.length && !option.optionImage) 
+                                                                    || (optionList.optionListId != option.optionList.length-1 && option.optionImage))) {
                                 
                                                                         for (var i=n; i>0; i--) {
                                                                             updateData.list[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
@@ -233,12 +245,19 @@ function SPM_Update({
                                                                 className="spm-add-update-item-text"
                                                                 type="text"
                                                                 name={"name"+optionList.optionListId}
-                                                                placeholder={option.optionDirect&&option.optionList.length==optionList.optionListId? (option.optionImage? "이미지 입력": "텍스트 입력") : "품목"+optionList.optionListId+" 입력"}
-                                                                value={option.optionDirect&&option.optionList.length==optionList.optionListId? option.optionDirectText: optionList.optionListName}
+                                                                placeholder={
+                                                                    optionList.optionListName.split("&")[0] == "텍스트"? 
+                                                                        "텍스트 입력": (option.optionImage&&option.optionList.length==optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
+                                                                value={
+                                                                    optionList.optionListName.split("&")[0] == "텍스트"? 
+                                                                        optionList.optionListName.split("&")[1]: (option.optionImage&&option.optionList.length==optionList.optionListId? option.optionImageText : optionList.optionListName)}
                                                                 onChange={(e)=>{
-                                                                    if (option.optionDirect&&option.optionList.length==optionList.optionListId)
-                                                                        updateData.list[option.optionId-1].optionDirectText = e.target.value;
-                                                                    else handleOptionListName(e, option.optionId, optionList.optionListId);
+                                                                    if (option.optionImage&&option.optionList.length==optionList.optionListId)
+                                                                        updateData.list[option.optionId-1].optionImageText = e.target.value;
+                                                                    else if (optionList.optionListName.split("&")[0] == "텍스트") 
+                                                                        handleOptionListNameText(e, option.optionId, optionList.optionListId);
+                                                                    else
+                                                                        handleOptionListName(e, option.optionId, optionList.optionListId);
                                                                     setNum(num+1);
                                                                 }}
                                                             />
@@ -247,7 +266,6 @@ function SPM_Update({
                                                             id={"spm-update-price-option-list-"+option.optionId+"-"+optionList.optionListId}
                                                             className="spm-add-update-item-price"
                                                             type="number"
-                                                            min="0"
                                                             placeholder="0"
                                                             // value={optionList.optionListPrice}
                                                             onChange={(e)=>{handleOptionListPrice(e, option.optionId, optionList.optionListId)}}
@@ -261,8 +279,8 @@ function SPM_Update({
                                                                     updateData.list[option.optionId-1].optionList[i].optionListId = i+1;
                                                                 }
                                                                 updateData.list[option.optionId-1].optionList.pop();
-                                                                if (!(option.optionDirect&&option.optionList.length==optionList.optionListId))
-                                                                    updateData.list[option.optionId-1].optionDirect = false;
+                                                                if (option.optionImage&&option.optionList.length==optionList.optionListId)
+                                                                    updateData.list[option.optionId-1].optionImage = false;
                                                                 setNum(num+1);
                                                             }}>x
                                                         </div>
@@ -280,7 +298,24 @@ function SPM_Update({
                                                         setNum(num+1);
                                                     }}>+&nbsp;품목 추가
                                                 </div>
-                                                {option.optionDirect? null:
+                                                <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
+                                                <div
+                                                    style={{ color: "#ea5450", }}
+                                                    onClick={()=>{
+                                                        updateData.list[option.optionId-1].optionList[option.optionList.length] = {
+                                                            optionListId: option.optionList.length+1,
+                                                            optionListName: "",
+                                                            optionListPrice: 0,
+                                                        };
+                                                        if (option.optionImage)
+                                                            updateData.list[option.optionId-1].optionList[option.optionList.length-2].optionListName = "텍스트&"
+                                                        else 
+                                                            updateData.list[option.optionId-1].optionList[option.optionList.length-1].optionListName = "텍스트&"
+                                                        setNum(num+1);
+                                                    }}>'텍스트' 추가
+                                                </div>
+
+                                                {option.optionImage? null:
                                                     <>
                                                         <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
                                                         <div
@@ -291,25 +326,6 @@ function SPM_Update({
                                                                     optionListName: "",
                                                                     optionListPrice: 0,
                                                                 };
-                                                                updateData.list[option.optionId-1].optionDirect = true;
-                                                                updateData.list[option.optionId-1].optionImage = false;
-                                                                setNum(num+1);
-                                                            }}>'텍스트' 추가
-                                                        </div>
-                                                    </>
-                                                }
-                                                {option.optionDirect? null:
-                                                    <>
-                                                        <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
-                                                        <div
-                                                            style={{ color: "#ea5450", }}
-                                                            onClick={()=>{
-                                                                updateData.list[option.optionId-1].optionList[option.optionList.length] = {
-                                                                    optionListId: option.optionList.length+1,
-                                                                    optionListName: "",
-                                                                    optionListPrice: 0,
-                                                                };
-                                                                updateData.list[option.optionId-1].optionDirect = true;
                                                                 updateData.list[option.optionId-1].optionImage = true;
                                                                 setNum(num+1);
                                                             }}>'이미지' 추가
