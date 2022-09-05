@@ -62,13 +62,17 @@ function ProductManagement() {
             },
             {
               optionListId: 4,
-              optionListName: '',
+              optionListName: '텍스트&아',
+              optionListPrice: 0,
+            },
+            {
+              optionListId: 5,
+              optionListName: '텍스트&',
               optionListPrice: 0,
             },
           ],
-          optionDirect: true,
-          optionDirectText: '',
-          optionImage: true,
+          optionImage: false,
+          optionImageText: '',
         },
         {
           optionId: 2,
@@ -80,9 +84,8 @@ function ProductManagement() {
               optionListPrice: 1000,
             },
           ],
-          optionDirect: false,
-          optionDirectText: '',
           optionImage: false,
+          optionImageText: '',
         },
       ],
     },
@@ -101,9 +104,8 @@ function ProductManagement() {
               optionListPrice: 1000,
             },
           ],
-          optionDirect: false,
-          optionDirectText: '',
           optionImage: false,
+          optionImageText: '',
         },
       ],
     },
@@ -152,26 +154,28 @@ function ProductManagement() {
             {oriData.map((data: any, idx: any) => {
               return (
                 <>
-                  {oriShow[idx] ? (
-                    <SPMCard
-                      idx={idx}
-                      num={num}
-                      setNum={setNum}
-                      oriShow={oriShow}
-                      oriData={oriData}
-                      oriImage={oriImage}
-                    />
-                  ) : (
-                    <SPM_Update
-                      idx={idx}
-                      num={num}
-                      setNum={setNum}
-                      resize={resize}
-                      oriShow={oriShow}
-                      getUpdateData={oriData[idx]}
-                      getUpdateImage={oriImage[idx]}
-                    />
-                  )}
+                  {oriShow[idx] ? 
+                    (
+                      <SPMCard
+                        idx={idx}
+                        num={num}
+                        setNum={setNum}
+                        oriShow={oriShow}
+                        oriData={oriData}
+                        oriImage={oriImage}
+                      />
+                    ) : (
+                      <SPM_Update
+                        idx={idx}
+                        num={num}
+                        setNum={setNum}
+                        resize={resize}
+                        oriShow={oriShow}
+                        getUpdateData={oriData[idx]}
+                        getUpdateImage={oriImage[idx]}
+                      />
+                    )
+                  }
                 </>
               );
             })}
@@ -205,7 +209,8 @@ function ProductManagement() {
             className="mobile spm-bottom-inner spm-bottom-right"
             onClick={() => {
               setAddShow(false);
-              // for (var i=0; i< update.length; i++) update[i] = false;
+              for (var i=0; i< oriShow.length; i++) oriShow[i] = true;
+              setNum(num+1);
             }}>
             <CloseBtn />
           </button>
