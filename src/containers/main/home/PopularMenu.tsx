@@ -8,8 +8,7 @@ import axios from 'axios';
 import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
 
-import ImageModal from 'src/components/main/home/image-modal/ImageModal';
-import PopularmenuModal from 'src/components/main/home/image-modal/PopularMenuModal';
+import MenuModal from 'src/components/main/home/image-modal/Modals';
 
 interface Props {
   session: any;
@@ -40,9 +39,10 @@ const PopularMenu = ({ session, auth }: Props) => {
 
   // 모달창 생성용 값
   const [modalShow, setModalShow] = useState(false);
+  const [cakeTF, setCakeTF] = useState<number>();
 
-  const [image, setImage] = useState<any>([]);
-  const [bannerImage, setBannerImage] = useState<any>([]);
+  /* const [image, setImage] = useState<any>([]);
+  const [bannerImage, setBannerImage] = useState<any>([]); */
 
   return (
     <div className="popularmenu-flex home-flex">
@@ -51,7 +51,9 @@ const PopularMenu = ({ session, auth }: Props) => {
           <button
             onClick={
               auth.accountId == 31
-                ? () => setModalShow((prev) => !prev)
+                ? () => {
+                    return setModalShow((prev) => !prev), setCakeTF(1);
+                  }
                 : () => {}
             }
           >
@@ -61,10 +63,11 @@ const PopularMenu = ({ session, auth }: Props) => {
         <div className="popularmenu-title-flex">
           <div className="popularmenu-title">
             인기상품
-            <PopularmenuModal
+            <MenuModal
               //  resize={resize}
               imageModalShow={modalShow}
               setImageModalShowF={setModalShow}
+              cakeTF={cakeTF}
             />
           </div>
           <div className="popularmenu-btn">

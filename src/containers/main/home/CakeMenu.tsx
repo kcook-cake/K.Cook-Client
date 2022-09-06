@@ -7,15 +7,15 @@ import SectionTitle from 'src/components/main/card/SectionTitle';
 import getAxios from 'src/utils/getAxios';
 import CakeCard from 'src/components/main/card/CakeCard';
 
-import CakeMenuModal from 'src/components/main/home/image-modal/CakeMenuModal';
 import cakeGetAxios from 'src/utils/cakeGetAxios';
+import MenuModal from 'src/components/main/home/image-modal/Modals';
 
 interface Props {
-  session: any,
-  auth: any,
+  session: any;
+  auth: any;
 }
 
-function CakeMenu({session, auth}: Props) {
+function CakeMenu({ session, auth }: Props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -24,6 +24,8 @@ function CakeMenu({session, auth}: Props) {
 
   // 모달창 생성용 값
   const [modalShow, setModalShow] = useState(false);
+  const [cakeTF, setCakeTF] = useState<number>();
+  console.log(cakeTF);
 
   return (
     <div className="home-flex">
@@ -34,7 +36,9 @@ function CakeMenu({session, auth}: Props) {
               <button
                 onClick={
                   auth.accountId === 31
-                    ? () => setModalShow((prev) => !prev)
+                    ? () => {
+                        return setModalShow((prev) => !prev), setCakeTF(3);
+                      }
                     : () => {}
                 }
               >
@@ -46,10 +50,11 @@ function CakeMenu({session, auth}: Props) {
             <SectionTitle title="케이크" link="Cake" />
           )}
         </div>
-        <CakeMenuModal
+        <MenuModal
           //  resize={resize}
           imageModalShow={modalShow}
           setImageModalShowF={setModalShow}
+          cakeTF={cakeTF}
         />
         <div className="contents">
           <CakeCard getData={data} cakeDetail={false} />
