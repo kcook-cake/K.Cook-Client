@@ -10,7 +10,7 @@ import StoreMenu from './StoreMenu';
 import LinkClick from 'src/utils/LinkClick';
 import PopularMenu from './PopularMenu';
 
-function Home(session: any, auth: any, ) {
+function Home(session: any, auth: any) {
   useEffect(() => {
     LinkClick('Home');
   }, []);
@@ -19,7 +19,7 @@ function Home(session: any, auth: any, ) {
       <MainCrousel session={session} auth={auth} />
       <PopularMenu session={session} auth={auth} />
       <NewMenu />
-      <MainAd />
+      <MainAd session={session} auth={auth} />
       <CakeMenu session={session} auth={auth} />
       <StoreMenu session={session} auth={auth} />
     </>

@@ -25,7 +25,6 @@ function CakeMenu({ session, auth }: Props) {
   // 모달창 생성용 값
   const [modalShow, setModalShow] = useState(false);
   const [cakeTF, setCakeTF] = useState<number>();
-  console.log(cakeTF);
 
   return (
     <div className="home-flex">
