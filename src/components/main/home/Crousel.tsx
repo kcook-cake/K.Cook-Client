@@ -9,11 +9,11 @@ import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 import ImageModal from 'src/components/main/home/image-modal/ImageModal';
 
 interface Props {
-  session: any,
-  auth: any,
+  session: any;
+  auth: any;
 }
 
-function Crousel({session, auth}: Props) {
+function Crousel({ session, auth }: Props) {
   const [num, setNum] = useState(0);
 
   const [files, setFiles] = useState('');

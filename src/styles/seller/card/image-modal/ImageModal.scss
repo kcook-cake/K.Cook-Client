@@ -12,7 +12,7 @@
   border: 0;
   border-radius: 10px;
   outline: none;
-  padding-left: 5px;
+  padding: 14px;
   background-color: rgb(233, 233, 233);
 
   margin-bottom: 20px;
@@ -80,7 +80,25 @@
   margin-top: 25px;
 }
 
+//
+// 모달창을 화면 중간으로
+//  left: 40%;
+//  transform: translateX(-50%);
+
 @media (max-width: 767px) {
+  .spm-modal-img-inner input#bannerUrlTextInput {
+    width: 280px;
+    height: 25px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding: 12px;
+    background-color: rgb(233, 233, 233);
+
+    margin-bottom: 20px;
+  }
+
   //이미지 모달창
   .spm-modal-background {
     width: 100%;
@@ -92,7 +110,7 @@
     z-index: 998;
   }
   .spm-modal-box {
-    width: 100%;
+    width: 80%;
     // height: 530px;
     padding: 25px;
     position: absolute;

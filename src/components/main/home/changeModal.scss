@@ -2,14 +2,9 @@
   display: none;
 }
 
-.mainAd-modal-box {
-  margin-left: 10px;
-  min-height: 300px;
-}
-
 #changeAdFileInputLabel {
   img {
-    min-width: 650px !important;
+    min-width: 650px;
     height: 200px !important;
   }
 
@@ -26,6 +21,15 @@
       cursor: pointer;
       background-color: #ff8787;
       border: 1px solid #ff8787;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #changeAdFileInputLabel {
+    img {
+      min-width: 500px !important;
+      height: 200px !important;
     }
   }
 }
