@@ -30,3 +30,10 @@
 .spmdetail-content-btn-box > button {
   margin-right: 15px;
 }
+
+@media (max-width: 767px) {
+  .storeId-modal-box {
+    left: 45%;
+    transform: translateX(-50%);
+  }
+}

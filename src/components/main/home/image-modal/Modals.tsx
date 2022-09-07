@@ -243,7 +243,7 @@ function MenuModal({
             ></div> */}
 
             <div
-              className="spm-modal-box"
+              className="spm-modal-box cakeId-modal-box"
               /*  style={{
                 top:
                   resize <= 767
@@ -356,7 +356,7 @@ function MenuModal({
             ></div> */}
 
             <div
-              className="spm-modal-box"
+              className="spm-modal-box storeId-modal-box"
               /*  style={{
                 top:
                   resize <= 767
