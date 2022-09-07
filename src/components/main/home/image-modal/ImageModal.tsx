@@ -55,6 +55,7 @@ function ImageModal({
           'bannerListReq[0].mobileImage': formData,
           'bannerListReq[0].orders': idx + 1,
           'bannerListReq[0].webImage': formData,
+          //"이미지url" : 인풋창에 적은값
         },
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -73,6 +74,9 @@ function ImageModal({
   );
 
   useEffect(() => {}, []);
+
+  // axios.post할 이미지 url값 ( JSON보내는 형식에 따라 달라질 예정)
+  // const [postUrl, setPostUrl] = useState('');
 
   return (
     <>
@@ -116,6 +120,11 @@ function ImageModal({
                   ref={inputRef}
                   onChange={(e) => UpdateImageF(e, 0)}
                 />
+                <input
+                  id="bannerUrlTextInput"
+                  type="text"
+                  onChange={() => {}}
+                />
               </div>
 
               <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
@@ -141,6 +150,11 @@ function ImageModal({
                         accept="image/*"
                         ref={inputRef}
                         onChange={(e) => UpdateImageF(e, data)}
+                      />
+                      <input
+                        id="bannerUrlTextInput"
+                        type="text"
+                        onChange={() => {}}
                       />
                     </div>
                   );

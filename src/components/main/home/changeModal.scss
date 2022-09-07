@@ -1,3 +1,31 @@
-#changeAdInput {
+#changeAdFileInput {
   display: none;
+}
+
+.mainAd-modal-box {
+  margin-left: 10px;
+  min-height: 300px;
+}
+
+#changeAdFileInputLabel {
+  img {
+    min-width: 650px !important;
+    height: 200px !important;
+  }
+
+  button {
+    width: 110px;
+    height: 40px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 1px solid #ea5450;
+    background-color: #ea5450;
+    &:hover {
+      cursor: pointer;
+      background-color: #ff8787;
+      border: 1px solid #ff8787;
+    }
+  }
 }

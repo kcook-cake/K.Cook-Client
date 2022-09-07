@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import './changeModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
@@ -78,7 +78,7 @@ function ChangeAdModal({
     []
   );
 
-  const [imageSrc, setImageSrc] = useState(imageData);
+  const [imageSrc, setImageSrc] = useState(null);
 
   const encodeFileToBase64 = (fileBlob: any) => {
     const reader = new FileReader();
@@ -91,16 +91,19 @@ function ChangeAdModal({
     });
   };
 
+  useEffect(() => {
+    setImageSrc(imageData);
+  }, [imageData]);
+
   return (
     <>
-      <div className="spm-modal"></div>
       {imageModalShow && (
         <>
           {/* <div
             className="spm-modal-background"
             style={{ top: window.pageYOffset }}
           ></div> */}
-          <div className="spm-modal-box">
+          <div className="spm-modal-box mainAd-modal-box">
             {/* 
               style={{
                 top:
@@ -119,7 +122,7 @@ function ChangeAdModal({
             <div className="spm-modal-subtitle">대표이미지(1장)</div>
 
             <div>
-              <label htmlFor="changeAdInput">
+              <label htmlFor="changeAdFileInput" id="changeAdFileInputLabel">
                 {/*  {imageSrc ? (
                   <img src={imageSrc} alt="preview-img" />
                 ) : (
@@ -129,14 +132,14 @@ function ChangeAdModal({
                   <img src={imageSrc} alt="preview-img" />
                 ) : (
                   <>
-                    <AddIcon />
-                    <p>null일경우 AddIcon으로 해두었는데 안나옴</p>
+                    {/* <AddIcon /> */}
+                    <button>광고 이미지 등록</button>
                   </>
                 )}
                 {/* {image[0] == '' ? <AddIcon /> : <img src={image[0]} />} */}
               </label>
               <input
-                id="changeAdInput"
+                id="changeAdFileInput"
                 type="file"
                 accept="image/*"
                 ref={inputRef}

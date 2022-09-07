@@ -25,20 +25,22 @@ function MainAd({ session, auth }: Props) {
 
   return (
     <div className="main-ad-flex">
+      <ChangeAdModal
+        //      num={num}
+        //        setNum={setNum}
+        //          resize={resize}
+        imageModalShow={changeAd}
+        setImageModalShowF={setChangeAd}
+        imageData={image}
+        //            setImageDataF={setBannerImage}
+      />
       <div className="main-ad">
-        <ChangeAdModal
-          //      num={num}
-          //        setNum={setNum}
-          //          resize={resize}
-          imageModalShow={changeAd}
-          setImageModalShowF={setChangeAd}
-          imageData={image}
-          //            setImageDataF={setBannerImage}
-        />
         <>
           <img src={image} alt="" />
           {auth.accountId == 31 && (
-            <button onClick={() => setChangeAd(true)}>광고 변경</button>
+            <button onClick={() => setChangeAd((prev) => !prev)}>
+              광고 변경
+            </button>
           )}
         </>
 

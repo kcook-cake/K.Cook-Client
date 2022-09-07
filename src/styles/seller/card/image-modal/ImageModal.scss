@@ -1,5 +1,21 @@
-.spm-modal-img-inner input {
+.spm-modal-img-inner input#home-file-0,
+.spm-modal-img-inner input#home-file-1,
+.spm-modal-img-inner input#home-file-2,
+.spm-modal-img-inner input#home-file-3 {
   display: none;
+}
+
+.spm-modal-img-inner input#bannerUrlTextInput {
+  width: 372px;
+  height: 25px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 5px;
+  background-color: rgb(233, 233, 233);
+
+  margin-bottom: 20px;
 }
 
 //이미지 모달창
@@ -14,7 +30,7 @@
 }
 .spm-modal-box {
   width: 775px;
-  height: 631px;
+  //  height: 631px;
   padding: 45px;
   position: absolute;
 
