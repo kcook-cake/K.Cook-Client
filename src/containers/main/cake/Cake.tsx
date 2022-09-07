@@ -12,7 +12,7 @@ import getAxios from 'src/utils/getAxios';
 import PickCard from 'src/components/main/card/PickCard';
 import CakeCard from 'src/components/main/card/CakeCard';
 import LinkClick from 'src/utils/LinkClick';
-import CakeStoreTitle from 'src/components/main/card/cake-store/CakeStoreTitle';
+
 import SelectWindow from 'src/components/main/card/cake-store/SelectWindow';
 import SelectBar from 'src/components/main/card/cake-store/SelectBar';
 import SelectBox from 'src/components/main/card/cake-store/SelectBox';
@@ -78,7 +78,7 @@ function Cake() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    cakeGetAxios(setData, 'cakes', 1, 24);
+    cakeGetAxios(setData, 'cakes', 1, 12);
 
     axios.get(`https://prod.kcook-cake.com/app/cities`).then((res) => {
       setSelectData([
@@ -187,13 +187,10 @@ function Cake() {
           </div>
 
           <div className="cake-store-contents cake-contents-flex">
-            <CakeStoreTitle detail={cakeDetail} setDetailF={setCakeDetail} />
             <div className="contents">
               <CakeCard getData={data} cakeDetail={cakeDetail} />
             </div>
-            <div
-              className={'pagination cake-store-' + (cakeDetail ? 'dummy' : '')}
-            >
+            <div  className='pagination cake-store-'>
               <Link to="/" className="arrow prev" href="#">
                 {' '}
                 &lt;Prev

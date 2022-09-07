@@ -167,28 +167,14 @@
     margin-left: 16px;
   }
 
-  .cake-contents-flex {
-    .contents {
-      margin-bottom: 23px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      column-gap: 16px;
-      overflow-x: scroll;
-    }
-  }
-  .store-contents-flex {
-    .contents {
-      margin-bottom: 23px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-      column-gap: 16px;
-      overflow-x: scroll;
-    }
-  }
   .cake-store-contents {
     padding: 0;
     margin: 0 16px;
     margin-bottom: 45px;
+    .contents {
+      margin-bottom: 23px;
+      overflow-x: scroll;
+    }
     .contents::-webkit-scrollbar {
       height: 8px;
     }

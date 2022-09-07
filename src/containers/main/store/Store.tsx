@@ -13,7 +13,6 @@ import getAxios from 'src/utils/getAxios';
 import PickCard from 'src/components/main/card/PickCard';
 import StoreCard from 'src/components/main/card/StoreCard';
 import LinkClick from 'src/utils/LinkClick';
-import CakeStoreTitle from 'src/components/main/card/cake-store/CakeStoreTitle';
 
 import SelectBar from 'src/components/main/card/cake-store/SelectBar';
 import SelectWindow from 'src/components/main/card/cake-store/SelectWindow';
@@ -46,14 +45,14 @@ function Store() {
   const [selectDataOne, setSelectDataOne] = useState([["인기순", "최신순", "판매량순", "낮은 가격순", "높은 가격순"]]);
   const [selectData, setSelectData] = useState([[], [], [], []]);
 
-  const [selectBox, setSelectBox] = useState([false, false, false, false])
+  // const [selectBox, setSelectBox] = useState([false, false, false, false])
   //선택지창
   const [selectWindow, setSelectWindow] = useState([
     [false, '정렬', 0],
     [false, '지역', 28],
     [false, '시/군', 42],
-    [false, '지하철노선', 70],
-    [false, '지하철역', 56],
+    [false, '', 0],
+    [false, '', 0],
   ]);
   //선택지바
   const [selectAll, setSelectAll] = useState([]);
@@ -80,7 +79,7 @@ function Store() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    storeGetAxios(setData, 'stores/account/auth', 1, 18);
+    storeGetAxios(setData, 'stores/account/auth', 1, 9);
     axios
       .get(`https://prod.kcook-cake.com/app/cities`)
       .then(res =>{
@@ -101,7 +100,7 @@ function Store() {
         {resize > 767 || selectMobileTF ?
           <SelectWindow
             cakestoreTF={false} width={width} height={250} NumF={NumF}
-            selectAll={selectAll} selectBox={selectBox} selectWindow={selectWindow}
+            selectAll={selectAll} selectBox={[false, false, false, false]} selectWindow={selectWindow}
             selectDataOne={selectDataOne} selectData={selectData}
             setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
         :null}
@@ -121,7 +120,8 @@ function Store() {
             <SelectBoxOne selectWindow={selectWindow} SelectCloseF={SelectCloseF} />
             <SelectBox 
               cakestoreTF={false} NumF={NumF} 
-              selectBox={selectBox} selectWindow={selectWindow}
+              selectBox={[false, false, false, false]} 
+              selectWindow={selectWindow}
               SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
 
             {/* 선택지 바 */}
@@ -133,7 +133,7 @@ function Store() {
                         className="cake-bar-card-all-delete"
                         onClick={()=>{
                           SelectCloseF();
-                          setSelectBox([false, false, false, false]);
+                          // setSelectBox([false, false, false, false]);
       
                           selectWindow[1][1] = '지역';
                           selectWindow[2][1] = '시/군';
@@ -153,13 +153,10 @@ function Store() {
           </div>
 
           <div className="cake-store-contents store-contents-flex">
-            <CakeStoreTitle detail={cakeDetail} setDetailF={setCakeDetail} />
             <div className="contents">
               <StoreCard getData={data} cakeDetail={cakeDetail} />
             </div>
-            <div
-              className={'pagination cake-store-' + (cakeDetail ? 'dummy' : '')}
-            >
+            <div  className='pagination cake-store-'>
               <Link to="/" className="arrow prev" href="#">
                 {' '}
                 &lt;Prev

@@ -94,21 +94,12 @@ export default function SelectWindow({
                 </div>
             </div>
 
-            <div className={classNames('mobile', 'cake-select-mobile', {
-                    "store-nouse": selectBox[0],
-                })}>
+            <div className="mobile cake-select-mobile">
                 지역
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
                         SelectCloseF();
-                        if (!cakestoreTF) {
-                            selectBox[1] = true;
-                            selectBox[3] = false;
-                            if (!selectBox[2]) setSelectAllF([]);
-                            selectBox[0] = false;
-                            selectBox[2] = true;
-                        }
                         if (selectWindow[1][0]) selectWindow[1][0] = false;
                         else selectWindow[1][0] = true;
                         NumF();
@@ -147,20 +138,18 @@ export default function SelectWindow({
             </div>: null}
 
 
-            {cakestoreTF || selectBox[1] ?
-                <div className="mobile cake-select-mobile">
-                    {cakestoreTF? "맛" : "시/군"}
-                    <div
-                        className="cake-select-mobile-button"
-                        onClick={()=>{
-                        SelectCloseF();
-                            if (selectWindow[2][0]) selectWindow[2][0] = false;
-                            else selectWindow[2][0] = true;
-                        }}>
-                        선택하기
-                    </div>
+            <div className="mobile cake-select-mobile">
+                {cakestoreTF? "맛" : "시/군"}
+                <div
+                    className="cake-select-mobile-button"
+                    onClick={()=>{
+                    SelectCloseF();
+                        if (selectWindow[2][0]) selectWindow[2][0] = false;
+                        else selectWindow[2][0] = true;
+                    }}>
+                    선택하기
                 </div>
-            :null}
+            </div>
             {selectWindow[2][0]?
             <div
                 className="cake-select-absolute"
@@ -205,22 +194,13 @@ export default function SelectWindow({
             </div>: null}
 
 
-
-            <div className={classNames('mobile', 'cake-select-mobile', {
-                    "store-nouse": selectBox[2],
-                })}>
+            {cakestoreTF?
+            <div className="mobile cake-select-mobile">
                 {cakestoreTF? "이벤트" : "지하철노선"}
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
                         SelectCloseF();
-                        if (!cakestoreTF) {
-                            selectBox[1] = false;
-                            selectBox[3] = true;
-                            if (!selectBox[0]) setSelectAllF([]);
-                            selectBox[0] = true;
-                            selectBox[2] = false;
-                        }
                         if (selectWindow[3][0]) selectWindow[3][0] = false;
                         else selectWindow[3][0] = true;
                         NumF();
@@ -228,6 +208,7 @@ export default function SelectWindow({
                     선택하기
                 </div>
             </div>
+            :null}
             {selectWindow[3][0]?
             <div
                 className="cake-select-absolute"
@@ -258,19 +239,19 @@ export default function SelectWindow({
             </div>: null}
 
             
-            {cakestoreTF || selectBox[3] ?
-                <div className="mobile cake-select-mobile">
-                    {cakestoreTF? "가격대" : "지하철역"}
-                    <div
-                        className="cake-select-mobile-button"
-                        onClick={()=>{
-                        SelectCloseF();
-                        if (selectWindow[4][0]) selectWindow[4][0] = false;
-                        else selectWindow[4][0] = true;
-                        }}>
-                        선택하기
-                    </div>
+            {cakestoreTF?
+            <div className="mobile cake-select-mobile">
+                {cakestoreTF? "가격대" : "지하철역"}
+                <div
+                    className="cake-select-mobile-button"
+                    onClick={()=>{
+                    SelectCloseF();
+                    if (selectWindow[4][0]) selectWindow[4][0] = false;
+                    else selectWindow[4][0] = true;
+                    }}>
+                    선택하기
                 </div>
+            </div>
             :null}
             {selectWindow[4][0]?
             <div
