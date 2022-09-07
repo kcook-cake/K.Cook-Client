@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import axios from 'axios';
-import 'src/styles/seller/card/image-modal/ImageModal.scss';
+import 'src/styles/seller/spm-ssr/image-modal/ImageModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 

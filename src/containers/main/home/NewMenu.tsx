@@ -5,7 +5,7 @@ import '../../../styles/main/home/NewMenu.scss'
 import axios from 'axios';
 
 import getAxios from 'src/utils/getAxios';
-import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
+import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
 
 function NewMenu (){
