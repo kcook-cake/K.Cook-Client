@@ -136,12 +136,7 @@ function CakeCard({ getData, cakeDetail }: Props) {
           idx: any,
         ) => {
           return (
-            <Link
-              className={
-                'cake-store-card-' + (idx > 7 && cakeDetail ? 'dummy' : '')
-              }
-              to={'/Cake/0'}
-            >
+            <Link to={'/Cake/0'}>
               <div className="cakecard-flex" key={idx}>
                 <div className="cakecard">
                   <div className="cakecard-img-flex">
