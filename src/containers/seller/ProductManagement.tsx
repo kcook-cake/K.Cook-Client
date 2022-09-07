@@ -2,24 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import cake6 from '../../assets/cake6.png';
-import { ReactComponent as AddSmalllIcon } from '../../assets/seller/add-small.svg';
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../assets/seller/closebtn.svg';
 import { ReactComponent as CopyBtn } from '../../assets/seller/copybtn.svg';
-import { ReactComponent as DragBtn } from '../../assets/seller/dragbtn.svg';
-import { ReactComponent as DragCBtn } from '../../assets/seller/drag-column-btn.svg';
-import leftArrow from '../../assets/left-arrow.svg';
-import rightArrow from '../../assets/right-arrow.svg';
 import addIcon from '../../assets/seller/spm-add.png';
 
-import getAxios from 'src/utils/getAxios';
-import SPMCard from 'src/components/seller/card/SPMCard';
-import SPMCard_Add from 'src/components/seller/card/SPM_Add';
+import SPMCard from 'src/components/seller/spm-ssr/SPMCard';
+import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
-import ImageModal from 'src/components/seller/card/image-modal/ImageModal';
-import SPM_Update from 'src/components/seller/card/SRM_Update';
+import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
 
 function ProductManagement() {
   const [num, setNum] = useState(0);

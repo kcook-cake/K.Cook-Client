@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../../styles/main/home/MainAd.scss';
+import 'src/styles/main/home/MainAd.scss';
 
-import adimg from '../../../assets/main-ad.png';
 import { Link } from 'react-router-dom';
-import ChangeAdModal from './ChangeAdModal';
+import ChangeAdModal from 'src/components/main/home/image-modal/MainAdModal';
 
 interface Props {
   session: any;
@@ -36,12 +35,15 @@ function MainAd({ session, auth }: Props) {
       />
       <div className="main-ad">
         <>
-          <img src={image} alt="" />
-          {auth.accountId == 31 && (
-            <button onClick={() => setChangeAd((prev) => !prev)}>
-              광고 변경
-            </button>
-          )}
+          {auth.accountId == 31?
+            <div className="main-ad-inner" onClick={() => setChangeAd((prev) => !prev)}>
+              <img src={image} alt="" />
+            </div>
+            :
+            <Link to="/Cake">
+              <img src={image} alt="" />
+            </Link>
+          }
         </>
 
         {/* <img className="main-ad-img" src={image} alt="advertise image"/> */}

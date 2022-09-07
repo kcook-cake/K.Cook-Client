@@ -4,10 +4,10 @@ import '../../../styles/main/home/CakeStoreMenu.scss';
 import axios from 'axios';
 
 import getAxios from 'src/utils/getAxios';
-import SectionTitle from 'src/components/main/card/SectionTitle';
-import StoreCard from 'src/components/main/card/StoreCard';
+import SectionTitle from 'src/components/main/common/SectionTitle';
+import StoreCard from 'src/components/common/cake-store/StoreCard';
 import storeGetAxios from 'src/utils/storeGetAxios';
-import MenuModal from 'src/components/main/home/image-modal/Modals';
+import MenuModal from 'src/components/main/home/image-modal/CakeStoreModal';
 
 interface Props {
   session: any;

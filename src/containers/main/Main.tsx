@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
 import Home from './home/Home';
-import TodaysRec from './todaysrec/TodaysRec';
-import Cake from './cake/Cake';
-import Store from './store/Store';
-import CustomerService from './cs/CS';
+import TodaysRec from './TodaysRec';
+import Cake from './Cake';
+import Store from './Store';
+import CustomerService from './CS';
 
 interface Props {
     session: any,

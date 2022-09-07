@@ -3,12 +3,12 @@ import '../../../styles/main/home/CakeStoreMenu.scss';
 
 import axios from 'axios';
 
-import SectionTitle from 'src/components/main/card/SectionTitle';
+import SectionTitle from 'src/components/main/common/SectionTitle';
 import getAxios from 'src/utils/getAxios';
-import CakeCard from 'src/components/main/card/CakeCard';
+import CakeCard from 'src/components/common/cake-store/CakeCard';
 
 import cakeGetAxios from 'src/utils/cakeGetAxios';
-import MenuModal from 'src/components/main/home/image-modal/Modals';
+import MenuModal from 'src/components/main/home/image-modal/CakeStoreModal';
 
 interface Props {
   session: any;

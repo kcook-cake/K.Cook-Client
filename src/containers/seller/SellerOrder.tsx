@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/seller/SSO_SSH.scss';
+import 'src/styles/seller/sso-ssh/SSO_SSH.scss';
 
 import cake6 from   '../../assets/cake6.png';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import SSO_SSH_Card from 'src/components/seller/card/SSO_SSH_Card';
+import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
 
 function SellerOrder (){
     const [data, setData] = useState([

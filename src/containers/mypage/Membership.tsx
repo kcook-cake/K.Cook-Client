@@ -3,7 +3,7 @@ import '../../styles/mypage/Membership.scss';
 
 import getAxios from 'src/utils/getAxios';
 
-import MMSCard from 'src/components/mypage/card/MMSCard';
+import MMSCard from 'src/components/mypage/mms-mc/MMSCard';
 import LinkClick from 'src/utils/LinkClick';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
 

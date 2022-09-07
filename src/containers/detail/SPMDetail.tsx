@@ -11,9 +11,9 @@ import search from 'src/assets/search.svg';
 import getAxios from "src/utils/getAxios";
 import LinkClick from "src/utils/LinkClick";
 import sellerLinkClick from "src/utils/sellerLinkClick";
-import SelectWindow from "src/components/main/card/cake-store/SelectWindow";
-import SelectBar from "src/components/main/card/cake-store/SelectBar";
-import SelectBox from "src/components/main/card/cake-store/SelectBox";
+import SelectWindow from "src/components/common/kcook-select/SelectWindow";
+import SelectBar from "src/components/common/kcook-select/SelectBar";
+import SelectBox from "src/components/common/kcook-select/SelectBox";
 
 const SPMDetail = () => {
   const [num, setNum] = useState(0);

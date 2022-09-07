@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
-import '../../styles/mypage/MMO_MPR.scss';
+import 'src/styles/mypage/MMO_MPR.scss';
 
-import cake6 from   '../../assets/cake6.png';
+import cake6 from   'src/assets/cake6.png';
 import getAxios from 'src/utils/getAxios';
-import PickCard from 'src/components/main/card/PickCard';
-import MMOCard from 'src/components/mypage/card/MMOCard';
+import PickCard from 'src/components/main/common/PickCard';
+import MMOCard from 'src/components/mypage/mmo-mpr/MMOCard';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 

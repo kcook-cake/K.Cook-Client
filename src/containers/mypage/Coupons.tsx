@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/mypage/Coupon.scss';
 
 import getAxios from 'src/utils/getAxios';
-import MCCard from 'src/components/mypage/card/MCCard';
+import MCCard from 'src/components/mypage/mms-mc/MCCard';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 

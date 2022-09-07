@@ -5,10 +5,10 @@ import 'src/styles/main/home/PopularMenu.scss';
 
 import axios from 'axios';
 
-import LengthSlide_One from 'src/components/main/card/LengthSlide_One';
+import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
 
-import MenuModal from 'src/components/main/home/image-modal/Modals';
+import MenuModal from 'src/components/main/home/image-modal/CakeStoreModal';
 
 interface Props {
   session: any;

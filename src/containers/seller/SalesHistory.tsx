@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/seller/SSO_SSH.scss';
+import 'src/styles/seller/sso-ssh/SSO_SSH.scss';
 
 import getAxios from 'src/utils/getAxios';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
-import SSO_SSH_Card from 'src/components/seller/card/SSO_SSH_Card';
+import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
 
 function SalesHistory (){
     const [data, setData] = useState([

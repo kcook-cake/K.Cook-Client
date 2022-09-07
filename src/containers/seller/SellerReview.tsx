@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/seller/SPM_SSR.scss';
+import 'src/styles/seller/spm-ssr/SPM_SSR.scss';
 
 import getAxios from 'src/utils/getAxios';
-import SSRCard from 'src/components/seller/card/SSRCard';
+import SSRCard from 'src/components/seller/spm-ssr/SSRCard';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 

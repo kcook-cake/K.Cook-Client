@@ -3,10 +3,10 @@ import axios from 'axios';
 import '../../../styles/main/home/MainCrousel.scss';
 
 import getAxios from 'src/utils/getAxios';
-import BannerSlider from '../card/BannerSlide';
+import BannerSlider from 'src/components/main/common/BannerSlide';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
-import ImageModal from 'src/components/main/home/image-modal/ImageModal';
+import ImageModal from 'src/components/main/home/image-modal/BannerModal';
 
 interface Props {
   session: any;

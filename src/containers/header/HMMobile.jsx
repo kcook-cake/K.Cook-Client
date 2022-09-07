@@ -5,9 +5,9 @@ import "../../styles/header/HMMobile.scss";
 
 import $ from 'jquery';
 
-import HMCard from "../../components/header/card/HMCard";
-import HMSCard from "src/components/header/card/HMSCard";
-import HMMCard from "src/components/header/card/HMMCard";
+import HMCard from "../../components/header/common/HMCard";
+import HMSCard from "src/components/header/common/HMSCard";
+import HMMCard from "src/components/header/common/HMMCard";
 
 function HMMobile ({ session, auth, numLeftMobile, setNumLeftMobileF }) {
     useEffect(()=> {
