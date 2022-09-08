@@ -5,7 +5,6 @@ import 'src/styles/mypage/AllMypage.scss'
 
 import MypageOrder from './MypageOrder';
 import ProductReview from './ProductReview';
-import Membership from './Membership';
 import Coupons from './Coupons';
 import Profile from '../../components/mypage/Profile';
 import MypageSection from '../../components/mypage/MypageSection';
@@ -23,7 +22,6 @@ const Mypage = ({ session, auth, }: Props) =>{
                     <MypageSection />
                     <Route exact path="/MypageOrder" component={MypageOrder} />
                     <Route exact path="/ProductReview" component={ProductReview} />
-                    <Route exact path="/Membership" component={Membership} />
                     <Route exact path="/Coupon" component={Coupons} />
                     <Route exact path="/Profile" component={()=>Profile(session, auth)} />
                 </>

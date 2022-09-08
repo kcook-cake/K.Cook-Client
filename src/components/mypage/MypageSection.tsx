@@ -50,14 +50,6 @@ function MypageSection (){
                     </div>
                     <div className="ms-menu" >
                         <Link
-                            to="/Membership"
-                            className="ms-link Membership">
-                            <Coin className="icon"/>
-                            <span> 적립금</span>
-                        </Link>
-                    </div>
-                    <div className="ms-menu" >
-                        <Link
                             to="/Coupon"
                             className="ms-link Coupon">
                             <CPicon className="icon"/>
