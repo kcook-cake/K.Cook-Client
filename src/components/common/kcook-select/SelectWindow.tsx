@@ -35,12 +35,13 @@ export default function SelectWindow({
 
     //선택지창
     const SelectF = (n: number, str: string, length: number) => {
-        if (SelectBarF(str)) {
-            if (!cakestoreTF && (n==3 || n==5)) selectAll[selectAll.length] = citySubway+" "+str;
-            else selectAll[selectAll.length] = str;
-            // if (cakestoreTF) selectAll[selectAll.length] = str;
-            // else if (n==3 || n==5) selectAll[selectAll.length] = citySubway+" "+str;
-        }
+        selectAll[selectAll.length] = str;
+        // if (SelectBarF(str)) {
+        //     if (!cakestoreTF && (n==3 || n==5)) selectAll[selectAll.length] = citySubway+" "+str;
+        //     else selectAll[selectAll.length] = str;
+        //     // if (cakestoreTF) selectAll[selectAll.length] = str;
+        //     // else if (n==3 || n==5) selectAll[selectAll.length] = citySubway+" "+str;
+        // }
         selectWindow[n-1] = [false, str, 14*length];
         NumF();
     };

@@ -17,6 +17,7 @@ import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
 import storeGetAxios from 'src/utils/storeGetAxios';
+import PageBar from 'src/components/main/common/PageBar';
 
 function Store() {
   const [num, setNum] = useState(0);
@@ -66,17 +67,19 @@ function Store() {
     setResize(window.innerWidth);
   };
 
+
+
+  const [page, setPage] = useState(1);
+  const [pageLength, setPageLength] = useState(0);
+
   const [data, setData] = useState([]);
-  //0페이지부터 시작한다
-  const [pageTodays, setPageTodays] = useState(0);
-  const [lengthTodays, setLengthTodays] = useState(0);
   useEffect(() => {
     LinkClick('Store');
 
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    storeGetAxios(setData, 'stores/account/auth', 1, 9);
+    storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
     axios
       .get(`https://prod.kcook-cake.com/app/cities`)
       .then(res =>{
@@ -153,24 +156,7 @@ function Store() {
             <div className="contents">
               <StoreCard getData={data} cakeDetail={cakeDetail} />
             </div>
-            <div  className='pagination cake-store-'>
-              <Link to="/" className="arrow prev" href="#">
-                {' '}
-                &lt;Prev
-              </Link>
-              <Link to="/" href="#" className="pagi active">
-                1
-              </Link>
-              <Link to="/" href="#" className="pagi">
-                2
-              </Link>
-              <Link to="/" href="#" className="pagi">
-                3
-              </Link>
-              <Link to="/" className="arrow next" href="#">
-                Next &gt;
-              </Link>
-            </div>
+            <PageBar page={page} setPageF={setPage} length={pageLength} />
           </div>
           <PickCard />
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $ from "jquery";
 
-const storeGetAxios = (fn, link, page, num) => {
+const storeGetAxios = (fn, fnLength, link, page, num) => {
     var p = "";
     if (page != 0) p = "?page="+page;
 
@@ -28,6 +28,9 @@ const storeGetAxios = (fn, link, page, num) => {
                     storeId: 0
                 };
             }
+            var len = [];
+            len[0] = Math.ceil(121/9);
+            fnLength(len);
             fn(changeData);
         })
         .catch((error) => {
@@ -44,6 +47,10 @@ const storeGetAxios = (fn, link, page, num) => {
                     storeId: 0
                 };
             }
+            var len = [];
+            len[0] = Math.ceil(num/9);
+            fnLength(len);
+            alert(len);
             fn(changeData);
         });
 };

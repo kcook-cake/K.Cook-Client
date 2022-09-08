@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $ from "jquery";
 
-const cakeGetAxios = (fn, link, page, num) => {
+const cakeGetAxios = (fn, fnLength, link, page, num) => {
     var p = "";
     if (page != 0) p = "?page="+page;
 
@@ -26,6 +26,9 @@ const cakeGetAxios = (fn, link, page, num) => {
                     popularRank: 0,
                 };
             }
+            var len = [];
+            len[0] = Math.ceil(121/12);
+            fnLength(len);
             fn(changeData);
         })
         .catch((error) => {
@@ -41,6 +44,9 @@ const cakeGetAxios = (fn, link, page, num) => {
                     popularRank: 0,
                 };
             }
+            var len = [];
+            len[0] = Math.ceil(num/12);
+            fnLength(len);
             fn(changeData);
         });
 };
