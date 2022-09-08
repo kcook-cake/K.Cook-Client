@@ -214,6 +214,8 @@ function FullCalendarApp (session: any, auth: any,){
                         $(".fc-daygrid-day").css("pointer-events", "auto");
                         $(".fc-daygrid-day").css("background", "none");
                         $(".fc-event-main-frame").css("background", "none");
+
+                        $(".fc-daygrid-day.fc-day-today").css("background", "#FFFADF");
                     }}
                     eventClick={(e) => {
                         if (resize <= 767) {
@@ -256,6 +258,8 @@ function FullCalendarApp (session: any, auth: any,){
                             $(".fc-daygrid-day").css("pointer-events", "auto");
                             $(".fc-daygrid-day").css("background", "none");
                             $(".fc-event-main-frame").css("background", "none");
+
+                            $(".fc-daygrid-day.fc-day-today").css("background", "#FFFADF");
                             setModalFail(false);
                             return;
                         }
