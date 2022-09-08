@@ -25,11 +25,34 @@
   }
 }
 
+#adUrlTextInput {
+  margin-top: 20px;
+
+  width: 650px;
+  height: 25px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  background-color: rgb(233, 233, 233);
+
+  margin-bottom: 20px;
+  &::placeholder {
+    font-size: 5px;
+    font-style: italic;
+  }
+}
+
 @media (max-width: 767px) {
   #changeAdFileInputLabel {
     img {
       min-width: 100% !important;
       height: 200px !important;
     }
+  }
+  #adUrlTextInput {
+    margin-top: 10px;
+    width: 425px;
   }
 }

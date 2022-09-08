@@ -19,33 +19,9 @@ function ChangeAdModal({
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState<any>(imageData);
-  // const [imageOne, setImageOne] = useState(imageData[0]);
 
+  // axios.post할때 써야되서, 전역변수로 선언했음.
   const formData = new FormData();
-
-  const axiosPostAds = () => {
-    axios({
-      baseURL: 'https://prod.kcook-cake.com/',
-      url: '/app/banner/static',
-      method: 'POST',
-      data: {
-        connectedUrl: 'https://www.kcook-cake.com/',
-        mobileImage: formData,
-        webImage: formData,
-      },
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'X-ACCESS-TOKEN': jwToken,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   const UpdateAd = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
       if (!e.target.files) return;
@@ -76,6 +52,30 @@ function ChangeAdModal({
     []
   );
 
+  const axiosPostAds = () => {
+    axios({
+      baseURL: 'https://prod.kcook-cake.com/',
+      url: '/app/banner/static',
+      method: 'POST',
+      data: {
+        connectedUrl: 'https://www.kcook-cake.com/',
+        mobileImage: formData,
+        webImage: formData,
+        //링크url : adLinkUrl
+      },
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'X-ACCESS-TOKEN': jwToken,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const [imageSrc, setImageSrc] = useState(null);
 
   const encodeFileToBase64 = (fileBlob: any) => {
@@ -92,6 +92,9 @@ function ChangeAdModal({
   useEffect(() => {
     setImageSrc(imageData);
   }, [imageData]);
+
+  // axios.post할 링크 url값 ( JSON보내는 형식에 따라 달라질 예정)
+  const [adLinkUrl, setAdLinkUrl] = useState('');
 
   return (
     <>
@@ -145,10 +148,15 @@ function ChangeAdModal({
                   UpdateAd(e, 0), encodeFileToBase64(e.target.files[0])
                 )}
               />
-
-              {/* <div className="preview">
-                {imageSrc && <img src={imageSrc} alt="preview-img" />}
-              </div> */}
+              {/* <input id="bannerUrlTextInput" type="text" onChange={() => {}} /> */}
+              <input
+                placeholder="광고 클릭시 이동할 링크를 적어주세요."
+                id="adUrlTextInput"
+                type="text"
+                onChange={(e: any) => {
+                  setAdLinkUrl(e.target.value);
+                }}
+              />
             </div>
 
             <div className="spmdetail-content-btn-box spm-modal-btn-box">
