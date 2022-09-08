@@ -122,6 +122,7 @@ function ImageModal({
                 />
                 <input
                   id="bannerUrlTextInput"
+                  placeholder="클릭시 이동할 링크를 적어주세요."
                   type="text"
                   onChange={() => {}}
                 />
@@ -153,6 +154,7 @@ function ImageModal({
                       />
                       <input
                         id="bannerUrlTextInput"
+                        placeholder="클릭시 이동할 링크를 적어주세요."
                         type="text"
                         onChange={() => {}}
                       />
