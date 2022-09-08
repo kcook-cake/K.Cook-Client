@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import classNames from 'classnames';
 import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/main/CakeStore.scss';
@@ -16,6 +17,7 @@ import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
 import cakeGetAxios from 'src/utils/cakeGetAxios';
+import PageBar from 'src/components/main/common/PageBar';
 
 function Cake() {
   const [num, setNum] = useState(0);
@@ -36,6 +38,8 @@ function Cake() {
     }
     setNum(num + 1);
   };
+
+
 
   const [selectDataOne, setSelectDataOne] = useState([
     ['인기순', '최신순', '판매량순', '낮은 가격순', '높은 가격순'],
@@ -65,8 +69,8 @@ function Cake() {
 
 
 
-  const [link, setLink] = useState('cakes');
   const [page, setPage] = useState(1);
+  const [pageLength, setPageLength] = useState(0);
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -75,7 +79,7 @@ function Cake() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    cakeGetAxios(setData, 'cakes', 1, 12);
+    cakeGetAxios(setData, setPageLength, 'cakes', 1, 12);
 
     axios.get(`https://prod.kcook-cake.com/app/cities`).then((res) => {
       setSelectData([
@@ -184,27 +188,10 @@ function Cake() {
           </div>
 
           <div className="cake-store-contents cake-contents-flex">
-            <div className="contents">
-              <CakeCard getData={data} cakeDetail={cakeDetail} />
-            </div>
-            <div  className='pagination cake-store-'>
-              <Link to="/" className="arrow prev" href="#">
-                {' '}
-                &lt;Prev
-              </Link>
-              <Link to="/" href="#" className="pagi active">
-                1
-              </Link>
-              <Link to="/" href="#" className="pagi">
-                2
-              </Link>
-              <Link to="/" href="#" className="pagi">
-                3
-              </Link>
-              <Link to="/" className="arrow next" href="#">
-                Next &gt;
-              </Link>
-            </div>
+              <div className="contents">
+                  <CakeCard getData={data} cakeDetail={cakeDetail} />
+              </div>
+              <PageBar page={page} setPageF={setPage} length={pageLength} />
           </div>
           <PickCard />
         </div>
