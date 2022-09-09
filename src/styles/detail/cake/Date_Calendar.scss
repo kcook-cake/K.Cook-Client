@@ -1,0 +1,123 @@
+
+
+
+.cake-detail-date-calendar {
+    width: 100%;
+    height: 408px;
+    padding: 21px 2px 2px 2px;
+    background-color: #fff;
+
+    //전체
+    .fc-scrollgrid {
+        border: none !important;
+    }
+    .fc-view-harness {
+        width: 100% !important;
+        margin: auto !important;
+    }
+
+    .fc-scrollgrid-section,
+    .fc-scroller-harness {
+        margin-bottom: 0px;
+    }
+    
+    //캘린더 헤더
+    .fc-header-toolbar {
+        height: 0;
+        .fc-toolbar-chunk:nth-child(2) {
+            width: 100% !important;
+
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+    }
+    .fc-toolbar-chunk {
+        display: flex; // 일렬로 나란히
+        align-items: center; // 수직 가운데 정렬
+
+        text-align: center;
+        color: #222222;
+        font-size: 12px;
+    }
+    
+    .fc-button {
+        // padding: -10px;
+        border: 0 !important;
+        background-color: white !important;
+    }
+    .fc-button:focus {
+        // padding: -10px;
+        border: 0 !important;
+        box-shadow: 0px 0px 0px white !important;
+    }
+    .fc-icon {
+        width: 29.2px;
+        height: 29.2px;
+        line-height: 29.2px;
+
+        filter: invert(0%);
+        border: 0;
+        border-radius: 50px !important;
+        background-color: #000; //반전색깔
+    }
+
+    //캘린더 헤더
+    .fc-col-header-cell {        
+        height: 20px;
+
+        border: 0 !important;
+        border-radius: 0px;
+    }
+    .fc-col-header-cell-cushion {
+        color:#000;
+        font-size: 13px;
+        font-weight: 300;
+    }
+    
+    //캘린더 몸통 이벤트
+    .fc-daygrid-day-events {
+        display: none;
+    }
+
+    //캘린더 몸통
+    .fc-scrollgrid-section > td {
+        border-right: none !important;
+        border-bottom: none !important;
+    }
+
+    .fc-day-today,
+    .fc-day-past,
+    .fc-day-future {
+        border: 0 !important;
+    }
+    .fc-daygrid-day-number {
+        width: 33px !important;
+        height: 33px !important;
+        line-height: 23px !important;
+
+        margin: auto !important;
+        margin-left: 10px; //날짜: 왼쪽
+        margin-top: 3px; //날짜: 오른쪽
+
+        text-align: center !important;
+        color: #000;
+        font-size: 12px;
+        font-weight: 400;
+
+        border-radius: 50%;
+    }
+
+    //캘린더 오늘
+    .fc-day-today {
+        background-color: #fff !important;
+        .fc-daygrid-day-number {
+            width: 33px !important;
+            height: 33px !important;
+
+            border-radius: 50%;
+            background-color: #F07F7C;
+        }
+    }
+}
+

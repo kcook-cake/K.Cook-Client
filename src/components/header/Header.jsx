@@ -29,7 +29,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
       <div className="header-top-flex">
         <div className="header-top">
           <div className="header-top-left">
-            <button>
+            <button classname="hm-pc">
               <img
                 src={menu}
                 className="menu-icon"
