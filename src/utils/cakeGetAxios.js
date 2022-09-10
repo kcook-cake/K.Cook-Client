@@ -27,7 +27,8 @@ const cakeGetAxios = (fn, fnLength, link, page, num) => {
                 };
             }
             var len = [];
-            len[0] = Math.ceil(121/12);
+            for (var i=0; i<1200/12; i++) //data.length
+                len[i] = { num: i+1 }
             fnLength(len);
             fn(changeData);
         })
@@ -44,9 +45,7 @@ const cakeGetAxios = (fn, fnLength, link, page, num) => {
                     popularRank: 0,
                 };
             }
-            var len = [];
-            len[0] = Math.ceil(num/12);
-            fnLength(len);
+            fnLength([{num: 1}]);
             fn(changeData);
         });
 };

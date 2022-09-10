@@ -70,7 +70,7 @@ function Store() {
 
 
   const [page, setPage] = useState(1);
-  const [pageLength, setPageLength] = useState(0);
+  const [pageLength, setPageLength] = useState([]);
 
   const [data, setData] = useState([]);
   useEffect(() => {

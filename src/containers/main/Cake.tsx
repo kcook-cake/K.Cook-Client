@@ -70,7 +70,7 @@ function Cake() {
 
 
   const [page, setPage] = useState(1);
-  const [pageLength, setPageLength] = useState(0);
+  const [pageLength, setPageLength] = useState([]);
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -80,7 +80,7 @@ function Cake() {
     window.addEventListener('resize', handleResize);
 
     cakeGetAxios(setData, setPageLength, 'cakes', 1, 12);
-
+    $("#cake-page-length").val("1")
     axios.get(`https://prod.kcook-cake.com/app/cities`).then((res) => {
       setSelectData([
         res.data.result,
@@ -191,7 +191,7 @@ function Cake() {
               <div className="contents">
                   <CakeCard getData={data} cakeDetail={cakeDetail} />
               </div>
-              <PageBar page={page} setPageF={setPage} length={pageLength} />
+              <PageBar page={page} setPageF={setPage} length={pageLength}/>
           </div>
           <PickCard />
         </div>
