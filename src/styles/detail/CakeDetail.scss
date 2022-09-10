@@ -1,0 +1,211 @@
+
+.cake-detail {
+    width: 1199px;
+    margin: auto;
+}
+
+.cake-detail-inner {
+    padding: 56.3px 10px;
+    display: flex;
+}
+
+
+
+.cake-detail-left {
+    margin-right: 21.7px;
+    .cake-detail-main-img {
+        width: 589.6px;
+        height: 640.7px;
+        margin-bottom: 9.7px;
+        img {
+            width: 589.6px;
+            height: 640.7px;
+            border-radius: 10px;
+        }
+        div {
+            width: 589.6px;
+            height: 640.7px;
+            line-height: 640.7px;
+
+            text-align: center;
+            color: #858997;
+            font-size: 30px;
+
+            border-radius: 10px;
+            background-color: #e6e6e6;
+        }
+    }
+    .cake-detail-sub-img {
+        width: 81.5px;
+        height: 89px;
+        margin-left: 46.2px;
+        margin-bottom: 53.4px;
+
+        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 1.6px;
+
+        img {
+            width: 81.5px;
+            height: 89px;
+            border-radius: 10px;
+        }
+        div {
+            width: 81.5px;
+            height: 89px;
+            line-height: 89px;
+
+            text-align: center;
+            color: #858997;
+            font-size: 15px;
+
+            border-radius: 10px;
+            background-color: #e6e6e6;
+        }
+    }
+    .cake-detail-box {
+        color: #ea5450;
+        font-size: 18px;
+        font-weight: 700;
+        hr {
+            margin: 9.7px 0;
+            border: 1px solid #ea5450;
+        }
+    }
+}
+
+.cake-detail-right {
+    // width: 1179px;
+    width: 589.7px;
+    height: 100%;
+    
+    display: flex;
+    position: sticky;
+    top: 21.7px;
+    z-index: 1;
+}
+.cake-detail-right-inner {
+    width: 561.7px;
+    height: auto;
+    padding: 26px;
+
+    border-radius: 10px;
+    box-shadow: 0 0 5px #b2b2b2;
+    background-color: #fff;
+}
+.cake-detail-right-box {
+    .cake-detail-right-store {
+        font-size: 17px;
+        font-weight: 500;
+        img {
+            width: 38px; height: 38px;
+            margin-right: 10px;
+            float: left;
+            border-radius: 50px;
+        }
+        .cake-detail-right-store-name {
+            padding: 7px 0 18px 0;
+        }
+    }
+    .cake-detail-right-store-cake {
+        font-size: 20px;
+        margin-bottom: 13px;
+    }
+    .cake-detail-right-price {
+        margin-bottom: 37px;
+        font-size: 25px;
+        font-weight: 700;
+        img {
+            width: 23px; height: 23px;
+            float: right;
+        }
+        .cake-detail-right-like-price {
+            margin-left: 5px;
+            font-size: 10px;
+        }
+    }
+}
+
+.cake-detail-right-box-inner {
+    font-size: 18px;
+    font-weight: 600;
+    img {
+        width: 22px; height: 22px;
+        margin-top: 3px;
+        margin-right: 7.1px;
+        float: left;
+    }
+    div {
+        margin-bottom: 10px;
+    }
+    .cake-detail-img {
+        width: 15px;
+        height: 13px;
+        margin-top: 10px;
+        float: right;
+    }
+    .cake-detail-img-active {
+        transform:rotate(180deg);
+    }
+    hr {
+        border: 1px solid #eeeeee;
+        margin-bottom: 12px;
+    }
+}
+
+.cake-detail-right-hr {
+    margin-top: 22px;
+    margin-bottom: 22px;
+    border: 1px solid #eeeeee;
+}
+
+.cake-detail-right-btn {
+    display: flex;
+}
+
+.cake-detail-right-all-price {
+    margin-bottom: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 700;
+}
+
+.cake-detail-right-btn {
+    width: 100%;
+    div {
+        width: 216px; height: 55px;
+        line-height: 55px;
+        margin: auto;
+
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+
+        border-radius: 5px;
+        background: #ea5450;
+    }
+}
+
+
+
+//ColorBox
+.cake-detail-colorbox-flex {
+    height: 12px !important;
+    float: right;
+}
+.cake-detail-colorbox {
+    color: #525252;
+    font-size: 10px;
+}
+.cake-detail-colorbox-inner {
+    width: 12px; height: 12px;
+    margin-top: 2px;
+    margin-right: 5px;
+    float: left;
+    background-color: #ea5450;
+}

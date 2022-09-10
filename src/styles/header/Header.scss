@@ -52,6 +52,7 @@
 }
 .header-top-left {
   float: left;
+  button,
   .menu-icon,
   .search-icon {
     display: none;
@@ -102,7 +103,7 @@
   height: 54px;
   line-height: 54px;
   margin: auto;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 10px;
   // padding: 15px $basic-padding;
 
   font-weight: 700;
@@ -147,7 +148,7 @@
     justify-content: space-between;
     align-items: center;
     line-height: 60px;
-
+    button,
     .menu-icon,
     .search-icon {
       display: block;
