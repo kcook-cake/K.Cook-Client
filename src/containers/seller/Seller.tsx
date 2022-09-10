@@ -8,7 +8,7 @@ import SellerOrder from './SellerOrder';
 import SalesHistory from './SalesHistory';
 import ProductManagement from './ProductManagement';
 import SellerReview from './SellerReview';
-import SellerStore from '../../components/seller/SellerStore';
+import SellerStore from '../../components/seller/sss/SellerStore';
 
 import FullCalendarApp from './FullCalendarApp';
 import SPMDetail from '../detail/SPMDetail';
