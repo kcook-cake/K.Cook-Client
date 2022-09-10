@@ -1,0 +1,168 @@
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import axios from 'axios';
+import classNames from 'classnames';
+import 'src/styles/seller/sss/image-modal/ImageModal.scss';
+import 'src/styles/main/home/image-modal/ImageModal.scss';
+
+import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+
+interface Props {
+  num: any;
+  setNum: any;
+  resize: any;
+
+  imageTF: any,
+
+  imageModalShow: any;
+  setImageModalShowF: any;
+
+  imageData: any;
+  setImageDataF: any;
+}
+
+type userType = {
+  [key: string]: any;
+};
+
+function ImageModal({
+  num,
+  setNum,
+  resize,
+  imageTF,
+  imageModalShow,
+  setImageModalShowF,
+  imageData,
+  setImageDataF,
+}: Props) {
+  var jwToken: any = undefined;
+  if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+  else jwToken = sessionStorage.jwToken;
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [image, setImage] = useState<any>(imageData);
+  // const [imageOne, setImageOne] = useState(imageData[0]);
+
+  const UpdateImageF = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
+      if (!e.target.files) return;
+
+      const formData = new FormData();
+      formData.append('image', e.target.files[0]);
+
+    //   axios({
+    //     baseURL: 'https://prod.kcook-cake.com/',
+    //     url: '/app/banner/carousel',
+    //     method: 'POST',
+    //     data: {
+    //       'bannerListReq[0].connectedUrl': 'https://www.kcook-cake.com/',
+    //       'bannerListReq[0].mobileImage': formData,
+    //       'bannerListReq[0].orders': idx + 1,
+    //       'bannerListReq[0].webImage': formData,
+    //       //"이미지url" : 인풋창에 적은값
+    //     },
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data',
+    //       'X-ACCESS-TOKEN': jwToken,
+    //     },
+    //   })
+    //     .then((res) => {
+    //       console.log(res);
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+      setNum(num + 1);
+    },[]);
+  
+    useEffect(() => {
+    },[]);
+
+  return (
+    <>
+      <div className="spm-modal">
+        {imageModalShow ? (
+          <>
+                <div
+                    className="spm-modal-background"
+                    style={{ top: window.pageYOffset }}>
+                </div>
+
+                <div
+                className="spm-modal-box"
+                style={{
+                    top:
+                        resize <= 767 ? 
+                        window.innerHeight - 530 < 0 ? window.pageYOffset : window.pageYOffset + 20 : 
+                        window.innerHeight - 775 < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - 775) / 2,
+                    left: resize <= 767 ? 20 : (resize - 775) / 2,
+                }}>
+                    <div className="spm-modal-title">이미지 등록</div>
+                    <div className="spm-modal-subtitle">대표이미지(1장)</div>
+                    <div className="spm-modal-img-inner sellerstore-modal-img-inner sellerstore-modal-img-inner-one">
+                        <label
+                        className={classNames('spm-add-img sellerstore-add-img', {
+                            'sellerstore-add-img-icon': image[0] == '',
+                        })}
+                        htmlFor="home-file-0">
+                        {image[0] == '' ? <AddIcon /> : <img src={image[0]} />}
+                        </label>
+                        <input
+                        id="home-file-0"
+                        type="file"
+                        accept="image/*"
+                        ref={inputRef}
+                        onChange={(e) => UpdateImageF(e, 0)}
+                        />
+                    </div>
+
+                    {imageTF&&
+                    <>
+                        <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
+                        <div className="sellerstore-modal-img-box">
+                            {[1, 2, 3, 4].map((data: any) => {
+                            return (
+                                <div className="sellerstore-modal-img-inner">
+                                    <label
+                                        className={classNames('sellerstore-add-img', {
+                                        'sellerstore-add-img-icon': image[data] == '',
+                                        })}
+                                        htmlFor={'home-file-' + data}>
+                                        {image[data] == '' ? (
+                                        <AddIcon />
+                                        ) : (
+                                        <img src={image[data]} />
+                                        )}
+                                    </label>
+                                    <input
+                                        id={'home-file-' + data}
+                                        type="file"
+                                        accept="image/*"
+                                        ref={inputRef}
+                                        style={{ display: "none", }}
+                                        onChange={(e) => UpdateImageF(e, data)}
+                                    />
+                                </div>
+                            );
+                            })}
+                        </div>
+                    </>}
+                    <div className="spmdetail-content-btn-box spm-modal-btn-box">
+                        <button
+                        className="spmdetail-content-btn"
+                        onClick={() => {
+                            setImageModalShowF(false);
+                            setNum(num + 1);
+                        }}
+                        >
+                        닫기
+                        </button>
+                    </div>
+                </div>
+          </>
+        ) : null}
+      </div>
+    </>
+  );
+}
+
+export default ImageModal;

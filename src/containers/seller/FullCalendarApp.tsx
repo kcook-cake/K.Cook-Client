@@ -10,12 +10,14 @@ import '../../styles/seller/FullCalendarApp.scss';
 import FullCalendarSeller from '../../utils/FullCalendarSeller';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
+import OrderModal from '../../components/seller/sso-ssh/order-modal/OrderModal';
 
 function FullCalendarApp (session: any, auth: any,){
+    const [num, setNum] = useState(0);
 
     //모달창
-    const [modalFail, setModalFail] = useState(false);
-    const [modalFuture, setModalFuture] = useState(false);
+    const [orderModalShow, setOrderModalShow] = useState(false);
+    const [modalShow, setModalShow] = useState(false);
     const [date, setDate] = useState("");
     const [dateT, setDateT] = useState("");
     const [title, setTitle] = useState("");
@@ -23,10 +25,6 @@ function FullCalendarApp (session: any, auth: any,){
     const [modalHeight, setModalHeight] = useState(0);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
-
-    const setting = () => {
-        console.log(window.pageYOffset)
-    }
 
     //판매자 정보
     const [events, setEvents] = useState([{}]);
@@ -67,7 +65,12 @@ function FullCalendarApp (session: any, auth: any,){
   // /SellerOrder/{id}
   return(
     <>
-        {modalFail ? 
+        {orderModalShow&&
+        <OrderModal
+            NumF={()=>setNum(num+1)} resize={resize}
+            orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} />
+        }
+        {modalShow&&
         <div className="fcap calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
             <div className="calendar-modal-top"></div>
             <div id="calendar-modal">
@@ -77,80 +80,38 @@ function FullCalendarApp (session: any, auth: any,){
                 <div style={{ width: "5px", height: "20px", }}></div>
                 <div className="calendar-modal-box">
                     <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                        <button className="calendar-button">
-                            <p className="calendar-btn-p">예약확인</p>
-                            <div className="calendar-btn-div" style={{  opacity: "0", }}><div>∧</div><div>∨</div></div>
-                        </button> 
+                        <button className="calendar-button">예약 확인</button> 
                     </Link>
                     <button 
-                    className="calendar-button"
-                    onClick={setting}
-                    >
-                    <p className="calendar-btn-p calendar-btn-p-right"
-                        style={{ 
-                            paddingLeft: (pathname=="SSOCalendar"? "47px": "40px"),
-                        }}>주문 {updateNum}건</p>
-                    <div className="calendar-btn-div"
-                        style={{ 
-                            opacity: (pathname=="SSOCalendar"? "100": "0"),
-                            pointerEvents: (pathname=="SSOCalendar"? "auto": "none"),
-                        }}>
-                        <div onClick={()=>{
-                            setUpdateNum(updateNum+1); //나중에 axios update
-                        }}>∧</div>
-                        <div onClick={()=>{
-                            setUpdateNum(updateNum-1);
-                        }}>∨</div>
-                    </div>
+                        className="calendar-button"
+                        onClick={()=>setOrderModalShow(true)}>
+                        주문 건수 설정
                     </button> {/* 휴일해제 */}
                 </div>
             </div>
-        </div>
-        :<></>
-        }
+        </div>}
         <div id="sfc" className={"sfc "+pathname}>
-            {modalFail ? 
-                <div className="calendar-modal-flex fcam">
-                    <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}> {/* modalHeight */}
-                        <div style={{ width: "5px", height: "35px", }}></div>
-                        <div className="calendar-modal-box">{date}</div>
-                        <div style={{ width: "5px", height: "10px", }}></div>
-                        <div className="calendar-modal-box-title">{title}</div>
-                        <br/>
-                        <div className="calendar-modal-blank"></div>
-                        <div className="calendar-modal-box">
-                            <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                                <button className="calendar-button">
-                                    <p className="calendar-btn-p">예약확인</p>
-                                    <div className="calendar-btn-div" style={{  opacity: "0", }}><div>∧</div><div>∨</div></div>
-                                </button> 
-                            </Link>
-                            <button 
+            {modalShow&&
+            <div className="calendar-modal-flex fcam">
+                <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}> {/* modalHeight */}
+                    <div style={{ width: "5px", height: "35px", }}></div>
+                    <div className="calendar-modal-box">{date}</div>
+                    <div style={{ width: "5px", height: "10px", }}></div>
+                    <div className="calendar-modal-box-title">{title}</div>
+                    <br/>
+                    <div className="calendar-modal-blank"></div>
+                    <div className="calendar-modal-box">
+                        <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
+                            <button className="calendar-button">예약 확인</button> 
+                        </Link>
+                        <button 
                             className="calendar-button"
-                            onClick={setting}
-                            >
-                                <p className="calendar-btn-p calendar-btn-p-right"
-                                    style={{ 
-                                        paddingLeft: (pathname=="SSOCalendar"? "47px": "40px"),
-                                    }}>주문 {updateNum}건</p>
-                                <div className="calendar-btn-div"
-                                    style={{ 
-                                        opacity: (pathname=="SSOCalendar"? "100": "0"),
-                                        pointerEvents: (pathname=="SSOCalendar"? "auto": "none"),
-                                    }}>
-                                    <div onClick={()=>{
-                                        setUpdateNum(updateNum+1); //나중에 axios update
-                                    }}>∧</div>
-                                    <div onClick={()=>{
-                                        setUpdateNum(updateNum-1);
-                                    }}>∨</div>
-                                </div>
-                            </button> {/* 휴일해제 */}
-                        </div>
+                            onClick={()=>setOrderModalShow(true)}>
+                            주문 건수 설정
+                        </button> {/* 휴일해제 */}
                     </div>
                 </div>
-                :<></>
-            }
+            </div>}
             <div className="seller-mypage-top sso-ssh-top">
                 <div className="seller-mypage-front-title">{pathname=="SSOCalendar"? '주문확인': '판매내역'}</div>
                 <div className='ss-fc-link-flex'>
@@ -198,7 +159,7 @@ function FullCalendarApp (session: any, auth: any,){
                     eventColor="red"
                     nowIndicator
                     dateClick={(e) => {
-                        setModalFail(false);
+                        setModalShow(false);
 
                         if (resize <= 767) {
                             const height1 = document.getElementById('header-flex-id') as Element;
@@ -223,10 +184,10 @@ function FullCalendarApp (session: any, auth: any,){
                             const height2 = document.getElementById('sfc') as Element;
                             setModalHeight(height1.clientHeight+height2.clientHeight);
                 
-                            if (modalFail) {
+                            if (modalShow) {
                               $(".fc-daygrid-day-number").css("color", "#fff");
                               $(".fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
-                              setModalFail(false);
+                              setModalShow(false);
                               return;
                             }
                             const date = e.event.startStr;
@@ -249,18 +210,18 @@ function FullCalendarApp (session: any, auth: any,){
                             $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "rgba(234, 84, 80, 0.0)");
                             $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#ea5450");
                             $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-top").css("background", "#fff");
-                            setModalFail(true);
+                            setModalShow(true);
                             return;
                         }
 
-                        if (modalFail) {
+                        if (modalShow) {
                             $(".fc-daygrid-day-number").css("color", "#999999");
                             $(".fc-daygrid-day").css("pointer-events", "auto");
                             $(".fc-daygrid-day").css("background", "none");
                             $(".fc-event-main-frame").css("background", "none");
 
                             $(".fc-daygrid-day.fc-day-today").css("background", "#FFFADF");
-                            setModalFail(false);
+                            setModalShow(false);
                             return;
                         }
 
@@ -287,7 +248,7 @@ function FullCalendarApp (session: any, auth: any,){
 
                         const xy = document.querySelector(".fc-daygrid-day[data-date='"+date+"']") as Element;
                         setX(xy.getBoundingClientRect().left); setY(xy.getBoundingClientRect().top);
-                        setModalFail(true);
+                        setModalShow(true);
                     }}
                 />
             </div>
