@@ -6,7 +6,7 @@ import 'src/styles/main/CakeStore.scss';
 interface Props {
     page: any,
     setPageF: any,
-    length: number,
+    length: any,
 }
 
 const PageBar = ({page, setPageF, length}: Props) => {
@@ -17,7 +17,7 @@ const PageBar = ({page, setPageF, length}: Props) => {
             prev = false;
             setPrev(prev);
         }
-        if (pageBox==Math.ceil(length/10)) {
+        if (pageBox==Math.ceil(length.length/10)) {
             next = false;
             setNext(next);
         }
@@ -25,29 +25,12 @@ const PageBar = ({page, setPageF, length}: Props) => {
 
     let [pageBox, setPageBox] = useState(1);
 
-    let [array, setArray] = useState([]);
-    const Count = () => {
-        var j = 0;
-        array = [];
-        if (pageBox*10 > length)
-            for (var i=(pageBox-1)*10; i<length; i++) {
-                array[j] = i+1;
-                j++;
-            }
-        else
-            for (var i=(pageBox-1)*10; i<pageBox*10; i++) {
-                array[j] = i+1;
-                j++;
-            }
-        setArray(array);
-    };
-
     useEffect(()=>{
-        console.log(length);
-        Count();
+        // if (length.length < 1) setNext(false);
+        // Count();
     },[]);
     return (
-        <>
+        <> 
             <div  className='pagination cake-store-'>
                 <button
                     className={classNames("arrow", "prev", {"active": prev})}
@@ -55,29 +38,34 @@ const PageBar = ({page, setPageF, length}: Props) => {
                         if (!prev) return;
                         pageBox--;
                         setPageBox(pageBox);
-                        Count();
 
                         next = true; setNext(next);
                         PNCheck();
                     }}>
                     &lt; Prev
                 </button>
-                {array.map((data: any, idx: any)=>{
+                {length.map((data: {num: any}, idx: any)=>{
                     return(
                         <button
-                            className={classNames("pagi", {"active": data == page})}
-                            onClick={()=>setPageF(data)}>
-                            {data}
+                            className={classNames("pagi", {
+                                "active": data.num == page,
+                                "pagi-none": pageBox!=Math.ceil(data.num/10), 
+                            })}
+                            onClick={()=>setPageF(data.num)}>
+                            {data.num}
                         </button>
                     );
                 })}
                 <button
                     className={classNames("arrow", "prev", {"active": next})}
                     onClick={()=>{
+                        if (length.length < 11) {
+                            setNext(false);
+                            return;
+                        }
                         if (!next) return;
                         pageBox++;
                         setPageBox(pageBox);
-                        Count();
 
                         prev = true; setPrev(prev);
                         PNCheck();

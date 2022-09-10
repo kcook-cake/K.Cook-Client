@@ -29,7 +29,8 @@ const storeGetAxios = (fn, fnLength, link, page, num) => {
                 };
             }
             var len = [];
-            len[0] = Math.ceil(121/9);
+            for (var i=0; i<data.length/9; i++)
+                len[i] = { num: i+1 }
             fnLength(len);
             fn(changeData);
         })
@@ -47,10 +48,7 @@ const storeGetAxios = (fn, fnLength, link, page, num) => {
                     storeId: 0
                 };
             }
-            var len = [];
-            len[0] = Math.ceil(num/9);
-            fnLength(len);
-            alert(len);
+            fnLength([{num: 1}]);
             fn(changeData);
         });
 };
