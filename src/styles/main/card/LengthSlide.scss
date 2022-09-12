@@ -48,6 +48,11 @@
 .lengthslide-info {
     margin-left: 20px;
     font-weight: bold;
+    .card-top-info {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 3px;
+    }
     .card-review {
         display: inline;
         float: right;
@@ -55,38 +60,20 @@
         font-size: 11px;
         color: #858997;
     }
-    .card-rating-star {
-        display: inline-block;
-        img {
-        vertical-align: top;
-        margin-right: 3px;
-        margin-bottom: 16px;
-        }
-    }
+
+
     
-    .card-shop-name {
-        width: 250px; //270px
-        margin-bottom: 2px;
-    
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-    
-        color: $sub-text;
-        font-size: 12px;
-        line-height: 18px;
-    }
     .card-cake-name {
         width: 250px; //270px
-        padding-bottom: 10px;
+        height: 65px;
     
         overflow:hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
     
         color: $sub-text;
-        line-height: 18px;
-        font-size: 16px;
+        font-size: 18px;
+        font-weight: 500;
     }
     .card-minprice {
         color: $pricetext;

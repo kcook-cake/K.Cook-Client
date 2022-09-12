@@ -58,14 +58,11 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
                   </div>
                   <div className="lengthslide-info">
                     <div className="card-top-info">
-                      <div className="card-rating-star">
-                        {star(data.raiting, '')}
-                      </div>
+                      원모먼트
                       <div className="card-review">
                         {'리뷰 ' + data.reviewCount}
                       </div>
                     </div>
-                    <div className="card-shop-name">{data.storeName}</div>
                     <div className="card-cake-name">{data.name}</div>
                     <div className="card-minprice">{MakePrice(data.price)}</div>
                   </div>

@@ -27,11 +27,10 @@ function LengthwiseCard({getData, link}: Props) {
                                     }
                                 </div>
                                 <div className="lengthwise-info">
+                                    원모먼트
                                     <div className="card-top-info">
-                                        <div className="card-rating-star">{star(data.raiting, "")}</div>
                                         <div className="card-review">{"리뷰 "+data.reviewCount}</div>
                                     </div>
-                                    <div className="card-shop-name">{data.storeName}</div>
                                     <div className="card-cake-name">{data.name}</div>
                                     <div className="card-minprice">{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"~"}</div>
                                 </div>

@@ -128,9 +128,9 @@ function ImageModal({
                                         })}
                                         htmlFor={'home-file-' + data}>
                                         {image[data] == '' ? (
-                                        <AddIcon />
-                                        ) : (
-                                        <img src={image[data]} />
+                                          <AddIcon />
+                                          ) : (
+                                          <img src={image[data]} />
                                         )}
                                     </label>
                                     <input

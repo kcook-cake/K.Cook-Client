@@ -17,9 +17,10 @@ interface Props {
 
 function CakeMenu({ session, auth }: Props) {
   const [data, setData] = useState([]);
+  const [dataLength, setDataLength] = useState([]);
 
   useEffect(() => {
-    cakeGetAxios(setData, 'products/representative-cake', 0, 4);
+    cakeGetAxios(setData, setDataLength, 'products/representative-cake', 0, 4);
   }, []);
 
   // 모달창 생성용 값

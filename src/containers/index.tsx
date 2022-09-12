@@ -89,7 +89,7 @@ const Pages = () => {
       <Route exact path="/Test" component={Test} />
 
       <Route exact path="/Cake/:id" component={CakeDetail} />
-      <Route exact path="/Store/:id" component={StoreDetail} />
+      <Route exact path="/Store/:id" component={()=>StoreDetail(auth)} />
 
       <Main session={session} auth={auth} />
 

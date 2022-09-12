@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/SPM_Add_Update.scss';
 
@@ -9,6 +9,8 @@ import { ReactComponent as CloseBtn } from 'src/assets/seller/closebtn.svg';
 import leftArrow from 'src/assets/left-arrow.svg';
 import rightArrow from 'src/assets/right-arrow.svg';
 import ImageModal from './image-modal/ImageModal';
+import axios from 'axios';
+import BaseUrl from 'src/utils/BaseUrl';
 
 interface Props {
     num: any,
@@ -20,71 +22,81 @@ interface Props {
 }
 
 function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
+    const [num, setNum] = useState(0);
+    const addPhoto = useRef(null);
+
     //Add
     const Add = () => {
-        alert('추가');
         //addImage사용하면 이미지 넘길 수 있음
         var index = 0;
         var c = '';
         var jlength = 0;
         for (var i = 0; i < addOption.length; i++) {
-        if (i - 1 < 0) index = i;
-        else index = i - 1;
+            if (i - 1 < 0) index = i;
+            else index = i - 1;
 
-        if (addOption[i].optionName == '크기') c = 'SIZE';
-        else if (addOption[i].optionName == '맛') c = 'TASTE';
-        else if (addOption[i].optionName == '레터링') c = 'LOWER_LETTERING';
-        else if (addOption[i].optionName == '색상') c = 'COLOR';
-        else if (addOption[i].optionName == '초') c = 'CANDLE';
-        else c = 'ETC';
+            if (addOption[i].optionName == '크기') c = 'SIZE';
+            else if (addOption[i].optionName == '맛') c = 'TASTE';
+            else if (addOption[i].optionName == '레터링') c = 'LOWER_LETTERING';
+            else if (addOption[i].optionName == '색상') c = 'COLOR';
+            else if (addOption[i].optionName == '초') c = 'CANDLE';
+            else c = 'ETC';
 
-        if (addOption[i].optionDirect)
-            jlength = addOption[i].optionList.length - 1;
-        else jlength = addOption[i].optionList.length;
+            if (addOption[i].optionImage)
+                jlength = addOption[i].optionList.length - 1;
+            else 
+                jlength = addOption[i].optionList.length;
 
-        for (var j = 0; j < jlength; j++) {
-            addBack[j + 1 + i * addOption[index].optionList.length - 1] = {
-            additionalCost: addOption[i].optionList[j].optionListPrice,
-            category: c,
-            contents: addOption[i].optionList[j].optionListName,
-            title: addOption[i].optionName,
-            };
+            for (var j = 0; j < jlength; j++) {
+                addBack[j + 1 + i * addOption[index].optionList.length - 1] = {
+                additionalCost: addOption[i].optionList[j].optionListPrice,
+                category: c,
+                contents: addOption[i].optionList[j].optionListName,
+                title: addOption[i].optionName,
+                };
+            }
+            if (addOption[i].optionImage) {
+                addBack[jlength + 1 + i * addOption[index].optionList.length - 1] = {
+                    additionalCost: addOption[i].optionList[jlength].optionListPrice,
+                    category: c,
+                    contents: addOption[i].optionImageText,
+                    title: addOption[i].optionName,
+                };
+            }
         }
-        if (addOption[i].optionDirect) {
-            addBack[jlength + 1 + i * addOption[index].optionList.length - 1] = {
-            additionalCost: addOption[i].optionList[jlength].optionListPrice,
-            category: c,
-            contents:
-                (addOption[i].optionImage ? '이미지&' : '텍스트&') +
-                addOption[i].optionDirectText,
-            title: addOption[i].optionName,
-            };
-        }
-        }
-        // axios
-        //     .post(`https://prod.kcook-cake.com/app/products`, {
-        //         isCake: true,
-        //         name: addName,
-        //         newOptionsList: addBack,
-        //         price: addPrice,
-        //         salePrice: 0,
-        //     })
-        //     .then((res) => {
-        //         if (res.data.isSuccess) alert("추가 완료");
-        //         document.location.href = "/ProductManagement";
-        //     })
-        //     .catch((error) => {
-        //     });
+        console.log(addName);
+        console.log(addPrice);
+        console.log(addBack);
+
+        var formData = new FormData();
+        formData.append("productImage", "");
+        //....
+
+        axios({
+            baseURL: BaseUrl(),
+            url: "/app/products",
+            method: "POST",
+            data: {
+                "isCake": true,
+                "name": addName,
+                "newOptionsList": addBack,
+                "price": addPrice,
+                "salePrice": 0,
+            },
+            headers: {
+                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+            },
+        }).then((res)=>{
+            console.log(res);
+        }).catch((err)=>{
+            console.log(err);
+        })
     };
     const [addDiv, setAddDiv] = useState(false);
     const [addImageModal, setAddImageModal] = useState(false);
-    const [addImage, setAddImage] = useState([
-        'https://www.codingfactory.net/wp-content/uploads/abc.jpg',
-        'https://t1.daumcdn.net/cfile/tistory/99D8553E5E09328C19',
-        '',
-        '',
-        '',
-    ]);
+    const [addFormData, setAddFormData] = useState(null);
+    const [addImage, setAddImage] = useState(['','','','','']);
+    
     const [addImageNum, setAddImageNum] = useState(0);
     const [addName, setAddName] = useState('');
     const [addPrice, setAddPrice] = useState(0);
@@ -104,6 +116,9 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         },
       ]);
     const [addBack, setAddBack] = useState<any>([]);
+
+
+
     const handleAddName = (e: any) => {
         setAddName(e.target.value);
     };
@@ -111,7 +126,6 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         setAddPrice(e.target.value);
     };
 
-    const [num, setNum] = useState(0);
     const handleOptionName = (e: any, optionId: any, ) => {
         addOption[optionId-1].optionName = e.target.value;
         setNum(num+1);
@@ -142,9 +156,10 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
     return (
         <>
             <ImageModal
-                num={num} setNum={setNum} resize={resize}
+                NumF={()=>setNum(num+1)} resize={resize} TF={true}
                 imageModalShow={addImageModal} setImageModalShowF={setAddImageModal}
-                imageData={addImage} setImageDataF={setAddImage} />
+                imageData={addImage} 
+            />
 
             <div className="spm-add-update">
               <div className="spm-add-update-inner">
@@ -249,9 +264,9 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                             if (56 <= startDrag-e.clientY && n <= option.optionList.length
                                                                 && (optionList.optionListId-1 != 0)) {
 
-                                                                    for (var i=n+1; i>1; i--) {
+                                                                    for (var i=n+1; i>1; i--) 
                                                                         addOption[option.optionId-1].optionList[optionList.optionListId-i].optionListId = optionList.optionListId-(i-2);
-                                                                    }
+                                                                    
                                                                     addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId-n;
                                                                     addOption[option.optionId-1].optionList.sort((a:any, b:any) => {
                                                                         if (a.optionListId < b.optionListId) return -1;
@@ -259,12 +274,12 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                         return 0;
                                                                     });
                                                             } else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
-                                                                && ((optionList.optionListId != option.optionList.length && !option.optionImage) 
-                                                                || (optionList.optionListId != option.optionList.length-1 && option.optionImage))) {
-
-                                                                    for (var i=n; i>0; i--) {
+                                                                && ((n+optionList.optionListId != option.optionList.length+1 && !option.optionImage) 
+                                                                || (n+optionList.optionListId != option.optionList.length && option.optionImage))) {
+                                                                    
+                                                                    for (var i=n; i>0; i--) 
                                                                         addOption[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
-                                                                    }
+                                                                    
                                                                     addOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId+n;
                                                                     addOption[option.optionId-1].optionList.sort((a:any, b:any) => {
                                                                         if (a.optionListId < b.optionListId) return -1;
@@ -288,10 +303,14 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                     "텍스트 입력": (option.optionImage&&option.optionList.length==optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
                                                             value={
                                                                 optionList.optionListName.split("&")[0] == "텍스트"? 
-                                                                    optionList.optionListName.split("&")[1]: (option.optionImage&&option.optionList.length==optionList.optionListId? option.optionImageText : optionList.optionListName)}
+                                                                    optionList.optionListName.split("&")[1]: 
+                                                                    (option.optionImage&&option.optionList.length==optionList.optionListId? 
+                                                                        option.optionImageText.split("&")[1]: 
+                                                                        optionList.optionListName)}
                                                             onChange={(e)=>{
+                                                                console.log(option.optionImage&&option.optionList.length==optionList.optionListId);
                                                                 if (option.optionImage&&option.optionList.length==optionList.optionListId)
-                                                                    addOption[option.optionId-1].optionImageText = e.target.value;
+                                                                    addOption[option.optionId-1].optionImageText = "이미지&"+e.target.value;
                                                                 else if (optionList.optionListName.split("&")[0] == "텍스트") 
                                                                     handleOptionListNameText(e, option.optionId, optionList.optionListId);
                                                                 else  
@@ -338,6 +357,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                         optionListName: "",
                                                         optionListPrice: 0,
                                                     };
+                                                    
                                                     setNum(num+1);
                                                     setAddOption(addOption);
                                                 }}>+&nbsp;품목 추가
@@ -373,6 +393,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                             optionListPrice: 0,
                                                         };
                                                         addOption[option.optionId-1].optionImage = true;
+                                                        addOption[option.optionId-1].optionImageText = "이미지&";
 
                                                         setNum(num+1);
                                                         setAddOption(addOption);

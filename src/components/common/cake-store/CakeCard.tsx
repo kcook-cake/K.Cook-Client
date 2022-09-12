@@ -148,14 +148,11 @@ function CakeCard({ getData, cakeDetail }: Props) {
                   </div>
                   <div className="cakecard-info">
                     <div className="card-top-info">
-                      <div className="card-rating-star">
-                        {star(0.0, '')}
-                      </div>
+                      {data.storeName == null? "~준비중 입니다~": data.storeName}
                       <div className="card-review">
                         {'리뷰 ' + 27}
                       </div>
                     </div>
-                    <div className="card-shop-name">{data.storeName == null? "~준비중 입니다~": data.storeName}</div>
                     <div className="card-cake-name">{data.name}</div>
                     <div className="card-minprice">
                       {data.price

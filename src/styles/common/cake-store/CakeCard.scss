@@ -37,53 +37,37 @@
 .cakecard-info {
   margin-left: 20px;
   font-weight: bold;
-}
-
-.card-rating-star {
-  display: inline-block;
-  img {
-    vertical-align: top;
-    margin-right: 3px;
-    margin-bottom: 16px;
+  .card-top-info {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 3px;
   }
-}
-.card-review {
-  display: inline;
-  float: right;
-  margin-right: 20px;
-  font-size: 11px;
-  color: #858997;
-}
+  .card-review {
+    display: inline;
+    float: right;
+    margin-right: 20px;
+    font-size: 11px;
+    color: #858997;
+  }
 
-.card-shop-name {
-  width: 250px; //270px
-  // height: 100px;
-  margin-bottom: 2px;
 
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
 
-  color: #000;
-  font-size: 12px;
-  line-height: 18px;
-  // background-color: red;
-}
-.card-cake-name {
-  width: 250px; //270px
-  padding-bottom: 10px;
+  .card-cake-name {
+    width: 250px; //270px
+    height: 65px;
 
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 
-  color: $sub-text;
-  line-height: 18px;
-  font-size: 16px;
-}
-.card-minprice {
-  color: $pricetext;
-  font-size: 20px;
+    color: $sub-text;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .card-minprice {
+    color: $pricetext;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -128,26 +112,9 @@
       font-size: 11px;
       color: #858997;
     }
-    .card-rating-star {
-      display: inline-block;
-      height: 13px;
-      img {
-        width: 13px;
-        vertical-align: top;
-      }
-    }
-    .card-shop-name {
-      width: 156px;
+
+
     
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    
-      color: #333333;
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 18px;
-    }
     .card-cake-name {
       width: 156px;
       margin-bottom: 10px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/SPM_Add_Update.scss';
@@ -32,6 +32,8 @@ function SPM_Update({
         idx, num, setNum, resize, 
         oriShow, getUpdateData, getUpdateImage,
     }: Props) {
+    const addPhoto = useRef(null);
+    const [addFormData, setAddFormData] = useState(null);
     
     const handleAddName = (e: any, ) => {
         updateData.name = e.target.value;
@@ -98,9 +100,9 @@ function SPM_Update({
     return (
         <>
             <ImageModal
-                num={num} setNum={setNum} resize={resize}
+                NumF={()=>setNum(num+1)} resize={resize} TF={false}
                 imageModalShow={updateImageModal} setImageModalShowF={setUpdateImageModal}
-                imageData={updateImage} setImageDataF={setUpdateImage}
+                imageData={updateImage}
             />
 
             <div className="spm-add-update">
@@ -221,8 +223,8 @@ function SPM_Update({
                                                                         });
                                                                 }
                                                                 else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
-                                                                    && ((optionList.optionListId != option.optionList.length && !option.optionImage) 
-                                                                    || (optionList.optionListId != option.optionList.length-1 && option.optionImage))) {
+                                                                    && ((n+optionList.optionListId != option.optionList.length+1 && !option.optionImage) 
+                                                                    || (n+optionList.optionListId != option.optionList.length && option.optionImage))) {
                                 
                                                                         for (var i=n; i>0; i--) {
                                                                             updateData.list[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
@@ -250,10 +252,13 @@ function SPM_Update({
                                                                         "텍스트 입력": (option.optionImage&&option.optionList.length==optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
                                                                 value={
                                                                     optionList.optionListName.split("&")[0] == "텍스트"? 
-                                                                        optionList.optionListName.split("&")[1]: (option.optionImage&&option.optionList.length==optionList.optionListId? option.optionImageText : optionList.optionListName)}
+                                                                        optionList.optionListName.split("&")[1]: 
+                                                                        (option.optionImage&&option.optionList.length==optionList.optionListId? 
+                                                                            option.optionImageText.split("&")[1]: 
+                                                                            optionList.optionListName)}
                                                                 onChange={(e)=>{
                                                                     if (option.optionImage&&option.optionList.length==optionList.optionListId)
-                                                                        updateData.list[option.optionId-1].optionImageText = e.target.value;
+                                                                        updateData.list[option.optionId-1].optionImageText = "이미지&"+e.target.value;
                                                                     else if (optionList.optionListName.split("&")[0] == "텍스트") 
                                                                         handleOptionListNameText(e, option.optionId, optionList.optionListId);
                                                                     else
@@ -327,6 +332,7 @@ function SPM_Update({
                                                                     optionListPrice: 0,
                                                                 };
                                                                 updateData.list[option.optionId-1].optionImage = true;
+                                                                updateData.list[option.optionId-1].optionImageText = "이미지&";
                                                                 setNum(num+1);
                                                             }}>'이미지' 추가
                                                         </div>

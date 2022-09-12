@@ -93,18 +93,19 @@ function OrderModal({
                             <div style={{ display: "flex", }}>
                               <div>
                                 <div className='left sfc-order-modal-left'>{data}</div>
-                                <div className='left sfc-order-modal-left'>{data}</div>
-                                <div className='left sfc-order-modal-left'>{data}</div>
                               </div>
                               
                               <div>
-                                <div className='left sfc-order-modal-right'>{idx}</div>
-                                <div className='left sfc-order-modal-right'>{idx}</div>
-                                <div className='left sfc-order-modal-right'>{idx}</div>
+                                <div className='cake-detail-optionlist-btn sfc-order-modal-right-flex'>
+                                    <div className='sfc-order-modal-right'>
+                                        <div style={{ color: "#ea5450", border: "1px solid #ea5450", }}>-</div>
+                                        <div style={{ fontSize: "16px", border: "1px solid #e0e0e0" }}>1</div>
+                                        <div style={{ color: "#fff", background: "#ea5450", }}>+</div>
+                                    </div>
+                                </div>
+                                
                               </div>
-
                             </div>
-                            <hr/>
                           </>
                         );
                       })}

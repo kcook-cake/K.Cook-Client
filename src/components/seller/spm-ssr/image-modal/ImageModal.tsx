@@ -1,70 +1,195 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import axios from 'axios';
+import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/image-modal/ImageModal.scss';
 
+import cake6 from 'src/assets/cake6.png';
+import addImage from 'src/assets/seller/sso-ssh/image-add.png'
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+import BaseUrl from 'src/utils/BaseUrl';
 
 interface Props {
-    num: any,
-    setNum: any,
+    NumF: any,
     resize: any,
+    TF: any,
 
     imageModalShow: any,
     setImageModalShowF: any,
 
     imageData: any,
-    setImageDataF: any,
 }
 
-type userType = {
-    [key: string]: any;
-}
-
-function ImageModal ({
-        num, setNum, resize,
+const ImageModal = ({
+        NumF, resize, TF,
         imageModalShow, setImageModalShowF, 
-        imageData, setImageDataF,
-    }: Props) {
-    var jwToken: any = undefined;
-    if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-    else jwToken = sessionStorage.jwToken;
+        imageData, 
+    }: Props) => {
 
-    const inputRef = useRef<HTMLInputElement | null>(null);
-    const [image, setImage] = useState(imageData);
+    const AddImageF = () => {
+        // axios({
+        //     baseURL: BaseUrl(),
+        //     url: "/app/products",
+        //     method: "POST",
+        //     data: formData,
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data',
+        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+        //     },
+        // }).then((res)=>{
+        //     console.log(res);
+        // }).catch((err)=>{
+        //     console.log(err);
+        // })
+    }
+    const UpdateImageF = () => {
+        // axios({
+        //     baseURL: BaseUrl(),
+        //     url: "/app/products",
+        //     method: "POST",
+        //     data: formData,
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data',
+        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+        //     },
+        // }).then((res)=>{
+        //     console.log(res);
+        // }).catch((err)=>{
+        //     console.log(err);
+        // })
+    }
 
-    const UpdateImageF = useCallback((e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
-        if (!e.target.files) return;
+    const MakeFormDataF = useCallback((e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
+        if (idx == 0) imageChange();
+        else if (idx == 1) imageChange1();
+        else if (idx == 2) imageChange2();
+        else if (idx == 3) imageChange3();
+        else imageChange4();
 
-        const formData = new FormData();
-        formData.append('image', e.target.files[0]);
-
-        axios({
-            baseURL: 'https://prod.kcook-cake.com/',
-            url: '/app/banner/carousel',
-            method: 'POST',
-            data: {
-                "bannerListReq[0].connectedUrl": "https://k-cook-s3.s3.ap-northeast-2.amazonaws.com/banner/",
-                "bannerListReq[0].mobileImage": formData,
-                "bannerListReq[0].orders": 1,
-                "bannerListReq[0].webImage": formData,
-            },
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'X-ACCESS-TOKEN': jwToken,
-            },
-          })
-            .then(res => {
-              console.log(res);
-            })
-            .catch(err => {
-              console.error(err);
-            });
-        setNum(num+1);
+        formData.set("productImage"+(idx+1), e.target.files[0]);
+        for (var i=1; i<6; i++)
+            if (imageTF[i-1])
+                formData.set("productImage"+(i), "");
+        NumF();
     },[]);
 
+    let [imageTF, setImageTF] = useState([true, true, true, true, true]);
+    const [preImage, setPreImage] = useState<File>(); const [preImage1, setPreImage1] = useState<File>(); const [preImage2, setPreImage2] = useState<File>(); const [preImage3, setPreImage3] = useState<File>(); const [preImage4, setPreImage4] = useState<File>();
+    const [addPhoto, setAddPhoto] = useState<string>(); const [addPhoto1, setAddPhoto1] = useState<string>(); const [addPhoto2, setAddPhoto2] = useState<string>(); const [addPhoto3, setAddPhoto3] = useState<string>(); const [addPhoto4, setAddPhoto4] = useState<string>();
+    const photoInput = useRef<HTMLInputElement>(); const photoInput1 = useRef<HTMLInputElement>(); const photoInput2 = useRef<HTMLInputElement>(); const photoInput3 = useRef<HTMLInputElement>(); const photoInput4 = useRef<HTMLInputElement>();
+    
+    const imageChange = () => {
+        const file = photoInput.current.files[0];
+        if (file && file.type.substr(0, 5) === "image")
+            setPreImage(file);
+        else
+            setPreImage(null);
+        imageTF[0] = false;
+        setImageTF(imageTF);
+        NumF();
+    }
     useEffect(()=>{
+        if (preImage) {
+            var reader: any = new FileReader();
+            reader.onloadend = () => {
+                setAddPhoto(reader.result as string);
+            };
+            reader.readAsDataURL(preImage);
+        } else
+            setAddPhoto(null);
+    },[preImage]);
+
+    const imageChange1 = () => {
+        const file = photoInput1.current.files[0];
+        if (file && file.type.substr(0, 5) === "image")
+            setPreImage1(file);
+        else
+            setPreImage1(null);
+        imageTF[1] = false;
+        setImageTF(imageTF);
+        NumF();
+    }
+    useEffect(()=>{
+        if (preImage1) {
+            var reader: any = new FileReader();
+            reader.onloadend = () => {
+                setAddPhoto1(reader.result as string);
+            };
+            reader.readAsDataURL(preImage1);
+        } else
+            setAddPhoto1(null);
+    },[preImage1]);
+
+    const imageChange2 = () => {
+        const file = photoInput2.current.files[0];
+        if (file && file.type.substr(0, 5) === "image") 
+            setPreImage2(file);
+        else 
+            setPreImage2(null);
+        imageTF[2] = false;
+        setImageTF(imageTF);
+        NumF();
+    }
+    useEffect(()=>{
+        if (preImage2) {
+            var reader: any = new FileReader();
+            reader.onloadend = () => {
+                setAddPhoto2(reader.result as string);
+            };
+            reader.readAsDataURL(preImage2);
+        } else
+            setAddPhoto2(null);
+    },[preImage2]);
+
+    const imageChange3 = () => {
+        const file = photoInput3.current.files[0];
+        if (file && file.type.substr(0, 5) === "image")
+            setPreImage3(file);
+        else
+            setPreImage3(null);
+        imageTF[3] = false;
+        setImageTF(imageTF);
+        NumF();
+    }
+    useEffect(()=>{
+        if (preImage3) {
+            var reader: any = new FileReader();
+            reader.onloadend = () => {
+                setAddPhoto3(reader.result as string);
+            };
+            reader.readAsDataURL(preImage3);
+        } else
+            setAddPhoto3(null);
+    },[preImage3]);
+
+    const imageChange4 = () => {
+        const file = photoInput4.current.files[0];
+        if (file && file.type.substr(0, 5) === "image")
+            setPreImage4(file);
+        else
+            setPreImage4(null);
+        imageTF[4] = false;
+        setImageTF(imageTF);
+        NumF();
+    }
+    useEffect(()=>{
+        if (preImage4) {
+            var reader: any = new FileReader();
+            reader.onloadend = () => {
+                setAddPhoto4(reader.result as string);
+            };
+            reader.readAsDataURL(preImage4);
+        } else
+            setAddPhoto4(null);
+    },[preImage4]);
+
+
+
+    var formData = new FormData();
+    useEffect(()=>{
+        for (var i=1; i<6; i++) formData.append("productImage"+(i), "");
     },[]);
+
 
     return (
         <>
@@ -72,88 +197,164 @@ function ImageModal ({
             {imageModalShow ? (
             <>
                 <div
-                className="spm-modal-background"
-                style={{ top: window.pageYOffset }}>
+                    className="spm-modal-background"
+                    style={{ top: window.pageYOffset }}>
                 </div>
 
                 <div
-                className="spm-modal-box"
-                style={{
-                    top:
-                    resize <= 767 ? 
-                    window.innerHeight - 530 < 0 ? window.pageYOffset : window.pageYOffset + 20 : 
-                    window.innerHeight - 775 < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - 775) / 2,
+                    className="spm-modal-box"
+                    style={{
+                        top:
+                            resize <= 767 ? 
+                            window.innerHeight - 530 < 0 ? window.pageYOffset : window.pageYOffset + 20 : 
+                            window.innerHeight - 775 < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - 775) / 2,
+                        left: resize <= 767? 20: (resize-775)/2,
                 }}>
                 <div className="spm-modal-title">이미지 등록</div>
                 <div className="spm-modal-subtitle">대표이미지(1장)</div>
                 <div className="spm-modal-img-inner">
                     <div className="spm-modal-img-inner">
-                        <label                             
-                            className={classNames("spm-add-img spm-add-add-img", {
-                                "spm-add-add-img-icon": image[0] == '',
-                            })} 
-                            htmlFor="spm-file-0">
-                            {image[0] == '' ?
-                                <AddIcon/>:
-                                <img src={image[0]} />
-                            }
-                        </label>
-                        <input
-                            id="spm-file-0"
-                            type="file"
-                            accept="image/*"
-                            ref={inputRef}
-                            onChange={(e)=>UpdateImageF(e, 0)}
-                        />
+                        <form>
+                            <button onClick={(e)=>{
+                                e.preventDefault();
+                                photoInput.current.click();
+                            }}>
+                                <div>
+                                    {imageTF[0]? 
+                                        (imageData[0]!=''?<img src={imageData[0]}/>: <img src={addImage}/>): 
+                                        <img src={addPhoto}/>
+                                    }
+                                </div>
+                            </button>
+                            <input
+                                id="spm-file-0"
+                                type="file"
+                                accept="image/*"
+                                ref={photoInput}
+                                style={{ display: "none", }}
+                                onChange={(e)=>MakeFormDataF(e, 0)}
+                            />
+                        </form>
                     </div>
                 </div>
 
                 <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
                 <div className="spm-modal-img-box">
-                    {[1, 2, 3, 4].map((data: any, )=>{
-                        return (
-                            <div className="spm-modal-img-inner">
-                                <label                             
-                                    className={classNames("spm-add-img spm-add-add-img", {
-                                        "spm-add-add-img-icon": image[data] == '',
-                                    })} 
-                                    htmlFor={"spm-file-"+data}>
-                                    {image[data] == '' ?
-                                        <AddIcon/>:
-                                        <img src={image[data]} />
+                    <div className="spm-modal-img-inner">
+                        <form>
+                            <button onClick={(e)=>{
+                                e.preventDefault();
+                                photoInput1.current.click();
+                            }}>
+                                <div>
+                                    {imageTF[1]? 
+                                        (imageData[1]!=''?<img src={imageData[1]}/>: <img src={addImage} />): 
+                                        <img src={addPhoto1}/>
                                     }
-                                </label>
-                                <input
-                                    id={"spm-file-"+data}
-                                    type="file"
-                                    accept="image/*"
-                                    ref={inputRef}
-                                    onChange={(e)=>UpdateImageF(e, data)}
-                                />
-                            </div>
-                        );
-                    })}
+                                </div>
+                            </button>
+                            <input
+                                id="spm-file-1"
+                                type="file"
+                                accept="image/*"
+                                ref={photoInput1}
+                                style={{ display: "none", }}
+                                onChange={(e)=>MakeFormDataF(e, 1)}
+                            />
+                        </form>
+                    </div>
+                    <div className="spm-modal-img-inner">
+                        <form>
+                            <button onClick={(e)=>{
+                                e.preventDefault();
+                                photoInput2.current.click();
+                            }}>
+                                <div>
+                                    {imageTF[2]? 
+                                        (imageData[2]!=''?<img src={imageData[2]}/>: <img src={addImage}/>): 
+                                        <img src={addPhoto2}/>
+                                    }
+                                </div>
+                            </button>
+                            <input
+                                id="spm-file-2"
+                                type="file"
+                                accept="image/*"
+                                ref={photoInput2}
+                                style={{ display: "none", }}
+                                onChange={(e)=>MakeFormDataF(e, 2)}
+                            />
+                        </form>
+                    </div>
+                    <div className="spm-modal-img-inner">
+                        <form>
+                            <button onClick={(e)=>{
+                                e.preventDefault();
+                                photoInput3.current.click();
+                            }}>
+                                <div>
+                                    {imageTF[3]? 
+                                        (imageData[3]!=''?<img src={imageData[3]}/>: <img src={addImage}/>): 
+                                        <img src={addPhoto3}/>
+                                    }
+                                </div>
+                            </button>
+                            <input
+                                id="spm-file-3"
+                                type="file"
+                                accept="image/*"
+                                ref={photoInput3}
+                                style={{ display: "none", }}
+                                onChange={(e)=>MakeFormDataF(e, 3)}
+                            />
+                        </form>
+                    </div>
+                    <div className="spm-modal-img-inner">
+                        <form>
+                            <button onClick={(e)=>{
+                                e.preventDefault();
+                                photoInput4.current.click();
+                            }}>
+                                <div>
+                                    {imageTF[4]? 
+                                        (imageData[4]!=''?<img src={imageData[4]}/>: <img src={addImage}/>): 
+                                        <img src={addPhoto4}/>
+                                    }
+                                </div>
+                            </button>
+                            <input
+                                id="spm-file-4"
+                                type="file"
+                                accept="image/*"
+                                ref={photoInput4}
+                                style={{ display: "none", }}
+                                onChange={(e)=>MakeFormDataF(e, 4)}
+                            />
+                        </form>
+                    </div>
                 </div>
 
                 <div className="spmdetail-content-btn-box">
                     <button
                         className="spmdetail-content-btn spm-modal-btn-box"
                         onClick={() => {
-                            setImageDataF(image);
+                            if (TF) AddImageF();
+                            else UpdateImageF();
                             setImageModalShowF(false);
-                            setNum(num+1);
+                            NumF();
                         }}>
-                        닫기
+                        등록
                     </button>
-                    {/* <button
-                        className="spmdetail-content-btn spmdetail-content-btn-left"
+                    <button
+                        className="spmdetail-content-btn spmdetail-content-btn-left spm-modal-btn-box"
                         onClick={() => {
-                            setImage(imageData);
+                            imageTF[0] = true; imageTF[1] = true; imageTF[2] = true; imageTF[3] = true; imageTF[4] = true; 
+                            setImageTF(imageTF);
                             setImageModalShowF(false);
-                            setNum(num+1);
+                            NumF();
                         }}>
                         취소
-                    </button> */}
+                    </button>
                 </div>
                 </div>
             </>

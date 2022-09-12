@@ -19,7 +19,7 @@ function StoreMenu({ session, auth }: Props) {
   const [dataLength, setDataLength] = useState(0);
 
   useEffect(() => {
-    storeGetAxios(setData, 'stores/arepresentative', 0, 3);
+    storeGetAxios(setData, setDataLength, 'stores/arepresentative', 0, 3);
   }, []);
 
   // 모달창 생성용 값

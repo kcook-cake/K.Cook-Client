@@ -3,14 +3,19 @@ import axios from "axios";
 import $ from 'jquery';
 import 'src/styles/detail/StoreDetail.scss';
 
-import DetailAd from "../../assets/detail-ad.png";
-import TestImg from "../../assets/searchIcon.png";
+import cake6 from "src/assets/cake6.png";
+import profileNone from "src/assets/detail/store/profile.png";
+import timeImg from "src/assets/detail/store/time.png";
+import phoneImg from "src/assets/detail/store/phone.png";
+import locationImg from "src/assets/detail/store/location.png";
+import DetailAd from "src/assets/detail-ad.png";
+import TestImg from "src/assets/searchIcon.png";
 
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import LengthSlide_Two from 'src/components/detail/LengthSlide_Two';
 
-const StoreDetail = () =>{
+const StoreDetail = (auth: any) =>{
     const [maxNum, setMaxNum] = useState(0);
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);
@@ -54,23 +59,34 @@ const StoreDetail = () =>{
             <div className="store-detail">
                 <div className="store-detail-top">
                     <div className="store-detail-top-img">
-                        {/* <img src={DetailAd} /> */}
+                        {false? <img src={cake6} />:<div>~준비중 입니다~</div>}
                     </div>
                     <div className="store-detail-top-box">
-                        <div className="store-detail-store-name">원모먼트</div>
-                        <div className="store-detail-store-ad">연리단길 지역 판매량 1위!ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
-                        <div className="store-detail-store-address">서울 용산구 이태원로55길 111</div> {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
-                        <div id="main-map" style={{ height: "200px", marginBottom: "20px", }}></div>
-                        <div className="store-detail-store-content-box">
-                            <div className="store-detail-store-content">#특별한날</div>
-                            <div className="store-detail-store-content">#기념일</div>
-                            <div className="store-detail-store-content">#유니크한</div>
-                            <div className="store-detail-store-content">#커스텀</div>
-                            <div className="store-detail-store-content">#우히힛ㅎ</div>
-                            <div className="store-detail-store-content">#기념일</div>
-                            <div className="store-detail-store-content">#유니크한</div>
-                            <div className="store-detail-store-content">#커스텀</div>
+                        <div className='store-detail-profile'>
+                            {false? 
+                                <></>:
+                                <img src={profileNone} />
+                            }
                         </div>
+                        <div className="store-detail-store-name">{auth.nickname}</div>
+                        <div className="store-detail-store-textarea">연리단길 지역 판매량 1위!ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                        <hr className="store-detail-store-hr"/>
+
+                        <div className="store-detail-store-info">
+                            <img src={timeImg} />
+                            서울 용산구 이태원로55길 111
+                        </div>
+                        <div className="store-detail-store-info">
+                            <img src={phoneImg} />
+                            서울 용산구 이태원로55길 111
+                        </div>
+                        <div className="store-detail-store-info">
+                            <img src={locationImg} />
+                            서울 용산구 이태원로55길 111
+                        </div>
+
+                        <div id="main-map" style={{ height: "178px", marginBottom: "20px", }}></div> {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
+                        
                         <div className="store-detail-store-button-box">
                             <button className="store-detail-store-button" style={{ float: "left", }}>
                                 <img src={TestImg} />
@@ -81,10 +97,9 @@ const StoreDetail = () =>{
                                 공유하기
                             </button>
                         </div>
-                        <button className="store-detail-store-button-bottom">주문하기</button>
                     </div>
                 </div>
-                <img src={"."+DetailAd} className="store-detail-ad" />
+                <img src={DetailAd} className="store-detail-ad" />
 
                 <div className="store-detail-cakelist home">
                     <div className="store-detail-title-flex">
