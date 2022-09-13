@@ -94,7 +94,7 @@
 .spm-add-update-img {
     width: 160px;
     height: 176px;
-    margin-bottom: 26.5px;
+    margin-bottom: 5px;
     border-radius: 5px;
     background-color: #ebebeb;
     img {
@@ -115,6 +115,79 @@
         height: 176px;
     }
 }
+ul{
+    width: 110px;
+    list-style:none;
+    padding-left:0px;
+}
+.spm-add-update-dot {
+    width: 10px;
+    height: 10px;  
+
+    position: relative;
+    top: 5px;
+
+    border-radius: 50px;
+    border: 2px solid #ebebeb;
+    background-color: transparent;
+}
+.spm-add-update-dot-active {
+    background-color: #ebebeb;
+}
+//스위치
+.switch-button { 
+    position: relative; 
+    display: inline-block; 
+
+    display: flex; 
+    float: right;
+
+    width: 55px; 
+    height: 30px; 
+} 
+.switch-button input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+} 
+.onoff-switch { 
+    position: absolute; 
+    cursor: pointer; 
+
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    
+    border-radius:20px; 
+    background-color: #ccc; 
+    box-shadow: inset 1px 5px 1px #999; 
+    -webkit-transition: .4s; 
+    transition: .4s; 
+} 
+.onoff-switch:before { 
+    position: absolute;
+    content: ""; 
+    height: 22px; 
+    width: 22px; 
+    left: 4px; 
+    bottom: 4px; 
+    background-color: #fff; 
+    -webkit-transition: .5s; 
+    transition: .4s; 
+    border-radius:20px; 
+} 
+.switch-button input:checked + .onoff-switch { 
+    background-color: #45AFBE; 
+    box-shadow: inset 1px 5px 1px #256169; 
+} 
+.switch-button input:checked + .onoff-switch:before { 
+    -webkit-transform: translateX(26px); 
+    -ms-transform: translateX(26px); 
+    transform: translateX(26px); 
+}
+
+
 
 .spm-add-update-price,
 .spm-add-update-item {

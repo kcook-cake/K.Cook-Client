@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import classNames from 'classnames';
 import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/SPM_Add_Update.scss';
 
@@ -81,7 +82,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 "name": addName,
                 "newOptionsList": addBack,
                 "price": addPrice,
-                "salePrice": 0,
+                "salePrice": 0, //show
             },
             headers: {
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
@@ -168,34 +169,34 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 </div>
 
                 <div className="spm-add-update-content">
-                    <div
-                        className="spm-add-update-img"
-                        onClick={() => setAddImageModal(true)}>
-                        {addImage[addImageNum] == '' ? (
-                            <div className="spm-add-update-img-inner">
-                                <AddIcon />
-                            </div>
-                            ) :
-                            <img src={addImage[addImageNum]} />
-                        }
-                    </div>
-                    <div className="spm-add-update-arrow">
-                        <img
-                        src={leftArrow}
-                        onClick={() => {
-                            if (addImageNum != 0) setAddImageNum(addImageNum - 1);
-                            else setAddImageNum(4);
-                        }}
-                        />
-                        <img
-                        src={rightArrow}
-                        onClick={() => {
-                            if (addImageNum != 4) setAddImageNum(addImageNum + 1);
-                            else setAddImageNum(0);
-                        }}
-                        style={{ float: 'right' }}
-                        />
-                        <div className="spm-add-update-arrow-num">{addImageNum + 1}/5</div>
+                    <div>
+                        <div
+                            className="spm-add-update-img"
+                            onClick={() => setAddImageModal(true)}>
+                            {addImage[addImageNum] == '' ? (
+                                <div className="spm-add-update-img-inner">
+                                    <AddIcon />
+                                </div>
+                                ) :
+                                <img src={addImage[addImageNum]} />
+                            }
+                        </div>
+                        <div>
+                            <ul style={{ display: "flex", }}>
+                                {[0, 1, 2, 3, 4].map((data: any,)=>{
+                                    return (
+                                        <li 
+                                            className={classNames('spm-add-update-dot', {
+                                                'spm-add-update-dot-active': addImageNum==data,
+                                            })}
+                                            onClick={()=>{
+                                                setAddImageNum(data);
+                                            }}>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </div>
                     </div>
 
                     <div> {/* spmcard-content-inner */}
@@ -442,6 +443,11 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                     }}>
                   <CloseBtn />
                 </button>
+                {/* <label className="switch-button">
+                    <input id='studies_togetherTrue' type='checkbox' onClick={() => {
+                    }}/>
+                    <span className="onoff-switch"></span>
+                </label> */}
               </div>
             </div>
         </>
