@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/SPM_Add_Update.scss';
@@ -118,31 +119,33 @@ function SPM_Update({
                         <DragBtn/>
                     </div>
                     <div className="spm-add-update-content">
-                        <div
-                            className="spm-add-update-img"
-                            onClick={()=>{
-                                setUpdateImageModal(true);
-                            }}>
-                            {updateImage[updateImageNum]==""?
-                                <div className="spm-add-update-img-inner"><AddIcon/></div>:
-                                <img src={updateImage[updateImageNum]} />
-                            }
-                        </div>
-                        <div className="spm-add-update-arrow">
-                            <img
-                                src={leftArrow}
+                        <div>
+                            <div
+                                className="spm-add-update-img"
                                 onClick={()=>{
-                                    if (updateImageNum != 0) setUpdateImageNum(updateImageNum-1);
-                                    else setUpdateImageNum(4);
-                                }}/>
-                            <img
-                                src={rightArrow}
-                                onClick={()=>{
-                                    if (updateImageNum != 4) setUpdateImageNum(updateImageNum+1);
-                                    else setUpdateImageNum(0);
-                                }}
-                                style={{ float: "right", }}/>
-                            <div className="spm-add-update-arrow-num">{updateImageNum+1}/5</div>
+                                    setUpdateImageModal(true);
+                                }}>
+                                {updateImage[updateImageNum]==""?
+                                    <div className="spm-add-update-img-inner"><AddIcon/></div>:
+                                    <img src={updateImage[updateImageNum]} />
+                                }
+                            </div>
+                            <div>
+                                <ul style={{ display: "flex", }}>
+                                    {[0, 1, 2, 3, 4].map((data: any,)=>{
+                                        return (
+                                            <li 
+                                                className={classNames('spm-add-update-dot', {
+                                                    'spm-add-update-dot-active': updateImageNum==data,
+                                                })}
+                                                onClick={()=>{
+                                                    setUpdateImageNum(data);
+                                                }}>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         </div>
 
                         <div> {/* spmcard-content-inner */}
