@@ -15,10 +15,43 @@ import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import LengthSlide_Two from 'src/components/detail/LengthSlide_Two';
 
+// const { kakao } = window;
+
 const StoreDetail = (auth: any) =>{
     const [maxNum, setMaxNum] = useState(0);
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);
+    const [height, setHeight] = useState(0);
+
+
+
+    //지도
+    // var markerPosition  = new kakao.maps.LatLng(37.365264512305174, 127.10676860117488); 
+    // var marker = new kakao.maps.Marker({
+    //     position: markerPosition
+    // });
+    // marker.setMap(map);
+    // useEffect(()=>{
+    //     var container = document.getElementById('map');
+    //     var options = {
+    //         center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488),
+    //         level: 3
+    //     };
+    
+    //     var map = new kakao.maps.Map(container, options);
+    //     var markerPosition  = new kakao.maps.LatLng(37.365264512305174, 127.10676860117488); 
+    //     var marker = new kakao.maps.Marker({
+    //         position: markerPosition
+    //     });
+    //     marker.setMap(map);
+    // },[]);
+
+
+
+    const [data, setData] = useState([]);
+    //0페이지부터 시작한다
+    const [pageTodays, setPageTodays] = useState(0);
+    const [lengthTodays, setLengthTodays] = useState(0);
     const [resize, setResize] = useState(0);
     const handleResize = () => {
         if (window.innerWidth<=767) {
@@ -27,13 +60,6 @@ const StoreDetail = (auth: any) =>{
         }
         setResize(window.innerWidth);
     };
-
-    const [height, setHeight] = useState(0);
-
-    const [data, setData] = useState([]);
-    //0페이지부터 시작한다
-    const [pageTodays, setPageTodays] = useState(0);
-    const [lengthTodays, setLengthTodays] = useState(0);
     useEffect(()=>{
         $(".hm-pc-flex").show();
         LinkClick("Store");
@@ -51,6 +77,15 @@ const StoreDetail = (auth: any) =>{
             });
         setResize(window.innerWidth);
         window.addEventListener("resize", handleResize);
+
+
+        
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+        var map = new kakao.maps.Map(container, options);
     },[]);
 
     return(
@@ -80,12 +115,12 @@ const StoreDetail = (auth: any) =>{
                             <img src={phoneImg} />
                             서울 용산구 이태원로55길 111
                         </div>
-                        <div className="store-detail-store-info">
+                        <div className="store-detail-store-info store-detail-store-info-2">
                             <img src={locationImg} />
                             서울 용산구 이태원로55길 111
                         </div>
 
-                        <div id="main-map" style={{ height: "178px", marginBottom: "20px", }}></div> {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
+                        <div id="map" style={{ height: "178px", marginBottom: "20px", }}></div> {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
                         
                         <div className="store-detail-store-button-box">
                             <button className="store-detail-store-button" style={{ float: "left", }}>
