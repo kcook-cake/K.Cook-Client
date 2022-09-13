@@ -68,6 +68,14 @@ function Header({ session, auth, setNumLeftMobileF }) {
               <>
                 <button>{auth.nickname}님 환영합니다</button>
                 <Link
+                  to="/KCOOKProductManagement"
+                  onClick={() => {
+                    setNumLeftMobileF(4);
+                  }}
+                >
+                  <button>관리자로 전환</button>
+                </Link>
+                <Link
                   to="/SSOCalendar"
                   onClick={() => {
                     setNumLeftMobileF(2);

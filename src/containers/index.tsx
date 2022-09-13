@@ -19,6 +19,7 @@ import SignOut from 'src/containers/sign/SignOut';
 import Test from '../components/Test';
 import StoreDetail from './detail/StoreDetail';
 import CakeDetail from './detail/CakeDetail';
+import KCOOK from './kcook/KCOOK';
 
 const Pages = () => {
   // 로그인확인
@@ -93,6 +94,7 @@ const Pages = () => {
 
       <Main session={session} auth={auth} />
 
+      {numLeftMobile == 4 ? <KCOOK session={session} auth={auth} /> : <></>}
       {numLeftMobile == 2 ? <Seller session={session} auth={auth} /> : <></>}
       {numLeftMobile == 3 ? <Mypage session={session} auth={auth} /> : <></>}
 
