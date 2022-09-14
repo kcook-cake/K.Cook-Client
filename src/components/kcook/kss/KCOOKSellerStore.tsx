@@ -3,7 +3,6 @@ import 'src/styles/admin/AllKCOOK.scss';
 import 'src/styles/mypage/Profile.scss';
 import 'src/styles/seller/sss/SellerStore.scss';
 
-import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 import X from "src/assets/address_x.png"
 
 import sellerLinkClick from 'src/utils/sellerLinkClick';
@@ -37,6 +36,7 @@ function KCOOKSellerStore (session: any, auth: any,){
 
     const [nameFail, setNameFail] = useState(false);
     const [addressFail, setAddressFail] = useState(false);
+    const [addressMainFail, setAddressMainFail] = useState(false);
     const [phoneFail, setPhoneFail] = useState(false);
     const [birthdayFail, setBirthdayFail] = useState(false);
     const [introFail, setIntroFail] = useState(false);
@@ -53,9 +53,9 @@ function KCOOKSellerStore (session: any, auth: any,){
     const handleAddressMain = (addressMain: any,) => {
         setAddressMain(addressMain);
         if (addressMain !== '')
-          setAddressFail(false)
+            setAddressMainFail(false)
         else
-          setAddressFail(true)
+            setAddressMainFail(true)
     };
     const handleAddress = (e: any,) => {
         setAddress(e.target.value);

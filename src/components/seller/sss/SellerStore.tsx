@@ -1,26 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import 'src/styles/admin/AllKCOOK.scss';
 import 'src/styles/mypage/Profile.scss';
 import 'src/styles/seller/sss/SellerStore.scss';
-import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+
+import X from "src/assets/address_x.png";
+
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import ImageModal from './image-modal/ImageModal';
+import PopupDom from 'src/components/sign/PopupDom';
+import PostCode from 'src/components/sign/PostCode';
+
+import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
 function SellerStore (session: any, auth: any,){
     const [num, setNum] = useState(0);
     const [failModalText, setFailModalText] = useState("수정 정보가 일치하지 않습니다.");
     const [failModal, setFailModal] = useState(false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    
+    // 팝업창 열고닫기
+    const openclosePostCode = () => {
+        if (isPopupOpen) 
+            setIsPopupOpen(false);
+        else
+            setIsPopupOpen(true);
+    };
 
 
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
+    const [addressMain, setAddressMain] = useState("");
     const [phone, setPhone] = useState("");
     const [birthday, setBirthday] = useState("");
     const [intro, setIntro] = useState("");
 
     const [nameFail, setNameFail] = useState(false);
     const [addressFail, setAddressFail] = useState(false);
+    const [addressMainFail, setAddressMainFail] = useState(false);
     const [phoneFail, setPhoneFail] = useState(false);
     const [birthdayFail, setBirthdayFail] = useState(false);
     const [introFail, setIntroFail] = useState(false);
@@ -34,6 +52,13 @@ function SellerStore (session: any, auth: any,){
             setNameFail(true)
     };
 
+    const handleAddressMain = (addressMain: any,) => {
+        setAddressMain(addressMain);
+        if (addressMain !== '')
+            setAddressMainFail(false)
+        else
+            setAddressMainFail(true)
+    };
     const handleAddress = (e: any,) => {
         setAddress(e.target.value);
         if (e.target.value !== '')
@@ -98,7 +123,8 @@ function SellerStore (session: any, auth: any,){
         sellerLinkClick("SellerStore");
 
         setName(auth.nickname);
-        setAddress(auth.address);
+        setAddressMain(auth.address.split(",")[0]);
+        setAddress(auth.address.split(",")[1]);
         setPhone(auth.phoneNumber);
         setBirthday(auth.dateOfBirth);
     },[]);
@@ -150,18 +176,12 @@ function SellerStore (session: any, auth: any,){
                         onChange={handleName}/>
                 </div>
                 <div className="profile-list">
-                    <p className="profile-name">스토어 주소</p>
+                    <p className="profile-name">스토어 소개</p>
                     <input
-                        value={address}
+                        value={intro}
                         className="sellerstore-content"
-                        onChange={handleAddress}/>
-                </div>
-                <div className="profile-list">
-                    <p className="profile-name">스토어 연락처</p>
-                    <input
-                        value={phone}
-                        className="sellerstore-content"
-                        onChange={handlePhone}/>
+                        onChange={handleIntro}
+                    />
                 </div>
                 <div className="profile-list">
                     <p className="profile-name">스토어 영업일</p>
@@ -171,12 +191,48 @@ function SellerStore (session: any, auth: any,){
                         onChange={handleBirthday}/>
                 </div>
                 <div className="profile-list">
-                    <p className="profile-name">스토어 소개</p>
+                    <p className="profile-name">스토어 연락처</p>
                     <input
-                        value={intro}
+                        value={phone}
                         className="sellerstore-content"
-                        onChange={handleIntro}/>
+                        onChange={handlePhone}/>
                 </div>
+                <div className="kcook-list">
+                    <p className="profile-name">스토어 주소</p>
+                    <input
+                        value={addressMain}
+                        className="sellerstore-content"
+                        onClick={openclosePostCode}
+                    />
+                    <div id="popupDom">
+                        {isPopupOpen ? 
+                        <>
+                            <div className="signup-adress-top">
+                            주소 검색
+                            <img
+                                src={X}
+                                onClick={()=>{
+                                    setIsPopupOpen(false);
+                                }} 
+                            />
+                            </div>
+                            <PopupDom>
+                                <PostCode
+                                    onClose={openclosePostCode}
+                                    parentCallback={handleAddressMain}
+                                />
+                            </PopupDom>
+                        </>:null}
+                    </div>
+                </div>
+                <div className="profile-list">
+                    <input
+                        value={address}
+                        className="sellerstore-content"
+                        onClick={handleAddress}
+                    />
+                </div>
+
                 <button
                     className="sellerstore-btn"
                     onClick={ChangeStore}>

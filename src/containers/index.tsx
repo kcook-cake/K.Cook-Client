@@ -55,6 +55,10 @@ const Pages = () => {
     if (pathname == '/') pathname = '/Home';
     pathname = pathname.split('/')[1];
     if (
+      pathname == 'KCOOKProductManagement' ||
+      pathname == 'KCOOKSellerStore'
+    ) setNumLeftMobile(2);
+    else if (
       pathname == 'SellerOrder' ||
       pathname == 'SalesHistory' ||
       pathname == 'ProductManagement' ||
@@ -62,7 +66,7 @@ const Pages = () => {
       pathname == 'SellerStore' ||
       pathname == 'FullCalendarApp'
     )
-      setNumLeftMobile(2);
+      setNumLeftMobile(3);
     else if (
       pathname == 'MypageOrder' ||
       pathname == 'ProductReview' ||
@@ -70,7 +74,7 @@ const Pages = () => {
       pathname == 'Coupon' ||
       pathname == 'Profile'
     )
-      setNumLeftMobile(3);
+      setNumLeftMobile(4);
     // else setNumLeftMobile(4);
   }, []);
 
