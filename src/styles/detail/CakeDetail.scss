@@ -85,14 +85,20 @@
     top: 21.7px;
     z-index: 1;
 }
+// .cake-detail-height {
+//     height: auto;
+// }
 .cake-detail-right-inner {
     width: 561.7px;
-    height: auto;
+    // height: auto;
+    // height: 100px;
     padding: 26px;
 
     border-radius: 10px;
     box-shadow: 0 0 5px #b2b2b2;
     background-color: #fff;
+
+    overflow-y: scroll;
 }
 .cake-detail-right-box {
     .cake-detail-right-store {
