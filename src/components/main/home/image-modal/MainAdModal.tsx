@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import 'src/styles/main/home/image-modal/MainAdModal.scss';
+import addImage from 'src/assets/seller/sso-ssh/image-add.png';
 
 interface Props {
   imageModalShow: any;
@@ -17,37 +18,15 @@ function ChangeAdModal({
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [image, setImage] = useState<any>(imageData);
-
   // axios.post할때 써야되서, 전역변수로 선언했음.
   const formData = new FormData();
   const UpdateAd = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
       if (!e.target.files) return;
 
-      formData.append('image', e.target.files[0]);
+      formData.set('image', e.target.files[0]);
 
-      /* axios({
-        baseURL: 'https://prod.kcook-cake.com/',
-        url: '/app/banner/static',
-        method: 'POST',
-        data: {
-          connectedUrl: 'https://www.kcook-cake.com/',
-          mobileImage: formData,
-          webImage: formData,
-        },
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'X-ACCESS-TOKEN': jwToken,
-        },
-      })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.error(err);
-        }); */
+      MakeFormDataF(e);
     },
     []
   );
@@ -76,25 +55,39 @@ function ChangeAdModal({
       });
   };
 
-  const [imageSrc, setImageSrc] = useState(null);
-
-  const encodeFileToBase64 = (fileBlob: any) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(fileBlob);
-    return new Promise<void>((resolve) => {
-      reader.onload = () => {
-        setImageSrc(reader.result);
-        resolve();
-      };
-    });
-  };
-
-  useEffect(() => {
-    setImageSrc(imageData);
-  }, [imageData]);
-
   // axios.post할 링크 url값 ( JSON보내는 형식에 따라 달라질 예정)
   const [adLinkUrl, setAdLinkUrl] = useState('');
+
+  // 광고등록 수정
+  const MakeFormDataF = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      imageChange();
+      formData.set('mainAdImage1', e.target.files[0]);
+      if (imageTF) formData.set('mainAdImage1', '');
+    },
+    []
+  );
+
+  const [imageTF, setImageTF] = useState(true);
+  const [preImage, setPreImage] = useState<File>();
+  const [addPhoto, setAddPhoto] = useState<string>();
+  const photoInput = useRef<HTMLInputElement>();
+
+  const imageChange = () => {
+    const file = photoInput.current.files[0];
+    if (file && file.type.substr(0, 5) === 'image') setPreImage(file);
+    else setPreImage(null);
+    setImageTF(false);
+  };
+  useEffect(() => {
+    if (preImage) {
+      var reader: any = new FileReader();
+      reader.onloadend = () => {
+        setAddPhoto(reader.result as string);
+      };
+      reader.readAsDataURL(preImage);
+    } else setAddPhoto(null);
+  }, [preImage]);
 
   return (
     <>
@@ -124,31 +117,40 @@ function ChangeAdModal({
 
             <div>
               <label htmlFor="changeAdFileInput" id="changeAdFileInputLabel">
-                {/*  {imageSrc ? (
-                  <img src={imageSrc} alt="preview-img" />
-                ) : (
-                  <button>+</button> */}
-
-                {imageSrc ? (
+                {/*    {imageSrc ? (
                   <img src={imageSrc} alt="preview-img" />
                 ) : (
                   <>
-                    {/* <AddIcon /> */}
+                   
                     <button>광고 이미지 등록</button>
                   </>
+                )} */}
+                {imageTF ? (
+                  imageData != '' ? (
+                    <>
+                      <img src={imageData} />
+                      <span>1</span>
+                    </>
+                  ) : (
+                    <>
+                      <img src={addImage} />
+                      <span>2</span>
+                    </>
+                  )
+                ) : (
+                  <>
+                    <img src={addPhoto} />
+                    <span>3</span>
+                  </>
                 )}
-                {/* {image[0] == '' ? <AddIcon /> : <img src={image[0]} />} */}
               </label>
               <input
                 id="changeAdFileInput"
                 type="file"
                 accept="image/*"
-                ref={inputRef}
-                onChange={(e) => (
-                  UpdateAd(e, 0), encodeFileToBase64(e.target.files[0])
-                )}
+                ref={photoInput}
+                onChange={(e) => UpdateAd(e, 0)}
               />
-              {/* <input id="bannerUrlTextInput" type="text" onChange={() => {}} /> */}
               <input
                 placeholder="광고 클릭시 이동할 링크를 적어주세요."
                 id="adUrlTextInput"
@@ -164,6 +166,7 @@ function ChangeAdModal({
                 className="spmdetail-content-btn"
                 onClick={() => {
                   setImageModalShowF(false);
+                  setImageTF(true);
                 }}
               >
                 닫기
