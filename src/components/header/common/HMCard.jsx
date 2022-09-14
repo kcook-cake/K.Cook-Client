@@ -157,7 +157,7 @@ function HMCard({ session, auth, setNumLeftMobileF }) {
                   to="/SSOCalendar"
                   className="header-link SellerOrder"
                   onClick={() => {
-                    setNumLeftMobileF(2);
+                    setNumLeftMobileF(3);
                     $('.hm-mobile').hide();
                   }}
                 >
@@ -169,7 +169,7 @@ function HMCard({ session, auth, setNumLeftMobileF }) {
                   to="/MypageOrder"
                   className="header-link MypageOrder"
                   onClick={() => {
-                    setNumLeftMobileF(3);
+                    setNumLeftMobileF(4);
                     $('.hm-mobile').hide();
                   }}
                 >

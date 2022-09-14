@@ -94,9 +94,9 @@ const Pages = () => {
 
       <Main session={session} auth={auth} />
 
-      {numLeftMobile == 4 ? <KCOOK session={session} auth={auth} /> : <></>}
-      {numLeftMobile == 2 ? <Seller session={session} auth={auth} /> : <></>}
-      {numLeftMobile == 3 ? <Mypage session={session} auth={auth} /> : <></>}
+      {numLeftMobile == 2 ? <KCOOK session={session} auth={auth} /> : <></>}
+      {numLeftMobile == 3 ? <Seller session={session} auth={auth} /> : <></>}
+      {numLeftMobile == 4 ? <Mypage session={session} auth={auth} /> : <></>}
 
       <Footer
         setNumLeftMobileF={setNumLeftMobile}

@@ -8,6 +8,7 @@ import SellerStore from '../../components/seller/sss/SellerStore';
 import SPMDetail from '../detail/SPMDetail';
 import KCOOKProductManagement from './kpm/KCOOKProductManagement';
 import KCOOKSection from 'src/components/kcook/KCOOKSection';
+import KCOOKSellerStore from 'src/components/kcook/kss/KCOOKSellerStore';
 
 interface Props {
     session: any,
@@ -24,7 +25,7 @@ const KCOOK = ({ session, auth, }: Props) =>{
                 <>
                     <KCOOKSection/>
                     <Route exact path="/KCOOKProductManagement" component={KCOOKProductManagement}/>
-                    <Route exact path="/KCOOKSellerStore" component={()=>SellerStore(session, auth)} />
+                    <Route exact path="/KCOOKSellerStore" component={()=>KCOOKSellerStore(session, auth)} />
                 </> 
             </div>
         </div>

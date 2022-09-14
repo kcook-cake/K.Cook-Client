@@ -64,29 +64,30 @@ function Header({ session, auth, setNumLeftMobileF }) {
           </div>
 
           <div className="header-top-right">
-            {session ? (
-              <>
+            {session ? 
+              (<>
                 <button>{auth.nickname}님 환영합니다</button>
-                <Link
-                  to="/KCOOKProductManagement"
-                  onClick={() => {
-                    setNumLeftMobileF(4);
-                  }}
-                >
-                  <button>관리자로 전환</button>
-                </Link>
+                {auth.accountId == 31? 
+                <>
+                  <Link
+                    to="/KCOOKProductManagement"
+                    onClick={() => {
+                      setNumLeftMobileF(2);
+                    }}>
+                    <button>관리자로 전환</button>
+                  </Link>
+                </>:<></>}
                 <Link
                   to="/SSOCalendar"
                   onClick={() => {
-                    setNumLeftMobileF(2);
-                  }}
-                >
+                    setNumLeftMobileF(3);
+                  }}>
                   <button>판매자로 전환</button>
                 </Link>
                 <Link
                   to="/MypageOrder"
                   onClick={() => {
-                    setNumLeftMobileF(3);
+                    setNumLeftMobileF(4);
                   }}
                 >
                   <button>마이페이지</button>

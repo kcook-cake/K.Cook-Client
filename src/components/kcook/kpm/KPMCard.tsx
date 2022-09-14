@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import 'src/styles/seller/spm-ssr/SPMCard.scss';
+import 'src/styles/admin/kpm/KPMCard.scss';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../../assets/seller/closebtn.svg';
@@ -29,6 +29,7 @@ function KPMCard({
     }: Props) {
 
     useEffect(()=>{
+        
     },[]);
     
     return (
@@ -77,25 +78,17 @@ function KPMCard({
                 </div>
 
                 <div className="spm-tap">
-                    <button
-                        onClick={()=>{
-                            alert("삭제");
-                            // setAddDiv(false);
-                        }}>
-                        <CloseBtn/>
-                    </button>
-                    <button
-                        className="spmcard-tap-btn"
-                        onClick={()=>{
-                            alert("복제");
-                        }}>
-                        <CopyBtn/>
-                    </button>
-                    <Link to="/ProductManagement/0">
-                        <div className="spmcard-tap-btn">
-                            <img src={setting}/>
-                        </div>
-                    </Link>
+                    <label className="switch-button">
+                        <input
+                            id='studies_togetherTrue'
+                            type='checkbox'
+                            onClick={() => {
+                                //노출
+                            }}
+                            // checked={false} //노출 여부 판단 후 적음
+                        />
+                        <span className="onoff-switch"></span>
+                    </label>
                 </div>
             </div>
         </>

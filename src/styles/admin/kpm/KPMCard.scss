@@ -1,0 +1,54 @@
+
+//스위치
+.switch-button { 
+    position: relative; 
+    display: inline-block; 
+
+    width: 25px; 
+    height: 55px;
+} 
+.switch-button input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+} 
+.onoff-switch { 
+    position: absolute; 
+    cursor: pointer; 
+
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    
+    border-radius:20px; 
+    background-color: #ccc; 
+    box-shadow: inset 0px 5px 3px #999; 
+    -webkit-transition: .4s; 
+    transition: .4s; 
+} 
+.onoff-switch:before { 
+    height: 19px; 
+    width: 19px; 
+
+    position: absolute;
+    content: ""; 
+
+    top: 4px;
+    left: 3px; 
+    // bottom: 4px; 
+
+    border-radius:20px; 
+    background-color: #fff; 
+    -webkit-transition: .5s; 
+    transition: .4s; 
+} 
+.switch-button input:checked + .onoff-switch { 
+    background-color: #ea5450; 
+    box-shadow: inset 0px 5px 3px #882320; 
+} 
+.switch-button input:checked + .onoff-switch:before { 
+    -webkit-transform: translateY(26px); 
+    -ms-transform: translateY(26px); 
+    transform: translateY(26px); 
+}
