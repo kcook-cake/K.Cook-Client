@@ -12,6 +12,7 @@ import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
+import KPMCard from 'src/components/kcook/kpm/KPMCard';
 
 function KCOOKProductManagement() {
   const [num, setNum] = useState(0);
@@ -111,8 +112,8 @@ function KCOOKProductManagement() {
   };
 
   useEffect(() => {
-    LinkClick('ProductManagement');
-    sellerLinkClick('ProductManagement');
+    LinkClick('KCOOKProductManagement');
+    sellerLinkClick('KCOOKProductManagement');
 
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -145,15 +146,15 @@ function KCOOKProductManagement() {
           <div className="seller-content">
             {oriData.map((data: any, idx: any) => {
               return (
-                <>  
-                    <SPMCard
-                        idx={idx}
-                        num={num}
-                        setNum={setNum}
-                        oriShow={oriShow}
-                        oriData={oriData}
-                        oriImage={oriImage}
-                    />
+                <>
+                  <KPMCard
+                    idx={idx}
+                    num={num}
+                    setNum={setNum}
+                    oriShow={oriShow}
+                    oriData={oriData}
+                    oriImage={oriImage}
+                  />
                 </>
               );
             })}

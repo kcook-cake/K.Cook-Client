@@ -35,7 +35,7 @@ function KCOOKSection (){
                     <div className="ss-menu" >
                         <Link
                            to="/KCOOKProductManagement"
-                           className="ss-link ProductManagement">
+                           className="ss-link KCOOKProductManagement">
                             <Cube className="icon"/>
                             <span>상품관리 </span>
                         </Link>
@@ -43,7 +43,7 @@ function KCOOKSection (){
                     <div className="ss-menu" >
                         <Link
                             to="/KCOOKSellerStore"
-                            className="ss-link SellerStore">
+                            className="ss-link KCOOKSellerStore">
                             <SettingIcon className="icon"/>
                             <span>스토어 정보</span>
                         </Link>

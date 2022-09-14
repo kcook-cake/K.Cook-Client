@@ -33,7 +33,7 @@ function HMSCard({ setNumLeftMobileF }) {
                             to="/SSOCalendar"
                             className="header-link SellerOrder"
                             onClick={()=>{
-                                setNumLeftMobileF(2);
+                                setNumLeftMobileF(3);
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -45,7 +45,7 @@ function HMSCard({ setNumLeftMobileF }) {
                             to="/SSHCalendar"
                             className="header-link SalesHistory"
                             onClick={()=>{
-                                setNumLeftMobileF(2);
+                                setNumLeftMobileF(3);
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -57,7 +57,7 @@ function HMSCard({ setNumLeftMobileF }) {
                             to="/ProductManagement"
                             className="header-link ProductManagement"
                             onClick={()=>{
-                                setNumLeftMobileF(2);
+                                setNumLeftMobileF(3);
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -69,7 +69,7 @@ function HMSCard({ setNumLeftMobileF }) {
                             to="/SellerReview"
                             className="header-link SellerReview"
                             onClick={()=>{
-                                setNumLeftMobileF(2);
+                                setNumLeftMobileF(3);
                                 $(".hm-mobile").hide();
                             }}
                         >
@@ -81,7 +81,7 @@ function HMSCard({ setNumLeftMobileF }) {
                             to="/SellerStore"
                             className="header-link SellerStore"
                             onClick={()=>{
-                                setNumLeftMobileF(2);
+                                setNumLeftMobileF(3);
                                 $(".hm-mobile").hide();
                             }}
                         >

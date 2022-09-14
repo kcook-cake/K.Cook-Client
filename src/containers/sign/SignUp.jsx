@@ -65,7 +65,7 @@ function SignUp() {
   const [phoneResult, setPhoneResult] = useState("");
   const onSMS = () => {
     axios
-      .patch(`https://prod.kcook-cake.com/app/accounts/sms-token`, {
+      .patch(`/app/accounts/sms-token`, {
         phoneNumber: phoneNumber,
       })
       .then((res) => {
@@ -192,7 +192,7 @@ function SignUp() {
     } else {
       axios
         .post("https://prod.kcook-cake.com/app/sign-up", {
-          address: addressMain + ", " + address,
+          address: addressMain.slice(0,-1) + ", " + address,
           dateOfBirth: birthday,
           email: email,
           nickname: nickname,
@@ -391,7 +391,7 @@ function SignUp() {
             onChange={(e) => 
               onCheckAll(e.target.checked)
             }
-          ></input>
+          />
           <label for="AgreeAll"></label>
           <div className="login-auto-contents">전체동의</div>
         </div>
@@ -411,9 +411,8 @@ function SignUp() {
           onClick={onClickSignUp}
           disabled={
             email.length >= 3 && password.length >= 8 ? false : true
-          }
-        >
-        가입하기
+          }>
+          가입하기
         </button>
 
         {failModal? 
