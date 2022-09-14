@@ -37,7 +37,6 @@ function ImageModal({
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState<any>(imageData);
 
   // axios.post할 이미지 url값 ( JSON보내는 형식에 따라 달라질 예정)
@@ -346,7 +345,8 @@ function ImageModal({
                   className="spmdetail-content-btn"
                   onClick={() => {
                     setImageModalShowF(false);
-                    //   setNum(num + 1);
+                    setNum(num + 1);
+
                     imageTF[0] = true;
                     imageTF[1] = true;
                     imageTF[2] = true;
