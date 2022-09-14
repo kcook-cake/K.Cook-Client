@@ -26,7 +26,7 @@ function ChangeAdModal({
     (e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
       if (!e.target.files) return;
 
-      formData.append('image', e.target.files[0]);
+      formData.set('image', e.target.files[0]);
 
       /* axios({
         baseURL: 'https://prod.kcook-cake.com/',
@@ -124,11 +124,6 @@ function ChangeAdModal({
 
             <div>
               <label htmlFor="changeAdFileInput" id="changeAdFileInputLabel">
-                {/*  {imageSrc ? (
-                  <img src={imageSrc} alt="preview-img" />
-                ) : (
-                  <button>+</button> */}
-
                 {imageSrc ? (
                   <img src={imageSrc} alt="preview-img" />
                 ) : (
