@@ -111,11 +111,11 @@ function ProductManagement() {
   };
 
   useEffect(() => {
-    LinkClick('ProductManagement');
-    sellerLinkClick('ProductManagement');
-
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
+    
+    LinkClick('ProductManagement');
+    sellerLinkClick('ProductManagement');
 
     for (var i = 0; i < oriData.length; i++) {
       oriShow[i] = true;
