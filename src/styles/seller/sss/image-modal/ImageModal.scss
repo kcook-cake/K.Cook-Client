@@ -1,109 +1,117 @@
 .sellerstore-modal-img-box::-webkit-scrollbar {
-    height: 8px !important;
+  height: 8px !important;
 }
 .sellerstore-modal-img-box::-webkit-scrollbar-thumb {
-    background-color: #e6e6e6 !important;
-    border-radius: 10px !important;
+  background-color: #e6e6e6 !important;
+  border-radius: 10px !important;
 }
 .sellerstore-modal-img-box::-webkit-scrollbar-track {
-    background-color: #f5f5f5 !important;
-    border-radius: 10px !important;
+  background-color: #f5f5f5 !important;
+  border-radius: 10px !important;
 }
 .sellerstore-modal-img-box {
-    display: grid;
-    column-gap: 11px !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
-    overflow-x: scroll !important;
+  display: grid;
+  column-gap: 11px !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  overflow-x: scroll !important;
 }
 .sellerstore-modal-img-inner {
-    width: 240px !important;
-    margin-bottom: 10px;
-    img {
+  width: 240px !important;
+  margin-bottom: 10px;
+  img {
     width: 240px !important;
     height: 180px !important;
     border-radius: 5px !important;
+  }
+  input {
+    display: none;
+  }
+  label {
+    width: 180px !important;
+    height: 180px !important;
+    > svg {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+  }
 }
 .sellerstore-add-img {
-    width: 240px !important;
-    height: 180px !important;
+  //  width: 240px !important;
+  //  height: 180px !important;
 
-    padding: 0 !important;
-    margin: 0 !important;
-    display: inline-block;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-block;
 
-    background-color: #ebebeb;
-    border-radius: 5px !important;
-    cursor: pointer;
-    img {
-    width: 240px !important;
+  background-color: #ebebeb;
+  border-radius: 5px !important;
+  cursor: pointer;
+  img {
+    //    width: 240px !important;
+    width: 180px !important;
     height: 180px !important;
-    }
+  }
 }
 
 .sellerstore-add-img-icon {
-    padding-top: 46px !important;
-    padding-left: 79px !important;
+  //  padding-top: 46px !important;
+  //  padding-left: 79px !important;
 }
-
-
 
 @media (max-width: 767px) {
-    .sellerstore-add-img {
-        width: 212px !important;
-        height: 159px !important;
+  .sellerstore-add-img {
+    width: 212px !important;
+    height: 159px !important;
+  }
+  .sellerstore-modal-img-inner {
+    width: 212px !important; //1199
+    img {
+      width: 212px !important;
+      height: 159px !important;
     }
-    .sellerstore-modal-img-inner {
-        width: 212px !important; //1199
-        img {
-        width: 212px !important;
-        height: 159px !important;
-        }
-    }
+  }
 
-    .sellerstore-modal-img-inner-one {
-        width: 212px !important;
-        height: 159px !important;
-        img {
-            width: 212px !important;
-            height: 159px !important;
-        }
+  .sellerstore-modal-img-inner-one {
+    width: 212px !important;
+    height: 159px !important;
+    img {
+      width: 212px !important;
+      height: 159px !important;
     }
+  }
 
-    .sellerstore-add-img-icon {
-        padding-top: 38px !important;
-        padding-left: 68px !important;
-    }
+  .sellerstore-add-img-icon {
+    padding-top: 38px !important;
+    padding-left: 68px !important;
+  }
 }
-
-
 
 @media (max-width: 352px) {
-    .sellerstore-add-img {
-        width: 144px !important;
-        height: 108px !important;
+  .sellerstore-add-img {
+    width: 144px !important;
+    height: 108px !important;
+  }
+  .sellerstore-modal-img-inner {
+    width: 144px !important; //1199
+    img {
+      width: 144px !important;
+      height: 108px !important;
     }
-    .sellerstore-modal-img-inner {
-        width: 144px !important; //1199
-        img {
-        width: 144px !important;
-        height: 108px !important;
-        }
-    }
+  }
 
-    .sellerstore-modal-img-inner-one {
-        width: 144px !important;
-        height: 108px !important;
-        img {
-            width: 144px !important;
-            height: 108px !important;
-        }
+  .sellerstore-modal-img-inner-one {
+    width: 144px !important;
+    height: 108px !important;
+    img {
+      width: 144px !important;
+      height: 108px !important;
     }
+  }
 
-    .sellerstore-add-img-icon {
-        padding-top: 15px !important;
-        padding-left: 34px !important;
-    }
+  .sellerstore-add-img-icon {
+    padding-top: 15px !important;
+    padding-left: 34px !important;
+  }
 }
-
-  
