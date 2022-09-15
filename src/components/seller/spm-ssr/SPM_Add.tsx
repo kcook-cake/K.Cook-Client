@@ -9,7 +9,7 @@ import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from 'src/assets/seller/closebtn.svg';
 import leftArrow from 'src/assets/left-arrow.svg';
 import rightArrow from 'src/assets/right-arrow.svg';
-import ImageModal from './image-modal/ImageModal';
+import ImageModal from './modal/ImageModal';
 import axios from 'axios';
 import BaseUrl from 'src/utils/BaseUrl';
 

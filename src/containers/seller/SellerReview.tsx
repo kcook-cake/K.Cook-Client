@@ -8,6 +8,8 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 
 function SellerReview (){
+    const [num, setNum] = useState(0);
+
     const [data, setData] = useState([
         {
             date: "2022-07-06",
@@ -66,10 +68,8 @@ function SellerReview (){
             image: "",
         },
     ]);
-    // const [data, setData] = useState([]);
-    // const [dataLength, setDataLength] = useState(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         LinkClick("SellerReview");
         sellerLinkClick("SellerReview");
         // getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
@@ -87,6 +87,7 @@ function SellerReview (){
                 <div className="seller-content">
                     <SSRCard getData={data} />
                 </div>
+
             </div>
         </div>
         </>

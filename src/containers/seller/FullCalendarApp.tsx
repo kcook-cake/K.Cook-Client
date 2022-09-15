@@ -10,7 +10,7 @@ import '../../styles/seller/FullCalendarApp.scss';
 import FullCalendarSeller from '../../utils/FullCalendarSeller';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import OrderModal from '../../components/seller/sso-ssh/order-modal/OrderModal';
+import OrderModal from '../../components/seller/sso-ssh/modal/OrderModal';
 
 function FullCalendarApp (session: any, auth: any,){
     const [num, setNum] = useState(0);
