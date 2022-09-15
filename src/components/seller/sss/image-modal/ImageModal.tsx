@@ -160,31 +160,9 @@ function ImageModal({
                     )
                   ) : (
                     // 업데이트 이후
+
                     <img src={addLogo} alt="newLogoImage" />
                   )}
-
-                  {/*
-               
-                  {imageTF[0] ? (
-                    imageData[0] != '' ? (
-                      <img src={imageData[0]} />
-                    ) : (
-                      <img src={addImage} />
-                    )
-                  ) : (
-                    <img src={addPhoto} />
-                  )}
-                </label>
-
-                <input
-                  id="home-file-0"
-                  style={{ display: 'none' }}
-                  type="file"
-                  accept="image/*"
-                  ref={photoInput}
-                  onChange={(e) => MakeFormDataF(e, 0)}
-                />
-*/}
                 </label>
                 {/* 스토어로고 클릭시 ImageTF === false  ///  스토어사진 클릭시 ImageTF === ture*/}
                 {!imageTF ? (

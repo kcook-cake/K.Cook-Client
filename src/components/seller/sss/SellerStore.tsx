@@ -8,6 +8,7 @@ import X from 'src/assets/address_x.png';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import ImageModal from './image-modal/ImageModal';
+import ImageModalPhoto from './image-modal/ImageModalPhoto';
 import PopupDom from 'src/components/sign/PopupDom';
 import PostCode from 'src/components/sign/PostCode';
 
@@ -123,20 +124,37 @@ function SellerStore(session: any, auth: any) {
 
   return (
     <>
-      {/* 로고 클릭시 모달창 */}
-      <ImageModal
-        num={num}
-        setNum={setNum}
-        resize={resize}
-        imageTF={imageTF}
-        imageModalShow={imageModalShow}
-        setImageModalShowF={setImageModalShow}
-        imageData={imageData}
-        setImageDataF={setImageData}
-        //
-        logoImgSrc={logoImgSrc}
-        setLogoImgSrc={setLogoImgSrc}
-      />
+      {!imageTF ? (
+        // 스토어 로고 클릭시 모달창
+        <ImageModal
+          num={num}
+          setNum={setNum}
+          resize={resize}
+          imageTF={imageTF}
+          imageModalShow={imageModalShow}
+          setImageModalShowF={setImageModalShow}
+          imageData={imageData}
+          setImageDataF={setImageData}
+          //
+          logoImgSrc={logoImgSrc}
+          setLogoImgSrc={setLogoImgSrc}
+        />
+      ) : (
+        // 스토어 사진 클릭시 모달창
+        <ImageModalPhoto
+          num={num}
+          setNum={setNum}
+          resize={resize}
+          imageTF={imageTF}
+          imageModalShow={imageModalShow}
+          setImageModalShowF={setImageModalShow}
+          imageData={imageData}
+          setImageDataF={setImageData}
+          //
+          photoImgSrc={photoImgSrc}
+          setPhotoImgSrc={setPhotoImgSrc}
+        />
+      )}
 
       <div className="seller-block">
         <div className="seller-store">
