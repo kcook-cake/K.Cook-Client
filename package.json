@@ -69,6 +69,7 @@
   "proxy": "",
   "devDependencies": {
     "@types/jquery": "^3.5.14",
+    "kakao.maps.d.ts": "^0.1.33",
     "prettier-eslint": "^13.0.0",
     "webpack-dev-server": "^3.11.1"
   }

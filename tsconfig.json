@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "types": [
-      "kakao.maps.d.ts",
-    ],
+    "types": ["kakao.maps.d.ts"],
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
