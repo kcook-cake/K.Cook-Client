@@ -127,21 +127,14 @@ function ChangeAdModal({
                 )} */}
                 {imageTF ? (
                   imageData != '' ? (
-                    <>
-                      <img src={imageData} />
-                      <span>1</span>
-                    </>
+                    <img src={imageData} />
                   ) : (
                     <>
                       <img src={addImage} />
-                      <span>2</span>
                     </>
                   )
                 ) : (
-                  <>
-                    <img src={addPhoto} />
-                    <span>3</span>
-                  </>
+                  <img src={addPhoto} />
                 )}
               </label>
               <input
