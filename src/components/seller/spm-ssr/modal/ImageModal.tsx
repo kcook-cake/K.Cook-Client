@@ -27,20 +27,32 @@ const ImageModal = ({
     }: Props) => {
 
     const AddImageF = () => {
-        // axios({
-        //     baseURL: BaseUrl(),
-        //     url: "/app/products",
-        //     method: "POST",
-        //     data: formData,
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data',
-        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-        //     },
-        // }).then((res)=>{
-        //     console.log(res);
-        // }).catch((err)=>{
-        //     console.log(err);
-        // })
+        console.log(formData.get("productImage1"));
+        console.log(formData.get("productImage2"));
+        console.log(formData.get("productImage3"));
+        console.log(formData.get("productImage4"));
+        console.log(formData.get("productImage5"));
+        axios({
+            baseURL: BaseUrl(),
+            url: "/app/products/0/photos",
+            method: "POST",
+            data: {
+                "productImage1": formData.get("productImage1"),
+                "productImage2": formData.get("productImage2"),
+                "productImage3": formData.get("productImage3"),
+                "productImage4": formData.get("productImage4"),
+                "productImage5": formData.get("productImage5"),
+            },
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+            },
+        }).then((res)=>{
+            console.log(res);
+        }).catch((err)=>{
+            console.log(err);
+            console.log(err.response.data);
+        })
     }
     const UpdateImageF = () => {
         // axios({
@@ -56,6 +68,7 @@ const ImageModal = ({
         //     console.log(res);
         // }).catch((err)=>{
         //     console.log(err);
+        //     console.log(err.response.data);
         // })
     }
 
@@ -67,9 +80,12 @@ const ImageModal = ({
         else imageChange4();
 
         formData.set("productImage"+(idx+1), e.target.files[0]);
+        setFormData(formData);
         for (var i=1; i<6; i++)
-            if (imageTF[i-1])
+            if (imageTF[i-1]) {
                 formData.set("productImage"+(i), "");
+                setFormData(formData);
+            }
         NumF();
     },[]);
 
@@ -184,10 +200,13 @@ const ImageModal = ({
     },[preImage4]);
 
 
-
-    var formData = new FormData();
+    let [formData, setFormData] = useState(new FormData);
+    // var formData = new FormData();
     useEffect(()=>{
-        for (var i=1; i<6; i++) formData.append("productImage"+(i), "");
+        for (var i=1; i<6; i++) {
+            formData.append("productImage"+(i), "");
+            setFormData(formData);
+        }
     },[]);
 
 
