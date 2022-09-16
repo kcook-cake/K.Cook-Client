@@ -127,21 +127,14 @@ function ChangeAdModal({
                 )} */}
                 {imageTF ? (
                   imageData != '' ? (
-                    <>
-                      <img src={imageData} />
-                      <span>1</span>
-                    </>
+                    <img src={imageData} />
                   ) : (
                     <>
                       <img src={addImage} />
-                      <span>2</span>
                     </>
                   )
                 ) : (
-                  <>
-                    <img src={addPhoto} />
-                    <span>3</span>
-                  </>
+                  <img src={addPhoto} />
                 )}
               </label>
               <input
@@ -165,20 +158,20 @@ function ChangeAdModal({
               <button
                 className="spmdetail-content-btn"
                 onClick={() => {
+                  axiosPostAds(); // POST 함수 실행
+                  alert('등록되었습니다.');
+                }}
+              >
+                등록
+              </button>
+              <button
+                className="spmdetail-content-btn spmdetail-content-btn-left"
+                onClick={() => {
                   setImageModalShowF(false);
                   setImageTF(true);
                 }}
               >
-                닫기
-              </button>
-              <button
-                className="spmdetail-content-btn"
-                onClick={() => {
-                  axiosPostAds(); // POST 함수 실행
-                  alert('저장되었습니다.');
-                }}
-              >
-                저장
+                취소
               </button>
             </div>
           </div>

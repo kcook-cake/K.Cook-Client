@@ -344,6 +344,15 @@ function ImageModal({
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
+                    axiosPostBanner(); // POST 함수 실행
+                    alert('등록되었습니다.');
+                  }}
+                >
+                  등록
+                </button>
+                <button
+                  className="spmdetail-content-btn spmdetail-content-btn-left"
+                  onClick={() => {
                     setImageModalShowF(false);
                     setNum(num + 1);
 
@@ -354,16 +363,7 @@ function ImageModal({
                     setImageTF(imageTF);
                   }}
                 >
-                  닫기
-                </button>
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    axiosPostBanner(); // POST 함수 실행
-                    alert('등록되었습니다.');
-                  }}
-                >
-                  등록
+                  취소
                 </button>
               </div>
             </div>
