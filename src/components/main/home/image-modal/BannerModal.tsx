@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import classNames from 'classnames';
-import 'src/styles/seller/spm-ssr/image-modal/ImageModal.scss';
+// import 'src/styles/seller/spm-ssr/image-modal/ImageModal.scss';
 import 'src/styles/main/home/image-modal/ImageModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
@@ -344,6 +344,15 @@ function ImageModal({
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
+                    axiosPostBanner(); // POST 함수 실행
+                    alert('등록되었습니다.');
+                  }}
+                >
+                  등록
+                </button>
+                <button
+                  className="spmdetail-content-btn spmdetail-content-btn-left"
+                  onClick={() => {
                     setImageModalShowF(false);
                     setNum(num + 1);
 
@@ -354,16 +363,7 @@ function ImageModal({
                     setImageTF(imageTF);
                   }}
                 >
-                  닫기
-                </button>
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    axiosPostBanner(); // POST 함수 실행
-                    alert('등록되었습니다.');
-                  }}
-                >
-                  등록
+                  취소
                 </button>
               </div>
             </div>

@@ -206,25 +206,25 @@ function MenuModal({
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
+                    // setImageDataF(image);
+                    //  setNum(num + 1);
+                    UpdatePopImg(); // PATCH 함수 실행
+                    alert('등록되었습니다.');
+                  }}
+                >
+                  등록
+                </button>
+                <button
+                  className="spmdetail-content-btn spmdetail-content-btn-left"
+                  onClick={() => {
                     setImageModalShowF(false);
 
-                    // 닫기 눌렀을때, 초기화
+                    // 취소 눌렀을때, 초기화
                     setPopCakeId(undefined);
                     setPopularRank(undefined);
                   }}
                 >
-                  닫기
-                </button>
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    // setImageDataF(image);
-                    //  setNum(num + 1);
-                    UpdatePopImg(); // PATCH 함수 실행
-                    alert('저장되었습니다.');
-                  }}
-                >
-                  저장
+                  취소
                 </button>
               </div>
             </div>
@@ -322,6 +322,15 @@ function MenuModal({
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
+                    UpdateCakeAPI(); // POST 함수 실행
+                    alert('저장되었습니다.');
+                  }}
+                >
+                  등록
+                </button>
+                <button
+                  className="spmdetail-content-btn spmdetail-content-btn-left"
+                  onClick={() => {
                     setImageModalShowF(false);
 
                     // 닫기이후, 초기화
@@ -331,16 +340,7 @@ function MenuModal({
                     setCakeId4(undefined);
                   }}
                 >
-                  닫기
-                </button>
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    UpdateCakeAPI(); // POST 함수 실행
-                    alert('저장되었습니다.');
-                  }}
-                >
-                  저장
+                  취소
                 </button>
               </div>
             </div>
@@ -421,24 +421,24 @@ function MenuModal({
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
+                    UpdateStoreAPI(); // POST 함수 실행
+                    alert('등록되었습니다.');
+                  }}
+                >
+                  등록
+                </button>
+                <button
+                  className="spmdetail-content-btn spmdetail-content-btn-left"
+                  onClick={() => {
                     setImageModalShowF(false);
 
-                    // 닫기이후, 초기화
+                    // 취소이후, 초기화
                     setStoreId1(undefined);
                     setStoreId2(undefined);
                     setStoreId3(undefined);
                   }}
                 >
-                  닫기
-                </button>
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    UpdateStoreAPI(); // POST 함수 실행
-                    alert('저장되었습니다.');
-                  }}
-                >
-                  저장
+                  취소
                 </button>
               </div>
             </div>
