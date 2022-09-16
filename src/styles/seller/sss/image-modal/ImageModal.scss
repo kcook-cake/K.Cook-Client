@@ -26,9 +26,19 @@
   input {
     display: none;
   }
-  label {
+
+  label.sellerstore-add-logo-img {
     width: 180px !important;
+  }
+  label.sellerstore-add-store-img {
+    img {
+      width: 240px !important;
+    }
+  }
+  label {
+    width: 240px !important;
     height: 180px !important;
+
     > svg {
       position: relative;
       top: 50%;

@@ -101,7 +101,13 @@ function ImageModal({
   );
 
   //로고용 값들
-  let [updateFF, setupdateFF] = useState([true, true, true, true]);
+  let [updateFF, setupdateFF] = useState([true, true, true, true, true]);
+  const resetUpdateFF = () => {
+    for (let i = 0; i < 5; i++) {
+      updateFF[i] = true;
+      setupdateFF(updateFF);
+    }
+  };
 
   const [preImage, setPreImage] = useState<File>();
   const [preImage1, setPreImage1] = useState<File>();
@@ -120,8 +126,6 @@ function ImageModal({
   const photoInput2 = useRef<HTMLInputElement>();
   const photoInput3 = useRef<HTMLInputElement>();
   const photoInput4 = useRef<HTMLInputElement>();
-
-  const [afterUpdate, setAfterUpdate] = useState(false);
 
   const imageChange = () => {
     const file = photoInput.current.files[0];
@@ -193,19 +197,19 @@ function ImageModal({
 
   const imageChange4 = () => {
     const file = photoInput3.current.files[0];
-    if (file && file.type.substr(0, 5) === 'image') setPreImage3(file);
-    else setPreImage3(null);
+    if (file && file.type.substr(0, 5) === 'image') setPreImage4(file);
+    else setPreImage4(null);
     updateFF[4] = false;
     setupdateFF(updateFF);
   };
   useEffect(() => {
-    if (preImage3) {
+    if (preImage4) {
       var reader: any = new FileReader();
       reader.onloadend = () => {
-        setAddPhoto3(reader.result as string);
+        setAddPhoto4(reader.result as string);
       };
-      reader.readAsDataURL(preImage3);
-    } else setAddPhoto3(null);
+      reader.readAsDataURL(preImage4);
+    } else setAddPhoto4(null);
   }, [preImage4]);
 
   var formData = new FormData();
@@ -241,21 +245,16 @@ function ImageModal({
               <div className="spm-modal-subtitle">대표이미지(1장)</div>
               <div className="spm-modal-img-inner sellerstore-modal-img-inner sellerstore-modal-img-inner-one">
                 <label
-                  className={classNames('spm-add-img sellerstore-add-img', {
-                    'sellerstore-add-img-icon': image[0] == '',
-                  })}
+                  className={classNames(
+                    'spm-add-img sellerstore-add-img',
+                    'sellerstore-add-store-img',
+                    {
+                      'sellerstore-add-img-icon': image[0] == '',
+                    }
+                  )}
                   htmlFor="home-file-0"
                 >
                   {updateFF[0] ? (
-                    imageData[0] != '' ? (
-                      <img src={imageData[0]} alt="logodefaultImage" />
-                    ) : (
-                      <AddIcon />
-                    )
-                  ) : (
-                    <img src={addPhoto} alt="newLogoImage" />
-                  )}
-                  {/*   {!afterUpdate ? (
                     //업데이트 이전
                     image[0] != '' ? (
                       <img src={image[0]} alt="logodefaultImage" />
@@ -265,120 +264,163 @@ function ImageModal({
                   ) : (
                     // 업데이트 이후
                     <img src={addPhoto} alt="newLogoImage" />
-                  )} */}
+                  )}
                 </label>
                 <input
                   id="home-file-0"
                   type="file"
                   accept="image/*"
                   ref={photoInput}
-                  onChange={(e) => (UpdateIogoF(e, 1), setAfterUpdate(true))}
+                  onChange={
+                    (e) => UpdateIogoF(e, 0)
+
+                    //setAfterUpdate(true)
+                  }
                 />
               </div>
 
               {/*  스토어사진 클릭시 */}
-              {imageTF && (
-                <>
-                  <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
-                  <div className="sellerstore-modal-img-box">
-                    {/* 여기부터 */}
-                    <div className="sellerstore-modal-img-inner">
-                      <label
-                        className={classNames('sellerstore-add-img', {
-                          'sellerstore-add-img-icon': image[1] == '',
-                        })}
-                        htmlFor={'home-file-' + 1}
-                      >
-                        {image[1] == '' ? <AddIcon /> : <img src={image[1]} />}
-                      </label>
-                      <input
-                        id={'home-file-' + 1}
-                        type="file"
-                        accept="image/*"
-                        ref={photoInput1}
-                        style={{ display: 'none' }}
-                        onChange={(e) => UpdateIogoF(e, 1)}
-                      />
-                    </div>
-                    {/* 여기까지*/}
 
-                    {/* 여기부터 */}
-                    <div className="sellerstore-modal-img-inner">
-                      <label
-                        className={classNames('sellerstore-add-img', {
-                          'sellerstore-add-img-icon': image[2] == '',
-                        })}
-                        htmlFor={'home-file-' + 2}
-                      >
-                        {image[2] == '' ? <AddIcon /> : <img src={image[2]} />}
-                      </label>
-                      <input
-                        id={'home-file-' + 2}
-                        type="file"
-                        accept="image/*"
-                        ref={photoInput2}
-                        style={{ display: 'none' }}
-                        onChange={(e) => UpdateIogoF(e, 2)}
-                      />
-                    </div>
-                    {/* 여기까지*/}
+              <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
+              <div className="sellerstore-modal-img-box">
+                {/* 여기부터 */}
+                <div className="sellerstore-modal-img-inner">
+                  <label
+                    className={classNames(
+                      'sellerstore-add-img',
+                      'sellerstore-add-store-img',
+                      {
+                        'sellerstore-add-img-icon': image[1] == '',
+                      }
+                    )}
+                    htmlFor={'home-file-' + 1}
+                  >
+                    {updateFF[1] ? (
+                      //업데이트 이전
+                      image[1] != '' ? (
+                        <img src={image[1]} alt="logodefaultImage" />
+                      ) : (
+                        <AddIcon />
+                      )
+                    ) : (
+                      // 업데이트 이후
+                      <img src={addPhoto1} alt="newLogoImage" />
+                    )}
+                  </label>
+                  <input
+                    id={'home-file-' + 1}
+                    type="file"
+                    accept="image/*"
+                    ref={photoInput1}
+                    style={{ display: 'none' }}
+                    onChange={(e) => UpdateIogoF(e, 1)}
+                  />
+                </div>
 
-                    {/* 여기부터 */}
-                    <div className="sellerstore-modal-img-inner">
-                      <label
-                        className={classNames('sellerstore-add-img', {
-                          'sellerstore-add-img-icon': image[3] == '',
-                        })}
-                        htmlFor={'home-file-' + 3}
-                      >
-                        {image[3] == '' ? <AddIcon /> : <img src={image[3]} />}
-                      </label>
-                      <input
-                        id={'home-file-' + 3}
-                        type="file"
-                        accept="image/*"
-                        ref={photoInput3}
-                        style={{ display: 'none' }}
-                        onChange={(e) => UpdateIogoF(e, 3)}
-                      />
-                    </div>
-                    {/* 여기까지*/}
+                {/*  */}
+                <div className="sellerstore-modal-img-inner">
+                  <label
+                    className={classNames(
+                      'sellerstore-add-img',
+                      'sellerstore-add-store-img',
+                      {
+                        'sellerstore-add-img-icon': image[2] == '',
+                      }
+                    )}
+                    htmlFor={'home-file-' + 2}
+                  >
+                    {updateFF[2] ? (
+                      //업데이트 이전
+                      image[2] != '' ? (
+                        <img src={image[2]} alt="logodefaultImage" />
+                      ) : (
+                        <AddIcon />
+                      )
+                    ) : (
+                      // 업데이트 이후
+                      <img src={addPhoto2} alt="newLogoImage" />
+                    )}
+                  </label>
+                  <input
+                    id={'home-file-' + 2}
+                    type="file"
+                    accept="image/*"
+                    ref={photoInput2}
+                    style={{ display: 'none' }}
+                    onChange={(e) => UpdateIogoF(e, 2)}
+                  />
+                </div>
 
-                    {/* 여기부터 */}
-                    <div className="sellerstore-modal-img-inner">
-                      <label
-                        className={classNames('sellerstore-add-img', {
-                          'sellerstore-add-img-icon': image[4] == '',
-                        })}
-                        htmlFor={'home-file-' + 4}
-                      >
-                        {image[4] == '' ? <AddIcon /> : <img src={image[4]} />}
-                      </label>
-                      <input
-                        id={'home-file-' + 4}
-                        type="file"
-                        accept="image/*"
-                        ref={photoInput4}
-                        style={{ display: 'none' }}
-                        onChange={(e) => UpdateIogoF(e, 4)}
-                      />
-                    </div>
-                    {/* 여기까지*/}
-                  </div>
-                </>
-              )}
+                {/*  */}
+                <div className="sellerstore-modal-img-inner">
+                  <label
+                    className={classNames(
+                      'sellerstore-add-img',
+                      'sellerstore-add-store-img',
+                      {
+                        'sellerstore-add-img-icon': image[3] == '',
+                      }
+                    )}
+                    htmlFor={'home-file-' + 3}
+                  >
+                    {updateFF[3] ? (
+                      //업데이트 이전
+                      image[3] != '' ? (
+                        <img src={image[3]} alt="logodefaultImage" />
+                      ) : (
+                        <AddIcon />
+                      )
+                    ) : (
+                      // 업데이트 이후
+                      <img src={addPhoto3} alt="newLogoImage" />
+                    )}
+                  </label>
+                  <input
+                    id={'home-file-' + 3}
+                    type="file"
+                    accept="image/*"
+                    ref={photoInput3}
+                    style={{ display: 'none' }}
+                    onChange={(e) => UpdateIogoF(e, 3)}
+                  />
+                </div>
+
+                {/*  */}
+                <div className="sellerstore-modal-img-inner">
+                  <label
+                    className={classNames(
+                      'sellerstore-add-img',
+                      'sellerstore-add-store-img',
+                      {
+                        'sellerstore-add-img-icon': image[4] == '',
+                      }
+                    )}
+                    htmlFor={'home-file-' + 4}
+                  >
+                    {updateFF[4] ? (
+                      //업데이트 이전
+                      image[4] != '' ? (
+                        <img src={image[4]} alt="logodefaultImage" />
+                      ) : (
+                        <AddIcon />
+                      )
+                    ) : (
+                      // 업데이트 이후
+                      <img src={addPhoto4} alt="newLogoImage" />
+                    )}
+                  </label>
+                  <input
+                    id={'home-file-' + 4}
+                    type="file"
+                    accept="image/*"
+                    ref={photoInput4}
+                    style={{ display: 'none' }}
+                    onChange={(e) => UpdateIogoF(e, 4)}
+                  />
+                </div>
+              </div>
 
               <div className="spmdetail-content-btn-box spm-modal-btn-box">
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    setImageModalShowF(false);
-                    setNum(num + 1);
-                    setAfterUpdate(false);
-                  }}
-                >
-                  닫기
-                </button>
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
@@ -386,6 +428,18 @@ function ImageModal({
                   }}
                 >
                   등록
+                </button>
+                <button
+                  className="spmdetail-content-btn"
+                  onClick={() => {
+                    setImageModalShowF(false);
+                    setNum(num + 1);
+                    resetUpdateFF();
+
+                    //                    setAfterUpdate(false);
+                  }}
+                >
+                  취소
                 </button>
               </div>
             </div>
