@@ -42,6 +42,24 @@ input::-webkit-inner-spin-button {
 }
 
 //ssr에서만
+.ssr-bottom {
+    border: 2px dashed #f4f4f4;
+    // border: 2px dashed #000;
+    .spm-bottom-inner {
+        width: 100%;
+        height: 100px;
+    }
+    svg {
+        // width: 60px; height: 60px;
+        border-radius: 50%;
+        background-color: rgb(255, 203, 203);
+    }
+    path,
+    circle,
+    g {
+        stroke: #fff;
+    }
+}
 
 
 

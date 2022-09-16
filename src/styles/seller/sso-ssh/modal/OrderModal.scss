@@ -1,0 +1,119 @@
+
+//order 모달창
+.sfc-order-modal {
+    z-index: 999 !important;
+}
+
+.sfc-order-modal-box {
+    width: 472px !important;
+    height: auto !important;
+    .left {
+        width: 239px;
+        margin-right: 29px
+    }
+    .left-sub {
+        width: 118px;
+    }
+    path,
+    circle,
+    g {
+        stroke: #ebebeb;
+    }
+}
+
+.sfc-order-modal-left {
+    width: 260px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 10px;
+
+    text-align: center;
+    color: #868686;
+
+    border: 1px solid #e0e0e0;
+}
+
+.sfc-order-modal-center-flex {
+    display: flex;
+}
+.sfc-order-modal-center {
+    display: block !important;
+    margin-right: 25px;
+}
+.sfc-order-modal-center-inner {
+    height: 40px;
+    margin-top: 9px;
+}
+
+.sfc-order-modal-right {
+    img {
+        width: 20px; height: 20px;
+        margin-top: 10px;
+    }
+}
+
+.sfc-order-modal-add {
+    height: 20px;
+    padding-left: 45%;
+    img {
+        width: 22.8px; height: 22.8px;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .sfc-order-modal-box {
+        width: 100% !important;
+        .left {
+            width: 70% !important;
+            // max-width: 239px !important;
+        }
+    }
+    
+    .sfc-order-modal-left {
+        input {
+            width: 100% !important;
+        }
+        // width: 100% !important;
+    }
+
+    .sfc-order-modal-center-flex {
+        // float: right;
+    }
+
+    .sfc-order-modal-add {
+        padding-left: 48%;
+    }
+
+
+
+    // .sfc-order-modal-box {
+    //     width: 90% !important;
+    //     .left {
+    //         width: 100% !important;
+    //     }
+    // }
+    
+    // .sfc-order-modal-left {
+    //     width: 90% !important;
+    // }
+
+    // .sfc-order-modal-center-flex {
+    //     float: right;
+    // }
+    // .sfc-order-modal-center {
+    //     margin-right: 10px;
+    // }
+    // .sfc-order-modal-center-inner,
+    // .sfc-order-modal-right {
+    //     margin: 0;
+    //     img {
+    //         margin-top: 3px;
+    //     }
+    // }
+
+    // .sfc-order-modal-add {
+    //     padding-left: 48%;
+    // }
+}

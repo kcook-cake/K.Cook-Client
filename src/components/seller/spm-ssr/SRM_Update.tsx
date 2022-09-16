@@ -16,7 +16,7 @@ import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-b
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
 import setting from "../../../assets/seller/spm-setting.png";
-import ImageModal from 'src/components/seller/spm-ssr/image-modal/ImageModal';
+import ImageModal from 'src/components/seller/spm-ssr/modal/ImageModal';
 
 interface Props {
     idx: any,

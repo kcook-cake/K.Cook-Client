@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import axios from 'axios';
 import $ from 'jquery';
-import 'src/styles/seller/spm-ssr/image-modal/ImageModal.scss';
+import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 
 import cake6 from 'src/assets/cake6.png';
 import addImage from 'src/assets/seller/sso-ssh/image-add.png'
