@@ -146,9 +146,13 @@ function ImageModal({
               <div className="spm-modal-subtitle">대표이미지(1장)</div>
               <div className="spm-modal-img-inner sellerstore-modal-img-inner sellerstore-modal-img-inner-one">
                 <label
-                  className={classNames('spm-add-img sellerstore-add-img', {
-                    'sellerstore-add-img-icon': image[0] == '',
-                  })}
+                  className={classNames(
+                    'spm-add-img sellerstore-add-img',
+                    'sellerstore-add-logo-img',
+                    {
+                      'sellerstore-add-img-icon': image[0] == '',
+                    }
+                  )}
                   htmlFor="home-file-0"
                 >
                   {!afterUpdate ? (
@@ -186,42 +190,16 @@ function ImageModal({
                 )}
               </div>
 
-              {/*  스토어사진 클릭시 */}
-              {imageTF && (
-                <>
-                  <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
-                  <div className="sellerstore-modal-img-box">
-                    {[1, 2, 3, 4].map((data: any) => {
-                      return (
-                        <div className="sellerstore-modal-img-inner">
-                          <label
-                            className={classNames('sellerstore-add-img', {
-                              'sellerstore-add-img-icon': image[data] == '',
-                            })}
-                            htmlFor={'home-file-' + data}
-                          >
-                            {image[data] == '' ? (
-                              <AddIcon />
-                            ) : (
-                              <img src={image[data]} />
-                            )}
-                          </label>
-                          <input
-                            id={'home-file-' + data}
-                            type="file"
-                            accept="image/*"
-                            ref={inputRef}
-                            style={{ display: 'none' }}
-                            onChange={(e) => UpdateIogoF(e)}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-
               <div className="spmdetail-content-btn-box spm-modal-btn-box">
+                <button
+                  className="spmdetail-content-btn"
+                  onClick={() => {
+                    // { 스토어 로고 axios post}
+                  }}
+                >
+                  등록
+                </button>
+
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
@@ -230,15 +208,7 @@ function ImageModal({
                     setAfterUpdate(false);
                   }}
                 >
-                  닫기
-                </button>
-                <button
-                  className="spmdetail-content-btn"
-                  onClick={() => {
-                    // { 스토어 로고 axios post}
-                  }}
-                >
-                  등록
+                  취소
                 </button>
               </div>
             </div>

@@ -53,6 +53,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 additionalCost: addOption[i].optionList[j].optionListPrice,
                 category: c,
                 contents: addOption[i].optionList[j].optionListName,
+                imageUrl: "",
                 title: addOption[i].optionName,
                 };
             }
@@ -61,6 +62,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                     additionalCost: addOption[i].optionList[jlength].optionListPrice,
                     category: c,
                     contents: addOption[i].optionImageText,
+                    imageUrl: "",
                     title: addOption[i].optionName,
                 };
             }
@@ -72,25 +74,27 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         var formData = new FormData();
         formData.append("productImage", "");
         //....
-
+        console.log(sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken);
         axios({
             baseURL: BaseUrl(),
             url: "/app/products",
             method: "POST",
             data: {
-                "isCake": true,
-                "name": addName,
-                "newOptionsList": addBack,
-                "price": addPrice,
-                "salePrice": 0, //show
+                isCake: true,
+                name: addName,
+                newOptionsList: addBack,
+                price: addPrice,
+                salePrice: 0, //show
             },
             headers: {
+                'Content-Type': 'application/json',
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res)=>{
             console.log(res);
         }).catch((err)=>{
             console.log(err);
+            console.log(err.response.data);
         })
     };
     const [addDiv, setAddDiv] = useState(false);

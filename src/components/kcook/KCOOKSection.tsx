@@ -19,9 +19,6 @@ import { ReactComponent as Question } from '../../assets/seller/question.svg';
 function KCOOKSection (){
     useEffect(()=>{
         $(".hm-pc-flex").hide();
-        //pathname, parameter 가져오기
-        var pathname = window.location.pathname;
-        pathname = pathname.split("/")[1];
     },[]);
 
     return(
