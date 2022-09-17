@@ -1,74 +1,67 @@
-.sellerstore-modal-img-box::-webkit-scrollbar {
-  height: 8px !important;
-}
-.sellerstore-modal-img-box::-webkit-scrollbar-thumb {
-  background-color: #e6e6e6 !important;
-  border-radius: 10px !important;
-}
-.sellerstore-modal-img-box::-webkit-scrollbar-track {
-  background-color: #f5f5f5 !important;
-  border-radius: 10px !important;
-}
-.sellerstore-modal-img-box {
-  display: grid;
-  column-gap: 11px !important;
-  grid-template-columns: 1fr 1fr 1fr 1fr !important;
-  overflow-x: scroll !important;
-}
-.sellerstore-modal-img-inner {
-  width: 240px !important;
+
+
+
+//sss ImageModal
+.sss-modal-img-flex {
+  width: 180px;
+  height: 180px;
   margin-bottom: 10px;
-  img {
-    width: 240px !important;
-    height: 180px !important;
-    border-radius: 5px !important;
-  }
-  input {
-    display: none;
-  }
-
-  label.sellerstore-add-logo-img {
-    width: 180px !important;
-  }
-  label.sellerstore-add-store-img {
-    img {
-      width: 240px !important;
-    }
-  }
-  label {
-    width: 240px !important;
-    height: 180px !important;
-
-    > svg {
-      position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
+  position: relative;
 }
-.sellerstore-add-img {
-  //  width: 240px !important;
-  //  height: 180px !important;
+.sss-modal-img {
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
 
-  padding: 0 !important;
-  margin: 0 !important;
-  display: inline-block;
-
+  border-radius: 5px;
+  background-size: cover;
   background-color: #ebebeb;
-  border-radius: 5px !important;
-  cursor: pointer;
   img {
-    //    width: 240px !important;
-    width: 180px !important;
-    height: 180px !important;
+    width: 180px;
+    height: 180px;
+
+    object-fit: cover;
+    border-radius: 5px;
   }
 }
 
-.sellerstore-add-img-icon {
-  //  padding-top: 46px !important;
-  //  padding-left: 79px !important;
+.sss-modal-img-inner-icon {
+  padding-top: 48px;
+  padding-left: 48px;
 }
+
+
+
+//sss-2 ImageModalPhoto
+.sss-modal-img-flex-2 {
+  width: 240px;
+  height: 180px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.sss-modal-img-2 {
+  width: 240px;
+  height: 180px;
+  overflow: hidden;
+
+  border-radius: 5px;
+  background-size: cover;
+  background-color: #ebebeb;
+  img {
+    width: 240px;
+    height: 180px;
+
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+.sss-modal-img-inner-icon-2 {
+  padding-top: 48px;
+  padding-left: 80px;
+}
+
+
 
 @media (max-width: 767px) {
   .sellerstore-add-img {

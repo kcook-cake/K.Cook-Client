@@ -1,0 +1,22 @@
+
+.modal-input {
+    display: none;
+}
+
+.modal-scroll::-webkit-scrollbar {
+    height: 8px !important;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6 !important;
+    border-radius: 10px !important;
+}
+.modal-scroll::-webkit-scrollbar-track {
+    background-color: #f5f5f5 !important;
+    border-radius: 10px !important;
+}
+.modal-scroll {
+    display: grid;
+    column-gap: 11px !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    overflow-x: scroll !important;
+}

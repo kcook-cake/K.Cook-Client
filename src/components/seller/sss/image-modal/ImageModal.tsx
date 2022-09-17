@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import classNames from 'classnames';
+import 'src/styles/common/modal/Modal.scss';
 import 'src/styles/seller/sss/image-modal/ImageModal.scss';
-import 'src/styles/main/home/image-modal/ImageModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
@@ -122,8 +122,8 @@ function ImageModal({
           <>
             <div
               className="spm-modal-background"
-              style={{ top: window.pageYOffset }}
-            ></div>
+              style={{ top: window.pageYOffset }}>
+            </div>
 
             <div
               className="spm-modal-box"
@@ -137,39 +137,36 @@ function ImageModal({
                     ? window.pageYOffset
                     : window.pageYOffset + (window.innerHeight - 775) / 2,
                 left: resize <= 767 ? 20 : (resize - 775) / 2,
-              }}
-            >
+              }}>
               <div className="spm-modal-title">이미지 등록</div>
               <div className="spm-modal-subtitle">대표이미지(1장)</div>
-              <div className="spm-modal-img-inner sellerstore-modal-img-inner sellerstore-modal-img-inner-one">
-                <label
-                  className={classNames(
-                    'spm-add-img sellerstore-add-img',
-                    'sellerstore-add-logo-img',
-                    {
-                      'sellerstore-add-img-icon': image[0] === '',
-                    }
-                  )}
-                  htmlFor="home-file-0"
-                >
-                  {!afterUpdate ? (
-                    //업데이트 이전
-                    image[0] != '' ? (
-                      <img src={image[0]} alt="logodefaultImage" />
+              <div className="sss-modal-img-flex">
+                <label htmlFor="home-file-0">
+                  <div className='sss-modal-img'>
+                    {!afterUpdate ? (
+                      //업데이트 이전
+                      image[0] != '' ? (
+                        <img src={image[0]} alt="logodefaultImage" className='modal-img'/>
+                      ) : (
+                        <div className={classNames({
+                          'sss-modal-img-inner-icon': image[0] == '',
+                        })}>
+                          <AddIcon />
+                        </div>
+                      )
                     ) : (
-                      <AddIcon />
-                    )
-                  ) : (
-                    // 업데이트 이후
+                      // 업데이트 이후
 
-                    <img src={addLogo} alt="newLogoImage" />
-                  )}
+                      <img src={addLogo} alt="newLogoImage" className='modal-img' />
+                    )}
+                  </div>
                 </label>
                 {/* 스토어로고 클릭시 ImageTF === false  ///  스토어사진 클릭시 ImageTF === ture*/}
                 {!imageTF ? (
                   //  LOGO
                   <input
                     id="home-file-0"
+                    className='modal-input'
                     type="file"
                     accept="image/*"
                     ref={logoInput}
@@ -179,6 +176,7 @@ function ImageModal({
                   //  PHOTO
                   <input
                     id="home-file-0"
+                    className='modal-input'
                     type="file"
                     accept="image/*"
                     ref={inputRef}
@@ -192,19 +190,18 @@ function ImageModal({
                   className="spmdetail-content-btn"
                   onClick={() => {
                     // { 스토어 로고 axios post}
-                  }}
-                >
+                  }}>
                   등록
                 </button>
 
                 <button
                   className="spmdetail-content-btn"
+                  style={{ color: "#ea5450", backgroundColor: "#fff", }}
                   onClick={() => {
                     setImageModalShowF(false);
                     setNum(num + 1);
                     setAfterUpdate(false);
-                  }}
-                >
+                  }}>
                   취소
                 </button>
               </div>
