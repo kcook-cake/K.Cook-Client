@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import axios from 'axios';
 import $ from 'jquery';
+import 'src/styles/common/modal/Modal.scss';
 import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 
 import cake6 from 'src/assets/cake6.png';
@@ -218,25 +219,29 @@ const ImageModal = ({
                 <div className="spm-modal-title">이미지 등록</div>
                 <div className="spm-modal-subtitle">대표이미지(1장)</div>
                 <div className="spm-modal-img-inner">
-                    <div className="spm-modal-img-inner">
+                    <div className="spm-modal-img-flex">
                         <form>
                             <button onClick={(e)=>{
                                 e.preventDefault();
                                 photoInput.current.click();
                             }}>
-                                <div>
+                                <div className='spm-modal-img'>
                                     {imageTF[0]? 
-                                        (imageData[0]!=''?<img src={imageData[0]}/>: <img src={addImage}/>): 
+                                        (imageData[0]!=''?
+                                            <img src={imageData[0]}/>: 
+                                            <div className='spm-modal-img-inner-icon'>
+                                                <AddIcon />
+                                            </div>):
                                         <img src={addPhoto}/>
                                     }
                                 </div>
                             </button>
                             <input
                                 id="spm-file-0"
+                                className='modal-input'
                                 type="file"
                                 accept="image/*"
                                 ref={photoInput}
-                                style={{ display: "none", }}
                                 onChange={(e)=>MakeFormDataF(e, 0)}
                             />
                         </form>
@@ -244,95 +249,111 @@ const ImageModal = ({
                 </div>
 
                 <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
-                <div className="spm-modal-img-box">
-                    <div className="spm-modal-img-inner">
+                <div className="modal-scroll">
+                    <div className="spm-modal-img-flex">
                         <form>
                             <button onClick={(e)=>{
                                 e.preventDefault();
                                 photoInput1.current.click();
                             }}>
-                                <div>
+                                <div className='spm-modal-img'>
                                     {imageTF[1]? 
-                                        (imageData[1]!=''?<img src={imageData[1]}/>: <img src={addImage} />): 
+                                        (imageData[1]!=''?
+                                            <img src={imageData[1]}/>: 
+                                            <div className='spm-modal-img-inner-icon'>
+                                                <AddIcon />
+                                            </div>):
                                         <img src={addPhoto1}/>
                                     }
                                 </div>
                             </button>
                             <input
                                 id="spm-file-1"
+                                className='modal-input'
                                 type="file"
                                 accept="image/*"
                                 ref={photoInput1}
-                                style={{ display: "none", }}
                                 onChange={(e)=>MakeFormDataF(e, 1)}
                             />
                         </form>
                     </div>
-                    <div className="spm-modal-img-inner">
+                    <div className="spm-modal-img-flex">
                         <form>
                             <button onClick={(e)=>{
                                 e.preventDefault();
                                 photoInput2.current.click();
                             }}>
-                                <div>
+                                <div className='spm-modal-img'>
                                     {imageTF[2]? 
-                                        (imageData[2]!=''?<img src={imageData[2]}/>: <img src={addImage}/>): 
+                                        (imageData[2]!=''?
+                                            <img src={imageData[2]}/>: 
+                                            <div className='spm-modal-img-inner-icon'>
+                                                <AddIcon />
+                                            </div>):
                                         <img src={addPhoto2}/>
                                     }
                                 </div>
                             </button>
                             <input
                                 id="spm-file-2"
+                                className='modal-input'
                                 type="file"
                                 accept="image/*"
                                 ref={photoInput2}
-                                style={{ display: "none", }}
                                 onChange={(e)=>MakeFormDataF(e, 2)}
                             />
                         </form>
                     </div>
-                    <div className="spm-modal-img-inner">
+                    <div className="spm-modal-img-flex">
                         <form>
                             <button onClick={(e)=>{
                                 e.preventDefault();
                                 photoInput3.current.click();
                             }}>
-                                <div>
+                                <div className='spm-modal-img'>
                                     {imageTF[3]? 
-                                        (imageData[3]!=''?<img src={imageData[3]}/>: <img src={addImage}/>): 
+                                        (imageData[3]!=''?
+                                            <img src={imageData[3]}/>: 
+                                            <div className='spm-modal-img-inner-icon'>
+                                                <AddIcon />
+                                            </div>):
                                         <img src={addPhoto3}/>
                                     }
                                 </div>
                             </button>
                             <input
                                 id="spm-file-3"
+                                className='modal-input'
                                 type="file"
                                 accept="image/*"
                                 ref={photoInput3}
-                                style={{ display: "none", }}
                                 onChange={(e)=>MakeFormDataF(e, 3)}
                             />
                         </form>
                     </div>
-                    <div className="spm-modal-img-inner">
+                    <div className="spm-modal-img-flex">
                         <form>
                             <button onClick={(e)=>{
                                 e.preventDefault();
                                 photoInput4.current.click();
                             }}>
-                                <div>
+                                <div className='spm-modal-img'>
                                     {imageTF[4]? 
-                                        (imageData[4]!=''?<img src={imageData[4]}/>: <img src={addImage}/>): 
+                                        (imageData[4]!=''?
+                                            <img src={imageData[4]}/>: 
+                                            <div className='spm-modal-img-inner-icon'>
+                                                <AddIcon />
+                                            </div>):
                                         <img src={addPhoto4}/>
                                     }
                                 </div>
                             </button>
                             <input
                                 id="spm-file-4"
+                                className='modal-input'
                                 type="file"
                                 accept="image/*"
                                 ref={photoInput4}
-                                style={{ display: "none", }}
                                 onChange={(e)=>MakeFormDataF(e, 4)}
                             />
                         </form>

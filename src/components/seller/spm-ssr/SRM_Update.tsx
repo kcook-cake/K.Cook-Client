@@ -124,10 +124,14 @@ function SPM_Update({
                                 onClick={()=>{
                                     setUpdateImageModal(true);
                                 }}>
-                                {updateImage[updateImageNum]===""?
-                                    <div className="spm-add-update-img-inner"><AddIcon/></div>:
-                                    <img src={updateImage[updateImageNum]} />
-                                }
+                                <div className="spm-add-update-img-inner">
+                                    {updateImage[updateImageNum]===""?
+                                        <div className="spmcard-img-inner">
+                                            <AddIcon/>
+                                        </div>:
+                                        <img src={updateImage[updateImageNum]} />
+                                    }
+                                </div>
                             </div>
                             <div>
                                 <ul style={{ display: "flex", }}>

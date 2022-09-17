@@ -249,9 +249,7 @@ function ImageModal({
                         image[0] != '' ? (
                           <img src={image[0]} alt="logodefaultImage" />
                         ) : (
-                          <div className={classNames({
-                              'sss-modal-img-inner-icon-2': image[0] == '',
-                            })}>
+                          <div className='sss-modal-img-inner-icon-2'>
                             <AddIcon />
                           </div>
                         )
@@ -286,9 +284,7 @@ function ImageModal({
                         image[1] != '' ? (
                           <img src={image[1]} alt="logodefaultImage" />
                         ) : (
-                          <div className={classNames({
-                              'sss-modal-img-inner-icon-2': image[1] == '',
-                            })}>
+                          <div className='sss-modal-img-inner-icon-2'>
                             <AddIcon />
                           </div>
                         )
@@ -318,9 +314,7 @@ function ImageModal({
                         image[2] != '' ? (
                           <img src={image[2]} alt="logodefaultImage" />
                         ) : (
-                          <div className={classNames({
-                              'sss-modal-img-inner-icon-2': image[2] == '',
-                            })}>
+                          <div className='sss-modal-img-inner-icon-2'>
                             <AddIcon />
                           </div>
                         )
@@ -350,9 +344,7 @@ function ImageModal({
                         image[3] != '' ? (
                           <img src={image[3]} alt="logodefaultImage" />
                         ) : (
-                          <div className={classNames({
-                              'sss-modal-img-inner-icon-2': image[3] == '',
-                            })}>
+                          <div className='sss-modal-img-inner-icon-2'>
                             <AddIcon />
                           </div>
                         )
@@ -382,9 +374,7 @@ function ImageModal({
                         image[4] != '' ? (
                           <img src={image[4]} alt="logodefaultImage" />
                         ) : (
-                          <div className={classNames({
-                              'sss-modal-img-inner-icon-2': image[4] == '',
-                            })}>
+                          <div className='sss-modal-img-inner-icon-2'>
                             <AddIcon />
                           </div>
                         )

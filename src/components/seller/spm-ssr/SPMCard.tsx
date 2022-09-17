@@ -45,10 +45,14 @@ function SPMCard({
                     </div>
                     <div className="spmcard-content">
                         <div className="spmcard-img">
-                            {oriImage[idx][0]===""?
-                                <div className="spmcard-img-inner"><AddIcon/></div>:
-                                <img src={oriImage[idx][0]} />
-                            }
+                            <div className="spm-add-update-img-inner">
+                                {oriImage[idx][0]===""?
+                                    <div className="spmcard-img-inner">
+                                        <AddIcon/>
+                                    </div>:
+                                    <img src={oriImage[idx][0]} />
+                                }
+                            </div>
                         </div>
                         <div className="spmcard-content-inner">
                             <div className="spmcard-title">{oriData[idx].name}</div>

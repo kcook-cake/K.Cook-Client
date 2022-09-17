@@ -148,9 +148,7 @@ function ImageModal({
                       image[0] != '' ? (
                         <img src={image[0]} alt="logodefaultImage" className='modal-img'/>
                       ) : (
-                        <div className={classNames({
-                          'sss-modal-img-inner-icon': image[0] == '',
-                        })}>
+                        <div className='sss-modal-img-inner-icon'>
                           <AddIcon />
                         </div>
                       )

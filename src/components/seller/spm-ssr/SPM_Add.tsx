@@ -182,13 +182,14 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                         <div
                             className="spm-add-update-img"
                             onClick={() => setAddImageModal(true)}>
-                            {addImage[addImageNum] === '' ? (
-                                <div className="spm-add-update-img-inner">
-                                    <AddIcon />
-                                </div>
-                                ) :
-                                <img src={addImage[addImageNum]} />
-                            }
+                            <div className="spm-add-update-img-inner">
+                                {addImage[addImageNum] === '' ? (
+                                    <div className="spmcard-img-inner">
+                                        <AddIcon/>
+                                    </div>):
+                                    <img src={addImage[addImageNum]} />
+                                }
+                            </div>
                         </div>
                         <div>
                             <ul style={{ display: "flex", }}>

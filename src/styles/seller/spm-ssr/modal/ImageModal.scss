@@ -104,9 +104,35 @@
 }
 
 //
-// 모달창을 화면 중간으로
-//  left: 40%;
-//  transform: translateX(-50%);
+.spm-modal-img-flex {
+  width: 160px;
+  height: 176px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.spm-modal-img {
+  width: 160px;
+  height: 176px;
+  overflow: hidden;
+
+  border-radius: 5px;
+  background-size: cover;
+  background-color: #ebebeb;
+  img {
+    width: 160px;
+    height: 176px;
+
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+.spm-modal-img-inner-icon {
+  padding-top: 47px;
+  padding-left: 0px;
+}
+
+
 
 @media (max-width: 767px) {
   .spm-modal-img-inner input#bannerUrlTextInput {

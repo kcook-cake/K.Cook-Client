@@ -95,6 +95,8 @@
     width: 160px;
     height: 176px;
     margin-bottom: 5px;
+    position: relative;
+
     border-radius: 5px;
     background-color: #ebebeb;
     img {
@@ -106,14 +108,28 @@
 .spm-add-update-img-inner {
     width: 160px;
     height: 176px;
-    padding: 40px;
-    padding-top: 50px;
+    overflow: hidden;
+  
     border-radius: 5px;
+    background-size: cover;
     background-color: #ebebeb;
     img {
-        width: 160px;
-        height: 176px;
+      width: 160px;
+      height: 176px;
+  
+      object-fit: cover;
+      border-radius: 5px;
     }
+    // width: 160px;
+    // height: 176px;
+    // padding: 40px;
+    // padding-top: 50px;
+    // border-radius: 5px;
+    // background-color: #ebebeb;
+    // img {
+    //     width: 160px;
+    //     height: 176px;
+    // }
 }
 ul{
     width: 110px;
