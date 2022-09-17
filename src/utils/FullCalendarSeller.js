@@ -61,7 +61,7 @@ const FullCalendarSeller = (fn,TF) => {
     ];
 
     for(var i = 0; i < e.length; i++) {
-        if (e[i].title == '0')
+        if (e[i].title === '0')
             e[i].borderColor = "rgba(255, 255, 255, 0.0)";
         else
             e[i].borderColor = "white";

@@ -156,7 +156,7 @@ const StoreDetail = (auth: any) => {
                     setNum(num - 1);
                     if (resize <= 767) setSlidePx(slidePx + 704);
                     else setSlidePx(slidePx + 1199);
-                    if (num == 1) {
+                    if (num === 1) {
                       setNum(5);
                       setSlidePx(-1199 * (maxNum - 1));
                     }
@@ -171,7 +171,7 @@ const StoreDetail = (auth: any) => {
                     setNum(num + 1);
                     if (resize <= 767) setSlidePx(slidePx - 704);
                     else setSlidePx(slidePx - 1199);
-                    if (num == maxNum) {
+                    if (num === maxNum) {
                       setNum(1);
                       setSlidePx(0);
                     }

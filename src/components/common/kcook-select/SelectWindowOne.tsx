@@ -36,8 +36,8 @@ export default function SelectWindowOne({
               return (
                 <li
                   className={classNames('cake-select-li', {
-                    'cake-select-li-top': idx == 0,
-                    'cake-select-li-bottom': idx == selectDataOne[0].length - 1,
+                    'cake-select-li-top': idx === 0,
+                    'cake-select-li-bottom': idx === selectDataOne[0].length - 1,
                   })}
                   onClick={() => {
                     SelectOneF(data, idx + 1, 8 * data.length);

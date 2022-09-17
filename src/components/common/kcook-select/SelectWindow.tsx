@@ -37,10 +37,10 @@ export default function SelectWindow({
     const SelectF = (n: number, str: string, length: number) => {
         selectAll[selectAll.length] = str;
         // if (SelectBarF(str)) {
-        //     if (!cakestoreTF && (n==3 || n==5)) selectAll[selectAll.length] = citySubway+" "+str;
+        //     if (!cakestoreTF && (n===3 || n===5)) selectAll[selectAll.length] = citySubway+" "+str;
         //     else selectAll[selectAll.length] = str;
         //     // if (cakestoreTF) selectAll[selectAll.length] = str;
-        //     // else if (n==3 || n==5) selectAll[selectAll.length] = citySubway+" "+str;
+        //     // else if (n===3 || n===5) selectAll[selectAll.length] = citySubway+" "+str;
         // }
         selectWindow[n-1] = [false, str, 14*length];
         NumF();
@@ -49,7 +49,7 @@ export default function SelectWindow({
     //선택지바
     const SelectBarF = (str: string) => {
         for (var i = 0; i < selectAll.length; i++) {
-        if (selectAll[i] == str) return false;
+        if (selectAll[i] === str) return false;
         }
         return true;
     };
@@ -63,13 +63,13 @@ export default function SelectWindow({
             });
     };
     const SubwayF = (str: any, ) => {
-        if (str == "인천1호선") str = "인천선";
+        if (str === "인천1호선") str = "인천선";
             
-        if (str == "수인선") {
+        if (str === "수인선") {
             selectData[3] = ["달월", "월곶", "소래포구", "인천논현", "호구포", "남동인더스파크", "원인재", "연수", "송도", "신포", "인하대", "숭의(인하대병원)"];
-        } else if (str == "경의중앙선") {
+        } else if (str === "경의중앙선") {
             selectData[3] = ["청량리", "회기", "지평", "임진강"];
-        } else if (str == "자기부상") {
+        } else if (str === "자기부상") {
             selectData[3] = ["장기주차장", "합동청사", "파라다이스시티", "워터파크", "용유", ];
         } else {
             //466d5944556364703834526c75516a
@@ -155,7 +155,7 @@ export default function SelectWindow({
             <div
                 className="cake-select-absolute"
                 style={{ top: height, left: (width-30+selectWindow[1][2]+selectWindow[2][2]), }}>
-                {!cakestoreTF && selectData[1].length == 1?
+                {!cakestoreTF && selectData[1].length === 1?
                     null:
                     <>
                         <div className="cake-select-top"></div>
@@ -258,7 +258,7 @@ export default function SelectWindow({
             <div
                 className="cake-select-absolute"
                 style={{ top: height, left: width+(cakestoreTF?50:5)+selectWindow[1][2]+(cakestoreTF?selectWindow[2][2]:0)+selectWindow[3][2]+selectWindow[4][2], }}>
-                {!cakestoreTF && selectData[3].length == 1?
+                {!cakestoreTF && selectData[3].length === 1?
                     null:
                     <>
                         <div className="cake-select-top"></div>

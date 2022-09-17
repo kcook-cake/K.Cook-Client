@@ -44,7 +44,7 @@ function NewMenu (){
                                 setNum(num-1);
                                 if (resize<=767) setSlidePx(slidePx+704);
                                 else setSlidePx(slidePx+1199);
-                                if (num == 1) {
+                                if (num === 1) {
                                     setNum(5);
                                     setSlidePx(-4796);
                                 }
@@ -58,7 +58,7 @@ function NewMenu (){
                                 setNum(num+1);
                                 if (resize<=767) setSlidePx(slidePx-704);
                                 else setSlidePx(slidePx-1199);
-                                if (num == 5) {
+                                if (num === 5) {
                                     setNum(1);
                                     setSlidePx(0);
                                 }

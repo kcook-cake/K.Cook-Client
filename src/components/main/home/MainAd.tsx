@@ -35,7 +35,7 @@ function MainAd({ session, auth }: Props) {
       />
       <div className="main-ad">
         <>
-          {auth.accountId == 31?
+          {auth.accountId === 31?
             <div className="main-ad-inner" onClick={() => setChangeAd((prev) => !prev)}>
               <img src={image} alt="" />
             </div>

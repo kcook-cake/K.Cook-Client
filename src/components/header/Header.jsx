@@ -67,7 +67,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             {session ? 
               (<>
                 <button>{auth.nickname}님 환영합니다</button>
-                {auth.accountId == 31? 
+                {auth.accountId === 31? 
                 <>
                   <Link
                     to="/KCOOKProductManagement"

@@ -169,7 +169,7 @@ function LoginFind() {
                 <button
                     className="phone-input-btn phone-sms-input-btn"
                     onClick={()=>{
-                      if ((phoneSms == phoneResult) && phoneSms != "") setPhoneSmsFail(false);
+                      if ((phoneSms === phoneResult) && phoneSms != "") setPhoneSmsFail(false);
                       else setPhoneSmsFail(true);
                     }}
                 >확인하기</button>

@@ -49,7 +49,7 @@ function FullCalendarApp (session: any, auth: any,){
         pathname = pathname.split("/")[1];
         setPathname(pathname);
 
-        if (pathname == "SSOCalendar") {
+        if (pathname === "SSOCalendar") {
             LinkClick("SellerOrder");
             sellerLinkClick("SellerOrder");
         } else {
@@ -79,7 +79,7 @@ function FullCalendarApp (session: any, auth: any,){
                 <br/>
                 <div style={{ width: "5px", height: "20px", }}></div>
                 <div className="calendar-modal-box">
-                    <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
+                    <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
                         <button className="calendar-button">예약 확인</button> 
                     </Link>
                     <button 
@@ -101,7 +101,7 @@ function FullCalendarApp (session: any, auth: any,){
                     <br/>
                     <div className="calendar-modal-blank"></div>
                     <div className="calendar-modal-box">
-                        <Link to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
+                        <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
                             <button className="calendar-button">예약 확인</button> 
                         </Link>
                         <button 
@@ -113,10 +113,10 @@ function FullCalendarApp (session: any, auth: any,){
                 </div>
             </div>}
             <div className="seller-mypage-top sso-ssh-top">
-                <div className="seller-mypage-front-title">{pathname=="SSOCalendar"? '주문확인': '판매내역'}</div>
+                <div className="seller-mypage-front-title">{pathname==="SSOCalendar"? '주문확인': '판매내역'}</div>
                 <div className='ss-fc-link-flex'>
                     <Link
-                        to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
+                        to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
                         className='pc ss-fc-link'
                         style={{ color: "#ea5450", }}>
                         달력보기
@@ -126,7 +126,7 @@ function FullCalendarApp (session: any, auth: any,){
                         style={{ display: "inline-block"}}>|
                     </div>
                     <Link
-                        to={pathname=="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
+                        to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
                         className='ss-fc-link ss-fc-link-right'>
                         목록보기
                     </Link>
@@ -193,12 +193,12 @@ function FullCalendarApp (session: any, auth: any,){
                             const date = e.event.startStr;
 
                             let d = e.event._instance?.range.start.toString().split(" ")[0]
-                            if(d=='Mon') d="월요일"; 
-                            else if(d=='Tue') d="화요일";
-                            else if(d=='Wed') d="수요일";
-                            else if(d=='Thu') d="목요일";
-                            else if(d=='Fri') d="금요일";
-                            else if(d=='Sat') d="토요일";
+                            if(d==='Mon') d="월요일"; 
+                            else if(d==='Tue') d="화요일";
+                            else if(d==='Wed') d="수요일";
+                            else if(d==='Thu') d="목요일";
+                            else if(d==='Fri') d="금요일";
+                            else if(d==='Sat') d="토요일";
                             else d="일요일";
                             
                             setTitle(e.event._def.title);
@@ -228,12 +228,12 @@ function FullCalendarApp (session: any, auth: any,){
                         const date = e.event.startStr;
 
                         let d = e.event._instance?.range.start.toString().split(" ")[0]
-                        if(d=='Mon') d="월요일"; 
-                        else if(d=='Tue') d="화요일";
-                        else if(d=='Wed') d="수요일";
-                        else if(d=='Thu') d="목요일";
-                        else if(d=='Fri') d="금요일";
-                        else if(d=='Sat') d="토요일";
+                        if(d==='Mon') d="월요일"; 
+                        else if(d==='Tue') d="화요일";
+                        else if(d==='Wed') d="수요일";
+                        else if(d==='Thu') d="목요일";
+                        else if(d==='Fri') d="금요일";
+                        else if(d==='Sat') d="토요일";
                         else d="일요일";
                         
                         setTitle(e.event._def.title);

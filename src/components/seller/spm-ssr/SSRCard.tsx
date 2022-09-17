@@ -34,7 +34,7 @@ function SSRCard({ getData, }: Props) {
                                     <div className="pc ssrcard-time">오늘 15:00</div>
                                     <div className="ssrcard-box">
                                         <div className="seller-img-box ssrcard-img">
-                                            {data.image == ""?
+                                            {data.image === ""?
                                                 <div className="seller-img-none">~준비중~</div>:
                                                 <img src={data.image} className="seller-img"/>
                                             }

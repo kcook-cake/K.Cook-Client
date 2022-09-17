@@ -15,7 +15,7 @@ function MPRCard({getData}: Props) {
                 return (
                     <div className="mprcard">
                         <div className="mprcard-img-box">
-                            {data.image == null?
+                            {data.image === null?
                                 <div className="mprcard-img-none">~준비중~</div>:
                                 <img src={data.image} className="mprcard-img"/>
                             }

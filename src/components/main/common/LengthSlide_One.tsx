@@ -48,7 +48,7 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
               >
                 <div className="lengthslide">
                   <div className="lengthslide-img-flex">
-                    {data.image == null ? (
+                    {data.image === null ? (
                       <div className="lengthslide-img-none">
                         ~준비중 입니다~
                       </div>

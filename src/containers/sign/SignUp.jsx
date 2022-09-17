@@ -57,8 +57,8 @@ function SignUp() {
       setCheckedItems([...filter])
     }
 
-    if (checkedItems.length == 4) setIsChecked(false);
-    else if (isChecked && checkedItems.length == 3) setIsChecked(true);
+    if (checkedItems.length === 4) setIsChecked(false);
+    else if (isChecked && checkedItems.length === 3) setIsChecked(true);
   }
 
   //핸드폰 인증 함수
@@ -182,7 +182,7 @@ function SignUp() {
 
   const onClickSignUp = () => {
     if (emailFail || passwordFail || chPasswordFail || nicknameFail || birthdayFail || (addressMain === "") || addressFail || phoneFail || phoneSmsFail ||
-      (!(checkedItems.find(data => data == 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) 
+      (!(checkedItems.find(data => data === 1)) || !(checkedItems.find(data => data === 2)) || !(checkedItems.find(data => data === 3)))) 
     {
       setFailModalText("회원가입 정보가 일치하지 않습니다.");
       setFailModal(true);
@@ -372,7 +372,7 @@ function SignUp() {
           <button
             className="phone-input-btn phone-sms-input-btn"
             onClick={()=>{
-              if ((phoneSms == phoneResult) && phoneSms != "") setPhoneSmsFail(false);
+              if ((phoneSms === phoneResult) && phoneSms != "") setPhoneSmsFail(false);
             }}
           >확인하기</button>
         </div>

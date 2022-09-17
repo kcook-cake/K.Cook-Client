@@ -30,7 +30,7 @@ const homeGetAxios = (setData, changeData, link, page) => {
                     reviewCount: null,
                 });
             }
-            if (page == 5)
+            if (page === 5)
                 setData(changeData);
             else 
                 homeGetAxios(setData, changeData, link, page+1);
@@ -55,7 +55,7 @@ const homeGetAxios = (setData, changeData, link, page) => {
                     reviewCount: null,
                 });
             }
-            if (page == 5)
+            if (page === 5)
                 setData(changeData);
             else 
                 homeGetAxios(setData, changeData, link, page+1);

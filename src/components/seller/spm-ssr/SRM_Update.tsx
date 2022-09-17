@@ -83,14 +83,14 @@ function SPM_Update({
         for (var i=0; i<updateData.list.length; i++) {
             $('#spm-update-option-'+(i+1)).val(updateData.list[i].optionName);
             for (var j=0; j<updateData.list[i].optionList.length; j++) {
-                if (updateData.list[i].optionList[j].optionListName.split("&")[0] == "텍스트")
+                if (updateData.list[i].optionList[j].optionListName.split("&")[0] === "텍스트")
                     $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListName.split("&")[1]);
-                else if (updateData.list[i].optionImage&&updateData.list[i].optionList.length==updateData.list[i].optionList[j].optionListId)
+                else if (updateData.list[i].optionImage&&updateData.list[i].optionList.length===updateData.list[i].optionList[j].optionListId)
                     $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionImageText);
                 else
                     $('#spm-update-name-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListName);
                 $('#spm-update-price-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListPrice);
-                // if (updateData.list[i].optionDirect&&updateData.list[i].optionList.length==updateData.list[i].optionList[j].optionListId)
+                // if (updateData.list[i].optionDirect&&updateData.list[i].optionList.length===updateData.list[i].optionList[j].optionListId)
                 //     $('#spm-update-price-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionDirectText);
                 // else
                 //     $('#spm-update-price-option-list-'+(i+1)+"-"+(j+1)).val(updateData.list[i].optionList[j].optionListPrice);
@@ -125,7 +125,7 @@ function SPM_Update({
                                 onClick={()=>{
                                     setUpdateImageModal(true);
                                 }}>
-                                {updateImage[updateImageNum]==""?
+                                {updateImage[updateImageNum]===""?
                                     <div className="spm-add-update-img-inner"><AddIcon/></div>:
                                     <img src={updateImage[updateImageNum]} />
                                 }
@@ -136,7 +136,7 @@ function SPM_Update({
                                         return (
                                             <li 
                                                 className={classNames('spm-add-update-dot', {
-                                                    'spm-add-update-dot-active': updateImageNum==data,
+                                                    'spm-add-update-dot-active': updateImageNum===data,
                                                 })}
                                                 onClick={()=>{
                                                     setUpdateImageNum(data);
@@ -204,7 +204,7 @@ function SPM_Update({
                                                 return (
                                                     <div className="spm-add-update-item">
                                                         <div
-                                                            id={option.optionImage&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
+                                                            id={option.optionImage&&option.optionList.length===optionList.optionListId? "spm-none-1": ""}
                                                             className="spm-add-update-item-left"
                                                             onDragStart={(e)=>{
                                                                 setStartDrag(e.clientY);
@@ -251,18 +251,18 @@ function SPM_Update({
                                                                 type="text"
                                                                 name={"name"+optionList.optionListId}
                                                                 placeholder={
-                                                                    optionList.optionListName.split("&")[0] == "텍스트"? 
-                                                                        "텍스트 입력": (option.optionImage&&option.optionList.length==optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
+                                                                    optionList.optionListName.split("&")[0] === "텍스트"? 
+                                                                        "텍스트 입력": (option.optionImage&&option.optionList.length===optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
                                                                 value={
-                                                                    optionList.optionListName.split("&")[0] == "텍스트"? 
+                                                                    optionList.optionListName.split("&")[0] === "텍스트"? 
                                                                         optionList.optionListName.split("&")[1]: 
-                                                                        (option.optionImage&&option.optionList.length==optionList.optionListId? 
+                                                                        (option.optionImage&&option.optionList.length===optionList.optionListId? 
                                                                             option.optionImageText.split("&")[1]: 
                                                                             optionList.optionListName)}
                                                                 onChange={(e)=>{
-                                                                    if (option.optionImage&&option.optionList.length==optionList.optionListId)
+                                                                    if (option.optionImage&&option.optionList.length===optionList.optionListId)
                                                                         updateData.list[option.optionId-1].optionImageText = "이미지&"+e.target.value;
-                                                                    else if (optionList.optionListName.split("&")[0] == "텍스트") 
+                                                                    else if (optionList.optionListName.split("&")[0] === "텍스트") 
                                                                         handleOptionListNameText(e, option.optionId, optionList.optionListId);
                                                                     else
                                                                         handleOptionListName(e, option.optionId, optionList.optionListId);
@@ -287,7 +287,7 @@ function SPM_Update({
                                                                     updateData.list[option.optionId-1].optionList[i].optionListId = i+1;
                                                                 }
                                                                 updateData.list[option.optionId-1].optionList.pop();
-                                                                if (option.optionImage&&option.optionList.length==optionList.optionListId)
+                                                                if (option.optionImage&&option.optionList.length===optionList.optionListId)
                                                                     updateData.list[option.optionId-1].optionImage = false;
                                                                 setNum(num+1);
                                                             }}>x

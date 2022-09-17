@@ -47,10 +47,10 @@ const PopularMenu = ({ session, auth }: Props) => {
   return (
     <div className="popularmenu-flex home-flex">
       <div className="popularmenu home">
-        {auth.accountId == 31 && (
+        {auth.accountId === 31 && (
           <button
             onClick={
-              auth.accountId == 31
+              auth.accountId === 31
                 ? () => {
                     return setModalShow((prev) => !prev), setCakeTF(1);
                   }
@@ -78,7 +78,7 @@ const PopularMenu = ({ session, auth }: Props) => {
                 setNum(num - 1);
                 if (resize <= 767) setSlidePx(slidePx + 704);
                 else setSlidePx(slidePx + 1199);
-                if (num == 1) {
+                if (num === 1) {
                   setNum(5);
                   setSlidePx(-4796);
                 }
@@ -93,7 +93,7 @@ const PopularMenu = ({ session, auth }: Props) => {
                 setNum(num + 1);
                 if (resize <= 767) setSlidePx(slidePx - 704);
                 else setSlidePx(slidePx - 1199);
-                if (num == 5) {
+                if (num === 5) {
                   setNum(1);
                   setSlidePx(0);
                 }

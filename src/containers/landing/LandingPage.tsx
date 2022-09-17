@@ -110,7 +110,7 @@ function LandingPage() {
     //   }, 5000);
     //   return;
     // }
-    // if (phoneNumber == "") {
+    // if (phoneNumber === "") {
     //   setFailModalContext("휴대폰 번호를 입력해주세요.");
     //   setFailModal(true);
     //   setTimeout(() => {

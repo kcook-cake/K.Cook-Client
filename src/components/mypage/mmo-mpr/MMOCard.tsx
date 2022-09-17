@@ -15,7 +15,7 @@ function MMOCard({getData}: Props) {
                 return (
                     <div className="mmocard">
                         <div className="mypage-img-box">
-                            {data.image == null?
+                            {data.image === null?
                                 <div className="mypage-img-none">~준비중 입니다~</div>:
                                 <img src={data.image} className="mypage-img"/>
                             }

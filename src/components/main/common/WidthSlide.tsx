@@ -23,15 +23,15 @@ function WidthSlide({getData, resize, slidePx, }: Props) {
                         <li
                             className="widthslide"
                             style={{
-                                top: idx%2==0||resize<=767 ? 0: 200,
-                                left: resize<=767? (345*idx): idx%2==0? (299.8*idx+10) : (299.8*(idx-1)+10),
+                                top: idx%2===0||resize<=767 ? 0: 200,
+                                left: resize<=767? (345*idx): idx%2===0? (299.8*idx+10) : (299.8*(idx-1)+10),
                                 transform: `translateX(${slidePx}px)`,
                                 transition: "0.5s ease",
                             }}
                             >
                             <div className="widthslide-card" key={data.productId}>
                                 <div className="widthslide-card-img-flex">
-                                    {data.image == null?
+                                    {data.image === null?
                                         <div className="widthslide-img-none">~준비중 입니다~</div>:
                                         <img src={data.image} />
                                     }

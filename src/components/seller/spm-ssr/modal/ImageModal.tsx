@@ -70,10 +70,10 @@ const ImageModal = ({
     }
 
     const MakeFormDataF = useCallback((e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
-        if (idx == 0) imageChange();
-        else if (idx == 1) imageChange1();
-        else if (idx == 2) imageChange2();
-        else if (idx == 3) imageChange3();
+        if (idx === 0) imageChange();
+        else if (idx === 1) imageChange1();
+        else if (idx === 2) imageChange2();
+        else if (idx === 3) imageChange3();
         else imageChange4();
 
         formData.set("productImage"+(idx+1), e.target.files[0]);

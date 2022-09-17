@@ -45,7 +45,7 @@ function SPMCard({
                     </div>
                     <div className="spmcard-content">
                         <div className="spmcard-img">
-                            {oriImage[idx][0]==""?
+                            {oriImage[idx][0]===""?
                                 <div className="spmcard-img-inner"><AddIcon/></div>:
                                 <img src={oriImage[idx][0]} />
                             }
@@ -59,12 +59,12 @@ function SPMCard({
                                         {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
                                             return (
                                                 <>
-                                                    {optionList.optionListName.split("&")[0] == "텍스트"? 
-                                                        (optionList.optionListName.split("&")[1] == ""? "텍스트 입력": optionList.optionListName.split("&")[1]): 
-                                                        (option.optionImage&&option.optionList.length==optionList.optionListId? 
-                                                            (option.optionImageText == ""? "이미지 입력": option.optionImageText) : optionList.optionListName)}
-                                                    {(optionList.optionListId==option.optionList.length)? null: <>,&nbsp;</>}
-                                                    {/* {optionList.optionListId==option.optionList.length-1&&option.optionDirect? (option.optionDirectText==""? "직접 입력": option.optionDirectText): null} */}
+                                                    {optionList.optionListName.split("&")[0] === "텍스트"? 
+                                                        (optionList.optionListName.split("&")[1] === ""? "텍스트 입력": optionList.optionListName.split("&")[1]): 
+                                                        (option.optionImage&&option.optionList.length===optionList.optionListId? 
+                                                            (option.optionImageText === ""? "이미지 입력": option.optionImageText) : optionList.optionListName)}
+                                                    {(optionList.optionListId===option.optionList.length)? null: <>,&nbsp;</>}
+                                                    {/* {optionList.optionListId===option.optionList.length-1&&option.optionDirect? (option.optionDirectText===""? "직접 입력": option.optionDirectText): null} */}
                                                 </>
                                             );
                                         })}

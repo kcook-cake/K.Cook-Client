@@ -57,9 +57,9 @@ function Crousel({ session, auth }: Props) {
 
       <div
         className="crousel"
-        onClick={auth.accountId == 31 ? () => setBannerShow(true) : () => {}}
+        onClick={auth.accountId === 31 ? () => setBannerShow(true) : () => {}}
       >
-        <BannerSlider auth={auth.accountId == 31} getData={image} />
+        <BannerSlider auth={auth.accountId === 31} getData={image} />
       </div>
     </>
   );

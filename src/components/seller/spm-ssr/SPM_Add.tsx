@@ -37,11 +37,11 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
             if (i - 1 < 0) index = i;
             else index = i - 1;
 
-            if (addOption[i].optionName == '크기') c = 'SIZE';
-            else if (addOption[i].optionName == '맛') c = 'TASTE';
-            else if (addOption[i].optionName == '레터링') c = 'LOWER_LETTERING';
-            else if (addOption[i].optionName == '색상') c = 'COLOR';
-            else if (addOption[i].optionName == '초') c = 'CANDLE';
+            if (addOption[i].optionName === '크기') c = 'SIZE';
+            else if (addOption[i].optionName === '맛') c = 'TASTE';
+            else if (addOption[i].optionName === '레터링') c = 'LOWER_LETTERING';
+            else if (addOption[i].optionName === '색상') c = 'COLOR';
+            else if (addOption[i].optionName === '초') c = 'CANDLE';
             else c = 'ETC';
 
             if (addOption[i].optionImage)
@@ -189,7 +189,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                         <div
                             className="spm-add-update-img"
                             onClick={() => setAddImageModal(true)}>
-                            {addImage[addImageNum] == '' ? (
+                            {addImage[addImageNum] === '' ? (
                                 <div className="spm-add-update-img-inner">
                                     <AddIcon />
                                 </div>
@@ -203,7 +203,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                     return (
                                         <li 
                                             className={classNames('spm-add-update-dot', {
-                                                'spm-add-update-dot-active': addImageNum==data,
+                                                'spm-add-update-dot-active': addImageNum===data,
                                             })}
                                             onClick={()=>{
                                                 setAddImageNum(data);
@@ -270,7 +270,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                             return (
                                                 <div className="spm-add-update-item">
                                                     <div
-                                                        id={option.optionImage&&option.optionList.length==optionList.optionListId? "spm-none-1": ""}
+                                                        id={option.optionImage&&option.optionList.length===optionList.optionListId? "spm-none-1": ""}
                                                         className="spm-add-update-item-left"
                                                         onDragStart={(e)=>{
                                                             setStartDrag(e.clientY);
@@ -316,19 +316,19 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                             type="text"
                                                             name={"name"+optionList.optionListId}
                                                             placeholder={
-                                                                optionList.optionListName.split("&")[0] == "텍스트"? 
-                                                                    "텍스트 입력": (option.optionImage&&option.optionList.length==optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
+                                                                optionList.optionListName.split("&")[0] === "텍스트"? 
+                                                                    "텍스트 입력": (option.optionImage&&option.optionList.length===optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
                                                             value={
-                                                                optionList.optionListName.split("&")[0] == "텍스트"? 
+                                                                optionList.optionListName.split("&")[0] === "텍스트"? 
                                                                     optionList.optionListName.split("&")[1]: 
-                                                                    (option.optionImage&&option.optionList.length==optionList.optionListId? 
+                                                                    (option.optionImage&&option.optionList.length===optionList.optionListId? 
                                                                         option.optionImageText.split("&")[1]: 
                                                                         optionList.optionListName)}
                                                             onChange={(e)=>{
-                                                                console.log(option.optionImage&&option.optionList.length==optionList.optionListId);
-                                                                if (option.optionImage&&option.optionList.length==optionList.optionListId)
+                                                                console.log(option.optionImage&&option.optionList.length===optionList.optionListId);
+                                                                if (option.optionImage&&option.optionList.length===optionList.optionListId)
                                                                     addOption[option.optionId-1].optionImageText = "이미지&"+e.target.value;
-                                                                else if (optionList.optionListName.split("&")[0] == "텍스트") 
+                                                                else if (optionList.optionListName.split("&")[0] === "텍스트") 
                                                                     handleOptionListNameText(e, option.optionId, optionList.optionListId);
                                                                 else  
                                                                     handleOptionListName(e, option.optionId, optionList.optionListId);
@@ -353,7 +353,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                 addOption[option.optionId-1].optionList[i] = addOption[option.optionId-1].optionList[i+1];
                                                                 addOption[option.optionId-1].optionList[i].optionListId = i+1;
                                                             }
-                                                            if ((option.optionImage&&option.optionList.length==optionList.optionListId)) {
+                                                            if ((option.optionImage&&option.optionList.length===optionList.optionListId)) {
                                                                 addOption[option.optionId-1].optionImage = false;
                                                             }
                                                             addOption[option.optionId-1].optionList.pop();

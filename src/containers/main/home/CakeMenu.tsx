@@ -31,7 +31,7 @@ function CakeMenu({ session, auth }: Props) {
     <div className="home-flex">
       <div className="cake-store-menu cakemenu home">
         <div className="title">
-          {auth.accountId == 31 ? (
+          {auth.accountId === 31 ? (
             <>
               <button
                 onClick={

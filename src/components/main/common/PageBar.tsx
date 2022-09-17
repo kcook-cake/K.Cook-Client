@@ -13,11 +13,11 @@ const PageBar = ({page, setPageF, length}: Props) => {
     let [prev, setPrev] = useState(false);
     let [next, setNext] = useState(true);
     const PNCheck = () => {
-        if (pageBox==1) {
+        if (pageBox===1) {
             prev = false;
             setPrev(prev);
         }
-        if (pageBox==Math.ceil(length.length/10)) {
+        if (pageBox===Math.ceil(length.length/10)) {
             next = false;
             setNext(next);
         }
@@ -48,7 +48,7 @@ const PageBar = ({page, setPageF, length}: Props) => {
                     return(
                         <button
                             className={classNames("pagi", {
-                                "active": data.num == page,
+                                "active": data.num === page,
                                 "pagi-none": pageBox!=Math.ceil(data.num/10), 
                             })}
                             onClick={()=>setPageF(data.num)}>

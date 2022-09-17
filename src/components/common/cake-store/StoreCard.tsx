@@ -30,7 +30,7 @@ function StoreCard({getData, cakeDetail}: Props) {
                         <div className="storecard-flex" key={data.storeId}>
                             <div className="storecard">
                                 <div className="storecard-img-flex">
-                                    {data.image == null?
+                                    {data.image === null?
                                         <div className="storecard-img-none">~준비중 입니다~</div>:
                                         <img src={data.image} className="storecard-img"/>
                                     }

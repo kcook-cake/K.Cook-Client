@@ -30,7 +30,7 @@ function StoreMenu({ session, auth }: Props) {
     <div className="">
       <div className="cake-store-menu storemenu home">
         <div className="title">
-          {auth.accountId == 31 ? (
+          {auth.accountId === 31 ? (
             <>
               <button
                 onClick={

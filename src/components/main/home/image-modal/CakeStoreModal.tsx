@@ -147,7 +147,7 @@ function MenuModal({
     <>
       <div className="spm-modal">
         {/* 인기상품 상품 변경 */}
-        {imageModalShow && cakeTF == 1 && (
+        {imageModalShow && cakeTF === 1 && (
           <>
             {/*  <div
               className="spm-modal-background"
@@ -229,10 +229,10 @@ function MenuModal({
         )}
 
         {/* 신상품 상품 변경 */}
-        {imageModalShow && cakeTF == 2 && null}
+        {imageModalShow && cakeTF === 2 && null}
 
         {/* 케이크 상품 변경 */}
-        {imageModalShow && cakeTF == 3 && (
+        {imageModalShow && cakeTF === 3 && (
           <>
             {/*  <div
               className="spm-modal-background"
@@ -345,7 +345,7 @@ function MenuModal({
         )}
 
         {/* 스토어 상품 변경 */}
-        {imageModalShow && cakeTF == 4 && (
+        {imageModalShow && cakeTF === 4 && (
           <>
             {/*  <div
               className="spm-modal-background"

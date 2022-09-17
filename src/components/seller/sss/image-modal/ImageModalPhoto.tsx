@@ -86,11 +86,11 @@ function ImageModal({
   // 스토어사진 수정
   const PhotoFormDataF = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
-      if (idx == 0) imageChange();
-      else if (idx == 1) imageChange1();
-      else if (idx == 2) imageChange2();
-      else if (idx == 3) imageChange3();
-      else if (idx == 4) imageChange4();
+      if (idx === 0) imageChange();
+      else if (idx === 1) imageChange1();
+      else if (idx === 2) imageChange2();
+      else if (idx === 3) imageChange3();
+      else if (idx === 4) imageChange4();
 
       formData.set('bannerImage' + (idx + 1), e.target.files[0]);
       for (var i = 1; i < 6; i++)
@@ -248,7 +248,7 @@ function ImageModal({
                     'spm-add-img sellerstore-add-img',
                     'sellerstore-add-store-img',
                     {
-                      'sellerstore-add-img-icon': image[0] == '',
+                      'sellerstore-add-img-icon': image[0] === '',
                     }
                   )}
                   htmlFor="home-file-0"
@@ -289,7 +289,7 @@ function ImageModal({
                       'sellerstore-add-img',
                       'sellerstore-add-store-img',
                       {
-                        'sellerstore-add-img-icon': image[1] == '',
+                        'sellerstore-add-img-icon': image[1] === '',
                       }
                     )}
                     htmlFor={'home-file-' + 1}
@@ -323,7 +323,7 @@ function ImageModal({
                       'sellerstore-add-img',
                       'sellerstore-add-store-img',
                       {
-                        'sellerstore-add-img-icon': image[2] == '',
+                        'sellerstore-add-img-icon': image[2] === '',
                       }
                     )}
                     htmlFor={'home-file-' + 2}
@@ -357,7 +357,7 @@ function ImageModal({
                       'sellerstore-add-img',
                       'sellerstore-add-store-img',
                       {
-                        'sellerstore-add-img-icon': image[3] == '',
+                        'sellerstore-add-img-icon': image[3] === '',
                       }
                     )}
                     htmlFor={'home-file-' + 3}
@@ -391,7 +391,7 @@ function ImageModal({
                       'sellerstore-add-img',
                       'sellerstore-add-store-img',
                       {
-                        'sellerstore-add-img-icon': image[4] == '',
+                        'sellerstore-add-img-icon': image[4] === '',
                       }
                     )}
                     htmlFor={'home-file-' + 4}

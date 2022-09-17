@@ -140,7 +140,7 @@ function CakeCard({ getData, cakeDetail }: Props) {
               <div className="cakecard-flex" key={idx}>
                 <div className="cakecard">
                   <div className="cakecard-img-flex">
-                    {data.image == null ? (
+                    {data.image === null ? (
                       <div className="cakecard-img-none">~준비중 입니다~</div>
                     ) : (
                       <img src={data.image} className="cakecard-img" />
@@ -148,7 +148,7 @@ function CakeCard({ getData, cakeDetail }: Props) {
                   </div>
                   <div className="cakecard-info">
                     <div className="card-top-info">
-                      {data.storeName == null? "~준비중 입니다~": data.storeName}
+                      {data.storeName === null? "~준비중 입니다~": data.storeName}
                       <div className="card-review">
                         {'리뷰 ' + 27}
                       </div>

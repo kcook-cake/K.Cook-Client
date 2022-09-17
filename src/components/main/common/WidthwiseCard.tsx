@@ -22,7 +22,7 @@ function WidthwiseCard({ getData }: LengthwiseCardProps) {
         return (
         <div className="widthwise-card" key={data.productId}>
             <div className="widthwise-card-img-flex">
-                {data.image == null?
+                {data.image === null?
                     <div className="widthwise-img-none">~준비중 입니다~</div>:
                     <img src={data.image} />
                 }

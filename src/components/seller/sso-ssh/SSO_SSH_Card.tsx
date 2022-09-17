@@ -37,7 +37,7 @@ function SSO_SSH_Card ({getData}: Props) {
                                     <div className="pc sso-ssh-card-date">오늘 15:00</div>
                                     <div className="sso-ssh-card-box">
                                         <div className="pc seller-img-box">
-                                            {data.image == ""?
+                                            {data.image === ""?
                                                 <div className="seller-img-none">~준비중 입니다~</div>:
                                                 <img src={data.image} className="seller-img"/>
                                             }

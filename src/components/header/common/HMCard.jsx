@@ -140,7 +140,7 @@ function HMCard({ session, auth, setNumLeftMobileF }) {
           </div>
           {session ? (
             <>
-              {auth.accountId == 31? 
+              {auth.accountId === 31? 
                 <div className="hm-mobile-link">
                   <Link
                     to="/KCOOKProductManagement"

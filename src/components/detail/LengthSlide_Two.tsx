@@ -22,15 +22,15 @@ function LengthSlide_Two({getData, resize, slidePx, }: Props) {
                         <li
                             className="lengthslide-flex"
                             style={{
-                                top: idx%2==0||resize<=767 ? 0: 500,
-                                left: resize<=767? (170*idx): idx%2==0? (150*idx+10) : (150*(idx-1)+10),
+                                top: idx%2===0||resize<=767 ? 0: 500,
+                                left: resize<=767? (170*idx): idx%2===0? (150*idx+10) : (150*(idx-1)+10),
                                 transform: `translateX(${slidePx}px)`,
                                 transition: "0.5s ease",
                             }}
                             >
                             <div className="lengthslide">
                                 <div className="lengthslide-img-flex">
-                                    {data.image == null?
+                                    {data.image === null?
                                         <div className="lengthslide-img-none">~준비중 입니다~</div>:
                                         <img src={data.image} className="lengthslide-img"/>
                                     }

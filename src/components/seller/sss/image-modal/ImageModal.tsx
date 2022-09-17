@@ -149,7 +149,7 @@ function ImageModal({
                     'spm-add-img sellerstore-add-img',
                     'sellerstore-add-logo-img',
                     {
-                      'sellerstore-add-img-icon': image[0] == '',
+                      'sellerstore-add-img-icon': image[0] === '',
                     }
                   )}
                   htmlFor="home-file-0"

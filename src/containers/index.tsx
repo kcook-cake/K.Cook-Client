@@ -52,27 +52,27 @@ const Pages = () => {
   useEffect(() => {
     //pathname, parameter 가져오기
     var pathname = window.location.pathname;
-    if (pathname == '/') pathname = '/Home';
+    if (pathname === '/') pathname = '/Home';
     pathname = pathname.split('/')[1];
     if (
-      pathname == 'KCOOKProductManagement' ||
-      pathname == 'KCOOKSellerStore'
+      pathname === 'KCOOKProductManagement' ||
+      pathname === 'KCOOKSellerStore'
     ) setNumLeftMobile(2);
     else if (
-      pathname == 'SellerOrder' ||
-      pathname == 'SalesHistory' ||
-      pathname == 'ProductManagement' ||
-      pathname == 'SellerReview' ||
-      pathname == 'SellerStore' ||
-      pathname == 'FullCalendarApp'
+      pathname === 'SellerOrder' ||
+      pathname === 'SalesHistory' ||
+      pathname === 'ProductManagement' ||
+      pathname === 'SellerReview' ||
+      pathname === 'SellerStore' ||
+      pathname === 'FullCalendarApp'
     )
       setNumLeftMobile(3);
     else if (
-      pathname == 'MypageOrder' ||
-      pathname == 'ProductReview' ||
-      pathname == 'Membership' ||
-      pathname == 'Coupon' ||
-      pathname == 'Profile'
+      pathname === 'MypageOrder' ||
+      pathname === 'ProductReview' ||
+      pathname === 'Membership' ||
+      pathname === 'Coupon' ||
+      pathname === 'Profile'
     )
       setNumLeftMobile(4);
     // else setNumLeftMobile(4);
@@ -98,9 +98,9 @@ const Pages = () => {
 
       <Main session={session} auth={auth} />
 
-      {numLeftMobile == 2 ? <KCOOK session={session} auth={auth} /> : <></>}
-      {numLeftMobile == 3 ? <Seller session={session} auth={auth} /> : <></>}
-      {numLeftMobile == 4 ? <Mypage session={session} auth={auth} /> : <></>}
+      {numLeftMobile === 2 ? <KCOOK session={session} auth={auth} /> : <></>}
+      {numLeftMobile === 3 ? <Seller session={session} auth={auth} /> : <></>}
+      {numLeftMobile === 4 ? <Mypage session={session} auth={auth} /> : <></>}
 
       <Footer
         setNumLeftMobileF={setNumLeftMobile}

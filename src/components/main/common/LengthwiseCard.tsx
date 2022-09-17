@@ -21,7 +21,7 @@ function LengthwiseCard({getData, link}: Props) {
                         <div className="lengthwise-flex" key={data.productId}>
                             <div className="lengthwise">
                                 <div className="lengthwise-img-flex">
-                                    {data.image == null?
+                                    {data.image === null?
                                         <div className="lengthwise-img-none">~준비중 입니다~</div>:
                                         <img src={data.image} className="lengthwise-img"/>
                                     }
