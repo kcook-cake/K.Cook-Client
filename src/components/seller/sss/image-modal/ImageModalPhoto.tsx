@@ -71,17 +71,13 @@ function ImageModal({
       //     },
       //   })
       //     .then((res) => {
-      //       console.log(res);
       //     })
       //     .catch((err) => {
-      //       console.error(err);
       //     });
       setNum(num + 1);
     },
     []
   );
-
-  //  console.log(imageData);
 
   // 스토어사진 수정
   const PhotoFormDataF = useCallback(

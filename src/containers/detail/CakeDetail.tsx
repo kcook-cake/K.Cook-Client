@@ -88,7 +88,6 @@ const CakeDetail = () =>{
     const handleHeight = () => {
         height = window.innerHeight
         setHeight(height);
-        console.log(height);
     };
     useEffect(()=>{
         setHeight(window.innerHeight);

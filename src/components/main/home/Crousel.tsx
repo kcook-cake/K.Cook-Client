@@ -19,7 +19,6 @@ function Crousel({ session, auth }: Props) {
   const [files, setFiles] = useState('');
   const onLoadFile = (e: any) => {
     const file = e.target.files;
-    console.log(file);
     setFiles(file);
   };
 

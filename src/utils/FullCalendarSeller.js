@@ -10,12 +10,10 @@ const FullCalendarSeller = (fn,TF) => {
     //         }
     //     })
     //     .then((res) => {
-    //         // console.log(res.data.isSuccess)
     //         if(fn != null) fn(res.data.isSuccess);
     //         if(fn2 != null) fn2(res.data.result);
     //     })
     //     .catch((error) => {
-    //         // console.log(error.response.data.isSuccess)
     //         sessionStorage.removeItem("jwToken");
     //         if(fn != null) fn(false);
     //     });

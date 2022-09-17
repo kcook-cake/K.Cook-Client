@@ -53,7 +53,6 @@ function MenuModal({
       },
     })
       .then((res) => {
-        console.log('res :: ', res);
 
         // PATCH한 뒤, 초기화
         setPopCakeId(undefined);
@@ -88,13 +87,11 @@ function MenuModal({
       },
     })
       .then((res) => {
-        console.log('res :: ', res);
 
         // Post 이후, 초기화
         setCakeIds([]);
       })
       .catch((err) => {
-        console.log('err :: ', err);
       });
   }
 
@@ -127,13 +124,10 @@ function MenuModal({
       },
     })
       .then((res) => {
-        console.log('res :: ', res);
-
         // Post 이후, 초기화
         setStoreIds([]);
       })
       .catch((err) => {
-        console.log('err :: ', err);
       });
   }
 

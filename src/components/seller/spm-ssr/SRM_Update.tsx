@@ -38,7 +38,6 @@ function SPM_Update({
     
     const handleAddName = (e: any, ) => {
         updateData.name = e.target.value;
-        console.log(updateData);
     };
     const handleAddPrice = (e: any, ) => {
         updateData.price = e.target.value;

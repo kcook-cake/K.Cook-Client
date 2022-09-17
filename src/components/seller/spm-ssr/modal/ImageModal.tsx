@@ -26,11 +26,6 @@ const ImageModal = ({
     }: Props) => {
 
     const AddImageF = () => {
-        console.log(formData.get("productImage1"));
-        console.log(formData.get("productImage2"));
-        console.log(formData.get("productImage3"));
-        console.log(formData.get("productImage4"));
-        console.log(formData.get("productImage5"));
         axios({
             url: "/app/products/0/photos",
             method: "POST",
@@ -46,10 +41,7 @@ const ImageModal = ({
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res)=>{
-            console.log(res);
         }).catch((err)=>{
-            console.log(err);
-            console.log(err.response.data);
         })
     }
     const UpdateImageF = () => {
@@ -62,10 +54,7 @@ const ImageModal = ({
         //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
         //     },
         // }).then((res)=>{
-        //     console.log(res);
         // }).catch((err)=>{
-        //     console.log(err);
-        //     console.log(err.response.data);
         // })
     }
 

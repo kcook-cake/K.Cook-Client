@@ -71,17 +71,15 @@ function ImageModal({
     //     },
     //   })
     //     .then((res) => {
-    //       console.log(res);
     //     })
     //     .catch((err) => {
-    //       console.error(err);
     //     });
     setNum(num + 1);
   }, []);
 
-  useEffect(() => {}, []);
-
-  //  console.log(imageData);
+  useEffect(() => {
+    
+  },[]);
 
   // 스토어로고 수정
   const LogoFormDataF = useCallback(

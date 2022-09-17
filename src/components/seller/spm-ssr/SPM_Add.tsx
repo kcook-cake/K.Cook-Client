@@ -68,14 +68,10 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 };
             }
         }
-        console.log(addName);
-        console.log(addPrice);
-        console.log(addBack);
 
         var formData = new FormData();
         formData.append("productImage", "");
         //....
-        console.log(sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken);
         // axios.post(`/app/products`, {
         //     isCake: true,
         //     name: addName,
@@ -87,7 +83,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         //         'Content-Type': 'application/json',
         //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
         //     },
-        // }).then((res: any)=>{ console.log(res); })
+        // }).then((res: any)=>{})
         axios({
             url: "app/products",
             method: "POST",
@@ -103,10 +99,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res: any)=>{
-            console.log(res);
         }).catch((err: any)=>{
-            console.log(err);
-            console.log(err.response.data);
         })
     };
     const [addDiv, setAddDiv] = useState(false);
@@ -325,7 +318,6 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                         option.optionImageText.split("&")[1]: 
                                                                         optionList.optionListName)}
                                                             onChange={(e)=>{
-                                                                console.log(option.optionImage&&option.optionList.length===optionList.optionListId);
                                                                 if (option.optionImage&&option.optionList.length===optionList.optionListId)
                                                                     addOption[option.optionId-1].optionImageText = "이미지&"+e.target.value;
                                                                 else if (optionList.optionListName.split("&")[0] === "텍스트") 

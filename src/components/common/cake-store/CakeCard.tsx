@@ -102,10 +102,8 @@ function CakeCard({ getData, cakeDetail }: Props) {
   //     .then((res) => {
   //       // 인기상품들의 이미지 url을 데이터에 담기 예정 (api 작동되면)
   //       setPopularProductData(res.data.result);
-  //       console.log('popularProductData', popularProductData);
   //     })
   //     .catch((e) => {
-  //       console.log(e);
   //     });
   // };
 
