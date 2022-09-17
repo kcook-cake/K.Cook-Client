@@ -81,7 +81,7 @@ function Store() {
 
     storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
     axios
-      .get(`https://prod.kcook-cake.com/app/cities`)
+      .get(`/app/cities`)
       .then(res =>{
         setSelectData([res.data.result, [], [
           "1호선", "2호선", "3호선", "4호선", "5호선", "6호선", "7호선", "8호선", "9호선",

@@ -13,7 +13,7 @@ interface Props {
 function MainAd({ session, auth }: Props) {
   const [image, setImage] = useState('');
   useEffect(() => {
-    axios.get(`https://prod.kcook-cake.com/app/banner/static`).then((res) => {
+    axios.get(`/app/banner/static`).then((res) => {
       setImage(res.data.result.webImageUrl);
       // for (var i=0; i<4; i++)
       //     image[i] = res.data.result[i].webImageUrl;

@@ -38,7 +38,6 @@ function OrderModal({
       formData.append('image', e.target.files[0]);
 
     //   axios({
-    //     baseURL: 'https://prod.kcook-cake.com/',
     //     url: '/app/banner/carousel',
     //     method: 'POST',
     //     data: {

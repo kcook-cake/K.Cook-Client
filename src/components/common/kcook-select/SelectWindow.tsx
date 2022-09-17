@@ -56,7 +56,7 @@ export default function SelectWindow({
 
     const LocationF = (i: any, ) => {
         axios
-            .get(`https://prod.kcook-cake.com/app/locations/`+i)
+            .get(`/app/locations/`+i)
             .then(res =>{
                 selectData[1] = res.data.result;
                 NumF();

@@ -7,7 +7,6 @@ import 'src/styles/seller/sso-ssh/modal/SSR_AddModal.scss';
 import cake6 from 'src/assets/cake6.png';
 import addImage from 'src/assets/seller/sso-ssh/image-add.png'
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
-import BaseUrl from 'src/utils/BaseUrl';
 import OptionList from 'src/components/detail/cake/OptionList';
 
 interface Props {

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const homeGetAxios = (setData, changeData, link, page) => {
     axios
-        .get(`https://prod.kcook-cake.com/app/` + link + "?page=" + page)
+        .get(`/app/` + link + "?page=" + page)
         .then((res) => {
             var d = res.data.result.content;
             var j = 0;

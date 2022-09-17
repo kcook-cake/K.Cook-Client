@@ -104,18 +104,6 @@ function HMCard({ session, auth, setNumLeftMobileF }) {
           </div>
           <div className="hm-mobile-link">
             <Link
-              to="/TodaysRec"
-              className="header-link TodaysRec"
-              onClick={() => {
-                setNumLeftMobileF(1);
-                $('.hm-mobile').hide();
-              }}
-            >
-              오늘의 추천
-            </Link>
-          </div>
-          <div className="hm-mobile-link">
-            <Link
               to="/Cake"
               className="header-link Cake"
               onClick={() => {
@@ -152,6 +140,19 @@ function HMCard({ session, auth, setNumLeftMobileF }) {
           </div>
           {session ? (
             <>
+              {auth.accountId == 31? 
+                <div className="hm-mobile-link">
+                  <Link
+                    to="/KCOOKProductManagement"
+                    className="header-link KCOOKProductManagement"
+                    onClick={() => {
+                      setNumLeftMobileF(2);
+                      $('.hm-mobile').hide();
+                    }}>
+                    관리자로 전환
+                  </Link>
+                </div>
+              :<></>}
               <div className="hm-mobile-link">
                 <Link
                   to="/SSOCalendar"

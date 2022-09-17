@@ -81,7 +81,7 @@ function Cake() {
 
     cakeGetAxios(setData, setPageLength, 'cakes', 1, 12);
     $("#cake-page-length").val("1")
-    axios.get(`https://prod.kcook-cake.com/app/cities`).then((res) => {
+    axios.get(`/app/cities`).then((res) => {
       setSelectData([
         res.data.result,
         ['생크림', '크림치즈', '버터크림', '앙금'],

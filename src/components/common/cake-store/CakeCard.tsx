@@ -98,7 +98,7 @@ function CakeCard({ getData, cakeDetail }: Props) {
   // ];
   // const getPopularProduct = () => {
   //   axios
-  //     .get('https://prod.kcook-cake.com​/app​/popular-products')
+  //     .get('​/app​/popular-products')
   //     .then((res) => {
   //       // 인기상품들의 이미지 url을 데이터에 담기 예정 (api 작동되면)
   //       setPopularProductData(res.data.result);

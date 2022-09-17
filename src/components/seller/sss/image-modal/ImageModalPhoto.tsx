@@ -56,7 +56,6 @@ function ImageModal({
 
       PhotoFormDataF(e, idx);
       //   axios({
-      //     baseURL: 'https://prod.kcook-cake.com/',
       //     url: '/app/banner/carousel',
       //     method: 'POST',
       //     data: {

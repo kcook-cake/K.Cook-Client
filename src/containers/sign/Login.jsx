@@ -27,7 +27,7 @@ function Login() {
 
   const onClickLogin = () => {
     axios
-      .post(`https://prod.kcook-cake.com/app/sign-in`, {
+      .post(`/app/sign-in`, {
         password: password,
         email: signInId,
       })

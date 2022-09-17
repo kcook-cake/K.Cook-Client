@@ -7,7 +7,6 @@ import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 import cake6 from 'src/assets/cake6.png';
 import addImage from 'src/assets/seller/sso-ssh/image-add.png'
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
-import BaseUrl from 'src/utils/BaseUrl';
 
 interface Props {
     NumF: any,
@@ -33,7 +32,6 @@ const ImageModal = ({
         console.log(formData.get("productImage4"));
         console.log(formData.get("productImage5"));
         axios({
-            baseURL: BaseUrl(),
             url: "/app/products/0/photos",
             method: "POST",
             data: {
@@ -56,7 +54,6 @@ const ImageModal = ({
     }
     const UpdateImageF = () => {
         // axios({
-        //     baseURL: BaseUrl(),
         //     url: "/app/products",
         //     method: "POST",
         //     data: formData,

@@ -7,7 +7,7 @@ const storeGetAxios = (fn, fnLength, link, page, num) => {
     if (page != 0) p = "?page="+page;
 
     axios
-        .get(`https://prod.kcook-cake.com/app/` + link + p)
+        .get(`/app/` + link + p)
         .then((res) => {
             console.log(res);
             const data = res.data.result.content;

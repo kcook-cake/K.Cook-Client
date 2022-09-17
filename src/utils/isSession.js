@@ -5,7 +5,7 @@ import axios from "axios";
 const isSession = (jwToken, fn, fn2) => {
     // sessionStorage.removeItem('jwToken')
     axios
-        .get(`https://prod.kcook-cake.com/app/accounts/auth`, {
+        .get(`/app/accounts/auth`, {
             headers: {
                 'X-ACCESS-TOKEN': jwToken,
             }

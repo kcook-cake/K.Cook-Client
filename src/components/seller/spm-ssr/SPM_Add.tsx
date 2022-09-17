@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
+// import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/SPM_Add_Update.scss';
 
@@ -9,9 +10,8 @@ import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from 'src/assets/seller/closebtn.svg';
 import leftArrow from 'src/assets/left-arrow.svg';
 import rightArrow from 'src/assets/right-arrow.svg';
+
 import ImageModal from './modal/ImageModal';
-import axios from 'axios';
-import BaseUrl from 'src/utils/BaseUrl';
 
 interface Props {
     num: any,
@@ -22,6 +22,7 @@ interface Props {
     setAddShowF: any,
 }
 
+const axios = require('axios');
 function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
     const [num, setNum] = useState(0);
     const addPhoto = useRef(null);
@@ -75,9 +76,20 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         formData.append("productImage", "");
         //....
         console.log(sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken);
+        // axios.post(`/app/products`, {
+        //     isCake: true,
+        //     name: addName,
+        //     newOptionsList: addBack,
+        //     price: addPrice,
+        //     salePrice: 0,
+        // }, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+        //     },
+        // }).then((res: any)=>{ console.log(res); })
         axios({
-            baseURL: BaseUrl(),
-            url: "/app/products",
+            url: "app/products",
             method: "POST",
             data: {
                 isCake: true,
@@ -90,9 +102,9 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 'Content-Type': 'application/json',
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
-        }).then((res)=>{
+        }).then((res: any)=>{
             console.log(res);
-        }).catch((err)=>{
+        }).catch((err: any)=>{
             console.log(err);
             console.log(err.response.data);
         })

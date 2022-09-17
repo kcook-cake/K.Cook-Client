@@ -150,15 +150,6 @@ function Header({ session, auth, setNumLeftMobileF }) {
             홈
           </Link>
           <Link
-            to="/TodaysRec"
-            className="header-link TodaysRec"
-            onClick={() => {
-              setNumLeftMobileF(1);
-            }}
-          >
-            오늘의 추천
-          </Link>
-          <Link
             to="/Cake"
             className="header-link Cake"
             onClick={() => {

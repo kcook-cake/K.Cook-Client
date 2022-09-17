@@ -191,7 +191,7 @@ function SignUp() {
       }, 5000);
     } else {
       axios
-        .post("https://prod.kcook-cake.com/app/sign-up", {
+        .post("/app/sign-up", {
           address: addressMain.slice(0,-1) + ", " + address,
           dateOfBirth: birthday,
           email: email,

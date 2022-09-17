@@ -46,7 +46,6 @@ function ImageModal({
   // 작업관리자에서 등록하면, image 데이터를 변경
   const axiosPostBanner = () => {
     axios({
-      baseURL: 'https://prod.kcook-cake.com/',
       url: '/app/banner/carousel',
       method: 'POST',
       data: {

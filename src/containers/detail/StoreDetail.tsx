@@ -71,7 +71,7 @@ const StoreDetail = (auth: any) => {
 
     getAxios(setData, setLengthTodays, 'cakes', [], 16, pageTodays, 0);
     axios
-      .get(`https://prod.kcook-cake.com/app/cakes`)
+      .get(`/app/cakes`)
       .then((res) => {
         setLengthTodays(res.data.result.content.length);
         setMaxNum(Math.ceil(res.data.result.content.length / 8));

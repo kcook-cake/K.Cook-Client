@@ -13,7 +13,7 @@ module.exports = {
     // 클라이언트 포트는 3000
     port: 3001,
     proxy: {
-      "/user_inform": {
+      "/app": {
         // 서버 포트는 3001
         target: "https://prod.kcook-cake.com/",
         changeOrigin: true,

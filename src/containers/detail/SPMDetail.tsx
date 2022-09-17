@@ -79,7 +79,7 @@ const SPMDetail = () => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
     axios
-      .get(`https://prod.kcook-cake.com/app/cities`)
+      .get(`/app/cities`)
       .then(res =>{
           setSelectData([res.data.result,         
           ['생크림', '크림치즈', '버터크림', '앙금'],

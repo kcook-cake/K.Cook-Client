@@ -32,7 +32,7 @@ function LandingPage() {
 
   const onClickLogin = () => {
     axios
-      .post(`https://prod.kcook-cake.com/app/sign-in`, {
+      .post(`/app/sign-in`, {
         password: password,
         email: signInId,
       })
@@ -120,7 +120,7 @@ function LandingPage() {
     // }
 
     // 010-9965-2359
-    axios.post(`https://prod.kcook-cake.com/app/applicants`,{
+    axios.post(`/app/applicants`,{
       cityIndex: cityIndex,
       locationIndex: locationIndex,
       phoneNumber: phoneNumber,
@@ -148,14 +148,14 @@ function LandingPage() {
   const LocationAxios = (i: any) => {
     setLocationIndex(0);
     setCityIndex(i);
-    axios.get(`https://prod.kcook-cake.com/app/locations/${i}`)
+    axios.get(`/app/locations/${i}`)
     .then(res =>{
       setLocation(res.data.result);
     });
   }
   
   useEffect(()=>{
-    axios.get(`https://prod.kcook-cake.com/app/cities`)
+    axios.get(`/app/cities`)
     .then(res =>{
       setCity(res.data.result);
     });
@@ -163,7 +163,7 @@ function LandingPage() {
   },[]);
 
   const test = () => {
-    axios.get(`https://prod.kcook-cake.com/app/applicants`)
+    axios.get(`/app/applicants`)
     .then(res =>{
     });
   };

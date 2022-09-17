@@ -56,7 +56,6 @@ function ImageModal({
 
     LogoFormDataF(e);
     //   axios({
-    //     baseURL: 'https://prod.kcook-cake.com/',
     //     url: '/app/banner/carousel',
     //     method: 'POST',
     //     data: {

@@ -37,7 +37,7 @@ function SignOut() {
 
       axios
         .patch(
-          `https://prod.kcook-cake.com/app/accounts/auth`,
+          `/app/accounts/auth`,
           {
             password: password,
           },

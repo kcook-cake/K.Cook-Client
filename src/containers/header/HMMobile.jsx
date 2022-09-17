@@ -15,6 +15,7 @@ function HMMobile ({ session, auth, numLeftMobile, setNumLeftMobileF }) {
     return (
         <div className="hm-mobile">
             {numLeftMobile == 1? <HMCard session={session} auth={auth} setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
+            {numLeftMobile == 2? <HMCard session={session} auth={auth} setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
             {numLeftMobile == 3? <HMSCard setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
             {numLeftMobile == 4? <HMMCard setNumLeftMobileF={setNumLeftMobileF}/> : <></>}
             <div

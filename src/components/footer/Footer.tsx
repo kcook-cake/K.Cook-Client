@@ -32,14 +32,6 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                         }}
                     ><dt>홈</dt></Link>
                     <Link
-                        to="/TodaysRec"
-                        className="footer-right"
-                        onClick={()=>{
-                            $(".hm-pc-flex").show();
-                            setNumLeftMobileF(1);
-                        }}
-                    ><dt>오늘의 추천</dt></Link>
-                    <Link
                         to="/Cake"
                         className="footer-right"
                         onClick={()=>{

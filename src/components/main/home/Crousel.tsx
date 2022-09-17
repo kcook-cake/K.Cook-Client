@@ -37,7 +37,7 @@ function Crousel({ session, auth }: Props) {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    axios.get(`https://prod.kcook-cake.com/app/banner/carousel`).then((res) => {
+    axios.get(`/app/banner/carousel`).then((res) => {
       for (var i = 0; i < 4; i++) image[i] = res.data.result[i].webImageUrl;
       setBannerImage(image);
     });

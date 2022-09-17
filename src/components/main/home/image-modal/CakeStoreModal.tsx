@@ -37,7 +37,6 @@ function MenuModal({
 
   function UpdatePopImg() {
     axios({
-      baseURL: 'https://prod.kcook-cake.com/',
       url: '/app/products/popularity',
       method: 'PATCH',
       data: {
@@ -77,7 +76,6 @@ function MenuModal({
 
   function UpdateCakeAPI() {
     axios({
-      baseURL: 'https://prod.kcook-cake.com/',
       url: '/app/products/representative-cake',
       method: 'POST',
       data: {
@@ -117,7 +115,6 @@ function MenuModal({
 
   function UpdateStoreAPI() {
     axios({
-      baseURL: 'https://prod.kcook-cake.com/',
       url: '/app/stores/representative',
       method: 'POST',
       data: {

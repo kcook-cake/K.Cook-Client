@@ -33,7 +33,6 @@ function ChangeAdModal({
 
   const axiosPostAds = () => {
     axios({
-      baseURL: 'https://prod.kcook-cake.com/',
       url: '/app/banner/static',
       method: 'POST',
       data: {
