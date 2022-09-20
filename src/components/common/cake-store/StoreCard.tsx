@@ -29,11 +29,13 @@ function StoreCard({getData, cakeDetail}: Props) {
                     <Link className="cake-store-card-" to={"/Store/0"}>
                         <div className="storecard-flex" key={data.storeId}>
                             <div className="storecard">
-                                <div className="storecard-img-flex">
-                                    {data.image === null?
-                                        <div className="storecard-img-none">~준비중 입니다~</div>:
-                                        <img src={data.image} className="storecard-img"/>
-                                    }
+                                <div className="storecard-img">
+                                    <div className="storecard-img-inner">
+                                        {data.image===null || data.image===undefined || data.image===""?
+                                            <div className="storecard-img-none">~준비중 입니다~</div>:
+                                            <img src={data.image} className="storecard-img"/>
+                                        }
+                                    </div>
                                 </div>
                                 <div className="storecard-info">
                                     <div className="card-top">{data.accountName}</div>

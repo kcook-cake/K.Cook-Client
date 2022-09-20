@@ -6,6 +6,7 @@ import '../../styles/detail/CakeDetail.scss';
 
 import LinkClick from 'src/utils/LinkClick';
 
+import test1 from 'src/assets/test1.png';
 import cake6 from 'src/assets/cake6.png';
 import selectArrow from 'src/assets/detail/cake/selectArrow.png';
 import date_calendar from 'src/assets/detail/cake/date_calendar.png';
@@ -106,18 +107,32 @@ const CakeDetail = () =>{
                 <div className="cake-detail-inner">
                     <div className='cake-detail-left'>
                         <div className='cake-detail-main-img'>
-                            {true?
-                                <img src={cake6} />:
-                                <div>~준비중 입니다~</div>
-                            }
+                            <div className='cake-detail-main-img-inner'>
+                                {true?
+                                    <img src={test1} />:
+                                    <div>~준비중 입니다~</div>
+                                }
+                            </div>
                         </div>
                         <div className='cake-detail-sub-img'>
-                            {true? <img src={cake6} />: <div>~준비중~</div>}
-                            {true? <img src={cake6} />: <div>~준비중~</div>}
-                            {false? <img src={cake6} />: <div>~준비중~</div>}
-                            {false? <img src={cake6} />: <div>~준비중~</div>}
-                            {false? <img src={cake6} />: <div>~준비중~</div>}
-                            {false? <img src={cake6} />: <div>~준비중~</div>}
+                            <div className='cake-detail-sub-img-inner'>
+                                {true? <img src={test1} />: <div>~준비중~</div>}
+                            </div>
+                            <div className='cake-detail-sub-img-inner'>
+                                {true? <img src={test1} />: <div>~준비중~</div>}
+                            </div>
+                            <div className='cake-detail-sub-img-inner'>
+                                {false? <img src={test1} />: <div>~준비중~</div>}
+                            </div>
+                            <div className='cake-detail-sub-img-inner'>
+                                {false? <img src={test1} />: <div>~준비중~</div>}
+                            </div>
+                            <div className='cake-detail-sub-img-inner'>
+                                {false? <img src={test1} />: <div>~준비중~</div>}
+                            </div>
+                            <div className='cake-detail-sub-img-inner'>
+                                {false? <img src={test1} />: <div>~준비중~</div>}
+                            </div>
                         </div>
                         <div className='cake-detail-box'>
                             상품 정보

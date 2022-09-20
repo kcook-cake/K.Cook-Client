@@ -80,7 +80,7 @@
   .contents {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 16px;
+    column-gap: 12px !important;
   }
 }
 .cake-store-contents {

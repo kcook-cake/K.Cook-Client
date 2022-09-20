@@ -41,20 +41,21 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
               <li
                 className="lengthslide-flex"
                 style={{
-                  left: resize <= 767 ? 176 * idx : 300 * idx + 10,
+                  top: 5,
+                  left: resize <= 767 ? 165 * idx : 300 * idx + 10,
                   transform: `translateX(${slidePx}px)`,
                   transition: '0.5s ease',
-                }}
-              >
+                }}>
                 <div className="lengthslide">
-                  <div className="lengthslide-img-flex">
-                    {data.image === null ? (
-                      <div className="lengthslide-img-none">
-                        ~준비중 입니다~
-                      </div>
-                    ) : (
-                      <img src={data.image} className="lengthslide-img" />
-                    )}
+                  <div className="lengthslide-img">
+                    <div className="lengthslide-img-inner">
+                      {data.image === null || data.image === undefined || data.image === ""?
+                        <div>
+                          ~준비중 입니다~
+                        </div>:
+                        <img src={data.image} />
+                      }
+                    </div>
                   </div>
                   <div className="lengthslide-info">
                     <div className="card-top-info">
@@ -63,7 +64,12 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
                         {'리뷰 ' + data.reviewCount}
                       </div>
                     </div>
-                    <div className="card-cake-name">{data.name}</div>
+                    <div className="lengthslide-card-cake-name">
+                      {data.name === null || data.name === undefined || data.name === ""?
+                        "~준비중 입니다~":
+                        data.name
+                      }
+                    </div>
                     <div className="card-minprice">{MakePrice(data.price)}</div>
                   </div>
                 </div>

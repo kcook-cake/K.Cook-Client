@@ -28,7 +28,7 @@ const ImageModal = ({
 
     const AddImageF = () => {
         axios({
-            url: "/app/products/0/photos",
+            url: "/app/products/66/photos",
             method: "POST",
             data: {
                 "productImage1": formData.get("productImage1"),
@@ -42,7 +42,9 @@ const ImageModal = ({
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res)=>{
+            console.log(res);
         }).catch((err)=>{
+            console.log(err);
         })
     }
     const UpdateImageF = () => {

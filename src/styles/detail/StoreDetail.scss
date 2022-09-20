@@ -19,24 +19,34 @@
     margin-top: 60px;
     margin-bottom: 45px;
 }
-.store-detail-top-img {
-    width: 776px;
-    height: 582px;
-    margin-right: 54px;
+.store-detail-main-img {
+    width: 781px;
+    height: 568px;
+    margin-right: 53px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.store-detail-main-img-inner {
+    width: 781px;
+    height: 568px;
+    overflow: hidden;
+
+    background-size: cover;
+    background-color: #ebebeb;
     img {
-        width: 776px;
-        height: 582px;
-        // margin-right: 54px;
+        width: 781px;
+        height: 568px;
+        object-fit: cover;
     }
     div {
-        width: 776px;
-        height: 582px;
-        line-height: 582px;
+        width: 781px;
+        height: 568px;
+        line-height: 568px;
 
         text-align: center;
         color: #858997;
-        font-size: 23px;
-        background-color: #e6e6e6;
+        font-size: 22px;
+        font-weight:500;
     }
 }
 .store-detail-top-box {

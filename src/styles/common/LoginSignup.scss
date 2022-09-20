@@ -101,7 +101,7 @@ input[type="checkbox"]:checked + label{
     height: 18px;
   
     border: 2px solid #ea5450;
-    background-color: #ea5450;
+    background-color: #ea5450 !important;
     background: url("../../assets/check.png") no-repeat;
     z-index: 1;
 }

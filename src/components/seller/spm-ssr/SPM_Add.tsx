@@ -99,7 +99,9 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res: any)=>{
+            console.log(res);
         }).catch((err: any)=>{
+            console.log(err);
         })
     };
     const [addDiv, setAddDiv] = useState(false);
