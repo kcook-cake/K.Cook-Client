@@ -25,6 +25,7 @@ function MainAd({ session, auth }: Props) {
   return (
     <div className="main-ad-flex">
       <ChangeAdModal
+        TF={true}
         //      num={num}
         //        setNum={setNum}
         //          resize={resize}
@@ -35,15 +36,18 @@ function MainAd({ session, auth }: Props) {
       />
       <div className="main-ad">
         <>
-          {auth.accountId === 31?
-            <div className="main-ad-inner" onClick={() => setChangeAd((prev) => !prev)}>
+          {auth.accountId === 31 ? (
+            <div
+              className="main-ad-inner"
+              onClick={() => setChangeAd((prev) => !prev)}
+            >
               <img src={image} alt="" />
             </div>
-            :
+          ) : (
             <Link to="/Cake">
               <img src={image} alt="" />
             </Link>
-          }
+          )}
         </>
 
         {/* <img className="main-ad-img" src={image} alt="advertise image"/> */}
