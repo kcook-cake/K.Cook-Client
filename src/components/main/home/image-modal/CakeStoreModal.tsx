@@ -53,12 +53,16 @@ function MenuModal({
       },
     })
       .then((res) => {
-
         // PATCH한 뒤, 초기화
+
+        alert('등록되었습니다.');
         setPopCakeId(undefined);
         setPopularRank(undefined);
+
+        setImageModalShowF(false);
       })
       .catch((err) => {
+        alert('등록에 실패했습니다.');
         console.error('err :: ', err);
       });
   }
@@ -87,11 +91,14 @@ function MenuModal({
       },
     })
       .then((res) => {
-
+        alert('등록되었습니다.');
         // Post 이후, 초기화
         setCakeIds([]);
+        setImageModalShowF(false);
       })
       .catch((err) => {
+        alert('등록에 실패했습니다.');
+        console.log('err :: ', err);
       });
   }
 
@@ -124,10 +131,14 @@ function MenuModal({
       },
     })
       .then((res) => {
+        alert('등록되었습니다.');
         // Post 이후, 초기화
         setStoreIds([]);
+        setImageModalShowF(false);
       })
       .catch((err) => {
+        alert('등록에 실패했습니다.');
+        console.log('err :: ', err);
       });
   }
 
@@ -200,7 +211,6 @@ function MenuModal({
                     // setImageDataF(image);
                     //  setNum(num + 1);
                     UpdatePopImg(); // PATCH 함수 실행
-                    alert('등록되었습니다.');
                   }}
                 >
                   등록
@@ -314,7 +324,6 @@ function MenuModal({
                   className="spmdetail-content-btn"
                   onClick={() => {
                     UpdateCakeAPI(); // POST 함수 실행
-                    alert('저장되었습니다.');
                   }}
                 >
                   등록
@@ -413,7 +422,6 @@ function MenuModal({
                   className="spmdetail-content-btn"
                   onClick={() => {
                     UpdateStoreAPI(); // POST 함수 실행
-                    alert('등록되었습니다.');
                   }}
                 >
                   등록

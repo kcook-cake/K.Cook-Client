@@ -45,6 +45,7 @@ function Crousel({ session, auth }: Props) {
   return (
     <>
       <ImageModal
+        TF={true}
         num={num}
         setNum={setNum}
         resize={resize}
