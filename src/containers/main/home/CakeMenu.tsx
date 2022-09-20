@@ -29,7 +29,7 @@ function CakeMenu({ session, auth }: Props) {
 
   return (
     <div className="home-flex">
-      <div className="cake-store-menu cakemenu home">
+      <div className="cake-store-menu home">
         <div className="title">
           {auth.accountId === 31 ? (
             <>

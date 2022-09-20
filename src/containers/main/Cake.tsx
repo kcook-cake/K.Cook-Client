@@ -193,7 +193,7 @@ function Cake() {
               </div>
               <PageBar page={page} setPageF={setPage} length={pageLength}/>
           </div>
-          <PickCard />
+          {/* <PickCard /> */}
         </div>
       </div>
     </>

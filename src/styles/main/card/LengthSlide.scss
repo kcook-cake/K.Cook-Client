@@ -2,19 +2,15 @@
 
 
 .lengthslide-flex {
+    width: 280px;
+    height: 435px;
     position:absolute;
-}
-
-.lengthslide-flex > div {
-    width:279.8px;
-    height:460.5px;
     background-color: #fff;
 }
 
 .lengthslide {
-    width: 279.8px;
-    height: 479px;
-    margin-bottom: 40px;
+    width: 280px;
+    height: 435px;
 
     display: inline-flex;
     flex-direction: column;
@@ -23,25 +19,33 @@
     background-color: #fff;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
-    .lengthslide-img-flex {
-        width: 279.8px;
-        height: 304px;
-        margin-bottom: 17px;
-
-        border-radius: 10px;
-        background-color: #e6e6e6;
-        img {
-        height: 304px;
-        }
-    }
-    .lengthslide-img-none {
-        line-height: 304px;
-        text-align: center;
-        color: #858997;
-    }
     .lengthslide-img {
-        width: 100%;
-        border-radius: 10px;
+        width: 280px;
+        height: 308.01px;
+        margin-bottom: 18px;
+        position: relative;
+    }
+    .lengthslide-img-inner {
+        width: 280px;
+        height: 308.01px;
+        overflow: hidden;
+    
+        border-radius: 5px;
+        background-size: cover;
+        background-color: #ebebeb;
+        img {
+            width: 280px;
+            height: 308.01px;
+    
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        div {
+            line-height: 308.01px;
+            text-align: center;
+            color: #858997;
+            font-size: 18px;
+        }
     }
 }
 
@@ -49,7 +53,7 @@
     margin-left: 20px;
     font-weight: bold;
     .card-top-info {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 400;
         margin-bottom: 3px;
     }
@@ -57,22 +61,20 @@
         display: inline;
         float: right;
         margin-right: 20px;
-        font-size: 11px;
+        font-size: 12px;
         color: #858997;
     }
-
-
-    
-    .card-cake-name {
+    .lengthslide-card-cake-name {
         width: 250px; //270px
-        height: 65px;
+        // height: 65px;
+        margin-bottom: 16px;
     
         overflow:hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
     
         color: $sub-text;
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 500;
     }
     .card-minprice {
@@ -82,34 +84,45 @@
 }
 
 @media (max-width: 767px) {
-    .lengthslide-flex > div {
-        width: 156px;
-        height: 280px;
+    .lengthslide-flex {
+        width: 150px;
+        height: 260px;
     }
 
     .lengthslide {
-        width: 156px;
-        height: 280px;
+        width: 150px;
+        height: 260px;
         margin-bottom: 10px;
         display: inline-flex;
         box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
-        .lengthslide-img-flex {
-            width: 156px;
-            height: 171.6px;
-            border-radius: 10px;
-            background-color: #e6e6e6;
-            img {
-                height: 171.6px;
-            }
-        }
-        .lengthslide-img-none {
-            line-height: 171.6px;
-            text-align: center;
-            color: #858997;
-        }
+
         .lengthslide-img {
-            width: 156px;
-            height: 171.6px;
+            width: 150px;
+            height: 165px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .lengthslide-img-inner {
+            width: 150px;
+            height: 165px;
+            overflow: hidden;
+        
+            border-radius: 5px;
+            background-size: cover;
+            background-color: #ebebeb;
+            img {
+                width: 150px;
+                height: 165px;
+        
+                object-fit: cover;
+                border-radius: 5px;
+            }
+            div {
+                line-height: 165px;
+                text-align: center;
+                color: #858997;
+                font-size: 16px;
+            }
         }
     }
 
@@ -123,32 +136,21 @@
             display: inline;
         
             float: right;
-            font-size: 11px;
             color: #858997;
         }
-        .card-rating-star {
-            display: inline-block;
-            height: 13px;
-        img {
-            width: 13px;
-            vertical-align: top;
-        }
-        }
         .card-shop-name {
-            width: 156px;
+            width: 150px;
             
             overflow:hidden;
             text-overflow:ellipsis;
             white-space:nowrap;
             
             color: #333333;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 18px;
         }
-        .card-cake-name {
-            width: 156px;
-            margin-bottom: 10px;
+        .lengthslide-card-cake-name {
+            width: 150px;
+            margin: 0;
+            padding-bottom: 10px;
         
             overflow:hidden;
             text-overflow:ellipsis;
@@ -159,10 +161,6 @@
             font-size: 15px;
 
             border-bottom: 1px solid #eee;
-        }
-        .card-minprice {
-            color: $pricetext;
-            font-size: 18px;
         }
     }
 }

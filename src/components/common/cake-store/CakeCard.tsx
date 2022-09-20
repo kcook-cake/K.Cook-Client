@@ -137,21 +137,23 @@ function CakeCard({ getData, cakeDetail }: Props) {
             <Link to={'/Cake/0'}>
               <div className="cakecard-flex" key={idx}>
                 <div className="cakecard">
-                  <div className="cakecard-img-flex">
-                    {data.image === null ? (
-                      <div className="cakecard-img-none">~준비중 입니다~</div>
-                    ) : (
-                      <img src={data.image} className="cakecard-img" />
-                    )}
+                  <div className="cakecard-img">
+                    <div className="cakecard-img-inner">
+                      {data.image===null || data.image===undefined || data.image===""?
+                        <div className="cakecard-img-none">~준비중 입니다~</div>:
+                        <img src={data.image} />
+                      }
+                    </div>
                   </div>
                   <div className="cakecard-info">
                     <div className="card-top-info">
-                      {data.storeName === null? "~준비중 입니다~": data.storeName}
-                      <div className="card-review">
-                        {'리뷰 ' + 27}
-                      </div>
+                      {data.storeName===null || data.storeName===undefined || data.storeName===""? 
+                        "~준비중 입니다~":
+                        data.storeName
+                      }
+                      <div className="card-review">{'리뷰 ' + 27}</div>
                     </div>
-                    <div className="card-cake-name">{data.name}</div>
+                    <div className="cakecard-card-cake-name">{data.name}</div>
                     <div className="card-minprice">
                       {data.price
                         .toString()

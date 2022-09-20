@@ -29,18 +29,23 @@ function LengthSlide_Two({getData, resize, slidePx, }: Props) {
                             }}
                             >
                             <div className="lengthslide">
-                                <div className="lengthslide-img-flex">
-                                    {data.image === null?
-                                        <div className="lengthslide-img-none">~준비중 입니다~</div>:
-                                        <img src={data.image} className="lengthslide-img"/>
-                                    }
+                                <div className="lengthslide-img">
+                                    <div className="lengthslide-img-inner">
+                                    {data.image === null ? (
+                                        <div className="lengthslide-img-none">
+                                        ~준비중 입니다~
+                                        </div>
+                                    ) : (
+                                        <img src={data.image} />
+                                    )}
+                                    </div>
                                 </div>
                                 <div className="lengthslide-info">
                                     <div className="card-top-info">
                                         원모먼트
                                         <div className="card-review">{"리뷰 "+data.reviewCount}</div>
                                     </div>
-                                    <div className="card-cake-name">{data.name}</div>
+                                    <div className="lengthslide-card-cake-name">{data.name}</div>
                                     <div className="card-minprice">{MakePrice(data.price)}</div>
                                 </div>
                             </div>

@@ -1,32 +1,43 @@
 @import "../../reset.scss";
 
+.storecard-flex {
+  margin-bottom: 40px;
+}
+
 .storecard {
-    width: 382px;
-    height: 330px;
-    margin-bottom: 40px;
+  width: 385px;
+  height: 330px;
+  margin-bottom: 40px;
 
-    display: inline-flex;
-    flex-direction: column;
-    background-color: #fff;
-    .storecard-img-flex {
-        width: 382px;
-        height: 250px;
-        margin-bottom: 5px;
+  display: inline-flex;
+  flex-direction: column;
+  background-color: #fff;
+  .storecard-img {
+    width: 385px;
+    height: 280px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .storecard-img-inner {
+    width: 385px;
+    height: 280px;
+    overflow: hidden;
 
-        background-color: #e6e6e6;
-        img {
-        height: 250px;
-        }
+    background-size: cover;
+    background-color: #ebebeb;
+    img {
+      width: 385px;
+      height: 280px;
+
+      object-fit: cover;
     }
-    .storecard-img-none {
-        line-height: 250px;
-        text-align: center;
-        color: #858997;
+    div {
+      line-height: 280px;
+      text-align: center;
+      color: #858997;
+      font-size: 18px;
     }
-    .storecard-img {
-        width: 100%;
-        border-radius: 10px;
-    }
+  }
 }
 
 .storecard-info {
@@ -61,31 +72,43 @@
 }
 
 @media (max-width: 767px) {
+  .storecard-flex {
+    margin-bottom: 0;
+  }
+
   .storecard {
-    width: 191px;
+    width: 187px;
     height: 190px;
     margin-bottom: 10px;
     display: inline-flex;
 
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
 
-    .storecard-img-flex {
-      width: 191px;
-      height: 125px;
-      border-radius: 0;
-      background-color: #e6e6e6;
-      img {
-        height: 125px;
-      }
-    }
-    .storecard-img-none {
-      line-height: 125px;
-      text-align: center;
-      color: #858997;
-    }
     .storecard-img {
-      width: 191px;
-      height: 125px;
+      width: 187px;
+      height: 136px;
+      margin-bottom: 5px;
+      position: relative;
+    }
+    .storecard-img-inner {
+      width: 187px;
+      height: 136px;
+      overflow: hidden;
+  
+      background-size: cover;
+      background-color: #ebebeb;
+      img {
+        width: 187px;
+        height: 136px;
+  
+        object-fit: cover;
+      }
+      div {
+        line-height: 136px;
+        text-align: center;
+        color: #858997;
+        font-size: 16px;
+      }
     }
   }
 

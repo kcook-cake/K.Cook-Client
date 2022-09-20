@@ -11,56 +11,70 @@
 .cake-detail-left {
   margin-right: 21.7px;
   .cake-detail-main-img {
-    width: 589.6px;
-    height: 640.7px;
-    margin-bottom: 9.7px;
+    width: 590px;
+    height: 649px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .cake-detail-main-img-inner {
+    width: 590px;
+    height: 649px;
+    overflow: hidden;
+
+    border-radius: 5px;
+    background-size: cover;
+    background-color: #ebebeb;
     img {
-      width: 589.6px;
-      height: 640.7px;
-      border-radius: 10px;
+      width: 590px;
+      height: 649px;
+
+      object-fit: cover;
+      border-radius: 5px;
     }
     div {
-      width: 589.6px;
-      height: 640.7px;
-      line-height: 640.7px;
-
+      line-height: 649px;
       text-align: center;
       color: #858997;
-      font-size: 30px;
-
-      border-radius: 10px;
-      background-color: #e6e6e6;
+      font-size: 22px;
+      font-weight:500;
     }
   }
+
   .cake-detail-sub-img {
-    width: 81.5px;
-    height: 89px;
-    margin-left: 46.2px;
-    margin-bottom: 53.4px;
+    width: 80px;
+    height: 88px;
+    margin-left: 45px;
+    margin-bottom: 10px;
+    position: relative;
 
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 1.6px;
+    column-gap: 4px;
+  }
+  .cake-detail-sub-img-inner {
+    width: 80px;
+    height: 88px;
+    overflow: hidden;
 
+    border-radius: 5px;
+    background-size: cover;
+    background-color: #ebebeb;
     img {
-      width: 81.5px;
-      height: 89px;
-      border-radius: 10px;
+      width: 80px;
+      height: 88px;
+
+      object-fit: cover;
+      border-radius: 5px;
     }
     div {
-      width: 81.5px;
-      height: 89px;
-      line-height: 89px;
-
+      line-height: 88px;
       text-align: center;
       color: #858997;
-      font-size: 15px;
-
-      border-radius: 10px;
-      background-color: #e6e6e6;
+      font-size: 16px;
     }
   }
+
   .cake-detail-box {
     color: #ea5450;
     font-size: 18px;

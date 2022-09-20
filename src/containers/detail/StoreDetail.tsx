@@ -3,6 +3,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/detail/StoreDetail.scss';
 
+import test2 from 'src/assets/test2.png';
 import cake6 from 'src/assets/cake6.png';
 import profileNone from 'src/assets/detail/store/profile.png';
 import timeImg from 'src/assets/detail/store/time.png';
@@ -94,8 +95,13 @@ const StoreDetail = (auth: any) => {
       <div className="store-detail-flex">
         <div className="store-detail">
           <div className="store-detail-top">
-            <div className="store-detail-top-img">
-              {false ? <img src={cake6} /> : <div>~준비중 입니다~</div>}
+            <div className="store-detail-main-img">
+              <div className="store-detail-main-img-inner">
+                {true? 
+                  <img src={test2} />: 
+                  <div>~준비중 입니다~</div>
+                }
+              </div>
             </div>
             <div className="store-detail-top-box">
               <div className="store-detail-profile">
