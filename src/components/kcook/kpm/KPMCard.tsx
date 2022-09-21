@@ -11,7 +11,7 @@ import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-b
 
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
-import setting from "../../../assets/seller/spm-setting.png";
+import setting from "src/assets/seller/spm-setting.png";
 
 interface Props {
     idx: any,
@@ -46,10 +46,14 @@ function KPMCard({
                     </div>
                     <div className="spmcard-content">
                         <div className="spmcard-img">
-                            {oriImage[idx][0]===""?
-                                <div className="spmcard-img-inner"><AddIcon/></div>:
-                                <img src={oriImage[idx][0]} />
-                            }
+                            <div className="spm-add-update-img-inner">
+                                {oriImage[idx][0]===""?
+                                    <div className="spmcard-img-inner">
+                                        <AddIcon/>
+                                    </div>:
+                                    <img src={oriImage[idx][0]} />
+                                }
+                            </div>
                         </div>
                         <div className="spmcard-content-inner">
                             <div className="spmcard-title">{oriData[idx].name}</div>
@@ -78,6 +82,11 @@ function KPMCard({
                 </div>
 
                 <div className="spm-tap">
+                    <Link to="/KCOOKProductManagement/0">
+                        <div className="spmcard-tap-btn">
+                            <img src={setting}/>
+                        </div>
+                    </Link>
                     <label className="switch-button">
                         <input
                             id='studies_togetherTrue'
