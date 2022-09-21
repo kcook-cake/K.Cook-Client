@@ -5,8 +5,8 @@ import rightArrow from '../../../assets/right-arrow.svg';
 // import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 
 import 'src/styles/main/card/BannerSlide.scss';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+//import axios from 'axios';
+// import { useEffect, useState } from 'react';
 // import "./banner-theme.scss";
 
 interface Props {
@@ -52,6 +52,8 @@ export default function BannerSlider({ auth, getData }: Props) {
     // dotsClass에 dots를 커스텀 해줄 class명을 넣어준 뒤
     // 해당 컴포넌트에 css 파일을 불러온다.
   };
+
+  console.log('getData', getData);
 
   return (
     <div>

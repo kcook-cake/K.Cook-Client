@@ -81,13 +81,16 @@ function ChangeAdModal({
 
       if (imageTF) formData.set('image', '');
     },
-    []
+    [] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
-  useEffect(() => {
-    formData.append('image', '');
-    setFormData(formData);
-  }, []);
+  useEffect(
+    () => {
+      formData.append('image', '');
+      setFormData(formData);
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
     <>
@@ -117,24 +120,16 @@ function ChangeAdModal({
 
             <div className="mainAdImgAndInput">
               <label htmlFor="changeAdFileInput" id="changeAdFileInputLabel">
-                {/*    {imageSrc ? (
-                  <img src={imageSrc} alt="preview-img" />
-                ) : (
-                  <>
-                   
-                    <button>광고 이미지 등록</button>
-                  </>
-                )} */}
                 {imageTF ? (
-                  imageData != '' ? (
-                    <img src={imageData} />
+                  imageData !== '' ? (
+                    <img src={imageData} alt="defaultImage" />
                   ) : (
                     <>
-                      <img src={addImage} />
+                      <img src={addImage} alt="addIcon" />
                     </>
                   )
                 ) : (
-                  <img src={addPhoto} />
+                  <img src={addPhoto} alt="new-Ad-Img" />
                 )}
               </label>
               <input

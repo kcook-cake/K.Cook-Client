@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 import 'src/styles/main/home/image-modal/ImageModal.scss';
 
-import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+// import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
 import addImage from 'src/assets/seller/sso-ssh/image-add.png';
 
@@ -22,9 +22,9 @@ interface Props {
   TF: any;
 }
 
-type userType = {
+/* type userType = {
   [key: string]: any;
-};
+}; */
 
 function ImageModal({
   num,
@@ -40,7 +40,7 @@ function ImageModal({
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
 
-  const [image, setImage] = useState<any>(imageData);
+  const [image, setImage] = useState<any>(imageData); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   // axios.post할 이미지 url값 ( JSON보내는 형식에 따라 달라질 예정)
   // const [postUrl, setPostUrl] = useState('');
@@ -101,7 +101,8 @@ function ImageModal({
           setFormData(formData);
         }
     },
-    []
+
+    [] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   let [imageTF, setImageTF] = useState([true, true, true, true]);
@@ -195,17 +196,20 @@ function ImageModal({
 
   let [formData, setFormData] = useState(new FormData());
   //  var formData = new FormData();
-  useEffect(() => {
-    for (var i = 1; i < 6; i++) {
-      formData.append('bannerImage' + i, '');
-      setFormData(formData);
-    }
-  }, []);
+  useEffect(
+    () => {
+      for (var i = 1; i < 6; i++) {
+        formData.append('bannerImage' + i, '');
+        setFormData(formData);
+      }
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
     <>
       <div className="spm-modal">
-        {imageModalShow ? (
+        {imageModalShow && (
           <>
             <div
               className="spm-modal-background"
@@ -236,13 +240,13 @@ function ImageModal({
                   htmlFor="home-file-0"
                 >
                   {imageTF[0] ? (
-                    imageData[0] != '' ? (
-                      <img src={imageData[0]} />
+                    imageData[0] !== '' ? (
+                      <img src={imageData[0]} alt="defaultImage" />
                     ) : (
-                      <img src={addImage} />
+                      <img src={addImage} alt="addIcon" />
                     )
                   ) : (
-                    <img src={addPhoto} />
+                    <img src={addPhoto} alt="new-banner-Img" />
                   )}
                 </label>
 
@@ -278,13 +282,13 @@ function ImageModal({
                     htmlFor={'home-file-' + 1}
                   >
                     {imageTF[1] ? (
-                      imageData[1] != '' ? (
-                        <img src={imageData[1]} />
+                      imageData[1] !== '' ? (
+                        <img src={imageData[1]} alt="defaultImage" />
                       ) : (
-                        <img src={addImage} />
+                        <img src={addImage} alt="addIcon" />
                       )
                     ) : (
-                      <img src={addPhoto1} />
+                      <img src={addPhoto1} alt="new-banner-Img" />
                     )}
                   </label>
                   <input
@@ -313,13 +317,13 @@ function ImageModal({
                     htmlFor={'home-file-' + 2}
                   >
                     {imageTF[2] ? (
-                      imageData[2] != '' ? (
-                        <img src={imageData[2]} />
+                      imageData[2] !== '' ? (
+                        <img src={imageData[2]} alt="defaultImage" />
                       ) : (
-                        <img src={addImage} />
+                        <img src={addImage} alt="addIcon" />
                       )
                     ) : (
-                      <img src={addPhoto2} />
+                      <img src={addPhoto2} alt="new-banner-Img" />
                     )}
                   </label>
                   <input
@@ -351,13 +355,13 @@ function ImageModal({
                     htmlFor={'home-file-' + 3}
                   >
                     {imageTF[3] ? (
-                      imageData[3] != '' ? (
-                        <img src={imageData[3]} />
+                      imageData[3] !== '' ? (
+                        <img src={imageData[3]} alt="defaultImage" />
                       ) : (
-                        <img src={addImage} />
+                        <img src={addImage} alt="addIcon" />
                       )
                     ) : (
-                      <img src={addPhoto3} />
+                      <img src={addPhoto3} alt="new-banner-Img" />
                     )}
                   </label>
                   <input
@@ -412,7 +416,7 @@ function ImageModal({
               </div>
             </div>
           </>
-        ) : null}
+        )}
       </div>
     </>
   );
