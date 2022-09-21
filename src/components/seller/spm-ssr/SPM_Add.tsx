@@ -29,7 +29,6 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
 
     //Add
     const Add = () => {
-        //addImage사용하면 이미지 넘길 수 있음
         var index = 0;
         var c = '';
         var jlength = 0;
@@ -86,8 +85,11 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         //     },
         // }).then((res: any)=>{
         //     console.log(res);
+        //     alert('추가 성공');
+        //     setAddShowF(false);
         // }).catch((err: any)=>{
         //     console.log(err);
+        //     alert('추가 실패');
         // })
     };
     const [addDiv, setAddDiv] = useState(false);
@@ -179,7 +181,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                 }
                             </div>
                         </div>
-                        <div>
+                        <div className='spm-add-update-img-bar'>
                             <ul style={{ display: "flex", }}>
                                 {[0, 1, 2, 3, 4].map((data: any,)=>{
                                     return (

@@ -133,7 +133,7 @@ function SPM_Update({
                                     }
                                 </div>
                             </div>
-                            <div>
+                            <div className='spm-add-update-img-bar'>
                                 <ul style={{ display: "flex", }}>
                                     {[0, 1, 2, 3, 4].map((data: any,)=>{
                                         return (
