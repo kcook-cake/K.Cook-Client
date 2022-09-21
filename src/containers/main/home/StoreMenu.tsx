@@ -60,7 +60,7 @@ function StoreMenu({ session, auth }: Props) {
           setImageModalShowF={setModalShow}
           cakeTF={cakeTF}
         />
-        <div className="store-contents">
+        <div className="contents store-contents">
           <StoreCard getData={data} cakeDetail={false} />
         </div>
       </div>

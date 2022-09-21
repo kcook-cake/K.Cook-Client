@@ -41,7 +41,6 @@
 .spmcard-img-inner {
     width: 160px;
     height: 176px;
-    margin-right: 20px;
     padding: 40px;
     padding-top: 50px;
 
@@ -51,12 +50,11 @@
 
 .spmcard-content-inner {
     width: auto;
+    padding-right: 45px;
+    margin: 0 5px 5px 15px;
+
     font-size: 16px;
     font-weight: 400;
-    padding-right: 45px;
-    margin-left: 15px;
-    margin-right: 5px;
-    margin-bottom: 5px;
 }
 
 .spmcard-title {
@@ -76,7 +74,7 @@
 @media(max-width: 767px) {
     .spmcard {
         width: 100%;
-        height: 159px !important;
+        height: 171px !important;
         margin-bottom: 20px;
         display: flex;
 
@@ -99,27 +97,25 @@
     }
 
     .spmcard-img-inner {
-        height: 111px;
-        width: 100px;
-        margin: 0;
-        padding: 11px;
-        padding-top: 15px;
+        width: 120px;
+        height: 132px;
 
-        // position: absolute;
-        // right: 0;
+        padding-top: 25px;
+        padding-left: 21px;
+
         float: right;
         background-color: #ebebeb;
         border-radius: 5px;
     }
 
     .spmcard-img {
-        width: 100px;
-        height: 111px;
-        margin-bottom: 10px;
+        width: 120px;
+        height: 132px;
+
         float: right;
         img {
-            width: 100px;
-            height: 111px;
+            width: 120px;
+            height: 132px;
         }
     }
 
@@ -131,7 +127,7 @@
         overflow: hidden;
         text-overflow:ellipsis;
         display:-webkit-box;
-        -webkit-line-clamp:4;
+        -webkit-line-clamp: 5;
         -webkit-box-orient:vertical;
         
         color: #777777;

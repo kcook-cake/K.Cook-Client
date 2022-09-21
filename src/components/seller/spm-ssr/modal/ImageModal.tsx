@@ -27,18 +27,19 @@ const ImageModal = ({
     }: Props) => {
 
     const AddImageF = () => {
+        console.log(formData.get("productImage1"));
+        console.log(formData.get("productImage2"));
+        console.log(formData.get("productImage3"));
+        console.log(formData.get("productImage4"));
+        console.log(formData.get("productImage5"));
         axios({
-            url: "/app/products/66/photos",
-            method: "POST",
+            url: "/app/products/69/photos",
+            method: "PATCH",
             data: {
-                "productImage1": formData.get("productImage1"),
-                "productImage2": formData.get("productImage2"),
-                "productImage3": formData.get("productImage3"),
-                "productImage4": formData.get("productImage4"),
-                "productImage5": formData.get("productImage5"),
+                formData,
             },
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundarybuOGBs9coioS5Kb9',
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res)=>{
@@ -72,7 +73,7 @@ const ImageModal = ({
         setFormData(formData);
         for (var i=1; i<6; i++)
             if (imageTF[i-1]) {
-                formData.set("productImage"+(i), "");
+                formData.set("productImage"+(i), null);
                 setFormData(formData);
             }
         NumF();
@@ -193,7 +194,7 @@ const ImageModal = ({
     // var formData = new FormData();
     useEffect(()=>{
         for (var i=1; i<6; i++) {
-            formData.append("productImage"+(i), "");
+            formData.append("productImage"+(i), null);
             setFormData(formData);
         }
     },[]);

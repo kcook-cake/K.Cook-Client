@@ -29,7 +29,6 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
 
     //Add
     const Add = () => {
-        //addImage사용하면 이미지 넘길 수 있음
         var index = 0;
         var c = '';
         var jlength = 0;
@@ -69,40 +68,29 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
             }
         }
 
-        var formData = new FormData();
-        formData.append("productImage", "");
-        //....
-        // axios.post(`/app/products`, {
-        //     isCake: true,
-        //     name: addName,
-        //     newOptionsList: addBack,
-        //     price: addPrice,
-        //     salePrice: 0,
-        // }, {
+        console.log(addBack);
+        // axios({
+        //     url: "app/products",
+        //     method: "POST",
+        //     data: {
+        //         isCake: true,
+        //         name: addName,
+        //         newOptionsList: addBack,
+        //         price: addPrice,
+        //         salePrice: 0, //show
+        //     },
         //     headers: {
         //         'Content-Type': 'application/json',
         //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
         //     },
-        // }).then((res: any)=>{})
-        axios({
-            url: "app/products",
-            method: "POST",
-            data: {
-                isCake: true,
-                name: addName,
-                newOptionsList: addBack,
-                price: addPrice,
-                salePrice: 0, //show
-            },
-            headers: {
-                'Content-Type': 'application/json',
-                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-            },
-        }).then((res: any)=>{
-            console.log(res);
-        }).catch((err: any)=>{
-            console.log(err);
-        })
+        // }).then((res: any)=>{
+        //     console.log(res);
+        //     alert('추가 성공');
+        //     setAddShowF(false);
+        // }).catch((err: any)=>{
+        //     console.log(err);
+        //     alert('추가 실패');
+        // })
     };
     const [addDiv, setAddDiv] = useState(false);
     const [addImageModal, setAddImageModal] = useState(false);
@@ -193,7 +181,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                 }
                             </div>
                         </div>
-                        <div>
+                        <div className='spm-add-update-img-bar'>
                             <ul style={{ display: "flex", }}>
                                 {[0, 1, 2, 3, 4].map((data: any,)=>{
                                     return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import $ from "jquery";
 import '../../styles/detail/CakeDetail.scss';
 
@@ -21,6 +22,7 @@ import PickUp from 'src/components/detail/cake/PickUp';
 import ColorBox from 'src/components/detail/cake/ColorBox';
 import OptionList from 'src/components/detail/cake/OptionList';
 import Date_Calendar from 'src/components/detail/cake/Date_Calendar';
+import List2Option from 'src/utils/List2Option';
 
 const CakeDetail = () =>{
     const [num, setNum] = useState(0);
@@ -29,59 +31,7 @@ const CakeDetail = () =>{
     const [selectShow, setSelectShow] = useState([true, true, true]);
     const [date, setDate] = useState("");
     const [pickUp, setPickUp] = useState(["10:00~11:00", "11:00~12:00", "21:00~22:00"]);
-    const [oriData, setOriData] = useState({
-          name: '케이크1',
-          image: '',
-          price: 1000,
-          list: [
-            {
-              optionId: 1,
-              optionName: '크기',
-              optionList: [
-                {
-                  optionListId: 1,
-                  optionListName: '1호',
-                  optionListPrice: 1000,
-                },
-                {
-                  optionListId: 2,
-                  optionListName: '2호',
-                  optionListPrice: 1000,
-                },
-                {
-                  optionListId: 3,
-                  optionListName: '3호',
-                  optionListPrice: 1000,
-                },
-                {
-                  optionListId: 4,
-                  optionListName: '텍스트&아',
-                  optionListPrice: 0,
-                },
-                {
-                  optionListId: 5,
-                  optionListName: '텍스트&',
-                  optionListPrice: 0,
-                },
-              ],
-              optionImage: false,
-              optionImageText: '',
-            },
-            {
-              optionId: 2,
-              optionName: '맛',
-              optionList: [
-                {
-                  optionListId: 1,
-                  optionListName: '딸기',
-                  optionListPrice: 1000,
-                },
-              ],
-              optionImage: false,
-              optionImageText: '',
-            },
-          ],
-        });
+    const [oriData, setOriData] = useState([]);
 
 
     let [height, setHeight] = useState(window.innerHeight);
@@ -90,6 +40,12 @@ const CakeDetail = () =>{
         height = window.innerHeight
         setHeight(height);
     };
+    const [data, getData] = useState({
+        image: null,
+        name: '',
+        storeName: '',
+        price: 0,
+    });
     useEffect(()=>{
         setHeight(window.innerHeight);
         window.addEventListener('height', handleHeight);
@@ -98,7 +54,17 @@ const CakeDetail = () =>{
         setHeightTF(heightTF);
 
         $(".hm-pc-flex").show();
-        LinkClick("Cake"); 
+        LinkClick("Cake");
+
+        axios({
+            url: "/app/products/70",
+            method: "GET",
+        }).then((res)=>{
+            // console.log(res.data.result);
+            getData(res.data.result);
+            List2Option(setOriData, res.data.result.optionsList);
+        }).catch((err)=>{
+        })
     },[]);
 
     return(
@@ -120,9 +86,6 @@ const CakeDetail = () =>{
                             </div>
                             <div className='cake-detail-sub-img-inner'>
                                 {true? <img src={test1} />: <div>~준비중~</div>}
-                            </div>
-                            <div className='cake-detail-sub-img-inner'>
-                                {false? <img src={test1} />: <div>~준비중~</div>}
                             </div>
                             <div className='cake-detail-sub-img-inner'>
                                 {false? <img src={test1} />: <div>~준비중~</div>}
@@ -169,14 +132,14 @@ const CakeDetail = () =>{
                                                 <img src={cake6} />:
                                                 <img src={profile} />
                                             }
-                                            <div className='cake-detail-right-store-name'>유니아케이크 &gt;</div>
+                                            <div className='cake-detail-right-store-name'>{data.storeName} &gt;</div>
                                         </div>
                                     </Link>
                                     <div className='cake-detail-right-store-cake'>
-                                        앙금플라워케이크
+                                        {data.name}
                                     </div>
                                     <div className='cake-detail-right-price'>
-                                        {MakePrice(55000)}원
+                                        {MakePrice(data.price)}원
                                         <img src={share} />
                                         <div style={{ float: "right", marginRight: "20px", }}>
                                             <img src={like} width={18.5} height={18.5} />
@@ -251,7 +214,7 @@ const CakeDetail = () =>{
                                     <hr/>
                                     {selectShow[2]?
                                         <>
-                                            <OptionList getData={oriData.list} />
+                                            <OptionList getData={oriData} />
                                         </>
                                     :null}
                                 </div>
