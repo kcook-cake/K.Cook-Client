@@ -69,40 +69,26 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
             }
         }
 
-        var formData = new FormData();
-        formData.append("productImage", "");
-        //....
-        // axios.post(`/app/products`, {
-        //     isCake: true,
-        //     name: addName,
-        //     newOptionsList: addBack,
-        //     price: addPrice,
-        //     salePrice: 0,
-        // }, {
+        console.log(addBack);
+        // axios({
+        //     url: "app/products",
+        //     method: "POST",
+        //     data: {
+        //         isCake: true,
+        //         name: addName,
+        //         newOptionsList: addBack,
+        //         price: addPrice,
+        //         salePrice: 0, //show
+        //     },
         //     headers: {
         //         'Content-Type': 'application/json',
         //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
         //     },
-        // }).then((res: any)=>{})
-        axios({
-            url: "app/products",
-            method: "POST",
-            data: {
-                isCake: true,
-                name: addName,
-                newOptionsList: addBack,
-                price: addPrice,
-                salePrice: 0, //show
-            },
-            headers: {
-                'Content-Type': 'application/json',
-                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-            },
-        }).then((res: any)=>{
-            console.log(res);
-        }).catch((err: any)=>{
-            console.log(err);
-        })
+        // }).then((res: any)=>{
+        //     console.log(res);
+        // }).catch((err: any)=>{
+        //     console.log(err);
+        // })
     };
     const [addDiv, setAddDiv] = useState(false);
     const [addImageModal, setAddImageModal] = useState(false);

@@ -1,5 +1,6 @@
 
 .cake-detail-optionlist-flex {
+    height: 90px;
     font-size: 16px;
     font-weight: 500;
 }
@@ -27,7 +28,11 @@
         display: flex;
         div {
             width: 23px; height: 23px;
-            padding-left: 6px;
+            padding-left: 5.3px;
+            img {
+                width: 12px; height: 12px;
+                margin-top: 5px;
+            }
         }
     }
 }
