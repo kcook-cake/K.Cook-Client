@@ -5,8 +5,8 @@ import rightArrow from '../../../assets/right-arrow.svg';
 // import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 
 import 'src/styles/main/card/BannerSlide.scss';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+//import axios from 'axios';
+// import { useEffect, useState } from 'react';
 // import "./banner-theme.scss";
 
 interface Props {
@@ -60,10 +60,10 @@ export default function BannerSlider({ auth, getData }: Props) {
           return (
             <>
               {auth ? (
-                <img src={data} alt="profile" />
+                <img src={data.webImageUrl} alt="profile" key={data.orders} />
               ) : (
                 <Link to="/Cake">
-                  <img src={data} alt="profile" />
+                  <img src={data.webImageUrl} alt="profile" key={data.orders} />
                 </Link>
               )}
             </>

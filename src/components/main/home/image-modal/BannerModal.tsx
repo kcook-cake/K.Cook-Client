@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 import 'src/styles/main/home/image-modal/ImageModal.scss';
 
-import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+// import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 
 import addImage from 'src/assets/seller/sso-ssh/image-add.png';
 
@@ -18,11 +18,13 @@ interface Props {
 
   imageData: any;
   setImageDataF: any;
+
+  TF: any;
 }
 
-type userType = {
+/* type userType = {
   [key: string]: any;
-};
+}; */
 
 function ImageModal({
   num,
@@ -32,12 +34,13 @@ function ImageModal({
   setImageModalShowF,
   imageData,
   setImageDataF,
+  TF,
 }: Props) {
   var jwToken: any = undefined;
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
 
-  const [image, setImage] = useState<any>(imageData);
+  const [image, setImage] = useState<any>(imageData); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   // axios.post할 이미지 url값 ( JSON보내는 형식에 따라 달라질 예정)
   // const [postUrl, setPostUrl] = useState('');
@@ -54,6 +57,19 @@ function ImageModal({
         //   'bannerListReq[0].orders': idx + 1,
         'bannerListReq[0].webImage': formData,
         //"이미지url" : 인풋창에 적은값
+
+        //  api post 변경 예상 JSON형태 ::
+        /*
+        bannerImage1: formData.get('bannerImage1'),
+        bannerImage2: formData.get('bannerImage2'),
+        bannerImage3: formData.get('bannerImage3'),
+        bannerImage4: formData.get('bannerImage4'),
+
+        bannerUrl1: bannerLink1,
+        bannerUrl2: bannerLink2,
+        bannerUrl3: bannerLink3,
+        bannerUrl4: bannerLink4,
+         */
       },
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -61,8 +77,11 @@ function ImageModal({
       },
     })
       .then((res) => {
+        alert('등록되었습니다.');
+        setImageModalShowF(false);
       })
       .catch((err) => {
+        alert('슬라이드 이미지 등록에 실패했습니다.');
       });
   };
 
@@ -74,10 +93,15 @@ function ImageModal({
       else if (idx === 3) imageChange3();
 
       formData.set('bannerImage' + (idx + 1), e.target.files[0]);
+      setFormData(formData);
       for (var i = 1; i < 6; i++)
-        if (imageTF[i - 1]) formData.set('bannerImage' + i, '');
+        if (imageTF[i - 1]) {
+          formData.set('bannerImage' + i, '');
+          setFormData(formData);
+        }
     },
-    []
+
+    [] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   let [imageTF, setImageTF] = useState([true, true, true, true]);
@@ -96,6 +120,10 @@ function ImageModal({
   const photoInput2 = useRef<HTMLInputElement>();
   const photoInput3 = useRef<HTMLInputElement>();
 
+  const [bannerLink1, setBannerLink1] = useState('');
+  const [bannerLink2, setBannerLink2] = useState('');
+  const [bannerLink3, setBannerLink3] = useState('');
+  const [bannerLink4, setBannerLink4] = useState('');
   const imageChange = () => {
     const file = photoInput.current.files[0];
     if (file && file.type.substr(0, 5) === 'image') setPreImage(file);
@@ -164,15 +192,22 @@ function ImageModal({
     } else setAddPhoto3(null);
   }, [preImage3]);
 
-  var formData = new FormData();
-  useEffect(() => {
-    for (var i = 1; i < 6; i++) formData.append('bannerImage' + i, '');
-  }, []);
+  let [formData, setFormData] = useState(new FormData());
+  //  var formData = new FormData();
+  useEffect(
+    () => {
+      for (var i = 1; i < 6; i++) {
+        formData.append('bannerImage' + i, '');
+        setFormData(formData);
+      }
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
     <>
       <div className="spm-modal">
-        {imageModalShow ? (
+        {imageModalShow && (
           <>
             <div
               className="spm-modal-background"
@@ -203,13 +238,13 @@ function ImageModal({
                   htmlFor="home-file-0"
                 >
                   {imageTF[0] ? (
-                    imageData[0] != '' ? (
-                      <img src={imageData[0]} />
+                    imageData[0] !== '' ? (
+                      <img src={imageData[0].webImageUrl} alt="defaultImage" />
                     ) : (
-                      <img src={addImage} />
+                      <img src={addImage} alt="addIcon" />
                     )
                   ) : (
-                    <img src={addPhoto} />
+                    <img src={addPhoto} alt="new-banner-Img" />
                   )}
                 </label>
 
@@ -223,9 +258,15 @@ function ImageModal({
                 />
                 <input
                   id="bannerUrlTextInput"
-                  placeholder="클릭시 이동할 링크를 적어주세요."
+                  placeholder="배너의 링크를 적어주세요. (ex: https://www.naver.com/ )"
                   type="text"
-                  onChange={() => {}}
+                  value={bannerLink1}
+                  onChange={(e) => {
+                    setBannerLink1(e.target.value);
+                    //  let newurl = [...connectedUrl];
+                    // newurl[0] = bannerLink1;
+                    // setConnectedUrl(newurl);
+                  }}
                 />
               </div>
 
@@ -239,13 +280,16 @@ function ImageModal({
                     htmlFor={'home-file-' + 1}
                   >
                     {imageTF[1] ? (
-                      imageData[1] != '' ? (
-                        <img src={imageData[1]} />
+                      imageData[1] !== '' ? (
+                        <img
+                          src={imageData[1].webImageUrl}
+                          alt="defaultImage"
+                        />
                       ) : (
-                        <img src={addImage} />
+                        <img src={addImage} alt="addIcon" />
                       )
                     ) : (
-                      <img src={addPhoto1} />
+                      <img src={addPhoto1} alt="new-banner-Img" />
                     )}
                   </label>
                   <input
@@ -254,16 +298,16 @@ function ImageModal({
                     type="file"
                     accept="image/*"
                     ref={photoInput1}
-                    onChange={
-                      (e) => MakeFormDataF(e, 1)
-                      //  encodeFileToBase64(e.target.files[0], data)
-                    }
+                    onChange={(e) => MakeFormDataF(e, 1)}
                   />
                   <input
                     id="bannerUrlTextInput"
-                    placeholder="클릭시 이동할 링크를 적어주세요."
+                    placeholder="배너의 링크를 적어주세요. (ex: https://www.naver.com/ )"
                     type="text"
-                    onChange={() => {}}
+                    value={bannerLink2}
+                    onChange={(e) => {
+                      setBannerLink2(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="spm-modal-img-inner home-modal-img-inner">
@@ -274,13 +318,16 @@ function ImageModal({
                     htmlFor={'home-file-' + 2}
                   >
                     {imageTF[2] ? (
-                      imageData[2] != '' ? (
-                        <img src={imageData[2]} />
+                      imageData[2] !== '' ? (
+                        <img
+                          src={imageData[2].webImageUrl}
+                          alt="defaultImage"
+                        />
                       ) : (
-                        <img src={addImage} />
+                        <img src={addImage} alt="addIcon" />
                       )
                     ) : (
-                      <img src={addPhoto2} />
+                      <img src={addPhoto2} alt="new-banner-Img" />
                     )}
                   </label>
                   <input
@@ -296,9 +343,12 @@ function ImageModal({
                   />
                   <input
                     id="bannerUrlTextInput"
-                    placeholder="클릭시 이동할 링크를 적어주세요."
+                    placeholder="배너의 링크를 적어주세요. (ex: https://www.naver.com/ )"
                     type="text"
-                    onChange={() => {}}
+                    value={bannerLink3}
+                    onChange={(e) => {
+                      setBannerLink3(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="spm-modal-img-inner home-modal-img-inner">
@@ -309,13 +359,16 @@ function ImageModal({
                     htmlFor={'home-file-' + 3}
                   >
                     {imageTF[3] ? (
-                      imageData[3] != '' ? (
-                        <img src={imageData[3]} />
+                      imageData[3] !== '' ? (
+                        <img
+                          src={imageData[3].webImageUrl}
+                          alt="defaultImage"
+                        />
                       ) : (
-                        <img src={addImage} />
+                        <img src={addImage} alt="addIcon" />
                       )
                     ) : (
-                      <img src={addPhoto3} />
+                      <img src={addPhoto3} alt="new-banner-Img" />
                     )}
                   </label>
                   <input
@@ -331,9 +384,12 @@ function ImageModal({
                   />
                   <input
                     id="bannerUrlTextInput"
-                    placeholder="클릭시 이동할 링크를 적어주세요."
+                    placeholder="배너의 링크를 적어주세요. (ex: https://www.naver.com/ )"
                     type="text"
-                    onChange={() => {}}
+                    value={bannerLink4}
+                    onChange={(e) => {
+                      setBannerLink4(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -341,8 +397,10 @@ function ImageModal({
                 <button
                   className="spmdetail-content-btn"
                   onClick={() => {
-                    axiosPostBanner(); // POST 함수 실행
-                    alert('등록되었습니다.');
+                    if (TF) axiosPostBanner();
+                    setImageModalShowF(false);
+
+                    // if (TF) axiosPostBanner(); // POST 함수 실행
                   }}
                 >
                   등록
@@ -365,7 +423,7 @@ function ImageModal({
               </div>
             </div>
           </>
-        ) : null}
+        )}
       </div>
     </>
   );
