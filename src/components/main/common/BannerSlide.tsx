@@ -53,8 +53,6 @@ export default function BannerSlider({ auth, getData }: Props) {
     // 해당 컴포넌트에 css 파일을 불러온다.
   };
 
-  console.log('getData', getData);
-
   return (
     <div>
       <Slider {...settings} className="main-crousel">
@@ -62,10 +60,10 @@ export default function BannerSlider({ auth, getData }: Props) {
           return (
             <>
               {auth ? (
-                <img src={data} alt="profile" />
+                <img src={data.webImageUrl} alt="profile" key={data.orders} />
               ) : (
                 <Link to="/Cake">
-                  <img src={data} alt="profile" />
+                  <img src={data.webImageUrl} alt="profile" key={data.orders} />
                 </Link>
               )}
             </>

@@ -82,7 +82,6 @@ function ImageModal({
       })
       .catch((err) => {
         alert('슬라이드 이미지 등록에 실패했습니다.');
-        console.log(err);
       });
   };
 
@@ -125,7 +124,6 @@ function ImageModal({
   const [bannerLink2, setBannerLink2] = useState('');
   const [bannerLink3, setBannerLink3] = useState('');
   const [bannerLink4, setBannerLink4] = useState('');
-
   const imageChange = () => {
     const file = photoInput.current.files[0];
     if (file && file.type.substr(0, 5) === 'image') setPreImage(file);
@@ -241,7 +239,7 @@ function ImageModal({
                 >
                   {imageTF[0] ? (
                     imageData[0] !== '' ? (
-                      <img src={imageData[0]} alt="defaultImage" />
+                      <img src={imageData[0].webImageUrl} alt="defaultImage" />
                     ) : (
                       <img src={addImage} alt="addIcon" />
                     )
@@ -283,7 +281,10 @@ function ImageModal({
                   >
                     {imageTF[1] ? (
                       imageData[1] !== '' ? (
-                        <img src={imageData[1]} alt="defaultImage" />
+                        <img
+                          src={imageData[1].webImageUrl}
+                          alt="defaultImage"
+                        />
                       ) : (
                         <img src={addImage} alt="addIcon" />
                       )
@@ -318,7 +319,10 @@ function ImageModal({
                   >
                     {imageTF[2] ? (
                       imageData[2] !== '' ? (
-                        <img src={imageData[2]} alt="defaultImage" />
+                        <img
+                          src={imageData[2].webImageUrl}
+                          alt="defaultImage"
+                        />
                       ) : (
                         <img src={addImage} alt="addIcon" />
                       )
@@ -356,7 +360,10 @@ function ImageModal({
                   >
                     {imageTF[3] ? (
                       imageData[3] !== '' ? (
-                        <img src={imageData[3]} alt="defaultImage" />
+                        <img
+                          src={imageData[3].webImageUrl}
+                          alt="defaultImage"
+                        />
                       ) : (
                         <img src={addImage} alt="addIcon" />
                       )

@@ -25,8 +25,8 @@ function Crousel({ session, auth }: Props) {
   // 배너 등록 페이지
   const [bannerShow, setBannerShow] = useState(false);
   const [bannerImage, setBannerImage] = useState<any>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
-
-  const [image, setImage] = useState<any>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const [resArr, setResArr] = useState<any>([]);
+  // const [image, setImage] = useState<any>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   const [resize, setResize] = useState(0);
   const handleResize = () => {
@@ -38,18 +38,17 @@ function Crousel({ session, auth }: Props) {
       window.addEventListener('resize', handleResize);
 
       axios.get(`/app/banner/carousel`).then((res) => {
-        console.log('res', res);
-        for (var i = 0; i < 4; i++) {
-          //          image[i].order = res.data.result[i].orders;
-          image[i] = res.data.result[i].webImageUrl;
-        }
-        console.log('image1', image);
-        setBannerImage(image);
-        console.log('bannerImage1', bannerImage);
+        setResArr(res.data.result);
       });
     },
     [] // eslint-disable-line react-hooks/exhaustive-deps
   );
+
+  useEffect(() => {
+    var newRes = [...resArr];
+    newRes.sort((a: any, b: any) => a.orders - b.orders);
+    setBannerImage(newRes);
+  }, [resArr]);
 
   return (
     <>
@@ -60,7 +59,7 @@ function Crousel({ session, auth }: Props) {
         resize={resize}
         imageModalShow={bannerShow}
         setImageModalShowF={setBannerShow}
-        imageData={image}
+        imageData={bannerImage}
         setImageDataF={setBannerImage}
       />
 
@@ -68,7 +67,7 @@ function Crousel({ session, auth }: Props) {
         className="crousel"
         onClick={auth.accountId === 31 ? () => setBannerShow(true) : () => {}}
       >
-        <BannerSlider auth={auth.accountId === 31} getData={image} />
+        <BannerSlider auth={auth.accountId === 31} getData={bannerImage} />
       </div>
     </>
   );
