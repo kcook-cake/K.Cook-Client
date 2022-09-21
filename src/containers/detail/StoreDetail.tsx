@@ -4,7 +4,7 @@ import $ from 'jquery';
 import 'src/styles/detail/StoreDetail.scss';
 
 import test2 from 'src/assets/test2.png';
-import cake6 from 'src/assets/cake6.png';
+// import cake6 from 'src/assets/cake6.png';
 import profileNone from 'src/assets/detail/store/profile.png';
 import timeImg from 'src/assets/detail/store/time.png';
 import phoneImg from 'src/assets/detail/store/phone.png';
@@ -14,7 +14,7 @@ import TestImg from 'src/assets/searchIcon.png';
 
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
-import LengthSlide_Two from 'src/components/detail/LengthSlide_Two';
+import LengthSlideTwo from 'src/components/detail/LengthSlideTwo';
 
 // const { kakao } = window;
 
@@ -97,15 +97,20 @@ const StoreDetail = (auth: any) => {
           <div className="store-detail-top">
             <div className="store-detail-main-img">
               <div className="store-detail-main-img-inner">
-                {true? 
-                  <img src={test2} />: 
+                {true ? (
+                  <img src={test2} alt="store-detail-mainImg" />
+                ) : (
                   <div>~준비중 입니다~</div>
-                }
+                )}
               </div>
             </div>
             <div className="store-detail-top-box">
               <div className="store-detail-profile">
-                {false ? <></> : <img src={profileNone} />}
+                {false ? (
+                  <></>
+                ) : (
+                  <img src={profileNone} alt="store-detail-profile" />
+                )}
               </div>
               <div className="store-detail-store-name">{auth.nickname}</div>
               <div className="store-detail-store-textarea">
@@ -113,15 +118,15 @@ const StoreDetail = (auth: any) => {
               </div>
               <hr className="store-detail-store-hr" />
               <div className="store-detail-store-info">
-                <img src={timeImg} />
+                <img src={timeImg} alt="store-detail-timeImg" />
                 서울 용산구 이태원로55길 111
               </div>
               <div className="store-detail-store-info">
-                <img src={phoneImg} />
+                <img src={phoneImg} alt="store-detail-phoneImg" />
                 서울 용산구 이태원로55길 111
               </div>
               <div className="store-detail-store-info store-detail-store-info-2">
-                <img src={locationImg} />
+                <img src={locationImg} alt="store-detail-locationImg" />
                 서울 용산구 이태원로55길 111
               </div>
               <div
@@ -134,20 +139,24 @@ const StoreDetail = (auth: any) => {
                   className="store-detail-store-button"
                   style={{ float: 'left' }}
                 >
-                  <img src={TestImg} />
+                  <img src={TestImg} alt="store-detail-likeButton" />
                   99
                 </button>
                 <button
                   className="store-detail-store-button"
                   style={{ float: 'right' }}
                 >
-                  <img src={TestImg} />
+                  <img src={TestImg} alt="store-detail-shareImg" />
                   공유하기
                 </button>
               </div>
             </div>
           </div>
-          <img src={DetailAd} className="store-detail-ad" />
+          <img
+            src={DetailAd}
+            className="store-detail-ad"
+            alt="store-detail-ad"
+          />
 
           <div className="store-detail-cakelist home">
             <div className="store-detail-title-flex">
@@ -189,7 +198,7 @@ const StoreDetail = (auth: any) => {
             </div>
             <div className="store-detail-inner">
               <ul className="store-detail-contents">
-                <LengthSlide_Two
+                <LengthSlideTwo
                   getData={data}
                   resize={resize}
                   slidePx={slidePx}
