@@ -31,26 +31,19 @@ const StoreDetail = (auth: any) => {
   const [slidePx, setSlidePx] = useState(0);
   const [height, setHeight] = useState(0);
 
-  //지도
-  // var markerPosition  = new kakao.maps.LatLng(37.365264512305174, 127.10676860117488);
-  // var marker = new kakao.maps.Marker({
-  //     position: markerPosition
-  // });
-  // marker.setMap(map);
-  // useEffect(()=>{
-  //     var container = document.getElementById('map');
-  //     var options = {
-  //         center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488),
-  //         level: 3
-  //     };
 
-  //     var map = new kakao.maps.Map(container, options);
-  //     var markerPosition  = new kakao.maps.LatLng(37.365264512305174, 127.10676860117488);
-  //     var marker = new kakao.maps.Marker({
-  //         position: markerPosition
-  //     });
-  //     marker.setMap(map);
-  // },[]);
+
+  const handleCopyClipBoard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      
+      alert('복사 성공!');
+    } catch (error) {
+      alert('복사 실패!');
+    }
+  };
+
+
 
   const [data, setData] = useState([]);
   //0페이지부터 시작한다
@@ -127,7 +120,9 @@ const StoreDetail = (auth: any) => {
               </div>
               <div className="store-detail-store-info store-detail-store-info-2">
                 <img src={locationImg} alt="store-detail-locationImg" />
-                서울 용산구 이태원로55길 111
+                <div onClick={() => handleCopyClipBoard('서울 용산구 이태원로55길 111')}>
+                  서울 용산구 이태원로55길 111
+                </div>
               </div>
               <div
                 id="map"
