@@ -363,9 +363,9 @@ const ImageModal = ({
                     </div>
                 </div>
 
-                <div className="spmdetail-content-btn-box">
+                <div className="spmdetail-content-btn-box spmdetail-btn-box">
                     <button
-                        className="spmdetail-content-btn spm-modal-btn-box"
+                        className="spmdetail-content-btn"
                         onClick={() => {
                             if (TF) AddImageF();
                             else UpdateImageF();
@@ -375,7 +375,8 @@ const ImageModal = ({
                         등록
                     </button>
                     <button
-                        className="spmdetail-content-btn spmdetail-content-btn-left spm-modal-btn-box"
+                        className="spmdetail-content-btn"
+                        style={{ color: "#ea5450", backgroundColor: "#fff", }}
                         onClick={() => {
                             imageTF[0] = true; imageTF[1] = true; imageTF[2] = true; imageTF[3] = true; imageTF[4] = true; 
                             setImageTF(imageTF);

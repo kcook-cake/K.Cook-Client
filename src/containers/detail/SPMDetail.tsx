@@ -221,13 +221,11 @@ const SPMDetail = () => {
               <button className="spmdetail-content-btn">
                 등록
               </button>
-              <div className="spmdetail-btn-left">
-                <Link to="/ProductManagement">
-                  <button className="spmdetail-content-btn">
-                    취소
-                  </button>
-                </Link>
-              </div>
+              <Link to="/ProductManagement">
+                <button className="spmdetail-content-btn">
+                  취소
+                </button>
+              </Link>
             </div>
           </div>
         </div>
