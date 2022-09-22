@@ -12,10 +12,10 @@ import leftArrow from 'src/assets/left-arrow.svg';
 import rightArrow from 'src/assets/right-arrow.svg';
 
 import ImageModal from './modal/ImageModal';
+import MakePrice from 'src/utils/MakePrice';
 
 interface Props {
-    num: any,
-    setNum: any,
+    NumF: any,
     resize: any,
 
     addShow: any,
@@ -23,8 +23,8 @@ interface Props {
 }
 
 const axios = require('axios');
-function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
-    const [num, setNum] = useState(0);
+function SPMCard_Add({ NumF, resize, addShow, setAddShowF }: Props) {
+    // const [num, setNum] = useState(0);
     const addPhoto = useRef(null);
 
     //Add
@@ -94,7 +94,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
     const [addImageNum, setAddImageNum] = useState(0);
     const [addName, setAddName] = useState('');
     const [addPrice, setAddPrice] = useState(0);
-      const [addOption, setAddOption] = useState<any>([
+    const [addOption, setAddOption] = useState<any>([
         {
           optionId: 1,
           optionName: '크기',
@@ -108,7 +108,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
           optionImage: false,
           optionImageText: '',
         },
-      ]);
+    ]);
     const [addBack, setAddBack] = useState<any>([]);
 
 
@@ -117,29 +117,27 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         setAddName(e.target.value);
     };
     const handleAddPrice = (e: any) => {
-        setAddPrice(e.target.value);
+        setAddPrice(e.target.value.replace(/[^0-9]/g, ""));
     };
 
     const handleOptionName = (e: any, optionId: any, ) => {
         addOption[optionId-1].optionName = e.target.value;
-        setNum(num+1);
+        NumF();
         setAddOption(addOption);
     };
     const handleOptionListNameText = (e: any, optionId: any, optionListId: any, ) => {
         addOption[optionId-1].optionList[optionListId-1].optionListName = "텍스트&"+e.target.value;
-        setNum(num+1);
+        NumF();
         setAddOption(addOption);
     };
     const handleOptionListName = (e: any, optionId: any, optionListId: any, ) => {
         addOption[optionId-1].optionList[optionListId-1].optionListName = e.target.value;
-        setNum(num+1);
+        NumF();
         setAddOption(addOption);
     };
     const handleOptionListPrice = (e: any, optionId: any, optionListId: any, ) => {
-        var evalue = e.target.value;
-        if (evalue === "NaN") evalue = "0";
-        addOption[optionId-1].optionList[optionListId-1].optionListPrice = parseInt(evalue);
-        setNum(num+1);
+        addOption[optionId-1].optionList[optionListId-1].optionListPrice = parseInt(e.target.value.replace(/[^0-9]/g, ""));
+        NumF();
         setAddOption(addOption);
     };
 
@@ -150,7 +148,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
     return (
         <>
             <ImageModal
-                NumF={()=>setNum(num+1)} resize={resize} TF={true}
+                NumF={()=>NumF()} resize={resize} TF={true}
                 imageModalShow={addImageModal} setImageModalShowF={setAddImageModal}
                 imageData={addImage} 
             />
@@ -211,8 +209,9 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                             </div>
                             <input
                                 className="spm-add-update-price-inner"
-                                type="number"
+                                type="text"
                                 placeholder="0"
+                                value={MakePrice(addPrice)}
                                 onChange={handleAddPrice}
                             />
                             원
@@ -238,7 +237,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                     addOption[i].optionId = i+1;
                                                 }
                                                 addOption.pop();
-                                                setNum(num+1);
+                                                NumF();
                                                 setAddOption(addOption);
                                             }}>x
                                         </div>
@@ -282,7 +281,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                         return 0;
                                                                     });
                                                             }
-                                                            setNum(num+1);
+                                                            NumF();
                                                             setAddOption(addOption);
                                                         }}
                                                         draggable={true}>
@@ -310,16 +309,16 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                                 else  
                                                                     handleOptionListName(e, option.optionId, optionList.optionListId);
 
-                                                                setNum(num+1);
+                                                                NumF();
                                                                 setAddOption(addOption);
                                                             }}
                                                         />
                                                     </div>
                                                     <input
                                                         className="spm-add-update-item-price"
-                                                        type="number"
+                                                        type="text"
                                                         placeholder="0"
-                                                        value={optionList.optionListPrice}
+                                                        value={MakePrice(optionList.optionListPrice)}
                                                         onChange={(e)=>{handleOptionListPrice(e, option.optionId, optionList.optionListId)}}
                                                     />원
                                                     <div
@@ -335,7 +334,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                             }
                                                             addOption[option.optionId-1].optionList.pop();
 
-                                                            setNum(num+1);
+                                                            NumF();
                                                             setAddOption(addOption);
                                                         }}>x
                                                     </div>
@@ -352,7 +351,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                         optionListPrice: 0,
                                                     };
                                                     
-                                                    setNum(num+1);
+                                                    NumF();
                                                     setAddOption(addOption);
                                                 }}>+&nbsp;품목 추가
                                             </div>
@@ -370,7 +369,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                     else 
                                                         addOption[option.optionId-1].optionList[option.optionList.length-1].optionListName = "텍스트&"
 
-                                                    setNum(num+1);
+                                                    NumF();
                                                     setAddOption(addOption);
                                                 }}>'텍스트' 추가
                                             </div>
@@ -389,7 +388,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                                         addOption[option.optionId-1].optionImage = true;
                                                         addOption[option.optionId-1].optionImageText = "이미지&";
 
-                                                        setNum(num+1);
+                                                        NumF();
                                                         setAddOption(addOption);
                                                     }}>'이미지' 추가
                                                 </div>
@@ -418,7 +417,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                                     optionImage: false,
                                     optionImageText: "",
                                 };
-                                setNum(num+1);
+                                NumF();
                                 setAddOption(addOption);
                             }}>
                             + 옵션 추가
@@ -432,7 +431,7 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
                 <button
                     onClick={() => {
                         setAddShowF(false);
-                        setNum(num+1);
+                        NumF();
                     }}>
                   <CloseBtn />
                 </button>

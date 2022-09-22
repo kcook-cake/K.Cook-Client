@@ -5718,6 +5718,11 @@ form-data@^3.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
+format@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
+  integrity sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==
+
 forwarded@0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz"
@@ -9759,6 +9764,18 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-number-format@^5.0.0-beta.5:
+  version "5.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.0.0-beta.5.tgz#2b60ae341a7641d487c3f9eca663a3c0e7b80864"
+  integrity sha512-ieqr8cUAkteVyWjTx7gBL2P/lXdfw9LxUVMDvo4jqNe1yrOP8JWcRHya9iTbiTZDBAmCMCllfjUPWzpreH05hg==
+  dependencies:
+    prop-types "^15.7.2"
+
+react-number@^0.0.1-alpha4:
+  version "0.0.1-alpha4"
+  resolved "https://registry.yarnpkg.com/react-number/-/react-number-0.0.1-alpha4.tgz#a2ee2daa75f429147c77d3d979a8896c43ce328b"
+  integrity sha512-GEsyMEfen+gBAo/gC/PPRctOZnHLuqE/Ccr5yqx4hgagMRzF+nirLna+ZKrY17z1BNjMqeKooLXKtKPYZm8W8Q==
 
 react-refresh@^0.11.0:
   version "0.11.0"

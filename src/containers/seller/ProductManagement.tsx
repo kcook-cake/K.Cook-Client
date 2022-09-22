@@ -159,8 +159,7 @@ function ProductManagement() {
                     ) : (
                       <SPM_Update
                         idx={idx}
-                        num={num}
-                        setNum={setNum}
+                        NumF={()=>setNum(num+1)}
                         resize={resize}
                         oriShow={oriShow}
                         getUpdateData={oriData[idx]}
@@ -173,7 +172,7 @@ function ProductManagement() {
             })}
             {addShow?
               <SPMCard_Add
-                num={num} setNum={setNum} resize={resize}
+                NumF={()=>setNum(num+1)} resize={resize}
                 addShow={addShow} setAddShowF={setAddShow}
               />
             :null}
