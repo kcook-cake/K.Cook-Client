@@ -3,15 +3,19 @@ import axios from 'axios';
 import classNames from 'classnames';
 import 'src/styles/seller/sss/image-modal/ImageModal.scss';
 import 'src/styles/main/home/image-modal/ImageModal.scss';
-import 'src/styles/seller/sso-ssh/modal/OrderModal.scss';
+import 'src/styles/seller/sso-ssh/modal/FcSecondModal.scss';
 
-import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 import add from 'src/assets/seller/sso-ssh/add.png';
 import subtract from 'src/assets/seller/sso-ssh/subtract.png';
+import sub_add from 'src/assets/detail/cake/add.png';
+import sub_subtract from 'src/assets/detail/cake/subtrack.png';
+import KCOOKScroll from 'src/utils/KCOOKScroll';
+
 
 interface Props {
     NumF: any;
     resize: any;
+    height: any;
 
     orderModalShow: any;
     setOrderModalShowF: any;
@@ -20,6 +24,8 @@ interface Props {
 function OrderModal({
     NumF,
     resize,
+    height,
+
     orderModalShow,
     setOrderModalShowF,
 }: Props) {
@@ -28,43 +34,12 @@ function OrderModal({
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const UpdateImageF = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>, idx: any) => {
-      if (!e.target.files) return;
-
-      const formData = new FormData();
-      formData.append('image', e.target.files[0]);
-
-    //   axios({
-    //     url: '/app/banner/carousel',
-    //     method: 'POST',
-    //     data: {
-    //       'bannerListReq[0].connectedUrl': 'https://www.kcook-cake.com/',
-    //       'bannerListReq[0].mobileImage': formData,
-    //       'bannerListReq[0].orders': idx + 1,
-    //       'bannerListReq[0].webImage': formData,
-    //       //"이미지url" : 인풋창에 적은값
-    //     },
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //       'X-ACCESS-TOKEN': jwToken,
-    //     },
-    //   })
-    //     .then((res) => {
-    //     })
-    //     .catch((err) => {
-    //     });
-        NumF();
-    },[]);
-  
-    useEffect(() => {
-    },[]);
+  useEffect(() => {
+  },[]);
 
   return (
     <>
-      <div className="sfc-order-modal">
+      <div className="sfc-second-modal">
         {orderModalShow ? (
           <>
             <div
@@ -73,17 +48,18 @@ function OrderModal({
             </div>
 
             <div
-            className="spm-modal-box sfc-order-modal-box"
-            style={{
-                top:
-                    resize <= 767 ? 
-                    window.innerHeight - 530 < 0 ? window.pageYOffset : window.pageYOffset + 20 : 
-                    window.innerHeight - 775 < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - 775) / 2,
-                left: resize <= 767 ? 0 : (resize - 472) / 2,
-            }}>
+              id='sfc-second-modal-height'
+              className="spm-modal-box sfc-second-modal-box"
+              style={{
+                  top:
+                      resize <= 767 ? 
+                      window.pageYOffset + 20 : 
+                      window.innerHeight - height < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - height) / 2,
+                  left: resize <= 767 ? 20 : (resize - 472) / 2,
+              }}>
                 <div className="spm-modal-title">주문 건수</div>
                 <div className="spm-modal-subtitle">
-                  <div style={{ display: "flex" }}>
+                  <div className='sfc-second-modal-grid'>
                     <div className='left'>시간 옵션</div>
                     <div className='left-sub'>건수</div>
                   </div>
@@ -91,32 +67,35 @@ function OrderModal({
                     return (
                       <>
                         {/* <div style={{ display: (resize > 767? "flex": "block"), }}> */}
-                        <div style={{ display: "flex" }}>
-                          <div className='left sfc-order-modal-left'>
-                            <input value={data} />
-                          </div>
+                        <div className='sfc-second-modal-grid sfc-second-modal-content'>
+                            <div className='sfc-second-modal-time'>
+                              <input value={data} />
+                            </div>
                           
-                          <div className='sfc-order-modal-center-flex'>
-                            <div className='cake-detail-optionlist-btn sfc-order-modal-center'>
-                                <div className='sfc-order-modal-center-inner'>
-                                    <div style={{ color: "#ea5450", border: "1px solid #ea5450", }}>-</div>
-                                    <div style={{ fontSize: "16px", border: "1px solid #e0e0e0" }}>1</div>
-                                    <div style={{ color: "#fff", background: "#ea5450", }}>+</div>
+                            <div className='cake-detail-optionlist-btn'>
+                                <div className=''>
+                                    <div style={{ color: "#ea5450", border: "1px solid #ea5450", }}>
+                                        <img src={sub_subtract} style={{ marginRight: "5px", }}/>
+                                    </div>
+                                    <div style={{ fontSize: "16px", border: "1px solid #e0e0e0" }}>
+                                        1
+                                    </div>
+                                    <div style={{ color: "#fff", background: "#ea5450", }}>
+                                        <img src={sub_add} style={{ marginRight: "5px", }} />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className='sfc-order-modal-right'>
+                            <div className='sfc-second-modal-subtract'>
                               <img src={subtract} />
                             </div>
-                          </div>
-                          {/* <div style={{ height: "40px", }}></div> */}
 
                         </div>
                       </>
                     );
                   })}
                 </div>
-                <div className='sfc-order-modal-add'>
+                <div className='sfc-second-modal-add'>
                   <img src={add} />
                 </div>
 
@@ -124,6 +103,7 @@ function OrderModal({
                     <button
                       className="spmdetail-content-btn"
                       onClick={() => {
+                          KCOOKScroll(false);
                           setOrderModalShowF(false);
                           NumF();
                       }}>
@@ -133,6 +113,7 @@ function OrderModal({
                       className="spmdetail-content-btn"
                       style={{ color: "#ea5450", background: "#fff", }}
                       onClick={() => {
+                          KCOOKScroll(false);
                           setOrderModalShowF(false);
                           NumF();
                       }}>

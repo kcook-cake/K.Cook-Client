@@ -1,0 +1,66 @@
+
+//order 모달창
+.sfc-second-modal {
+    z-index: 999;
+}
+
+.sfc-second-modal-box {
+    width: 472px;
+    height: auto;
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+.sfc-second-modal-grid {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 5fr 1.5fr 0.5fr;
+    .left-sub {
+        min-width: 69px;
+    }
+    .sfc-second-modal-time {
+        margin-right: 29px;
+        input {
+            width: 100%;
+            height: 40px;
+
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+    }
+    .sfc-second-modal-subtract {
+        img {
+            width: 23px;
+            margin-top: 8px;
+        }
+    }
+}
+
+.sfc-second-modal-add {
+    text-align: center;
+    img {
+        width: 23px;
+        margin-top: 10px;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .sfc-second-modal-box {
+        width: 90%;
+        // margin: 0 20px;
+    }
+
+    .sfc-second-modal-grid {
+        .sfc-second-modal-time {
+            margin-right: 0;
+            input {
+                width: 80%;
+            }
+        }
+        .sfc-second-modal-subtract {
+            margin-left: 10px;
+        }
+    }
+}

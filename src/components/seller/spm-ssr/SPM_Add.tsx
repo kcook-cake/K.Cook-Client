@@ -33,9 +33,6 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
         var c = '';
         var jlength = 0;
         for (var i = 0; i < addOption.length; i++) {
-            if (i - 1 < 0) index = i;
-            else index = i - 1;
-
             if (addOption[i].optionName === '크기') c = 'SIZE';
             else if (addOption[i].optionName === '맛') c = 'TASTE';
             else if (addOption[i].optionName === '레터링') c = 'LOWER_LETTERING';
@@ -43,54 +40,51 @@ function SPMCard_Add({ resize, addShow, setAddShowF }: Props) {
             else if (addOption[i].optionName === '초') c = 'CANDLE';
             else c = 'ETC';
 
-            if (addOption[i].optionImage)
-                jlength = addOption[i].optionList.length - 1;
-            else 
-                jlength = addOption[i].optionList.length;
+            if (addOption[i].optionImage) jlength = addOption[i].optionList.length - 1;
+            else jlength = addOption[i].optionList.length;
 
             for (var j = 0; j < jlength; j++) {
-                addBack[j + 1 + i * addOption[index].optionList.length - 1] = {
+                addBack[index] = {
                 additionalCost: addOption[i].optionList[j].optionListPrice,
                 category: c,
                 contents: addOption[i].optionList[j].optionListName,
                 imageUrl: "",
                 title: addOption[i].optionName,
                 };
+                index++;
             }
             if (addOption[i].optionImage) {
-                addBack[jlength + 1 + i * addOption[index].optionList.length - 1] = {
+                addBack[index] = {
                     additionalCost: addOption[i].optionList[jlength].optionListPrice,
                     category: c,
                     contents: addOption[i].optionImageText,
                     imageUrl: "",
                     title: addOption[i].optionName,
                 };
+                index++;
             }
         }
 
-        console.log(addBack);
-        // axios({
-        //     url: "app/products",
-        //     method: "POST",
-        //     data: {
-        //         isCake: true,
-        //         name: addName,
-        //         newOptionsList: addBack,
-        //         price: addPrice,
-        //         salePrice: 0, //show
-        //     },
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-        //     },
-        // }).then((res: any)=>{
-        //     console.log(res);
-        //     alert('추가 성공');
-        //     setAddShowF(false);
-        // }).catch((err: any)=>{
-        //     console.log(err);
-        //     alert('추가 실패');
-        // })
+        axios({
+            url: "app/products",
+            method: "POST",
+            data: {
+                isCake: true,
+                name: addName,
+                newOptionsList: addBack,
+                price: addPrice,
+                salePrice: 0, //show
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+            },
+        }).then((res: any)=>{
+            alert('추가 성공');
+            setAddShowF(false);
+        }).catch((err: any)=>{
+            alert('추가 실패');
+        })
     };
     const [addDiv, setAddDiv] = useState(false);
     const [addImageModal, setAddImageModal] = useState(false);

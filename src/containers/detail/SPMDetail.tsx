@@ -217,13 +217,17 @@ const SPMDetail = () => {
               </div>
             </div>
 
-            <div className="spmdetail-content-btn-box" style={{ marginTop: "16px", }}>
-              <button className="spmdetail-content-btn">등록</button>
-              <Link to="/ProductManagement">
-                <button className="spmdetail-content-btn spmdetail-content-btn-left">
-                  취소
-                </button>
-              </Link>
+            <div className="spmdetail-content-btn-box spmdetail-btn-box">
+              <button className="spmdetail-content-btn">
+                등록
+              </button>
+              <div className="spmdetail-btn-left">
+                <Link to="/ProductManagement">
+                  <button className="spmdetail-content-btn">
+                    취소
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

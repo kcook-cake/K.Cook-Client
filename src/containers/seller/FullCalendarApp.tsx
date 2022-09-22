@@ -10,7 +10,8 @@ import '../../styles/seller/FullCalendarApp.scss';
 import FullCalendarSeller from '../../utils/FullCalendarSeller';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import OrderModal from '../../components/seller/sso-ssh/modal/OrderModal';
+import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
+import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 function FullCalendarApp (session: any, auth: any,){
     const [num, setNum] = useState(0);
@@ -36,6 +37,7 @@ function FullCalendarApp (session: any, auth: any,){
         setResize(window.innerWidth);
     };
 
+    let [secondModalHeight, setSecondModalHeight] = useState(0); //리스트를 받고 주문 개수에 따라 넘겨줌
     useEffect(() => {
         // $(".fc-daygrid-day").css("background", "none");
         const height1 = document.getElementById('header-flex-id') as Element;
@@ -58,60 +60,69 @@ function FullCalendarApp (session: any, auth: any,){
         }
 
         FullCalendarSeller((seller: any)=>{
-        setEvents(seller);
+            setEvents(seller);
         }, false);
     }, []);
 
   // /SellerOrder/{id}
   return(
     <>
-        {orderModalShow&&
-        <OrderModal
-            NumF={()=>setNum(num+1)} resize={resize}
-            orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} />
-        }
+        {/* FcSecondModal */}
+        <FcSecondModal
+            NumF={()=>setNum(num+1)} resize={resize} height={272.26+50*3}
+            orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} 
+        />
+
+        {/* FcFirstModal */}
         {modalShow&&
-        <div className="fcap calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
-            <div className="calendar-modal-top"></div>
-            <div id="calendar-modal">
-                <div style={{ width: "5px", height: "35px", }}></div>
-                <div className="calendar-modal-box">{date}</div>
-                <br/>
-                <div style={{ width: "5px", height: "20px", }}></div>
-                <div className="calendar-modal-box">
-                    <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                        <button className="calendar-button">예약 확인</button> 
-                    </Link>
-                    <button 
-                        className="calendar-button"
-                        onClick={()=>setOrderModalShow(true)}>
-                        주문 건수 설정
-                    </button> {/* 휴일해제 */}
-                </div>
-            </div>
-        </div>}
-        <div id="sfc" className={"sfc "+pathname}>
-            {modalShow&&
-            <div className="calendar-modal-flex fcam">
-                <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}> {/* modalHeight */}
+            <div className="fcap calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
+                <div className="calendar-modal-top"></div>
+                <div id="calendar-modal">
                     <div style={{ width: "5px", height: "35px", }}></div>
                     <div className="calendar-modal-box">{date}</div>
-                    <div style={{ width: "5px", height: "10px", }}></div>
-                    <div className="calendar-modal-box-title">{title}</div>
                     <br/>
-                    <div className="calendar-modal-blank"></div>
+                    <div style={{ width: "5px", height: "20px", }}></div>
                     <div className="calendar-modal-box">
                         <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
                             <button className="calendar-button">예약 확인</button> 
                         </Link>
                         <button 
                             className="calendar-button"
-                            onClick={()=>setOrderModalShow(true)}>
+                            onClick={()=>{
+                                KCOOKScroll(true);
+                                setOrderModalShow(true);
+                            }}>
                             주문 건수 설정
                         </button> {/* 휴일해제 */}
                     </div>
                 </div>
-            </div>}
+            </div>
+        }
+
+        <div id="sfc" className={"sfc "+pathname}>
+            {/* FcFirstModal */}
+            {modalShow&&
+                <div className="calendar-modal-flex fcam">
+                    <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}> {/* modalHeight */}
+                        <div style={{ width: "5px", height: "35px", }}></div>
+                        <div className="calendar-modal-box">{date}</div>
+                        <div style={{ width: "5px", height: "10px", }}></div>
+                        <div className="calendar-modal-box-title">{title}</div>
+                        <br/>
+                        <div className="calendar-modal-blank"></div>
+                        <div className="calendar-modal-box">
+                            <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
+                                <button className="calendar-button">예약 확인</button> 
+                            </Link>
+                            <button 
+                                className="calendar-button"
+                                onClick={()=>setOrderModalShow(true)}>
+                                주문 건수 설정
+                            </button> {/* 휴일해제 */}
+                        </div>
+                    </div>
+                </div>
+            }
             <div className="seller-mypage-top sso-ssh-top">
                 <div className="seller-mypage-front-title">{pathname==="SSOCalendar"? '주문확인': '판매내역'}</div>
                 <div className='ss-fc-link-flex'>
@@ -151,8 +162,8 @@ function FullCalendarApp (session: any, auth: any,){
                     }}
                     customButtons={{
                         new: {
-                        text: 'new',
-                        click: () => console.log('new event'),
+                            text: 'new',
+                            click: () => console.log('new event'),
                         },
                     }}
                     events={events}

@@ -6,7 +6,7 @@ import getAxios from 'src/utils/getAxios';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
-import SSR_AddModal from 'src/components/seller/sso-ssh/modal/SSR_AddModal';
+import SSH_AddModal from 'src/components/seller/sso-ssh/modal/SSH_AddModal';
 
 import addIcon from 'src/assets/seller/spm-ssr/ssr-add.png';
 
@@ -36,7 +36,7 @@ function SalesHistory (){
 
     return(
         <>
-        <SSR_AddModal
+        <SSH_AddModal
             NumF={()=>setNum(num+1)} resize={resize} 
             addModalShow={addModalShow} setAddModalShowF={setAddModalShow}/>
         <div className="seller-mypage-top-flex">
