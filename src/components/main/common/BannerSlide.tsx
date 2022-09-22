@@ -1,8 +1,9 @@
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
-import leftArrow from '../../../assets/left-arrow.svg';
-import rightArrow from '../../../assets/right-arrow.svg';
+// import leftArrow from '../../../assets/left-arrow.svg';
+// import rightArrow from '../../../assets/right-arrow.svg';
 // import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 import 'src/styles/main/card/BannerSlide.scss';
 //import axios from 'axios';
@@ -19,7 +20,8 @@ const NextArrow = (props: any) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <img src={rightArrow} alt="profile" />
+      {/* <img src={rightArrow} alt="profile" /> */}
+      <RightOutlined />
     </div>
   );
 };
@@ -27,10 +29,14 @@ const PrevArrow = (props: any) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <img src={leftArrow} alt="profile" />
+      {/* <img src={leftArrow} alt="profile" /> */}
+      <LeftOutlined />
     </div>
   );
 };
+
+/* const slick_arrow = document.querySelector('.slick-arrow');
+const styles = window.getComputedStyle(); */
 
 export default function BannerSlider({ auth, getData }: Props) {
   var settings = {
@@ -60,10 +66,14 @@ export default function BannerSlider({ auth, getData }: Props) {
           return (
             <>
               {auth ? (
-                <img src={data.webImageUrl} alt="profile" key={data.orders} />
+                <img src={data.webImageUrl} alt={'profile'} key={data.orders} />
               ) : (
                 <Link to="/Cake">
-                  <img src={data.webImageUrl} alt="profile" key={data.orders} />
+                  <img
+                    src={data.webImageUrl}
+                    alt={'profile'}
+                    key={data.orders}
+                  />
                 </Link>
               )}
             </>
