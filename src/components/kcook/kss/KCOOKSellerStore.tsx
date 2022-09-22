@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import 'src/styles/admin/AllKCOOK.scss';
+import 'src/styles/kcook/AllKCOOK.scss';
 import 'src/styles/mypage/Profile.scss';
 import 'src/styles/seller/sss/SellerStore.scss';
 

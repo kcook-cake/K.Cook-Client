@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import classNames from 'classnames';
-import 'src/styles/seller/sss/image-modal/ImageModal.scss';
+import 'src/styles/seller/sss/modal/ImageModal.scss';
 import 'src/styles/main/home/image-modal/ImageModal.scss';
 import 'src/styles/seller/sso-ssh/modal/FcSecondModal.scss';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import 'src/styles/admin/AllKCOOK.scss';
+import 'src/styles/kcook/AllKCOOK.scss';
 import 'src/styles/mypage/Profile.scss';
 import 'src/styles/seller/sss/SellerStore.scss';
 
@@ -7,12 +7,13 @@ import X from 'src/assets/address_x.png';
 
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import ImageModal from './image-modal/ImageModal';
-import ImageModalPhoto from './image-modal/ImageModalPhoto';
+import ImageModal from './modal/ImageModal';
+import ImageModalPhoto from './modal/ImageModalPhoto';
 import PopupDom from 'src/components/sign/PopupDom';
 import PostCode from 'src/components/sign/PostCode';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 function SellerStore(session: any, auth: any) {
   const [num, setNum] = useState(0);
@@ -162,35 +163,45 @@ function SellerStore(session: any, auth: any) {
             <h3>스토어 정보</h3>
           </div>
           <div className="profile-list seller-list">
-            <div style={{ marginRight: '16px' }}>
+            <div className='sss-img'>
               <p className="profile-name">스토어 로고</p>
-              <button
-                className="seller-img-add"
+              <div
+                className='sss-img-inner'
                 onClick={() => {
                   imageTF = false;
                   setImageTF(imageTF);
                   setImageModalShow(true);
-                }}
-              >
-                {logoImgSrc != '' ? <img src={logoImgSrc} /> : <AddIcon />}
-              </button>
+                  KCOOKScroll(true);
+                }}>
+                {logoImgSrc != '' ? 
+                  <img src={logoImgSrc} /> : 
+                  <div className='sss-img-inner-icon'>
+                    <AddIcon />
+                  </div>
+                }
+              </div>
             </div>
-            <div>
-              <p className="profile-name">스토어 사진</p>
-              <button
-                className="seller-sub-img-add"
+            <div className='sss-img-2'>
+              <p className="profile-name sss-name">스토어 사진</p>
+              <div
+                className='sss-img-inner-2'
                 onClick={() => {
                   imageTF = true;
                   setImageTF(imageTF);
                   setImageModalShow(true);
-                }}
-              >
-                {photoImgSrc != '' ? <img src={logoImgSrc} /> : <AddIcon />}
-              </button>
+                  KCOOKScroll(true);
+                }}>
+                {photoImgSrc != '' ? 
+                  <img src={X} /> : 
+                  <div className='sss-img-inner-icon-2'>
+                    <AddIcon />
+                  </div>
+                }
+              </div>
             </div>
           </div>
           <div className="profile-list">
-            <p className="profile-name">스토어 이름</p>
+            <p className="profile-name sss-name">스토어 이름</p>
             <input
               value={name}
               className="sellerstore-content"

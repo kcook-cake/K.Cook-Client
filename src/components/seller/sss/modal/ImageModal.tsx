@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import classNames from 'classnames';
 import 'src/styles/common/modal/Modal.scss';
-import 'src/styles/seller/sss/image-modal/ImageModal.scss';
+import 'src/styles/seller/sss/modal/ImageModal.scss';
 
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
+import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 interface Props {
   num: any;
@@ -129,13 +130,13 @@ function ImageModal({
               className="spm-modal-box"
               style={{
                 top:
-                  resize <= 767
-                    ? window.innerHeight - 530 < 0
-                      ? window.pageYOffset
-                      : window.pageYOffset + 20
-                    : window.innerHeight - 775 < 0
-                    ? window.pageYOffset
-                    : window.pageYOffset + (window.innerHeight - 775) / 2,
+                  resize <= 767? 
+                    window.innerHeight - 530 < 0? 
+                      window.pageYOffset: 
+                      window.pageYOffset + 20: 
+                    window.innerHeight - 412 < 0? 
+                      window.pageYOffset: 
+                      window.pageYOffset + (window.innerHeight - 412) / 2,
                 left: resize <= 767 ? 20 : (resize - 775) / 2,
               }}>
               <div className="spm-modal-title">이미지 등록</div>
@@ -188,6 +189,7 @@ function ImageModal({
                   className="spmdetail-content-btn"
                   onClick={() => {
                     // { 스토어 로고 axios post}
+                    KCOOKScroll(false);
                   }}>
                   등록
                 </button>
@@ -199,6 +201,7 @@ function ImageModal({
                     setImageModalShowF(false);
                     setNum(num + 1);
                     setAfterUpdate(false);
+                    KCOOKScroll(false);
                   }}>
                   취소
                 </button>

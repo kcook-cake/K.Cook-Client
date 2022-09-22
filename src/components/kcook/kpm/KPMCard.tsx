@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import 'src/styles/admin/kpm/KPMCard.scss';
+import 'src/styles/kcook/kpm/KPMCard.scss';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../../assets/seller/closebtn.svg';
