@@ -1,166 +1,168 @@
-@import "../../reset.scss";
-
+@import '../../reset.scss';
 
 .lengthslide-flex {
-    width: 280px;
-    height: 435px;
-    position:absolute;
-    background-color: #fff;
+  width: 280px;
+  height: 435px;
+  position: absolute;
+  background-color: #fff;
+}
+.store-detail-contents a:nth-child(even) > li {
+  top: 476px !important;
 }
 
 .lengthslide {
+  width: 280px;
+  height: 435px;
+
+  display: inline-flex;
+  flex-direction: column;
+
+  border-radius: 11px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+  .lengthslide-img {
     width: 280px;
-    height: 435px;
+    height: 308.01px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .lengthslide-img-inner {
+    width: 280px;
+    height: 308.01px;
+    overflow: hidden;
 
-    display: inline-flex;
-    flex-direction: column;
+    border-radius: 5px;
+    background-size: cover;
+    background-color: #ebebeb;
+    img {
+      width: 280px;
+      height: 308.01px;
 
-    border-radius: 11px;
-    background-color: #fff;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-
-    .lengthslide-img {
-        width: 280px;
-        height: 308.01px;
-        margin-bottom: 18px;
-        position: relative;
+      object-fit: cover;
+      border-radius: 5px;
     }
-    .lengthslide-img-inner {
-        width: 280px;
-        height: 308.01px;
-        overflow: hidden;
-    
-        border-radius: 5px;
-        background-size: cover;
-        background-color: #ebebeb;
-        img {
-            width: 280px;
-            height: 308.01px;
-    
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        div {
-            line-height: 308.01px;
-            text-align: center;
-            color: #858997;
-            font-size: 18px;
-        }
+    div {
+      line-height: 308.01px;
+      text-align: center;
+      color: #858997;
+      font-size: 18px;
     }
+  }
 }
 
 .lengthslide-info {
-    margin-left: 20px;
-    font-weight: bold;
-    .card-top-info {
-        font-size: 12px;
-        font-weight: 400;
-        margin-bottom: 3px;
-    }
-    .card-review {
-        display: inline;
-        float: right;
-        margin-right: 20px;
-        font-size: 12px;
-        color: #858997;
-    }
-    .lengthslide-card-cake-name {
-        width: 250px; //270px
-        // height: 65px;
-        margin-bottom: 16px;
-    
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-    
-        color: $sub-text;
-        font-size: 17px;
-        font-weight: 500;
-    }
-    .card-minprice {
-        color: $pricetext;
-        font-size: 20px;
-    }
+  margin-left: 20px;
+  font-weight: bold;
+  .card-top-info {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 3px;
+  }
+  .card-review {
+    display: inline;
+    float: right;
+    margin-right: 20px;
+    font-size: 12px;
+    color: #858997;
+  }
+  .lengthslide-card-cake-name {
+    width: 250px; //270px
+    // height: 65px;
+    margin-bottom: 16px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: $sub-text;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .card-minprice {
+    color: $pricetext;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 767px) {
-    .lengthslide-flex {
+  .lengthslide-flex {
+    width: 150px;
+    height: 260px;
+  }
+
+  .lengthslide {
+    width: 150px;
+    height: 260px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
+
+    .lengthslide-img {
+      width: 150px;
+      height: 165px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .lengthslide-img-inner {
+      width: 150px;
+      height: 165px;
+      overflow: hidden;
+
+      border-radius: 5px;
+      background-size: cover;
+      background-color: #ebebeb;
+      img {
         width: 150px;
-        height: 260px;
+        height: 165px;
+
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      div {
+        line-height: 165px;
+        text-align: center;
+        color: #858997;
+        font-size: 16px;
+      }
     }
+  }
 
-    .lengthslide {
-        width: 150px;
-        height: 260px;
-        margin-bottom: 10px;
-        display: inline-flex;
-        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16);
+  .lengthslide-info {
+    margin: 0;
+    padding-left: 0px; //왜안돼?
+    font-weight: bold;
+    .card-review {
+      height: 13px;
+      margin: 0;
+      display: inline;
 
-        .lengthslide-img {
-            width: 150px;
-            height: 165px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .lengthslide-img-inner {
-            width: 150px;
-            height: 165px;
-            overflow: hidden;
-        
-            border-radius: 5px;
-            background-size: cover;
-            background-color: #ebebeb;
-            img {
-                width: 150px;
-                height: 165px;
-        
-                object-fit: cover;
-                border-radius: 5px;
-            }
-            div {
-                line-height: 165px;
-                text-align: center;
-                color: #858997;
-                font-size: 16px;
-            }
-        }
+      float: right;
+      color: #858997;
     }
+    .card-shop-name {
+      width: 150px;
 
-    .lengthslide-info {
-        margin: 0;
-        padding-left: 0px; //왜안돼?
-        font-weight: bold;
-        .card-review {
-            height: 13px;
-            margin: 0;
-            display: inline;
-        
-            float: right;
-            color: #858997;
-        }
-        .card-shop-name {
-            width: 150px;
-            
-            overflow:hidden;
-            text-overflow:ellipsis;
-            white-space:nowrap;
-            
-            color: #333333;
-        }
-        .lengthslide-card-cake-name {
-            width: 150px;
-            margin: 0;
-            padding-bottom: 10px;
-        
-            overflow:hidden;
-            text-overflow:ellipsis;
-            white-space:nowrap;
-        
-            color: $sub-text;
-            line-height: 18px;
-            font-size: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-            border-bottom: 1px solid #eee;
-        }
+      color: #333333;
     }
+    .lengthslide-card-cake-name {
+      width: 150px;
+      margin: 0;
+      padding-bottom: 10px;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      color: $sub-text;
+      line-height: 18px;
+      font-size: 15px;
+
+      border-bottom: 1px solid #eee;
+    }
+  }
 }
