@@ -15,9 +15,6 @@ function MainAd({ session, auth }: Props) {
   useEffect(() => {
     axios.get(`/app/banner/static`).then((res) => {
       setImage(res.data.result.webImageUrl);
-      // for (var i=0; i<4; i++)
-      //     image[i] = res.data.result[i].webImageUrl;
-      // setBannerImage(image);
     });
   }, []);
   const [changeAd, setChangeAd] = useState(false);
