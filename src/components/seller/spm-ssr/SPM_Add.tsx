@@ -80,6 +80,7 @@ function SPMCard_Add({ NumF, resize, addShow, setAddShowF }: Props) {
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
             },
         }).then((res: any)=>{
+            console.log(res);
             alert('추가 성공');
             setAddShowF(false);
         }).catch((err: any)=>{
