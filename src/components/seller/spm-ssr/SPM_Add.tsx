@@ -27,32 +27,33 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
 
     //Add
     const Add = () => {
-        // axios({
-        //     url: "app/products",
-        //     method: "POST",
-        //     data: {
-        //         "isCake": true,
-        //         "isOriginShow": false,
-        //         "isTodayShow": false,
-        //         "maxOfToday": (addMax==="무한"? -1: parseInt(addMax)),
-        //         "isTodayCake": addTodayCake,
-        //         "name": addName,
-        //         "newOptionsList": Option2List(addOption),
-        //         "price": addPrice,
-        //         "salePrice": 0,
-        //         "todaySaleNumber": 0
-        //     },
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-        //     },
-        // }).then((res: any)=>{
-        //     console.log(res);
-        //     alert('추가 성공');
-        //     setAddShowF(false);
-        // }).catch((err: any)=>{
-        //     alert('추가 실패');
-        // })
+        //productId 83
+        axios({
+            url: "app/products",
+            method: "POST",
+            data: {
+                "isCake": true,
+                "isOriginShow": false,
+                "isTodayShow": false,
+                "maxOfToday": (addMax==="무한"? -1: parseInt(addMax)),
+                "isTodayCake": addTodayCake,
+                "name": addName,
+                "newOptionsList": Option2List(addOption),
+                "price": addPrice,
+                "salePrice": 0,
+                "todaySaleNumber": 0
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+            },
+        }).then((res: any)=>{
+            console.log(res);
+            alert('추가 성공');
+            setAddShowF(false);
+        }).catch((err: any)=>{
+            alert('추가 실패');
+        })
     };
     const [addImageModal, setAddImageModal] = useState(false);
     const [addImage, setAddImage] = useState(['','','','','']);
@@ -187,19 +188,34 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                 
                                                 {option2.itemList.map((item2: {itemNumber: any, itemName: any, })=>{
                                                     return (
-                                                        (addChildOption >= option2.optionNumber? 
-                                                            <></>:
+                                                        (addChildOption < option2.optionNumber&&
                                                             <div 
                                                                 className={classNames('', {
-                                                                    '': true
+                                                                    'spm-add-update-child-modal-none': 
+                                                                    (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                        if (
+                                                                            data.array.find((data2: any)=>{
+                                                                                if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
+                                                                            }) != undefined
+                                                                        ) return true;
+                                                                    }) != undefined&& true),
                                                                 })}
                                                                 onClick={()=>{
+                                                                    var child = addOption[addChildOption].itemList[addChildItem].itemChild;
+                                                                    for (var i=0; i< child.length; i++) {
+                                                                        if (child[i].type === option2.optionNumber) {
+                                                                            addOption[addChildOption].itemList[addChildItem].itemChild[i].array.push(item2.itemNumber);
+                                                                            console.log(child);
+                                                                            setAddChildOption(-1);
+                                                                            return;
+                                                                        }
+                                                                    }
                                                                     addOption[addChildOption].itemList[addChildItem].itemChild.push({
-                                                                        type: addChildOption,
-                                                                        array: [addChildItem],
+                                                                        type: option2.optionNumber,
+                                                                        array: [item2.itemNumber],
                                                                     });
-                                                                    console.log(addChildOption);
-                                                                    console.log(addChildItem);
+                                                                    console.log(child);
+                                                                    setAddChildOption(-1);
                                                                 }}>
                                                                 {option2.optionNumber+1+"-"}
                                                                 {item2.itemNumber+1}

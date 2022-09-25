@@ -18,18 +18,20 @@ const Option2List = (getData) => {
         "초": "CANDLE",
     };
 
-    var chOList = [];
+    var chList = [];
 
     for (var i=0; i<getData.length; i++) {
         var c = getData[i].optionName.split("(")[0];
         var cTitle = getData[i].optionName.split("(")[1];
+        
         if (category[c] === undefined) c = "ETC";
         else c = category[c];
+
         if (cTitle === undefined) cTitle = "";
         else cTitle = "("+cTitle;
 
         for (var j=0; j<getData[i].itemList.length; j++) {
-            chOList.push({
+            chList.push({
                 additionalCost: getData[i].itemList[j].itemPrice,
                 category: c,
                 categoryTitle: cTitle,
@@ -42,7 +44,7 @@ const Option2List = (getData) => {
         }
     }
 
-    return chOList;
+    return chList;
 };
 
 export default Option2List;

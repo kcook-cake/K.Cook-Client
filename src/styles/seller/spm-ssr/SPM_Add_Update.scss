@@ -22,6 +22,10 @@
     position: absolute;
     background: yellow;
 }
+.spm-add-update-child-modal-none {
+    background: green;
+    pointer-events: none;
+}
 
 .spm-add-update {
     width: 848px;
