@@ -12,96 +12,14 @@ import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
+import List2Option from 'src/utils/List2Option';
+import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 
 function ProductManagement() {
   const [num, setNum] = useState(0);
 
   const [oriShow, setOriShow] = useState<any>([]);
-  const [oriImage, setOriImage] = useState([
-    [
-      'https://www.codingfactory.net/wp-content/uploads/abc.jpg',
-      '',
-      '',
-      '',
-      '',
-    ],
-    ['', '', '', '', ''],
-  ]);
-  const [oriData, setOriData] = useState([
-    {
-      name: '케이크1',
-      image: '',
-      price: 1000,
-      list: [
-        {
-          optionId: 1,
-          optionName: '크기',
-          optionList: [
-            {
-              optionListId: 1,
-              optionListName: '1호',
-              optionListPrice: 1000,
-            },
-            {
-              optionListId: 2,
-              optionListName: '2호',
-              optionListPrice: 1000,
-            },
-            {
-              optionListId: 3,
-              optionListName: '3호',
-              optionListPrice: 1000,
-            },
-            {
-              optionListId: 4,
-              optionListName: '텍스트&아',
-              optionListPrice: 0,
-            },
-            {
-              optionListId: 5,
-              optionListName: '텍스트&',
-              optionListPrice: 0,
-            },
-          ],
-          optionImage: false,
-          optionImageText: '',
-        },
-        {
-          optionId: 2,
-          optionName: '맛',
-          optionList: [
-            {
-              optionListId: 1,
-              optionListName: '딸기',
-              optionListPrice: 1000,
-            },
-          ],
-          optionImage: false,
-          optionImageText: '',
-        },
-      ],
-    },
-    {
-      name: '케이크2',
-      image: '',
-      price: 0,
-      list: [
-        {
-          optionId: 1,
-          optionName: '크기',
-          optionList: [
-            {
-              optionListId: 1,
-              optionListName: '1호',
-              optionListPrice: 1000,
-            },
-          ],
-          optionImage: false,
-          optionImageText: '',
-        },
-      ],
-    },
-  ]);
+  let [oriData, setOriData] = useState([]);
 
   const [addShow, setAddShow] = useState(false);
 
@@ -117,16 +35,26 @@ function ProductManagement() {
     LinkClick('ProductManagement');
     sellerLinkClick('ProductManagement');
 
-    for (var i = 0; i < oriData.length; i++) {
-      oriShow[i] = true;
-    }
-
     if (resize > 767) {
       $('.spm-modal').on('scroll touchmove mousewheel', (e) => {
         e.preventDefault();
         e.stopPropagation();
       });
     }
+
+    axios({
+      url: "/app/products/77",
+      method: "GET",
+    }).then((res)=>{
+      oriData = SPM_Data_Test();
+      for (var i = 0; i < oriData.length; i++) {
+        oriShow[i] = true;
+        oriData[i].optionsList = List2Option(oriData[i].optionsList);
+      }
+      setOriShow(oriShow);
+      setOriData(oriData);
+    }).catch((err)=>{
+    })
   }, []);
 
   return (
@@ -143,37 +71,35 @@ function ProductManagement() {
           <div className="mobile" style={{ width: '5px', height: '25px' }}></div>
 
           <div className="seller-content">
-            {oriData.map((data: any, idx: any) => {
+            {/* {oriData.map((data: any, idx: any) => {
               return (
                 <>
                   {oriShow[idx] ? 
                     (
                       <SPMCard
                         idx={idx}
-                        num={num}
-                        setNum={setNum}
+                        NumF={()=>setNum(num+1)}
                         oriShow={oriShow}
-                        oriData={oriData}
-                        oriImage={oriImage}
+                        oriData={oriData[idx]}
                       />
                     ) : (
-                      <SPM_Update
-                        idx={idx}
-                        NumF={()=>setNum(num+1)}
-                        resize={resize}
-                        oriShow={oriShow}
-                        getUpdateData={oriData[idx]}
-                        getUpdateImage={oriImage[idx]}
-                      />
+                      <></>
+                      // <SPM_Update
+                      //   idx={idx}
+                      //   NumF={()=>setNum(num+1)}
+                      //   resize={resize}
+                      //   oriShow={oriShow}
+                      //   getUpdateData={oriData[idx]}
+                      // />
                     )
                   }
                 </>
               );
-            })}
+            })} */}
             {addShow?
               <SPMCard_Add
                 NumF={()=>setNum(num+1)} resize={resize}
-                addShow={addShow} setAddShowF={setAddShow}
+                setAddShowF={setAddShow}
               />
             :null}
 
@@ -190,7 +116,6 @@ function ProductManagement() {
             onClick={() => {
               setAddShow(true);
             }}>
-            {/* <AddSmalllIcon/> */}
             {resize>767? 
               <AddIcon />:
               <img src={addIcon}/>

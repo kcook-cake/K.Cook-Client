@@ -62,7 +62,7 @@ const CakeDetail = () =>{
         }).then((res)=>{
             console.log(res.data);
             getData(res.data.result);
-            List2Option(setOriData, res.data.result.optionsList);
+            // List2Option(setOriData, res.data.result.optionsList);
         }).catch((err)=>{
         })
     },[]);

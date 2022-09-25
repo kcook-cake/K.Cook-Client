@@ -26,12 +26,11 @@ interface Props {
 
     oriShow: any,
     getUpdateData: any,
-    getUpdateImage: any,
 }
 
 function SPM_Update({ 
         idx, NumF, resize, 
-        oriShow, getUpdateData, getUpdateImage,
+        oriShow, getUpdateData,
     }: Props) {
     const addPhoto = useRef(null);
     const [addFormData, setAddFormData] = useState(null);
@@ -67,29 +66,22 @@ function SPM_Update({
 
 
     const [updateImageModal, setUpdateImageModal] = useState(false);
-    const [updateImage, setUpdateImage] = useState([
-        getUpdateImage[0],
-        getUpdateImage[1],
-        getUpdateImage[2],
-        getUpdateImage[3],
-        getUpdateImage[4],
-    ]);
-    const [updateImageNum, setUpdateImageNum] = useState(0);
+    const [updateImgNum, setUpdateImgNum] = useState(0);
+    const [updateImg, setUpdateImg] = useState(getUpdateData.image);
     const [updateName, setUpdateName] = useState(getUpdateData.name);
     const [updatePrice, setUpdatePrice] = useState(getUpdateData.price);
-    const [updateOption, setUpdateOption] = useState<any>(getUpdateData.list);
+    const [updateOption, setUpdateOption] = useState<any>(getUpdateData.newOptionsList);
 
-    const [startDrag, setStartDrag] = useState(0);
     useEffect(()=>{
     },[]);
     
     return (
         <>
-            <ImageModal
+            {/* <ImageModal
                 NumF={()=>NumF()} resize={resize} TF={false}
                 imageModalShow={updateImageModal} setImageModalShowF={setUpdateImageModal}
                 imageData={updateImage}
-            />
+            /> */}
 
             <div className="spm-add-update">
                 <div className="spm-add-update-inner">
@@ -111,11 +103,11 @@ function SPM_Update({
                                     setUpdateImageModal(true);
                                 }}>
                                 <div className="spm-add-update-img-inner">
-                                    {updateImage[updateImageNum]===""?
+                                    {updateImg[updateImgNum]==="" || updateImg[updateImgNum]===null || updateImg[updateImgNum]===undefined?
                                         <div className="spmcard-img-inner">
                                             <AddIcon/>
                                         </div>:
-                                        <img src={updateImage[updateImageNum]} />
+                                        <img src={updateImg[updateImgNum]} />
                                     }
                                 </div>
                             </div>
@@ -125,10 +117,10 @@ function SPM_Update({
                                         return (
                                             <li 
                                                 className={classNames('spm-add-update-dot', {
-                                                    'spm-add-update-dot-active': updateImageNum===data,
+                                                    'spm-add-update-dot-active': updateImgNum===data,
                                                 })}
                                                 onClick={()=>{
-                                                    setUpdateImageNum(data);
+                                                    setUpdateImgNum(data);
                                                 }}>
                                             </li>
                                         );
@@ -166,24 +158,22 @@ function SPM_Update({
                                 <div className="spm-add-update-right">x</div>
                             </div>
                             <>
-                                {updateOption.map((option: { optionId: any, optionName: any, optionList: any, optionImage: any, optionImageText: any, })=>{
+                                {updateOption.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
                                     return (
                                         <form>
                                             <div className="spm-add-update-option">
                                                 <input
-                                                    id={"spm-update-option-"+option.optionId}
                                                     className="spm-add-update-title"
-                                                    placeholder={"옵션"+option.optionId+" 이름"}
+                                                    placeholder={"옵션"+(option.optionNumber+1)+" 이름"}
                                                     value={option.optionName}
-                                                    onChange={(e)=> {handleOptionName(e, option.optionId)}}
+                                                    onChange={(e)=> {handleOptionName(e, option.optionNumber+1)}}
                                                 />
                                                 <div
-                                                    id={"spm-none-"+option.optionId}
                                                     className="spm-add-update-right"
                                                     onClick={()=>{
-                                                        for (var i = option.optionId-1; i < updateOption.length-1; i++) {
+                                                        for (var i = option.optionNumber; i < updateOption.length-1; i++) {
                                                             updateOption[i] = updateOption[i+1];
-                                                            updateOption[i].optionId = i+1;
+                                                            updateOption[i].optionNumber = i+1;
                                                         }
                                                         updateOption.pop();
                                                         NumF();
@@ -191,7 +181,7 @@ function SPM_Update({
                                                 </div>
                                             </div>
 
-                                            {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
+                                            {/* {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
                                                 return (
                                                     <div className="spm-add-update-item">
                                                         <div
@@ -285,53 +275,35 @@ function SPM_Update({
                                                         </div>
                                                     </div>
                                                 );
-                                            })}
+                                            })} */}
                                             <div className="spm-add-update-item-button">
                                                 <div
                                                     onClick={()=>{
-                                                        updateOption[option.optionId-1].optionList[option.optionList.length] = {
-                                                            optionListId: option.optionList.length+1,
-                                                            optionListName: "",
-                                                            optionListPrice: 0,
-                                                        };
-                                                        NumF();
+                                                        // updateOption[option.optionId-1].optionList[option.optionList.length] = {
+                                                        //     optionListId: option.optionList.length+1,
+                                                        //     optionListName: "",
+                                                        //     optionListPrice: 0,
+                                                        // };
+                                                        // NumF();
                                                     }}>+&nbsp;품목 추가
                                                 </div>
                                                 <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
                                                 <div
                                                     style={{ color: "#ea5450", }}
                                                     onClick={()=>{
-                                                        updateOption[option.optionId-1].optionList[option.optionList.length] = {
-                                                            optionListId: option.optionList.length+1,
-                                                            optionListName: "",
-                                                            optionListPrice: 0,
-                                                        };
-                                                        if (option.optionImage)
-                                                            updateOption[option.optionId-1].optionList[option.optionList.length-2].optionListName = "텍스트&"
-                                                        else 
-                                                            updateOption[option.optionId-1].optionList[option.optionList.length-1].optionListName = "텍스트&"
-                                                        NumF();
+                                                        // updateOption[option.optionId-1].optionList[option.optionList.length] = {
+                                                        //     optionListId: option.optionList.length+1,
+                                                        //     optionListName: "",
+                                                        //     optionListPrice: 0,
+                                                        // };
+                                                        // if (option.optionImage)
+                                                        //     updateOption[option.optionId-1].optionList[option.optionList.length-2].optionListName = "텍스트&"
+                                                        // else 
+                                                        //     updateOption[option.optionId-1].optionList[option.optionList.length-1].optionListName = "텍스트&"
+                                                        // NumF();
                                                     }}>'텍스트' 추가
                                                 </div>
 
-                                                {option.optionImage? null:
-                                                    <>
-                                                        <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
-                                                        <div
-                                                            style={{ color: "#ea5450", }}
-                                                            onClick={()=>{
-                                                                updateOption[option.optionId-1].optionList[option.optionList.length] = {
-                                                                    optionListId: option.optionList.length+1,
-                                                                    optionListName: "",
-                                                                    optionListPrice: 0,
-                                                                };
-                                                                updateOption[option.optionId-1].optionImage = true;
-                                                                updateOption[option.optionId-1].optionImageText = "이미지&";
-                                                                NumF();
-                                                            }}>'이미지' 추가
-                                                        </div>
-                                                    </>
-                                                }
                                             </div>
 
                                         </form>
@@ -342,18 +314,22 @@ function SPM_Update({
                                     className="spm-add-update-button"
                                     onClick={()=>{
                                         updateOption[updateOption.length] = {
-                                            optionId: updateOption.length+1,
+                                            optionNumber: updateOption.length,
                                             optionName: "",
-                                            optionList: [
+                                            itemList: [
                                                 {
-                                                    optionListId: 1,
-                                                    optionListName: "",
-                                                    optionListPrice: 0,
+                                                    optionId: -1,
+                                                    itemNumber: 0,
+                                                    itemWhat: "normal",
+                                                    additionalCost: 0,
+                                                    category: "SIZE",
+                                                    categoryTitle: "",
+                                                    child: {},
+                                                    contents: "",
                                                 },
                                             ],
-                                            optionDirect: false,
-                                            optionDirectText: "",
                                         };
+                                        console.log(updateOption);
                                         NumF();
                                     }}>
                                     + 옵션 추가
