@@ -141,7 +141,10 @@ function KCOOKProductManagement() {
               현재 판매 중인 상품입니다
             </div>
           </div>
-          <div className="mobile" style={{ width: '5px', height: '25px' }}></div>
+          <div
+            className="mobile"
+            style={{ width: '5px', height: '25px' }}
+          ></div>
 
           <div className="seller-content">
             {oriData.map((data: any, idx: any) => {
@@ -158,10 +161,8 @@ function KCOOKProductManagement() {
                 </>
               );
             })}
-
           </div>
         </div>
-        
       </div>
     </>
   );

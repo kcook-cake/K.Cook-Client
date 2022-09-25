@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../assets/seller/closebtn.svg';
@@ -16,7 +17,8 @@ import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
 function ProductManagement() {
   const [num, setNum] = useState(0);
 
-  const [oriShow, setOriShow] = useState<any>([]);
+  const [oriShow, setOriShow] = useState<any>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [oriImage, setOriImage] = useState([
     [
       'https://www.codingfactory.net/wp-content/uploads/abc.jpg',
@@ -27,6 +29,7 @@ function ProductManagement() {
     ],
     ['', '', '', '', ''],
   ]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [oriData, setOriData] = useState([
     {
       name: '케이크1',
@@ -113,7 +116,7 @@ function ProductManagement() {
   useEffect(() => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
-    
+
     LinkClick('ProductManagement');
     sellerLinkClick('ProductManagement');
 
@@ -127,7 +130,7 @@ function ProductManagement() {
         e.stopPropagation();
       });
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -140,43 +143,45 @@ function ProductManagement() {
               현재 판매 중인 상품입니다
             </div>
           </div>
-          <div className="mobile" style={{ width: '5px', height: '25px' }}></div>
+          <div
+            className="mobile"
+            style={{ width: '5px', height: '25px' }}
+          ></div>
 
           <div className="seller-content">
             {oriData.map((data: any, idx: any) => {
               return (
                 <>
-                  {oriShow[idx] ? 
-                    (
-                      <SPMCard
-                        idx={idx}
-                        num={num}
-                        setNum={setNum}
-                        oriShow={oriShow}
-                        oriData={oriData}
-                        oriImage={oriImage}
-                      />
-                    ) : (
-                      <SPM_Update
-                        idx={idx}
-                        NumF={()=>setNum(num+1)}
-                        resize={resize}
-                        oriShow={oriShow}
-                        getUpdateData={oriData[idx]}
-                        getUpdateImage={oriImage[idx]}
-                      />
-                    )
-                  }
+                  {oriShow[idx] ? (
+                    <SPMCard
+                      idx={idx}
+                      num={num}
+                      setNum={setNum}
+                      oriShow={oriShow}
+                      oriData={oriData}
+                      oriImage={oriImage}
+                    />
+                  ) : (
+                    <SPM_Update
+                      idx={idx}
+                      NumF={() => setNum(num + 1)}
+                      resize={resize}
+                      oriShow={oriShow}
+                      getUpdateData={oriData[idx]}
+                      getUpdateImage={oriImage[idx]}
+                    />
+                  )}
                 </>
               );
             })}
-            {addShow?
+            {addShow && (
               <SPMCard_Add
-                NumF={()=>setNum(num+1)} resize={resize}
-                addShow={addShow} setAddShowF={setAddShow}
+                NumF={() => setNum(num + 1)}
+                resize={resize}
+                addShow={addShow}
+                setAddShowF={setAddShow}
               />
-            :null}
-
+            )}
           </div>
         </div>
 
@@ -189,20 +194,19 @@ function ProductManagement() {
             className="spm-bottom-inner spm-bottom-middle"
             onClick={() => {
               setAddShow(true);
-            }}>
+            }}
+          >
             {/* <AddSmalllIcon/> */}
-            {resize>767? 
-              <AddIcon />:
-              <img src={addIcon}/>
-            }
+            {resize > 767 ? <AddIcon /> : <img src={addIcon} alt="add-icon" />}
           </button>
           <button
             className="mobile spm-bottom-inner spm-bottom-right"
             onClick={() => {
               setAddShow(false);
-              for (var i=0; i< oriShow.length; i++) oriShow[i] = true;
-              setNum(num+1);
-            }}>
+              for (var i = 0; i < oriShow.length; i++) oriShow[i] = true;
+              setNum(num + 1);
+            }}
+          >
             <CloseBtn />
           </button>
         </div>
