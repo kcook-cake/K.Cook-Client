@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import 'src/styles/seller/spm-ssr/SPMCard.scss';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../../assets/seller/closebtn.svg';
 import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
-import { ReactComponent as SettingIcon } from '../../../assets/seller/spr-setting.svg';
+// import { ReactComponent as SettingIcon } from '../../../assets/seller/spr-setting.svg';
 import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
-import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
+// import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
 
-import leftArrow from "../../../assets/left-arrow.svg";
-import rightArrow from "../../../assets/right-arrow.svg";
-import setting from "../../../assets/seller/spm-setting.png";
+// import leftArrow from '../../../assets/left-arrow.svg';
+// import rightArrow from '../../../assets/right-arrow.svg';
+import setting from '../../../assets/seller/spm-setting.png';
 
 interface Props {
     idx: any,
@@ -107,8 +107,11 @@ function SPMCard({
                     </label>
                 </div>
             </div>
-        </>
-    );   
+          </Link>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default SPMCard;

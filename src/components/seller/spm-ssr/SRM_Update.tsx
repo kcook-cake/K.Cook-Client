@@ -1,28 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import $ from 'jquery';
+// import { Link } from 'react-router-dom';
+// import $ from 'jquery';
 import 'src/styles/seller/spm-ssr/SPM_Add_Update.scss';
 
-import cake6 from   '../../../assets/cake6.png';
+// import cake6 from '../../../assets/cake6.png';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../../assets/seller/closebtn.svg';
-import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
-import { ReactComponent as SettingIcon } from '../../../assets/seller/spr-setting.svg';
+// import { ReactComponent as CopyBtn } from '../../../assets/seller/copybtn.svg';
+// import { ReactComponent as SettingIcon } from '../../../assets/seller/spr-setting.svg';
 import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
 import { ReactComponent as DragCBtn } from '../../../assets/seller/drag-column-btn.svg';
 
-import leftArrow from "../../../assets/left-arrow.svg";
-import rightArrow from "../../../assets/right-arrow.svg";
-import setting from "../../../assets/seller/spm-setting.png";
+// import leftArrow from '../../../assets/left-arrow.svg';
+// import rightArrow from '../../../assets/right-arrow.svg';
+// import setting from '../../../assets/seller/spm-setting.png';
 import ImageModal from 'src/components/seller/spm-ssr/modal/ImageModal';
 import MakePrice from 'src/utils/MakePrice';
 
 interface Props {
-    idx: any,
-    NumF: any,
-    resize: any,
+  idx: any;
+  NumF: any;
+  resize: any;
 
     oriShow: any,
     getUpdateData: any,
@@ -63,8 +63,40 @@ function SPM_Update({
         setUpdateOption(updateOption);
     };
 
+  const handleAddName = (e: any) => {
+    setUpdateName(e.target.value);
+  };
+  const handleAddPrice = (e: any) => {
+    setUpdatePrice(e.target.value.replace(/[^0-9]/g, ''));
+  };
 
-
+  const handleOptionName = (e: any, optionId: any) => {
+    updateOption[optionId - 1].optionName = e.target.value;
+    NumF();
+    setUpdateOption(updateOption);
+  };
+  const handleOptionListNameText = (
+    e: any,
+    optionId: any,
+    optionListId: any
+  ) => {
+    updateOption[optionId - 1].optionList[optionListId - 1].optionListName =
+      '텍스트&' + e.target.value;
+    NumF();
+    setUpdateOption(updateOption);
+  };
+  const handleOptionListName = (e: any, optionId: any, optionListId: any) => {
+    updateOption[optionId - 1].optionList[optionListId - 1].optionListName =
+      e.target.value;
+    NumF();
+    setUpdateOption(updateOption);
+  };
+  const handleOptionListPrice = (e: any, optionId: any, optionListId: any) => {
+    updateOption[optionId - 1].optionList[optionListId - 1].optionListPrice =
+      parseInt(e.target.value.replace(/[^0-9]/g, ''));
+    NumF();
+    setUpdateOption(updateOption);
+  };
     const [updateImageModal, setUpdateImageModal] = useState(false);
     const [updateImgNum, setUpdateImgNum] = useState(0);
     const [updateImg, setUpdateImg] = useState(getUpdateData.image);
@@ -83,17 +115,43 @@ function SPM_Update({
                 imageData={updateImage}
             /> */}
 
-            <div className="spm-add-update">
-                <div className="spm-add-update-inner">
-                    <div
-                        className="move-tap"
-                        onClick={()=>{
-                            oriShow[idx] = true;
-                            NumF();
-                            alert("업데이트"); //updateOption
-                            // axios.update
-                        }}>
-                        <DragBtn/>
+  return (
+    <>
+      <ImageModal
+        NumF={() => NumF()}
+        resize={resize}
+        TF={false}
+        imageModalShow={updateImageModal}
+        setImageModalShowF={setUpdateImageModal}
+        imageData={updateImage}
+      />
+
+      <div className="spm-add-update">
+        <div className="spm-add-update-inner">
+          <div
+            className="move-tap"
+            onClick={() => {
+              oriShow[idx] = true;
+              NumF();
+              alert('업데이트'); //updateOption
+              // axios.update
+            }}
+          >
+            <DragBtn />
+          </div>
+          <div className="spm-add-update-content">
+            <div>
+              <div
+                className="spm-add-update-img"
+                onClick={() => {
+                  setUpdateImageModal(true);
+                }}
+              >
+                <div className="spm-add-update-img-inner">
+                  {updateImage[updateImageNum] === '' ? (
+                    <div className="spmcard-img-inner ss">
+                      <AddIcon />
+                      <span>asdas</span>
                     </div>
                     <div className="spm-add-update-content">
                         <div>
@@ -109,6 +167,11 @@ function SPM_Update({
                                         </div>:
                                         <img src={updateImg[updateImgNum]} />
                                     }
+                                    NumF();
+                                  }}
+                                  draggable={true}
+                                >
+                                  <DragCBtn className="spm-add-update-item-left-icon" />
                                 </div>
                             </div>
                             <div className='spm-add-update-img-bar'>
@@ -124,28 +187,70 @@ function SPM_Update({
                                                 }}>
                                             </li>
                                         );
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div> {/* spmcard-content-inner */}
-                            <div style={{ display: "flex"}}>
-                                <input
-                                    id="spm-update-name"
-                                    className="spm-add-update-main-title spm-add-update-title"
-                                    placeholder="상품명"
-                                    value={updateName}
-                                    onChange={handleAddName}
-                                />
-                                <div className="spm-add-update-right">x</div>
-                            </div>
-                            <div className="spm-add-update-price">
-                                <div className="spm-add-update-item-left">
-                                    <DragCBtn className="spm-add-update-item-left-icon"/>
+                                      else
+                                        handleOptionListName(
+                                          e,
+                                          option.optionId,
+                                          optionList.optionListId
+                                        );
+                                      NumF();
+                                    }}
+                                  />
                                 </div>
-                                <div style={{ width: "100%", }}>
-                                    <input className="spm-add-update-item-text"/>
+                                <input
+                                  id={
+                                    'spm-update-price-option-list-' +
+                                    option.optionId +
+                                    '-' +
+                                    optionList.optionListId
+                                  }
+                                  className="spm-add-update-item-price"
+                                  type="text"
+                                  placeholder="0"
+                                  value={MakePrice(optionList.optionListPrice)}
+                                  onChange={(e) => {
+                                    handleOptionListPrice(
+                                      e,
+                                      option.optionId,
+                                      optionList.optionListId
+                                    );
+                                  }}
+                                />
+                                원
+                                <div
+                                  id={'spm-none-' + optionList.optionListId}
+                                  className="spm-add-update-item-right"
+                                  onClick={() => {
+                                    for (
+                                      var i = optionList.optionListId - 1;
+                                      i < option.optionList.length - 1;
+                                      i++
+                                    ) {
+                                      updateOption[
+                                        option.optionId - 1
+                                      ].optionList[i] =
+                                        updateOption[
+                                          option.optionId - 1
+                                        ].optionList[i + 1];
+                                      updateOption[
+                                        option.optionId - 1
+                                      ].optionList[i].optionListId = i + 1;
+                                    }
+                                    updateOption[
+                                      option.optionId - 1
+                                    ].optionList.pop();
+                                    if (
+                                      option.optionImage &&
+                                      option.optionList.length ===
+                                        optionList.optionListId
+                                    )
+                                      updateOption[
+                                        option.optionId - 1
+                                      ].optionImage = false;
+                                    NumF();
+                                  }}
+                                >
+                                  x
                                 </div>
                                 <input
                                     id="spm-update-price"
@@ -335,22 +440,52 @@ function SPM_Update({
                                     + 옵션 추가
                                 </button>
                             </>
+                          )}
                         </div>
-                    </div>
-                </div>
-
-                <div className="pc spm-tap">
-                    <button
-                        onClick={()=>{
-                            oriShow[idx] = true;
-                            NumF();
-                        }}>
-                        <CloseBtn/>
-                    </button>
-                </div>
+                      </form>
+                    );
+                  }
+                )}
+                <hr className="spm-add-update-hr" />
+                <button
+                  className="spm-add-update-button"
+                  onClick={() => {
+                    updateOption[updateOption.length] = {
+                      optionId: updateOption.length + 1,
+                      optionName: '',
+                      optionList: [
+                        {
+                          optionListId: 1,
+                          optionListName: '',
+                          optionListPrice: 0,
+                        },
+                      ],
+                      optionDirect: false,
+                      optionDirectText: '',
+                    };
+                    NumF();
+                  }}
+                >
+                  + 옵션 추가
+                </button>
+              </>
             </div>
-            </>
-    );   
+          </div>
+        </div>
+
+        <div className="pc spm-tap">
+          <button
+            onClick={() => {
+              oriShow[idx] = true;
+              NumF();
+            }}
+          >
+            <CloseBtn />
+          </button>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default SPM_Update;
