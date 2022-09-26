@@ -23,6 +23,7 @@ import ColorBox from 'src/components/detail/cake/ColorBox';
 import OptionList from 'src/components/detail/cake/OptionList';
 import Date_Calendar from 'src/components/detail/cake/Date_Calendar';
 import List2Option from 'src/utils/List2Option';
+import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 
 const CakeDetail = () =>{
     const [num, setNum] = useState(0);
@@ -31,7 +32,7 @@ const CakeDetail = () =>{
     const [selectShow, setSelectShow] = useState([true, true, true]);
     const [date, setDate] = useState("");
     const [pickUp, setPickUp] = useState(["10:00~11:00", "11:00~12:00", "21:00~22:00"]);
-    const [oriData, setOriData] = useState([]);
+    let [option, setOption] = useState([]);
 
 
     let [height, setHeight] = useState(window.innerHeight);
@@ -40,11 +41,11 @@ const CakeDetail = () =>{
         height = window.innerHeight
         setHeight(height);
     };
-    const [data, getData] = useState({
-        image: null,
+    let [data, getData] = useState({
         name: '',
         storeName: '',
-        price: 0,
+        price: '',
+        optionsList: [],
     });
     useEffect(()=>{
         setHeight(window.innerHeight);
@@ -57,12 +58,11 @@ const CakeDetail = () =>{
         LinkClick("Cake");
 
         axios({
-            url: "/app/products/77",
+            url: "/app/products/83",
             method: "GET",
         }).then((res)=>{
-            console.log(res.data);
-            getData(res.data.result);
-            List2Option(setOriData, res.data.result.optionsList);
+            data = res.data.result; getData(data);
+            option = List2Option(data.optionsList); setOption(option);
         }).catch((err)=>{
         })
     },[]);
@@ -214,7 +214,7 @@ const CakeDetail = () =>{
                                     <hr/>
                                     {selectShow[2]?
                                         <>
-                                            <OptionList getData={oriData} />
+                                            <OptionList getData={option} />
                                         </>
                                     :null}
                                 </div>

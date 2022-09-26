@@ -14,116 +14,98 @@ import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
 import setting from '../../../assets/seller/spm-setting.png';
 
 interface Props {
-  idx: any;
-  num: any;
-  setNum: any;
+    idx: any,
+    NumF: any,
 
-  oriShow: any;
-  oriData: any;
-  oriImage: any;
+    oriShow: any,
+    oriData: any,
 }
 
-function SPMCard({ idx, num, setNum, oriShow, oriData, oriImage }: Props) {
-  useEffect(() => {}, []);
+function SPMCard({ 
+        idx, NumF,
+        oriShow, oriData,
+    }: Props) {
 
-  return (
-    <>
-      <div className="spmcard">
-        <div className="spmcard-inner">
-          <div
-            className="move-tap"
-            onClick={() => {
-              oriShow[idx] = false;
-              setNum(num + 1);
-            }}
-          >
-            <DragBtn />
-          </div>
-          <div className="spmcard-content">
-            <div className="spmcard-img">
-              <div className="spm-add-update-img-inner">
-                {oriImage[idx][0] === '' ? (
-                  <div className="spmcard-img-inner">
-                    <AddIcon />
-                  </div>
-                ) : (
-                  <>
-                    <img src={oriImage[idx][0]} alt="cake-img" />
-                  </>
-                )}
-              </div>
-            </div>
-            <div className="spmcard-content-inner">
-              <div className="spmcard-title">{oriData[idx].name}</div>
-              {oriData[idx].list.map(
-                (option: {
-                  optionId: any;
-                  optionName: any;
-                  optionList: any;
-                  optionImage: any;
-                  optionImageText: any;
-                }) => {
-                  return (
-                    <>
-                      {option.optionName}:&nbsp;
-                      {option.optionList.map(
-                        (optionList: {
-                          optionListId: any;
-                          optionListName: any;
-                          optionListPrice: any;
-                        }) => {
-                          return (
-                            <>
-                              {optionList.optionListName.split('&')[0] ===
-                              '텍스트'
-                                ? optionList.optionListName.split('&')[1] === ''
-                                  ? '텍스트 입력'
-                                  : optionList.optionListName.split('&')[1]
-                                : option.optionImage &&
-                                  option.optionList.length ===
-                                    optionList.optionListId
-                                ? option.optionImageText === ''
-                                  ? '이미지 입력'
-                                  : option.optionImageText
-                                : optionList.optionListName}
-                              {optionList.optionListId ===
-                              option.optionList.length ? null : (
-                                <>,&nbsp;</>
-                              )}
-                              {/* {optionList.optionListId===option.optionList.length-1&&option.optionDirect? (option.optionDirectText===""? "직접 입력": option.optionDirectText): null} */}
-                            </>
-                          );
-                        }
-                      )}
-                      <br />
-                    </>
-                  );
-                }
-              )}
-            </div>
-          </div>
-        </div>
+    useEffect(()=>{
+    },[]);
+    
+    return (
+        <>
+            <div className="spmcard">
+                <div className="spmcard-inner">
+                    <div
+                        className="move-tap"
+                        onClick={()=>{
+                            oriShow[idx] = false;
+                            NumF();
+                        }}>
+                        <DragBtn/>
+                    </div>
+                    <div className="spmcard-content">
+                        <div className="spmcard-img">
+                            <div className="spm-add-update-img-inner">
+                                {oriData.image[0]==="" || oriData.image[0]===null || oriData.image[0]===undefined ?
+                                    <div className="spmcard-img-inner">
+                                        <AddIcon/>
+                                    </div>:
+                                    <img src={oriData.image[0]} />
+                                }
+                            </div>
+                        </div>
+                        <div className="spmcard-content-inner">
+                            <div className="spmcard-title">{oriData.name}</div>
+                            {oriData.newOptionsList.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
+                                return (
+                                    <>
+                                        {option.optionName}:&nbsp;
+                                        {option.itemList.map((item: { itemNumber: any, itemName: any, })=>{
+                                            return (
+                                                <>
+                                                    {item.itemName}
+                                                    {(item.itemNumber===option.itemList.length-1)? null: <>,&nbsp;</>}
+                                                </>
+                                            );
+                                        })}
+                                        <br/>
+                                    </>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
 
-        <div className="spm-tap">
-          <button
-            onClick={() => {
-              alert('삭제');
-              // setAddDiv(false);
-            }}
-          >
-            <CloseBtn />
-          </button>
-          <button
-            className="spmcard-tap-btn"
-            onClick={() => {
-              alert('복제');
-            }}
-          >
-            <CopyBtn />
-          </button>
-          <Link to="/ProductManagement/0">
-            <div className="spmcard-tap-btn">
-              <img src={setting} alt="setting-icon" />
+                <div className="spm-tap">
+                    <button
+                        onClick={()=>{
+                            alert("삭제");
+                            // setAddDiv(false);
+                        }}>
+                        <CloseBtn/>
+                    </button>
+                    <button
+                        className="spmcard-tap-btn"
+                        onClick={()=>{
+                            alert("복제");
+                        }}>
+                        <CopyBtn/>
+                    </button>
+                    <Link to="/ProductManagement/0">
+                        <div className="spmcard-tap-btn">
+                            <img src={setting}/>
+                        </div>
+                    </Link>
+                    <label className="switch-button">
+                        <input
+                            id='studies_togetherTrue'
+                            type='checkbox'
+                            onClick={() => {
+                                //노출
+                            }}
+                            // checked={false} //노출 여부 판단 후 적음
+                        />
+                        <span className="onoff-switch"></span>
+                    </label>
+                </div>
             </div>
           </Link>
         </div>

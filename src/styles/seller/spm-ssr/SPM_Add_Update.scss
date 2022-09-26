@@ -18,6 +18,15 @@
 //         spm-add-update-item-button
 // spm-tap
 
+.spm-add-update-child-modal {
+    position: absolute;
+    background: yellow;
+}
+.spm-add-update-child-modal-none {
+    background: green;
+    pointer-events: none;
+}
+
 .spm-add-update {
     width: 848px;
     height: 100% !important;
@@ -154,7 +163,11 @@ ul{
 
     font-size: 14px !important;
     .spm-add-update-item-text {
-        width: 98%;
+        width: 100%;
+    }
+    .spm-add-update-child {
+        width: 80px;
+        text-align: center;
     }
     .spm-add-update-item-left-icon,
     .spm-add-update-item-right {
@@ -188,7 +201,6 @@ ul{
         opacity: 100;
     }
     .spm-add-update-item-text {
-        width: 98%;
         border-bottom: 3px solid #333;
     }
 }
@@ -213,6 +225,127 @@ ul{
     color: #9EA4AA;
     font-size: 16px;
     font-weight: 500;
+}
+
+
+
+.spm-add-update-show {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+
+
+//스위치 todayCake
+.spm-add-update-today-cake {
+    margin-top: 20px;
+    font-size: 15px;
+}
+.today-cake-switch-button { 
+    position: relative; 
+    display: inline-block; 
+
+    display: flex; 
+    float: right;
+
+    width: 50px; 
+    height: 25px; 
+} 
+.today-cake-switch-button input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+} 
+.today-cake-onoff-switch { 
+    position: absolute; 
+    cursor: pointer; 
+
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    
+    border-radius:20px; 
+    background-color: #ccc; 
+    box-shadow: inset 1px 5px 1px #999; 
+    -webkit-transition: .4s; 
+    transition: .4s; 
+} 
+.today-cake-onoff-switch:before { 
+    position: absolute;
+    content: ""; 
+    height: 19px; 
+    width: 19px;
+    top: 3px;
+    left: 4px; 
+    bottom: 4px; 
+    background-color: #fff; 
+    -webkit-transition: .5s; 
+    transition: .4s; 
+    border-radius:20px; 
+} 
+.today-cake-switch-button input:checked + .today-cake-onoff-switch { 
+    background-color: #ea5450; 
+    box-shadow: inset 1px 5px 1px #882320; 
+} 
+.today-cake-switch-button input:checked + .today-cake-onoff-switch:before { 
+    -webkit-transform: translateX(26px); 
+    -ms-transform: translateX(26px); 
+    transform: translateX(26px); 
+}
+
+//스위치 show
+.switch-button { 
+    position: relative; 
+    display: inline-block; 
+
+    width: 25px; 
+    height: 55px;
+} 
+.switch-button input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+} 
+.onoff-switch { 
+    position: absolute; 
+    cursor: pointer; 
+
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    
+    border-radius:20px; 
+    background-color: #ccc; 
+    box-shadow: inset 0px 5px 3px #999; 
+    -webkit-transition: .4s; 
+    transition: .4s; 
+} 
+.onoff-switch:before { 
+    height: 19px; 
+    width: 19px; 
+
+    position: absolute;
+    content: ""; 
+
+    top: 4px;
+    left: 3px; 
+    // bottom: 4px; 
+
+    border-radius:20px; 
+    background-color: #fff; 
+    -webkit-transition: .5s; 
+    transition: .4s; 
+} 
+.switch-button input:checked + .onoff-switch { 
+    background-color: #ea5450; 
+    box-shadow: inset 0px 5px 3px #882320; 
+} 
+.switch-button input:checked + .onoff-switch:before { 
+    -webkit-transform: translateY(26px); 
+    -ms-transform: translateY(26px); 
+    transform: translateY(26px); 
 }
 
 
@@ -304,5 +437,22 @@ ul{
         .spm-add-update-item-right {
             padding-right: 2px;
         }
+    }
+
+
+
+    .spm-add-update-show {
+        margin-bottom: 10px;
+        // font-size: 15px;
+    }
+
+
+
+    //스위치 todayCake
+    .spm-add-update-today-cake {
+        width: 160px;
+        height: 25px;
+        margin-top: 0;
+        // font-size: 8px;
     }
 }

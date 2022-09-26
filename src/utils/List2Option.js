@@ -2,60 +2,70 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $, { get } from "jquery";
 
-const List2Option = (fn, getData) => {
+const List2Option = (getData) => {
     console.log(getData);
-    var option = [];
-    var optionTF = [];
-    for (var i=0; i<6; i++) optionTF[i] = false;
-    var j = -1;
-    // {
-    //     optionId: 2,
-    //     optionName: '맛',
-    //     optionList: [
-    //       {
-    //         optionListId: 1,
-    //         optionListName: '딸기',
-    //         optionListPrice: 1000,
-    //       },
-    //     ],
-    //     optionImage: false,
-    //     optionImageText: '',
-    // },
-    for (var i=0; i<getData.length; i++) {
-        var c = ''; var oid = 0;
-        if (getData[i].category === 'SIZE') { c = '크기'; oid = 1; }
-        else if (getData[i].category === 'TASTE') { c = '맛'; oid = 2; }
-        else if (getData[i].category === 'COLOR') { c = '색상'; oid = 3; }
-        else if (getData[i].category === 'CANDLE') { c = '초'; oid = 4; }
-        else if (getData[i].category === 'LOWER_LETTERING') { c = '레터링'; oid = 5; }
-        else { c = '기타'; oid = 6; optionTF[5] = true; }
+    const category = {
+        "SIZE": "크기&0",
+        "TASTE": "맛&1",
+        "COLOR": "색상&2",
+        "DESIGN": "디자인&3",
+        "SIDE_DECO": "사이드데코&4",
+        "DECO": "데코&5",
+        "LOWER_LETTERING": "레터링&6",
+        "FONT": "글씨체&7",
+        "WRITE_SIZE": "글씨크기&8",
+        "PHOTO": "사진&9",
+        "PACKAGE": "포장&10",
+        "CANDLE": "초&11",
+        "ETC": "기타&12",
+    };
 
-        if (optionTF[oid-1]) {
-            option[j].optionList.push({
-                optionListId: option[j].optionList.length+1,
-                optionListName: getData[i].contents,
-                optionListPrice: getData[i].additionalCost,
-            })
-        } 
-        else {
-            option.push({
-                optionId: option.length+1,
-                optionName: c,
-                optionList: [{
-                    optionListId: 1,
-                    optionListName: getData[i].contents,
-                    optionListPrice: getData[i].additionalCost,
+    var chOptionList = [];
+    var chOptionListTF = [];
+    for (var i=0; i<13; i++) chOptionListTF[i] = true;
+    
+    var j = -1;
+    for (var i=0; i<getData.length; i++) {
+        var c = category[getData[i].category];
+        // var c = category[getData[i].category].split("&")[0];
+        var oid = category[getData[i].category].split("&")[1];
+        console.log(c);
+
+        // if (getData[i].itemNumber === 0) {
+        if (chOptionListTF[oid]) {
+            chOptionList.push({
+                optionId: true,
+                optionNumber: chOptionList.length,
+                optionName: c+getData[i].categoryTitle,
+                itemList: [{
+                    itemId: getData[i].optionsId,
+                    itemNumber: 0,
+                    itemType: "normal",
+                    // itemType: getData[i].itemType,
+                    itemName: getData[i].contents,
+                    itemPrice: getData[i].additionalCost,
+                    itemChild: getData[i].childOptionsList,
                 }],
-                optionImage: false,
-                optionImageText: '',
             });
-            optionTF[oid-1] = true;
+            chOptionListTF[oid] = false;
             j++;
         }
-
-        // if ()
+        else {
+            chOptionList[j].itemList.push({
+                itemId: getData[i].optionsId,
+                itemNumber: 0,
+                itemNumber: 1,
+                // itemNumber: chOptionList[j].itemList.length,
+                // itemType: getData[i].itemType,
+                itemType: "normal",
+                itemName: getData[i].contents,
+                itemPrice: getData[i].additionalCost,
+                itemChild: getData[i].child,
+            })
+        }
     }
-    fn(option);
+    console.log(chOptionList);
+    return chOptionList;
 };
 
 export default List2Option;

@@ -7,17 +7,17 @@
     "todayCake": false, //당일 케이크 여부
     "todayMax": -1, //(추가)해당 케이크를 하루에 최대 몇 개 팔 수 있는지 //-1은 무한으로 받겠다는 의미임
     "todaySale": 0, //(추가)해당 케이크를 당일에 몇 개 팔았는지 
-	//하루가 지나면(자정 12시 넘으면) 0으로 초기화
+   //하루가 지나면(자정 12시 넘으면) 0으로 초기화
 
     "originShow": true, //(추가)관리자가 케이크 노출 여부 결정하는 부분
     "show": true, //관리자가 케이크 노출 여부 결정하는 부분 //false이면 백엔드에서 이 케이크가 안보이게 해주세요
-	//백엔드에서 todayMax === todaysale이 된다면 show는 자동으로 false을 만들어 주세요
-	//하루가 지나면(자정 12시 넘으면) originShow값으로 바뀜
+   //백엔드에서 todayMax === todaysale이 된다면 show는 자동으로 false을 만들어 주세요
+   //하루가 지나면(자정 12시 넘으면) originShow값으로 바뀜
 
     "newOptionsList": [
         //SIZE
         {
-			"optionId": 283,
+         "optionId": 283,
             "itemNumber": 0, //(추가)
             "itemWhat": "normal", //(추가)일반 선택(normal)or텍스트(text)or이미지(image)
             "additionalCost": 0,
@@ -27,8 +27,7 @@
                 COLOR: [1, 2], //(추가)itemNumber 들어감
                 LETERING: [1],
             },
-            "contents": "string",
-            "title": "A1"
+            "contents": "A1",
         },
         {
             "itemNumber": 1,
@@ -40,8 +39,7 @@
                 COLOR: [2], 
                 LETERING: [2],
             },
-            "contents": "string",
-            "title": "A2"
+            "contents": "A2",
         },
         {
             "itemNumber": 2,
@@ -50,8 +48,7 @@
             "category": "SIZE",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "A3"
+            "contents": "A3",
         },
         {
             "itemNumber": 3,
@@ -60,8 +57,7 @@
             "category": "SIZE",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "A4"
+            "contents": "A4",
         },
 
         //TASTE
@@ -72,8 +68,7 @@
             "category": "TASTE",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "B1"
+            "contents": "B1",
         },
         {
             "itemNumber": 1,
@@ -82,8 +77,7 @@
             "category": "TASTE",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "B2"
+            "contents": "B2",
         },
 
         //COLOR
@@ -94,8 +88,7 @@
             "category": "COLOR",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "C1"
+            "contents": "C1",
         },
         {
             "itemNumber": 1,
@@ -104,8 +97,7 @@
             "category": "COLOR",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "C2"
+            "contents": "C2",
         },
         {
             "itemNumber": 2,
@@ -114,8 +106,7 @@
             "category": "COLOR",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "title": "C3"
+            "contents": "C3",
         },
 
         //LETERING
@@ -126,9 +117,7 @@
             "category": "LETERING",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "imageUrl": "string",
-            "title": "D1"
+            "contents": "D1",
         },
         {
             "itemNumber": 1,
@@ -137,22 +126,10 @@
             "category": "LETERING",
             "categoryTitle": "",
             "child": {},
-            "contents": "string",
-            "imageUrl": "string",
-            "title": "D2"
+            "contents": "D2",
         },
     ],
 }
-
-
-
-==프론트에서 가공==
-const [child, setChild] = useState({
-    {
-        COLOR: [1, 2], //optionNumber 
-        LETERING: [1],
-    },
-});
 
 {
     "cakeName": '케이크1',
