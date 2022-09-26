@@ -5,7 +5,7 @@
   opacity: 0.4;
 
   .cake-detail-optionlist-select span {
-    display: none;
+    //  display: none;
     // z-index: 999;
   }
 }
@@ -41,6 +41,11 @@
 }
 .cake-detail-optionlist-select-focus div {
   display: block !important;
+}
+.cake-detail-optionlist-select-focus {
+  > span {
+    display: none;
+  }
 }
 
 .cake-detail-optionlist-btn {

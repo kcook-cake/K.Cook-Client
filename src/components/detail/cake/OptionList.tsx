@@ -21,7 +21,6 @@ function OptionList({ getData }: Props) {
   const [focusNum, setfocusNum] = useState(0);
   useEffect(() => {
     setSelect(focusNum);
-    console.log('useE,', focusNum);
   }, [focusNum]);
 
   const [size, setSize] = useState('A1');
@@ -52,10 +51,12 @@ function OptionList({ getData }: Props) {
                 })}
                 onClick={() => {
                   setSelect(idx);
-                  console.log('select1', select);
+                  var ars = [false, false, false];
+                  ars[idx] = true;
+                  // setSelectShow(ars);
                 }}
               >
-                idx:{idx} , select:{select}
+                {/* // idx:{idx} , select:{select} */}
                 <div style={{ marginBottom: '6px' }}>
                   {idx + 1 + '. ' + option.optionName}
                 </div>
@@ -65,6 +66,7 @@ function OptionList({ getData }: Props) {
                     /* -focus div {   display: block !important; } */
                   })}
                   onClick={() => {
+                    // focus 전환 클릭 이벤트
                     var arr = [...selectShow];
                     var wantgo = !arr[idx];
                     arr = [false, false, false];
@@ -72,6 +74,9 @@ function OptionList({ getData }: Props) {
                     setSelectShow(arr);
                   }}
                 >
+                  <span>{idx === 0 && size}</span>
+                  <span>{idx === 1 && taste}</span>
+                  <span>{idx === 2 && color}</span>
                   {/* <select
                                     onChange={(e)=>{
                                         output[idx] = e.target.value; setOutput(output);
@@ -100,16 +105,22 @@ function OptionList({ getData }: Props) {
                             else child = item.itemChild;
                             setChild(child);
                             setSelect(select + 1);
-                            console.log('select', select);
-                            console.log('item.itemName', item.itemName);
+                            // console.log('item.itemName', item.itemName);
                             // focus를 2로 넘기는 함수
                             // setSelect((prev) => prev + 1);
                             // if (select >= 2) setSelect(0);
                             // console.log('select', select);
                           }}
                         >
-                          <span onClick={() => setfocusNum(select + 1)}>
-                            {item.itemName}aa
+                          <span
+                            onClick={(e) => {
+                              setfocusNum(select + 1);
+                              if (idx === 0) setSize(item.itemName);
+                              else if (idx === 1) setTaste(item.itemName);
+                              else if (idx === 2) setColor(item.itemName);
+                            }}
+                          >
+                            {item.itemName}
                           </span>
                         </div>
                       );
