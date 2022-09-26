@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../assets/seller/closebtn.svg';
@@ -17,7 +18,6 @@ import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 
 function ProductManagement(session: any, auth: any,) {
   const [num, setNum] = useState(0);
-
   const [oriShow, setOriShow] = useState<any>([]);
   let [oriData, setOriData] = useState([]);
 
@@ -31,7 +31,7 @@ function ProductManagement(session: any, auth: any,) {
   useEffect(() => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
-    
+
     LinkClick('ProductManagement');
     sellerLinkClick('ProductManagement');
 
@@ -68,7 +68,10 @@ function ProductManagement(session: any, auth: any,) {
               현재 판매 중인 상품입니다
             </div>
           </div>
-          <div className="mobile" style={{ width: '5px', height: '25px' }}></div>
+          <div
+            className="mobile"
+            style={{ width: '5px', height: '25px' }}
+          ></div>
 
           <div className="seller-content">
             {oriData.map((data: any, idx: any) => {
@@ -101,8 +104,7 @@ function ProductManagement(session: any, auth: any,) {
                 NumF={()=>setNum(num+1)} resize={resize}
                 setAddShowF={setAddShow}
               />
-            :null}
-
+            )}
           </div>
         </div>
 
@@ -125,9 +127,10 @@ function ProductManagement(session: any, auth: any,) {
             className="mobile spm-bottom-inner spm-bottom-right"
             onClick={() => {
               setAddShow(false);
-              for (var i=0; i< oriShow.length; i++) oriShow[i] = true;
-              setNum(num+1);
-            }}>
+              for (var i = 0; i < oriShow.length; i++) oriShow[i] = true;
+              setNum(num + 1);
+            }}
+          >
             <CloseBtn />
           </button>
         </div>
