@@ -33,7 +33,7 @@ const ImageModal = ({
         console.log(formData.get("productImage4"));
         console.log(formData.get("productImage5"));
         axios({
-            url: "/app/products/69/photos",
+            url: "/app/products/83/photos",
             method: "PATCH",
             data: {
                 formData,
@@ -224,17 +224,18 @@ const ImageModal = ({
                 <div className="spm-modal-img-inner">
                     <div className="spm-modal-img-flex">
                         <form>
-                            <button onClick={(e)=>{
-                                e.preventDefault();
-                                photoInput.current.click();
-                            }}>
+                            <button
+                                onClick={(e)=>{
+                                    e.preventDefault();
+                                    photoInput.current.click();
+                                }}>
                                 <div className='spm-modal-img'>
                                     {imageTF[0]? 
-                                        (imageData[0]!=''?
-                                            <img src={imageData[0]}/>: 
+                                        (imageData[0]===''||imageData[0]===null||imageData[0]===undefined?
                                             <div className='spm-modal-img-inner-icon'>
                                                 <AddIcon />
-                                            </div>):
+                                            </div>:
+                                            <img src={imageData[0]}/>):
                                         <img src={addPhoto}/>
                                     }
                                 </div>
@@ -261,11 +262,11 @@ const ImageModal = ({
                             }}>
                                 <div className='spm-modal-img'>
                                     {imageTF[1]? 
-                                        (imageData[1]!=''?
-                                            <img src={imageData[1]}/>: 
+                                        (imageData[1]===''||imageData[1]===null||imageData[1]===undefined?     
                                             <div className='spm-modal-img-inner-icon'>
                                                 <AddIcon />
-                                            </div>):
+                                            </div>:
+                                            <img src={imageData[1]}/>):
                                         <img src={addPhoto1}/>
                                     }
                                 </div>
@@ -288,11 +289,11 @@ const ImageModal = ({
                             }}>
                                 <div className='spm-modal-img'>
                                     {imageTF[2]? 
-                                        (imageData[2]!=''?
-                                            <img src={imageData[2]}/>: 
+                                        (imageData[2]===''||imageData[2]===null||imageData[2]===undefined?
                                             <div className='spm-modal-img-inner-icon'>
                                                 <AddIcon />
-                                            </div>):
+                                            </div>:
+                                            <img src={imageData[2]}/>):
                                         <img src={addPhoto2}/>
                                     }
                                 </div>
@@ -315,11 +316,11 @@ const ImageModal = ({
                             }}>
                                 <div className='spm-modal-img'>
                                     {imageTF[3]? 
-                                        (imageData[3]!=''?
-                                            <img src={imageData[3]}/>: 
+                                        (imageData[3]===''||imageData[3]===null||imageData[3]===undefined?
                                             <div className='spm-modal-img-inner-icon'>
                                                 <AddIcon />
-                                            </div>):
+                                            </div>:
+                                            <img src={imageData[3]}/>):
                                         <img src={addPhoto3}/>
                                     }
                                 </div>
@@ -342,11 +343,11 @@ const ImageModal = ({
                             }}>
                                 <div className='spm-modal-img'>
                                     {imageTF[4]? 
-                                        (imageData[4]!=''?
-                                            <img src={imageData[4]}/>: 
+                                        (imageData[4]===''||imageData[4]===null||imageData[4]===undefined?
                                             <div className='spm-modal-img-inner-icon'>
                                                 <AddIcon />
-                                            </div>):
+                                            </div>:
+                                            <img src={imageData[4]}/>):
                                         <img src={addPhoto4}/>
                                     }
                                 </div>

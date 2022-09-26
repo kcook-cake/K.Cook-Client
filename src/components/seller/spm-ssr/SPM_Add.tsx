@@ -55,15 +55,14 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
             alert('추가 실패');
         })
     };
-    const [addImageModal, setAddImageModal] = useState(false);
+    const [addImgModal, setAddImgModal] = useState(false);
     const [addImage, setAddImage] = useState(['','','','','']);
+    const [addImgNum, setAddImgNum] = useState(0);
     
     const [addMax, setAddMax] = useState("무한");
     const [addTodayCake, setAddTodayCake] = useState(false);
-    const [addChildOptionItem, setAddChildOptionItem] = useState(["", ""]);
     const [addChildOption, setAddChildOption] = useState(-1);
     const [addChildItem, setAddChildItem] = useState(-1);
-    const [addImageNum, setAddImageNum] = useState(0);
     const [addName, setAddName] = useState('');
     const [addPrice, setAddPrice] = useState(0);
     let [addOption, setAddOption] = useState<any>([
@@ -113,7 +112,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
         <>
             <ImageModal
                 NumF={()=>NumF()} resize={resize} TF={true}
-                imageModalShow={addImageModal} setImageModalShowF={setAddImageModal}
+                imageModalShow={addImgModal} setImageModalShowF={setAddImgModal}
                 imageData={addImage} 
             />
 
@@ -127,13 +126,13 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                         <div>
                             <div
                                 className="spm-add-update-img"
-                                onClick={() => setAddImageModal(true)}>
+                                onClick={() => setAddImgModal(true)}>
                                 <div className="spm-add-update-img-inner">
-                                    {addImage[addImageNum] === '' ? (
+                                    {addImage[addImgNum]==='' || addImage[addImgNum]===null || addImage[addImgNum]===undefined ? (
                                         <div className="spmcard-img-inner">
                                             <AddIcon/>
                                         </div>):
-                                        <img src={addImage[addImageNum]} />
+                                        <img src={addImage[addImgNum]} />
                                     }
                                 </div>
                             </div>
@@ -143,10 +142,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                         return (
                                             <li 
                                                 className={classNames('spm-add-update-dot', {
-                                                    'spm-add-update-dot-active': addImageNum===data,
+                                                    'spm-add-update-dot-active': addImgNum===data,
                                                 })}
                                                 onClick={()=>{
-                                                    setAddImageNum(data);
+                                                    setAddImgNum(data);
                                                 }}>
                                             </li>
                                         );

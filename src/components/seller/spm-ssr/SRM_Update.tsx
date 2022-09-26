@@ -65,23 +65,29 @@ function SPM_Update({
 
 
 
-    const [updateImageModal, setUpdateImageModal] = useState(false);
+    const [updateImgModal, setUpdateImgModal] = useState(false);
+    const [updateImg, setUpdateImg] = useState([getUpdateData.productImage1,getUpdateData.productImage2,getUpdateData.productImage3,getUpdateData.productImage4,getUpdateData.productImage5]);
     const [updateImgNum, setUpdateImgNum] = useState(0);
-    const [updateImg, setUpdateImg] = useState(getUpdateData.image);
+
+    const [updateMax, setUpdateMax] = useState("무한");
+    const [updateTodayCake, setUpdateTodayCake] = useState(false);
+    const [updateChildOption, setUpdateChildOption] = useState(-1);
+    const [updateChildItem, setUpdateChildItem] = useState(-1);
     const [updateName, setUpdateName] = useState(getUpdateData.name);
     const [updatePrice, setUpdatePrice] = useState(getUpdateData.price);
-    const [updateOption, setUpdateOption] = useState<any>(getUpdateData.newOptionsList);
+    const [updateOption, setUpdateOption] = useState<any>(getUpdateData.optionsList);
 
+    const [startDrag, setStartDrag] = useState(0);
     useEffect(()=>{
     },[]);
     
     return (
         <>
-            {/* <ImageModal
+            <ImageModal
                 NumF={()=>NumF()} resize={resize} TF={false}
-                imageModalShow={updateImageModal} setImageModalShowF={setUpdateImageModal}
-                imageData={updateImage}
-            /> */}
+                imageModalShow={updateImgModal} setImageModalShowF={setUpdateImgModal}
+                imageData={updateImg}
+            />
 
             <div className="spm-add-update">
                 <div className="spm-add-update-inner">
@@ -100,7 +106,7 @@ function SPM_Update({
                             <div
                                 className="spm-add-update-img"
                                 onClick={()=>{
-                                    setUpdateImageModal(true);
+                                    setUpdateImgModal(true);
                                 }}>
                                 <div className="spm-add-update-img-inner">
                                     {updateImg[updateImgNum]==="" || updateImg[updateImgNum]===null || updateImg[updateImgNum]===undefined?
@@ -126,6 +132,30 @@ function SPM_Update({
                                         );
                                     })}
                                 </ul>
+                            </div>
+                            <div className='spm-add-update-today-cake'>
+                                당일 케이크 여부
+                                <label className="today-cake-switch-button">
+                                    <input
+                                        type='checkbox'
+                                        onClick={() => {
+                                            if (updateTodayCake) setUpdateTodayCake(false);
+                                            else setUpdateTodayCake(true);
+                                        }}
+                                    />
+                                    <span className="today-cake-onoff-switch"></span>
+                                </label>
+                            </div>
+                            {/* css 아코디언 */}
+                            <div className='spm-add-update-show'>
+                                당일 판매
+                                <select 
+                                    onChange={(e)=>setUpdateMax(e.target.value)}>
+                                    <option>무한</option>
+                                    <option>1</option>
+                                </select>
+                                개
+                                {/* <input value={1}/> */}
                             </div>
                         </div>
 
@@ -173,7 +203,7 @@ function SPM_Update({
                                                     onClick={()=>{
                                                         for (var i = option.optionNumber; i < updateOption.length-1; i++) {
                                                             updateOption[i] = updateOption[i+1];
-                                                            updateOption[i].optionNumber = i+1;
+                                                            updateOption[i].optionNumber = i;
                                                         }
                                                         updateOption.pop();
                                                         NumF();
@@ -181,11 +211,10 @@ function SPM_Update({
                                                 </div>
                                             </div>
 
-                                            {/* {option.optionList.map((optionList: { optionListId: any, optionListName: any, optionListPrice: any, })=>{
+                                            {option.itemList.map((item: { itemNumber: any, itemName: any, itemPrice: any, itemType: any, itemChild: any, })=>{
                                                 return (
                                                     <div className="spm-add-update-item">
                                                         <div
-                                                            id={option.optionImage&&option.optionList.length===optionList.optionListId? "spm-none-1": ""}
                                                             className="spm-add-update-item-left"
                                                             onDragStart={(e)=>{
                                                                 setStartDrag(e.clientY);
@@ -193,32 +222,27 @@ function SPM_Update({
                                                             onDragEnd={(e)=>{
                                                                 var n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
                                                                 //Math.ceil() 올림 Math.floor() 내림, Math.abs() 절댓값
-                                                                if (56 <= startDrag-e.clientY && n <= option.optionList.length
-                                                                    && (optionList.optionListId-1 != 0)) {
-                                
-                                                                        for (var i=n+1; i>1; i--) {
-                                                                            updateOption[option.optionId-1].optionList[optionList.optionListId-i].optionListId = optionList.optionListId-(i-2);
-                                                                        }
-                                                                        updateOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId-n;
-                                                                        updateOption[option.optionId-1].optionList.sort((a:any, b:any) => {
-                                                                            if (a.optionListId < b.optionListId) return -1;
-                                                                            if (a.optionListId > b.optionListId) return 1;
+                                                                if (n <= item.itemNumber && 56 <= startDrag-e.clientY && item.itemNumber != 0) {
+                                                                    for (var i=n; i>0; i--)
+                                                                        updateOption[option.optionNumber].itemList[item.itemNumber-i].itemNumber = item.itemNumber-(i-1);
+                                                                    
+                                                                        updateOption[option.optionNumber].itemList[item.itemNumber].itemNumber = item.itemNumber-n;
+                                                                        updateOption[option.optionNumber].itemList.sort((a:any, b:any) => {
+                                                                            if (a.itemNumber < b.itemNumber) return -1;
+                                                                            if (a.itemNumber > b.itemNumber) return 1;
                                                                             return 0;
-                                                                        });
+                                                                    });
                                                                 }
-                                                                else if (n <= option.optionList.length && startDrag-e.clientY <= -56 
-                                                                    && ((n+optionList.optionListId != option.optionList.length+1 && !option.optionImage) 
-                                                                    || (n+optionList.optionListId != option.optionList.length && option.optionImage))) {
-                                
-                                                                        for (var i=n; i>0; i--) {
-                                                                            updateOption[option.optionId-1].optionList[optionList.optionListId+(i-1)].optionListId = optionList.optionListId+(i-1);
-                                                                        }
-                                                                        updateOption[option.optionId-1].optionList[optionList.optionListId-1].optionListId = optionList.optionListId+n;
-                                                                        updateOption[option.optionId-1].optionList.sort((a:any, b:any) => {
-                                                                            if (a.optionListId < b.optionListId) return -1;
-                                                                            if (a.optionListId > b.optionListId) return 1;
+                                                                else if (n <= option.itemList.length-1-item.itemNumber && startDrag-e.clientY <= -56 && item.itemNumber != option.itemList.length-1) {
+                                                                    for (var i=n; i>0; i--) 
+                                                                        updateOption[option.optionNumber].itemList[item.itemNumber+i].itemNumber = item.itemNumber+(i-1);
+                                                                            
+                                                                        updateOption[option.optionNumber].itemList[item.itemNumber].itemNumber = item.itemNumber+n;
+                                                                        updateOption[option.optionNumber].itemList.sort((a:any, b:any) => {
+                                                                            if (a.itemNumber < b.itemNumber) return -1;
+                                                                            if (a.itemNumber > b.itemNumber) return 1;
                                                                             return 0;
-                                                                        });
+                                                                    });
                                                                 }
                                                                 NumF();
                                                             }}
@@ -227,81 +251,93 @@ function SPM_Update({
                                                         </div>
                                                         <div style={{ width: "100%", }}>
                                                             <input
-                                                                id={"spm-update-name-option-list-"+option.optionId+"-"+optionList.optionListId}
                                                                 className="spm-add-update-item-text"
                                                                 type="text"
-                                                                name={"name"+optionList.optionListId}
                                                                 placeholder={
-                                                                    optionList.optionListName.split("&")[0] === "텍스트"? 
-                                                                        "텍스트 입력": (option.optionImage&&option.optionList.length===optionList.optionListId? "이미지 입력" : "품목"+optionList.optionListId+" 입력")}
-                                                                value={
-                                                                    optionList.optionListName.split("&")[0] === "텍스트"? 
-                                                                        optionList.optionListName.split("&")[1]: 
-                                                                        (option.optionImage&&option.optionList.length===optionList.optionListId? 
-                                                                            option.optionImageText.split("&")[1]: 
-                                                                            optionList.optionListName)}
+                                                                    item.itemType === "normal"? 
+                                                                        "품목"+(item.itemNumber+1)+" 입력": 
+                                                                        (item.itemType === "text"?
+                                                                            "텍스트 입력":
+                                                                            "이미지 입력")
+                                                                }
+                                                                value={item.itemName}
                                                                 onChange={(e)=>{
-                                                                    if (option.optionImage&&option.optionList.length===optionList.optionListId)
-                                                                        updateOption[option.optionId-1].optionImageText = "이미지&"+e.target.value;
-                                                                    else if (optionList.optionListName.split("&")[0] === "텍스트") 
-                                                                        handleOptionListNameText(e, option.optionId, optionList.optionListId);
-                                                                    else
-                                                                        handleOptionListName(e, option.optionId, optionList.optionListId);
-                                                                        NumF();
+                                                                    handleOptionListName(e, option.optionNumber, item.itemNumber);
+                                                                    NumF();
                                                                 }}
                                                             />
                                                         </div>
+                                                        <div
+                                                            className='spm-add-update-child' 
+                                                            onClick={()=>{
+                                                                if (updateChildOption>-1) setUpdateChildOption(-1);
+                                                                else setUpdateChildOption(option.optionNumber);
+                                                                setUpdateChildOption(item.itemNumber);
+                                                            }}>
+                                                            선택
+                                                        </div>
                                                         <input
-                                                            id={"spm-update-price-option-list-"+option.optionId+"-"+optionList.optionListId}
                                                             className="spm-add-update-item-price"
                                                             type="text"
                                                             placeholder="0"
-                                                            value={MakePrice(optionList.optionListPrice)}
-                                                            onChange={(e)=>{handleOptionListPrice(e, option.optionId, optionList.optionListId)}}
+                                                            value={MakePrice(item.itemPrice)}
+                                                            onChange={(e)=>{handleOptionListPrice(e, option.optionNumber, item.itemNumber)}}
                                                         />원
                                                         <div
-                                                            id={"spm-none-"+optionList.optionListId}
                                                             className="spm-add-update-item-right"
                                                             onClick={()=>{
-                                                                for (var i = optionList.optionListId-1; i < option.optionList.length-1; i++) {
-                                                                    updateOption[option.optionId-1].optionList[i] = updateOption[option.optionId-1].optionList[i+1];
-                                                                    updateOption[option.optionId-1].optionList[i].optionListId = i+1;
+                                                                for (var i = item.itemNumber; i < option.itemList.length-1; i++) {
+                                                                    updateOption[option.optionNumber].itemList[i] = updateOption[option.optionNumber].itemList[i+1];
+                                                                    updateOption[option.optionNumber].itemList[i].itemNumber = i;
                                                                 }
-                                                                updateOption[option.optionId-1].optionList.pop();
-                                                                if (option.optionImage&&option.optionList.length===optionList.optionListId)
-                                                                    updateOption[option.optionId-1].optionImage = false;
+                                                                updateOption[option.optionNumber].itemList.pop();
                                                                 NumF();
                                                             }}>x
                                                         </div>
                                                     </div>
                                                 );
-                                            })} */}
+                                            })}
                                             <div className="spm-add-update-item-button">
                                                 <div
                                                     onClick={()=>{
-                                                        // updateOption[option.optionId-1].optionList[option.optionList.length] = {
-                                                        //     optionListId: option.optionList.length+1,
-                                                        //     optionListName: "",
-                                                        //     optionListPrice: 0,
-                                                        // };
-                                                        // NumF();
+                                                        updateOption[option.optionNumber].itemList[option.itemList.length] = {
+                                                            itemNumber: option.itemList.length,
+                                                            itemType: "normal",
+                                                            itemName: "",
+                                                            itemPrice: 0,
+                                                            itemChild: [],
+                                                        };
+                                                        NumF();
                                                     }}>+&nbsp;품목 추가
                                                 </div>
                                                 <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
                                                 <div
                                                     style={{ color: "#ea5450", }}
                                                     onClick={()=>{
-                                                        // updateOption[option.optionId-1].optionList[option.optionList.length] = {
-                                                        //     optionListId: option.optionList.length+1,
-                                                        //     optionListName: "",
-                                                        //     optionListPrice: 0,
-                                                        // };
-                                                        // if (option.optionImage)
-                                                        //     updateOption[option.optionId-1].optionList[option.optionList.length-2].optionListName = "텍스트&"
-                                                        // else 
-                                                        //     updateOption[option.optionId-1].optionList[option.optionList.length-1].optionListName = "텍스트&"
-                                                        // NumF();
+                                                        updateOption[option.optionNumber].itemList[option.itemList.length] = {
+                                                            itemNumber: option.itemList.length,
+                                                            itemType: "text",
+                                                            itemName: "",
+                                                            itemPrice: 0,
+                                                            itemChild: [],
+                                                        };
+                                                        NumF();
                                                     }}>'텍스트' 추가
+                                                </div>
+
+                                                <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
+                                                <div
+                                                    style={{ color: "#ea5450", }}
+                                                    onClick={()=>{
+                                                        updateOption[option.optionNumber].itemList[option.itemList.length] = {
+                                                            itemNumber: option.itemList.length,
+                                                            itemType: "image",
+                                                            itemName: "",
+                                                            itemPrice: 0,
+                                                            itemChild: [],
+                                                        };
+                                                        NumF();
+                                                    }}>'이미지' 추가
                                                 </div>
 
                                             </div>
@@ -314,22 +350,20 @@ function SPM_Update({
                                     className="spm-add-update-button"
                                     onClick={()=>{
                                         updateOption[updateOption.length] = {
+                                            optionId: false,
                                             optionNumber: updateOption.length,
                                             optionName: "",
                                             itemList: [
                                                 {
-                                                    optionId: -1,
+                                                    itemId: -1,
                                                     itemNumber: 0,
-                                                    itemWhat: "normal",
-                                                    additionalCost: 0,
-                                                    category: "SIZE",
-                                                    categoryTitle: "",
-                                                    child: {},
-                                                    contents: "",
+                                                    itemType: "normal",
+                                                    itemName: "",
+                                                    itemPrice: 0,
+                                                    itemChild: {},
                                                 },
                                             ],
                                         };
-                                        console.log(updateOption);
                                         NumF();
                                     }}>
                                     + 옵션 추가
@@ -342,6 +376,8 @@ function SPM_Update({
                 <div className="pc spm-tap">
                     <button
                         onClick={()=>{
+                            //optionId false인 애들 다 삭제 시키기
+                            //itemId -1인 애들 다 삭제 시키기
                             oriShow[idx] = true;
                             NumF();
                         }}>

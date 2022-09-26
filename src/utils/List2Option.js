@@ -3,7 +3,6 @@ import axios from "axios";
 import $, { get } from "jquery";
 
 const List2Option = (getData) => {
-    console.log(getData);
     const category = {
         "SIZE": "크기&0",
         "TASTE": "맛&1",
@@ -21,18 +20,17 @@ const List2Option = (getData) => {
     };
 
     var chOptionList = [];
-    var chOptionListTF = [];
-    for (var i=0; i<13; i++) chOptionListTF[i] = true;
+    var chOptionListTF = []; //
+    for (var i=0; i<13; i++) chOptionListTF[i] = true; //
     
     var j = -1;
     for (var i=0; i<getData.length; i++) {
         var c = category[getData[i].category];
         // var c = category[getData[i].category].split("&")[0];
-        var oid = category[getData[i].category].split("&")[1];
-        console.log(c);
+        var oid = category[getData[i].category].split("&")[1]; //
 
         // if (getData[i].itemNumber === 0) {
-        if (chOptionListTF[oid]) {
+        if (chOptionListTF[oid]) { //
             chOptionList.push({
                 optionId: true,
                 optionNumber: chOptionList.length,
@@ -40,31 +38,29 @@ const List2Option = (getData) => {
                 itemList: [{
                     itemId: getData[i].optionsId,
                     itemNumber: 0,
-                    itemType: "normal",
+                    itemType: "normal", //
                     // itemType: getData[i].itemType,
                     itemName: getData[i].contents,
                     itemPrice: getData[i].additionalCost,
                     itemChild: getData[i].childOptionsList,
                 }],
             });
-            chOptionListTF[oid] = false;
+            chOptionListTF[oid] = false; //
             j++;
         }
         else {
             chOptionList[j].itemList.push({
                 itemId: getData[i].optionsId,
-                itemNumber: 0,
-                itemNumber: 1,
+                itemNumber: 1, //
                 // itemNumber: chOptionList[j].itemList.length,
                 // itemType: getData[i].itemType,
-                itemType: "normal",
+                itemType: "normal", //
                 itemName: getData[i].contents,
                 itemPrice: getData[i].additionalCost,
                 itemChild: getData[i].child,
             })
         }
     }
-    console.log(chOptionList);
     return chOptionList;
 };
 

@@ -31,7 +31,7 @@ const Seller = ({ session, auth, }: Props) =>{
                     <Route exact path="/SSHCalendar" component={()=>FullCalendarApp(session, auth)} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>
-                    <Route exact path="/ProductManagement" component={ProductManagement}/>
+                    <Route exact path="/ProductManagement" component={()=>ProductManagement(session, auth)}/>
                     <Route exact path="/ProductManagement/:id" component={SPMDetail}/>
                     <Route exact path="/SellerReview" component={SellerReview} />
                     <Route exact path="/SellerStore" component={()=>SellerStore(session, auth)} />

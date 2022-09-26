@@ -16,17 +16,20 @@ import setting from "../../../assets/seller/spm-setting.png";
 interface Props {
     idx: any,
     NumF: any,
+    auth: any,
 
     oriShow: any,
     oriData: any,
 }
 
 function SPMCard({ 
-        idx, NumF,
+        idx, NumF, auth,
         oriShow, oriData,
     }: Props) {
 
     useEffect(()=>{
+        if (oriData.isTodayCake)
+            $('input:checkbox[name="spmcard-show-'+idx+'"]').prop('checked',true);
     },[]);
     
     return (
@@ -44,17 +47,17 @@ function SPMCard({
                     <div className="spmcard-content">
                         <div className="spmcard-img">
                             <div className="spm-add-update-img-inner">
-                                {oriData.image[0]==="" || oriData.image[0]===null || oriData.image[0]===undefined ?
+                                {oriData.productImage1==="" || oriData.productImage1===null || oriData.productImage1===undefined ?
                                     <div className="spmcard-img-inner">
                                         <AddIcon/>
                                     </div>:
-                                    <img src={oriData.image[0]} />
+                                    <img src={oriData.productImage1} />
                                 }
                             </div>
                         </div>
                         <div className="spmcard-content-inner">
                             <div className="spmcard-title">{oriData.name}</div>
-                            {oriData.newOptionsList.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
+                            {oriData.optionsList.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
                                 return (
                                     <>
                                         {option.optionName}:&nbsp;
@@ -94,17 +97,19 @@ function SPMCard({
                             <img src={setting}/>
                         </div>
                     </Link>
-                    <label className="switch-button">
-                        <input
-                            id='studies_togetherTrue'
-                            type='checkbox'
-                            onClick={() => {
-                                //노출
-                            }}
-                            // checked={false} //노출 여부 판단 후 적음
-                        />
-                        <span className="onoff-switch"></span>
-                    </label>
+                    {auth.accountId === 31 &&
+                        <label className="switch-button">
+                            <input
+                                name={'spmcard-show-'+idx}
+                                type='checkbox'
+                                onClick={() => {
+                                    //노출
+                                }}
+                                // checked={false} //노출 여부 판단 후 적음
+                            />
+                            <span className="onoff-switch"></span>
+                        </label>
+                    }
                 </div>
             </div>
         </>

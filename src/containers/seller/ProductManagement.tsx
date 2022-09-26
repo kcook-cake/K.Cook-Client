@@ -15,7 +15,7 @@ import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
 import List2Option from 'src/utils/List2Option';
 import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 
-function ProductManagement() {
+function ProductManagement(session: any, auth: any,) {
   const [num, setNum] = useState(0);
 
   const [oriShow, setOriShow] = useState<any>([]);
@@ -43,10 +43,10 @@ function ProductManagement() {
     }
 
     axios({
-      url: "/app/products/77",
+      url: "/app/products/83",
       method: "GET",
     }).then((res)=>{
-      oriData = SPM_Data_Test();
+      oriData = [res.data.result];
       for (var i = 0; i < oriData.length; i++) {
         oriShow[i] = true;
         oriData[i].optionsList = List2Option(oriData[i].optionsList);
@@ -71,7 +71,7 @@ function ProductManagement() {
           <div className="mobile" style={{ width: '5px', height: '25px' }}></div>
 
           <div className="seller-content">
-            {/* {oriData.map((data: any, idx: any) => {
+            {oriData.map((data: any, idx: any) => {
               return (
                 <>
                   {oriShow[idx] ? 
@@ -79,23 +79,23 @@ function ProductManagement() {
                       <SPMCard
                         idx={idx}
                         NumF={()=>setNum(num+1)}
+                        auth={auth}
                         oriShow={oriShow}
                         oriData={oriData[idx]}
                       />
                     ) : (
-                      <></>
-                      // <SPM_Update
-                      //   idx={idx}
-                      //   NumF={()=>setNum(num+1)}
-                      //   resize={resize}
-                      //   oriShow={oriShow}
-                      //   getUpdateData={oriData[idx]}
-                      // />
+                      <SPM_Update
+                        idx={idx}
+                        NumF={()=>setNum(num+1)}
+                        resize={resize}
+                        oriShow={oriShow}
+                        getUpdateData={oriData[idx]}
+                      />
                     )
                   }
                 </>
               );
-            })} */}
+            })}
             {addShow?
               <SPMCard_Add
                 NumF={()=>setNum(num+1)} resize={resize}
