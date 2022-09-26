@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
 import { ReactComponent as AddIcon } from '../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../assets/seller/closebtn.svg';
@@ -12,7 +12,7 @@ import SPMCard from 'src/components/seller/spm-ssr/SPMCard';
 import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
-import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
+// import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
 import List2Option from 'src/utils/List2Option';
 import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 
@@ -87,24 +87,25 @@ function ProductManagement(session: any, auth: any,) {
                         oriData={oriData[idx]}
                       />
                     ) : (
-                      <SPM_Update
-                        idx={idx}
-                        NumF={()=>setNum(num+1)}
-                        resize={resize}
-                        oriShow={oriShow}
-                        getUpdateData={oriData[idx]}
-                      />
+                      <></>
+                      // <SPM_Update
+                      //   idx={idx}
+                      //   NumF={()=>setNum(num+1)}
+                      //   resize={resize}
+                      //   oriShow={oriShow}
+                      //   getUpdateData={oriData[idx]}
+                      // />
                     )
                   }
                 </>
               );
             })}
-            {addShow?
+            {addShow&&
               <SPMCard_Add
                 NumF={()=>setNum(num+1)} resize={resize}
                 setAddShowF={setAddShow}
               />
-            )}
+            }
           </div>
         </div>
 

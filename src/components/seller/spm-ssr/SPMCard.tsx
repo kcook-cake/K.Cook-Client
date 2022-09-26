@@ -112,9 +112,6 @@ function SPMCard({
                     }
                 </div>
             </div>
-          </Link>
-        </div>
-      </div>
     </>
   );
 }
