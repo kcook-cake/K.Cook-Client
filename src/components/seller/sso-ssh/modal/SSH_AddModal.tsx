@@ -106,16 +106,9 @@ const SSR_AddModal = ({
                             <option disabled>케이크 선택</option>
                             <option >케이크1</option>
                             <option >케이크2</option>
-                            {/* {data.optionList.map(( option:{optionListId: any, optionListName: any, optionListPrice: any,} )=>{
-                                return (
-                                    <option>
-                                        {option.optionListName}
-                                    </option>
-                                );
-                            })} 케이크*/}
                         </select>
                     </div>
-                    <OptionList getData={oriData.list} />
+                    {/* <OptionList NumF={()=>NumF()} customer={[]} getData={oriData.list} /> */}
 
                     <div className="spmdetail-content-btn-box">
                         <button

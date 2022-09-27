@@ -21,37 +21,32 @@ const FullCalendarSeller = (fn,TF) => {
     //달력 판매자 정보
     const e = [
         {
-            id: 1,
             title: '1',
             describe: '10',
             start: '2022-09-01',
         },
         {
-            id: 2,
             title: '2',
             describe: '10',
             start: '2022-09-02',
         },
         { 
-            id: 3, 
             title: '2', 
             describe: '10',
             start: '2022-09-20',
         },
         { 
-            id: 4, 
+
             title: '0', 
             describe: '0',
             start: '2022-09-30',
         },
         { 
-            id: 5, 
             title: '1', 
             describe: '1',
             start: '2022-10-05',
         },
         { 
-            id: 6, 
             title: '0', 
             describe: '0',
             start: '2022-10-28',
@@ -59,12 +54,14 @@ const FullCalendarSeller = (fn,TF) => {
     ];
 
     for(var i = 0; i < e.length; i++) {
+        // e[i].id = i+1;
         if (e[i].title === '0')
             e[i].borderColor = "rgba(255, 255, 255, 0.0)";
         else
             e[i].borderColor = "white";
         e[i].title = "주문: " + e[i].title + "/" + e[i].describe
     }
+    console.log(e);
 
     // if (TF) fn(em);
     // else fn(e);

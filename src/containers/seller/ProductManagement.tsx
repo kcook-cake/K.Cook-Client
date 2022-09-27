@@ -12,9 +12,9 @@ import SPMCard from 'src/components/seller/spm-ssr/SPMCard';
 import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
-// import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
 import List2Option from 'src/utils/List2Option';
 import SPM_Data_Test from 'src/utils/SPM_Data_Test';
+import SPM_Update from 'src/components/seller/spm-ssr/SPM_Update';
 
 function ProductManagement(session: any, auth: any,) {
   const [num, setNum] = useState(0);
@@ -43,7 +43,7 @@ function ProductManagement(session: any, auth: any,) {
     }
 
     axios({
-      url: "/app/products/83",
+      url: "/app/products/85",
       method: "GET",
     }).then((res)=>{
       oriData = [res.data.result];
@@ -87,14 +87,13 @@ function ProductManagement(session: any, auth: any,) {
                         oriData={oriData[idx]}
                       />
                     ) : (
-                      <></>
-                      // <SPM_Update
-                      //   idx={idx}
-                      //   NumF={()=>setNum(num+1)}
-                      //   resize={resize}
-                      //   oriShow={oriShow}
-                      //   getUpdateData={oriData[idx]}
-                      // />
+                      <SPM_Update
+                        idx={idx}
+                        NumF={()=>setNum(num+1)}
+                        resize={resize}
+                        oriShow={oriShow}
+                        getUpdateData={oriData[idx]}
+                      />
                     )
                   }
                 </>

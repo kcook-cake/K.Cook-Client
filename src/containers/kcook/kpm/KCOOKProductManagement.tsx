@@ -11,7 +11,6 @@ import SPMCard from 'src/components/seller/spm-ssr/SPMCard';
 import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
-import SPM_Update from 'src/components/seller/spm-ssr/SRM_Update';
 import KPMCard from 'src/components/kcook/kpm/KPMCard';
 
 function KCOOKProductManagement() {

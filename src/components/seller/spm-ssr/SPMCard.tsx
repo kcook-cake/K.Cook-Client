@@ -97,7 +97,7 @@ function SPMCard({
                             <img src={setting}/>
                         </div>
                     </Link>
-                    {auth.accountId === 31 &&
+                    {/* {auth.accountId === 31 &&
                         <label className="switch-button">
                             <input
                                 name={'spmcard-show-'+idx}
@@ -109,7 +109,7 @@ function SPMCard({
                             />
                             <span className="onoff-switch"></span>
                         </label>
-                    }
+                    } */}
                 </div>
             </div>
     </>

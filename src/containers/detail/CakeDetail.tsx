@@ -33,6 +33,9 @@ const CakeDetail = () =>{
     const [date, setDate] = useState("");
     const [pickUp, setPickUp] = useState(["10:00~11:00", "11:00~12:00", "21:00~22:00"]);
     let [option, setOption] = useState([]);
+    let [cus, setCus] = useState([]);
+    let [cusId, setCusId] = useState([]);
+
 
 
     let [height, setHeight] = useState(window.innerHeight);
@@ -58,11 +61,16 @@ const CakeDetail = () =>{
         LinkClick("Cake");
 
         axios({
-            url: "/app/products/83",
+            url: "/app/products/85",
             method: "GET",
         }).then((res)=>{
             data = res.data.result; getData(data);
             option = List2Option(data.optionsList); setOption(option);
+            for (var i=0; i<option.length; i++) {
+                // cus[i] = '선택';
+                cusId[i] = -1;
+            }
+            setCus(cus);
         }).catch((err)=>{
         })
     },[]);
@@ -214,7 +222,11 @@ const CakeDetail = () =>{
                                     <hr/>
                                     {selectShow[2]?
                                         <>
-                                            <OptionList getData={option} />
+                                            <OptionList 
+                                                NumF={()=>setNum(num+1)} 
+                                                cusId={cusId}    
+                                                getData={option} 
+                                            />
                                         </>
                                     :null}
                                 </div>

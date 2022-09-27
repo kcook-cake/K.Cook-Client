@@ -4,154 +4,124 @@ import 'src/styles/detail/cake/OptionList.scss';
 
 import subtrack from 'src/assets/detail/cake/subtrack.png';
 import add from 'src/assets/detail/cake/add.png';
+import { Empty } from 'antd';
 
 // import subtrack from 'src/styles/detail/cake/subtrack.png';
 // import add from 'src/styles/detail/cake/add.png';
 
+
 interface Props {
-  getData: any;
+  NumF: any,
+  cusId: any,
+  getData: any
 }
 
-function OptionList({ getData }: Props) {
-  let [output, setOutput] = useState([]);
-  let [child, setChild] = useState([]);
+function OptionList({NumF, cusId, getData}: Props) {
+    let [selectNum, setSelectNum] = useState(0);
+    const [optionNum, setOptionNum] = useState(-1);
 
-  const [select, setSelect] = useState(0);
-  const [selectShow, setSelectShow] = useState([false, false, false]);
-  const [focusNum, setfocusNum] = useState(0);
-  useEffect(() => {
-    setSelect(focusNum);
-  }, [focusNum]);
+    // let [customer, setCustomer] = useState([]);
+    // let [customerId, setCustomerId] = useState([]);
 
-  const [size, setSize] = useState('A1');
-  const [taste, setTaste] = useState('B1');
-  const [color, setColor] = useState('D1');
+    let [child, setChild] = useState([]);
 
-  useEffect(() => {}, []);
+    useEffect(()=>{
+      // console.log(getData);
+      // for (var i=0; i<getData.length; i++) {
+        // console.log(i);
+      // }
+    },[]);
 
-  return (
-    <>
-      {getData.map(
-        (
-          option: {
-            optionId: any;
-            optionNumber: any;
-            optionName: any;
-            itemList: any;
-          },
-          idx: any
-        ) => {
-          return (
-            <>
-              <div
-                className={classNames({
-                  'cake-detail-optionlist-flex': idx !== select,
-                  'cake-detail-optionlist-flex-focus': idx === select,
-                  //  opacity: '1' / '0.4' }}
-                })}
-                onClick={() => {
-                  setSelect(idx);
-                  var ars = [false, false, false];
-                  ars[idx] = true;
-                  // setSelectShow(ars);
-                }}
-              >
-                {/* // idx:{idx} , select:{select} */}
-                <div style={{ marginBottom: '6px' }}>
-                  {idx + 1 + '. ' + option.optionName}
-                </div>
-                <div
-                  className={classNames('cake-detail-optionlist-select', {
-                    'cake-detail-optionlist-select-focus': selectShow[idx],
-                    /* -focus div {   display: block !important; } */
-                  })}
-                  onClick={() => {
-                    // focus 전환 클릭 이벤트
-                    var arr = [...selectShow];
-                    var wantgo = !arr[idx];
-                    arr = [false, false, false];
-                    arr[idx] = wantgo;
-                    setSelectShow(arr);
-                  }}
-                >
-                  <span>{idx === 0 && size}</span>
-                  <span>{idx === 1 && taste}</span>
-                  <span>{idx === 2 && color}</span>
-                  {/* <select
-                                    onChange={(e)=>{
-                                        output[idx] = e.target.value; setOutput(output);
-                                        setSelect(idx+1);
-                                    }}>
-                                </select> */}
-                  {/* <div>옵션 선택</div> */}
-                  {option.itemList.map(
-                    (item: {
-                      itemId: any;
-                      itemNumber: any;
-                      itemType: any;
-                      itemName: any;
-                      itemPrice: any;
-                      itemChild: any;
-                    }) => {
-                      return (
+    return (
+        <>
+            {getData.map((option:{ optionId: any, optionNumber: any, optionName: any, itemList: any, }, idx: any, )=>{
+                return (
+                    <>
                         <div
-                          className="cake-detail-optionlist-select-option"
-                          style={{
-                            width: '100%',
-                            height: '20px',
-                          }}
-                          onClick={() => {
-                            if (item.itemChild === undefined) child = [];
-                            else child = item.itemChild;
-                            setChild(child);
-                            setSelect(select + 1);
-                            // console.log('item.itemName', item.itemName);
-                            // focus를 2로 넘기는 함수
-                            // setSelect((prev) => prev + 1);
-                            // if (select >= 2) setSelect(0);
-                            // console.log('select', select);
-                          }}
-                        >
-                          <span
-                            onClick={(e) => {
-                              setfocusNum(select + 1);
-                              if (idx === 0) setSize(item.itemName);
-                              else if (idx === 1) setTaste(item.itemName);
-                              else if (idx === 2) setColor(item.itemName);
+                            className='cake-detail-optionlist-flex'
+                            onClick={()=>{
+                              if (optionNum>-1)
+                                setOptionNum(-1);
+                              else
+                                setOptionNum(option.optionNumber);
                             }}
-                          >
-                            {item.itemName}
-                          </span>
+                            style={{ opacity: (selectNum<idx? "0.4": "1"), }}
+                            >
+                            <div style={{ marginBottom: "6px", }}>{(idx+1)+". "+option.optionName}</div>
+
+                            <div className='cake-detail-optionlist-select'>
+                              {cusId[option.optionNumber]}
+                              {optionNum>-1&&selectNum>=idx&&
+                                <>
+                                  {option.itemList.map(( item:{itemId: any, itemNumber: any, itemType: any, itemName: any, itemPrice: any, itemChild: any, } )=>{
+                                      return (
+                                          <div
+                                              className={classNames('cake-detail-optionlist-option', {
+                                                'cake-detail-optionlist-option-show': option.optionNumber === optionNum,
+                                                'cake-detail-optionlist-option-none': 
+                                                  (child[option.optionNumber] === undefined?
+                                                    false:
+                                                    child[option.optionNumber].array.find((data: any,)=>{
+                                                      if (data === item.itemNumber)
+                                                        return true;
+                                                    }) !== undefined
+                                                  ),
+                                              })}
+                                              onClick={()=>{
+                                                  selectNum = option.optionNumber+1;
+                                                  setSelectNum(selectNum);
+                                                  cusId[selectNum-1] = item.itemNumber;
+
+                                                  setOptionNum(-1);
+                                                  
+                                                  for (var i=selectNum; i<getData.length; i++) cusId[i] = -1;
+
+                                                  child = [];
+                                                  for (var i=0; i<selectNum; i++) {
+                                                    for (var j=0; j<getData[i].itemList[cusId[i]].itemChild.length; j++) {
+                                                      if (child[getData[i].itemList[cusId[i]].itemChild[j].type] !== undefined) {
+                                                        child[getData[i].itemList[cusId[i]].itemChild[j].type].array = child[getData[i].itemList[cusId[i]].itemChild[j].type].array.concat(getData[i].itemList[cusId[i]].itemChild[j].array);
+                                                        child[getData[i].itemList[cusId[i]].itemChild[j].type].array = Array.from(new Set(child[getData[i].itemList[cusId[i]].itemChild[j].type].array));
+                                                      }
+                                                      else
+                                                        child[getData[i].itemList[cusId[i]].itemChild[j].type] = getData[i].itemList[cusId[i]].itemChild[j]; 
+                                                    }
+                                                  }
+
+                                                  setChild(child);
+                                                  console.log(child);
+
+                                                  NumF();
+                                              }}>
+                                              {item.itemName}
+                                          </div>
+                                      );
+                                  })}
+                                </>
+                              }
+                            </div>                            
+
+                            <div className='cake-detail-optionlist-btn'>
+                                <div></div>
+                                <div>
+                                    <div style={{ color: "#ea5450", border: "1px solid #ea5450", }}>
+                                        <img src={subtrack} />
+                                    </div>
+                                    <div style={{ fontSize: "16px", border: "1px solid #e0e0e0" }}>
+                                        1
+                                    </div>
+                                    <div style={{ color: "#fff", background: "#ea5450", }}>
+                                        <img src={add} />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                      );
-                    }
-                  )}
-                </div>
-                <div className="cake-detail-optionlist-btn">
-                  <div></div>
-                  <div>
-                    <div
-                      style={{ color: '#ea5450', border: '1px solid #ea5450' }}
-                    >
-                      <img src={subtrack} />
-                    </div>
-                    <div
-                      style={{ fontSize: '16px', border: '1px solid #e0e0e0' }}
-                    >
-                      1
-                    </div>
-                    <div style={{ color: '#fff', background: '#ea5450' }}>
-                      <img src={add} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          );
-        }
-      )}
-    </>
-  );
+                    </>
+                );
+            })}
+        </>
+    );
 }
 
 export default OptionList;

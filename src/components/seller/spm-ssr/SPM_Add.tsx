@@ -68,7 +68,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     let [addOption, setAddOption] = useState<any>([
         {
             optionNumber: 0,
-            optionName: '크기',
+            optionName: '사이즈',
             itemList: [{
                 itemNumber: 0,
                 itemType: "normal",
@@ -195,9 +195,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                         if (
                                                                             data.array.find((data2: any)=>{
                                                                                 if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
-                                                                            }) != undefined
+                                                                            }) !== undefined
                                                                         ) return true;
-                                                                    }) != undefined&& true),
+                                                                    }) !== undefined&& true),
                                                                 })}
                                                                 onClick={()=>{
                                                                     var child = addOption[addChildOption].itemList[addChildItem].itemChild;
@@ -342,7 +342,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 else setAddChildOption(option.optionNumber);
                                                                 setAddChildItem(item.itemNumber);
                                                             }}>
-                                                            선택
+                                                            이동
                                                         </div>
                                                         <input
                                                             className="spm-add-update-item-price"

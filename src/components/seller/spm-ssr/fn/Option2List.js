@@ -4,7 +4,7 @@ import $, { get } from "jquery";
 
 const Option2List = (getData) => {
     const category = {
-        "크기": "SIZE",
+        "사이즈": "SIZE",
         "맛": "TASTE",
         "색상": "COLOR",
         "디자인": "DESIGN",
