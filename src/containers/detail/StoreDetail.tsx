@@ -15,6 +15,7 @@ import TestImg from 'src/assets/searchIcon.png';
 import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import LengthSlideTwo from 'src/components/detail/LengthSlideTwo';
+import 'src/styles/detail/store/kakaoMap.scss';
 
 // const { kakao } = window;
 
@@ -31,19 +32,15 @@ const StoreDetail = (auth: any) => {
   const [slidePx, setSlidePx] = useState(0);
   const [height, setHeight] = useState(0);
 
-
-
   const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      
+
       alert('복사 성공!');
     } catch (error) {
       alert('복사 실패!');
     }
   };
-
-
 
   const [data, setData] = useState([]);
   //0페이지부터 시작한다
@@ -74,13 +71,44 @@ const StoreDetail = (auth: any) => {
       .catch((error) => {});
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
-
     var container = document.getElementById('map');
     var options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
     };
     var map = new kakao.maps.Map(container, options);
+    var imageSrc =
+      'http://amind.co.kr/data/file/figure/thumb-1931437945_a3ksBhWI_EC9B90_200x200.jpg'; // 마커이미지의 주소입니다
+
+    // axios.get으로 얻은 가게의 이름을 여기에 담기.
+    var names = '유니아케이크';
+
+    // 커스텀 오버레이
+    // 커스텀 오버레이에 표시할 내용입니다
+    // HTML 문자열 또는 Dom Element 입니다
+    var content = `
+       <div class ="kakaomap_store">
+         <div class ="kakaomap_store_image">
+           <img src=${imageSrc} alt="img" />
+         </div>
+         <div class ="kakaomap_store_text">
+           <span class="text">${names}</span>
+         </div>
+       </div>
+      `;
+
+    // 커스텀 오버레이가 표시될 위치입니다
+    // + 뒤에 숫자로 위로 올려서 가게위치를 가리지 않게 조절.
+    var position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
+
+    // 커스텀 오버레이를 생성합니다
+    var customOverlay = new kakao.maps.CustomOverlay({
+      position: position,
+      content: content,
+    });
+
+    // 커스텀 오버레이를 지도에 표시합니다
+    customOverlay.setMap(map);
   }, []);
 
   return (
@@ -120,7 +148,11 @@ const StoreDetail = (auth: any) => {
               </div>
               <div className="store-detail-store-info store-detail-store-info-2">
                 <img src={locationImg} alt="store-detail-locationImg" />
-                <div onClick={() => handleCopyClipBoard('서울 용산구 이태원로55길 111')}>
+                <div
+                  onClick={() =>
+                    handleCopyClipBoard('서울 용산구 이태원로55길 111')
+                  }
+                >
                   서울 용산구 이태원로55길 111
                 </div>
               </div>
