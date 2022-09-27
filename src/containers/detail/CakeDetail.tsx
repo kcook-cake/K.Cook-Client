@@ -61,7 +61,7 @@ const CakeDetail = () =>{
         LinkClick("Cake");
 
         axios({
-            url: "/app/products/85",
+            url: "/app/products/87",
             method: "GET",
         }).then((res)=>{
             data = res.data.result; getData(data);
