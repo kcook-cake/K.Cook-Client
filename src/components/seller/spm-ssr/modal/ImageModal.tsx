@@ -27,11 +27,12 @@ const ImageModal = ({
     }: Props) => {
 
     const AddImageF = () => {
-        console.log(formData.get("productImage1"));
-        console.log(formData.get("productImage2"));
-        console.log(formData.get("productImage3"));
-        console.log(formData.get("productImage4"));
-        console.log(formData.get("productImage5"));
+        for (var i=0; i<5; i++) {
+            formData.append(
+                "productImage"+(i),
+                new Blob([JSON.stringify(formData.get("productImage"+(i)))], { type: "application/json" })
+            )
+        }
         axios({
             url: "/app/products/83/photos",
             method: "PATCH",
