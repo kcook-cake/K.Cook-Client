@@ -15,7 +15,6 @@ import rightArrow from 'src/assets/right-arrow.svg';
 import ImageModal from './modal/ImageModal';
 import MakePrice from 'src/utils/MakePrice';
 import Option2List from './fn/Option2List';
-import { Empty } from 'antd';
 
 interface Props {
     NumF: any,
@@ -187,33 +186,38 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                             <>
                                                 {addChildOption < option2.optionNumber&&
                                                     <div 
+                                                        className={classNames({
+                                                            'spm-add-update-child-modal-none' : 
+                                                            (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                if (data.type === option2.optionNumber && data.array.length === option2.itemList.length) return true;
+                                                            }) !== undefined&& true),
+                                                        })}
                                                         onClick={()=>{
                                                             var child = addOption[addChildOption].itemList[addChildItem].itemChild;
-                                                            if (child[option2.optionNumber] === undefined) {
-                                                                child[option2.optionNumber] = {
-                                                                    type: option2.optionNumber,
-                                                                    array: [],
-                                                                }
-                                                                for (var i=0; i<option2.itemList.length; i++) {
-                                                                    child[option2.optionNumber].array[i] = i;
-                                                                }
-                                                            } else {
-                                                                if (child[option2.optionNumber].array.length === option2.itemList.length) {
-                                                                    child[option2.optionNumber] = undefined;
-                                                                } else {
-                                                                    for (var i=0; i<option2.itemList.length; i++) {
-                                                                        child[option2.optionNumber].array[i] = i;
+                                                            for (var i=0; i< child.length; i++) {
+                                                                if (child[i].type === option2.optionNumber) {
+                                                                    if (child[i].array.length === option2.itemList.length) {
+                                                                        child.splice(i, i+1);
+                                                                        setAddChildOption(-1);
+                                                                        return;
                                                                     }
+                                                                    for (var j=0; j<option2.itemList.length; j++) {
+                                                                        child[i].array.push(j);
+                                                                    }
+                                                                    child[i].array = Array.from(new Set(child[i].array));
+                                                                    setAddChildOption(-1);
+                                                                    return;
                                                                 }
                                                             }
-                                                            
-                                                            for (var i=child.length-1; i>=0; i--) {
-                                                                if (child[i] === undefined) child.pop();
-                                                                else break;
+                                                            child.push({
+                                                                type: option2.optionNumber,
+                                                                array: [],
+                                                            });
+                                                            for (var i=0; i<option2.itemList.length; i++) {
+                                                                child[child.length-1].array.push(i);
                                                             }
-
-                                                            console.log(child);
                                                             setAddChildOption(-1);
+                                                            return;
                                                         }}>
                                                         건너뛰기
                                                     </div>
@@ -223,37 +227,36 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         (addChildOption < option2.optionNumber&&
                                                             <div 
                                                                 className={classNames('', {
-                                                                    'spm-add-update-child-modal-none':
-                                                                        (addOption[addChildOption].itemList[addChildItem].itemChild[option2.optionNumber] === undefined? 
-                                                                            false: 
-                                                                            addOption[addChildOption].itemList[addChildItem].itemChild[option2.optionNumber].array[item2.itemNumber] === item2.itemNumber
-                                                                        ),
+                                                                    'spm-add-update-child-modal-none': 
+                                                                    (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                        if (
+                                                                            data.array.find((data2: any)=>{
+                                                                                if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
+                                                                            }) !== undefined
+                                                                        ) return true;
+                                                                    }) !== undefined&& true),
                                                                 })}
                                                                 onClick={()=>{
                                                                     var child = addOption[addChildOption].itemList[addChildItem].itemChild;
-                                                                    if (child[option2.optionNumber] === undefined) {
-                                                                        child[option2.optionNumber] = {
-                                                                            type: option2.optionNumber,
-                                                                            array: [],
+                                                                    for (var i=0; i< child.length; i++) {
+                                                                        if (child[i].type === option2.optionNumber) {
+                                                                            for (var j=0; j<child[i].array.length; j++) {
+                                                                                if (child[i].array[j] === item2.itemNumber) {
+                                                                                    child[i].array.splice(j, j+1);
+                                                                                    if (child[i].array.length === 0) child.splice(i, i+1);
+                                                                                    setAddChildOption(-1);
+                                                                                    return;
+                                                                                }
+                                                                            }
+                                                                            child[i].array.push(item2.itemNumber);
+                                                                            setAddChildOption(-1);
+                                                                            return;
                                                                         }
-                                                                        child[option2.optionNumber].array[item2.itemNumber] = item2.itemNumber;
-                                                                    } else {
-                                                                        if (child[option2.optionNumber].array[item2.itemNumber] === undefined)
-                                                                            child[option2.optionNumber].array[item2.itemNumber] = item2.itemNumber;
-                                                                        else child[option2.optionNumber].array[item2.itemNumber] = undefined;
                                                                     }
-
-                                                                    for (var i=child[option2.optionNumber].array.length-1; i>=0; i--) {
-                                                                        if (child[option2.optionNumber].array[i] === undefined) child[option2.optionNumber].array.pop();
-                                                                        else break;
-                                                                    }
-                                                                    if (child[option2.optionNumber].array.length === 0) child.pop();
-                                                                    for (var i=child.length-1; i>=0; i--) {
-                                                                        if (child[i] === undefined) child.pop();
-                                                                        else break;
-                                                                    }
-
-                                                                    console.log(child);
+                                                                    child.push({
+                                                                        type: option2.optionNumber,
+                                                                        array: [item2.itemNumber],
+                                                                    });
                                                                     setAddChildOption(-1);
                                                                 }}>
                                                                 {option2.optionNumber+1+"-"}
