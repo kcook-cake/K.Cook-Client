@@ -65,6 +65,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     const [addChildOption, setAddChildOption] = useState(-1);
     const [addChildItem, setAddChildItem] = useState(-1);
     const [addChildNext, setAddChildNext] = useState(-1);
+    const [addItemLen, setAddItemLen] = useState(0);
     const [addName, setAddName] = useState('');
     const [addPrice, setAddPrice] = useState(0);
     let [addOption, setAddOption] = useState<any>([
@@ -182,134 +183,134 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                             </div>
                         </div>
 
-                        <div> {/* spmcard-content-inner */}
-                            {addChildOption>-1&& addChildOption !== addOption.length-1&&
-                                <div className='spm-add-update-child-modal' style={{ top: (230+addChildItem*45+addChildOption*212)+"px", }}>
-                                    <div className='spm-add-update-child-modal-move'>이동</div>
-                                    {addOption.map((option2: {optionNumber: any, itemList: any, })=>{
-                                        return (
-                                            <>
-                                                {addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
-                                                    <>
-                                                    <div style={{ display: "flex", justifyContent: "center", }}>
-                                                        <div
-                                                            className={classNames('spm-add-update-child-modal-left', {
-                                                                'spm-add-update-child-modal-option-none': addChildOption+1 === option2.optionNumber,
-                                                            })}
-                                                            onClick={()=>setAddChildNext(addChildNext-1)}>
-                                                            &lt;
-                                                        </div>
-                                                        <div className='spm-add-update-child-modal-option'>{"옵션"+(option2.optionNumber+1)}</div>
-                                                        <div
-                                                            className={classNames('spm-add-update-child-modal-right', {
-                                                                'spm-add-update-child-modal-option-none': addOption.length-1 === option2.optionNumber,
-                                                            })}
-                                                            onClick={()=>setAddChildNext(addChildNext+1)}>
-                                                            &gt;
-                                                        </div>
+                        {addChildOption>-1&& addChildOption !== addOption.length-1&&
+                            <div className='spm-add-update-child-modal' style={{ top: (230+addChildOption*167+addChildItem*45+addItemLen*45)+"px", }}> {/* 뒤에 품목개수*45 해줘야함 */}
+                                <div className='spm-add-update-child-modal-move'>이동</div>
+                                {addOption.map((option2: {optionNumber: any, itemList: any, })=>{
+                                    return (
+                                        <>
+                                            {addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
+                                                <>
+                                                <div style={{ display: "flex", justifyContent: "center", }}>
+                                                    <div
+                                                        className={classNames('spm-add-update-child-modal-left', {
+                                                            'spm-add-update-child-modal-option-none': addChildOption+1 === option2.optionNumber,
+                                                        })}
+                                                        onClick={()=>setAddChildNext(addChildNext-1)}>
+                                                        &lt;
                                                     </div>
-                                                    <div className='spm-add-update-child-modal-all-item'>
-                                                        <input 
-                                                            type='checkbox' id={'spm-add-update-option-'+option2.optionNumber}
-                                                            onChange={()=>{
-                                                                var child = addOption[addChildOption].itemList[addChildItem].itemChild;
-                                                                for (var i=0; i< child.length; i++) {
-                                                                    if (child[i].type === option2.optionNumber) {
-                                                                        if (child[i].array.length === option2.itemList.length) {
-                                                                            child.splice(i, i+1);
-                                                                            NumF();
-                                                                            return;
-                                                                        }
-                                                                        for (var j=0; j<option2.itemList.length; j++) {
-                                                                            child[i].array.push(j);
-                                                                        }
-                                                                        child[i].array = Array.from(new Set(child[i].array));
+                                                    <div className='spm-add-update-child-modal-option'>{"옵션"+(option2.optionNumber+1)}</div>
+                                                    <div
+                                                        className={classNames('spm-add-update-child-modal-right', {
+                                                            'spm-add-update-child-modal-option-none': addOption.length-1 === option2.optionNumber,
+                                                        })}
+                                                        onClick={()=>setAddChildNext(addChildNext+1)}>
+                                                        &gt;
+                                                    </div>
+                                                </div>
+                                                <div className='spm-add-update-child-modal-all-item'>
+                                                    <input 
+                                                        type='checkbox' id={'spm-add-update-option-'+option2.optionNumber}
+                                                        onChange={()=>{
+                                                            var child = addOption[addChildOption].itemList[addChildItem].itemChild;
+                                                            for (var i=0; i< child.length; i++) {
+                                                                if (child[i].type === option2.optionNumber) {
+                                                                    if (child[i].array.length === option2.itemList.length) {
+                                                                        child.splice(i, i+1);
                                                                         NumF();
                                                                         return;
                                                                     }
-                                                                }
-                                                                child.push({
-                                                                    type: option2.optionNumber,
-                                                                    array: [],
-                                                                });
-                                                                for (var i=0; i<option2.itemList.length; i++) {
-                                                                    child[child.length-1].array.push(i);
-                                                                }
-                                                                // setAddChildOption(-1);
-                                                                NumF();
-                                                            }}
-                                                            checked={
-                                                                // (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
-                                                                //     if (data.type === option2.optionNumber && data.array.length === option2.itemList.length) return true;
-                                                                // }) !== undefined&& true)
-                                                                (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
-                                                                    if (data.type === option2.optionNumber) return true;
-                                                                }) === undefined&& true)
-                                                            }
-                                                        />
-                                                        <label htmlFor={'spm-add-update-option-'+option2.optionNumber}></label>
-                                                        <div>전체 품목 선택</div>
-                                                    </div>
-                                                    </>
-                                                }
-                                                {option2.itemList.map((item2: {itemNumber: any, itemName: any, })=>{
-                                                    return (
-                                                        (addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
-                                                            <div className='spm-add-update-child-modal-item'> {/* spm-add-update-child-modal */}
-                                                                <input 
-                                                                    type='checkbox' id={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}
-                                                                    className='signup-checkbox-inner'
-                                                                    onChange={()=>{
-                                                                        var child = addOption[addChildOption].itemList[addChildItem].itemChild;
-                                                                        for (var i=0; i< child.length; i++) {
-                                                                            if (child[i].type === option2.optionNumber) {
-                                                                                for (var j=0; j<child[i].array.length; j++) {
-                                                                                    if (child[i].array[j] === item2.itemNumber) {
-                                                                                        child[i].array.splice(j, j+1);
-                                                                                        if (child[i].array.length === 0) child.splice(i, i+1);
-                                                                                        NumF();
-                                                                                        return;
-                                                                                    }
-                                                                                }
-                                                                                child[i].array.push(item2.itemNumber);
-                                                                                NumF();
-                                                                                return;
-                                                                            }
-                                                                        }
-                                                                        child.push({
-                                                                            type: option2.optionNumber,
-                                                                            array: [item2.itemNumber],
-                                                                        });
-                                                                        NumF();
-                                                                    }}
-                                                                    checked={
-                                                                        // (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
-                                                                        //     if (
-                                                                        //         data.array.find((data2: any)=>{
-                                                                        //             if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
-                                                                        //         }) !== undefined
-                                                                        //     ) return true;
-                                                                        // }) !== undefined&& true)
-                                                                        (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
-                                                                            if (
-                                                                                data.array.find((data2: any)=>{
-                                                                                    if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
-                                                                                }) !== undefined
-                                                                            ) return true;
-                                                                        }) !== undefined? false: true)
+                                                                    for (var j=0; j<option2.itemList.length; j++) {
+                                                                        child[i].array.push(j);
                                                                     }
-                                                                />
-                                                                <label htmlFor={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}></label>
-                                                                <div>{(item2.itemNumber+1)+"."}&nbsp;{item2.itemName}</div>
-                                                            </div>
-                                                        )
-                                                    );
-                                                })}
-                                            </>
-                                        );
-                                    })}
-                                </div>
-                            }
+                                                                    child[i].array = Array.from(new Set(child[i].array));
+                                                                    NumF();
+                                                                    return;
+                                                                }
+                                                            }
+                                                            child.push({
+                                                                type: option2.optionNumber,
+                                                                array: [],
+                                                            });
+                                                            for (var i=0; i<option2.itemList.length; i++) {
+                                                                child[child.length-1].array.push(i);
+                                                            }
+                                                            // setAddChildOption(-1);
+                                                            NumF();
+                                                        }}
+                                                        checked={
+                                                            // (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                            //     if (data.type === option2.optionNumber && data.array.length === option2.itemList.length) return true;
+                                                            // }) !== undefined&& true)
+                                                            (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                if (data.type === option2.optionNumber) return true;
+                                                            }) === undefined&& true)
+                                                        }
+                                                    />
+                                                    <label htmlFor={'spm-add-update-option-'+option2.optionNumber}></label>
+                                                    <div>전체 품목 선택</div>
+                                                </div>
+                                                </>
+                                            }
+                                            {option2.itemList.map((item2: {itemNumber: any, itemName: any, })=>{
+                                                return (
+                                                    (addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
+                                                        <div className='spm-add-update-child-modal-item'> {/* spm-add-update-child-modal */}
+                                                            <input 
+                                                                type='checkbox' id={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}
+                                                                className='signup-checkbox-inner'
+                                                                onChange={()=>{
+                                                                    var child = addOption[addChildOption].itemList[addChildItem].itemChild;
+                                                                    for (var i=0; i< child.length; i++) {
+                                                                        if (child[i].type === option2.optionNumber) {
+                                                                            for (var j=0; j<child[i].array.length; j++) {
+                                                                                if (child[i].array[j] === item2.itemNumber) {
+                                                                                    child[i].array.splice(j, j+1);
+                                                                                    if (child[i].array.length === 0) child.splice(i, i+1);
+                                                                                    NumF();
+                                                                                    return;
+                                                                                }
+                                                                            }
+                                                                            child[i].array.push(item2.itemNumber);
+                                                                            NumF();
+                                                                            return;
+                                                                        }
+                                                                    }
+                                                                    child.push({
+                                                                        type: option2.optionNumber,
+                                                                        array: [item2.itemNumber],
+                                                                    });
+                                                                    NumF();
+                                                                }}
+                                                                checked={
+                                                                    // (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                    //     if (
+                                                                    //         data.array.find((data2: any)=>{
+                                                                    //             if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
+                                                                    //         }) !== undefined
+                                                                    //     ) return true;
+                                                                    // }) !== undefined&& true)
+                                                                    (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                        if (
+                                                                            data.array.find((data2: any)=>{
+                                                                                if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
+                                                                            }) !== undefined
+                                                                        ) return true;
+                                                                    }) !== undefined? false: true)
+                                                                }
+                                                            />
+                                                            <label htmlFor={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}></label>
+                                                            <div>{(item2.itemNumber+1)+"."}&nbsp;{item2.itemName}</div>
+                                                        </div>
+                                                    )
+                                                );
+                                            })}
+                                        </>
+                                    );
+                                })}
+                            </div>
+                        }
+                        <div> {/* spmcard-content-inner */}
                             <div style={{ display: 'flex' }}>
                                 <input
                                     className="spm-add-update-main-title spm-add-update-title"
@@ -377,6 +378,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                     }
                                                     addOption.pop();
                                                     setAddOption(addOption);
+                                                    setAddChildOption(-1);
                                                     NumF();
                                                 }}>x
                                             </div>
@@ -451,6 +453,15 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 else setAddChildOption(option.optionNumber);
                                                                 setAddChildNext(option.optionNumber+1);
                                                                 setAddChildItem(item.itemNumber);
+                                                                var n = 0;
+                                                                console.log(addOption[option.optionNumber].itemList.length);
+                                                                for (var i=0; i<option.optionNumber; i++)
+                                                                    for (var j=1; j<addOption[i].itemList.length; j++)
+                                                                        n++;
+                                                                // for (var i=item.itemNumber; i<addOption[option.optionNumber].itemList.length; i++)
+                                                                    // n++;
+                                                                console.log(n);
+                                                                setAddItemLen(n);
                                                             }}>
                                                             이동
                                                         </div>
@@ -470,8 +481,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 }
                                                                 addOption[option.optionNumber].itemList.pop();
 
-                                                                NumF();
                                                                 setAddOption(addOption);
+                                                                setAddChildOption(-1);
+                                                                NumF();
                                                             }}>x
                                                         </div>
                                                         
