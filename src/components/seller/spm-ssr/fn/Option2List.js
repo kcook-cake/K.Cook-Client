@@ -21,20 +21,15 @@ const Option2List = (getData) => {
     var chList = [];
 
     for (var i=0; i<getData.length; i++) {
-        var c = getData[i].optionName.split("(")[0];
-        var cTitle = getData[i].optionName.split("(")[1];
-        
+        var c = getData[i].optionName;
         if (category[c] === undefined) c = "ETC";
         else c = category[c];
-
-        if (cTitle === undefined) cTitle = "";
-        else cTitle = "("+cTitle;
 
         for (var j=0; j<getData[i].itemList.length; j++) {
             chList.push({
                 additionalCost: getData[i].itemList[j].itemPrice,
                 category: c,
-                categoryTitle: cTitle,
+                categoryTitle: (getData[i].optionCategory === ''? '': "("+getData[i].optionCategory+")"),
                 child: getData[i].itemList[j].itemChild,
                 contents: getData[i].itemList[j].itemName,
                 imageUrl: "",

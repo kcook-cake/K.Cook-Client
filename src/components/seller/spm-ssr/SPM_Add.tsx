@@ -24,44 +24,45 @@ interface Props {
 }
 
 function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
-
     //Add
     const Add = () => {
         console.log(Option2List(addOption));
-        //productId 83
-        axios({
-            url: "app/products",
-            method: "POST",
-            data: {
-                "isCake": true,
-                "isOriginShow": false,
-                "isTodayShow": false,
-                "maxOfToday": (addMax==="무한"? -1: parseInt(addMax)),
-                "isTodayCake": addTodayCake,
-                "name": addName,
-                "newOptionsList": Option2List(addOption),
-                "price": addPrice,
-                "salePrice": 0,
-                "todaySaleNumber": 0
-            },
-            headers: {
-                'Content-Type': 'application/json',
-                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-            },
-        }).then((res: any)=>{
-            console.log(res);
-            alert('추가 성공');
-            setAddShowF(false);
-        }).catch((err: any)=>{
-            alert('추가 실패');
-        })
+        //productId 102
+        // axios({
+        //     url: "app/products",
+        //     method: "POST",
+        //     data: {
+        //         "isCake": true,
+        //         "isOriginShow": false,
+        //         "isTodayShow": false,
+        //         "maxOfToday": addMax,
+        //         "isTodayCake": addTodayCake,
+        //         "name": addName,
+        //         "newOptionsList": Option2List(addOption),
+        //         "price": addPrice,
+        //         "salePrice": 0,
+        //         "todaySaleNumber": 0
+        //     },
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+        //     },
+        // }).then((res: any)=>{
+        //     console.log(res);
+        //     alert('추가 성공');
+        //     setAddShowF(false);
+        // }).catch((err: any)=>{
+        //     alert('추가 실패');
+        // })
     };
     const [addImgModal, setAddImgModal] = useState(false);
     const [addImage, setAddImage] = useState(['','','','','']);
     const [addImgNum, setAddImgNum] = useState(0);
     
-    const [addMax, setAddMax] = useState("무한");
     const [addTodayCake, setAddTodayCake] = useState(false);
+    const [maxOfToday, setMaxOfToday] = useState(false);
+    let [addMax, setAddMax] = useState(1000);
+
     const [addChildOption, setAddChildOption] = useState(-1);
     const [addChildItem, setAddChildItem] = useState(-1);
     const [addName, setAddName] = useState('');
@@ -70,6 +71,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
         {
             optionNumber: 0,
             optionName: '사이즈',
+            optionCategory: '',
             itemList: [{
                 itemNumber: 0,
                 itemType: "normal",
@@ -90,7 +92,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     };
 
     const handleOptionName = (e: any, optionId: any, ) => {
-        addOption[optionId].optionName = e.target.value;
+        addOption[optionId].optionCategory = e.target.value;
         NumF();
         setAddOption(addOption);
     };
@@ -154,28 +156,29 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                 </ul>
                             </div>
                             <div className='spm-add-update-today-cake'>
-                                당일 케이크 여부
-                                <label className="today-cake-switch-button">
-                                    <input
-                                        type='checkbox'
-                                        onClick={() => {
-                                            if (addTodayCake) setAddTodayCake(false);
-                                            else setAddTodayCake(true);
-                                        }}
-                                    />
-                                    <span className="today-cake-onoff-switch"></span>
-                                </label>
+                                <input type='checkbox' id='spm-add' onChange={(e)=>setAddTodayCake(e.target.checked)}/>
+                                <label htmlFor='spm-add'></label>
+                                <div>당일 케이크</div>
                             </div>
-                            {/* css 아코디언 */}
                             <div className='spm-add-update-show'>
-                                당일 판매
-                                <select 
-                                    onChange={(e)=>setAddMax(e.target.value)}>
-                                    <option>무한</option>
-                                    <option>1</option>
-                                </select>
-                                개
-                                {/* <input value={1}/> */}
+                                <input 
+                                    type='checkbox' 
+                                    id='spm-add-select' 
+                                    onChange={(e)=>{
+                                        setMaxOfToday(e.target.checked);
+                                        if (maxOfToday) setAddMax(1000);
+                                        else setAddMax(1);
+                                    }} 
+                                />
+                                <label htmlFor='spm-add-select'></label>
+                                <div className={!maxOfToday? 'spm-add-update-show-none': ''}>제한
+                                    <input 
+                                        type={maxOfToday? 'number': 'text'} 
+                                        max={1000} min={1} 
+                                        value={maxOfToday? addMax: "무한"}
+                                        onChange={(e)=>setAddMax(parseInt(e.target.value))}/>
+                                    개
+                                </div>
                             </div>
                         </div>
 
@@ -279,12 +282,12 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                 />
                                 <div className="spm-add-update-right">x</div>
                             </div>
-                            <div className="spm-add-update-price">
+                            <div className="spm-add-update-price" style={{ margin: "0", }}>
                                 <div className="spm-add-update-item-left">
                                     <DragCBtn className="spm-add-update-item-left-icon"/>
                                 </div>
                                 <div style={{ width: "100%", }}>
-                                    <input className="spm-add-update-item-text"/>
+                                    <input className="spm-add-update-item-text" style={{ pointerEvents: "none", }}/>
                                 </div>
                                 <input
                                     className="spm-add-update-price-inner"
@@ -300,13 +303,34 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                             {addOption.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
                                 return (
                                     <form>
+                                        <div style={{ marginLeft: "33px", marginBottom: "5px", }}>{"옵션"+(option.optionNumber+1)+"."}</div>
                                         <div className="spm-add-update-option">
-                                            <input
-                                                className="spm-add-update-title"
-                                                placeholder={"옵션"+(option.optionNumber+1)+" 이름"}
-                                                value={option.optionName}
-                                                onChange={(e)=> {handleOptionName(e, option.optionNumber)}}
-                                            />
+                                            <div>
+                                                <select 
+                                                    onChange={(e)=>{
+                                                        addOption[option.optionNumber].optionName = e.target.value;
+                                                        setAddOption(addOption);
+                                                        NumF();
+                                                    }}>
+                                                    <option>사이즈</option>
+                                                    <option>맛</option>
+                                                    <option>색상</option>
+                                                    <option>디자인</option>
+                                                    <option>사이드데코</option>
+                                                    <option>데코</option>
+                                                    <option>레터링</option>
+                                                    <option>글씨체</option>
+                                                    <option>글씨크기</option>
+                                                    <option>사진</option>
+                                                    <option>포장</option>
+                                                    <option>초</option>
+                                                </select>
+                                                <input 
+                                                    placeholder={"옵션 세부 입력"}
+                                                    value={addOption[option.optionNumber].optionCategory}
+                                                    onChange={(e)=> {handleOptionName(e, option.optionNumber)}}
+                                                />
+                                            </div>
                                             <div
                                                 className="spm-add-update-right"
                                                 onClick={()=>{
@@ -360,7 +384,8 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                             draggable={true}>
                                                             <DragCBtn className="spm-add-update-item-left-icon"/>
                                                         </div>
-                                                        <div style={{ width: "100%", }}>
+                                                        {(item.itemNumber+1)+"."}&nbsp;
+                                                        <div className="spm-add-update-item-text-flex">
                                                             <input
                                                                 className="spm-add-update-item-text"
                                                                 type="text"
@@ -440,7 +465,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         };
                                                         setAddOption(addOption);
                                                         NumF();
-                                                    }}>'텍스트' 추가
+                                                    }}>'텍스트 입력' 추가
                                                 </div>
                                                 
                                                 <div style={{ color: "#000", }}>&nbsp;또는&nbsp;</div>
@@ -456,7 +481,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         };
                                                         setAddOption(addOption);
                                                         NumF();
-                                                    }}>'이미지' 추가
+                                                    }}>'이미지 등록' 추가
                                                 </div>
 
                                             </div>

@@ -1,23 +1,4 @@
 
-// spm-add-update-inner
-// move-tap
-// spm-add-update-content
-//   spm-add-update-img
-//   spm-add-update-arrow
-//   spm-add-update-content-inner
-//     spm-add-update-title
-//     spm-add-update-price
-//     form
-//       spm-add-update-option
-//         spm-add-update-option-list-title(spm-add-update-title)
-//         spm-add-update-item
-//           spm-add-update-item-left
-//           spm-add-update-item-text
-//           spm-add-update-item-price
-//           spm-add-update-item-right
-//         spm-add-update-item-button
-// spm-tap
-
 .spm-add-update-child-modal {
     position: absolute;
     background: yellow;
@@ -48,7 +29,23 @@
 
     //문제
     .spm-add-update-option {
+        width: 100%;
+        margin-left: 33px;
         display: flex;
+        div {
+            margin-bottom: 20px;
+            select {
+                width: 138px; height: 33px;
+                margin-right: 10px;
+                padding-left: 20px;
+                border: 1px solid #e0e0e0;
+            }
+            input {
+                width: 398px; height: 33px;
+                padding-left: 20px;
+                border: 1px solid #e0e0e0;
+            }
+        }
     }
     .spm-add-update-main-title {
         font-size: 15px;
@@ -59,7 +56,7 @@
         height: 55px;
 
         padding-left: 20px;
-        margin-left: 15px;
+        margin-left: 33px;
         margin-bottom: 20px;
 
         border-radius: 5px 5px 0 0;
@@ -70,7 +67,7 @@
     .spm-add-update-right {
         opacity: 0;
         font-size: 18px;
-        padding-top: 12px;
+        // padding-top: 12px;
         padding-left: 5px;
     }
     .spm-add-update-option:hover {
@@ -132,7 +129,7 @@
 }
 
 ul{
-    width: 110px;
+    width: 100px;
     list-style:none;
     padding-left:0px;
 }
@@ -158,7 +155,7 @@ ul{
     width: auto;
     height: 25px !important;
     margin-left: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; //
     display: flex;
 
     font-size: 14px !important;
@@ -166,8 +163,16 @@ ul{
         width: 100%;
     }
     .spm-add-update-child {
-        width: 80px;
+        width: 42px; height: 23px;
+        line-height: 20px;
+        margin: 0 10px;
+
         text-align: center;
+        color: #868686;
+        font-size: 13px;
+
+        border-radius: 5px;
+        border: 1px solid #868686;
     }
     .spm-add-update-item-left-icon,
     .spm-add-update-item-right {
@@ -194,6 +199,9 @@ ul{
         border-radius: 5px;
         border: 1px solid #B2B2B2;
     }
+}
+.spm-add-update-item-text-flex {
+    width: 60%;
 }
 .spm-add-update-item:hover {
     .spm-add-update-item-left-icon,
@@ -230,16 +238,46 @@ ul{
 
 
 .spm-add-update-show {
-    margin-top: 10px;
+    margin-top: 4px;
+    display: flex;
     font-size: 15px;
+    label {
+        margin-top: 2px;
+    }
+    div {
+        margin-left: 5px;
+        input {
+            width: 31px;
+            height: 17px;
+            margin-left: 7px; margin-right: 2px;
+            text-align: right;
+
+            font-size: 10px;
+            border-radius: 3px;
+            border: 1px solid #e0e0e0;
+        }
+    }
+}
+.spm-add-update-show-none {
+    input {
+        text-align: center !important;
+    }
+    pointer-events: none;
 }
 
 
 
 //스위치 todayCake
 .spm-add-update-today-cake {
-    margin-top: 20px;
+    display: flex;
+    margin-top: 13px;
     font-size: 15px;
+    label {
+        margin-top: 2px;
+    }
+    div {
+        margin-left: 5px;
+    }
 }
 .today-cake-switch-button { 
     position: relative; 
@@ -374,7 +412,7 @@ ul{
             height: 55px;
             
             margin: 0; padding: 0;
-            padding-left: 20px;
+            padding-left: 33px;
             margin-bottom: 20px;
             
             border-radius: 5px 5px 0 0;
@@ -415,7 +453,7 @@ ul{
     }
 
     .spm-add-update-img-bar {
-        width: 120px;
+        width: 100px;
         height: 35px;
     }
 
