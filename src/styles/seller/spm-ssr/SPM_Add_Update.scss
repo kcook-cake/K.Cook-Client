@@ -1,6 +1,7 @@
 
 .spm-add-update-child-modal {
     width: 264px;
+    padding-bottom: 20px;
     text-align: center;
     position: absolute;
     left: 475px;
@@ -33,6 +34,31 @@
 .spm-add-update-child-modal-option-none {
     opacity: 0;
     pointer-events: none;
+}
+
+.spm-add-update-child-modal-all-item {
+    margin-left: 23px;
+    margin-bottom: 5px;
+    display: flex;
+
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    label {
+        margin-top: 2px;
+        margin-right: 4px;
+    }
+}
+.spm-add-update-child-modal-item {
+    margin-left: 39px;
+    margin-bottom: 5px;
+    display: flex;
+
+    text-align: left;
+    font-size: 14px;
+    label {
+        margin-right: 4px;
+    }
 }
 
 
