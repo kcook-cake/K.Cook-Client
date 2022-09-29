@@ -1,12 +1,41 @@
 
 .spm-add-update-child-modal {
+    width: 264px;
+    text-align: center;
     position: absolute;
-    background: yellow;
+    left: 475px;
+
+    box-shadow: 0 0 15px rgba(110, 27, 20, 0.4);
+    border-radius: 10px;
+    background-color: #fff;
 }
+.spm-add-update-child-modal-move {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.spm-add-update-child-modal-left {
+    margin-right: 10px;
+}
+.spm-add-update-child-modal-option {
+    padding-top: 2px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.spm-add-update-child-modal-right {
+    margin-left: 10px;
+}
+
 .spm-add-update-child-modal-none {
-    background: green;
+    background-color: green;
     // pointer-events: none;
 }
+.spm-add-update-child-modal-option-none {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
 
 .spm-add-update {
     width: 848px;
@@ -173,6 +202,10 @@ ul{
 
         border-radius: 5px;
         border: 1px solid #868686;
+    }
+    .spm-add-update-child-change {
+        color: #ea5450 !important;
+        border: 1px solid #ea5450 !important;
     }
     .spm-add-update-item-left-icon,
     .spm-add-update-item-right {

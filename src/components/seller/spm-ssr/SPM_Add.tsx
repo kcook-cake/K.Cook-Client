@@ -26,7 +26,6 @@ interface Props {
 function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     //Add
     const Add = () => {
-        console.log(Option2List(addOption));
         //productId 102
         // axios({
         //     url: "app/products",
@@ -65,6 +64,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
 
     const [addChildOption, setAddChildOption] = useState(-1);
     const [addChildItem, setAddChildItem] = useState(-1);
+    const [addChildNext, setAddChildNext] = useState(-1);
     const [addName, setAddName] = useState('');
     const [addPrice, setAddPrice] = useState(0);
     let [addOption, setAddOption] = useState<any>([
@@ -184,11 +184,30 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
 
                         <div> {/* spmcard-content-inner */}
                             {addChildOption>-1&& 
-                                <div className='spm-add-update-child-modal'>
+                                <div className='spm-add-update-child-modal' style={{ top: "230px", }}>
+                                    <div className='spm-add-update-child-modal-move'>이동</div>
                                     {addOption.map((option2: {optionNumber: any, itemList: any, })=>{
                                         return (
                                             <>
-                                                {addChildOption < option2.optionNumber&&
+                                                {addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
+                                                    <>
+                                                    <div style={{ display: "flex", justifyContent: "center", }}>
+                                                        <div
+                                                            className={classNames('spm-add-update-child-modal-left', {
+                                                                'spm-add-update-child-modal-option-none': addChildOption+1 === option2.optionNumber,
+                                                            })}
+                                                            onClick={()=>setAddChildNext(addChildNext-1)}>
+                                                            &lt;
+                                                        </div>
+                                                        <div className='spm-add-update-child-modal-option'>{"옵션"+(option2.optionNumber+1)}</div>
+                                                        <div
+                                                            className={classNames('spm-add-update-child-modal-right', {
+                                                                'spm-add-update-child-modal-option-none': addOption.length-1 === option2.optionNumber,
+                                                            })}
+                                                            onClick={()=>setAddChildNext(addChildNext+1)}>
+                                                            &gt;
+                                                        </div>
+                                                    </div>
                                                     <div 
                                                         className={classNames({
                                                             'spm-add-update-child-modal-none' : 
@@ -225,10 +244,11 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         }}>
                                                         건너뛰기
                                                     </div>
+                                                    </>
                                                 }
                                                 {option2.itemList.map((item2: {itemNumber: any, itemName: any, })=>{
                                                     return (
-                                                        (addChildOption < option2.optionNumber&&
+                                                        (addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
                                                             <div 
                                                                 className={classNames('', {
                                                                     'spm-add-update-child-modal-none': 
@@ -241,6 +261,8 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                     }) !== undefined&& true),
                                                                 })}
                                                                 onClick={()=>{
+                                                                    console.log(addChildOption);
+                                                                    console.log(addChildItem);
                                                                     var child = addOption[addChildOption].itemList[addChildItem].itemChild;
                                                                     for (var i=0; i< child.length; i++) {
                                                                         if (child[i].type === option2.optionNumber) {
@@ -311,7 +333,8 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         addOption[option.optionNumber].optionName = e.target.value;
                                                         setAddOption(addOption);
                                                         NumF();
-                                                    }}>
+                                                    }}
+                                                    value={addOption[option.optionNumber].optionName}>
                                                     <option>사이즈</option>
                                                     <option>맛</option>
                                                     <option>색상</option>
@@ -405,10 +428,14 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                             />
                                                         </div>
                                                         <div
-                                                            className='spm-add-update-child' 
+                                                            className={classNames('spm-add-update-child', {
+                                                                'spm-add-update-child-change':
+                                                                option.itemList[item.itemNumber].itemChild.length !== 0,
+                                                            })} 
                                                             onClick={()=>{
                                                                 if (addChildOption>-1) setAddChildOption(-1);
                                                                 else setAddChildOption(option.optionNumber);
+                                                                setAddChildNext(option.optionNumber+1);
                                                                 setAddChildItem(item.itemNumber);
                                                             }}>
                                                             이동
