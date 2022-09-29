@@ -17,6 +17,7 @@ interface Props {
 function OptionList({ NumF, cusId, getData }: Props) {
   let [selectNum, setSelectNum] = useState(0); //옵션 불투명도
   let [optionNum, setOptionNum] = useState(-1); //옵션 어떤 것 눌렀는지
+  let [itemNum, setItemNum] = useState(0);
 
   let [child, setChild] = useState([]);
 
@@ -106,6 +107,9 @@ function OptionList({ NumF, cusId, getData }: Props) {
                                 ),
                               })}
                               onClick={() => {
+                                itemNum = item.itemNumber;
+                                setItemNum(itemNum);
+
                                 selectNum = option.optionNumber+1;
                                 setSelectNum(selectNum);
 
@@ -114,7 +118,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                                   cusId[option.optionNumber] = item.itemNumber;
                                 }
 
-                                for (var i=0; i<option.itemList.length; i++) {
+                                for (var i=0; i<getData.length; i++) {
                                   child[i] = undefined;
                                 }
                                 for (var i=0; i<selectNum; i++) {
@@ -140,26 +144,57 @@ function OptionList({ NumF, cusId, getData }: Props) {
                       }
                     )}
                 </div>
-                <div
-                  className={classNames('cake-detail-optionlist-btn', {
-                    'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber && cusId[option.optionNumber] !== -2,
-                  })}>
-                  <div></div>
-                  <div>
+                {cusId[option.optionNumber]<0?
+                  <div
+                    className={classNames('cake-detail-optionlist-btn', {
+                      'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber && cusId[option.optionNumber] !== -2,
+                    })}>
+                    <div></div>
+                    <div>
+                      <div
+                        style={{ color: '#ea5450', border: '1px solid #ea5450' }}>
+                        <img src={subtrack} />
+                      </div>
+                      <div
+                        style={{ fontSize: '16px', border: '1px solid #e0e0e0' }}>
+                        1
+                      </div>
+                      <div style={{ color: '#fff', background: '#ea5450' }}>
+                        <img src={add} />
+                      </div>
+                    </div>
+                  </div>:
+                  (option.itemList[itemNum].itemType === 'normal'?
                     <div
-                      style={{ color: '#ea5450', border: '1px solid #ea5450' }}>
-                      <img src={subtrack} />
-                    </div>
-                    <div
-                      style={{ fontSize: '16px', border: '1px solid #e0e0e0' }}>
-                      1
-                    </div>
-                    <div style={{ color: '#fff', background: '#ea5450' }}>
-                      <img src={add} />
-                    </div>
-                  </div>
+                    className={classNames('cake-detail-optionlist-btn', {
+                      'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber && cusId[option.optionNumber] !== -2,
+                    })}>
+                      <div></div>
+                      <div>
+                        <div
+                          style={{ color: '#ea5450', border: '1px solid #ea5450' }}>
+                          <img src={subtrack} />
+                        </div>
+                        <div
+                          style={{ fontSize: '16px', border: '1px solid #e0e0e0' }}>
+                          1
+                        </div>
+                        <div style={{ color: '#fff', background: '#ea5450' }}>
+                          <img src={add} />
+                        </div>
+                      </div>
+                    </div>:
+                    (option.itemList[itemNum].itemType === 'text'?
+                      <div className='cake-detail-optionlist-input'>
+                        <input type='text'/>
+                      </div>:
+                      <div className='cake-detail-optionlist-input'>
+                        <input type='file'/>
+                      </div>
+                    )
+                  )
+                }
 
-                </div>
               </div>
             </>
           );

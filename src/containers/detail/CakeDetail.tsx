@@ -63,13 +63,14 @@ const CakeDetail = () =>{
         LinkClick("Cake");
 
         axios({
-            url: "/app/products/102",
+            url: "/app/products/103",
             method: "GET",
         }).then((res)=>{
             data = res.data.result; setData(data);
             image = data.productImage1; setImage(image);
 
             option = List2Option(data.optionsList); setOption(option);
+            console.log(option);
             for (var i=0; i<option.length; i++) cusId[i] = -1;
             setCus(cus);
         }).catch((err)=>{
