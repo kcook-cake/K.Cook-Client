@@ -44,10 +44,12 @@ const CakeDetail = () =>{
         height = window.innerHeight
         setHeight(height);
     };
-    let [data, getData] = useState({
+    let [image, setImage] = useState(null);
+    let [data, setData] = useState({
         name: '',
         storeName: '',
         price: '',
+        productImage1: null, productImage2: null, productImage3: null, productImage4: null, productImage5: null, 
         optionsList: [],
     });
     useEffect(()=>{
@@ -61,15 +63,14 @@ const CakeDetail = () =>{
         LinkClick("Cake");
 
         axios({
-            url: "/app/products/87",
+            url: "/app/products/102",
             method: "GET",
         }).then((res)=>{
-            data = res.data.result; getData(data);
+            data = res.data.result; setData(data);
+            image = data.productImage1; setImage(image);
+
             option = List2Option(data.optionsList); setOption(option);
-            for (var i=0; i<option.length; i++) {
-                // cus[i] = '선택';
-                cusId[i] = -1;
-            }
+            for (var i=0; i<option.length; i++) cusId[i] = -1;
             setCus(cus);
         }).catch((err)=>{
         })
@@ -82,27 +83,67 @@ const CakeDetail = () =>{
                     <div className='cake-detail-left'>
                         <div className='cake-detail-main-img'>
                             <div className='cake-detail-main-img-inner'>
-                                {true?
-                                    <img src={test1} />:
-                                    <div>~준비중 입니다~</div>
+                                {image!==null? 
+                                    <img src={image} />: 
+                                    <div>~준비중~</div>
                                 }
                             </div>
                         </div>
                         <div className='cake-detail-sub-img'>
                             <div className='cake-detail-sub-img-inner'>
-                                {true? <img src={test1} />: <div>~준비중~</div>}
+                                {data.productImage1===null?
+                                    <div>~준비중~</div>:
+                                    (data.productImage1.length===103?
+                                        <div>~준비중~</div>:
+                                        <img 
+                                            src={data.productImage1} 
+                                            onClick={()=>{ image = data.productImage1; setImage(image); }}/>
+                                    )
+                                }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {true? <img src={test1} />: <div>~준비중~</div>}
+                                {data.productImage2===null?
+                                    <div>~준비중~</div>:
+                                    (data.productImage2.length===103?
+                                        <div>~준비중~</div>:
+                                        <img 
+                                            src={data.productImage2} 
+                                            onClick={()=>{ image = data.productImage2; setImage(image); }}/>
+                                    )
+                                }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {false? <img src={test1} />: <div>~준비중~</div>}
+                                {data.productImage3===null?
+                                    <div>~준비중~</div>:
+                                    (data.productImage3.length===103?
+                                        <div>~준비중~</div>:
+                                        <img 
+                                            src={data.productImage3} 
+                                            onClick={()=>{ image = data.productImage3; setImage(image); }}/>
+                                    )
+                                }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {false? <img src={test1} />: <div>~준비중~</div>}
+                                {data.productImage4===null?
+                                    <div>~준비중~</div>:
+                                    (data.productImage4.length===103?
+                                        <div>~준비중~</div>:
+                                        <img 
+                                            src={data.productImage4} 
+                                            onClick={()=>{ image = data.productImage4; setImage(image); }}/>
+                                    )
+                                }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {false? <img src={test1} />: <div>~준비중~</div>}
+                                {data.productImage5===null?
+                                    <div>~준비중~</div>:
+                                    (data.productImage5.length===103?
+                                        <div>~준비중~</div>:
+                                        <img 
+                                            src={data.productImage5} 
+                                            onClick={()=>{ image = data.productImage5; setImage(image); }}/>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className='cake-detail-box'>
@@ -239,7 +280,12 @@ const CakeDetail = () =>{
                                 </div>
                                 <div className='cake-detail-right-btn'>
                                     <div style={{ color: "#000", border: "1px solid #e0e0e0", background: "#fff"}}>장바구니</div>
-                                    <div>주문하기</div>
+                                    <div
+                                        onClick={()=>{
+                                            console.log(cusId);
+                                        }}>
+                                        주문하기
+                                    </div>
                                 </div>
 
                             </div>

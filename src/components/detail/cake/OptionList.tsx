@@ -21,7 +21,6 @@ function OptionList({ NumF, cusId, getData }: Props) {
   let [child, setChild] = useState([]);
 
   useEffect(() => {
-
   }, []);
 
   return (
@@ -52,7 +51,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                   })}
                   onClick={() => {
                     //클릭할 때마다 옵션이 보이도록 해야함
-                    if (optionNum === -1) {
+                    if (optionNum === -1 && cusId[option.optionNumber] !== -2) {
                       optionNum = option.optionNumber;
                       setOptionNum(optionNum);
                     } else {
@@ -60,8 +59,30 @@ function OptionList({ NumF, cusId, getData }: Props) {
                       setOptionNum(optionNum);
                     }
                   }}>
-                    {cusId[option.optionNumber]}
-                  {/* {cusId[option.optionNumber] === -1? "선택" : option.itemList[cusId[option.optionNumber]].itemName} */}
+                    {child.length === getData.length?
+                      (child[option.optionNumber] === undefined?
+                        (cusId[option.optionNumber] === -1 || cusId[option.optionNumber] === -2?
+                          "선택":
+                          option.itemList[cusId[option.optionNumber]].itemName
+                        ):
+                        (child[option.optionNumber].array.length === option.itemList.length?
+                          <div
+                            onClick={()=>{
+                              selectNum = option.optionNumber+1;
+                              setSelectNum(selectNum);
+                              
+                              cusId[option.optionNumber] = -2;
+                            }}>
+                            없음
+                          </div>:
+                          (cusId[option.optionNumber] === -1 || cusId[option.optionNumber] === -2?
+                            "선택":
+                            option.itemList[cusId[option.optionNumber]].itemName
+                          )
+                        )
+                      ):
+                      "선택"
+                    }
                     {option.itemList.map(
                       (item: {
                         itemId: any;
@@ -72,50 +93,56 @@ function OptionList({ NumF, cusId, getData }: Props) {
                         itemChild: any;
                       }) => {
                         return (
-                          <div
-                            className={classNames("cake-detail-optionlist-select-option", {
-                              'cake-detail-optionlist-option-none': 
-                              (child[option.optionNumber] === undefined?
-                                false:
-                                child[option.optionNumber].array.find((data: any,)=>{
-                                  if (data === item.itemNumber)
-                                    return true;
-                                }) !== undefined
-                              ),
-                            })}
-                            onClick={() => {
-                              selectNum = option.optionNumber+1;
-                              setSelectNum(selectNum);
+                          <>
+                            <div
+                              className={classNames('cake-detail-optionlist-select-option', {
+                                'cake-detail-optionlist-option-none': 
+                                (child[option.optionNumber] === undefined?
+                                  false:
+                                  child[option.optionNumber].array.find((data: any,)=>{
+                                    if (data === item.itemNumber)
+                                      return true;
+                                  }) !== undefined
+                                ),
+                              })}
+                              onClick={() => {
+                                selectNum = option.optionNumber+1;
+                                setSelectNum(selectNum);
 
-                              for (var i=optionNum; i<getData.length; i++) cusId[i] = -1;
-                                cusId[option.optionNumber] = item.itemNumber;
-
-                              child = [];
-                              for (var i=0; i<selectNum; i++) {
-                                var childList = getData[i].itemList[cusId[i]].itemChild;
-                                if (childList === undefined) continue;
-
-                                for (var j=0; j<childList.length; j++) {
-                                  if (child[childList[j].type] !== undefined) {
-                                    child[childList[j].type].array = child[childList[j].type].array.concat(childList[j].array);
-                                    child[childList[j].type].array = Array.from(new Set(child[childList[j].type].array));
-                                  } else child[childList[j].type] = childList[j];
+                                for (var i=optionNum; i<getData.length; i++) {
+                                  cusId[i] = -1;
+                                  cusId[option.optionNumber] = item.itemNumber;
                                 }
-                              }
-                              setChild(child);
 
-                              console.log(child);
-                              NumF();
-                            }}>
-                              {item.itemName}
-                          </div>
+                                for (var i=0; i<option.itemList.length; i++) {
+                                  child[i] = undefined;
+                                }
+                                for (var i=0; i<selectNum; i++) {
+                                  if (cusId[i]<0) continue; 
+                                  var childList = getData[i].itemList[cusId[i]].itemChild;
+                                  if (childList === undefined) continue;
+
+                                  for (var j=0; j<childList.length; j++) {
+                                    if (child[childList[j].type] !== undefined) {
+                                      child[childList[j].type].array = child[childList[j].type].array.concat(childList[j].array);
+                                      child[childList[j].type].array = Array.from(new Set(child[childList[j].type].array));
+                                    } else child[childList[j].type] = childList[j];
+                                  }
+                                }
+
+                                setChild(child);
+                                NumF();
+                              }}>
+                                {item.itemName}
+                            </div>
+                          </>
                         );
                       }
                     )}
                 </div>
                 <div
                   className={classNames('cake-detail-optionlist-btn', {
-                    'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber,
+                    'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber && cusId[option.optionNumber] !== -2,
                   })}>
                   <div></div>
                   <div>
@@ -131,6 +158,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                       <img src={add} />
                     </div>
                   </div>
+
                 </div>
               </div>
             </>

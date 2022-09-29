@@ -27,18 +27,17 @@ const ImageModal = ({
     }: Props) => {
 
     const AddImageF = () => {
-        for (var i=0; i<5; i++) {
+        for (var i=1; i<6; i++) {
+            // if (formData.get("productImage"+(i)) === formData2.get("productImage"+(i))) continue;
             formData.append(
                 "productImage"+(i),
                 new Blob([JSON.stringify(formData.get("productImage"+(i)))], { type: "application/json" })
             )
         }
         axios({
-            url: "/app/products/83/photos",
+            url: "/app/products/102/photos",
             method: "PATCH",
-            data: {
-                formData,
-            },
+            data: formData,
             headers: {
                 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundarybuOGBs9coioS5Kb9',
                 'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
@@ -192,11 +191,12 @@ const ImageModal = ({
 
 
     let [formData, setFormData] = useState(new FormData);
+    let [formData2, setFormData2] = useState(new FormData);
     // var formData = new FormData();
     useEffect(()=>{
         for (var i=1; i<6; i++) {
-            formData.append("productImage"+(i), null);
-            setFormData(formData);
+            formData.append("productImage"+(i), null); setFormData(formData);
+            formData2.append("productImage"+(i), null); setFormData2(formData2);
         }
     },[]);
 

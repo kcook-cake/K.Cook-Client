@@ -50,13 +50,11 @@ const List2Option = (getData) => {
         else {
             chOptionList[j].itemList.push({
                 itemId: getData[i].optionsId,
-                // itemNumber: 1, //
                 itemNumber: chOptionList[j].itemList.length,
                 itemType: getData[i].itemType,
-                // itemType: "normal",
                 itemName: getData[i].contents,
                 itemPrice: getData[i].additionalCost,
-                itemChild: getData[i].child,
+                itemChild: getData[i].childOptionsList,
             })
         }
     }

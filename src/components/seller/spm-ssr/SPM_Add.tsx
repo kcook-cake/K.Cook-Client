@@ -27,6 +27,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
 
     //Add
     const Add = () => {
+        console.log(Option2List(addOption));
         //productId 83
         axios({
             url: "app/products",
