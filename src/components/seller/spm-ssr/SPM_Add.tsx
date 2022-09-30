@@ -235,7 +235,6 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                             for (var i=0; i<option2.itemList.length; i++) {
                                                                 child[child.length-1].array.push(i);
                                                             }
-                                                            // setAddChildOption(-1);
                                                             NumF();
                                                         }}
                                                         checked={
@@ -454,13 +453,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 setAddChildNext(option.optionNumber+1);
                                                                 setAddChildItem(item.itemNumber);
                                                                 var n = 0;
-                                                                console.log(addOption[option.optionNumber].itemList.length);
                                                                 for (var i=0; i<option.optionNumber; i++)
                                                                     for (var j=1; j<addOption[i].itemList.length; j++)
                                                                         n++;
-                                                                // for (var i=item.itemNumber; i<addOption[option.optionNumber].itemList.length; i++)
-                                                                    // n++;
-                                                                console.log(n);
+                                                                
                                                                 setAddItemLen(n);
                                                             }}>
                                                             이동

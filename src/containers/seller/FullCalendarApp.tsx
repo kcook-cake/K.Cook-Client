@@ -258,14 +258,16 @@ function FullCalendarApp (session: any, auth: any,){
                 />
             </div>
             {/* <div className='sfc-background'></div> */}
-            <div
-                className='sfc-deadline-btn'
-                onClick={()=>{
-                    setDeadLineModal(true);
-                    console.log("a");
-                }}>
-                마감일 설정
-            </div>
+            {pathname==="SSOCalendar"? (
+                <div
+                    className='sfc-deadline-btn'
+                    onClick={()=>{
+                        setDeadLineModal(true);
+                        console.log("a");
+                    }}>
+                    마감일 설정
+                </div>
+            ): null}
 
         </div>
         {/* <div className="fcap-back" style={{ width: "5px", height: "1160px", }}></div> */}
