@@ -105,7 +105,13 @@ function SPM_Update({ idx, NumF, resize, oriShow, getUpdateData }: Props) {
     '맛 옵션2',
     '맛 옵션3',
   ]);
-  const [optionText3, setOptionText3] = useState(['색상', '색상']);
+  const [optionText3, setOptionText3] = useState([
+    '색상',
+    '색상 세부 입력',
+    '색상 1',
+    '색상 2',
+    '색상 3',
+  ]);
 
   const [hide, setHide] = useState(false);
   const [todayCakeLimit, setTodayCakeLimit] = useState('');
@@ -283,7 +289,11 @@ function SPM_Update({ idx, NumF, resize, oriShow, getUpdateData }: Props) {
                             <h1>옵션{idx + 1}.</h1>
                             <div>
                               <div className="spm-add-update-update-div-first">
-                                <div>
+                                <div
+                                  className={classNames({
+                                    option_selectbar_column_focus: hide,
+                                  })}
+                                >
                                   <div>
                                     {/* 클릭하면 아래껏들 사라지게 설정 :: !hide */}
                                     {idx === 0 && (
@@ -295,35 +305,74 @@ function SPM_Update({ idx, NumF, resize, oriShow, getUpdateData }: Props) {
                                     {idx === 2 && (
                                       <span>{optionText3[0]} </span>
                                     )}
-                                    <RiArrowDropDownLine />
-                                    {/*  {!hide ? (
+                                    {!hide ? (
                                       <RiArrowDropDownLine
                                         onClick={() => {
-                                          //                                          setHide((prev) => !prev);
+                                          setHide((prev) => !prev);
                                         }}
                                       />
                                     ) : (
                                       <RiArrowDropUpLine
                                         onClick={() => {
-                                          //                                        setHide((prev) => !prev);
+                                          setHide((prev) => !prev);
                                         }}
-                                      /> */}
+                                      />
+                                    )}
                                   </div>
-                                  {/* {hide && (
+                                  {hide && (
                                     <>
-                                      <div
-                                        className={classNames({
-                                          option_selectbar_focus: hide,
-                                        })}
-                                      >
-                                        hello
-                                      </div>
-                                      <div>bye</div>
+                                      {idx === 0 && (
+                                        <>
+                                          <div>
+                                            <span>{optionText1[2]}</span>
+                                          </div>
+                                          <div>
+                                            <span>{optionText1[3]}</span>
+                                          </div>
+                                          <div>
+                                            <span>{optionText1[4]}</span>
+                                          </div>
+                                        </>
+                                      )}
+                                      {idx === 1 && (
+                                        <>
+                                          <div>
+                                            <span>{optionText2[2]}</span>
+                                          </div>
+                                          <div>
+                                            <span>{optionText2[3]}</span>
+                                          </div>
+                                          <div>
+                                            <span>{optionText2[4]}</span>
+                                          </div>
+                                        </>
+                                      )}
+                                      {idx === 2 && (
+                                        <>
+                                          <div>
+                                            <span>{optionText3[2]}</span>
+                                          </div>
+                                          <div>
+                                            <span>{optionText3[3]}</span>
+                                          </div>
+                                          <div>
+                                            <span>{optionText3[4]}</span>
+                                          </div>
+                                        </>
+                                      )}
                                     </>
-                                  )} */}
+                                  )}
                                 </div>
                               </div>
-                              <div className="spm-add-update-update-div-second">
+                              <div
+                                className={classNames(
+                                  'spm-add-update-update-div-second',
+                                  {
+                                    'spm-add-update-update-div-second-focus':
+                                      hide,
+                                  }
+                                )}
+                              >
                                 {idx === 0 && <span>{optionText1[1]}</span>}
                                 {idx === 1 && <span>{optionText2[1]}</span>}
                                 {idx === 2 && <span>{optionText3[1]}</span>}
@@ -582,6 +631,7 @@ function SPM_Update({ idx, NumF, resize, oriShow, getUpdateData }: Props) {
                       ],
                     };
                     NumF();
+                    console.log('assd');
                   }}
                 >
                   + 옵션 추가

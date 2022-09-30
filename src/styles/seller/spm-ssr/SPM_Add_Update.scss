@@ -500,8 +500,36 @@ ul {
   }
 }
 
-.option_selectbar_focus {
+.option_selectbar_column_focus {
   background-color: white;
+
+  position: absolute !important;
+
+  > div {
+    > span:first-child {
+      position: relative;
+      top: -2px;
+      right: 10px;
+
+      min-width: 70px;
+      height: 20px;
+      margin: 3px 0 4px 20px;
+      font-family: NotoSansCJKkr;
+      font-size: 14px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.93;
+      letter-spacing: normal;
+      text-align: left;
+      color: #868686;
+    }
+  }
+}
+
+.spm-add-update-update-div-second-focus {
+  position: relative;
+  left: 127px;
 }
 
 @media (max-width: 767px) {
