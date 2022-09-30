@@ -1,64 +1,176 @@
 
-//order 모달창
 .sfc-second-modal {
+    width: 472px;
+    height: 409px;
+    padding: 5px;
+    position: absolute;
+
+    box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
+    border-radius: 10px;
+    background-color: #fff;
     z-index: 999;
 }
 
+
+
+.sfc-second-modal-box::-webkit-scrollbar {
+    width: 8px;
+}
+.sfc-second-modal-box::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+}
+.sfc-second-modal:hover .sfc-second-modal-box::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+}
 .sfc-second-modal-box {
-    width: 472px;
-    height: auto;
+    width: 462px;
+    height: 399px;
+    overflow-y: scroll;
+}
+// .sfc-second-modal-box-bar {
+//     width: 20px;
+//     height: 409px;
+
+//     position: absolute;
+//     top: 0; right: 0;
+//     opacity: 1;
+//     visibility: visible;
+
+//     border-radius: 10px;
+//     background-color: #fff;
+//     transition: all .3s;
+// }
+// .sfc-second-modal:hover .sfc-second-modal-box-bar {
+//     opacity: 0;
+//     visibility: hidden;
+//     transition: all .3s;
+// }
+
+
+.sfc-second-modal-inner {
+    margin: 40px;
 }
 
-.sfc-second-modal-grid {
-    margin-bottom: 10px;
-    display: grid;
-    grid-template-columns: 5fr 1.5fr 0.5fr;
-    .left-sub {
-        min-width: 69px;
-    }
-    .sfc-second-modal-time {
-        margin-right: 29px;
-        input {
-            width: 100%;
-            height: 40px;
 
-            text-align: center;
-            border: 1px solid #e0e0e0;
-        }
-    }
-    .sfc-second-modal-subtract {
-        img {
-            width: 23px;
-            margin-top: 8px;
-        }
+
+.sfc-second-modal-add-group {
+    float: right;
+    font-size: 14px;
+    color: #8b9094;
+}
+.sfc-second-modal-content-top {
+    display: flex;
+    margin-bottom: 6px;
+    input {
+        width: 54px; height: 22px;
+        text-align: right;
+
+        border-radius: 5px;
+        border: 1px solid #e0e0e0;
     }
 }
+.sfc-second-modal-content-group {
+    margin-right: 10px;
+}
+
+
+
+.sfc-second-modal-content-middle::-webkit-scrollbar {
+    height: 8px;
+}
+.sfc-second-modal-content-middle::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #fff;
+}
+.sfc-second-modal-content-middle-flex:hover .sfc-second-modal-content-middle::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+}
+.sfc-second-modal-content-middle {
+    display: flex;
+    margin-left: 18px;
+    margin-bottom: 12px;
+
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+}
+.sfc-second-modal-content-middle-bar {
+    width: 360px;
+    height: 20px;
+    margin-top: 30px;
+
+    position: absolute;
+    opacity: 1;
+    visibility: visible;
+
+    background-color: #fff;
+    transition: all .3s;
+}
+.sfc-second-modal-content-middle-bar:hover {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+
+
+.sfc-second-modal-content-time {
+    min-width: 100px; height: 30px;
+    line-height: 27px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+
+    text-align: center;
+    color: #868686;
+    font-size: 14px;
+
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+
 
 .sfc-second-modal-add {
-    text-align: center;
+    margin: 0 3px;
+    margin-top: 3px;
     img {
-        width: 23px;
-        margin-top: 10px;
+        width: 15px; height: 15px;
+    }
+}
+.sfc-second-modal-hr {
+    border: 1px solid #dddddd;
+}
+.sfc-second-modal-all-cnt {
+    margin-top: 22px;
+    margin-bottom: 40px;
+    display: flex;
+    float: right;
+
+    color: #ea5450;
+    font-weight: 600;
+    input {
+        width: 54px; height: 22px;
+        text-align: right;
+
+        border-radius: 5px;
+        border: 1px solid #e0e0e0;
+    }
+    div {
+        color: #000;
+        font-weight: 500;
     }
 }
 
 
 
-@media (max-width: 767px) {
-    .sfc-second-modal-box {
-        width: 90%;
-        // margin: 0 20px;
-    }
+.sfc-second-modal-btn {
+    margin-bottom: 70px;
+    button {
+        width: 100px; height: 30px;
+        float: right;
 
-    .sfc-second-modal-grid {
-        .sfc-second-modal-time {
-            margin-right: 0;
-            input {
-                width: 80%;
-            }
-        }
-        .sfc-second-modal-subtract {
-            margin-left: 10px;
-        }
+        border-radius: 5px;
+        border: 1px solid #ea5450;
+        background-color: #ea5450;
     }
 }

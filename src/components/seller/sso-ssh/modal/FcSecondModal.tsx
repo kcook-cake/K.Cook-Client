@@ -39,17 +39,16 @@ function OrderModal({
 
   return (
     <>
-      <div className="sfc-second-modal">
-        {orderModalShow ? (
+      <div className="sfc-second-modal-flex">
+        {orderModalShow && (
           <>
             <div
-                className="spm-modal-background"
-                style={{ top: window.pageYOffset }}>
+              className="spm-modal-background"
+              style={{ top: window.pageYOffset }}>
             </div>
-
+            
             <div
-              id='sfc-second-modal-height'
-              className="spm-modal-box sfc-second-modal-box"
+              className="sfc-second-modal"
               style={{
                   top:
                       resize <= 767 ? 
@@ -57,72 +56,77 @@ function OrderModal({
                       window.innerHeight - height < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - height) / 2,
                   left: resize <= 767 ? 20 : (resize - 472) / 2,
               }}>
-                <div className="spm-modal-title">주문 건수</div>
-                <div className="spm-modal-subtitle">
-                  <div className='sfc-second-modal-grid'>
-                    <div className='left'>시간 옵션</div>
-                    <div className='left-sub'>건수</div>
+                <div className='sfc-second-modal-box'>
+                  <div className='sfc-second-modal-inner'>
+                    <div className="spm-modal-title">주문/픽업 설정</div>
+                    <div className="sfc-second-modal-add-group">+ 그룹 추가</div>
+                    <div style={{ height: "22px"}}></div>
+                    {[0, 1, 2].map((data: any,)=>{
+                      return (
+                        <>
+                          <div className='sfc-second-modal-content-top'>
+                            <div className='sfc-second-modal-content-group'>그룹{data+1}.</div>
+                            <div>
+                              <input type='number' value={0}/>
+                              건
+                            </div>
+                          </div>
+                          <div className='sfc-second-modal-content-middle-flex'>
+                            <div className='sfc-second-modal-content-middle'>
+                              {[0, 1, 2, 3, 4, 5, 6, 7].map((data: any,)=>{
+                                return (
+                                  <>
+                                    <div className='sfc-second-modal-content-time'>
+                                      {data+1}
+                                    </div>
+                                  </>
+                                );
+                              })}
+                              <div className='sfc-second-modal-add'>
+                                <img src={add} />
+                              </div>
+                              {/* <div className='sfc-second-modal-content-middle-bar'></div> */}
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                    <hr className='sfc-second-modal-hr' />
+                    <div className='sfc-second-modal-all-cnt' >
+                      하루 총 주문 가능 개수&nbsp;&nbsp;
+                      <div>
+                        <input type='number' value={0}/>
+                        건
+                      </div>
+                    </div>
+                    <div style={{ height: "97px", }}></div>
+
+                    <div className="sfc-second-modal-btn">
+                        <button
+                        style={{ color: "#fff", }}
+                          onClick={() => {
+                              KCOOKScroll(false);
+                              setOrderModalShowF(false);
+                              NumF();
+                          }}>
+                          등록
+                        </button>
+                        <button
+                          style={{ marginRight: "12px", color: "#ea5450", backgroundColor: "#fff", }}
+                          onClick={() => {
+                              KCOOKScroll(false);
+                              setOrderModalShowF(false);
+                              NumF();
+                          }}>
+                          취소
+                        </button>
+                    </div>
                   </div>
-                  {["시간 입력", 2, 3].map((data: any, idx: any,)=>{
-                    return (
-                      <>
-                        {/* <div style={{ display: (resize > 767? "flex": "block"), }}> */}
-                        <div className='sfc-second-modal-grid sfc-second-modal-content'>
-                            <div className='sfc-second-modal-time'>
-                              <input value={data} />
-                            </div>
-                          
-                            <div className='cake-detail-optionlist-btn'>
-                                <div className=''>
-                                    <div style={{ color: "#ea5450", border: "1px solid #ea5450", }}>
-                                        <img src={sub_subtract} style={{ marginRight: "5px", }}/>
-                                    </div>
-                                    <div style={{ fontSize: "16px", border: "1px solid #e0e0e0" }}>
-                                        1
-                                    </div>
-                                    <div style={{ color: "#fff", background: "#ea5450", }}>
-                                        <img src={sub_add} style={{ marginRight: "5px", }} />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='sfc-second-modal-subtract'>
-                              <img src={subtract} />
-                            </div>
-
-                        </div>
-                      </>
-                    );
-                  })}
                 </div>
-                <div className='sfc-second-modal-add'>
-                  <img src={add} />
-                </div>
-
-                <div className="spmdetail-content-btn-box spm-modal-btn-box">
-                    <button
-                      className="spmdetail-content-btn"
-                      onClick={() => {
-                          KCOOKScroll(false);
-                          setOrderModalShowF(false);
-                          NumF();
-                      }}>
-                      등록
-                    </button>
-                    <button
-                      className="spmdetail-content-btn"
-                      style={{ color: "#ea5450", background: "#fff", }}
-                      onClick={() => {
-                          KCOOKScroll(false);
-                          setOrderModalShowF(false);
-                          NumF();
-                      }}>
-                      취소
-                    </button>
-                </div>
+                {/* <div className='sfc-second-modal-box-bar'></div> */}
             </div>
           </>
-        ) : null}
+        )}
       </div>
     </>
   );

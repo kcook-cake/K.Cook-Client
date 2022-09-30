@@ -12,6 +12,7 @@ import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
+import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
 
 function FullCalendarApp (session: any, auth: any,){
     const [num, setNum] = useState(0);
@@ -19,6 +20,8 @@ function FullCalendarApp (session: any, auth: any,){
     //모달창
     const [orderModalShow, setOrderModalShow] = useState(false);
     const [modalShow, setModalShow] = useState(false);
+    const [deadLineModal, setDeadLineModal] = useState(false);
+
     const [date, setDate] = useState("");
     const [dateT, setDateT] = useState("");
     const [title, setTitle] = useState("");
@@ -67,62 +70,7 @@ function FullCalendarApp (session: any, auth: any,){
   // /SellerOrder/{id}
   return(
     <>
-        {/* FcSecondModal */}
-        <FcSecondModal
-            NumF={()=>setNum(num+1)} resize={resize} height={272.26+50*3}
-            orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} 
-        />
-
-        {/* FcFirstModal */}
-        {modalShow&&
-            <div className="fcap calendar-modal-flex fcap-back" style={{ left: (x+window.pageXOffset+8)+"px", top: (y+window.pageYOffset+37)+"px", }}>
-                <div className="calendar-modal-top"></div>
-                <div id="calendar-modal">
-                    <div style={{ width: "5px", height: "35px", }}></div>
-                    <div className="calendar-modal-box">{date}</div>
-                    <br/>
-                    <div style={{ width: "5px", height: "20px", }}></div>
-                    <div className="calendar-modal-box">
-                        <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                            <button className="calendar-button">예약 확인</button> 
-                        </Link>
-                        <button 
-                            className="calendar-button"
-                            onClick={()=>{
-                                KCOOKScroll(true);
-                                setOrderModalShow(true);
-                            }}>
-                            주문 건수 설정
-                        </button> {/* 휴일해제 */}
-                    </div>
-                </div>
-            </div>
-        }
-
         <div id="sfc" className={"sfc "+pathname}>
-            {/* FcFirstModal */}
-            {modalShow&&
-                <div className="calendar-modal-flex fcam">
-                    <div id="calendar-modal" style={{ top: (modalHeight-270)+"px", }}> {/* modalHeight */}
-                        <div style={{ width: "5px", height: "35px", }}></div>
-                        <div className="calendar-modal-box">{date}</div>
-                        <div style={{ width: "5px", height: "10px", }}></div>
-                        <div className="calendar-modal-box-title">{title}</div>
-                        <br/>
-                        <div className="calendar-modal-blank"></div>
-                        <div className="calendar-modal-box">
-                            <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                                <button className="calendar-button">예약 확인</button> 
-                            </Link>
-                            <button 
-                                className="calendar-button"
-                                onClick={()=>setOrderModalShow(true)}>
-                                주문 건수 설정
-                            </button> {/* 휴일해제 */}
-                        </div>
-                    </div>
-                </div>
-            }
             <div className="seller-mypage-top sso-ssh-top">
                 <div className="seller-mypage-front-title">{pathname==="SSOCalendar"? '주문확인': '판매내역'}</div>
                 <div className='ss-fc-link-flex'>
@@ -143,7 +91,50 @@ function FullCalendarApp (session: any, auth: any,){
                     </Link>
                 </div>
             </div>
+            
             <div className="seller-calendar">
+                {/* FcSecondModal */}
+                <FcSecondModal
+                    NumF={()=>setNum(num+1)} resize={resize} height={272.26+50*3}
+                    orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} 
+                />
+                {/* FcFirstModal */}
+                {modalShow&&
+                    <div 
+                        className="calendar-modal-flex" //fcap fcap-back
+                        style={{ 
+                            marginLeft: (5+x*123.5)+"px", 
+                            // left: (400)+"px",
+                            marginTop: (y+window.pageYOffset-277)+"px", 
+                        }}>
+                        <div className="calendar-modal-top"></div>
+                        <div id="calendar-modal">
+                            <div style={{ width: "5px", height: "35px", }}></div>
+                            <div className="calendar-modal-box">{date}</div>
+                            <br/>
+                            <div style={{ width: "5px", height: "20px", }}></div>
+                            <div className="calendar-modal-box">
+                                <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
+                                    <button className="calendar-button">예약 확인</button> 
+                                </Link>
+                                <button 
+                                    className="calendar-button"
+                                    onClick={()=>{
+                                        KCOOKScroll(true);
+                                        setOrderModalShow(true);
+                                    }}>
+                                    주문 건수 설정
+                                </button> {/* 휴일해제 */}
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {/* DeadLineModal */}
+                <DeadLineModal
+                    NumF={()=>setNum(num+1)} 
+                    deadLineModal={deadLineModal} setDeadLineModalF={setDeadLineModal} />
+
                 <FullCalendar
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                     initialView="dayGridMonth"
@@ -239,13 +230,14 @@ function FullCalendarApp (session: any, auth: any,){
                         const date = e.event.startStr;
 
                         let d = e.event._instance?.range.start.toString().split(" ")[0]
-                        if(d==='Mon') d="월요일"; 
-                        else if(d==='Tue') d="화요일";
-                        else if(d==='Wed') d="수요일";
-                        else if(d==='Thu') d="목요일";
-                        else if(d==='Fri') d="금요일";
-                        else if(d==='Sat') d="토요일";
-                        else d="일요일";
+                        var cnt = 0;
+                        if(d==='Mon') { d="월요일"; cnt=0; }
+                        else if(d==='Tue') { d="화요일"; cnt=1; }
+                        else if(d==='Wed') { d="수요일"; cnt=2; }
+                        else if(d==='Thu') { d="목요일"; cnt=3; }
+                        else if(d==='Fri') { d="금요일"; cnt=4; }
+                        else if(d==='Sat') { d="토요일"; cnt=5; }
+                        else { d="일요일"; cnt=6; }
                         
                         setTitle(e.event._def.title);
                         setUpdateNum(parseInt(e.event._def.title.split("/")[1]));
@@ -258,11 +250,23 @@ function FullCalendarApp (session: any, auth: any,){
                         $(".fc-daygrid-day[data-date='"+date+"'] .fc-event-main-frame").css("background", "#ea5450");
 
                         const xy = document.querySelector(".fc-daygrid-day[data-date='"+date+"']") as Element;
-                        setX(xy.getBoundingClientRect().left); setY(xy.getBoundingClientRect().top);
+                        // setX(xy.getBoundingClientRect().left);
+                        setX(cnt);
+                        setY(xy.getBoundingClientRect().top);
                         setModalShow(true);
                     }}
                 />
             </div>
+            {/* <div className='sfc-background'></div> */}
+            <div
+                className='sfc-deadline-btn'
+                onClick={()=>{
+                    setDeadLineModal(true);
+                    console.log("a");
+                }}>
+                마감일 설정
+            </div>
+
         </div>
         {/* <div className="fcap-back" style={{ width: "5px", height: "1160px", }}></div> */}
         {/* <FullCalendarAppMobile /> */}

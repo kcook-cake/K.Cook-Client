@@ -1,8 +1,20 @@
 @import "../reset.scss";
 
+
+.sfc-background {
+    min-width: 869px;
+    height: 1160px;
+
+    position: absolute;
+    background-color: #fff;
+    z-index: 1 !important;
+}
+
+
+
 @media(min-width: 768px) {
     .sfc {
-        width: 100%;
+        min-width: 869px;
         height: 1160px;
         padding-top: 90px;
         // padding-left: 10px;
@@ -18,6 +30,7 @@
             margin: auto !important;
         }
         .seller-calendar {
+            min-width: 869px;
             padding: 21px 2px 2px 2px;
             
             .fc-toolbar-chunk {
@@ -158,12 +171,19 @@
         bottom: -40px; //주문: 아래 
         left: 0px;
     }
-    @media (min-width: 768px) {
+    // @media (min-width: 768px) {
+    .fc-daygrid-event {
+        border: none !important; //선
+        background-color: #fff !important; //선
+    }
+    // }
+    .fc-day-today {
         .fc-daygrid-event {
             border: none !important; //선
-            background-color: #fff !important; //선
+            background-color: rgb(255, 250, 223) !important; //선
         }
     }
+
     .fc-event-main-frame {
         width: 115px !important;
         // background-color: rgb(0, 0, 0, 0) !important;
@@ -260,7 +280,7 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     top: -5px; left: 9px;
-    z-index: 998;
+    z-index: 997;
 }
 #calendar-modal {
     position: absolute;
@@ -270,10 +290,10 @@
     // bottom: 20%; //숫자작아질수록 아래로 내려감
     
     border-radius: 10px;
-    background-color: white;
+    background-color: #fff;
     font-weight: 700;
     box-shadow: 0px 0px 9px rgb(179, 122, 122);
-    z-index: 997 !important;
+    z-index: 996 !important;
 }
 .calendar-modal-box {
     width: 348px;
@@ -303,6 +323,23 @@
     font-size: 8px;
     float: right;
 }
+
+
+
+.sfc-deadline-btn {
+    width: 93px; height: 32px;
+    line-height: 28px;
+    margin-top: 12px;
+
+    float: right;
+    text-align: center;
+    color: #868686;
+    font-size: 14px;
+
+    border-radius: 7px;
+    border: 1px solid #868686;
+}
+
 
 
 @media (max-width: 767px) {
@@ -375,7 +412,6 @@
             height: 50px;
             line-height: 50px;
             padding: 0 16px;
-            // color: #fff;
             background-color: #EE7774;
         }
         .ss-fc-link {

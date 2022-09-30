@@ -501,6 +501,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                             itemChild: [],
                                                         };
                                                         setAddOption(addOption);
+                                                        setAddChildOption(-1);
                                                         NumF();
                                                     }}>+&nbsp;품목 추가
                                                 </div>
@@ -517,6 +518,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                             itemChild: [],
                                                         };
                                                         setAddOption(addOption);
+                                                        setAddChildOption(-1);
                                                         NumF();
                                                     }}>'텍스트 입력' 추가
                                                 </div>
@@ -533,6 +535,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                             itemChild: [],
                                                         };
                                                         setAddOption(addOption);
+                                                        setAddChildOption(-1);
                                                         NumF();
                                                     }}>'이미지 등록' 추가
                                                 </div>
@@ -559,6 +562,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                         }],
                                     };
                                     setAddOption(addOption);
+                                    setAddChildOption(-1);
                                     NumF();
                                 }}>
                                 + 옵션 추가
