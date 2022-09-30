@@ -16,6 +16,9 @@ import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import LengthSlideTwo from 'src/components/detail/LengthSlideTwo';
 import 'src/styles/detail/store/kakaoMap.scss';
+import CakeCard from 'src/components/common/cake-store/CakeCard';
+import PageBar from 'src/components/main/common/PageBar';
+import storeCakeGetAxios from './storeCakeGetAxios';
 
 // const { kakao } = window;
 
@@ -42,6 +45,12 @@ const StoreDetail = (auth: any) => {
     }
   };
 
+  const [cakeDetail, setCakeDetail] = useState(true);
+  const [page, setPage] = useState(1);
+  const [pageLength, setPageLength] = useState([]);
+
+
+
   const [data, setData] = useState([]);
   //0페이지부터 시작한다
   const [pageTodays, setPageTodays] = useState(0);
@@ -54,23 +63,20 @@ const StoreDetail = (auth: any) => {
     }
     setResize(window.innerWidth);
   };
+
   useEffect(() => {
     $('.hm-pc-flex').show();
     LinkClick('Store');
     if ($('.seller-flex').height() != null)
       setHeight(Number($('.seller-flex').height()));
 
-    getAxios(setData, setLengthTodays, 'cakes', [], 16, pageTodays, 0);
-    axios
-      .get(`/app/cakes`)
-      .then((res) => {
-        setLengthTodays(res.data.result.content.length);
-        setMaxNum(Math.ceil(res.data.result.content.length / 8));
-        setData(res.data.result.content);
-      })
-      .catch((error) => {});
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
+
+    storeCakeGetAxios(setData, setPageLength, 'cakes', 1, 8);
+
+
+
     var container = document.getElementById('map');
     var options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -188,51 +194,17 @@ const StoreDetail = (auth: any) => {
           <div className="store-detail-cakelist home">
             <div className="store-detail-title-flex">
               <div className="store-detail-title">케이크</div>
-              <div className="store-detail-btn">
-                <div>
-                  {num}/{maxNum}
+            </div>
+
+            <div className="cake-store-contents cake-contents-flex">
+                <div className="contents">
+                    <CakeCard getData={data} cakeDetail={cakeDetail} />
                 </div>
-                <button
-                  className="store-detail-btn-arrow"
-                  onClick={() => {
-                    setNum(num - 1);
-                    if (resize <= 767) setSlidePx(slidePx + 704);
-                    else setSlidePx(slidePx + 1199);
-                    if (num === 1) {
-                      setNum(5);
-                      setSlidePx(-1199 * (maxNum - 1));
-                    }
-                  }}
-                  style={{ marginLeft: '5px' }}
-                >
-                  &lt;
-                </button>
-                <button
-                  className="store-detail-btn-arrow"
-                  onClick={() => {
-                    setNum(num + 1);
-                    if (resize <= 767) setSlidePx(slidePx - 704);
-                    else setSlidePx(slidePx - 1199);
-                    if (num === maxNum) {
-                      setNum(1);
-                      setSlidePx(0);
-                    }
-                  }}
-                >
-                  &gt;
-                </button>
-              </div>
+                <PageBar page={page} setPageF={setPage} length={pageLength}/>
             </div>
-            <div className="store-detail-inner">
-              <ul className="store-detail-contents">
-                <LengthSlideTwo
-                  getData={data}
-                  resize={resize}
-                  slidePx={slidePx}
-                />
-              </ul>
-            </div>
+
           </div>
+
         </div>
       </div>
       <div className="pc" style={{ width: '5px', height: 2000 - height }}></div>

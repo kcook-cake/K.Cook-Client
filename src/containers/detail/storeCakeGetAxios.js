@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $ from "jquery";
 
-const cakeGetAxios = (fn, fnLength, link, page, num) => {
+const storeCakeGetAxios = (fn, fnLength, link, page, num) => {
     var p = "";
     if (page != 0) p = "?page="+page;
 
@@ -30,7 +30,7 @@ const cakeGetAxios = (fn, fnLength, link, page, num) => {
                 };
             }
             var len = [];
-            for (var i=0; i<1200/12; i++) //data.length
+            for (var i=0; i<31/8; i++) //data.length
                 len[i] = { num: i+1 }
             fnLength(len);
             fn(changeData);
@@ -53,4 +53,4 @@ const cakeGetAxios = (fn, fnLength, link, page, num) => {
         });
 };
 
-export default cakeGetAxios;
+export default storeCakeGetAxios;

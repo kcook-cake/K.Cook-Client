@@ -110,14 +110,6 @@ const Pages = () => {
       {numLeftMobile === 2 ? <KCOOK session={session} auth={auth} /> : <></>}
 
       {numLeftMobile === 3 ? <Seller session={session} auth={auth} /> : <></>}
-      {/* <Route exact path="/SSOCalendar" component={()=>FullCalendarApp(session, auth)} />
-      <Route exact path="/SSHCalendar" component={()=>FullCalendarApp(session, auth)} />
-      <Route exact path="/SellerOrder" component={SellerOrder} />
-      <Route exact path="/Saleshistory" component={SalesHistory}/>
-      <Route exact path="/ProductManagement" component={()=>ProductManagement(session, auth)}/>
-      <Route exact path="/ProductManagement/:id" component={SPMDetail}/>
-      <Route exact path="/SellerReview" component={SellerReview} />
-      <Route exact path="/SellerStore" component={()=>SellerStore(session, auth)} /> */}
 
       {numLeftMobile === 4 ? <Mypage session={session} auth={auth} /> : <></>}
 
