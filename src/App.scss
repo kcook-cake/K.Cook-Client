@@ -12,15 +12,26 @@ body {
   width: 0px; height: 0px;
 }
 
+
+
 body::-webkit-scrollbar {
-  width: 13px;
-  height: 13px;
+  width: 16px;
+  height: 16px;
+  // background-color: rgba(0, 0, 0, 0);
 }
 body::-webkit-scrollbar-thumb {
   background-color: #a5a5a5;
   border-radius: 10px;
+  background-clip: padding-box;
+  border: 3px solid transparent;
 }
+// body:hover::-webkit-scrollbar-thumb {
+//   background-color: #fff;
+// }
 body::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0);
   border-radius: 10px;
+}
+body {
+  overflow: scroll;
 }

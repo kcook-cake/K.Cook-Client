@@ -144,6 +144,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                       }
                     )}
                 </div>
+                {/* {cusId[option.optionNumber]} */}
                 {cusId[option.optionNumber]<0?
                   <div
                     className={classNames('cake-detail-optionlist-btn', {
@@ -164,7 +165,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                       </div>
                     </div>
                   </div>:
-                  (option.itemList[itemNum].itemType === 'normal'?
+                  (option.itemList[cusId[option.optionNumber]].itemType === 'normal'?
                     <div
                     className={classNames('cake-detail-optionlist-btn', {
                       'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber && cusId[option.optionNumber] !== -2,
@@ -184,7 +185,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                         </div>
                       </div>
                     </div>:
-                    (option.itemList[itemNum].itemType === 'text'?
+                    (option.itemList[cusId[option.optionNumber]].itemType === 'text'?
                       <div className='cake-detail-optionlist-input'>
                         <input type='text'/>
                       </div>:

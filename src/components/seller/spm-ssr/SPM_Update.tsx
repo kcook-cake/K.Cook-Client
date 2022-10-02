@@ -193,8 +193,8 @@ function SPM_Update({
                                                         onChange={()=>{
                                                             var child = updateOption[updateChildOption].itemList[updateChildItem].itemChild;
                                                             for (var i=0; i< child.length; i++) {
-                                                                if (child[i].type === option2.optionNumber) {
-                                                                    if (child[i].array.length === option2.itemList.length) {
+                                                                if (child[i].type == option2.optionNumber) {
+                                                                    if (child[i].array.length == option2.itemList.length) {
                                                                         child.splice(i, i+1);
                                                                         NumF();
                                                                         return;
@@ -237,11 +237,11 @@ function SPM_Update({
                                                                 onChange={()=>{
                                                                     var child = updateOption[updateChildOption].itemList[updateChildItem].itemChild;
                                                                     for (var i=0; i< child.length; i++) {
-                                                                        if (child[i].type === option2.optionNumber) {
+                                                                        if (child[i].type == option2.optionNumber) {
                                                                             for (var j=0; j<child[i].array.length; j++) {
-                                                                                if (child[i].array[j] === item2.itemNumber) {
+                                                                                if (child[i].array[j] == item2.itemNumber) {
                                                                                     child[i].array.splice(j, j+1);
-                                                                                    if (child[i].array.length === 0) child.splice(i, i+1);
+                                                                                    if (child[i].array.length == 0) child.splice(i, i+1);
                                                                                     NumF();
                                                                                     return;
                                                                                 }
@@ -443,6 +443,7 @@ function SPM_Update({
                                                                         updateOption[option.optionNumber].itemList[i].itemNumber = i;
                                                                     }
                                                                     updateOption[option.optionNumber].itemList.pop();
+                                                                    setUpdateChildOption(-1);
                                                                     NumF();
                                                                 }}>x
                                                             </div>

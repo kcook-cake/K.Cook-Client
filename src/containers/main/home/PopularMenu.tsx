@@ -47,19 +47,6 @@ const PopularMenu = ({ session, auth }: Props) => {
   return (
     <div className="popularmenu-flex home-flex">
       <div className="popularmenu home">
-        {auth.accountId === 31 && (
-          <button
-            onClick={
-              auth.accountId === 31
-                ? () => {
-                    return setModalShow((prev) => !prev), setCakeTF(1);
-                  }
-                : () => {}
-            }
-          >
-            상품 변경
-          </button>
-        )}
         <div className="popularmenu-title-flex">
           <div className="popularmenu-title">
             인기상품

@@ -31,24 +31,7 @@ function CakeMenu({ session, auth }: Props) {
     <div className="home-flex">
       <div className="cake-store-menu home">
         <div className="title">
-          {auth.accountId === 31 ? (
-            <>
-              <button
-                onClick={
-                  auth.accountId === 31
-                    ? () => {
-                        return setModalShow((prev) => !prev), setCakeTF(3);
-                      }
-                    : () => {}
-                }
-              >
-                상품 변경
-              </button>
-              <SectionTitle title="케이크" link="Cake" />
-            </>
-          ) : (
-            <SectionTitle title="케이크" link="Cake" />
-          )}
+          <SectionTitle title="케이크" link="Cake" />
         </div>
         <MenuModal
           //  resize={resize}

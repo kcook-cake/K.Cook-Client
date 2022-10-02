@@ -30,24 +30,7 @@ function StoreMenu({ session, auth }: Props) {
     <div className="">
       <div className="cake-store-menu storemenu home">
         <div className="title">
-          {auth.accountId === 31 ? (
-            <>
-              <button
-                onClick={
-                  auth.accountId === 31
-                    ? () => {
-                        return setModalShow((prev) => !prev), setCakeTF(4);
-                      }
-                    : () => {}
-                }
-              >
-                상품 변경
-              </button>
-              <SectionTitle title="스토어" link="Store" />
-            </>
-          ) : (
-            <SectionTitle title="스토어" link="Store" />
-          )}
+          <SectionTitle title="스토어" link="Store" />
         </div>
         {/* <StoreMenuModal
           //  resize={resize}

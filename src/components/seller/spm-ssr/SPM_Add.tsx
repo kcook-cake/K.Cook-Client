@@ -26,33 +26,33 @@ interface Props {
 function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     //Add
     const Add = () => {
-        //productId 102
-        // axios({
-        //     url: "app/products",
-        //     method: "POST",
-        //     data: {
-        //         "isCake": true,
-        //         "isOriginShow": false,
-        //         "isTodayShow": false,
-        //         "maxOfToday": addMax,
-        //         "isTodayCake": addTodayCake,
-        //         "name": addName,
-        //         "newOptionsList": Option2List(addOption),
-        //         "price": addPrice,
-        //         "salePrice": 0,
-        //         "todaySaleNumber": 0
-        //     },
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-        //     },
-        // }).then((res: any)=>{
-        //     console.log(res);
-        //     alert('추가 성공');
-        //     setAddShowF(false);
-        // }).catch((err: any)=>{
-        //     alert('추가 실패');
-        // })
+        //productId 105
+        axios({
+            url: "app/products",
+            method: "POST",
+            data: {
+                "isCake": true,
+                "isOriginShow": false,
+                "isTodayShow": false,
+                "maxOfToday": addMax,
+                "isTodayCake": addTodayCake,
+                "name": addName,
+                "newOptionsList": Option2List(addOption),
+                "price": addPrice,
+                "salePrice": 0,
+                "todaySaleNumber": 0
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'X-ACCESS-TOKEN' : (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+            },
+        }).then((res: any)=>{
+            console.log(res);
+            alert('추가 성공');
+            setAddShowF(false);
+        }).catch((err: any)=>{
+            alert('추가 실패');
+        })
     };
     const [addImgModal, setAddImgModal] = useState(false);
     const [addImage, setAddImage] = useState(['','','','','']);

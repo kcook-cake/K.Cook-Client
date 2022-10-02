@@ -35,7 +35,7 @@ const ImageModal = ({
             )
         }
         axios({
-            url: "/app/products/102/photos",
+            url: "/app/products/105/photos",
             method: "PATCH",
             data: formData,
             headers: {
