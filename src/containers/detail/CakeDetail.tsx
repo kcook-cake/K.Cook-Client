@@ -33,7 +33,6 @@ const CakeDetail = () =>{
     const [date, setDate] = useState("");
     const [pickUp, setPickUp] = useState(["10:00~11:00", "11:00~12:00", "21:00~22:00"]);
     let [option, setOption] = useState([]);
-    let [cus, setCus] = useState([]);
     let [cusId, setCusId] = useState([]);
 
 
@@ -70,9 +69,9 @@ const CakeDetail = () =>{
             image = data.productImage1; setImage(image);
 
             option = List2Option(data.optionsList); setOption(option);
-            console.log(option);
+
             for (var i=0; i<option.length; i++) cusId[i] = -1;
-            setCus(cus);
+            setCusId(cusId);
         }).catch((err)=>{
         })
     },[]);

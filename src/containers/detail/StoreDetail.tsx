@@ -77,44 +77,44 @@ const StoreDetail = (auth: any) => {
 
 
 
-    var container = document.getElementById('map');
-    var options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
-    };
-    var map = new kakao.maps.Map(container, options);
-    var imageSrc =
-      'http://amind.co.kr/data/file/figure/thumb-1931437945_a3ksBhWI_EC9B90_200x200.jpg'; // 마커이미지의 주소입니다
+    // var container = document.getElementById('map');
+    // var options = {
+    //   center: new kakao.maps.LatLng(33.450701, 126.570667),
+    //   level: 3,
+    // };
+    // var map = new kakao.maps.Map(container, options);
+    // var imageSrc =
+    //   'http://amind.co.kr/data/file/figure/thumb-1931437945_a3ksBhWI_EC9B90_200x200.jpg'; // 마커이미지의 주소입니다
 
-    // axios.get으로 얻은 가게의 이름을 여기에 담기.
-    var names = '유니아케이크';
+    // // axios.get으로 얻은 가게의 이름을 여기에 담기.
+    // var names = '유니아케이크';
 
-    // 커스텀 오버레이
-    // 커스텀 오버레이에 표시할 내용입니다
-    // HTML 문자열 또는 Dom Element 입니다
-    var content = `
-       <div class ="kakaomap_store">
-         <div class ="kakaomap_store_image">
-           <img src=${imageSrc} alt="img" />
-         </div>
-         <div class ="kakaomap_store_text">
-           <span class="text">${names}</span>
-         </div>
-       </div>
-      `;
+    // // 커스텀 오버레이
+    // // 커스텀 오버레이에 표시할 내용입니다
+    // // HTML 문자열 또는 Dom Element 입니다
+    // var content = `
+    //    <div class ="kakaomap_store">
+    //      <div class ="kakaomap_store_image">
+    //        <img src=${imageSrc} alt="img" />
+    //      </div>
+    //      <div class ="kakaomap_store_text">
+    //        <span class="text">${names}</span>
+    //      </div>
+    //    </div>
+    //   `;
 
-    // 커스텀 오버레이가 표시될 위치입니다
-    // + 뒤에 숫자로 위로 올려서 가게위치를 가리지 않게 조절.
-    var position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
+    // // 커스텀 오버레이가 표시될 위치입니다
+    // // + 뒤에 숫자로 위로 올려서 가게위치를 가리지 않게 조절.
+    // var position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
 
-    // 커스텀 오버레이를 생성합니다
-    var customOverlay = new kakao.maps.CustomOverlay({
-      position: position,
-      content: content,
-    });
+    // // 커스텀 오버레이를 생성합니다
+    // var customOverlay = new kakao.maps.CustomOverlay({
+    //   position: position,
+    //   content: content,
+    // });
 
-    // 커스텀 오버레이를 지도에 표시합니다
-    customOverlay.setMap(map);
+    // // 커스텀 오버레이를 지도에 표시합니다
+    // customOverlay.setMap(map);
   }, []);
 
   return (
@@ -166,7 +166,7 @@ const StoreDetail = (auth: any) => {
                 id="map"
                 style={{ height: '178px', marginBottom: '20px' }}
               ></div>{' '}
-              {/* 위도 : 37.536345325879864, 경도 : 126.9970627691766 */}
+              
               <div className="store-detail-store-button-box">
                 <button
                   className="store-detail-store-button"

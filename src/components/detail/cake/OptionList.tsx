@@ -15,6 +15,8 @@ interface Props {
 }
 
 function OptionList({ NumF, cusId, getData }: Props) {
+  let [cusId2, setCusId2] = useState([]);
+
   let [selectNum, setSelectNum] = useState(0); //옵션 불투명도
   let [optionNum, setOptionNum] = useState(-1); //옵션 어떤 것 눌렀는지
   let [itemNum, setItemNum] = useState(0);
@@ -22,6 +24,9 @@ function OptionList({ NumF, cusId, getData }: Props) {
   let [child, setChild] = useState([]);
 
   useEffect(() => {
+    // for (var i=0; i<getData.length; i++) cusId2[i] = 0;
+    // console.log(cusId);
+    // console.log(cusId2);
   }, []);
 
   return (
@@ -145,7 +150,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                     )}
                 </div>
                 {/* {cusId[option.optionNumber]} */}
-                {cusId[option.optionNumber]<0?
+                {cusId[option.optionNumber]<0 || cusId[option.optionNumber] === undefined?
                   <div
                     className={classNames('cake-detail-optionlist-btn', {
                       'cake-detail-optionlist-btn-focus': optionNum===option.optionNumber && selectNum>=option.optionNumber && cusId[option.optionNumber] !== -2,
@@ -165,6 +170,7 @@ function OptionList({ NumF, cusId, getData }: Props) {
                       </div>
                     </div>
                   </div>:
+                  // <></>
                   (option.itemList[cusId[option.optionNumber]].itemType === 'normal'?
                     <div
                     className={classNames('cake-detail-optionlist-btn', {
