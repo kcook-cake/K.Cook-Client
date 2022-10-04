@@ -16,9 +16,9 @@ const Main = ({session, auth}: Props) =>{
     return(
         <>
             <Route exact path="/" component={()=>Home(session, auth)} />
-            <Route exact path="/Cake" component={Cake} />
+            {/* <Route exact path="/Cake" component={Cake} />
             <Route exact path="/Store" component={Store} />
-            <Route exact path="/CS" component={CustomerService} />
+            <Route exact path="/CS" component={CustomerService} /> */}
         </>
     )
 }

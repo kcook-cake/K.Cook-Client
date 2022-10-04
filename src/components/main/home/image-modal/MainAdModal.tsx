@@ -30,22 +30,22 @@ function ChangeAdModal({
 
   const AddImageF = () => {
     axios({
-      url: '/app/banner/static',
-      method: 'POST',
-      data: {
-        connectedUrl: adLinkUrl,
-        mobileImage: formData.get('image'),
-        webImage: formData.get('image'),
-        //링크url : adLinkUrl
-      },
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'X-ACCESS-TOKEN': jwToken,
-        /*   sessionStorage.jwToken === undefined
-            ? localStorage.jwToken
-            : sessionStorage.jwToken, */
-      },
-    })
+        url: '/app/banner/static',
+        method: 'POST',
+        data: {
+          connectedUrl: adLinkUrl,
+          mobileImage: formData.get('image'),
+          webImage: formData.get('image'),
+          //링크url : adLinkUrl
+        },
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-ACCESS-TOKEN': jwToken,
+          /*   sessionStorage.jwToken === undefined
+              ? localStorage.jwToken
+              : sessionStorage.jwToken, */
+        },
+      })
       .then((res) => {
         alert('광고 이미지가 등록되었습니다.');
         setImageModalShowF(false);

@@ -37,7 +37,7 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
           idx: any
         ) => {
           return (
-            <Link to={'/Cake/' + data.productId}>
+            <Link key={data.popularRank} to={'/Cake/' + data.productId}>
               <li
                 className="lengthslide-flex"
                 style={{

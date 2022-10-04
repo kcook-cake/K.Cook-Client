@@ -5,8 +5,8 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import 'src/styles/main/card/BannerSlide.scss';
 
 interface Props {
-  auth: any;
-  getData: any;
+  auth: boolean;
+  getData: JSON[];
 }
 
 const NextArrow = (props: any) => {
@@ -52,19 +52,18 @@ export default function BannerSlider({ auth, getData }: Props) {
       <Slider {...settings} className="main-crousel">
         {getData.map((data: any) => {
           return (
-            <>
+            <div key={data.orders}>
               {auth ? (
-                <img src={data.webImageUrl} alt={'profile'} key={data.orders} />
+                <img src={data.webImageUrl} alt={'profile'} />
               ) : (
                 <Link to="/Cake">
                   <img
                     src={data.webImageUrl}
                     alt={'profile'}
-                    key={data.orders}
                   />
                 </Link>
               )}
-            </>
+            </div>
           );
         })}
       </Slider>

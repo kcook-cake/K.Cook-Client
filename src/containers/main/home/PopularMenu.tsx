@@ -33,8 +33,12 @@ const PopularMenu = ({ session, auth }: Props) => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
+    let isComponentMounted = true;
     var changeData: any = [];
     homeGetAxios(setData, changeData, 'popular-products', 1);
+    // return () => {
+    //   isComponentMounted = false;
+    // }
   }, []);
 
   // 모달창 생성용 값

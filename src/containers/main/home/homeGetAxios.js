@@ -19,7 +19,7 @@ const homeGetAxios = (setData, changeData, link, page) => {
                     storeName: "~준비중 입니다~",
 
                     productId: 0,
-                    popularRank: 0,
+                    popularRank: i*-1,
 
                     status: null,
                     isCake: null,
@@ -44,7 +44,7 @@ const homeGetAxios = (setData, changeData, link, page) => {
                     storeName: "~준비중 입니다~",
 
                     productId: 0,
-                    popularRank: 0,
+                    popularRank: i*-1,
 
                     status: null,
                     isCake: null,

@@ -24,31 +24,43 @@ function Crousel({ session, auth }: Props) {
 
   // 배너 등록 페이지
   const [bannerShow, setBannerShow] = useState(false);
-  const [bannerImage, setBannerImage] = useState<any>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
-  const [resArr, setResArr] = useState<any>([]);
-  // const [image, setImage] = useState<any>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const [bannerImage, setBannerImage] = useState<any>([]);
+  const [data, setData] = useState([]);
 
   const [resize, setResize] = useState(0);
   const handleResize = () => {
     setResize(window.innerWidth);
   };
-  useEffect(
-    () => {
+  useEffect(() => {
       setResize(window.innerWidth);
       window.addEventListener('resize', handleResize);
 
-      axios.get(`/app/banner/carousel`).then((res) => {
-        setResArr(res.data.result);
-      });
-    },
-    [] // eslint-disable-line react-hooks/exhaustive-deps
+      let isComponentMounted = true;
+      axios({
+          url: '/app/banner/carousel',
+          method: 'GET',
+        })
+        .then((res) => {
+          if (res.data) {
+            if (isComponentMounted) {
+              setData(res.data.result);              
+            }
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      return () => {
+        isComponentMounted = false;
+      }
+    },[] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   useEffect(() => {
-    var newRes = [...resArr];
+    var newRes = [...data];
     newRes.sort((a: any, b: any) => a.orders - b.orders);
     setBannerImage(newRes);
-  }, [resArr]);
+  }, [data]);
 
   return (
     <>
@@ -65,8 +77,7 @@ function Crousel({ session, auth }: Props) {
 
       <div
         className="crousel"
-        onClick={auth.accountId === 31 ? () => setBannerShow(true) : () => {}}
-      >
+        onClick={auth.accountId === 31 ? () => setBannerShow(true) : () => {}}>
         <BannerSlider auth={auth.accountId === 31} getData={bannerImage} />
       </div>
     </>

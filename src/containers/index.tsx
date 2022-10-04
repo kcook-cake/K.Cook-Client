@@ -96,18 +96,18 @@ const Pages = () => {
         session={session} auth={auth} 
         setNumLeftMobileF={setNumLeftMobile} />
       
-      <Route exact path="/Login" component={Login} />
+      {/* <Route exact path="/Login" component={Login} />
       <Route exact path="/LoginFind" component={LoginFind} />
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/SignOut" component={SignOut} />
       <Route exact path="/Test" component={Test} />
 
       <Route exact path="/Cake/:id" component={CakeDetail} />
-      <Route exact path="/Store/:id" component={()=>StoreDetail(auth)} />
+      <Route exact path="/Store/:id" component={()=>StoreDetail(auth)} /> */}
 
       <Main session={session} auth={auth} />
 
-      {numLeftMobile === 2 ? <KCOOK session={session} auth={auth} /> : <></>}
+      {/* {numLeftMobile === 2 ? <KCOOK session={session} auth={auth} /> : <></>}
 
       {numLeftMobile === 3 ? <Seller session={session} auth={auth} /> : <></>}
 
@@ -118,7 +118,7 @@ const Pages = () => {
         address="서울특별시 동작구 상도로 369, 창신관 313호"
         tel="+ 72 4500 1240"
         email="cakeorder.kcook@gmail.com"
-      />
+      /> */}
     </Router>
   );
 };

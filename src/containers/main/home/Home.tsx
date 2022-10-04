@@ -18,10 +18,10 @@ function Home(session: any, auth: any) {
     <>
       <MainCrousel session={session} auth={auth} />
       <PopularMenu session={session} auth={auth} />
-      <NewMenu />
+      {/* <NewMenu />
       <MainAd session={session} auth={auth} />
       <CakeMenu session={session} auth={auth} />
-      <StoreMenu session={session} auth={auth} />
+      <StoreMenu session={session} auth={auth} /> */}
     </>
   );
 }
