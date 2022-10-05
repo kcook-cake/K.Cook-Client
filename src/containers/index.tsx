@@ -19,7 +19,6 @@ import SignOut from 'src/containers/sign/SignOut';
 import Test from '../components/Test';
 import StoreDetail from './detail/StoreDetail';
 import CakeDetail from './detail/CakeDetail';
-import KCOOK from './kcook/KCOOK';
 import FullCalendarApp from './seller/FullCalendarApp';
 import SellerOrder from './seller/SellerOrder';
 import SalesHistory from './seller/SalesHistory';
@@ -89,9 +88,9 @@ const Pages = () => {
 
   return (
     <Router>
-      <HMMobile
+      {/* <HMMobile
         session={session} auth={auth}
-        numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} />
+        numLeftMobile={numLeftMobile} setNumLeftMobileF={setNumLeftMobile} /> */}
       <Header
         session={session} auth={auth} 
         setNumLeftMobileF={setNumLeftMobile} />
@@ -111,14 +110,15 @@ const Pages = () => {
 
       {numLeftMobile === 3 ? <Seller session={session} auth={auth} /> : <></>}
 
-      {numLeftMobile === 4 ? <Mypage session={session} auth={auth} /> : <></>}
+      {numLeftMobile === 4 ? <Mypage session={session} auth={auth} /> : <></>} */}
+
 
       <Footer
         setNumLeftMobileF={setNumLeftMobile}
         address="서울특별시 동작구 상도로 369, 창신관 313호"
         tel="+ 72 4500 1240"
         email="cakeorder.kcook@gmail.com"
-      /> */}
+      />
     </Router>
   );
 };

@@ -11,9 +11,9 @@ interface Props {
 function SelectBar({ getData, setSelectAllF }: Props) {
   return (
     <>
-      {getData.map((data: {}) => {
+      {getData.map((data: {}, idx: number) => {
         return (
-          <div className="cake-bar-card">
+          <div key={idx} className="cake-bar-card">
             <div style={{ display: 'flex' }}>
               {/* 서울 텍스트 */}
               {data}

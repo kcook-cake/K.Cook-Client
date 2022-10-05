@@ -5,14 +5,12 @@ import 'src/styles/common/kcook-select/SelectWindow.scss';
 import X from 'src/assets/x.svg';
 
 interface Props {
-  width: any;
-  NumF: any;
-  selectWindow: any;
-  selectDataOne: any;
+  NumF: Function;
+  selectWindow: any[][];
+  selectDataOne: String[][];
 }
 
 export default function SelectWindowOne({
-  width,
   NumF,
   selectWindow,
   selectDataOne,
@@ -28,13 +26,13 @@ export default function SelectWindowOne({
       {selectWindow[0][0] ? (
         <div
           className="cake-select-absolute-one"
-          style={{ left: width + 1060 + 'px' }}
-        >
+          style={{ marginLeft: (1050)+'px' }}>
           <div className="cake-select-top"></div>
           <ul className="cake-select-ul">
             {selectDataOne[0].map((data: any, idx: any) => {
               return (
                 <li
+                  key={idx}
                   className={classNames('cake-select-li', {
                     'cake-select-li-top': idx === 0,
                     'cake-select-li-bottom': idx === selectDataOne[0].length - 1,

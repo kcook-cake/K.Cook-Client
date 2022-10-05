@@ -17,12 +17,10 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
             <div id="footer-flex-id" className="footer">
                 <dl>
                     <dt id="footer-kcook" className="footer-title">케이쿡</dt>
-                    <dt className="footer-context">
-                        <dd>{email}</dd>
-                        <dd>{tel}</dd>
-                    </dt>
+                    <dd>{email}</dd>
+                    <dd>{tel}</dd>
                 </dl>
-                <dl className="footer-mobile">
+                {/* <dl className="footer-mobile">
                     <Link
                         to="/"
                         className="footer-right"
@@ -55,43 +53,25 @@ function Footer({ setNumLeftMobileF, email, tel, address }: FooterProps) {
                             setNumLeftMobileF(1);
                         }}
                     ><dt>고객지원</dt></Link>
-                </dl>
+                </dl> */}
                 <dl>
                     <dt className="footer-title">Services</dt>
-                    <dt className="footer-context">
-                        <dd>Development & Strategy</dd>
-                        <dd>Design & Management</dd>
-                        <dd>Website Development</dd>
-                        <dd>Quick Launch</dd>
-                    </dt>
+                    <dd>Development & Strategy</dd>
+                    <dd>Design & Management</dd>
+                    <dd>Website Development</dd>
+                    <dd>Quick Launch</dd>
                 </dl>
                 <dl>
                     <dt className="footer-title">About Us</dt>
-                    <dt className="footer-context">
-                        <dd>Milestone</dd>
-                        <dd>Check Our Pricing Plan</dd>
-                        <dd>Expert Team</dd>
-                        <dd>Our Exciting News</dd>
-                    </dt>
+                    <dd>Milestone</dd>
+                    <dd>Check Our Pricing Plan</dd>
+                    <dd>Expert Team</dd>
+                    <dd>Our Exciting News</dd>
                 </dl>
                 <dl>
                     <dt className="footer-title">Address</dt>
-                    <dt className="footer-context">
-                        <dd>{address}</dd>
-                    </dt>
+                    <dd>{address}</dd>
                 </dl>
-                {/* <dl>
-                    <dt id="footer-kcook" className="footer-mobile">케이쿡</dt>
-                </dl>
-                <dl>
-                    <dt id="footer-kcook" className="footer-mobile">케이쿡</dt>
-                </dl>
-                <dl>
-                    <dt id="footer-kcook" className="footer-mobile">케이쿡</dt>
-                </dl>
-                <dl>
-                    <dt id="footer-kcook" className="footer-mobile">케이쿡</dt>
-                </dl> */}
             </div>
             <div className="footer-bottom">
                 케이쿡  |  대표 정예빈  |  서울특별시 동작구 상도로 369, 창신관 313호

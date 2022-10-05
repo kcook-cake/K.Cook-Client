@@ -16,7 +16,6 @@ import SelectBar from 'src/components/common/kcook-select/SelectBar';
 import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
-import cakeGetAxios from 'src/utils/cakeGetAxios';
 import PageBar from 'src/components/main/common/PageBar';
 
 function Cake() {
@@ -79,71 +78,132 @@ function Cake() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    cakeGetAxios(setData, setPageLength, 'cakes', 1, 12);
+    let num = 12;
+    let isComponentMounted = true;
+    axios({
+        url: '/app/cakes?page=1',
+        method: 'GET',
+      })
+      .then((res) => {
+        if (res.data) {
+            if (isComponentMounted) {
+                const data = res.data.result.content;
+
+                var changeData = [];
+                for (var i = 0; i < data.length; i++) {
+                    changeData[i] = res.data.result.content[i];
+                }
+                for (var i:number = data.length; i < num; i++) {
+                    changeData[i] = {
+                        image: null,
+                        name: "~준비중 입니다~",
+                        price: 0,
+                        storeName: "~준비중 입니다~",
+
+                        productId: 0,
+                        popularRank: 0,
+                    };
+                }
+                var len = [];
+                for (var i=0; i<100/12; i++) //data.length
+                    len[i] = { num: i+1 }
+                setPageLength(len);
+                setData(changeData);
+            }
+        }
+      })
+      .catch((err) => {
+        var changeData = [];
+        for (var i = 0; i < num; i++) {
+            changeData[i] = {
+                image: null,
+                name: "~준비중 입니다~",
+                price: 0,
+                storeName: "~준비중 입니다~",
+
+                productId: 0,
+                popularRank: 0,
+            };
+        }
+        setPageLength([{num: 1}]);
+        setData(changeData);
+        console.log(err);
+      });
+
     $("#cake-page-length").val("1")
-    axios.get(`/app/cities`).then((res) => {
-      setSelectData([
-        res.data.result,
-        ['생크림', '크림치즈', '버터크림', '앙금'],
-        [
-          '친구/애인',
-          '부모님',
-          '어린이',
-          '할로윈데이',
-          '빼빼로데이',
-          '크리스마스',
-          '입학/졸업/취업',
-          '명절',
-          '발렌타인/화이트데이',
-          '어버이날/스승의날',
-          '돌/환갑/칠순잔치',
-          '프로포즈/브라이덜샤워',
-          '연애인',
-          '기업',
-        ],
-        ['~3만 원', '3~5만 원', '5~7만 원', '7~10만 원', '10만 원~'],
-      ]);
-    });
+    axios({
+        url: '/app/cities',
+        method: 'GET',
+      })
+      .then((res) => {
+        if (res.data) {
+          if (isComponentMounted) {
+            setSelectData([
+              res.data.result,
+              ['생크림', '크림치즈', '버터크림', '앙금'],
+              [
+                '친구/애인',
+                '부모님',
+                '어린이',
+                '할로윈데이',
+                '빼빼로데이',
+                '크리스마스',
+                '입학/졸업/취업',
+                '명절',
+                '발렌타인/화이트데이',
+                '어버이날/스승의날',
+                '돌/환갑/칠순잔치',
+                '프로포즈/브라이덜샤워',
+                '연애인',
+                '기업',
+              ],
+              ['~3만 원', '3~5만 원', '5~7만 원', '7~10만 원', '10만 원~'],
+            ]);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return () => {
+      isComponentMounted = false;
+    }
   }, []);
 
   return (
     <>
       <div className="cake-flex">
-        {/* 선택지창 */}
-        <SelectWindowOne
-          width={width}
-          NumF={NumF}
-          selectWindow={selectWindow}
-          selectDataOne={selectDataOne}
-        />
-        {resize > 767 || selectMobileTF ? (
-          <SelectWindow
-            cakestoreTF={true}
-            width={width}
-            height={250}
-            NumF={NumF}
-            selectAll={selectAll}
-            selectBox={[false, false, false]}
-            selectWindow={selectWindow}
-            selectDataOne={selectDataOne}
-            selectData={selectData}
-            setSelectMobileTF={setSelectMobileTF}
-            SelectCloseF={SelectCloseF}
-            setSelectAllF={setSelectAll}
-          />
-        ) : null}
-
         <div className="cake">
           <div className="cake-select-flex">
             <div
               className="mobile cake-search"
               onClick={() => {
                 setSelectMobileTF(true);
-              }}
-            >
+              }}>
               <img src={search} />
               상세검색
             </div>
+
+            {/* 선택지창 */}
+            <SelectWindowOne
+              NumF={NumF}
+              selectWindow={selectWindow}
+              selectDataOne={selectDataOne}
+            />
+            {resize > 767 || selectMobileTF ? (
+              <SelectWindow
+                cakestoreTF={true}
+                NumF={NumF}
+
+                selectAll={selectAll}
+                selectWindow={selectWindow}
+                
+                selectData={selectData}
+                
+                setSelectMobileTF={setSelectMobileTF}
+                SelectCloseF={SelectCloseF}
+              />
+            ) : null}
 
             {/* 선택지 박스 */}
             <SelectBoxOne

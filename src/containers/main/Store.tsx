@@ -16,7 +16,6 @@ import SelectWindow from 'src/components/common/kcook-select/SelectWindow';
 import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
-import storeGetAxios from 'src/utils/storeGetAxios';
 import PageBar from 'src/components/main/common/PageBar';
 
 function Store() {
@@ -79,32 +78,96 @@ function Store() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
-    axios
-      .get(`/app/cities`)
-      .then(res =>{
-        setSelectData([res.data.result, [], [
-          "1호선", "2호선", "3호선", "4호선", "5호선", "6호선", "7호선", "8호선", "9호선",
-          "경강선", "경의선", "경춘선", "공항철도", "김포","서해선", "수인분당선", "신림선", "신분당선", "용인", "우이신설", "의정부", "자기부상",
-          "인천1호선", "인천2호선",
-          "수인선", "경의중앙선",
-        ], []]);
+    // storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
+    let isComponentMounted = true;
+    let num = 9;
+    axios({
+        url: '/app/stores/account/auth',
+        method: 'GET',
+        headers: {
+          'X-ACCESS-TOKEN': (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+        }
+      })
+      .then((res) => {
+        if (res.data) {
+            if (isComponentMounted) {
+              const data = res.data.result.content;
+
+              var changeData = [];
+              for (var i = 0; i < data.length; i++) {
+                  changeData[i] = res.data.result.content[i];
+              }
+              for (var i:number = data.length; i < num; i++) {
+                  changeData[i] = {
+                      image: null,
+                      accountName: "~준비중 입니다~",
+                      address: "~준비중 입니다~",
+                      area: "~준비중 입니다~",
+                      contact: "~준비중 입니다~",
+                      name: "~준비중 입니다~",
+                      status: "BLACKLIST",
+                      storeId: 0
+                  };
+              }
+              var len = [];
+              for (var i=0; i<data.length/9; i++)
+                  len[i] = { num: i+1 }
+              setPageLength(len);
+              setData(changeData);
+            }
+        }
+      })
+      .catch((err) => {
+        var changeData = [];
+        for (var i = 0; i < num; i++) {
+            changeData[i] = {
+                image: null,
+                accountName: "~준비중 입니다~",
+                address: "~준비중 입니다~",
+                area: "~준비중 입니다~",
+                contact: "~준비중 입니다~",
+                name: "~준비중 입니다~",
+                status: "BLACKLIST",
+                storeId: 0
+            };
+        }
+        setPageLength([{num: 1}]);
+        setData(changeData);
+        console.log(err);
       });
+
+    axios({
+        url: '/app/cities',
+        method: 'GET',
+      })
+      .then((res) => {
+        if (res.data) {
+          if (isComponentMounted) {
+            setSelectData([
+              res.data.result,
+              [],
+              [
+                "1호선", "2호선", "3호선", "4호선", "5호선", "6호선", "7호선", "8호선", "9호선",
+                "경강선", "경의선", "경춘선", "공항철도", "김포","서해선", "수인분당선", "신림선", "신분당선", "용인", "우이신설", "의정부", "자기부상",
+                "인천1호선", "인천2호선",
+                "수인선", "경의중앙선",
+              ],
+              [],
+            ]);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return () => {
+      isComponentMounted = false;
+    }
   }, []);
 
   return (
     <>
       <div className="cake-flex store-flex">
-        {/* 선택지창 */}
-        <SelectWindowOne width={width} NumF={NumF} selectWindow={selectWindow} selectDataOne={selectDataOne}/>
-        {resize > 767 || selectMobileTF ?
-          <SelectWindow
-            cakestoreTF={false} width={width} height={250} NumF={NumF}
-            selectAll={selectAll} selectBox={[false, false, false, false]} selectWindow={selectWindow}
-            selectDataOne={selectDataOne} selectData={selectData}
-            setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
-        :null}
-
         <div className="cake store">
           <div className="cake-select-flex">
             <div
@@ -115,6 +178,16 @@ function Store() {
               <img src={search} />
               상세검색
             </div>
+
+            {/* 선택지창 */}
+            <SelectWindowOne NumF={NumF} selectWindow={selectWindow} selectDataOne={selectDataOne}/>
+            {resize > 767 || selectMobileTF ?
+              <SelectWindow
+                cakestoreTF={false} NumF={NumF}
+                selectAll={selectAll} selectWindow={selectWindow}
+                selectData={selectData}
+                setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} />
+            :null}
 
             {/* 선택지박스 */}
             <SelectBoxOne selectWindow={selectWindow} SelectCloseF={SelectCloseF} />

@@ -4,28 +4,56 @@ import '../../../styles/main/home/CakeStoreMenu.scss';
 import axios from 'axios';
 
 import SectionTitle from 'src/components/main/common/SectionTitle';
-import getAxios from 'src/utils/getAxios';
 import CakeCard from 'src/components/common/cake-store/CakeCard';
 
-import cakeGetAxios from 'src/utils/cakeGetAxios';
-import MenuModal from 'src/components/main/home/image-modal/CakeStoreModal';
-
-interface Props {
-  session: any;
-  auth: any;
-}
-
-function CakeMenu({ session, auth }: Props) {
+function CakeMenu() {
   const [data, setData] = useState([]);
-  const [dataLength, setDataLength] = useState([]);
 
   useEffect(() => {
-    cakeGetAxios(setData, setDataLength, 'products/representative-cake', 0, 4);
-  }, []);
+    let isComponentMounted = true;
+    let num = 4;
+    axios({
+        url: '/app/products/representative-cake',
+        method: 'GET',
+      })
+      .then((res) => {
+        if (res.data) {
+          if (isComponentMounted) {
+            const data = res.data.result;
 
-  // 모달창 생성용 값
-  const [modalShow, setModalShow] = useState(false);
-  const [cakeTF, setCakeTF] = useState<number>();
+            let changeData = [];
+            for (var i = 0; i < data.length; i++) {
+                changeData[i] = res.data.result[i];
+            }
+            for (var i:number = data.length; i < num; i++) {
+                changeData[i] = {
+                    image: null,
+                    name: "~준비중 입니다~",
+                    price: 0,
+                    storeName: "~준비중 입니다~",
+                };
+            }
+            setData(changeData);
+          }
+        }
+      })
+      .catch((err) => {
+        let changeData = [];
+        for (var i = 0; i < num; i++) {
+          changeData[i] = {
+            image: null,
+            name: "~준비중 입니다~",
+            price: 0,
+            storeName: "~준비중 입니다~",
+          };
+        }
+        setData(changeData);
+        console.log(err);
+      });
+    return () => {
+      isComponentMounted = false;
+    }
+  }, []);
 
   return (
     <div className="home-flex">
@@ -33,12 +61,6 @@ function CakeMenu({ session, auth }: Props) {
         <div className="title">
           <SectionTitle title="케이크" link="Cake" />
         </div>
-        <MenuModal
-          //  resize={resize}
-          imageModalShow={modalShow}
-          setImageModalShowF={setModalShow}
-          cakeTF={cakeTF}
-        />
         <div className="contents">
           <CakeCard getData={data} cakeDetail={false} />
         </div>

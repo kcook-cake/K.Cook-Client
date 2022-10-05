@@ -26,8 +26,8 @@ function StoreCard({getData, cakeDetail}: Props) {
                 storeId: any,
              }, idx: any)=>{
                 return (
-                    <Link className="cake-store-card-" to={"/Store/0"}>
-                        <div className="storecard-flex" key={data.storeId}>
+                    <Link key={idx} className="cake-store-card" to={"/Store/0"}>
+                        <div className="storecard-flex">
                             <div className="storecard">
                                 <div className="storecard-img">
                                     <div className="storecard-img-inner">

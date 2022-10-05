@@ -160,17 +160,15 @@ const SPMDetail = () => {
       {resize > 767 || selectMobileTF ? (
         <SelectWindow
           cakestoreTF={true}
-          width={width + 345}
-          height={515}
           NumF={NumF}
           selectAll={selectAll}
-          selectBox={[false, false, false]}
+
           selectWindow={selectWindow}
-          selectDataOne={selectDataOne}
+
           selectData={selectData}
+          
           setSelectMobileTF={setSelectMobileTF}
           SelectCloseF={SelectCloseF}
-          setSelectAllF={setSelectAll}
         />
       ) : null}
 

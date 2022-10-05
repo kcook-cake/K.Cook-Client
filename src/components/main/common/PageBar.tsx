@@ -30,50 +30,49 @@ const PageBar = ({page, setPageF, length}: Props) => {
         // Count();
     },[]);
     return (
-        <> 
-            <div  className='pagination cake-store-'>
-                <button
-                    className={classNames("arrow", "prev", {"active": prev})}
-                    onClick={()=>{
-                        if (!prev) return;
-                        pageBox--;
-                        setPageBox(pageBox);
+        <div className='pagination cake-store-'>
+            <button
+                className={classNames("arrow", "prev", {"active": prev})}
+                onClick={()=>{
+                    if (!prev) return;
+                    pageBox--;
+                    setPageBox(pageBox);
 
-                        next = true; setNext(next);
-                        PNCheck();
-                    }}>
-                    &lt; Prev
-                </button>
-                {length.map((data: {num: any}, idx: any)=>{
-                    return(
-                        <button
-                            className={classNames("pagi", {
-                                "active": data.num === page,
-                                "pagi-none": pageBox!=Math.ceil(data.num/10), 
-                            })}
-                            onClick={()=>setPageF(data.num)}>
-                            {data.num}
-                        </button>
-                    );
-                })}
-                <button
-                    className={classNames("arrow", "prev", {"active": next})}
-                    onClick={()=>{
-                        if (length.length < 11) {
-                            setNext(false);
-                            return;
-                        }
-                        if (!next) return;
-                        pageBox++;
-                        setPageBox(pageBox);
+                    next = true; setNext(next);
+                    PNCheck();
+                }}>
+                &lt; Prev
+            </button>
+            {length.map((data: {num: any}, idx: any)=>{
+                return(
+                    <button
+                        key={idx}
+                        className={classNames("pagi", {
+                            "active": data.num === page,
+                            "pagi-none": pageBox!=Math.ceil(data.num/10), 
+                        })}
+                        onClick={()=>setPageF(data.num)}>
+                        {data.num}
+                    </button>
+                );
+            })}
+            <button
+                className={classNames("arrow", "prev", {"active": next})}
+                onClick={()=>{
+                    if (length.length < 11) {
+                        setNext(false);
+                        return;
+                    }
+                    if (!next) return;
+                    pageBox++;
+                    setPageBox(pageBox);
 
-                        prev = true; setPrev(prev);
-                        PNCheck();
-                    }}>
-                    Next &gt;
-                </button>
-            </div>
-        </>
+                    prev = true; setPrev(prev);
+                    PNCheck();
+                }}>
+                Next &gt;
+            </button>
+        </div>
     );
 }
 

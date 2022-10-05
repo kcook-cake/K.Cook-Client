@@ -9,6 +9,7 @@ const homeGetAxios = (setData, changeData, link, page) => {
             var j = 0;
             for (var i = (page-1)*4; i < (page-1)*4+d.length; i++) {
                 changeData[i] = (res.data.result.content[j]);
+                changeData[i].productId = i*-1;
                 j++;
             }
             for (var i = ((page-1)*4+(d.length)); i < page*4; i++) {
@@ -18,8 +19,8 @@ const homeGetAxios = (setData, changeData, link, page) => {
                     price: 0,
                     storeName: "~준비중 입니다~",
 
-                    productId: 0,
-                    popularRank: i*-1,
+                    productId: i*-1,
+                    popularRank: 0,
 
                     status: null,
                     isCake: null,
@@ -43,8 +44,8 @@ const homeGetAxios = (setData, changeData, link, page) => {
                     price: 0,
                     storeName: "~준비중 입니다~",
 
-                    productId: 0,
-                    popularRank: i*-1,
+                    productId: i*-1,
+                    popularRank: 0,
 
                     status: null,
                     isCake: null,

@@ -8,8 +8,6 @@ import axios from 'axios';
 import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
 
-import MenuModal from 'src/components/main/home/image-modal/CakeStoreModal';
-
 interface Props {
   session: any;
   auth: any;
@@ -19,6 +17,7 @@ const PopularMenu = ({ session, auth }: Props) => {
   const [num, setNum] = useState(1);
   const [slidePx, setSlidePx] = useState(0);
 
+  const [data, setData] = useState([]);
   const [resize, setResize] = useState(0);
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -27,18 +26,12 @@ const PopularMenu = ({ session, auth }: Props) => {
     }
     setResize(window.innerWidth);
   };
-
-  const [data, setData] = useState([]);
   useEffect(() => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    let isComponentMounted = true;
     var changeData: any = [];
     homeGetAxios(setData, changeData, 'popular-products', 1);
-    // return () => {
-    //   isComponentMounted = false;
-    // }
   }, []);
 
   // 모달창 생성용 값
@@ -54,12 +47,6 @@ const PopularMenu = ({ session, auth }: Props) => {
         <div className="popularmenu-title-flex">
           <div className="popularmenu-title">
             인기상품
-            <MenuModal
-              //  resize={resize}
-              imageModalShow={modalShow}
-              setImageModalShowF={setModalShow}
-              cakeTF={cakeTF}
-            />
           </div>
           <div className="popularmenu-btn">
             <div>{num}/5</div>
