@@ -7,12 +7,15 @@ import interactionPlugin from '@fullcalendar/interaction';
 import $ from 'jquery';
 import '../../styles/seller/FullCalendarApp.scss';
 
-import FullCalendarSeller from '../../utils/FullCalendarSeller';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
+import SSO_TestData from './SSO_TestData';
+import SSH_TestData from './SSH_TestData';
+import SSO_FullCalendar from './SSO_FullCalendar';
+import SSH_FullCalendar from './SSH_FullCalendar';
 
 function FullCalendarApp (session: any, auth: any,){
     const [num, setNum] = useState(0);
@@ -57,14 +60,18 @@ function FullCalendarApp (session: any, auth: any,){
         if (pathname === "SSOCalendar") {
             LinkClick("SellerOrder");
             sellerLinkClick("SellerOrder");
+
+            SSO_FullCalendar ((seller: any)=>{
+                setEvents(seller);
+            }, SSO_TestData()); // get /api/store/future_calendar?storeId=0
         } else {
             LinkClick("SalesHistory");
             sellerLinkClick("SalesHistory");
-        }
 
-        FullCalendarSeller((seller: any)=>{
-            setEvents(seller);
-        }, false);
+            SSH_FullCalendar ((seller: any)=>{
+                setEvents(seller);
+            }, SSH_TestData()); // get /api/store/past_calendar?storeId=0
+        }
     }, []);
 
   // /SellerOrder/{id}
