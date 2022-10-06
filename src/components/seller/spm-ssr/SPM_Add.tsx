@@ -145,6 +145,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                     {[0, 1, 2, 3, 4].map((data: any,)=>{
                                         return (
                                             <li 
+                                                key={data}
                                                 className={classNames('spm-add-update-dot', {
                                                     'spm-add-update-dot-active': addImgNum===data,
                                                 })}
@@ -186,9 +187,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                         {addChildOption>-1&& addChildOption !== addOption.length-1&&
                             <div className='spm-add-update-child-modal' style={{ top: (230+addChildOption*167+addChildItem*45+addItemLen*45)+"px", }}> {/* 뒤에 품목개수*45 해줘야함 */}
                                 <div className='spm-add-update-child-modal-move'>이동</div>
-                                {addOption.map((option2: {optionNumber: any, itemList: any, })=>{
+                                {addOption.map((option2: {optionNumber: number, itemList: any[], }, idx: number, )=>{
                                     return (
-                                        <>
+                                        <div key={idx}>
                                             {addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
                                                 <>
                                                 <div style={{ display: "flex", justifyContent: "center", }}>
@@ -251,10 +252,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                 </div>
                                                 </>
                                             }
-                                            {option2.itemList.map((item2: {itemNumber: any, itemName: any, })=>{
+                                            {option2.itemList.map((item2: {itemNumber: number, itemName: any[], }, idx2: number)=>{
                                                 return (
                                                     (addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
-                                                        <div className='spm-add-update-child-modal-item'> {/* spm-add-update-child-modal */}
+                                                        <div key={idx2} className='spm-add-update-child-modal-item'> {/* spm-add-update-child-modal */}
                                                             <input 
                                                                 type='checkbox' id={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}
                                                                 className='signup-checkbox-inner'
@@ -304,7 +305,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                     )
                                                 );
                                             })}
-                                        </>
+                                        </div>
                                     );
                                 })}
                             </div>
@@ -336,9 +337,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                 <div className="spm-add-update-item-right">x</div>
                             </div>
 
-                            {addOption.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
+                            {addOption.map((option: { optionNumber: any, optionName: any, itemList: any, }, idx: number)=>{
                                 return (
-                                    <form>
+                                    <form key={idx}>
                                         <div style={{ marginLeft: "33px", marginBottom: "5px", }}>{"옵션"+(option.optionNumber+1)+"."}</div>
                                         <div className="spm-add-update-option">
                                             <div>
@@ -383,9 +384,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                             </div>
                                         </div>
                                         <>
-                                            {option.itemList.map((item: { itemNumber: any, itemName: any, itemPrice: any, itemType: any, itemChild: any, }, )=>{
+                                            {option.itemList.map((item: { itemNumber: number, itemName: string, itemPrice: number, itemType: string, itemChild: JSON[], }, idx2: number, )=>{
                                                 return (
-                                                    <div className="spm-add-update-item">
+                                                    <div key={idx2} className="spm-add-update-item">
                                                         <div
                                                             className="spm-add-update-item-left"
                                                             onDragStart={(e)=>{

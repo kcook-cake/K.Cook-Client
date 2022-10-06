@@ -12,14 +12,12 @@ function PickUp({getData}: Props) {
 
     return (
         <>
-            {getData.map((data: any, )=>{
+            {getData.map((data: string, idx: number )=>{
                 return (
-                    <div className={classNames(
-                        'cake-detail-pickup',
-                        // {
-                        //     'cake-detail-none-active': time.split(":")[0] > data.split(":")[0],
-                        // }
-                    )}>
+                    <div
+                        key={idx}
+                        className={classNames('cake-detail-pickup',
+                        )}>
                         {data}
                     </div>
                 )

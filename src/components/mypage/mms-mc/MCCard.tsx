@@ -8,9 +8,9 @@ interface Props {
 function MCCard({getData}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+            {getData.map((data: { productId: number, name: string, storeName: string, price: number, raiting: number, image: string, status: string, isCake: boolean, resultPrice: number, salePrice: number, reviewCount: number, }, idx: number)=>{
                 return (
-                    <div className="mccard">
+                    <div key={idx} className="mccard">
                         <div className="mccard-top">                        
                             30,000원
                             {true?

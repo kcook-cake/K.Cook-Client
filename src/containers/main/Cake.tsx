@@ -78,8 +78,8 @@ function Cake() {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    let num = 12;
     let isComponentMounted = true;
+    let num = 12;
     axios({
         url: '/app/cakes?page=1',
         method: 'GET',

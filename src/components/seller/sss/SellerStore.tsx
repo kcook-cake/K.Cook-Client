@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'src/styles/kcook/AllKCOOK.scss';
 import 'src/styles/mypage/Profile.scss';
 import 'src/styles/seller/sss/SellerStore.scss';
 
@@ -234,11 +233,13 @@ function SellerStore(session: any, auth: any) {
           </div>
           <div className="kcook-list">
             <p className="profile-name">스토어 주소</p>
-            <input
-              value={addressMain}
-              className="sellerstore-content"
-              onClick={openclosePostCode}
-            />
+            <div onClick={openclosePostCode}>
+              <input
+                value={addressMain}
+                className="sellerstore-content"
+                onChange={openclosePostCode}
+              />
+            </div>
             <div id="popupDom">
               {isPopupOpen ? (
                 <>
@@ -263,9 +264,9 @@ function SellerStore(session: any, auth: any) {
           </div>
           <div className="profile-list">
             <input
-              value={address}
+              value={address || ''}
               className="sellerstore-content"
-              onClick={handleAddress}
+              onChange={handleAddress}
             />
           </div>
 

@@ -24,13 +24,13 @@ function SSRCard({ getData, }: Props) {
 
     return (
         <>
-            {Object.keys(data).map((key: string, index: number, )=>
+            {Object.keys(data).map((key: string, idx: number, )=>
                 (
-                    <>
-                        <div className={"mobile spm-ssr-date spm-ssr-date-"+index}>{key}</div>
-                        {data[key].map((data: { image: any, })=>{
+                    <div key={idx}>
+                        <div className={"mobile spm-ssr-date spm-ssr-date-"+idx}>{key}</div>
+                        {data[key].map((data: { image: string, }, idx2: number, )=>{
                             return (
-                                <div className="ssrcard">
+                                <div key={idx2} className="ssrcard">
                                     <div className="pc ssrcard-time">오늘 15:00</div>
                                     <div className="ssrcard-box">
                                         <div className="seller-img-box ssrcard-img">
@@ -52,7 +52,7 @@ function SSRCard({ getData, }: Props) {
                             )
                             })
                         }
-                    </>
+                    </div>
                 )
             )
             }

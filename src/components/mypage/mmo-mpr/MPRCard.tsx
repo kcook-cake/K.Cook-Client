@@ -11,9 +11,9 @@ interface Props {
 function MPRCard({getData}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+            {getData.map((data: { productId: number, name: string, storeName: string, price: number, raiting: number, image: string, status: string, isCake: boolean, resultPrice: number, salePrice: number, reviewCount: number, }, idx: number)=>{
                 return (
-                    <div className="mprcard">
+                    <div key={idx} className="mprcard">
                         <div className="mprcard-img-box">
                             {data.image === null?
                                 <div className="mprcard-img-none">~준비중~</div>:

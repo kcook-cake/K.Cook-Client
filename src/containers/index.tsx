@@ -95,22 +95,21 @@ const Pages = () => {
         session={session} auth={auth} 
         setNumLeftMobileF={setNumLeftMobile} />
       
-      {/* <Route exact path="/Login" component={Login} />
+      <Route exact path="/Login" component={Login} />
       <Route exact path="/LoginFind" component={LoginFind} />
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/SignOut" component={SignOut} />
       <Route exact path="/Test" component={Test} />
 
       <Route exact path="/Cake/:id" component={CakeDetail} />
-      <Route exact path="/Store/:id" component={()=>StoreDetail(auth)} /> */}
+      <Route exact path="/Store/:id" component={()=>StoreDetail(auth)} />
 
       <Main session={session} auth={auth} />
 
-      {/* {numLeftMobile === 2 ? <KCOOK session={session} auth={auth} /> : <></>}
+      {/* {numLeftMobile === 2 ? <KCOOK session={session} auth={auth} /> : <></>} */}
 
       {numLeftMobile === 3 ? <Seller session={session} auth={auth} /> : <></>}
-
-      {numLeftMobile === 4 ? <Mypage session={session} auth={auth} /> : <></>} */}
+      {numLeftMobile === 4 ? <Mypage session={session} auth={auth} /> : <></>}
 
 
       <Footer

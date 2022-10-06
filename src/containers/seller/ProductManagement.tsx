@@ -9,7 +9,7 @@ import { ReactComponent as CopyBtn } from '../../assets/seller/copybtn.svg';
 import addIcon from '../../assets/seller/spm-add.png';
 
 import SPMCard from 'src/components/seller/spm-ssr/SPMCard';
-import SPMCard_Add from 'src/components/seller/spm-ssr/SPM_Add';
+import SPM_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import List2Option from 'src/utils/List2Option';
@@ -42,19 +42,27 @@ function ProductManagement(session: any, auth: any,) {
       });
     }
 
+    let isComponentMounted = true;
     axios({
-      url: "/app/products/85",
-      method: "GET",
-    }).then((res)=>{
-      oriData = [res.data.result];
-      for (var i = 0; i < oriData.length; i++) {
-        oriShow[i] = true;
-        oriData[i].optionsList = List2Option(oriData[i].optionsList);
-      }
-      setOriShow(oriShow);
-      setOriData(oriData);
-    }).catch((err)=>{
-    })
+        url: "/app/products/85",
+        method: "GET",
+      }).then((res)=>{
+        if (res.data) {
+          if (isComponentMounted) {
+            oriData = [res.data.result];
+            for (var i = 0; i < oriData.length; i++) {
+              oriShow[i] = true;
+              oriData[i].optionsList = List2Option(oriData[i].optionsList);
+            }
+            setOriShow(oriShow);
+            setOriData(oriData);
+          }
+        }
+      }).catch((err)=>{
+      })
+    return () => {
+      isComponentMounted = false;
+    }
   }, []);
 
   return (
@@ -74,9 +82,9 @@ function ProductManagement(session: any, auth: any,) {
           ></div>
 
           <div className="seller-content">
-            {oriData.map((data: any, idx: any) => {
+            {oriData.map((data: any, idx: number) => {
               return (
-                <>
+                <div key={idx}>
                   {oriShow[idx] ? 
                     (
                       <SPMCard
@@ -96,11 +104,11 @@ function ProductManagement(session: any, auth: any,) {
                       />
                     )
                   }
-                </>
+                </div>
               );
             })}
             {addShow&&
-              <SPMCard_Add
+              <SPM_Add
                 NumF={()=>setNum(num+1)} resize={resize}
                 setAddShowF={setAddShow}
               />

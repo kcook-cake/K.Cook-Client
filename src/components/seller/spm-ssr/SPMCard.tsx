@@ -57,20 +57,20 @@ function SPMCard({
                         </div>
                         <div className="spmcard-content-inner">
                             <div className="spmcard-title">{oriData.name}</div>
-                            {oriData.optionsList.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
+                            {oriData.optionsList.map((option: { optionNumber: number, optionName: string, itemList: any[], }, idx: number)=>{
                                 return (
-                                    <>
+                                    <div key={idx} style={{ display: "flex", }}>
                                         {option.optionName}:&nbsp;
-                                        {option.itemList.map((item: { itemNumber: any, itemName: any, })=>{
+                                        {option.itemList.map((item: { itemNumber: number, itemName: string, }, idx2: number)=>{
                                             return (
-                                                <>
+                                                <div key={idx2}>
                                                     {item.itemName}
                                                     {(item.itemNumber===option.itemList.length-1)? null: <>,&nbsp;</>}
-                                                </>
+                                                </div>
                                             );
                                         })}
                                         <br/>
-                                    </>
+                                    </div>
                                 );
                             })}
                         </div>

@@ -52,29 +52,66 @@ const StoreDetail = (auth: any) => {
 
 
   const [data, setData] = useState([]);
-  //0페이지부터 시작한다
-  const [pageTodays, setPageTodays] = useState(0);
-  const [lengthTodays, setLengthTodays] = useState(0);
-  const [resize, setResize] = useState(0);
-  const handleResize = () => {
-    if (window.innerWidth <= 767) {
-      setNum(1);
-      setSlidePx(0);
-    }
-    setResize(window.innerWidth);
-  };
-
   useEffect(() => {
     $('.hm-pc-flex').show();
     LinkClick('Store');
     if ($('.seller-flex').height() != null)
       setHeight(Number($('.seller-flex').height()));
 
-    setResize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
+    let isComponentMounted = true;
+    let num = 8;
+    axios({
+        url: '/app/cakes/on-sale?storeId=17',
+        method: 'GET',
+      })
+      .then((res) => {
+        if (res.data) {
+          if (isComponentMounted) {
+            const data = res.data.result.content;
 
-    storeCakeGetAxios(setData, setPageLength, 'cakes', 1, 8);
+            let changeData = [];
+            for (var i = 0; i < data.length; i++) {
+                changeData[i] = res.data.result.content[i];
+            }
+            for (var i:number = data.length; i < num; i++) {
+                changeData[i] = {
+                  image: null,
+                  name: "~준비중 입니다~",
+                  price: 0,
+                  storeName: "~준비중 입니다~",
 
+                  productId: 0,
+                  popularRank: 0,
+                };
+            }
+            var len = [];
+            for (var i=0; i<16/8; i++) //data.length
+                len[i] = { num: i+1 }
+            setPageLength(len);
+            setData(changeData);
+          }
+        }
+      })
+      .catch((err) => {
+        let changeData = [];
+        for (var i = 0; i < num; i++) {
+          changeData[i] = {
+            image: null,
+            name: "~준비중 입니다~",
+            price: 0,
+            storeName: "~준비중 입니다~",
+
+            productId: 0,
+            popularRank: 0,
+          };
+        }
+        setPageLength([{num: 1}]);
+        setData(changeData);
+        console.log(err);
+      });
+    return () => {
+      isComponentMounted = false;
+    }
 
 
     // var container = document.getElementById('map');
@@ -157,8 +194,7 @@ const StoreDetail = (auth: any) => {
                 <div
                   onClick={() =>
                     handleCopyClipBoard('서울 용산구 이태원로55길 111')
-                  }
-                >
+                  }>
                   서울 용산구 이태원로55길 111
                 </div>
               </div>

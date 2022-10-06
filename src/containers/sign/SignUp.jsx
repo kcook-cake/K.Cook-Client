@@ -392,18 +392,20 @@ function SignUp() {
               onCheckAll(e.target.checked)
             }
           />
-          <label for="AgreeAll"></label>
+          <label htmlFor="AgreeAll"></label>
           <div className="login-auto-contents">전체동의</div>
         </div>
         <div className="signup-agreement-sub">
-          {checkboxs.map(data => 
-            <LoginCheckbox 
-              id={data.id}
-              description={data.description} 
-              show={data.show} 
-              checkedItems={checkedItems} 
-              checkedItemHandler={checkedItemHandler} 
-            />
+          {checkboxs.map((data, idx) => 
+            <div key={idx}>
+              <LoginCheckbox 
+                id={data.id}
+                description={data.description} 
+                show={data.show} 
+                checkedItems={checkedItems} 
+                checkedItemHandler={checkedItemHandler} 
+              />
+            </div>
           )}
         </div>
         <button
