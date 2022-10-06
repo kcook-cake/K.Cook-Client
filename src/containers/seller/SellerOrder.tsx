@@ -7,73 +7,56 @@ import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
+import SSO_TestData from './SSO_TestData';
+import List2Option from 'src/utils/List2Option';
+
+type userType = {
+    [key: string]: any;
+}
 
 function SellerOrder (){
-    const [data, setData] = useState([
-        {
-            date: "2022-07-06",
-            isCake: true,
-            name: "플라워케이크 - 리스형",
-            price: 0,
-            productId: 1,
-            raiting: ".00",
-            resultPrice: 0,
-            reviewCount: 0,
-            salePrice: 0,
-            status: "VALID",
-            storeName: "유니아케이크",
-            image: "",
-        },
-        {
-            date: "2022-08-01",
-            isCake: true,
-            name: "플라워케이크 - 리스형",
-            price: 0,
-            productId: 2,
-            raiting: ".00",
-            resultPrice: 0,
-            reviewCount: 0,
-            salePrice: 0,
-            status: "VALID",
-            storeName: "유니아케이크",
-            image: "",
-        },
-        {
-            date: "2022-08-01",
-            isCake: true,
-            name: "플라워케이크 - 리스형",
-            price: 0,
-            productId: 3,
-            raiting: ".00",
-            resultPrice: 0,
-            reviewCount: 0,
-            salePrice: 0,
-            status: "VALID",
-            storeName: "유니아케이크",
-            image: "",
-        },
-        {
-            date: "2022-08-04",
-            isCake: true,
-            name: "플라워케이크 - 리스형",
-            price: 0,
-            productId: 4,
-            raiting: ".00",
-            resultPrice: 0,
-            reviewCount: 0,
-            salePrice: 0,
-            status: "VALID",
-            storeName: "유니아케이크",
-            image: "",
-        },
-    ]);
-    // const [data, setData] = useState([]);
-    // const [dataLength, setDataLength] = useState(0);
+    const [num, setNum] = useState(0);
 
+    let [oriData, setOriData] = useState([]);
+    const [data, setData] = useState<userType>({});
+
+    var pathname = window.location.pathname.split("/");
     useEffect(()=>{
         LinkClick("SellerOrder");
         sellerLinkClick("SellerOrder");
-    //     getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+
+        let isComponentMounted = true;
+        if (pathname.length === 3) {
+            //get /api/store/sales-history?storeId=0&date=2020-10-19
+            oriData = SSO_TestData();
+            setOriData(oriData);
+            var updateData: userType = {};
+            for (var i = 0; i < oriData.length; i++) {
+                oriData[i].optionsList = List2Option(oriData[i].optionsList);
+                updateData[oriData[i].saleDate] = [];
+            }
+            oriData.forEach((data: any, ) => {
+                updateData[data.saleDate][updateData[data.saleDate].length] = data;
+                setData(updateData);
+            })
+        } else {
+            //get /api/store/sales-history?storeId=0
+            oriData = SSO_TestData();
+            setOriData(oriData);
+            var updateData: userType = {};
+            for (var i = 0; i < oriData.length; i++) {
+                oriData[i].optionsList = List2Option(oriData[i].optionsList);
+                updateData[oriData[i].saleDate] = [];
+            }
+            oriData.forEach((data: any, ) => {
+                updateData[data.saleDate][updateData[data.saleDate].length] = data;
+                setData(updateData);
+            })
+        }
+        
+        return () => {
+            isComponentMounted = false;
+        }
     },[]);
 
     return(
@@ -103,7 +86,7 @@ function SellerOrder (){
                     </div>
                     <div className="mobile" style={{ width: "5px", height: "25px", }}></div>
                     <div className="sso-ssh-content">
-                        <SSO_SSH_Card getData={data}/>
+                        <SSO_SSH_Card getData={data} dateTF={pathname.length === 3? true: false} />
                     </div>
                 </div>
             </div>

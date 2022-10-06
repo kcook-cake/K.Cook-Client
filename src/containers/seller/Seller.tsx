@@ -10,12 +10,20 @@ import ProductManagement from './ProductManagement';
 import SellerReview from './SellerReview';
 import SellerStore from '../../components/seller/sss/SellerStore';
 
-import FullCalendarApp from './FullCalendarApp';
 import SPMDetail from '../detail/SPMDetail';
+import SSO_FullCalendar from './SSO_FullCalendar';
+import SSH_FullCalendar from './SSH_FullCalendar';
 
 interface Props {
-    session: any,
-    auth: any,
+    session: boolean,
+    auth: {
+        accountId: number,
+        address: string,
+        dateOfBirth: string,
+        email: string,
+        nickname: string,
+        phoneNumber: string,
+    },
 }
 
 const Seller = ({ session, auth, }: Props) =>{
@@ -27,10 +35,12 @@ const Seller = ({ session, auth, }: Props) =>{
             <div className="seller">
                 <>
                     <SellerSection/>
-                    <Route exact path="/SSOCalendar" component={()=>FullCalendarApp(session, auth)} />
-                    <Route exact path="/SSHCalendar" component={()=>FullCalendarApp(session, auth)} />
+                    <Route exact path="/SSOCalendar" component={()=>SSO_FullCalendar(session, auth)} />
+                    <Route exact path="/SSHCalendar" component={()=>SSH_FullCalendar (session, auth)} />
                     <Route exact path="/SellerOrder" component={SellerOrder} />
+                    <Route exact path="/SellerOrder/:date" component={SellerOrder} />
                     <Route exact path="/Saleshistory" component={SalesHistory}/>
+                    <Route exact path="/Saleshistory/:date" component={SalesHistory}/>
                     <Route exact path="/ProductManagement" component={()=>ProductManagement(session, auth)}/>
                     <Route exact path="/ProductManagement/:id" component={SPMDetail}/>
                     <Route exact path="/SellerReview" component={SellerReview} />

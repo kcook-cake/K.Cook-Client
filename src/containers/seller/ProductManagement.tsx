@@ -29,9 +29,6 @@ function ProductManagement(session: any, auth: any,) {
   };
 
   useEffect(() => {
-    setResize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
     LinkClick('ProductManagement');
     sellerLinkClick('ProductManagement');
 
@@ -60,6 +57,9 @@ function ProductManagement(session: any, auth: any,) {
         }
       }).catch((err)=>{
       })
+
+    setResize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
     return () => {
       isComponentMounted = false;
     }

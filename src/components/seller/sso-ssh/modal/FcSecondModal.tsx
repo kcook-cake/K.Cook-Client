@@ -13,12 +13,12 @@ import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 
 interface Props {
-    NumF: any;
-    resize: any;
-    height: any;
+    NumF: Function;
+    resize: number;
+    height: number;
 
-    orderModalShow: any;
-    setOrderModalShowF: any;
+    orderModalShow: boolean;
+    setOrderModalShowF: Function;
 }
 
 function OrderModal({
@@ -30,7 +30,7 @@ function OrderModal({
     setOrderModalShowF,
 }: Props) {
   
-  var jwToken: any = undefined;
+  var jwToken: string = undefined;
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
 
@@ -61,25 +61,23 @@ function OrderModal({
                     <div className="spm-modal-title">주문/픽업 설정</div>
                     <div className="sfc-second-modal-add-group">+ 그룹 추가</div>
                     <div style={{ height: "22px"}}></div>
-                    {[0, 1, 2].map((data: any,)=>{
+                    {[0, 1, 2].map((data: number,)=>{
                       return (
-                        <>
+                        <div key={data}>
                           <div className='sfc-second-modal-content-top'>
                             <div className='sfc-second-modal-content-group'>그룹{data+1}.</div>
                             <div>
-                              <input type='number' value={0}/>
+                              <input type='number' value={0} onChange={()=>{}}/>
                               건
                             </div>
                           </div>
                           <div className='sfc-second-modal-content-middle-flex'>
                             <div className='sfc-second-modal-content-middle'>
-                              {[0, 1, 2, 3, 4, 5, 6, 7].map((data: any,)=>{
+                              {[0, 1, 2, 3, 4, 5, 6, 7].map((data2: number,)=>{
                                 return (
-                                  <>
-                                    <div className='sfc-second-modal-content-time'>
-                                      {data+1}
-                                    </div>
-                                  </>
+                                  <div key={data2} className='sfc-second-modal-content-time'>
+                                    {data+1}
+                                  </div>
                                 );
                               })}
                               <div className='sfc-second-modal-add'>
@@ -88,14 +86,14 @@ function OrderModal({
                               {/* <div className='sfc-second-modal-content-middle-bar'></div> */}
                             </div>
                           </div>
-                        </>
+                        </div>
                       );
                     })}
                     <hr className='sfc-second-modal-hr' />
                     <div className='sfc-second-modal-all-cnt' >
                       하루 총 주문 가능 개수&nbsp;&nbsp;
                       <div>
-                        <input type='number' value={0}/>
+                        <input type='number' value={0} onChange={()=>{}}/>
                         건
                       </div>
                     </div>

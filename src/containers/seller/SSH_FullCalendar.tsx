@@ -12,12 +12,11 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
-import SSO_TestData from './SSO_TestData';
-import SSH_TestData from './SSH_TestData';
-import SSO_FullCalendar from './SSO_FullCalendar';
-import SSH_FullCalendar from './SSH_FullCalendar';
+import SSH_Fc_TestData from './SSH_Fc_TestData';
+import SSH_FcDataChange from './SSH_FcDataChange.js';
+import MakePrice from 'src/utils/MakePrice';
 
-function FullCalendarApp (session: any, auth: any,){
+function SSH_FullCalendar (session: any, auth: any,){
     const [num, setNum] = useState(0);
 
     //모달창
@@ -25,6 +24,7 @@ function FullCalendarApp (session: any, auth: any,){
     const [modalShow, setModalShow] = useState(false);
     const [deadLineModal, setDeadLineModal] = useState(false);
 
+    const [allPrice, setAllPrice] = useState(0);
     const [date, setDate] = useState("");
     const [dateT, setDateT] = useState("");
     const [title, setTitle] = useState("");
@@ -36,53 +36,52 @@ function FullCalendarApp (session: any, auth: any,){
     //판매자 정보
     const [events, setEvents] = useState([{}]);
 
-    const [pathname, setPathname] = useState("");
-    const [resize, setResize] = useState(0);
+    
 
+    //주차 계산기
+    const getWeekNumber = (date: Date) => {
+        const currentDate = date.getDate();
+        const startOfMonth = new Date(date.setDate(1));
+        const weekDay = startOfMonth.getDay();
+        return Math.floor(((weekDay-2) + currentDate) / 7 + 1);
+    }
+
+
+
+    const [resize, setResize] = useState(0);
     const handleResize = () => {
         setResize(window.innerWidth);
     };
-
-    let [secondModalHeight, setSecondModalHeight] = useState(0); //리스트를 받고 주문 개수에 따라 넘겨줌
     useEffect(() => {
         // $(".fc-daygrid-day").css("background", "none");
-        const height1 = document.getElementById('header-flex-id') as Element;
-        const height2 = document.getElementById('sfc') as Element;
-        setModalHeight(height1.clientHeight+height2.clientHeight);
+        // const height1 = document.getElementById('header-flex-id') as Element;
+        // const height2 = document.getElementById('sfc') as Element;
+        // setModalHeight(height1.clientHeight+height2.clientHeight);
+
+        let isComponentMounted = true;
+        LinkClick("SalesHistory");
+        sellerLinkClick("SalesHistory");
+
+        SSH_FcDataChange ((seller: any)=>{
+            setEvents(seller);
+        }, SSH_Fc_TestData()); // get /api/store/past_calendar?storeId=0
 
         setResize(window.innerWidth);
         window.addEventListener("resize", handleResize);
-
-        var pathname = window.location.pathname;
-        pathname = pathname.split("/")[1];
-        setPathname(pathname);
-
-        if (pathname === "SSOCalendar") {
-            LinkClick("SellerOrder");
-            sellerLinkClick("SellerOrder");
-
-            SSO_FullCalendar ((seller: any)=>{
-                setEvents(seller);
-            }, SSO_TestData()); // get /api/store/future_calendar?storeId=0
-        } else {
-            LinkClick("SalesHistory");
-            sellerLinkClick("SalesHistory");
-
-            SSH_FullCalendar ((seller: any)=>{
-                setEvents(seller);
-            }, SSH_TestData()); // get /api/store/past_calendar?storeId=0
+        return () => {
+            isComponentMounted = false;
+            window.removeEventListener("resize", handleResize);
         }
     }, []);
 
-  // /SellerOrder/{id}
   return(
     <>
-        <div id="sfc" className={"sfc "+pathname}>
+        <div id="sfc" className={"sfc SSHCalendar"}>
             <div className="seller-mypage-top sso-ssh-top">
-                <div className="seller-mypage-front-title">{pathname==="SSOCalendar"? '주문확인': '판매내역'}</div>
+                <div className="seller-mypage-front-title">판매내역</div>
                 <div className='ss-fc-link-flex'>
                     <Link
-                        to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
+                        to='/SalesHistory'
                         className='pc ss-fc-link'
                         style={{ color: "#ea5450", }}>
                         달력보기
@@ -92,7 +91,7 @@ function FullCalendarApp (session: any, auth: any,){
                         style={{ display: "inline-block"}}>|
                     </div>
                     <Link
-                        to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}
+                        to='/SalesHistory'
                         className='ss-fc-link ss-fc-link-right'>
                         목록보기
                     </Link>
@@ -110,9 +109,8 @@ function FullCalendarApp (session: any, auth: any,){
                     <div 
                         className="calendar-modal-flex" //fcap fcap-back
                         style={{ 
-                            marginLeft: (5+x*123.5)+"px", 
-                            // left: (400)+"px",
-                            marginTop: (y+window.pageYOffset-277)+"px", 
+                            marginLeft: (5+x*123.5)+"px",
+                            marginTop: (186+(y-1)*109.5)+"px",
                         }}>
                         <div className="calendar-modal-top"></div>
                         <div id="calendar-modal">
@@ -121,16 +119,11 @@ function FullCalendarApp (session: any, auth: any,){
                             <br/>
                             <div style={{ width: "5px", height: "20px", }}></div>
                             <div className="calendar-modal-box">
-                                <Link to={pathname==="SSOCalendar"? '/SellerOrder': '/SalesHistory'}>
-                                    <button className="calendar-button">예약 확인</button> 
+                                <Link to={'/SalesHistory/'+dateT}>
+                                    <button className="calendar-button">판매 내역 확인</button> 
                                 </Link>
-                                <button 
-                                    className="calendar-button"
-                                    onClick={()=>{
-                                        KCOOKScroll(true);
-                                        setOrderModalShow(true);
-                                    }}>
-                                    주문 건수 설정
+                                <button className="calendar-button">
+                                    {MakePrice(allPrice)}원
                                 </button> {/* 휴일해제 */}
                             </div>
                         </div>
@@ -188,6 +181,7 @@ function FullCalendarApp (session: any, auth: any,){
                         $(".fc-daygrid-day.fc-day-today").css("background", "#FFFADF");
                     }}
                     eventClick={(e) => {
+                        setAllPrice(e.event._def.extendedProps.allPrice);
                         if (resize <= 767) {
                             const height1 = document.getElementById('header-flex-id') as Element;
                             const height2 = document.getElementById('sfc') as Element;
@@ -256,25 +250,13 @@ function FullCalendarApp (session: any, auth: any,){
                         $(".fc-daygrid-day[data-date='"+date+"']").css("background", "#ea5450");
                         $(".fc-daygrid-day[data-date='"+date+"'] .fc-event-main-frame").css("background", "#ea5450");
 
-                        const xy = document.querySelector(".fc-daygrid-day[data-date='"+date+"']") as Element;
-                        // setX(xy.getBoundingClientRect().left);
                         setX(cnt);
-                        setY(xy.getBoundingClientRect().top);
+                        setY(getWeekNumber(new Date(date)));
                         setModalShow(true);
                     }}
                 />
             </div>
             {/* <div className='sfc-background'></div> */}
-            {pathname==="SSOCalendar"? (
-                <div
-                    className='sfc-deadline-btn'
-                    onClick={()=>{
-                        setDeadLineModal(true);
-                        console.log("a");
-                    }}>
-                    마감일 설정
-                </div>
-            ): null}
 
         </div>
         {/* <div className="fcap-back" style={{ width: "5px", height: "1160px", }}></div> */}
@@ -283,4 +265,4 @@ function FullCalendarApp (session: any, auth: any,){
   )
 }
 
-export default FullCalendarApp;
+export default SSH_FullCalendar;

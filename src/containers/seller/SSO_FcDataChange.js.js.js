@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import $ from 'jquery';
 
-const SSO_FullCalendar = (fn, list) => {
+const SSO_FcDataChange = (fn, list) => {
     //달력 판매자 정보 list
     if (list[0].title === 0 && list[0].titleToday === 0)
         list[0].borderColor = "rgba(255, 255, 255, 0.0)";
-    list[0].title = "당일: " + list[0].todayTitle + "\n주문: " + list[0].title + "/" + list[0].describe;
+    list[0].title = `당일: ${list[0].todayTitle}\n
+                    주문: ${list[0].title}/${list[0].describe}`;
     
     for(var i = 1; i < list.length; i++) {
         // e[i].id = i+1;
@@ -22,4 +23,4 @@ const SSO_FullCalendar = (fn, list) => {
     fn(list);
 }
 
-export default SSO_FullCalendar;
+export default SSO_FcDataChange;

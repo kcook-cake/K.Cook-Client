@@ -1,43 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
 import '../../../styles/seller/sso-ssh/SSO_SSH_Card.scss';
 
 import rightArrow from "../../../assets/right-arrow.svg";
 import cake6 from   '../../../assets/cake6.png';
+import MakePrice from 'src/utils/MakePrice';
 
 interface Props {
-    getData: any
+    getData: any,
+    dateTF: boolean,
 }
 
-type userType = {
-    [key: string]: any;
-}
-
-function SSO_SSH_Card ({getData}: Props) {
-    const [data, setData] = useState<userType>({});
+function SSO_SSH_Card ({ getData, dateTF }: Props) {
     useEffect(()=>{
-        var updateData: userType = {};
-        for (var i = 0; i < getData.length; i++) {
-            updateData[getData[i].date] = [];
-        }
-        getData.forEach((d: any, ) => {
-            updateData[d.date][updateData[d.date].length] = d;
-            setData(updateData);
-        })
     },[]);
 
     return (
         <>
-            {Object.keys(data).map((key: string, index: number, )=>
+            {Object.keys(getData).map((key: string, idx: number, )=>
                 (
-                    <>
-                        <div className={"mobile sso-ssh-card-date sso-ssh-card-date-"+index}>{key}</div>
-                        {data[key].map((data: { image: any, })=>{
+                    <div key={idx}>
+                        <div className={classNames("sso-ssh-card-date", {'mobile': dateTF})}>{key}</div>
+                        {getData[key].map((data: { image: string, name: string, price: any, saleTime: string, saleDate: string, optionsList: any[], }, idx2: number, )=>{
                             return (
-                                <div className="sso-ssh-card">
-                                    <div className="pc sso-ssh-card-date">오늘 15:00</div>
+                                <div key={idx2} className="sso-ssh-card">
+                                    <div className="pc sso-ssh-card-date">{data.saleTime}</div>
                                     <div className="sso-ssh-card-box">
                                         <div className="pc seller-img-box">
-                                            {data.image === ""?
+                                            {data.image === "" || data.image === null || data.image === undefined || data.image.length===103?
                                                 <div className="seller-img-none">~준비중 입니다~</div>:
                                                 <img src={data.image} className="seller-img"/>
                                             }
@@ -45,13 +35,29 @@ function SSO_SSH_Card ({getData}: Props) {
                                         </div>
                                         <div className="sso-ssh-card-box-inner">
                                             <div className="sso-ssh-card-title">
-                                                하트볼터치 곰돌이 케이크
+                                                {data.name}
                                             </div>
-                                            <div className="sso-ssh-card-middle">
-                                                픽업예정 15:00
+                                            <div className="sso-ssh-card-middle" style={{ display: "flex", }}>
+                                                {data.optionsList.map((data2: { optionName: string, itemList: any[], }, idx2: number, )=>{
+                                                    return (
+                                                        <div key={idx2} style={{ display: "flex", }}>
+                                                            {data2.optionName}:&nbsp;
+                                                            {data2.itemList.map((item: { itemNumber: number, itemName: string, }, idx3: number)=>{
+                                                                return (
+                                                                    <div key={idx3}>
+                                                                        {item.itemName}
+                                                                        {(item.itemNumber===data2.itemList.length-1)? null: <>,&nbsp;</>}
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                            {(idx2===data.optionsList.length-1)? null: <>,&nbsp;</>}
+                                                        </div>
+                                                    );
+                                                })}
+                                                
                                             </div>
                                             <div className="sso-ssh-card-title sso-ssh-card-bottom">
-                                                19,900원
+                                                {MakePrice(data.price)+"원"}
                                             </div>
                                         </div>
                                         <div className="mobile sso-ssh-card-arrow">
@@ -62,10 +68,9 @@ function SSO_SSH_Card ({getData}: Props) {
                             )
                             })
                         }
-                    </>
+                    </div>
                 )
-            )
-            }
+            )}
         </>
     );
 }

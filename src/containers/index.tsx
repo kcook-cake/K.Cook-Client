@@ -19,7 +19,6 @@ import SignOut from 'src/containers/sign/SignOut';
 import Test from '../components/Test';
 import StoreDetail from './detail/StoreDetail';
 import CakeDetail from './detail/CakeDetail';
-import FullCalendarApp from './seller/FullCalendarApp';
 import SellerOrder from './seller/SellerOrder';
 import SalesHistory from './seller/SalesHistory';
 import ProductManagement from './seller/ProductManagement';

@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 const KCOOKScroll = (TF) => {
     if (TF) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
+    else document.body.style.overflow = "overlay";
 }
 
 export default KCOOKScroll;

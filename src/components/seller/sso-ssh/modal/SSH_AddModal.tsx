@@ -10,11 +10,11 @@ import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';
 import OptionList from 'src/components/detail/cake/OptionList';
 
 interface Props {
-    NumF: any,
-    resize: any,
+    NumF: Function,
+    resize: number,
 
-    addModalShow: any,
-    setAddModalShowF: any,
+    addModalShow: boolean,
+    setAddModalShowF: Function,
 }
 
 const SSR_AddModal = ({

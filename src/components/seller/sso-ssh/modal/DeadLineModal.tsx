@@ -14,10 +14,10 @@ import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 
 interface Props {
-    NumF: any;
-    
-    deadLineModal: any;
-    setDeadLineModalF: any;
+    NumF: Function;
+
+    deadLineModal: boolean;
+    setDeadLineModalF: Function;
 }
 
 function DeadLineModal({
@@ -27,7 +27,13 @@ function DeadLineModal({
     setDeadLineModalF,
 }: Props) {
     var weekText = ['월', '화', '수', '목', '금', '토', '일'];
-    const [week, setWeek] = useState([0, 0, 0, 0, 0, 0, 0]);
+    const [week, setWeek] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
+
+    const handleWeek = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
+        let w: number[] = week;  w[idx] = parseInt(e.target.value);
+        setWeek(w);
+        NumF();
+    };
 
     useEffect(() => {
     },[]);
@@ -39,11 +45,13 @@ function DeadLineModal({
                 <>
                 <div className='sfc-deadline-modal'>
                     <div className="spm-modal-title">마감일 설정</div>
-                    {[0, 1, 2, 3, 4, 5, 6].map((data: any)=>{
+                    {[0, 1, 2, 3, 4, 5, 6].map((data: number)=>{
                         return (
-                            <div className='sfc-deadline-modal-week'>
+                            <div 
+                                key={data} 
+                                className='sfc-deadline-modal-week'>
                                 {weekText[data]}요일&nbsp;&nbsp;
-                                <input type='number' value={week[data]} />
+                                <input type='number' value={week[data]} onChange={(e)=>{handleWeek(e, data)}}/>
                                 &nbsp;&nbsp;일 전 마감
                             </div>
                         );
@@ -52,6 +60,21 @@ function DeadLineModal({
                     <div className="sfc-deadline-modal-btn">
                         <button
                             onClick={() => {
+                                //post /api/store/deadline
+                                /*
+                                    axios({
+                                        url: `/api/store/deadline`,
+                                        method: 'POST',
+                                        data: {
+                                            deadline: week, //[0, 0, 0, 0, 0, 0, 0]
+                                        },
+                                        header: {
+                                            X-ACCESS-TOKEN: ...,
+                                        },
+                                    })
+                                    .then((res)=>{})
+                                    .catch((err)=>{})
+                                */
                                 setDeadLineModalF(false);
                                 NumF();
                             }}>
