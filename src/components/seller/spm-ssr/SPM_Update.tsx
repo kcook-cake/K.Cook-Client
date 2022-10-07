@@ -86,9 +86,9 @@ function SPM_Update({
     return (
         <>
             <ImageModal
-                NumF={()=>NumF()} resize={resize} TF={false}
-                imageModalShow={updateImgModal} setImageModalShowF={setUpdateImgModal}
-                imageData={updateImg}
+                NumF={()=>NumF()} resize={resize} cakeId={getUpdateData.cakeId}
+                setShowF={()=>{}} imageModalShow={updateImgModal} setImageModalShowF={setUpdateImgModal}
+                imageData={updateImg} getData={getUpdateData}
             />
 
             <div className="spm-add-update">
@@ -121,9 +121,10 @@ function SPM_Update({
                             </div>
                             <div className='spm-add-update-img-bar'>
                                 <ul style={{ display: "flex", }}>
-                                    {[0, 1, 2, 3, 4].map((data: any,)=>{
+                                    {[0, 1, 2, 3, 4].map((data: any, idx: number)=>{
                                         return (
                                             <li 
+                                                key={idx}
                                                 className={classNames('spm-add-update-dot', {
                                                     'spm-add-update-dot-active': updateImgNum===data,
                                                 })}
@@ -136,7 +137,15 @@ function SPM_Update({
                                 </ul>
                             </div>
                             <div className='spm-add-update-today-cake'>
-                                <input type='checkbox' id='spm-add' onChange={(e)=>setUpdateTodayCake(e.target.checked)}/>
+                                <input 
+                                    type='checkbox' 
+                                    id='spm-add'
+                                    onChange={(e)=>{
+                                        if (getUpdateData.isTodayCake) getUpdateData.isTodayCake = false;
+                                        else getUpdateData.isTodayCake = true;
+                                        NumF(); 
+                                    }}
+                                    checked={getUpdateData.isTodayCake}/>
                                 <label htmlFor='spm-add'></label>
                                 <div>당일 케이크</div>
                             </div>
@@ -145,29 +154,38 @@ function SPM_Update({
                                     type='checkbox' 
                                     id='spm-add-select' 
                                     onChange={(e)=>{
-                                        setMaxOfToday(e.target.checked);
-                                        if (maxOfToday) setUpdateMax(1000);
-                                        else setUpdateMax(1);
-                                    }} 
+                                        if (getUpdateData.maxOfToday === 1000) getUpdateData.maxOfToday = 1;
+                                        else getUpdateData.maxOfToday = 1000;
+                                        NumF();
+                                    }}
+                                    checked={getUpdateData.maxOfToday === 1000? false: true}
                                 />
                                 <label htmlFor='spm-add-select'></label>
-                                <div className={!maxOfToday? 'spm-add-update-show-none': ''}>제한
+                                <div className={getUpdateData.maxOfToday === 1000? 'spm-add-update-show-none': ''}>제한
                                     <input 
-                                        type={maxOfToday? 'number': 'text'} 
+                                        type={getUpdateData.maxOfToday === 1000? 'text': 'number'} 
                                         max={1000} min={1} 
-                                        value={maxOfToday? updateMax: "무한"}
-                                        onChange={(e)=>setUpdateMax(parseInt(e.target.value))}/>
+                                        value={getUpdateData.maxOfToday === 1000? '무한': getUpdateData.maxOfToday}
+                                        onChange={(e)=> {
+                                            if (isNaN(parseInt(e.target.value))) {
+                                                getUpdateData.maxOfToday = 1;
+                                                return;
+                                            }
+                                            getUpdateData.maxOfToday = parseInt(e.target.value);
+                                            NumF();
+                                            // setUpdateMax(parseInt(e.target.value))
+                                        }}/>
                                     개
                                 </div>
                             </div>
                         </div>
 
                         {updateChildOption>-1&& updateChildOption !== updateOption.length-1&&
-                            <div className='spm-add-update-child-modal' style={{ top: (230+updateChildOption*167+updateChildItem*45+updateItemLen*45)+"px", }}> {/* 뒤에 품목개수*45 해줘야함 */}
+                            <div className='spm-add-update-child-modal' style={{ top: (230+updateChildOption*167+updateChildItem*45+updateItemLen*45)+"px", }}>
                                 <div className='spm-add-update-child-modal-move'>이동</div>
-                                {updateOption.map((option2: {optionNumber: any, itemList: any, })=>{
+                                {updateOption.map((option2: {optionNumber: any, itemList: any, }, idx: number)=>{
                                     return (
-                                        <>
+                                        <div key={idx}>
                                             {updateChildOption < option2.optionNumber&& updateChildNext === option2.optionNumber&&
                                                 <>
                                                 <div style={{ display: "flex", justifyContent: "center", }}>
@@ -227,10 +245,12 @@ function SPM_Update({
                                                 </div>
                                                 </>
                                             }
-                                            {option2.itemList.map((item2: {itemNumber: any, itemName: any, })=>{
+                                            {option2.itemList.map((item2: {itemNumber: any, itemName: any, }, idx2: number)=>{
                                                 return (
                                                     (updateChildOption < option2.optionNumber&& updateChildNext === option2.optionNumber&&
-                                                        <div className='spm-add-update-child-modal-item'> {/* spm-add-update-child-modal */}
+                                                        <div
+                                                            key={idx2} 
+                                                            className='spm-add-update-child-modal-item'>
                                                             <input 
                                                                 type='checkbox' id={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}
                                                                 className='signup-checkbox-inner'
@@ -273,12 +293,12 @@ function SPM_Update({
                                                     )
                                                 );
                                             })}
-                                        </>
+                                        </div>
                                     );
                                 })}
                             </div>
                         }
-                        <div> {/* spmcard-content-inner */}
+                        <div>
                             <div style={{ display: "flex"}}>
                                 <input
                                     id="spm-update-name"
@@ -307,9 +327,9 @@ function SPM_Update({
                                 <div className="spm-add-update-item-right">x</div>
                             </div>
                             <>
-                                {updateOption.map((option: { optionNumber: any, optionName: any, itemList: any, })=>{
+                                {updateOption.map((option: { optionNumber: any, optionName: any, itemList: any, }, idx: number)=>{
                                     return (
-                                        <form>
+                                        <form key={idx}>
                                             <div style={{ marginLeft: "33px", marginBottom: "5px", }}>{"옵션"+(option.optionNumber+1)+"."}</div>
                                             <div className="spm-add-update-option">
                                                 <div>
@@ -353,9 +373,11 @@ function SPM_Update({
                                             </div>
                                             
                                             <>
-                                                {option.itemList.map((item: { itemNumber: any, itemName: any, itemPrice: any, itemType: any, itemChild: any, })=>{
+                                                {option.itemList.map((item: { itemNumber: any, itemName: any, itemPrice: any, itemType: any, itemChild: any, }, idx2: number)=>{
                                                     return (
-                                                        <div className="spm-add-update-item">
+                                                        <div
+                                                            key={idx2} 
+                                                            className="spm-add-update-item">
                                                             <div
                                                                 className="spm-add-update-item-left"
                                                                 onDragStart={(e)=>{
@@ -526,13 +548,13 @@ function SPM_Update({
                 </div>
 
                 <div className="pc spm-tap">
-                    <button
+                    {/* <button
                         onClick={()=>{
                             oriShow[idx] = true;
                             NumF();
                         }}>
                         <CloseBtn/>
-                    </button>
+                    </button> */}
                 </div>
             </div>
             </>

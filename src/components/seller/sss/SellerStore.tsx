@@ -6,8 +6,8 @@ import X from 'src/assets/address_x.png';
 
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
+import ImageModalLogo from './modal/ImageModalLogo';
 import ImageModal from './modal/ImageModal';
-import ImageModalPhoto from './modal/ImageModalPhoto';
 import PopupDom from 'src/components/sign/PopupDom';
 import PostCode from 'src/components/sign/PostCode';
 
@@ -90,23 +90,22 @@ function SellerStore(session: any, auth: any) {
         setFailModal(false);
       }, 5000);
     } else {
-      //axios
+      //patch /api/store?storeId=0
     }
   };
+
+
 
   let [imageTF, setImageTF] = useState(false);
   const [imageModalShow, setImageModalShow] = useState(false);
   const [imageData, setImageData] = useState(['', '', '', '', '']);
 
-  const [resize, setResize] = useState(0);
+  const [resize, setResize] = useState([0, 0]);
   const handleResize = () => {
-    setResize(window.innerWidth);
+    setResize([window.innerWidth, window.innerHeight]);
   };
 
   useEffect(() => {
-    setResize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
     LinkClick('SellerStore');
     sellerLinkClick('SellerStore');
 
@@ -115,6 +114,15 @@ function SellerStore(session: any, auth: any) {
     setAddress(auth.address.split(',')[1]);
     setPhone(auth.phoneNumber);
     setBirthday(auth.dateOfBirth);
+
+    let isComponentMounted = true;
+
+    setResize([window.innerWidth, window.innerHeight]);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      isComponentMounted = false;
+      window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   // 9/15 추가
@@ -126,11 +134,10 @@ function SellerStore(session: any, auth: any) {
     <>
       {!imageTF ? (
         // 스토어 로고 클릭시 모달창
-        <ImageModal
-          num={num}
-          setNum={setNum}
+        <ImageModalLogo
+          NumF={()=>setNum(num+1)}
           resize={resize}
-          imageTF={imageTF}
+          // imageTF={imageTF}
           imageModalShow={imageModalShow}
           setImageModalShowF={setImageModalShow}
           imageData={imageData}
@@ -141,11 +148,10 @@ function SellerStore(session: any, auth: any) {
         />
       ) : (
         // 스토어 사진 클릭시 모달창
-        <ImageModalPhoto
-          num={num}
-          setNum={setNum}
+        <ImageModal
+          NumF={()=>setNum(num+1)}
           resize={resize}
-          imageTF={imageTF}
+
           imageModalShow={imageModalShow}
           setImageModalShowF={setImageModalShow}
           imageData={imageData}

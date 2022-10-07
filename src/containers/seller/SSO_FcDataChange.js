@@ -18,8 +18,6 @@ const SSO_FcDataChange = (fn, list) => {
         list[i].title = "주문: " + list[i].title + "/" + list[i].describe
     }
 
-    // if (TF) fn(em);
-    // else fn(e);
     fn(list);
 }
 

@@ -1,7 +1,7 @@
 
 .sfc-second-modal {
-    width: 472px;
-    height: 409px;
+    width: 472px; height: 100%;
+    max-height: 409px;
     padding: 5px;
     position: absolute;
 
@@ -24,8 +24,8 @@
     background-color: #e6e6e6;
 }
 .sfc-second-modal-box {
-    width: 462px;
-    height: 399px;
+    width: 462px; height: 100%;
+    max-height: 399px;
     overflow-y: scroll;
 }
 // .sfc-second-modal-box-bar {
@@ -115,8 +115,8 @@
 
 
 .sfc-second-modal-content-time {
-    min-width: 100px; height: 30px;
-    line-height: 27px;
+    width: 100px; height: 30px;
+    min-width: 100px; line-height: 27px;
     margin-right: 6px;
     margin-bottom: 6px;
 

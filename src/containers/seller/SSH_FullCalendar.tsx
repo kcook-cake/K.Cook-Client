@@ -9,11 +9,10 @@ import '../../styles/seller/FullCalendarApp.scss';
 
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
-import SSH_Fc_TestData from './SSH_Fc_TestData';
-import SSH_FcDataChange from './SSH_FcDataChange.js';
+import SSH_Fc_TestData from '../../testdata/SSH_Fc_TestData';
+import SSH_FcDataChange from './SSH_FcDataChang';
 import MakePrice from 'src/utils/MakePrice';
 
 function SSH_FullCalendar (session: any, auth: any,){
@@ -48,9 +47,9 @@ function SSH_FullCalendar (session: any, auth: any,){
 
 
 
-    const [resize, setResize] = useState(0);
+    const [resize, setResize] = useState([0, 0]);
     const handleResize = () => {
-        setResize(window.innerWidth);
+        setResize([window.innerWidth, window.innerHeight]);
     };
     useEffect(() => {
         // $(".fc-daygrid-day").css("background", "none");
@@ -66,7 +65,7 @@ function SSH_FullCalendar (session: any, auth: any,){
             setEvents(seller);
         }, SSH_Fc_TestData()); // get /api/store/past_calendar?storeId=0
 
-        setResize(window.innerWidth);
+        setResize([window.innerWidth, window.innerHeight]);
         window.addEventListener("resize", handleResize);
         return () => {
             isComponentMounted = false;
@@ -99,11 +98,6 @@ function SSH_FullCalendar (session: any, auth: any,){
             </div>
             
             <div className="seller-calendar">
-                {/* FcSecondModal */}
-                <FcSecondModal
-                    NumF={()=>setNum(num+1)} resize={resize} height={272.26+50*3}
-                    orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} 
-                />
                 {/* FcFirstModal */}
                 {modalShow&&
                     <div 
@@ -149,7 +143,7 @@ function SSH_FullCalendar (session: any, auth: any,){
                         month: 'numeric',
                     }}
                     dayHeaderFormat={{
-                        weekday: (resize<=767? 'short': 'long'),
+                        weekday: (resize[0]<=767? 'short': 'long'),
                     }}
                     customButtons={{
                         new: {
@@ -163,7 +157,7 @@ function SSH_FullCalendar (session: any, auth: any,){
                     dateClick={(e) => {
                         setModalShow(false);
 
-                        if (resize <= 767) {
+                        if (resize[0] <= 767) {
                             const height1 = document.getElementById('header-flex-id') as Element;
                             const height2 = document.getElementById('sfc') as Element;
                             setModalHeight(height1.clientHeight+height2.clientHeight);
@@ -182,7 +176,7 @@ function SSH_FullCalendar (session: any, auth: any,){
                     }}
                     eventClick={(e) => {
                         setAllPrice(e.event._def.extendedProps.allPrice);
-                        if (resize <= 767) {
+                        if (resize[0] <= 767) {
                             const height1 = document.getElementById('header-flex-id') as Element;
                             const height2 = document.getElementById('sfc') as Element;
                             setModalHeight(height1.clientHeight+height2.clientHeight);

@@ -14,8 +14,9 @@ import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 interface Props {
     NumF: Function;
-    resize: number;
-    height: number;
+    resize: number[];
+
+    getData: any;
 
     orderModalShow: boolean;
     setOrderModalShowF: Function;
@@ -24,15 +25,34 @@ interface Props {
 function OrderModal({
     NumF,
     resize,
-    height,
+
+    getData,
 
     orderModalShow,
     setOrderModalShowF,
 }: Props) {
-  
-  var jwToken: string = undefined;
-  if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-  else jwToken = sessionStorage.jwToken;
+  const handleDescribe = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isNaN(parseInt(e.target.value))) {
+      getData.describe = 0;
+      NumF();
+      return;
+    }
+    getData.describe = parseInt(e.target.value);
+    NumF();
+  }
+  const handleGroupCount = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
+    if (isNaN(parseInt(e.target.value))) {
+      getData.describe = 0;
+      NumF();
+      return;
+    }
+    getData.groupsList[idx].count = parseInt(e.target.value);
+    NumF();
+  }
+  const handleTime = (e: React.ChangeEvent<HTMLInputElement>, idx: number, idx2: number) => {
+    getData.groupsList[idx].timesList[idx2].time = e.target.value;
+    NumF();
+  }
 
   useEffect(() => {
   },[]);
@@ -50,50 +70,96 @@ function OrderModal({
             <div
               className="sfc-second-modal"
               style={{
-                  top:
-                      resize <= 767 ? 
-                      window.pageYOffset + 20 : 
-                      window.innerHeight - height < 0 ? window.pageYOffset : window.pageYOffset + (window.innerHeight - height) / 2,
-                  left: resize <= 767 ? 20 : (resize - 472) / 2,
+                  top: resize[0] <=767? 
+                    window.pageYOffset+20 : 
+                    resize[1] < 409?
+                      window.pageYOffset:
+                      window.pageYOffset + (resize[1] - 409) / 2,
+                  left: resize[0] <= 767 ? 20 : (resize[0] - 472) / 2,
               }}>
                 <div className='sfc-second-modal-box'>
                   <div className='sfc-second-modal-inner'>
                     <div className="spm-modal-title">주문/픽업 설정</div>
-                    <div className="sfc-second-modal-add-group">+ 그룹 추가</div>
+                    <div 
+                      className="sfc-second-modal-add-group"
+                      onClick={()=>{
+                        getData.groupsList[getData.groupsList.length] = {
+                          count: 0,
+                          groupNumber: getData.groupsList.length+1,
+                          timesList: [],
+                        };
+                        NumF();
+                      }}>
+                        + 그룹 추가
+                    </div>
                     <div style={{ height: "22px"}}></div>
-                    {[0, 1, 2].map((data: number,)=>{
+                    {getData.groupsList.map((data: { groupNumber: number, count: number, timesList: any[], }, idx: number)=>{
                       return (
-                        <div key={data}>
+                        <div key={idx}>
                           <div className='sfc-second-modal-content-top'>
-                            <div className='sfc-second-modal-content-group'>그룹{data+1}.</div>
+                            <div 
+                              className='sfc-second-modal-content-group'
+                              onClick={()=>{
+                                for (var i = data.groupNumber; i < getData.groupsList.length-1; i++) {
+                                  getData.groupsList[i] = getData.groupsList[i+1];
+                                  getData.groupsList[i].groupNumber = i;
+                                }
+                                getData.groupsList.pop();
+                                NumF();
+                              }}>
+                              그룹{idx+1}.
+                            </div>
                             <div>
-                              <input type='number' value={0} onChange={()=>{}}/>
+                              <input type='number' value={data.count} onChange={(e)=>handleGroupCount(e, idx)}/>
                               건
                             </div>
                           </div>
                           <div className='sfc-second-modal-content-middle-flex'>
                             <div className='sfc-second-modal-content-middle'>
-                              {[0, 1, 2, 3, 4, 5, 6, 7].map((data2: number,)=>{
+                              {data.timesList.map((data2: { timeNumber: number, time: string, }, idx2: number, )=>{
                                 return (
-                                  <div key={data2} className='sfc-second-modal-content-time'>
-                                    {data+1}
-                                  </div>
+                                  // <div 
+                                  //   key={idx2} 
+                                  //   onClick={()=>{
+                                  //     for (var i = data2.timeNumber; i < data.timesList.length-1; i++) {
+                                  //       getData.groupsList[data.groupNumber].timesList[i] = getData.groupsList[data.groupNumber].timesList[i+1];
+                                  //       getData.groupsList[data.groupNumber].timesList[i].timeNumber = i;
+                                  //     }
+                                  //     getData.groupsList[data.groupNumber].timesList.pop();
+                                  //     NumF();
+                                  //   }}>
+                                      <input
+                                        key={idx2} 
+                                        className='sfc-second-modal-content-time'
+                                        type='text'
+                                        value={data2.time}
+                                        onChange={(e)=>handleTime(e, idx, idx2)}
+                                      />
+                                  // </div>
                                 );
                               })}
-                              <div className='sfc-second-modal-add'>
-                                <img src={add} />
+                              <div 
+                                className='sfc-second-modal-add'
+                                onClick={()=>{
+                                  getData.groupsList[idx].timesList[getData.groupsList[idx].timesList.length] = {
+                                    time: "",
+                                    timeNumber: getData.groupsList[idx].timesList.length+1,
+                                  }
+                                  NumF();
+                                }}>
+                                  <img src={add} />
                               </div>
-                              {/* <div className='sfc-second-modal-content-middle-bar'></div> */}
                             </div>
                           </div>
                         </div>
                       );
                     })}
+
                     <hr className='sfc-second-modal-hr' />
                     <div className='sfc-second-modal-all-cnt' >
                       하루 총 주문 가능 개수&nbsp;&nbsp;
                       <div>
-                        <input type='number' value={0} onChange={()=>{}}/>
+                        <input type='number' value={getData.describe} onChange={handleDescribe}/>
                         건
                       </div>
                     </div>
@@ -101,23 +167,42 @@ function OrderModal({
 
                     <div className="sfc-second-modal-btn">
                         <button
-                        style={{ color: "#fff", }}
+                          style={{ color: "#fff", }}
                           onClick={() => {
+                              //patch /api/store/future-calendar/group?storeId=0&date=2002-10-10
+                              /*
+                                axios({
+                                    url: '',
+                                    method: 'PATCH',
+                                    data: {
+                                      describe: getData.describe,
+                                      groupsList: getData.groupsList,
+                                    },
+                                    headers: {},
+                                  })
+                                  .then((res)=>{
+
+                                  })
+                                  .catch((err)=>{
+
+                                  })
+                              */
                               KCOOKScroll(false);
                               setOrderModalShowF(false);
                               NumF();
                           }}>
                           등록
                         </button>
-                        <button
+                        {/* <button
                           style={{ marginRight: "12px", color: "#ea5450", backgroundColor: "#fff", }}
                           onClick={() => {
+                              getData = oriData;
                               KCOOKScroll(false);
                               setOrderModalShowF(false);
                               NumF();
                           }}>
                           취소
-                        </button>
+                        </button> */}
                     </div>
                   </div>
                 </div>

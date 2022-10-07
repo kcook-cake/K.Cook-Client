@@ -40,8 +40,8 @@ const List2Option = (getData) => {
                     itemNumber: 0,
                     itemType: getData[i].itemType,
                     itemName: getData[i].contents,
-                    itemPrice: getData[i].additionalCost,
-                    itemChild: getData[i].childOptionsList,
+                    itemPrice: getData[i].price,
+                    itemChild: getData[i].childsList,
                 }],
             });
             // chOptionListTF[oid] = false; //
@@ -53,8 +53,8 @@ const List2Option = (getData) => {
                 itemNumber: chOptionList[j].itemList.length,
                 itemType: getData[i].itemType,
                 itemName: getData[i].contents,
-                itemPrice: getData[i].additionalCost,
-                itemChild: getData[i].childOptionsList,
+                itemPrice: getData[i].price,
+                itemChild: getData[i].childsList,
             })
         }
     }

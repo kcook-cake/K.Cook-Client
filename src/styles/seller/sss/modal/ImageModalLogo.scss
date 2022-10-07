@@ -1,0 +1,63 @@
+
+.sss-logo-modal-box {
+    width: 270px; height: 100%;
+    max-height: 400px;
+    position: absolute;
+
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(110, 27, 20, 0.4);
+    background-color: #fff; 
+    z-index: 999;
+
+    overflow-y: scroll;
+}
+.sss-logo-modal-box::-webkit-scrollbar {
+    width: 18px;
+}
+.sss-logo-modal-box::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+}
+.spm-modal:hover .sss-logo-modal-box::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+}
+
+.sss-logo-modal-inner {
+    width: 180px; height: 310px;
+    margin: 45px;
+}
+
+
+
+//
+.sss-logo-modal-img-flex {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 10px;
+    position: relative;
+    button {
+        margin: 0; padding: 0;
+    }
+}
+.sss-logo-modal-img {
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+
+    border-radius: 5px;
+    background-size: cover;
+    background-color: #ebebeb;
+    img {
+        width: 180px;
+        height: 180px;
+
+        object-fit: cover;
+        border-radius: 5px;
+    }
+}
+.sss-logo-modal-img-inner-icon {
+    padding-top: 47px;
+    padding-left: 0px;
+}

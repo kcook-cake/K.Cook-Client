@@ -15,6 +15,7 @@ import rightArrow from 'src/assets/right-arrow.svg';
 import ImageModal from './modal/ImageModal';
 import MakePrice from 'src/utils/MakePrice';
 import Option2List from './fn/Option2List';
+import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 interface Props {
     NumF: any,
@@ -27,20 +28,25 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     //Add
     const Add = () => {
         //productId 105
+        // console.log(addName);
+        // console.log(addPrice);
+        // console.log(addTodayCake);
+        // console.log(addMax);
+        // console.log(Option2List(addOption));
+        setAddShowF(false);
+        //post /api/cakes
+        /*
         axios({
             url: "app/products",
             method: "POST",
             data: {
-                "isCake": true,
-                "isOriginShow": false,
-                "isTodayShow": false,
-                "maxOfToday": addMax,
-                "isTodayCake": addTodayCake,
-                "name": addName,
-                "newOptionsList": Option2List(addOption),
-                "price": addPrice,
-                "salePrice": 0,
-                "todaySaleNumber": 0
+                isTodayShow: false,
+                name: addName,
+                price: addPrice,
+                isTodayCake: addTodayCake,
+                maxOfToday: addMax,
+                newOptionsList: Option2List(addOption),
+                salePrice: 0,
             },
             headers: {
                 'Content-Type': 'application/json',
@@ -53,6 +59,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
         }).catch((err: any)=>{
             alert('추가 실패');
         })
+        */
     };
     const [addImgModal, setAddImgModal] = useState(false);
     const [addImage, setAddImage] = useState(['','','','','']);
@@ -115,9 +122,17 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     return (
         <>
             <ImageModal
-                NumF={()=>NumF()} resize={resize} TF={true}
-                imageModalShow={addImgModal} setImageModalShowF={setAddImgModal}
+                NumF={()=>NumF()} resize={resize} cakeId={0}
+                setShowF={setAddShowF} imageModalShow={addImgModal} setImageModalShowF={setAddImgModal}
                 imageData={addImage} 
+                getData={{ 
+                    isTodayShow: false,
+                    name: addName,
+                    price: addPrice,
+                    isTodayCake: addTodayCake,
+                    maxOfToday: addMax,
+                    newOptionsList: Option2List(addOption),
+                }}
             />
 
             <div className="spm-add-update">
@@ -130,9 +145,12 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                         <div>
                             <div
                                 className="spm-add-update-img"
-                                onClick={() => setAddImgModal(true)}>
+                                onClick={() => {
+                                    setAddImgModal(true);
+                                    KCOOKScroll(true);
+                                }}>
                                 <div className="spm-add-update-img-inner">
-                                    {addImage[addImgNum]==='' || addImage[addImgNum]===null || addImage[addImgNum]===undefined ? (
+                                    {addImage[addImgNum]==='' || addImage[addImgNum]===null || addImage[addImgNum]===undefined || addImage[addImgNum].length===133 ? (
                                         <div className="spmcard-img-inner">
                                             <AddIcon/>
                                         </div>):
@@ -142,10 +160,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                             </div>
                             <div className='spm-add-update-img-bar'>
                                 <ul style={{ display: "flex", }}>
-                                    {[0, 1, 2, 3, 4].map((data: any,)=>{
+                                    {[0, 1, 2, 3, 4].map((data: any, idx: number)=>{
                                         return (
                                             <li 
-                                                key={data}
+                                                key={idx}
                                                 className={classNames('spm-add-update-dot', {
                                                     'spm-add-update-dot-active': addImgNum===data,
                                                 })}
@@ -176,9 +194,15 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                 <div className={!maxOfToday? 'spm-add-update-show-none': ''}>제한
                                     <input 
                                         type={maxOfToday? 'number': 'text'} 
-                                        max={1000} min={1} 
+                                        max={1000} min={1}
                                         value={maxOfToday? addMax: "무한"}
-                                        onChange={(e)=>setAddMax(parseInt(e.target.value))}/>
+                                        onChange={(e)=>{
+                                            if (isNaN(parseInt(e.target.value))) {
+                                                setAddMax(0);
+                                                return;
+                                            }
+                                            setAddMax(parseInt(e.target.value));
+                                        }}/>
                                     개
                                 </div>
                             </div>
@@ -365,7 +389,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                 </select>
                                                 <input 
                                                     placeholder={"옵션 세부 입력"}
-                                                    value={addOption[option.optionNumber].optionCategory}
+                                                    value={addOption[option.optionNumber].optionCategory || ''}
                                                     onChange={(e)=> {handleOptionName(e, option.optionNumber)}}
                                                 />
                                             </div>

@@ -9,10 +9,25 @@
   background-color: rgba(0, 0, 0, 0.281);
   z-index: 998;
 }
+
+
+
+.spm-modal-box::-webkit-scrollbar {
+  width: 18px;
+}
+.spm-modal-box::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 5px solid transparent;
+}
+.spm-modal:hover .spm-modal-box::-webkit-scrollbar-thumb {
+  background-color: #e6e6e6;
+}
 .spm-modal-box {
-  width: 775px;
-  max-height: 100%;
-  padding: 45px;
+  width: 775px; height: 100%;
+  max-height: 649px;
+  // padding: 45px;
   position: absolute;
 
   border-radius: 10px;
@@ -22,6 +37,9 @@
 
   overflow-y: scroll;
 }
+
+
+
 .spm-modal-title {
   margin-bottom: 17px;
   color: #222222;
@@ -67,6 +85,7 @@
 .spm-modal-btn-box {
   margin-top: 25px;
 }
+
 
 //
 .spm-modal-img-flex {

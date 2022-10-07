@@ -12,8 +12,8 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
-import SSO_Fc_TestData from './SSO_Fc_TestData';
-import SSO_FcDataChange from './SSO_FcDataChange.js.js';
+import SSO_Fc_TestData from '../../testdata/SSO_Fc_TestData';
+import SSO_FcDataChange from './SSO_FcDataChange';
 
 function SSO_FullCalendar (session: any, auth: any,){
     const [num, setNum] = useState(0);
@@ -33,9 +33,12 @@ function SSO_FullCalendar (session: any, auth: any,){
 
     //판매자 정보
     const [events, setEvents] = useState([{}]);
-
-    let [secondModalHeight, setSecondModalHeight] = useState(0); //리스트를 받고 주문 개수에 따라 넘겨줌
-
+    const [dateEvents, setDateEvents] = useState({
+        describe: 0,
+        groupsList: [],
+    });
+    const [describe, setDescribe] = useState<number>(0);
+    const [groupTime, setGroupTime] = useState([]);
     
 
     //주차 계산기
@@ -48,9 +51,9 @@ function SSO_FullCalendar (session: any, auth: any,){
 
 
 
-    const [resize, setResize] = useState(0);
+    const [resize, setResize] = useState([0, 0]);
     const handleResize = () => {
-        setResize(window.innerWidth);
+        setResize([window.innerWidth, window.innerHeight]);
     };
     useEffect(() => {
         // $(".fc-daygrid-day").css("background", "none");
@@ -66,7 +69,7 @@ function SSO_FullCalendar (session: any, auth: any,){
             setEvents(seller);
         }, SSO_Fc_TestData()); // get /api/store/future_calendar?storeId=0
 
-        setResize(window.innerWidth);
+        setResize([window.innerWidth, window.innerHeight]);
         window.addEventListener("resize", handleResize);
         return () => {
             isComponentMounted = false;
@@ -101,7 +104,8 @@ function SSO_FullCalendar (session: any, auth: any,){
             <div className="seller-calendar">
                 {/* FcSecondModal */}
                 <FcSecondModal
-                    NumF={()=>setNum(num+1)} resize={resize} height={272.26+50*3}
+                    NumF={()=>setNum(num+1)} resize={resize}
+                    getData={dateEvents}
                     orderModalShow={orderModalShow} setOrderModalShowF={setOrderModalShow} 
                 />
                 {/* FcFirstModal */}
@@ -154,7 +158,7 @@ function SSO_FullCalendar (session: any, auth: any,){
                         month: 'numeric',
                     }}
                     dayHeaderFormat={{
-                        weekday: (resize<=767? 'short': 'long'),
+                        weekday: (resize[0]<=767? 'short': 'long'),
                     }}
                     customButtons={{
                         new: {
@@ -168,7 +172,7 @@ function SSO_FullCalendar (session: any, auth: any,){
                     dateClick={(e) => {
                         setModalShow(false);
 
-                        if (resize <= 767) {
+                        if (resize[0] <= 767) {
                             const height1 = document.getElementById('header-flex-id') as Element;
                             const height2 = document.getElementById('sfc') as Element;
                             setModalHeight(height1.clientHeight+height2.clientHeight);
@@ -186,7 +190,14 @@ function SSO_FullCalendar (session: any, auth: any,){
                         $(".fc-daygrid-day.fc-day-today").css("background", "#FFFADF");
                     }}
                     eventClick={(e) => {
-                        if (resize <= 767) {
+                        let dateE = {
+                            describe: 0,
+                            groupsList: [] as any[],
+                        }
+                        dateE.describe = e.event._def.extendedProps.describe;
+                        dateE.groupsList = e.event._def.extendedProps.groupsList;
+                        setDateEvents(dateE);
+                        if (resize[0] <= 767) {
                             const height1 = document.getElementById('header-flex-id') as Element;
                             const height2 = document.getElementById('sfc') as Element;
                             setModalHeight(height1.clientHeight+height2.clientHeight);

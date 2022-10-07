@@ -3,21 +3,28 @@
     display: none;
 }
 
-.modal-scroll::-webkit-scrollbar {
-    height: 8px !important;
+
+
+.modal-inner {
+    width: 685px; height: 559px;
+    margin: 45px;
 }
-.modal-scroll::-webkit-scrollbar-thumb {
-    background-color: #e6e6e6 !important;
-    border-radius: 10px !important;
-}
-.modal-scroll::-webkit-scrollbar-track {
-    background-color: #f5f5f5 !important;
-    border-radius: 10px !important;
-}
+
 .modal-scroll {
+    width: 685px; height: 194px;
     margin-bottom: 25px;
     display: grid;
-    column-gap: 11px !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
-    overflow-x: scroll !important;
+    column-gap: 11px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    overflow-x: scroll;
+}
+.modal-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+}
+.modal-inner:hover .modal-scroll::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
 }

@@ -13,8 +13,8 @@ import SPM_Add from 'src/components/seller/spm-ssr/SPM_Add';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import List2Option from 'src/utils/List2Option';
-import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 import SPM_Update from 'src/components/seller/spm-ssr/SPM_Update';
+import SPM_TestData from 'src/testdata/SPM_TestData';
 
 function ProductManagement(session: any, auth: any,) {
   const [num, setNum] = useState(0);
@@ -23,25 +23,28 @@ function ProductManagement(session: any, auth: any,) {
 
   const [addShow, setAddShow] = useState(false);
 
-  const [resize, setResize] = useState(0);
+  const [resize, setResize] = useState([0, 0]);
   const handleResize = () => {
-    setResize(window.innerWidth);
+    setResize([window.innerWidth, window.innerHeight]);
   };
 
   useEffect(() => {
     LinkClick('ProductManagement');
     sellerLinkClick('ProductManagement');
 
-    if (resize > 767) {
-      $('.spm-modal').on('scroll touchmove mousewheel', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      });
-    }
-
     let isComponentMounted = true;
+    oriData = SPM_TestData();
+    for (var i = 0; i < oriData.length; i++) {
+      oriShow[i] = true;
+      oriData[i].optionsList = List2Option(oriData[i].optionsList);
+    }
+    setOriShow(oriShow);
+    setOriData(oriData);
+
+    //get /api/store/cake?storeId=0
+    /*
     axios({
-        url: "/app/products/85",
+        url: "",
         method: "GET",
       }).then((res)=>{
         if (res.data) {
@@ -57,11 +60,13 @@ function ProductManagement(session: any, auth: any,) {
         }
       }).catch((err)=>{
       })
+    */
 
-    setResize(window.innerWidth);
+    setResize([window.innerWidth, window.innerHeight]);
     window.addEventListener('resize', handleResize);
     return () => {
       isComponentMounted = false;
+      window.removeEventListener("resize", handleResize);
     }
   }, []);
 
@@ -126,7 +131,7 @@ function ProductManagement(session: any, auth: any,) {
             onClick={() => {
               setAddShow(true);
             }}>
-            {resize>767? 
+            {resize[0]>767? 
               <AddIcon />:
               <img src={addIcon}/>
             }

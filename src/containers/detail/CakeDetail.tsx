@@ -23,7 +23,6 @@ import ColorBox from 'src/components/detail/cake/ColorBox';
 import OptionList from 'src/components/detail/cake/OptionList';
 import Date_Calendar from 'src/components/detail/cake/Date_Calendar';
 import List2Option from 'src/utils/List2Option';
-import SPM_Data_Test from 'src/utils/SPM_Data_Test';
 
 const CakeDetail = () =>{
     const [num, setNum] = useState(0);

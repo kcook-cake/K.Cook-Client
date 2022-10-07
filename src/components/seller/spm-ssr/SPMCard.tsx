@@ -28,8 +28,7 @@ function SPMCard({
     }: Props) {
 
     useEffect(()=>{
-        if (oriData.isTodayCake)
-            $('input:checkbox[name="spmcard-show-'+idx+'"]').prop('checked',true);
+        if (oriData.isTodayCake) $('input:checkbox[name="spmcard-show-'+idx+'"]').prop('checked',true);
     },[]);
     
     return (
@@ -47,7 +46,7 @@ function SPMCard({
                     <div className="spmcard-content">
                         <div className="spmcard-img">
                             <div className="spm-add-update-img-inner">
-                                {oriData.productImage1==="" || oriData.productImage1===null || oriData.productImage1===undefined ?
+                                {oriData.productImage1==="" || oriData.productImage1===null || oriData.productImage1===undefined || oriData.productImage1.length===133 ?
                                     <div className="spmcard-img-inner">
                                         <AddIcon/>
                                     </div>:
@@ -97,19 +96,31 @@ function SPMCard({
                             <img src={setting}/>
                         </div>
                     </Link>
-                    {/* {auth.accountId === 31 &&
+                    {auth.accountId === 31 &&
                         <label className="switch-button">
                             <input
                                 name={'spmcard-show-'+idx}
                                 type='checkbox'
-                                onClick={() => {
-                                    //노출
+                                onChange={() => {
+                                    //patch /api/store/is-today-cake
+                                    /*
+                                        axios({
+                                            url: '',
+                                            method: '',
+                                            data: {
+                                                isTodayCake: oriData.isTodayCake,
+                                            },
+                                        })
+                                    */
+                                    if (oriData.isTodayCake) oriData.isTodayCake = false;
+                                    else oriData.isTodayCake = true;
+                                    NumF();
                                 }}
-                                // checked={false} //노출 여부 판단 후 적음
+                                checked={oriData.isTodayCake} //노출 여부 판단 후 적음
                             />
                             <span className="onoff-switch"></span>
                         </label>
-                    } */}
+                    }
                 </div>
             </div>
     </>
