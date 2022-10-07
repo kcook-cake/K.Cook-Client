@@ -17,6 +17,8 @@ interface Props {
 
   setSelectMobileTF: Function,
   SelectCloseF: Function,
+
+  searchChangeF: Function,
 }
 
 export default function SelectWindow({ 
@@ -24,6 +26,7 @@ export default function SelectWindow({
         selectAll, selectWindow,
         selectData,
         setSelectMobileTF, SelectCloseF, 
+        searchChangeF,
     }: Props) {
 
     const [citySubway, setCitySubway] = useState("");
@@ -38,6 +41,7 @@ export default function SelectWindow({
         //     // else if (n===3 || n===5) selectAll[selectAll.length] = citySubway+" "+str;
         // }
         selectWindow[n-1] = [false, str, 14*length];
+        searchChangeF(selectAll);
         NumF();
     };
 

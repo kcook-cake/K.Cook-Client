@@ -4,12 +4,13 @@ import classNames from 'classnames';
 import 'src/styles/main/CakeStore.scss';
 
 interface Props {
-    page: any,
-    setPageF: any,
-    length: any,
+    page: number,
+    setPageF: Function,
+    length: any[],
+    pageChangeF: Function,
 }
 
-const PageBar = ({page, setPageF, length}: Props) => {
+const PageBar = ({ page, setPageF, length, pageChangeF }: Props) => {
     let [prev, setPrev] = useState(false);
     let [next, setNext] = useState(true);
     const PNCheck = () => {
@@ -43,7 +44,7 @@ const PageBar = ({page, setPageF, length}: Props) => {
                 }}>
                 &lt; Prev
             </button>
-            {length.map((data: {num: any}, idx: any)=>{
+            {length.map((data: {num: number}, idx: number)=>{
                 return(
                     <button
                         key={idx}
@@ -51,7 +52,10 @@ const PageBar = ({page, setPageF, length}: Props) => {
                             "active": data.num === page,
                             "pagi-none": pageBox!=Math.ceil(data.num/10), 
                         })}
-                        onClick={()=>setPageF(data.num)}>
+                        onClick={()=>{
+                            setPageF(data.num)
+                            pageChangeF(data.num);
+                        }}>
                         {data.num}
                     </button>
                 );

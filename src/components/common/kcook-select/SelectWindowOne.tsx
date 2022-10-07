@@ -6,14 +6,18 @@ import X from 'src/assets/x.svg';
 
 interface Props {
   NumF: Function;
+  selectAll: any[];
   selectWindow: any[][];
   selectDataOne: String[][];
+  searchChangeF: Function;
 }
 
 export default function SelectWindowOne({
   NumF,
+  selectAll,
   selectWindow,
   selectDataOne,
+  searchChangeF,
 }: Props) {
   const SelectOneF = (str: string, num: number, length: number) => {
     $('#cake-select-li-' + num).css('color', '#ea5450');
@@ -39,6 +43,7 @@ export default function SelectWindowOne({
                   })}
                   onClick={() => {
                     SelectOneF(data, idx + 1, 8 * data.length);
+                    searchChangeF(selectAll);
                   }}
                 >
                   {data}

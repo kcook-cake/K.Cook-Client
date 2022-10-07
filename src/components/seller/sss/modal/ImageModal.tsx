@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/common/modal/Modal.scss';
+import 'src/styles/seller/sss/modal/ImageModal.scss';
 import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 
 import addImage from 'src/assets/seller/sso-ssh/image-add.png'
@@ -235,12 +236,10 @@ const ImageModal = ({
 
 
     let [formData, setFormData] = useState(new FormData);
-    let [formData2, setFormData2] = useState(new FormData);
     // var formData = new FormData();
     useEffect(()=>{
         for (var i=1; i<6; i++) {
             formData.append("productImage"+(i), null); setFormData(formData);
-            formData2.append("productImage"+(i), null); setFormData2(formData2);
         }
     },[]);
 
@@ -300,7 +299,7 @@ const ImageModal = ({
                             </div>
                         </div>
 
-                        <div className="sss-modal-subtitle">추가이미지(최대 4장)</div>
+                        <div className="spm-modal-subtitle">추가이미지(최대 4장)</div>
                         <div className="modal-scroll">
                             <div className="sss-modal-img-flex">
                                 <form>

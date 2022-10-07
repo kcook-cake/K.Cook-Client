@@ -4,6 +4,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import 'src/styles/common/modal/Modal.scss';
 import 'src/styles/seller/sss/modal/ImageModal.scss';
+import 'src/styles/seller/spm-ssr/modal/ImageModal.scss';
 
 import addImage from 'src/assets/seller/sso-ssh/image-add.png'
 import { ReactComponent as AddIcon } from 'src/assets/seller/add-icon.svg';

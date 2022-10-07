@@ -169,6 +169,8 @@ const SPMDetail = () => {
           
           setSelectMobileTF={setSelectMobileTF}
           SelectCloseF={SelectCloseF}
+
+          searchChangeF={()=>{}}
         />
       ) : null}
 
@@ -221,7 +223,7 @@ const SPMDetail = () => {
             {/* 선택지 바 */}
             {selectAll.length != 0 ? (
               <div className="cake-select-bar spmdetail-select-bar">
-                <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
+                <SelectBar setSelectAllF={setSelectAll} getData={selectAll} searchChangeF={()=>{}} />
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {

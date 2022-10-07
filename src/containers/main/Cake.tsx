@@ -17,12 +17,27 @@ import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
 import PageBar from 'src/components/main/common/PageBar';
+import Cake_TestData from 'src/testdata/Cake_TestData';
+import Cake_TestData2 from 'src/testdata/Cake_TestData2';
 
 function Cake() {
   const [num, setNum] = useState(0);
   const NumF = () => {
     setNum(num + 1);
   };
+
+
+  const PageChangeF = (p: number) => {
+    console.log(p);
+    setData(Cake_TestData2().cakesList);
+  };
+  const SearchChangeF = (s: any[]) => {
+    console.log(selectWindow[0][1]);
+    console.log(s);
+    // setData();
+  }
+
+
 
   //선택지 가로 위치 계산
   const [width, setWidth] = useState(0);
@@ -79,58 +94,62 @@ function Cake() {
     window.addEventListener('resize', handleResize);
 
     let isComponentMounted = true;
-    let num = 12;
-    axios({
-        url: '/app/cakes?page=1',
-        method: 'GET',
-      })
-      .then((res) => {
-        if (res.data) {
-            if (isComponentMounted) {
-                const data = res.data.result.content;
+    let len = [];
+    for (var i=0; i<Cake_TestData().cakesAll/12; i++) //data.length
+      len[i] = { num: i+1 }
+    setPageLength(len);
+    setData(Cake_TestData().cakesList);
+    // let num = 12;
+    // axios({
+    //     url: '/app/cakes?page=1',
+    //     method: 'GET',
+    //   })
+    //   .then((res) => {
+    //     if (res.data) {
+    //         if (isComponentMounted) {
+    //             const data = res.data.result.content;
 
-                var changeData = [];
-                for (var i = 0; i < data.length; i++) {
-                    changeData[i] = res.data.result.content[i];
-                }
-                for (var i:number = data.length; i < num; i++) {
-                    changeData[i] = {
-                        image: null,
-                        name: "~준비중 입니다~",
-                        price: 0,
-                        storeName: "~준비중 입니다~",
+    //             var changeData = [];
+    //             for (var i = 0; i < data.length; i++) {
+    //                 changeData[i] = res.data.result.content[i];
+    //             }
+    //             for (var i:number = data.length; i < num; i++) {
+    //                 changeData[i] = {
+    //                     image: null,
+    //                     name: "~준비중 입니다~",
+    //                     price: 0,
+    //                     storeName: "~준비중 입니다~",
 
-                        productId: 0,
-                        popularRank: 0,
-                    };
-                }
-                var len = [];
-                for (var i=0; i<100/12; i++) //data.length
-                    len[i] = { num: i+1 }
-                setPageLength(len);
-                setData(changeData);
-            }
-        }
-      })
-      .catch((err) => {
-        var changeData = [];
-        for (var i = 0; i < num; i++) {
-            changeData[i] = {
-                image: null,
-                name: "~준비중 입니다~",
-                price: 0,
-                storeName: "~준비중 입니다~",
+    //                     productId: 0,
+    //                     popularRank: 0,
+    //                 };
+    //             }
+    //             var len = [];
+    //             for (var i=0; i<100/12; i++) //data.length
+    //                 len[i] = { num: i+1 }
+    //             setPageLength(len);
+    //             setData(changeData);
+    //         }
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     var changeData = [];
+    //     for (var i = 0; i < num; i++) {
+    //         changeData[i] = {
+    //             image: null,
+    //             name: "~준비중 입니다~",
+    //             price: 0,
+    //             storeName: "~준비중 입니다~",
 
-                productId: 0,
-                popularRank: 0,
-            };
-        }
-        setPageLength([{num: 1}]);
-        setData(changeData);
-        console.log(err);
-      });
+    //             productId: 0,
+    //             popularRank: 0,
+    //         };
+    //     }
+    //     setPageLength([{num: 1}]);
+    //     setData(changeData);
+    //     console.log(err);
+    //   });
 
-    $("#cake-page-length").val("1")
     axios({
         url: '/app/cities',
         method: 'GET',
@@ -187,8 +206,10 @@ function Cake() {
             {/* 선택지창 */}
             <SelectWindowOne
               NumF={NumF}
+              selectAll={selectAll}
               selectWindow={selectWindow}
               selectDataOne={selectDataOne}
+              searchChangeF={SearchChangeF}
             />
             {resize > 767 || selectMobileTF ? (
               <SelectWindow
@@ -202,6 +223,7 @@ function Cake() {
                 
                 setSelectMobileTF={setSelectMobileTF}
                 SelectCloseF={SelectCloseF}
+                searchChangeF={SearchChangeF}
               />
             ) : null}
 
@@ -222,7 +244,7 @@ function Cake() {
             {/* 선택지 바 */}
             {selectAll.length != 0 ? (
               <div className="cake-select-bar">
-                <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
+                <SelectBar getData={selectAll} setSelectAllF={setSelectAll} searchChangeF={SearchChangeF} />
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {
@@ -239,6 +261,7 @@ function Cake() {
                     selectWindow[4][2] = 42;
 
                     setSelectAll([]);
+                    SearchChangeF([]);
                   }}
                 >
                   초기화
@@ -251,7 +274,7 @@ function Cake() {
               <div className="contents">
                   <CakeCard getData={data} cakeDetail={cakeDetail} />
               </div>
-              <PageBar page={page} setPageF={setPage} length={pageLength}/>
+              <PageBar page={page} setPageF={setPage} length={pageLength} pageChangeF={PageChangeF}/>
           </div>
           {/* <PickCard /> */}
         </div>

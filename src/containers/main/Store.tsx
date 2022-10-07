@@ -24,6 +24,18 @@ function Store() {
     setNum(num + 1);
   };
 
+
+  const PageChangeF = (p: number) => {
+
+  };
+  const SearchChangeF = (s: any[]) => {
+    console.log(selectWindow[0][1]);
+    console.log(s);
+    // setData();
+  }
+
+
+
   //선택지 가로 위치 계산
   const [width, setWidth] = useState(0);
   const SelectCloseF = () => {
@@ -180,13 +192,14 @@ function Store() {
             </div>
 
             {/* 선택지창 */}
-            <SelectWindowOne NumF={NumF} selectWindow={selectWindow} selectDataOne={selectDataOne}/>
+            <SelectWindowOne NumF={NumF} selectAll={selectAll} selectWindow={selectWindow} selectDataOne={selectDataOne} searchChangeF={SearchChangeF}/>
             {resize > 767 || selectMobileTF ?
               <SelectWindow
                 cakestoreTF={false} NumF={NumF}
                 selectAll={selectAll} selectWindow={selectWindow}
                 selectData={selectData}
-                setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF} />
+                setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF}
+                searchChangeF={SearchChangeF} />
             :null}
 
             {/* 선택지박스 */}
@@ -201,7 +214,7 @@ function Store() {
             {selectAll.length != 0?
                 <div
                     className="cake-select-bar">
-                    <SelectBar setSelectAllF={setSelectAll} getData={selectAll} />
+                    <SelectBar getData={selectAll} setSelectAllF={setSelectAll} searchChangeF={SearchChangeF} />
                     <div
                         className="cake-bar-card-all-delete"
                         onClick={()=>{
@@ -219,6 +232,7 @@ function Store() {
                           selectWindow[4][2] = 56;
       
                           setSelectAll([]);
+                          SearchChangeF([]);
                         }}
                     >초기화</div>
                 </div>
@@ -229,7 +243,7 @@ function Store() {
             <div className="contents">
               <StoreCard getData={data} cakeDetail={cakeDetail} />
             </div>
-            <PageBar page={page} setPageF={setPage} length={pageLength} />
+            <PageBar page={page} setPageF={setPage} length={pageLength} pageChangeF={PageChangeF} />
           </div>
           {/* <PickCard /> */}
         </div>

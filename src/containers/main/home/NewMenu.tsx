@@ -7,13 +7,13 @@ import axios from 'axios';
 import getAxios from 'src/utils/getAxios';
 import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
+import Main_Popular_TestData from 'src/testdata/Main_Popular_TestData';
 
 function NewMenu (){
     const [num, setNum] = useState(1);
     const [slidePx, setSlidePx] = useState(0);
 
     const [resize, setResize] = useState(0);
-
     const handleResize = () => {
         if (window.innerWidth<=767) {
             setNum(1);
@@ -21,14 +21,18 @@ function NewMenu (){
         }
         setResize(window.innerWidth);
     };
-
     const [data, setData] = useState([]);
     useEffect(() => {
         setResize(window.innerWidth);
         window.addEventListener("resize", handleResize);
 
-        var changeData: any = [];
-        homeGetAxios(setData, changeData, "products/update", 1);
+        //get api/new-cake
+        let isComponentMounted = true;
+        setData(Main_Popular_TestData());
+        return () => {
+          isComponentMounted = false;
+          window.removeEventListener("resize", handleResize);
+        }
     }, []);
 
     return(

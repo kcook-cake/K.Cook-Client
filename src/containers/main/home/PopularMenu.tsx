@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
 import homeGetAxios from './homeGetAxios';
+import Main_Popular_TestData from 'src/testdata/Main_Popular_TestData';
 
 interface Props {
   session: any;
@@ -30,16 +31,16 @@ const PopularMenu = ({ session, auth }: Props) => {
     setResize(window.innerWidth);
     window.addEventListener('resize', handleResize);
 
-    var changeData: any = [];
-    homeGetAxios(setData, changeData, 'popular-products', 1);
+    //get /api/popular-cake
+    let isComponentMounted = true;
+    setData(Main_Popular_TestData());
+    return () => {
+      isComponentMounted = false;
+      window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
-  // 모달창 생성용 값
-  const [modalShow, setModalShow] = useState(false);
-  const [cakeTF, setCakeTF] = useState<number>();
 
-  /* const [image, setImage] = useState<any>([]);
-  const [bannerImage, setBannerImage] = useState<any>([]); */
 
   return (
     <div className="popularmenu-flex home-flex">

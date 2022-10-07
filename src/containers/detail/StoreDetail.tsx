@@ -35,6 +35,12 @@ const StoreDetail = (auth: any) => {
   const [slidePx, setSlidePx] = useState(0);
   const [height, setHeight] = useState(0);
 
+
+  const PageChangeF = (p: number) => {
+
+  };
+  
+
   const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -236,7 +242,7 @@ const StoreDetail = (auth: any) => {
                 <div className="contents">
                     <CakeCard getData={data} cakeDetail={cakeDetail} />
                 </div>
-                <PageBar page={page} setPageF={setPage} length={pageLength}/>
+                <PageBar page={page} setPageF={setPage} length={pageLength} pageChangeF={PageChangeF} />
             </div>
 
           </div>
