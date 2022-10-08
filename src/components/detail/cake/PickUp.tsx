@@ -21,7 +21,7 @@ function PickUp({ getData, groupTimeId, setGroupTimeIdF, }: Props) {
                         key={idx}
                         className={classNames('cake-detail-pickup', {
                             'cake-detail-pickup-none': data.groupTF,
-                            'cake-detail-pickup-focus': groupTimeId[1] === data.time,
+                            'cake-detail-pickup-focus': groupTimeId[1] === data.time && groupTimeId[0] === data.groupId,
                         })}
                         onClick={()=> {
                             setTimeId(idx);

@@ -1,7 +1,7 @@
 const Cakes_Popular_TestData = () => {
     return ([
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -9,7 +9,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -17,7 +17,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -25,40 +25,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-
-        {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-        {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-        {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-        {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -67,7 +34,7 @@ const Cakes_Popular_TestData = () => {
         },
 
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -75,7 +42,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -83,7 +50,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -91,40 +58,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-
-        {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-        {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-        {
-            productId: 0,
-            image1: "",
-            name: "~준비중 입니다~",
-            storeName: "~준비중 입니다~",
-            price: 0,
-            reviewCount: 0,
-        },
-        {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -133,7 +67,7 @@ const Cakes_Popular_TestData = () => {
         },
 
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -141,7 +75,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -149,7 +83,7 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",
@@ -157,7 +91,73 @@ const Cakes_Popular_TestData = () => {
             reviewCount: 0,
         },
         {
-            productId: 0,
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+        {
+            cakeId: 0,
+            image1: "",
+            name: "~준비중 입니다~",
+            storeName: "~준비중 입니다~",
+            price: 0,
+            reviewCount: 0,
+        },
+        {
+            cakeId: 0,
             image1: "",
             name: "~준비중 입니다~",
             storeName: "~준비중 입니다~",

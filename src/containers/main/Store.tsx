@@ -75,9 +75,6 @@ function Store() {
   useEffect(() => {
     LinkClick('Store');
 
-    setResize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
     // storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
     let isComponentMounted = true;
     var len = [];
@@ -165,8 +162,12 @@ function Store() {
       .catch((err) => {
         console.log(err);
       });
+      
+    setResize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
     return () => {
       isComponentMounted = false;
+      window.removeEventListener("resize", handleResize);
     }
   }, []);
 

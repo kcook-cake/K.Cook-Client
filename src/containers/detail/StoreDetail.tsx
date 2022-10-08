@@ -19,8 +19,8 @@ import 'src/styles/detail/store/kakaoMap.scss';
 import CakeCard from 'src/components/common/cake-store/CakeCard';
 import PageBar from 'src/components/main/common/PageBar';
 import storeCakeGetAxios from './storeCakeGetAxios';
-import Store_Detail_Static_TestData from 'src/testdata/Store_Detail_Static_TestData';
-import Store_Detail_TestData from 'src/testdata/Store_Detail_TestData';
+import Store_Detail_Static_TestData from 'src/testdata/detail/Store_Detail_Static_TestData';
+import Store_Detail_Cakes_TestData from 'src/testdata/detail/Store_Detail_Cakes_TestData';
 
 // const { kakao } = window;
 
@@ -57,13 +57,22 @@ const StoreDetail = (auth: any) => {
   const [pageLength, setPageLength] = useState([]);
 
 
-
+  let [image, setImage] = useState(null);
   let [storeData, setStoreData] = useState({
+    storeId: 0,
     name: '',
+    likes: 0,
+    likeStatus: false,
     intro: '',
     date: '',
     phone: '',
     location: '',
+    logoImage: "",
+    image1: "",
+    image2: "",
+    image3: "",
+    image4: "",
+    image5: "",
   });
   let [data, setData] = useState({
     cakesAll: 0,
@@ -75,11 +84,14 @@ const StoreDetail = (auth: any) => {
     if ($('.seller-flex').height() != null)
       setHeight(Number($('.seller-flex').height()));
 
+
     let isComponentMounted = true;
     storeData = Store_Detail_Static_TestData(); setStoreData(storeData);
-    data = Store_Detail_TestData(); setData(data);
+    setImage(Store_Detail_Static_TestData().image1);
+
+    data = Store_Detail_Cakes_TestData(); setData(data);
     let len = [];
-    for (var i=0; i<Store_Detail_TestData().cakesAll/8; i++) //data.length
+    for (var i=0; i<Store_Detail_Cakes_TestData().cakesAll/8; i++) //data.length
       len[i] = { num: i+1 }
     setPageLength(len);
     // let num = 8;
@@ -184,41 +196,39 @@ const StoreDetail = (auth: any) => {
           <div className="store-detail-top">
             <div className="store-detail-main-img">
               <div className="store-detail-main-img-inner">
-                {true ? (
-                  <img src={test2} alt="store-detail-mainImg" />
-                ) : (
-                  <div>~준비중 입니다~</div>
-                )}
+                {image==="" || image===null || image===undefined || image.length===133? 
+                  <div>~준비중~</div>:
+                  <img src={image} />
+                }
               </div>
             </div>
             <div className="store-detail-top-box">
               <div className="store-detail-profile">
-                {false ? (
-                  <></>
-                ) : (
-                  <img src={profileNone} alt="store-detail-profile" />
-                )}
+                {storeData.logoImage==="" || storeData.logoImage===null || storeData.logoImage===undefined || storeData.logoImage.length===133? 
+                  <img src={profileNone} />:
+                  <img src={storeData.logoImage} />
+                }
               </div>
               <div className="store-detail-store-name">{storeData.name}</div>
               <div className="store-detail-store-textarea">
-                연리단길 지역 판매량 1위!ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+                {storeData.intro}
               </div>
               <hr className="store-detail-store-hr" />
               <div className="store-detail-store-info">
                 <img src={timeImg} alt="store-detail-timeImg" />
-                서울 용산구 이태원로55길 111
+                {storeData.date}
               </div>
               <div className="store-detail-store-info">
                 <img src={phoneImg} alt="store-detail-phoneImg" />
-                서울 용산구 이태원로55길 111
+                {storeData.phone}
               </div>
               <div className="store-detail-store-info store-detail-store-info-2">
                 <img src={locationImg} alt="store-detail-locationImg" />
                 <div
                   onClick={() =>
-                    handleCopyClipBoard('서울 용산구 이태원로55길 111')
+                    handleCopyClipBoard(storeData.location)
                   }>
-                  서울 용산구 이태원로55길 111
+                  {storeData.location}
                 </div>
               </div>
               <div
@@ -232,7 +242,7 @@ const StoreDetail = (auth: any) => {
                   style={{ float: 'left' }}
                 >
                   <img src={TestImg} alt="store-detail-likeButton" />
-                  99
+                  {storeData.likes}
                 </button>
                 <button
                   className="store-detail-store-button"
@@ -244,11 +254,12 @@ const StoreDetail = (auth: any) => {
               </div>
             </div>
           </div>
-          <img
-            src={DetailAd}
-            className="store-detail-ad"
-            alt="store-detail-ad"
-          />
+          <div className="store-detail-ad">
+            <img
+              src={test2}
+              alt="store-detail-ad"
+            />
+          </div>
 
           <div className="store-detail-cakelist home">
             <div className="store-detail-title-flex">

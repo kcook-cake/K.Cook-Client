@@ -20,17 +20,12 @@ const List2Option = (getData) => {
     };
 
     var chOptionList = [];
-    // var chOptionListTF = []; //
-    // for (var i=0; i<13; i++) chOptionListTF[i] = true; //
     
     var j = -1;
     for (var i=0; i<getData.length; i++) {
         var c = category[getData[i].category];
-        // var c = category[getData[i].category].split("&")[0];
-        // var oid = category[getData[i].category].split("&")[1]; //
 
         if (getData[i].itemNumber === 0) {
-        // if (chOptionListTF[oid]) { //
             chOptionList.push({
                 optionId: true,
                 optionNumber: chOptionList.length,
@@ -44,7 +39,6 @@ const List2Option = (getData) => {
                     itemChild: getData[i].childsList,
                 }],
             });
-            // chOptionListTF[oid] = false; //
             j++;
         }
         else {

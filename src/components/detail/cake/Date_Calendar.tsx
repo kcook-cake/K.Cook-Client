@@ -8,13 +8,14 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 interface Props {
-    date: any,
+    date: string,
     setDateF: Function,
+    deadline: number[],
     ChangeDataF: Function,
     setGroupTimeIdF: Function, 
 }
 
-function Date_Calendar({ date, setDateF, ChangeDataF, setGroupTimeIdF, }: Props) {
+function Date_Calendar({ date, setDateF, deadline, ChangeDataF, setGroupTimeIdF, }: Props) {
     useEffect(()=>{
         var today = new Date();
         var year = today.getFullYear();
@@ -24,6 +25,7 @@ function Date_Calendar({ date, setDateF, ChangeDataF, setGroupTimeIdF, }: Props)
 
         $(".fc-daygrid-day .fc-daygrid-day-number").css("color", "#000");
         $(".fc-daygrid-day .fc-daygrid-day-number").css("background", "none");
+        $(".fc-day-today .fc-daygrid-day-number").css("background", "#F07F7C");
 
         $(".fc-daygrid-day[data-date='"+dateString+"'] .fc-daygrid-day-number").css("color", "#fff");
         $(".fc-daygrid-day[data-date='"+dateString+"'] .fc-daygrid-day-number").css("background", "#ea5450");
@@ -67,7 +69,7 @@ function Date_Calendar({ date, setDateF, ChangeDataF, setGroupTimeIdF, }: Props)
                         $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#fff");
                         $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("background", "#ea5450");
 
-                        setGroupTimeIdF([-1, -1]);
+                        setGroupTimeIdF([-1, '']);
                         ChangeDataF(date);
                     }}
                 />

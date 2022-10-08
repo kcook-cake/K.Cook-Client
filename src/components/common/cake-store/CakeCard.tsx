@@ -10,7 +10,7 @@ import { render } from '@testing-library/react';
 
 interface Props {
   getData: {
-    productId: number,
+    cakeId: number,
     image1: string,
     name: string,
     storeName: string,
@@ -30,7 +30,7 @@ function CakeCard({ getData, }: Props) {
       {getData.map(
         (
           data: {
-            productId: number,
+            cakeId: number,
             image1: string,
             name: string,
             storeName: string,
@@ -40,7 +40,7 @@ function CakeCard({ getData, }: Props) {
           idx: any,
         ) => {
           return (
-            <Link key={idx} to={'/Cake/'+data.productId}>
+            <Link key={idx} to={'/Cake/'+data.cakeId}>
               <div className="cakecard-flex">
                 <div className="cakecard">
                   <div className="cakecard-img">

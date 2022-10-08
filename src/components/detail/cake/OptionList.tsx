@@ -9,14 +9,13 @@ import add from 'src/assets/detail/cake/add.png';
 // import add from 'src/styles/detail/cake/add.png';
 
 interface Props {
-  NumF: any,
-  cusId: any,
+  NumF: Function;
+  optionId: number[];
+  cusId: number[];
   getData: any;
 }
 
-function OptionList({ NumF, cusId, getData }: Props) {
-  let [cusId2, setCusId2] = useState([]);
-
+function OptionList({ NumF, optionId, cusId, getData }: Props) {
   let [selectNum, setSelectNum] = useState(0); //옵션 불투명도
   let [optionNum, setOptionNum] = useState(-1); //옵션 어떤 것 눌렀는지
   let [itemNum, setItemNum] = useState(0);
@@ -119,8 +118,8 @@ function OptionList({ NumF, cusId, getData }: Props) {
                             setSelectNum(selectNum);
 
                             for (var i=optionNum; i<getData.length; i++) {
-                              cusId[i] = -1;
-                              cusId[option.optionNumber] = item.itemNumber;
+                              cusId[i] = -1; optionId[i] = -1;
+                              cusId[option.optionNumber] = item.itemNumber; optionId[option.optionNumber] = item.itemId;
                             }
 
                             for (var i=0; i<getData.length; i++) {

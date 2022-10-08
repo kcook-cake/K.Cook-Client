@@ -72,9 +72,6 @@ function Cake() {
   useEffect(() => {
     LinkClick('Cake');
 
-    setResize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
     let isComponentMounted = true;
     let len = [];
     for (var i=0; i<Cakes_TestData().cakesAll/12; i++) //data.length
@@ -166,8 +163,12 @@ function Cake() {
       .catch((err) => {
         console.log(err);
       });
+      
+    setResize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
     return () => {
       isComponentMounted = false;
+      window.removeEventListener("resize", handleResize);
     }
   }, []);
 
