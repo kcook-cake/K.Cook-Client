@@ -6,8 +6,7 @@ import 'src/styles/main/home/PopularMenu.scss';
 import axios from 'axios';
 
 import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
-import homeGetAxios from './homeGetAxios';
-import Main_Popular_TestData from 'src/testdata/Main_Popular_TestData';
+import Cakes_Popular_TestData from 'src/testdata/main/Cakes_Popular_TestData';
 
 interface Props {
   session: any;
@@ -17,6 +16,8 @@ interface Props {
 const PopularMenu = ({ session, auth }: Props) => {
   const [num, setNum] = useState(1);
   const [slidePx, setSlidePx] = useState(0);
+
+
 
   const [data, setData] = useState([]);
   const [resize, setResize] = useState(0);
@@ -33,7 +34,7 @@ const PopularMenu = ({ session, auth }: Props) => {
 
     //get /api/popular-cake
     let isComponentMounted = true;
-    setData(Main_Popular_TestData());
+    setData(Cakes_Popular_TestData());
     return () => {
       isComponentMounted = false;
       window.removeEventListener("resize", handleResize);

@@ -21,19 +21,7 @@ const SPMDetail = () => {
     setNum(num + 1);
   };
 
-  //선택지 가로 위치 계산
-  const [width, setWidth] = useState(0);
-  const SelectCloseF = () => {
-    var n1: any = $('.seller-flex').width();
-    var n2: any = $('.seller').width();
-    if ((n1 - n2) / 2 < 0) setWidth(0);
-    else setWidth((n1 - n2) / 2);
 
-    for (var i = 1; i < 5; i++) {
-      selectWindow[i][0] = false;
-    }
-    setNum(num + 1);
-  };
 
   const [selectDataOne, setSelectDataOne] = useState([
     ['인기순', '최신순', '판매량순', '낮은 가격순', '높은 가격순'],
@@ -168,7 +156,6 @@ const SPMDetail = () => {
           selectData={selectData}
           
           setSelectMobileTF={setSelectMobileTF}
-          SelectCloseF={SelectCloseF}
 
           searchChangeF={()=>{}}
         />
@@ -205,7 +192,6 @@ const SPMDetail = () => {
                 NumF={NumF}
                 selectBox={[false, false, false, false]}
                 selectWindow={selectWindow}
-                SelectCloseF={SelectCloseF}
                 setSelectAllF={setSelectAll}
               />
             ) : (
@@ -227,8 +213,6 @@ const SPMDetail = () => {
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {
-                    SelectCloseF();
-
                     selectWindow[1][1] = '지역';
                     selectWindow[2][1] = '맛';
                     selectWindow[3][1] = '이벤트';

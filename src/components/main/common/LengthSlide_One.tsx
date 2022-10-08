@@ -7,7 +7,14 @@ import star from 'src/utils/star';
 import MakePrice from 'src/utils/MakePrice';
 
 interface Props {
-  getData: any;
+  getData: {
+    productId: number,
+    image1: string,
+    name: string,
+    storeName: string,
+    price: number,
+    reviewCount: number,
+  }[];
   resize: number;
   slidePx: number;
 }
@@ -18,21 +25,12 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
       {getData.map(
         (
           data: {
-            image: any;
-            name: any;
-            price: any;
-            storeName: any;
-
-            productId: any;
-            popularRank: any;
-
-            status: any;
-            isCake: any;
-
-            raiting: any;
-            salePrice: any;
-            resultPrice: any;
-            reviewCount: any;
+            productId: number,
+            image1: string,
+            name: string,
+            storeName: string,
+            price: number,
+            reviewCount: number,
           },
           idx: any
         ) => {
@@ -49,11 +47,11 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
                 <div className="lengthslide">
                   <div className="lengthslide-img">
                     <div className="lengthslide-img-inner">
-                      {data.image === null || data.image === undefined || data.image === ""?
+                      {data.image1 === null || data.image1 === undefined || data.image1 === "" || data.image1.length === 133?
                         <div>
                           ~준비중 입니다~
                         </div>:
-                        <img src={data.image} />
+                        <img src={data.image1} />
                       }
                     </div>
                   </div>

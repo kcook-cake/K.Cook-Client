@@ -23,43 +23,62 @@ import ColorBox from 'src/components/detail/cake/ColorBox';
 import OptionList from 'src/components/detail/cake/OptionList';
 import Date_Calendar from 'src/components/detail/cake/Date_Calendar';
 import List2Option from 'src/utils/List2Option';
+import Cake_Detail_TestData from 'src/testdata/Cake_Detail_TestData';
+import Cake_Detail_Static_TestData from 'src/testdata/Cake_Detail_Static_TestData';
+import Group2List from 'src/components/detail/cake/Group2List';
 
 const CakeDetail = () =>{
     const [num, setNum] = useState(0);
 
-    const [today, setToday] = useState("");
+
+    const ChangeDataF = (date: string, ) => {
+        //axios -> date를 기준으로 order cake.maxOfToday, order store-group.count 비교
+        //get /api/cake-detail
+        setPickUp(Group2List(Cake_Detail_TestData()));
+    }
+
+
+
     const [selectShow, setSelectShow] = useState([true, true, true]);
     const [date, setDate] = useState("");
-    const [pickUp, setPickUp] = useState(["10:00~11:00", "11:00~12:00", "21:00~22:00"]);
+    const [pickUp, setPickUp] = useState([]);
     let [option, setOption] = useState([]);
+
+    const [groupTimeId, setGroupTimeId] = useState([-1, '']);
     let [cusId, setCusId] = useState([]);
 
 
+    let [image, setImage] = useState(null);
+    let [cakeData, setCakeData] = useState({
+        cakeId: 0,
+        image: "", //필수
+        name: "", //필수
+        price: 0, //필수
+        storeName: "",
+        isTodayCake: false,
+        deadline: [],
+        optionsList: [],
+        productImage1: null,
+        productImage2: null,
+        productImage3: null,
+        productImage4: null,
+        productImage5: null,
+    });
 
-    let [height, setHeight] = useState(window.innerHeight);
+
+
     let [heightTF, setHeightTF] = useState(false);
+    let [height, setHeight] = useState(window.innerHeight);
     const handleHeight = () => {
         height = window.innerHeight
         setHeight(height);
     };
-    let [image, setImage] = useState(null);
-    let [data, setData] = useState({
-        name: '',
-        storeName: '',
-        price: '',
-        productImage1: null, productImage2: null, productImage3: null, productImage4: null, productImage5: null, 
-        optionsList: [],
-    });
     useEffect(()=>{
-        setHeight(window.innerHeight);
-        window.addEventListener('height', handleHeight);
-
-        heightTF = ($('.cake-detail-right').height() > height);
-        setHeightTF(heightTF);
-
         $(".hm-pc-flex").show();
         LinkClick("Cake");
 
+        let isComponentMounted = true;
+        /*
         axios({
             url: "/app/products/105",
             method: "GET",
@@ -73,6 +92,26 @@ const CakeDetail = () =>{
             setCusId(cusId);
         }).catch((err)=>{
         })
+        */
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = ('0' + (today.getMonth() + 1)).slice(-2);
+        var day = ('0' + today.getDate()).slice(-2);
+        var dateString = year + '-' + month  + '-' + day;
+        setDate(dateString);
+
+        ChangeDataF(dateString);
+        option = List2Option(Cake_Detail_Static_TestData().optionsList); setOption(option);
+        cakeData = Cake_Detail_Static_TestData(); setCakeData(cakeData);
+
+        setHeight(window.innerHeight);
+        window.addEventListener('height', handleHeight);
+        heightTF = ($('.cake-detail-right').height() > height);
+        setHeightTF(heightTF);
+        return () => {
+            isComponentMounted = false;
+            window.removeEventListener("resize", handleHeight);
+        }
     },[]);
 
     return(
@@ -90,58 +129,43 @@ const CakeDetail = () =>{
                         </div>
                         <div className='cake-detail-sub-img'>
                             <div className='cake-detail-sub-img-inner'>
-                                {data.productImage1===null?
+                                {cakeData.productImage1==="" || cakeData.productImage1===null || cakeData.productImage1===undefined || cakeData.productImage1.length===103?
                                     <div>~준비중~</div>:
-                                    (data.productImage1.length===103?
-                                        <div>~준비중~</div>:
-                                        <img 
-                                            src={data.productImage1} 
-                                            onClick={()=>{ image = data.productImage1; setImage(image); }}/>
-                                    )
+                                    <img 
+                                        src={cakeData.productImage1} 
+                                        onClick={()=>{ image = cakeData.productImage1; setImage(image); }}/>
                                 }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {data.productImage2===null?
+                                {cakeData.productImage2==="" || cakeData.productImage2===null || cakeData.productImage2===undefined || cakeData.productImage2.length===103?
                                     <div>~준비중~</div>:
-                                    (data.productImage2.length===103?
-                                        <div>~준비중~</div>:
-                                        <img 
-                                            src={data.productImage2} 
-                                            onClick={()=>{ image = data.productImage2; setImage(image); }}/>
-                                    )
+                                    <img 
+                                        src={cakeData.productImage2} 
+                                        onClick={()=>{ image = cakeData.productImage2; setImage(image); }}/>
                                 }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {data.productImage3===null?
+                                {cakeData.productImage3==="" || cakeData.productImage3===null || cakeData.productImage3===undefined || cakeData.productImage3.length===103?
                                     <div>~준비중~</div>:
-                                    (data.productImage3.length===103?
-                                        <div>~준비중~</div>:
-                                        <img 
-                                            src={data.productImage3} 
-                                            onClick={()=>{ image = data.productImage3; setImage(image); }}/>
-                                    )
+                                    <img 
+                                        src={cakeData.productImage3} 
+                                        onClick={()=>{ image = cakeData.productImage3; setImage(image); }}/>
                                 }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {data.productImage4===null?
+                                {cakeData.productImage4==="" || cakeData.productImage4===null || cakeData.productImage4===undefined || cakeData.productImage4.length===103?
                                     <div>~준비중~</div>:
-                                    (data.productImage4.length===103?
-                                        <div>~준비중~</div>:
-                                        <img 
-                                            src={data.productImage4} 
-                                            onClick={()=>{ image = data.productImage4; setImage(image); }}/>
-                                    )
+                                    <img 
+                                        src={cakeData.productImage4} 
+                                        onClick={()=>{ image = cakeData.productImage4; setImage(image); }}/>
                                 }
                             </div>
                             <div className='cake-detail-sub-img-inner'>
-                                {data.productImage5===null?
+                                {cakeData.productImage5==="" || cakeData.productImage5===null || cakeData.productImage5===undefined || cakeData.productImage5.length===103?
                                     <div>~준비중~</div>:
-                                    (data.productImage5.length===103?
-                                        <div>~준비중~</div>:
-                                        <img 
-                                            src={data.productImage5} 
-                                            onClick={()=>{ image = data.productImage5; setImage(image); }}/>
-                                    )
+                                    <img 
+                                        src={cakeData.productImage5} 
+                                        onClick={()=>{ image = cakeData.productImage5; setImage(image); }}/>
                                 }
                             </div>
                         </div>
@@ -172,14 +196,14 @@ const CakeDetail = () =>{
                                             <img src={cake6} />:
                                             <img src={profile} />
                                         }
-                                        <div className='cake-detail-right-store-name'>{data.storeName} &gt;</div>
+                                        <div className='cake-detail-right-store-name'>{cakeData.storeName} &gt;</div>
                                     </div>
                                 </Link>
                                 <div className='cake-detail-right-store-cake'>
-                                    {data.name}
+                                    {cakeData.name}
                                 </div>
                                 <div className='cake-detail-right-price'>
-                                    {MakePrice(data.price)}원
+                                    {MakePrice(cakeData.price)}원
                                     <img src={share} />
                                     <div style={{ float: "right", marginRight: "20px", }}>
                                         <img src={like} width={18.5} height={18.5} />
@@ -206,7 +230,7 @@ const CakeDetail = () =>{
                                 <hr/>
                                 {selectShow[0]?
                                     <>
-                                        <Date_Calendar date={date} />
+                                        <Date_Calendar date={date} setDateF={setDate} ChangeDataF={ChangeDataF} setGroupTimeIdF={setGroupTimeId} />
                                         <ColorBox />
                                     </>
                                 :null}
@@ -230,7 +254,7 @@ const CakeDetail = () =>{
                                 <hr/>
                                 {selectShow[1]?
                                     <>
-                                        <PickUp getData={pickUp} />
+                                        <PickUp getData={pickUp} groupTimeId={groupTimeId} setGroupTimeIdF={setGroupTimeId} />
                                         <ColorBox />
                                     </>
                                 :null}
@@ -273,6 +297,9 @@ const CakeDetail = () =>{
                                 <div style={{ color: "#000", border: "1px solid #e0e0e0", background: "#fff"}}>장바구니</div>
                                 <div
                                     onClick={()=>{
+                                        console.log(date);
+                                        console.log(cakeData.cakeId);
+                                        console.log(groupTimeId);
                                         console.log(cusId);
                                     }}>
                                     주문하기

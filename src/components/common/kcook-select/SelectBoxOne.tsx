@@ -4,13 +4,13 @@ import "src/styles/common/kcook-select/SelectBox.scss";
 import selectAllow from "src/assets/selectArrow.png";
 
 interface Props {
+    NumF: Function,
     selectWindow: any,
-    SelectCloseF: any,
 }
 
 export default function SelectBoxOne({ 
+    NumF,
     selectWindow,
-    SelectCloseF,
   }: Props) {
 
     return (
@@ -18,9 +18,9 @@ export default function SelectBoxOne({
             <div 
                 className="cake-select cake-select-one-flex"
                 onClick={()=>{
-                    SelectCloseF();
                     if (selectWindow[0][0]) selectWindow[0][0] = false;
                     else selectWindow[0][0] = true;
+                    NumF();
                 }}>
                 <div style={{ display: "flex", }}>
                     <button id="cake-select-one" className="cake-select-button">

@@ -8,38 +8,40 @@ import { start } from 'repl';
 
 
 interface Props {
-    getData: any,
-    cakeDetail: any,
+    getData: {
+        storeId: number,
+        image1: string,
+        name: string,
+        intro: string,
+        address: string,
+    }[],
 }
 
-function StoreCard({getData, cakeDetail}: Props) {
+function StoreCard({getData}: Props) {
     return (
         <>
             {getData.map((data: { 
-                image: any,
-                accountName: any,
-                address: any,
-                area: any,
-                contact: any,
-                name: any,
-                status: any,
-                storeId: any,
-             }, idx: any)=>{
+                storeId: number,
+                image1: string,
+                name: string,
+                intro: string,
+                address: string,
+             }, idx: number)=>{
                 return (
-                    <Link key={idx} className="cake-store-card" to={"/Store/0"}>
+                    <Link key={idx} className="cake-store-card" to={"/Store/"+data.storeId}>
                         <div className="storecard-flex">
                             <div className="storecard">
                                 <div className="storecard-img">
                                     <div className="storecard-img-inner">
-                                        {data.image===null || data.image===undefined || data.image===""?
+                                        {data.image1===null || data.image1===undefined || data.image1==="" || data.image1.length===133?
                                             <div className="storecard-img-none">~준비중 입니다~</div>:
-                                            <img src={data.image} className="storecard-img"/>
+                                            <img src={data.image1} className="storecard-img"/>
                                         }
                                     </div>
                                 </div>
                                 <div className="storecard-info">
-                                    <div className="card-top">{data.accountName}</div>
-                                    <div className="card-title">{data.name}</div>
+                                    <div className="card-top">{data.name}</div>
+                                    <div className="card-title">{data.intro}</div>
                                     <div className="card-location">{data.address}</div>
                                 </div>
                             </div>

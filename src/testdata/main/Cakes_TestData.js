@@ -1,134 +1,109 @@
 import React, { useState, useEffect } from "react";
 
-const Cake_TestData = () => {
-    // get /api/popular-cake
+const Cakes_TestData = () => {
     return ({
         cakesAll: 20,
         cakesList: [
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
 
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
 
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
             {
-                image: "",
+                productId: 0,
+                image1: "",
                 name: "~준비중 입니다~",
-                price: 0,
                 storeName: "~준비중 입니다~",
-
-                cakeId: 1,
-                popularRank: 0,
+                price: 0,
                 reviewCount: 0,
             },
         ]
     });
 }
 
-export default Cake_TestData;
+export default Cakes_TestData;

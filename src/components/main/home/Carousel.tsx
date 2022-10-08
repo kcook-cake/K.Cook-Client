@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../../styles/main/home/MainCrousel.scss';
 
 import BannerSlider from 'src/components/main/common/BannerSlide';
+import Banner_Slide_TestData from 'src/testdata/main/Banner_Slide_TestData';
 
 interface Props {
   session: any;
@@ -17,20 +18,21 @@ function Crousel({ session, auth }: Props) {
 
   useEffect(() => {
       let isComponentMounted = true;
-      axios({
-          url: '/app/banner/carousel',
-          method: 'GET',
-        })
-        .then((res) => {
-          if (res.data) {
-            if (isComponentMounted) {
-              setData(res.data.result);              
-            }
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      setData(Banner_Slide_TestData());
+      // axios({
+      //     url: '/app/banner/carousel',
+      //     method: 'GET',
+      //   })
+      //   .then((res) => {
+      //     if (res.data) {
+      //       if (isComponentMounted) {
+      //         setData(res.data.result);              
+      //       }
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
       return () => {
         isComponentMounted = false;
       }

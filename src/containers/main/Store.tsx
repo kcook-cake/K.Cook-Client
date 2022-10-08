@@ -17,6 +17,7 @@ import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
 import PageBar from 'src/components/main/common/PageBar';
+import Stores_TestData from 'src/testdata/main/Stores_TestData';
 
 function Store() {
   const [num, setNum] = useState(0);
@@ -26,29 +27,16 @@ function Store() {
 
 
   const PageChangeF = (p: number) => {
-
+    console.log(p); //페이지
+    console.log(selectWindow[0][1]); 
+    console.log(selectAll);
   };
   const SearchChangeF = (s: any[]) => {
+    console.log(1); setPage(1);
     console.log(selectWindow[0][1]);
     console.log(s);
-    // setData();
   }
 
-
-
-  //선택지 가로 위치 계산
-  const [width, setWidth] = useState(0);
-  const SelectCloseF = () => {
-    var n1: any = $('.cake-flex').width();
-    var n2: any = $('.cake').width();
-    if ((n1 - n2) / 2 < 0) setWidth(0);
-    else setWidth((n1 - n2) / 2);
-
-    for (var i = 1; i < 5; i++) {
-      selectWindow[i][0] = false;
-    }
-    setNum(num + 1);
-  };
 
 
   const [selectDataOne, setSelectDataOne] = useState([["인기순", "최신순", "판매량순", "낮은 가격순", "높은 가격순"]]);
@@ -92,61 +80,66 @@ function Store() {
 
     // storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
     let isComponentMounted = true;
-    let num = 9;
-    axios({
-        url: '/app/stores/account/auth',
-        method: 'GET',
-        headers: {
-          'X-ACCESS-TOKEN': (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
-        }
-      })
-      .then((res) => {
-        if (res.data) {
-            if (isComponentMounted) {
-              const data = res.data.result.content;
+    var len = [];
+    for (var i=0; i<Stores_TestData().storesAll/9; i++)
+        len[i] = { num: i+1 }
+    setPageLength(len);
+    setData(Stores_TestData().storesList);
+    // let num = 9;
+    // axios({
+    //     url: '/app/stores/account/auth',
+    //     method: 'GET',
+    //     headers: {
+    //       'X-ACCESS-TOKEN': (sessionStorage.jwToken === undefined? localStorage.jwToken: sessionStorage.jwToken),
+    //     }
+    //   })
+    //   .then((res) => {
+    //     if (res.data) {
+    //         if (isComponentMounted) {
+    //           const data = res.data.result.content;
 
-              var changeData = [];
-              for (var i = 0; i < data.length; i++) {
-                  changeData[i] = res.data.result.content[i];
-              }
-              for (var i:number = data.length; i < num; i++) {
-                  changeData[i] = {
-                      image: null,
-                      accountName: "~준비중 입니다~",
-                      address: "~준비중 입니다~",
-                      area: "~준비중 입니다~",
-                      contact: "~준비중 입니다~",
-                      name: "~준비중 입니다~",
-                      status: "BLACKLIST",
-                      storeId: 0
-                  };
-              }
-              var len = [];
-              for (var i=0; i<data.length/9; i++)
-                  len[i] = { num: i+1 }
-              setPageLength(len);
-              setData(changeData);
-            }
-        }
-      })
-      .catch((err) => {
-        var changeData = [];
-        for (var i = 0; i < num; i++) {
-            changeData[i] = {
-                image: null,
-                accountName: "~준비중 입니다~",
-                address: "~준비중 입니다~",
-                area: "~준비중 입니다~",
-                contact: "~준비중 입니다~",
-                name: "~준비중 입니다~",
-                status: "BLACKLIST",
-                storeId: 0
-            };
-        }
-        setPageLength([{num: 1}]);
-        setData(changeData);
-        console.log(err);
-      });
+    //           var changeData = [];
+    //           for (var i = 0; i < data.length; i++) {
+    //               changeData[i] = res.data.result.content[i];
+    //           }
+    //           for (var i:number = data.length; i < num; i++) {
+    //               changeData[i] = {
+    //                   image: null,
+    //                   accountName: "~준비중 입니다~",
+    //                   address: "~준비중 입니다~",
+    //                   area: "~준비중 입니다~",
+    //                   contact: "~준비중 입니다~",
+    //                   name: "~준비중 입니다~",
+    //                   status: "BLACKLIST",
+    //                   storeId: 0
+    //               };
+    //           }
+    //           var len = [];
+    //           for (var i=0; i<data.length/9; i++)
+    //               len[i] = { num: i+1 }
+    //           setPageLength(len);
+    //           setData(changeData);
+    //         }
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     var changeData = [];
+    //     for (var i = 0; i < num; i++) {
+    //         changeData[i] = {
+    //             image: null,
+    //             accountName: "~준비중 입니다~",
+    //             address: "~준비중 입니다~",
+    //             area: "~준비중 입니다~",
+    //             contact: "~준비중 입니다~",
+    //             name: "~준비중 입니다~",
+    //             status: "BLACKLIST",
+    //             storeId: 0
+    //         };
+    //     }
+    //     setPageLength([{num: 1}]);
+    //     setData(changeData);
+    //     console.log(err);
+    //   });
 
     axios({
         url: '/app/cities',
@@ -198,17 +191,17 @@ function Store() {
                 cakestoreTF={false} NumF={NumF}
                 selectAll={selectAll} selectWindow={selectWindow}
                 selectData={selectData}
-                setSelectMobileTF={setSelectMobileTF} SelectCloseF={SelectCloseF}
+                setSelectMobileTF={setSelectMobileTF}
                 searchChangeF={SearchChangeF} />
             :null}
 
             {/* 선택지박스 */}
-            <SelectBoxOne selectWindow={selectWindow} SelectCloseF={SelectCloseF} />
+            <SelectBoxOne NumF={NumF} selectWindow={selectWindow} />
             <SelectBox 
               cakestoreTF={false} NumF={NumF} 
               selectBox={[false, false, false, false]} 
               selectWindow={selectWindow}
-              SelectCloseF={SelectCloseF} setSelectAllF={setSelectAll}/>
+              setSelectAllF={setSelectAll}/>
 
             {/* 선택지 바 */}
             {selectAll.length != 0?
@@ -218,7 +211,6 @@ function Store() {
                     <div
                         className="cake-bar-card-all-delete"
                         onClick={()=>{
-                          SelectCloseF();
                           // setSelectBox([false, false, false, false]);
       
                           selectWindow[1][1] = '지역';
@@ -241,7 +233,7 @@ function Store() {
 
           <div className="cake-store-contents store-contents-flex">
             <div className="contents">
-              <StoreCard getData={data} cakeDetail={cakeDetail} />
+              <StoreCard getData={data} />
             </div>
             <PageBar page={page} setPageF={setPage} length={pageLength} pageChangeF={PageChangeF} />
           </div>

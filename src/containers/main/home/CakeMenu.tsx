@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import SectionTitle from 'src/components/main/common/SectionTitle';
 import CakeCard from 'src/components/common/cake-store/CakeCard';
-import Main_Cake_TestData from 'src/testdata/Main_Cake_TestData';
+import Cakes_Limit_TestData from 'src/testdata/main/Cakes_Limit_TestData';
 
 function CakeMenu() {
   const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ function CakeMenu() {
   useEffect(() => {
     let isComponentMounted = true;
     //get /api/main-cake?dataCount=4 -> table:cake-front 4개
-    setData(Main_Cake_TestData());
+    setData(Cakes_Limit_TestData());
     // let num = 4;
     // axios({
     //     url: '/app/products/representative-cake',
@@ -65,7 +65,7 @@ function CakeMenu() {
           <SectionTitle title="케이크" link="Cake" />
         </div>
         <div className="contents">
-          <CakeCard getData={data} cakeDetail={false} />
+          <CakeCard getData={data} />
         </div>
       </div>
     </div>

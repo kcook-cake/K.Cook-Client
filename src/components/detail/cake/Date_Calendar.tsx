@@ -9,9 +9,12 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 interface Props {
     date: any,
+    setDateF: Function,
+    ChangeDataF: Function,
+    setGroupTimeIdF: Function, 
 }
 
-function Date_Calendar({date}: Props) {
+function Date_Calendar({ date, setDateF, ChangeDataF, setGroupTimeIdF, }: Props) {
     useEffect(()=>{
         var today = new Date();
         var year = today.getFullYear();
@@ -59,11 +62,13 @@ function Date_Calendar({date}: Props) {
                         $(".fc-day-today .fc-daygrid-day-number").css("background", "#F07F7C");
 
                         date = e.dateStr;
+                        setDateF(date);
 
                         $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#fff");
                         $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("background", "#ea5450");
 
-                        //파라미터로 함수 받아오고 실행시킴
+                        setGroupTimeIdF([-1, -1]);
+                        ChangeDataF(date);
                     }}
                 />
             </div>

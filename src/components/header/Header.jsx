@@ -72,7 +72,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
                   onClick={() => {
                     setNumLeftMobileF(3);
                   }}>
-                  <button>판매자로 전환</button>
+                  <button style={{ cursor: "pointer", }}>판매자로 전환</button>
                 </Link>
                 <Link
                   to="/MypageOrder"
@@ -80,7 +80,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
                     setNumLeftMobileF(4);
                   }}
                 >
-                  <button>마이페이지</button>
+                  <button style={{ cursor: "pointer", }}>마이페이지</button>
                 </Link>
                 <Link
                   to="/SignOut"
@@ -88,9 +88,10 @@ function Header({ session, auth, setNumLeftMobileF }) {
                     setNumLeftMobileF(1);
                   }}
                 >
-                  <button>회원탈퇴</button>
+                  <button style={{ cursor: "pointer", }}>회원탈퇴</button>
                 </Link>
                 <button
+                  style={{ cursor: "pointer", }}
                   onClick={() => {
                     localStorage.removeItem('jwToken');
                     sessionStorage.removeItem('jwToken');
@@ -112,7 +113,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
                     setNumLeftMobileF(1);
                   }}
                 >
-                  <button>회원가입</button>
+                  <button style={{ cursor: "pointer", }}>회원가입</button>
                 </Link>
                 <Link
                   to="/Login"
@@ -120,7 +121,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
                     setNumLeftMobileF(1);
                   }}
                 >
-                  <button>로그인</button>
+                  <button style={{ cursor: "pointer", }}>로그인</button>
                 </Link>
               </>
             )}

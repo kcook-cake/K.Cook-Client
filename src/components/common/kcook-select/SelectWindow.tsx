@@ -16,7 +16,6 @@ interface Props {
   selectData: any[][],
 
   setSelectMobileTF: Function,
-  SelectCloseF: Function,
 
   searchChangeF: Function,
 }
@@ -25,7 +24,7 @@ export default function SelectWindow({
         cakestoreTF, NumF,
         selectAll, selectWindow,
         selectData,
-        setSelectMobileTF, SelectCloseF, 
+        setSelectMobileTF,
         searchChangeF,
     }: Props) {
 
@@ -33,13 +32,14 @@ export default function SelectWindow({
 
     //선택지창
     const SelectF = (n: number, str: string, length: number) => {
+        for (var i=0; i<selectAll.length; i++)
+            if (selectAll[i] === str) {
+                selectWindow[n-1] = [false, str, 14*length];
+                NumF();
+                return;
+            }
         selectAll[selectAll.length] = str;
-        // if (SelectBarF(str)) {
-        //     if (!cakestoreTF && (n===3 || n===5)) selectAll[selectAll.length] = citySubway+" "+str;
-        //     else selectAll[selectAll.length] = str;
-        //     // if (cakestoreTF) selectAll[selectAll.length] = str;
-        //     // else if (n===3 || n===5) selectAll[selectAll.length] = citySubway+" "+str;
-        // }
+
         selectWindow[n-1] = [false, str, 14*length];
         searchChangeF(selectAll);
         NumF();
@@ -99,7 +99,6 @@ export default function SelectWindow({
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
-                        SelectCloseF();
                         if (selectWindow[1][0]) selectWindow[1][0] = false;
                         else selectWindow[1][0] = true;
                         NumF();
@@ -145,7 +144,6 @@ export default function SelectWindow({
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
-                    SelectCloseF();
                         if (selectWindow[2][0]) selectWindow[2][0] = false;
                         else selectWindow[2][0] = true;
                     }}>
@@ -205,7 +203,6 @@ export default function SelectWindow({
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
-                        SelectCloseF();
                         if (selectWindow[3][0]) selectWindow[3][0] = false;
                         else selectWindow[3][0] = true;
                         NumF();
@@ -253,7 +250,6 @@ export default function SelectWindow({
                 <div
                     className="cake-select-mobile-button"
                     onClick={()=>{
-                    SelectCloseF();
                     if (selectWindow[4][0]) selectWindow[4][0] = false;
                     else selectWindow[4][0] = true;
                     }}>

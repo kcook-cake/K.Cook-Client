@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import SectionTitle from 'src/components/main/common/SectionTitle';
 import StoreCard from 'src/components/common/cake-store/StoreCard';
-import Main_Store_TestData from 'src/testdata/Main_Store_TestData';
+import Stores_Limit_TestData from 'src/testdata/main/Stores_Limit_TestData';
 
 function StoreMenu() {
   const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ function StoreMenu() {
   useEffect(() => {
     let isComponentMounted = true;
     //get /api/main-store?dataCount=3 -> table:store-front 3개
-    setData(Main_Store_TestData());
+    setData(Stores_Limit_TestData());
     // let num = 3;
     // axios({
     //     url: '/app/stores/representative',
@@ -73,7 +73,7 @@ function StoreMenu() {
           <SectionTitle title="스토어" link="Store" />
         </div>
         <div className="contents store-contents">
-          <StoreCard getData={data} cakeDetail={false} />
+          <StoreCard getData={data} />
         </div>
       </div>
     </div>

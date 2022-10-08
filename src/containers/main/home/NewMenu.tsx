@@ -6,8 +6,7 @@ import axios from 'axios';
 
 import getAxios from 'src/utils/getAxios';
 import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
-import homeGetAxios from './homeGetAxios';
-import Main_Popular_TestData from 'src/testdata/Main_Popular_TestData';
+import Cakes_Popular_TestData from 'src/testdata/main/Cakes_Popular_TestData';
 
 function NewMenu (){
     const [num, setNum] = useState(1);
@@ -28,7 +27,7 @@ function NewMenu (){
 
         //get api/new-cake
         let isComponentMounted = true;
-        setData(Main_Popular_TestData());
+        setData(Cakes_Popular_TestData());
         return () => {
           isComponentMounted = false;
           window.removeEventListener("resize", handleResize);

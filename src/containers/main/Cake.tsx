@@ -17,8 +17,8 @@ import SelectBox from 'src/components/common/kcook-select/SelectBox';
 import SelectBoxOne from 'src/components/common/kcook-select/SelectBoxOne';
 import SelectWindowOne from 'src/components/common/kcook-select/SelectWindowOne';
 import PageBar from 'src/components/main/common/PageBar';
-import Cake_TestData from 'src/testdata/Cake_TestData';
-import Cake_TestData2 from 'src/testdata/Cake_TestData2';
+
+import Cakes_TestData from 'src/testdata/main/Cakes_TestData';
 
 function Cake() {
   const [num, setNum] = useState(0);
@@ -28,30 +28,15 @@ function Cake() {
 
 
   const PageChangeF = (p: number) => {
-    console.log(p);
-    setData(Cake_TestData2().cakesList);
+    console.log(p); //페이지
+    console.log(selectWindow[0][1]); 
+    console.log(selectAll);
   };
   const SearchChangeF = (s: any[]) => {
+    console.log(1); setPage(1);
     console.log(selectWindow[0][1]);
     console.log(s);
-    // setData();
   }
-
-
-
-  //선택지 가로 위치 계산
-  const [width, setWidth] = useState(0);
-  const SelectCloseF = () => {
-    var n1: any = $('.cake-flex').width();
-    var n2: any = $('.cake').width();
-    if ((n1 - n2) / 2 < 0) setWidth(0);
-    else setWidth((n1 - n2) / 2);
-
-    for (var i = 1; i < 5; i++) {
-      selectWindow[i][0] = false;
-    }
-    setNum(num + 1);
-  };
 
 
 
@@ -73,13 +58,6 @@ function Cake() {
 
   //선택지 모바일
   const [selectMobileTF, setSelectMobileTF] = useState(false);
-  //더보기
-  const [cakeDetail, setCakeDetail] = useState(true);
-
-  const [resize, setResize] = useState(0);
-  const handleResize = () => {
-    setResize(window.innerWidth);
-  };
 
 
 
@@ -87,6 +65,10 @@ function Cake() {
   const [pageLength, setPageLength] = useState([]);
 
   const [data, setData] = useState([]);
+  const [resize, setResize] = useState(0);
+  const handleResize = () => {
+    setResize(window.innerWidth);
+  };
   useEffect(() => {
     LinkClick('Cake');
 
@@ -95,10 +77,10 @@ function Cake() {
 
     let isComponentMounted = true;
     let len = [];
-    for (var i=0; i<Cake_TestData().cakesAll/12; i++) //data.length
+    for (var i=0; i<Cakes_TestData().cakesAll/12; i++) //data.length
       len[i] = { num: i+1 }
     setPageLength(len);
-    setData(Cake_TestData().cakesList);
+    setData(Cakes_TestData().cakesList);
     // let num = 12;
     // axios({
     //     url: '/app/cakes?page=1',
@@ -222,22 +204,20 @@ function Cake() {
                 selectData={selectData}
                 
                 setSelectMobileTF={setSelectMobileTF}
-                SelectCloseF={SelectCloseF}
                 searchChangeF={SearchChangeF}
               />
             ) : null}
 
             {/* 선택지 박스 */}
             <SelectBoxOne
+              NumF={NumF}
               selectWindow={selectWindow}
-              SelectCloseF={SelectCloseF}
             />
             <SelectBox
               cakestoreTF={true}
               NumF={NumF}
               selectBox={[false, false, false, false]}
               selectWindow={selectWindow}
-              SelectCloseF={SelectCloseF}
               setSelectAllF={setSelectAll}
             />
 
@@ -248,8 +228,6 @@ function Cake() {
                 <div
                   className="cake-bar-card-all-delete"
                   onClick={() => {
-                    SelectCloseF();
-
                     selectWindow[1][1] = '지역';
                     selectWindow[2][1] = '맛';
                     selectWindow[3][1] = '이벤트';
@@ -272,7 +250,7 @@ function Cake() {
 
           <div className="cake-store-contents cake-contents-flex">
               <div className="contents">
-                  <CakeCard getData={data} cakeDetail={cakeDetail} />
+                  <CakeCard getData={data} />
               </div>
               <PageBar page={page} setPageF={setPage} length={pageLength} pageChangeF={PageChangeF}/>
           </div>

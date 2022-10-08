@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const Cake_TestData2 = () => {
-    // get /api/popular-cake
+const Store_Detail_TestData = () => {
+    // get /api/store-detail
     return ({
-        cakesAll: 20,
+        cakesAll: 24,
         cakesList: [
             {
                 image: "",
@@ -90,4 +90,4 @@ const Cake_TestData2 = () => {
     });
 }
 
-export default Cake_TestData2;
+export default Store_Detail_TestData;

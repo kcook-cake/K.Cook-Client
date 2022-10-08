@@ -6,7 +6,11 @@ import 'src/styles/main/card/BannerSlide.scss';
 
 interface Props {
   auth: boolean;
-  getData: JSON[];
+  getData: {
+    webImageUrl: string, 
+    mobileImageUrl: string, 
+    link: string,
+  }[];
 }
 
 const NextArrow = (props: any) => {
@@ -50,19 +54,15 @@ export default function BannerSlider({ auth, getData }: Props) {
   return (
     <div>
       <Slider {...settings} className="main-crousel">
-        {getData.map((data: any) => {
+        {getData.map((data: { webImageUrl: string, mobileImageUrl: string, link: string, }, idx: number) => {
           return (
-            <div key={data.orders}>
-              {auth ? (
-                <img src={data.webImageUrl} alt={'profile'} />
-              ) : (
-                <Link to="/Cake">
+            <div key={idx}>
+                <Link to={data.link}>
                   <img
                     src={data.webImageUrl}
                     alt={'profile'}
                   />
                 </Link>
-              )}
             </div>
           );
         })}

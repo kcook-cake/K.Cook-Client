@@ -19,6 +19,8 @@ import 'src/styles/detail/store/kakaoMap.scss';
 import CakeCard from 'src/components/common/cake-store/CakeCard';
 import PageBar from 'src/components/main/common/PageBar';
 import storeCakeGetAxios from './storeCakeGetAxios';
+import Store_Detail_Static_TestData from 'src/testdata/Store_Detail_Static_TestData';
+import Store_Detail_TestData from 'src/testdata/Store_Detail_TestData';
 
 // const { kakao } = window;
 
@@ -30,14 +32,13 @@ declare global {
 }
 
 const StoreDetail = (auth: any) => {
-  const [maxNum, setMaxNum] = useState(0);
   const [num, setNum] = useState(1);
   const [slidePx, setSlidePx] = useState(0);
   const [height, setHeight] = useState(0);
 
 
   const PageChangeF = (p: number) => {
-
+    console.log(p);
   };
   
 
@@ -57,7 +58,17 @@ const StoreDetail = (auth: any) => {
 
 
 
-  const [data, setData] = useState([]);
+  let [storeData, setStoreData] = useState({
+    name: '',
+    intro: '',
+    date: '',
+    phone: '',
+    location: '',
+  });
+  let [data, setData] = useState({
+    cakesAll: 0,
+    cakesList: [],
+  });
   useEffect(() => {
     $('.hm-pc-flex').show();
     LinkClick('Store');
@@ -65,56 +76,62 @@ const StoreDetail = (auth: any) => {
       setHeight(Number($('.seller-flex').height()));
 
     let isComponentMounted = true;
-    let num = 8;
-    axios({
-        url: '/app/cakes/on-sale?storeId=17',
-        method: 'GET',
-      })
-      .then((res) => {
-        if (res.data) {
-          if (isComponentMounted) {
-            const data = res.data.result.content;
+    storeData = Store_Detail_Static_TestData(); setStoreData(storeData);
+    data = Store_Detail_TestData(); setData(data);
+    let len = [];
+    for (var i=0; i<Store_Detail_TestData().cakesAll/8; i++) //data.length
+      len[i] = { num: i+1 }
+    setPageLength(len);
+    // let num = 8;
+    // axios({
+    //     url: '/app/cakes/on-sale?storeId=17',
+    //     method: 'GET',
+    //   })
+    //   .then((res) => {
+    //     if (res.data) {
+    //       if (isComponentMounted) {
+    //         const data = res.data.result.content;
 
-            let changeData = [];
-            for (var i = 0; i < data.length; i++) {
-                changeData[i] = res.data.result.content[i];
-            }
-            for (var i:number = data.length; i < num; i++) {
-                changeData[i] = {
-                  image: null,
-                  name: "~준비중 입니다~",
-                  price: 0,
-                  storeName: "~준비중 입니다~",
+    //         let changeData = [];
+    //         for (var i = 0; i < data.length; i++) {
+    //             changeData[i] = res.data.result.content[i];
+    //         }
+    //         for (var i:number = data.length; i < num; i++) {
+    //             changeData[i] = {
+    //               image: null,
+    //               name: "~준비중 입니다~",
+    //               price: 0,
+    //               storeName: "~준비중 입니다~",
 
-                  productId: 0,
-                  popularRank: 0,
-                };
-            }
-            var len = [];
-            for (var i=0; i<16/8; i++) //data.length
-                len[i] = { num: i+1 }
-            setPageLength(len);
-            setData(changeData);
-          }
-        }
-      })
-      .catch((err) => {
-        let changeData = [];
-        for (var i = 0; i < num; i++) {
-          changeData[i] = {
-            image: null,
-            name: "~준비중 입니다~",
-            price: 0,
-            storeName: "~준비중 입니다~",
+    //               productId: 0,
+    //               popularRank: 0,
+    //             };
+    //         }
+    //         var len = [];
+    //         for (var i=0; i<16/8; i++) //data.length
+    //             len[i] = { num: i+1 }
+    //         setPageLength(len);
+    //         setData(changeData);
+    //       }
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     let changeData = [];
+    //     for (var i = 0; i < num; i++) {
+    //       changeData[i] = {
+    //         image: null,
+    //         name: "~준비중 입니다~",
+    //         price: 0,
+    //         storeName: "~준비중 입니다~",
 
-            productId: 0,
-            popularRank: 0,
-          };
-        }
-        setPageLength([{num: 1}]);
-        setData(changeData);
-        console.log(err);
-      });
+    //         productId: 0,
+    //         popularRank: 0,
+    //       };
+    //     }
+    //     setPageLength([{num: 1}]);
+    //     setData(changeData);
+    //     console.log(err);
+    //   });
     return () => {
       isComponentMounted = false;
     }
@@ -182,7 +199,7 @@ const StoreDetail = (auth: any) => {
                   <img src={profileNone} alt="store-detail-profile" />
                 )}
               </div>
-              <div className="store-detail-store-name">{auth.nickname}</div>
+              <div className="store-detail-store-name">{storeData.name}</div>
               <div className="store-detail-store-textarea">
                 연리단길 지역 판매량 1위!ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
               </div>
@@ -240,7 +257,7 @@ const StoreDetail = (auth: any) => {
 
             <div className="cake-store-contents cake-contents-flex">
                 <div className="contents">
-                    <CakeCard getData={data} cakeDetail={cakeDetail} />
+                    <CakeCard getData={data.cakesList} />
                 </div>
                 <PageBar page={page} setPageF={setPage} length={pageLength} pageChangeF={PageChangeF} />
             </div>
