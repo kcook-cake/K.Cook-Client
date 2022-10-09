@@ -8,27 +8,16 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 interface Props {
-    date: string,
+    date: any,
     setDateF: Function,
     deadline: number[],
-    ChangeDataF: Function,
+    ChangeGroupF: Function,
+    ChangeCalendarF: Function,
     setGroupTimeIdF: Function, 
 }
 
-function Date_Calendar({ date, setDateF, deadline, ChangeDataF, setGroupTimeIdF, }: Props) {
+function Date_Calendar({ date, setDateF, deadline, ChangeGroupF, ChangeCalendarF, setGroupTimeIdF, }: Props) {
     useEffect(()=>{
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = ('0' + (today.getMonth() + 1)).slice(-2);
-        var day = ('0' + today.getDate()).slice(-2);
-        var dateString = year + '-' + month  + '-' + day;
-
-        $(".fc-daygrid-day .fc-daygrid-day-number").css("color", "#000");
-        $(".fc-daygrid-day .fc-daygrid-day-number").css("background", "none");
-        $(".fc-day-today .fc-daygrid-day-number").css("background", "#F07F7C");
-
-        $(".fc-daygrid-day[data-date='"+dateString+"'] .fc-daygrid-day-number").css("color", "#fff");
-        $(".fc-daygrid-day[data-date='"+dateString+"'] .fc-daygrid-day-number").css("background", "#ea5450");
     },[]);
 
     return (
@@ -53,24 +42,24 @@ function Date_Calendar({ date, setDateF, deadline, ChangeDataF, setGroupTimeIdF,
                     customButtons={{
                         new: {
                         text: 'new',
-                        click: () => console.log('new event'),
+                            click: () => console.log('new event'),
                         },
                     }}
                     eventColor="red"
                     nowIndicator
                     dateClick={(e: any) => {
-                        $(".fc-daygrid-day .fc-daygrid-day-number").css("color", "#000");
-                        $(".fc-daygrid-day .fc-daygrid-day-number").css("background", "none");
-                        $(".fc-day-today .fc-daygrid-day-number").css("background", "#F07F7C");
+                        // $(".fc-daygrid-day .fc-daygrid-day-number").css("color", "#000");
+                        // $(".fc-daygrid-day .fc-daygrid-day-number").css("background", "none");
+                        // $(".fc-day-today .fc-daygrid-day-number").css("background", "#F07F7C");
 
                         date = e.dateStr;
                         setDateF(date);
 
-                        $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#fff");
-                        $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("background", "#ea5450");
+                        // $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("color", "#fff");
+                        // $(".fc-daygrid-day[data-date='"+date+"'] .fc-daygrid-day-number").css("background", "#ea5450");
 
                         setGroupTimeIdF([-1, '']);
-                        ChangeDataF(date);
+                        ChangeCalendarF(date);
                     }}
                 />
             </div>

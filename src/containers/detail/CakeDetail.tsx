@@ -33,26 +33,76 @@ const CakeDetail = () =>{
     const [num, setNum] = useState(0);
 
 
-    const ChangeDataF = (date: string, ) => {
+    const ChangeGroupF = (date: string, ) => {
         //axios -> date를 기준으로 order cake.maxOfToday, order store-group.count 비교
         //get /app/cake-detail/groups?date=
-        console.log(date);
         setPickUp({
-            cakeTF: false,
+            cakeTF: Cake_Detail_Date_TestData().cakeTF,
             groupsList: Group2List(Cake_Detail_Date_TestData().groupsList),
         });
+    }
+
+    const ChangeCalendarF = (selectDateString: string, ) => {
+        let todayDate = new Date();
+        let todayDateString = 
+            todayDate.getFullYear()+'-'+
+            ('0' + (todayDate.getMonth() + 1)).slice(-2)+'-'+
+            ('0' + todayDate.getDate()).slice(-2);
+        const week = [6, 0, 1, 2, 3, 4, 5];
+        const dayOfWeek:number = week[new Date(selectDateString).getDay()];
+
+        $(".fc-daygrid-day .fc-daygrid-day-number").css("color", "#000");
+        $(".fc-daygrid-day .fc-daygrid-day-number").css("background", "none");
+        $(".fc-day-today .fc-daygrid-day-number").css("background", "#F07F7C");
+
+        ChangeGroupF(selectDateString);
+
+        if (cakeData.todayCake) {
+            setOrderTF(true);
+            console.log("당일 케이크 입니다");
+            setDate(todayDateString);
+            $(".fc-daygrid-day[data-date='"+todayDateString+"'] .fc-daygrid-day-number").css("color", "#fff");
+            $(".fc-daygrid-day[data-date='"+todayDateString+"'] .fc-daygrid-day-number").css("background", "#ea5450");
+            return;
+        }
+
+        //deadline: today~선택날짜까지
+        let deadLineDate = new Date(selectDateString);
+        deadLineDate.setDate(deadLineDate.getDate()-cakeData.deadline[dayOfWeek]);
+
+        if (todayDate <= deadLineDate || 
+            (todayDate.getFullYear() === deadLineDate.getFullYear() && 
+            todayDate.getMonth() === deadLineDate.getMonth() 
+            && todayDate.getDate() === deadLineDate.getDate())) {
+        } else {
+            setOrderTF(false);
+            console.log("마감일이 지났습니다");
+            return;
+        }
+
+        //cakeTF 여부 판단
+        if (pickUp.cakeTF) {
+            setOrderTF(false);
+            console.log("판매마감 되었습니다");
+            return;
+        }
+
+        setOrderTF(true);
+        $(".fc-daygrid-day[data-date='"+selectDateString+"'] .fc-daygrid-day-number").css("color", "#fff");
+        $(".fc-daygrid-day[data-date='"+selectDateString+"'] .fc-daygrid-day-number").css("background", "#ea5450");
     }
 
 
 
     const [selectShow, setSelectShow] = useState([true, true, true]);
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState<string>();
     const [pickUp, setPickUp] = useState({
         cakeTF: false,
         groupsList: [],
     });
     const [option, setOption] = useState([]);
 
+    const [orderTF, setOrderTF] = useState(false);
     const [groupTimeId, setGroupTimeId] = useState([-1, '']);
     const [optionId, setOptionId] = useState([]);
     const [cusId, setCusId] = useState([]);
@@ -106,17 +156,17 @@ const CakeDetail = () =>{
         }).catch((err)=>{
         })
         */
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = ('0' + (today.getMonth() + 1)).slice(-2);
-        var day = ('0' + today.getDate()).slice(-2);
-        var dateString = year + '-' + month  + '-' + day;
-        setDate(dateString);
-
-        ChangeDataF(dateString); //cake_detail_date -> groupsList PickUp
         setOption(List2Option(Cake_Detail_Static_TestData().optionsList));
-        setCakeData(Cake_Detail_Static_TestData());
+        cakeData = Cake_Detail_Static_TestData(); setCakeData(cakeData);
         setImage(Cake_Detail_Static_TestData().image1);
+
+        let todayDate = new Date();
+        let todayDateString = 
+            todayDate.getFullYear()+'-'+
+            ('0' + (todayDate.getMonth() + 1)).slice(-2)+'-'+
+            ('0' + todayDate.getDate()).slice(-2);
+        setDate(todayDateString);
+        ChangeCalendarF(todayDateString);
 
         setHeight(window.innerHeight);
         window.addEventListener('height', handleHeight);
@@ -136,7 +186,7 @@ const CakeDetail = () =>{
                         <div className='cake-detail-main-img'>
                             <div className='cake-detail-main-img-inner'>
                                 {image==="" || image===null || image===undefined || image.length===133? 
-                                    <div>~준비중~</div>:
+                                    <div>~준비중 입니다~</div>:
                                     <img src={image} />
                                 }
                             </div>
@@ -254,7 +304,8 @@ const CakeDetail = () =>{
                                         <Date_Calendar 
                                             date={date} setDateF={setDate} 
                                             deadline={cakeData.deadline}
-                                            ChangeDataF={ChangeDataF} 
+                                            ChangeGroupF={ChangeGroupF} 
+                                            ChangeCalendarF={ChangeCalendarF}
                                             setGroupTimeIdF={setGroupTimeId} />
                                         <ColorBox />
                                     </div>
@@ -323,6 +374,7 @@ const CakeDetail = () =>{
                                 <div 
                                     style={{ color: "#000", border: "1px solid #e0e0e0", background: "#fff"}}
                                     onClick={()=>{
+                                        console.log(orderTF);
                                         console.log(cakeData.cakeId);
                                         console.log(date);
                                         console.log(groupTimeId);
@@ -332,7 +384,7 @@ const CakeDetail = () =>{
                                 </div>
                                 <div
                                     onClick={()=>{
-                                        console.log(pickUp.cakeTF);
+                                        console.log(orderTF);
                                         console.log(cakeData.cakeId);
                                         console.log(date);
                                         console.log(groupTimeId);

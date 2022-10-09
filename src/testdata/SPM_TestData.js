@@ -98,6 +98,7 @@ const SPM_TestData = () => {
             cakeId: 2,
             isTodayShow: true,
             maxOfToday: 10,
+            sale: 0,
             salePrice: 0,
             storeId: 0,
             storeName: "",

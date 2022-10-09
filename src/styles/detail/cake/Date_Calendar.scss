@@ -119,5 +119,14 @@
             background-color: #F07F7C;
         }
     }
+
+    .fc-day-past {
+        .fc-daygrid-day-number {
+            pointer-events: none;
+        }
+        .fc-daygrid-day-events {
+            pointer-events: none;
+        }
+    }
 }
 

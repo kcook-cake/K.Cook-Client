@@ -7,6 +7,7 @@ const SSO_Fc_TestData = () => {
         {
             date: '2022-10-06', //필수
             todayTitle: 0, //table:cake, calumn:today_sale_number //오늘 날짜일 경우 필수
+            todayDescribe: 0,
             title: 0, //필수
             describe: 10, //필수
             groupsList: [ //필수
@@ -15,11 +16,9 @@ const SSO_Fc_TestData = () => {
                     count: 10, //필수
                     groupNumber: 0, //필수
                     timesList: [ //필수
-                        {
-                            timeId: 1, //필수
-                            time: "10:00", //필수
-                            timeNumber: 0, //필수
-                        },
+                        "10:00",
+                        "11:00",
+                        "12:00",
                     ]
                 },
             ],

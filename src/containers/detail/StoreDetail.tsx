@@ -21,6 +21,7 @@ import PageBar from 'src/components/main/common/PageBar';
 import storeCakeGetAxios from './storeCakeGetAxios';
 import Store_Detail_Static_TestData from 'src/testdata/detail/Store_Detail_Static_TestData';
 import Store_Detail_Cakes_TestData from 'src/testdata/detail/Store_Detail_Cakes_TestData';
+import Slide from 'src/components/detail/store/Slide';
 
 // const { kakao } = window;
 
@@ -196,10 +197,10 @@ const StoreDetail = (auth: any) => {
           <div className="store-detail-top">
             <div className="store-detail-main-img">
               <div className="store-detail-main-img-inner">
-                {image==="" || image===null || image===undefined || image.length===133? 
-                  <div>~준비중~</div>:
-                  <img src={image} />
-                }
+                <Slide 
+                  auth={auth} 
+                  getData={[storeData.image1, storeData.image2, storeData.image3, storeData.image4, storeData.image5]} 
+                />
               </div>
             </div>
             <div className="store-detail-top-box">
