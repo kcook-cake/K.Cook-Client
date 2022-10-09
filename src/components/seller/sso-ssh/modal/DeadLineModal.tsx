@@ -11,6 +11,7 @@ import subtract from 'src/assets/seller/sso-ssh/subtract.png';
 import sub_add from 'src/assets/detail/cake/add.png';
 import sub_subtract from 'src/assets/detail/cake/subtrack.png';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
+import SSO_Deadline_TestData from 'src/testdata/seller/SSO_Deadline_TestData';
 
 
 interface Props {
@@ -27,10 +28,15 @@ function DeadLineModal({
     setDeadLineModalF,
 }: Props) {
     var weekText = ['월', '화', '수', '목', '금', '토', '일'];
-    const [week, setWeek] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
+    const [week, setWeek] = useState<number[]>(SSO_Deadline_TestData());
 
     const handleWeek = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
-        let w: number[] = week;  w[idx] = parseInt(e.target.value);
+        let w: number[] = week;
+        if (isNaN(parseInt(e.target.value))) {
+            w[idx] = 0;
+            return;
+        }
+        w[idx] = parseInt(e.target.value);
         setWeek(w);
         NumF();
     };
@@ -75,6 +81,7 @@ function DeadLineModal({
                                     .then((res)=>{})
                                     .catch((err)=>{})
                                 */
+                                console.log(week);
                                 setDeadLineModalF(false);
                                 NumF();
                             }}>

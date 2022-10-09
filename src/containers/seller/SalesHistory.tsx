@@ -9,7 +9,7 @@ import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
 import SSH_AddModal from 'src/components/seller/sso-ssh/modal/SSH_AddModal';
 
 import addIcon from 'src/assets/seller/spm-ssr/ssr-add.png';
-import SSH_TestData from '../../testdata/SSH_TestData';
+import SSH_TestData from 'src/testdata/seller/SSH_TestData';
 import List2Option from 'src/utils/List2Option';
 
 type userType = {

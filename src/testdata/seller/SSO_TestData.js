@@ -5,7 +5,7 @@ const SSO_TestData = () => {
     //get /api/store/sales-history?storeId=0
     return ([
         {
-            image: "", //필수
+            image1: "", //필수
             name: "케이크1", //필수
             price: 2000, //필수
             saleTime: "15:00", //필수
@@ -23,7 +23,7 @@ const SSO_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크2",
             price: 2000,
             saleTime: "15:00",
@@ -41,7 +41,7 @@ const SSO_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크3",
             price: 2000,
             saleTime: "15:00",
@@ -59,7 +59,7 @@ const SSO_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크4",
             price: 2000,
             saleTime: "15:00",
@@ -86,7 +86,7 @@ const SSO_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크5",
             price: 2000,
             saleTime: "15:00",

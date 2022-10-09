@@ -35,7 +35,10 @@
     font-weight: 500;
   }
   .mmocard-option {
-    margin-bottom: 5px;
+    height: 70px;
+    // margin-bottom: 5px;
+    display: flex;
+
     color: #777777;
     font-size: 12px;
     font-weight: 500;
@@ -44,7 +47,7 @@
     margin-top: 3px;
   }
   .mmocard-price {
-    margin-top: 40px;
+    // margin-top: 45px;
     font-size: 18px;
     font-weight: 700;
     color: $pink;
@@ -106,6 +109,10 @@
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
+
+      display:-webkit-box;
+      -webkit-line-clamp:5;
+      -webkit-box-orient:vertical;
   
       color: $sub-text;
       line-height: 18px;

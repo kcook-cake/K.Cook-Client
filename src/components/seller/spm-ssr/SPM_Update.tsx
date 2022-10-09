@@ -60,16 +60,12 @@ function SPM_Update({
     const [updateImgModal, setUpdateImgModal] = useState(false);
     const [updateImgNum, setUpdateImgNum] = useState(0);
     const [updateImg, setUpdateImg] = useState([
-        getUpdateData.productImage1,
-        getUpdateData.productImage2,
-        getUpdateData.productImage3,
-        getUpdateData.productImage4,
-        getUpdateData.productImage5,
+        getUpdateData.image1,
+        getUpdateData.image2,
+        getUpdateData.image3,
+        getUpdateData.image4,
+        getUpdateData.image5,
     ]);
-
-    const [updateTodayCake, setUpdateTodayCake] = useState(false);
-    const [maxOfToday, setMaxOfToday] = useState(false);
-    let [updateMax, setUpdateMax] = useState(1000);
 
     const [updateChildOption, setUpdateChildOption] = useState(-1);
     const [updateChildItem, setUpdateChildItem] = useState(-1);
@@ -141,11 +137,11 @@ function SPM_Update({
                                     type='checkbox' 
                                     id='spm-add'
                                     onChange={(e)=>{
-                                        if (getUpdateData.isTodayCake) getUpdateData.isTodayCake = false;
-                                        else getUpdateData.isTodayCake = true;
+                                        if (getUpdateData.todayCake) getUpdateData.todayCake = false;
+                                        else getUpdateData.todayCake = true;
                                         NumF(); 
                                     }}
-                                    checked={getUpdateData.isTodayCake}/>
+                                    checked={getUpdateData.todayCake}/>
                                 <label htmlFor='spm-add'></label>
                                 <div>당일 케이크</div>
                             </div>
@@ -154,24 +150,24 @@ function SPM_Update({
                                     type='checkbox' 
                                     id='spm-add-select' 
                                     onChange={(e)=>{
-                                        if (getUpdateData.maxOfToday === 1000) getUpdateData.maxOfToday = 1;
-                                        else getUpdateData.maxOfToday = 1000;
+                                        if (getUpdateData.maxToday === 1000) getUpdateData.maxToday = 1;
+                                        else getUpdateData.maxToday = 1000;
                                         NumF();
                                     }}
-                                    checked={getUpdateData.maxOfToday === 1000? false: true}
+                                    checked={getUpdateData.maxToday === 1000? false: true}
                                 />
                                 <label htmlFor='spm-add-select'></label>
-                                <div className={getUpdateData.maxOfToday === 1000? 'spm-add-update-show-none': ''}>제한
+                                <div className={getUpdateData.maxToday === 1000? 'spm-add-update-show-none': ''}>제한
                                     <input 
-                                        type={getUpdateData.maxOfToday === 1000? 'text': 'number'} 
+                                        type={getUpdateData.maxToday === 1000? 'text': 'number'} 
                                         max={1000} min={1} 
-                                        value={getUpdateData.maxOfToday === 1000? '무한': getUpdateData.maxOfToday}
+                                        value={getUpdateData.maxToday === 1000? '무한': getUpdateData.maxToday}
                                         onChange={(e)=> {
                                             if (isNaN(parseInt(e.target.value))) {
-                                                getUpdateData.maxOfToday = 1;
+                                                getUpdateData.maxToday = 1;
                                                 return;
                                             }
-                                            getUpdateData.maxOfToday = parseInt(e.target.value);
+                                            getUpdateData.maxToday = parseInt(e.target.value);
                                             NumF();
                                             // setUpdateMax(parseInt(e.target.value))
                                         }}/>

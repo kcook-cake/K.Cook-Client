@@ -12,7 +12,7 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import FcSecondModal from '../../components/seller/sso-ssh/modal/FcSecondModal';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
-import SSO_Fc_TestData from '../../testdata/SSO_Fc_TestData';
+import SSO_Fc_TestData from '../../testdata/seller/SSO_Fc_TestData';
 import SSO_FcDataChange from './SSO_FcDataChange';
 
 function SSO_FullCalendar (session: any, auth: any,){
@@ -56,14 +56,15 @@ function SSO_FullCalendar (session: any, auth: any,){
         setResize([window.innerWidth, window.innerHeight]);
     };
     useEffect(() => {
+        LinkClick("SellerOrder");
+        sellerLinkClick("SellerOrder");
+
         // $(".fc-daygrid-day").css("background", "none");
         // const height1 = document.getElementById('header-flex-id') as Element;
         // const height2 = document.getElementById('sfc') as Element;
         // setModalHeight(height1.clientHeight+height2.clientHeight);
 
         let isComponentMounted = true;
-        LinkClick("SellerOrder");
-        sellerLinkClick("SellerOrder");
 
         SSO_FcDataChange ((seller: any)=>{
             setEvents(seller);

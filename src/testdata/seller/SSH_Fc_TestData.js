@@ -6,7 +6,7 @@ const SSH_Fc_TestData = () => {
         {
             date: '2022-10-05', //필수
             todayTitle: 0, //필수
-            todayDescribe: 0,
+            todayDescribe: 10,
             title: 0, //필수
             describe: 10, //필수
             allPrice: 0, //필수

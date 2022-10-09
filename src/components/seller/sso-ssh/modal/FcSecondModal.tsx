@@ -50,7 +50,7 @@ function OrderModal({
     NumF();
   }
   const handleTime = (e: React.ChangeEvent<HTMLInputElement>, idx: number, idx2: number) => {
-    getData.groupsList[idx].timesList[idx2].time = e.target.value;
+    getData.groupsList[idx].timesList[idx2] = e.target.value;
     NumF();
   }
 
@@ -86,7 +86,7 @@ function OrderModal({
                         getData.groupsList[getData.groupsList.length] = {
                           count: 0,
                           groupNumber: getData.groupsList.length+1,
-                          timesList: [],
+                          timesList: [ "", ],
                         };
                         NumF();
                       }}>
@@ -116,35 +116,21 @@ function OrderModal({
                           </div>
                           <div className='sfc-second-modal-content-middle-flex'>
                             <div className='sfc-second-modal-content-middle'>
-                              {data.timesList.map((data2: { timeNumber: number, time: string, }, idx2: number, )=>{
+                              {data.timesList.map((data2: string, idx2: number, )=>{
                                 return (
-                                  // <div 
-                                  //   key={idx2} 
-                                  //   onClick={()=>{
-                                  //     for (var i = data2.timeNumber; i < data.timesList.length-1; i++) {
-                                  //       getData.groupsList[data.groupNumber].timesList[i] = getData.groupsList[data.groupNumber].timesList[i+1];
-                                  //       getData.groupsList[data.groupNumber].timesList[i].timeNumber = i;
-                                  //     }
-                                  //     getData.groupsList[data.groupNumber].timesList.pop();
-                                  //     NumF();
-                                  //   }}>
-                                      <input
-                                        key={idx2} 
-                                        className='sfc-second-modal-content-time'
-                                        type='text'
-                                        value={data2.time}
-                                        onChange={(e)=>handleTime(e, idx, idx2)}
-                                      />
-                                  // </div>
+                                    <input
+                                      key={idx2} 
+                                      className='sfc-second-modal-content-time'
+                                      type='text'
+                                      value={data2}
+                                      onChange={(e)=>handleTime(e, idx, idx2)}
+                                    />
                                 );
                               })}
                               <div 
                                 className='sfc-second-modal-add'
                                 onClick={()=>{
-                                  getData.groupsList[idx].timesList[getData.groupsList[idx].timesList.length] = {
-                                    time: "",
-                                    timeNumber: getData.groupsList[idx].timesList.length+1,
-                                  }
+                                  getData.groupsList[idx].timesList[getData.groupsList[idx].timesList.length] = "";
                                   NumF();
                                 }}>
                                   <img src={add} />
@@ -187,6 +173,7 @@ function OrderModal({
 
                                   })
                               */
+                              console.log(getData);
                               KCOOKScroll(false);
                               setOrderModalShowF(false);
                               NumF();

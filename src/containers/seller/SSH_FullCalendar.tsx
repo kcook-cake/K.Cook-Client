@@ -9,9 +9,8 @@ import '../../styles/seller/FullCalendarApp.scss';
 
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
-import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
-import SSH_Fc_TestData from '../../testdata/SSH_Fc_TestData';
+import SSH_Fc_TestData from 'src/testdata/seller/SSH_Fc_TestData';
 import SSH_FcDataChange from './SSH_FcDataChang';
 import MakePrice from 'src/utils/MakePrice';
 

@@ -21,15 +21,15 @@ function SSO_SSH_Card ({ getData, dateTF }: Props) {
                 (
                     <div key={idx}>
                         <div className={classNames("sso-ssh-card-date", {'mobile': dateTF})}>{key}</div>
-                        {getData[key].map((data: { image: string, name: string, price: any, saleTime: string, saleDate: string, optionsList: any[], }, idx2: number, )=>{
+                        {getData[key].map((data: { image1: string, name: string, price: any, saleTime: string, saleDate: string, optionsList: any[], }, idx2: number, )=>{
                             return (
                                 <div key={idx2} className="sso-ssh-card">
                                     <div className="pc sso-ssh-card-date">{data.saleTime}</div>
                                     <div className="sso-ssh-card-box">
                                         <div className="pc seller-img-box">
-                                            {data.image === "" || data.image === null || data.image === undefined || data.image.length===103?
+                                            {data.image1 === "" || data.image1 === null || data.image1 === undefined || data.image1.length===103?
                                                 <div className="seller-img-none">~준비중 입니다~</div>:
-                                                <img src={data.image} className="seller-img"/>
+                                                <img src={data.image1} className="seller-img"/>
                                             }
                                             {/* <img src={cake6}/> */}
                                         </div>

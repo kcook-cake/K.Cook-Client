@@ -14,7 +14,7 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import LinkClick from 'src/utils/LinkClick';
 import List2Option from 'src/utils/List2Option';
 import SPM_Update from 'src/components/seller/spm-ssr/SPM_Update';
-import SPM_TestData from 'src/testdata/SPM_TestData';
+import SPM_TestData from 'src/testdata/seller/SPM_TestData';
 
 function ProductManagement(session: any, auth: any,) {
   const [num, setNum] = useState(0);

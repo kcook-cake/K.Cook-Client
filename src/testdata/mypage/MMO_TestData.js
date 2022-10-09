@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
 
-const SSH_TestData = () => {
-    //get /api/store/sales-history?storeId=0&date=2020-10-19
-    //get /api/store/sales-history?storeId=0
+const MMO_TestData = () => {
     return ([
         {
-            image: "", //필수
+            image1: "", //필수
             name: "케이크1", //필수
             price: 2000, //필수
             saleTime: "15:00", //필수
@@ -23,7 +20,7 @@ const SSH_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크2",
             price: 2000,
             saleTime: "15:00",
@@ -41,7 +38,7 @@ const SSH_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크3",
             price: 2000,
             saleTime: "15:00",
@@ -59,7 +56,7 @@ const SSH_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크4",
             price: 2000,
             saleTime: "15:00",
@@ -86,7 +83,7 @@ const SSH_TestData = () => {
             ],
         },
         {
-            image: "",
+            image1: "",
             name: "케이크5",
             price: 2000,
             saleTime: "15:00",
@@ -106,4 +103,4 @@ const SSH_TestData = () => {
     ]);
 }
 
-export default SSH_TestData;
+export default MMO_TestData;

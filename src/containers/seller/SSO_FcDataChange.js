@@ -6,7 +6,7 @@ const SSO_FcDataChange = (fn, list) => {
     //달력 판매자 정보 list
     if (list[0].title === 0 && list[0].titleToday === 0)
         list[0].borderColor = "rgba(255, 255, 255, 0.0)";
-    list[0].title = `당일: ${list[0].todayTitle}\n
+    list[0].title = `당일: ${list[0].todayTitle}/${list[0].todayDescribe}\n
                     주문: ${list[0].title}/${list[0].describe}`;
     
     for(var i = 1; i < list.length; i++) {

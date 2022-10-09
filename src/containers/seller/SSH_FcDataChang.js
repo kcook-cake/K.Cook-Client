@@ -10,7 +10,7 @@ const SSH_FcDataChange = (fn, list) => {
             list[i].borderColor = "rgba(255, 255, 255, 0.0)";
         else
             list[i].borderColor = "white";
-        list[i].title = `당일: ${list[i].todayTitle}\n
+        list[i].title = `당일: ${list[i].todayTitle}/${list[i].todayDescribe}\n
                 주문: ${list[i].title}/${list[i].describe}`;
     }
 

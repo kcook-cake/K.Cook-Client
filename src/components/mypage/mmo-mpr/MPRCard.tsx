@@ -3,29 +3,45 @@ import '../../../styles/mypage/card/MPRCard.scss';
 
 import rightArrow from "../../../../assets/right-arrow.svg";
 import cake6 from   '../../../assets/cake6.png';
+import MakePrice from 'src/utils/MakePrice';
 
 interface Props {
-    getData: any
+    getData: {
+        image1: string, 
+        name: string, 
+        price: number, 
+        saleTime: string, 
+        saleDate: string, 
+        star: number,
+        keywordsList: string[],
+    }[]
 }
 
 function MPRCard({getData}: Props) {
     return (
         <>
-            {getData.map((data: { productId: number, name: string, storeName: string, price: number, raiting: number, image: string, status: string, isCake: boolean, resultPrice: number, salePrice: number, reviewCount: number, }, idx: number)=>{
+            {getData.map((data: {         
+                image1: string, 
+                name: string, 
+                price: number, 
+                saleTime: string, 
+                saleDate: string, 
+                star: number,
+                keywordsList: string[], }, idx: number)=>{
                 return (
                     <div key={idx} className="mprcard">
                         <div className="mprcard-img-box">
-                            {data.image === null?
+                            {data.image1 === "" || data.image1 === null || data.image1 === undefined || data.image1.length === 133?
                                 <div className="mprcard-img-none">~준비중~</div>:
-                                <img src={data.image} className="mprcard-img"/>
+                                <img src={data.image1} className="mprcard-img"/>
                             }
                         </div>
                         <div className="mprcard-info">
-                            <div className="mprcard-cake">하트볼터치 곰돌이 케이크</div>
+                            <div className="mprcard-cake">{data.name}</div>
                             <div className="mprcard-option">
-                                2021. 03. 11  14:00  1호  29,000원
+                                {data.saleDate+" "+MakePrice(data.price)+"원"}
                             </div>
-                            {true? 
+                            {data.star === 0? 
                                 <button
                                     className="mprcard-button-left mprcard-button"
                                     onClick={()=>{}}>

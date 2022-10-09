@@ -7,15 +7,22 @@ import PickCard from 'src/components/main/common/PickCard';
 import MMOCard from 'src/components/mypage/mmo-mpr/MMOCard';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
 import LinkClick from 'src/utils/LinkClick';
+import MMO_TestData from 'src/testdata/mypage/MMO_TestData';
+import List2Option from 'src/utils/List2Option';
 
 function MypageOrder (){
-    const [data, setData] = useState([]);
+    let [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
         LinkClick("MypageOrder");
         mypageLinkClick("MypageOrder");
-        getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+
+        data = MMO_TestData();
+        for (var i = 0; i < MMO_TestData().length; i++) {
+            data[i].optionsList = List2Option(MMO_TestData()[i].optionsList);
+        }
+        setData(data);
     },[]);
 
     return(

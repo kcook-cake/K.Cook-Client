@@ -5,15 +5,18 @@ import getAxios from 'src/utils/getAxios';
 import MCCard from 'src/components/mypage/mms-mc/MCCard';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
 import LinkClick from 'src/utils/LinkClick';
+import MC_TestData from 'src/testdata/mypage/MC_TestData';
 
 function Coupons (){
-    const [data, setData] = useState([]);
+    let [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
         LinkClick("Coupon");
         mypageLinkClick("Coupon");
-        getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+
+        data = MC_TestData();
+        setData(data);
     },[]);
 
     return(

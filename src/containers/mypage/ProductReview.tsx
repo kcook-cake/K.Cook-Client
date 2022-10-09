@@ -6,15 +6,18 @@ import getAxios from 'src/utils/getAxios';
 import MPRCard from 'src/components/mypage/mmo-mpr/MPRCard';
 import LinkClick from 'src/utils/LinkClick';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
+import MPR_TestData from 'src/testdata/mypage/MPR_TestData';
 
 function ProductReview (){
-    const [data, setData] = useState([]);
+    let [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState(0);
 
     useEffect(()=>{
         LinkClick("ProductReview");
         mypageLinkClick("ProductReview");
-        getAxios(setData, setDataLength, "cakes", [], 4, 0, 0);
+
+        data = MPR_TestData();
+        setData(data);
     },[]);
 
     return(

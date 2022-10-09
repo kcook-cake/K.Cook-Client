@@ -40,10 +40,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
             url: "app/products",
             method: "POST",
             data: {
-                isTodayShow: false,
+                todayShow: false,
                 name: addName,
                 price: addPrice,
-                isTodayCake: addTodayCake,
+                todayCake: addTodayCake,
                 maxOfToday: addMax,
                 newOptionsList: Option2List(addOption),
                 salePrice: 0,
@@ -126,10 +126,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                 setShowF={setAddShowF} imageModalShow={addImgModal} setImageModalShowF={setAddImgModal}
                 imageData={addImage} 
                 getData={{ 
-                    isTodayShow: false,
+                    todayShow: false,
                     name: addName,
                     price: addPrice,
-                    isTodayCake: addTodayCake,
+                    todayCake: addTodayCake,
                     maxOfToday: addMax,
                     newOptionsList: Option2List(addOption),
                 }}

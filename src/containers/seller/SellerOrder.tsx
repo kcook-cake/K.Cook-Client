@@ -7,7 +7,7 @@ import getAxios from 'src/utils/getAxios';
 import LinkClick from 'src/utils/LinkClick';
 import sellerLinkClick from 'src/utils/sellerLinkClick';
 import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
-import SSO_TestData from '../../testdata/SSO_TestData';
+import SSO_TestData from 'src/testdata/seller/SSO_TestData';
 import List2Option from 'src/utils/List2Option';
 
 type userType = {
