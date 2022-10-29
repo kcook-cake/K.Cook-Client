@@ -4,7 +4,7 @@ import 'src/styles/common/kcook-select/SelectBar.scss';
 import Delete from 'src/assets/cake-bar-delete.svg';
 
 interface Props {
-  getData: any[];
+  getData: string[];
   setSelectAllF: Function;
   searchChangeF: Function;
 }
@@ -12,7 +12,7 @@ interface Props {
 function SelectBar({ getData, setSelectAllF, searchChangeF }: Props) {
   return (
     <>
-      {getData.map((data: {}, idx: number) => {
+      {getData.map((data: string, idx: number) => {
         return (
           <div key={idx} className="cake-bar-card">
             <div style={{ display: 'flex' }}>
@@ -22,8 +22,8 @@ function SelectBar({ getData, setSelectAllF, searchChangeF }: Props) {
                 src={Delete}
                 className="cake-bar-delete"
                 onClick={() => {
-                  var selectData: any = [];
-                  for (var i = 0; i < getData.length; i++)
+                  let selectData: string[] = [];
+                  for (let i = 0; i < getData.length; i++)
                     if (getData[i] != data)
                       selectData[selectData.length] = getData[i];
                   setSelectAllF(selectData);

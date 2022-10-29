@@ -32,7 +32,7 @@ function Cake() {
     console.log(selectWindow[0][1]); 
     console.log(selectAll);
   };
-  const SearchChangeF = (s: any[]) => {
+  const SearchChangeF = (s: string[]) => {
     console.log(1); setPage(1);
     console.log(selectWindow[0][1]);
     console.log(s);
@@ -74,7 +74,7 @@ function Cake() {
 
     let isComponentMounted = true;
     let len = [];
-    for (var i=0; i<Cakes_TestData().cakesAll/12; i++) //data.length
+    for (let i=0; i<Cakes_TestData().cakesAll/12; i++) //data.length
       len[i] = { num: i+1 }
     setPageLength(len);
     setData(Cakes_TestData().cakesList);
@@ -88,11 +88,11 @@ function Cake() {
     //         if (isComponentMounted) {
     //             const data = res.data.result.content;
 
-    //             var changeData = [];
-    //             for (var i = 0; i < data.length; i++) {
+    //             let changeData = [];
+    //             for (let i = 0; i < data.length; i++) {
     //                 changeData[i] = res.data.result.content[i];
     //             }
-    //             for (var i:number = data.length; i < num; i++) {
+    //             for (let i:number = data.length; i < num; i++) {
     //                 changeData[i] = {
     //                     image: null,
     //                     name: "~준비중 입니다~",
@@ -103,8 +103,8 @@ function Cake() {
     //                     popularRank: 0,
     //                 };
     //             }
-    //             var len = [];
-    //             for (var i=0; i<100/12; i++) //data.length
+    //             let len = [];
+    //             for (let i=0; i<100/12; i++) //data.length
     //                 len[i] = { num: i+1 }
     //             setPageLength(len);
     //             setData(changeData);
@@ -112,8 +112,8 @@ function Cake() {
     //     }
     //   })
     //   .catch((err) => {
-    //     var changeData = [];
-    //     for (var i = 0; i < num; i++) {
+    //     let changeData = [];
+    //     for (let i = 0; i < num; i++) {
     //         changeData[i] = {
     //             image: null,
     //             name: "~준비중 입니다~",

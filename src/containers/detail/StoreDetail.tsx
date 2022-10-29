@@ -92,7 +92,7 @@ const StoreDetail = (auth: any) => {
 
     data = Store_Detail_Cakes_TestData(); setData(data);
     let len = [];
-    for (var i=0; i<Store_Detail_Cakes_TestData().cakesAll/8; i++) //data.length
+    for (let i=0; i<Store_Detail_Cakes_TestData().cakesAll/8; i++) //data.length
       len[i] = { num: i+1 }
     setPageLength(len);
     // let num = 8;
@@ -106,10 +106,10 @@ const StoreDetail = (auth: any) => {
     //         const data = res.data.result.content;
 
     //         let changeData = [];
-    //         for (var i = 0; i < data.length; i++) {
+    //         for (let i = 0; i < data.length; i++) {
     //             changeData[i] = res.data.result.content[i];
     //         }
-    //         for (var i:number = data.length; i < num; i++) {
+    //         for (let i:number = data.length; i < num; i++) {
     //             changeData[i] = {
     //               image: null,
     //               name: "~준비중 입니다~",
@@ -120,8 +120,8 @@ const StoreDetail = (auth: any) => {
     //               popularRank: 0,
     //             };
     //         }
-    //         var len = [];
-    //         for (var i=0; i<16/8; i++) //data.length
+    //         let len = [];
+    //         for (let i=0; i<16/8; i++) //data.length
     //             len[i] = { num: i+1 }
     //         setPageLength(len);
     //         setData(changeData);
@@ -130,7 +130,7 @@ const StoreDetail = (auth: any) => {
     //   })
     //   .catch((err) => {
     //     let changeData = [];
-    //     for (var i = 0; i < num; i++) {
+    //     for (let i = 0; i < num; i++) {
     //       changeData[i] = {
     //         image: null,
     //         name: "~준비중 입니다~",
@@ -150,22 +150,22 @@ const StoreDetail = (auth: any) => {
     }
 
 
-    // var container = document.getElementById('map');
-    // var options = {
+    // let container = document.getElementById('map');
+    // let options = {
     //   center: new kakao.maps.LatLng(33.450701, 126.570667),
     //   level: 3,
     // };
-    // var map = new kakao.maps.Map(container, options);
-    // var imageSrc =
+    // let map = new kakao.maps.Map(container, options);
+    // let imageSrc =
     //   'http://amind.co.kr/data/file/figure/thumb-1931437945_a3ksBhWI_EC9B90_200x200.jpg'; // 마커이미지의 주소입니다
 
     // // axios.get으로 얻은 가게의 이름을 여기에 담기.
-    // var names = '유니아케이크';
+    // let names = '유니아케이크';
 
     // // 커스텀 오버레이
     // // 커스텀 오버레이에 표시할 내용입니다
     // // HTML 문자열 또는 Dom Element 입니다
-    // var content = `
+    // let content = `
     //    <div class ="kakaomap_store">
     //      <div class ="kakaomap_store_image">
     //        <img src=${imageSrc} alt="img" />
@@ -178,10 +178,10 @@ const StoreDetail = (auth: any) => {
 
     // // 커스텀 오버레이가 표시될 위치입니다
     // // + 뒤에 숫자로 위로 올려서 가게위치를 가리지 않게 조절.
-    // var position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
+    // let position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
 
     // // 커스텀 오버레이를 생성합니다
-    // var customOverlay = new kakao.maps.CustomOverlay({
+    // let customOverlay = new kakao.maps.CustomOverlay({
     //   position: position,
     //   content: content,
     // });

@@ -18,10 +18,31 @@ import Option2List from './fn/Option2List';
 import KCOOKScroll from 'src/utils/KCOOKScroll';
 
 interface Props {
-    NumF: any,
-    resize: any,
+    NumF: Function,
+    resize: number[],
 
-    setAddShowF: any,
+    setAddShowF: Function,
+}
+
+interface Props2 {
+    optionNumber: number,
+    optionName: string,
+    optionCategory: string,
+    optionCategoryTitle: string,
+    itemList: Props3[],
+}
+
+interface Props3 {
+    itemNumber: number,
+    itemType: string,
+    itemName: string,
+    itemPrice: number,
+    itemChild: Props4[],
+}
+
+interface Props4 {
+    type: number,
+    array: number[],
 }
 
 function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
@@ -75,11 +96,12 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
     const [addItemLen, setAddItemLen] = useState(0);
     const [addName, setAddName] = useState('');
     const [addPrice, setAddPrice] = useState(0);
-    let [addOption, setAddOption] = useState<any>([
+    let [addOption, setAddOption] = useState<Props2[]>([
         {
             optionNumber: 0,
             optionName: '사이즈',
             optionCategory: '',
+            optionCategoryTitle: '',
             itemList: [{
                 itemNumber: 0,
                 itemType: "normal",
@@ -92,24 +114,32 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
 
 
 
-    const handleAddName = (e: any) => {
+    const handleAddName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAddName(e.target.value);
     };
-    const handleAddPrice = (e: any) => {
-        setAddPrice(e.target.value.replace(/[^0-9]/g, ""));
+    const handleAddPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (isNaN(parseInt(e.target.value))) {
+            setAddPrice(0);
+            return;
+        }
+        setAddPrice(parseInt(e.target.value.replace(/[^0-9]/g, "")));
     };
 
-    const handleOptionName = (e: any, optionId: any, ) => {
+    const handleOptionName = (e: React.ChangeEvent<HTMLInputElement>, optionId: number, ) => {
         addOption[optionId].optionCategory = e.target.value;
         NumF();
         setAddOption(addOption);
     };
-    const handleOptionListName = (e: any, optionId: any, optionListId: any, ) => {
+    const handleOptionListName = (e: React.ChangeEvent<HTMLInputElement>, optionId: number, optionListId: number, ) => {
         addOption[optionId].itemList[optionListId].itemName = e.target.value;
         NumF();
         setAddOption(addOption);
     };
-    const handleOptionListPrice = (e: any, optionId: any, optionListId: any, ) => {
+    const handleOptionListPrice = (e: React.ChangeEvent<HTMLInputElement>, optionId: number, optionListId: number, ) => {
+        if (isNaN(parseInt(e.target.value))) {
+            addOption[optionId].itemList[optionListId].itemPrice = 0;
+            return;
+        }
         addOption[optionId].itemList[optionListId].itemPrice = parseInt(e.target.value.replace(/[^0-9]/g, ""));
         NumF();
         setAddOption(addOption);
@@ -160,7 +190,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                             </div>
                             <div className='spm-add-update-img-bar'>
                                 <ul style={{ display: "flex", }}>
-                                    {[0, 1, 2, 3, 4].map((data: any, idx: number)=>{
+                                    {[0, 1, 2, 3, 4].map((data: number, idx: number)=>{
                                         return (
                                             <li 
                                                 key={idx}
@@ -211,7 +241,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                         {addChildOption>-1&& addChildOption !== addOption.length-1&&
                             <div className='spm-add-update-child-modal' style={{ top: (230+addChildOption*167+addChildItem*45+addItemLen*45)+"px", }}> {/* 뒤에 품목개수*45 해줘야함 */}
                                 <div className='spm-add-update-child-modal-move'>이동</div>
-                                {addOption.map((option2: {optionNumber: number, itemList: any[], }, idx: number, )=>{
+                                {addOption.map((option2: {optionNumber: number, itemList: Props3[], }, idx: number, )=>{
                                     return (
                                         <div key={idx}>
                                             {addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
@@ -237,15 +267,15 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                     <input 
                                                         type='checkbox' id={'spm-add-update-option-'+option2.optionNumber}
                                                         onChange={()=>{
-                                                            var child = addOption[addChildOption].itemList[addChildItem].itemChild;
-                                                            for (var i=0; i< child.length; i++) {
+                                                            let child = addOption[addChildOption].itemList[addChildItem].itemChild;
+                                                            for (let i=0; i< child.length; i++) {
                                                                 if (child[i].type === option2.optionNumber) {
                                                                     if (child[i].array.length === option2.itemList.length) {
                                                                         child.splice(i, i+1);
                                                                         NumF();
                                                                         return;
                                                                     }
-                                                                    for (var j=0; j<option2.itemList.length; j++) {
+                                                                    for (let j=0; j<option2.itemList.length; j++) {
                                                                         child[i].array.push(j);
                                                                     }
                                                                     child[i].array = Array.from(new Set(child[i].array));
@@ -257,7 +287,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 type: option2.optionNumber,
                                                                 array: [],
                                                             });
-                                                            for (var i=0; i<option2.itemList.length; i++) {
+                                                            for (let i=0; i<option2.itemList.length; i++) {
                                                                 child[child.length-1].array.push(i);
                                                             }
                                                             NumF();
@@ -276,7 +306,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                 </div>
                                                 </>
                                             }
-                                            {option2.itemList.map((item2: {itemNumber: number, itemName: any[], }, idx2: number)=>{
+                                            {option2.itemList.map((item2: {itemNumber: number, itemName: string, }, idx2: number)=>{
                                                 return (
                                                     (addChildOption < option2.optionNumber&& addChildNext === option2.optionNumber&&
                                                         <div key={idx2} className='spm-add-update-child-modal-item'> {/* spm-add-update-child-modal */}
@@ -284,10 +314,10 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 type='checkbox' id={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}
                                                                 className='signup-checkbox-inner'
                                                                 onChange={()=>{
-                                                                    var child = addOption[addChildOption].itemList[addChildItem].itemChild;
-                                                                    for (var i=0; i< child.length; i++) {
+                                                                    let child = addOption[addChildOption].itemList[addChildItem].itemChild;
+                                                                    for (let i=0; i< child.length; i++) {
                                                                         if (child[i].type === option2.optionNumber) {
-                                                                            for (var j=0; j<child[i].array.length; j++) {
+                                                                            for (let j=0; j<child[i].array.length; j++) {
                                                                                 if (child[i].array[j] === item2.itemNumber) {
                                                                                     child[i].array.splice(j, j+1);
                                                                                     if (child[i].array.length === 0) child.splice(i, i+1);
@@ -314,9 +344,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                     //         }) !== undefined
                                                                     //     ) return true;
                                                                     // }) !== undefined&& true)
-                                                                    (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: any)=>{
+                                                                    (addOption[addChildOption].itemList[addChildItem].itemChild.find((data: Props4)=>{
                                                                         if (
-                                                                            data.array.find((data2: any)=>{
+                                                                            data.array.find((data2: number)=>{
                                                                                 if (data.type === option2.optionNumber && data2 === item2.itemNumber) return true;
                                                                             }) !== undefined
                                                                         ) return true;
@@ -352,7 +382,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                 </div>
                                 <input
                                     className="spm-add-update-price-inner"
-                                    type="text"
+                                    type="number"
                                     placeholder="0"
                                     value={MakePrice(addPrice)}
                                     onChange={handleAddPrice}
@@ -361,7 +391,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                 <div className="spm-add-update-item-right">x</div>
                             </div>
 
-                            {addOption.map((option: { optionNumber: any, optionName: any, itemList: any, }, idx: number)=>{
+                            {addOption.map((option: { optionNumber: number, optionName: string, itemList: Props3[], }, idx: number)=>{
                                 return (
                                     <form key={idx}>
                                         <div style={{ marginLeft: "33px", marginBottom: "5px", }}>{"옵션"+(option.optionNumber+1)+"."}</div>
@@ -396,7 +426,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                             <div
                                                 className="spm-add-update-right"
                                                 onClick={()=>{
-                                                    for (var i = option.optionNumber; i < addOption.length-1; i++) {
+                                                    for (let i = option.optionNumber; i < addOption.length-1; i++) {
                                                         addOption[i] = addOption[i+1];
                                                         addOption[i].optionNumber = i;
                                                     }
@@ -408,7 +438,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                             </div>
                                         </div>
                                         <>
-                                            {option.itemList.map((item: { itemNumber: number, itemName: string, itemPrice: number, itemType: string, itemChild: JSON[], }, idx2: number, )=>{
+                                            {option.itemList.map((item: { itemNumber: number, itemName: string, itemPrice: number, itemType: string, itemChild: Props4[], }, idx2: number, )=>{
                                                 return (
                                                     <div key={idx2} className="spm-add-update-item">
                                                         <div
@@ -417,25 +447,25 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 setStartDrag(e.clientY);
                                                             }}
                                                             onDragEnd={(e)=>{
-                                                                var n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
+                                                                let n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
                                                                 //Math.ceil() 올림 Math.floor() 내림, Math.abs() 절댓값
                                                                 if (n <= item.itemNumber && 56 <= startDrag-e.clientY && item.itemNumber != 0) {
-                                                                    for (var i=n; i>0; i--)
+                                                                    for (let i=n; i>0; i--)
                                                                         addOption[option.optionNumber].itemList[item.itemNumber-i].itemNumber = item.itemNumber-(i-1);
                                                                     
                                                                     addOption[option.optionNumber].itemList[item.itemNumber].itemNumber = item.itemNumber-n;
-                                                                    addOption[option.optionNumber].itemList.sort((a:any, b:any) => {
+                                                                    addOption[option.optionNumber].itemList.sort((a:Props3, b:Props3) => {
                                                                         if (a.itemNumber < b.itemNumber) return -1;
                                                                         if (a.itemNumber > b.itemNumber) return 1;
                                                                         return 0;
                                                                     });
                                                                 }
                                                                 else if (n <= option.itemList.length-1-item.itemNumber && startDrag-e.clientY <= -56 && item.itemNumber != option.itemList.length-1) {
-                                                                    for (var i=n; i>0; i--) 
+                                                                    for (let i=n; i>0; i--) 
                                                                         addOption[option.optionNumber].itemList[item.itemNumber+i].itemNumber = item.itemNumber+(i-1);
                                                                         
                                                                     addOption[option.optionNumber].itemList[item.itemNumber].itemNumber = item.itemNumber+n;
-                                                                    addOption[option.optionNumber].itemList.sort((a:any, b:any) => {
+                                                                    addOption[option.optionNumber].itemList.sort((a:Props3, b:Props3) => {
                                                                         if (a.itemNumber < b.itemNumber) return -1;
                                                                         if (a.itemNumber > b.itemNumber) return 1;
                                                                         return 0;
@@ -477,9 +507,9 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                                 else setAddChildOption(option.optionNumber);
                                                                 setAddChildNext(option.optionNumber+1);
                                                                 setAddChildItem(item.itemNumber);
-                                                                var n = 0;
-                                                                for (var i=0; i<option.optionNumber; i++)
-                                                                    for (var j=1; j<addOption[i].itemList.length; j++)
+                                                                let n = 0;
+                                                                for (let i=0; i<option.optionNumber; i++)
+                                                                    for (let j=1; j<addOption[i].itemList.length; j++)
                                                                         n++;
                                                                 
                                                                 setAddItemLen(n);
@@ -488,7 +518,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         </div>
                                                         <input
                                                             className="spm-add-update-item-price"
-                                                            type="text"
+                                                            type="number"
                                                             placeholder="0"
                                                             value={MakePrice(item.itemPrice)}
                                                             onChange={(e)=>{handleOptionListPrice(e, option.optionNumber, item.itemNumber)}}
@@ -496,7 +526,7 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                                         <div
                                                             className="spm-add-update-item-right"
                                                             onClick={()=>{
-                                                                for (var i = item.itemNumber; i < option.itemList.length-1; i++) {
+                                                                for (let i = item.itemNumber; i < option.itemList.length-1; i++) {
                                                                     addOption[option.optionNumber].itemList[i] = addOption[option.optionNumber].itemList[i+1];
                                                                     addOption[option.optionNumber].itemList[i].itemNumber = i;
                                                                 }
@@ -574,6 +604,8 @@ function SPMCard_Add({ NumF, resize, setAddShowF }: Props) {
                                     addOption[addOption.length] = {
                                         optionNumber: addOption.length,
                                         optionName: "",
+                                        optionCategory: '',
+                                        optionCategoryTitle: '',
                                         itemList: [{
                                             itemNumber: 0,
                                             itemType: "normal",

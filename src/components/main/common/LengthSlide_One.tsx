@@ -32,7 +32,7 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
             price: number,
             reviewCount: number,
           },
-          idx: any
+          idx: number
         ) => {
           return (
             <Link key={idx} to={'/Cake/' + data.productId}>

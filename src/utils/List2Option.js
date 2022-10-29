@@ -19,11 +19,11 @@ const List2Option = (getData) => {
         "ETC": "기타",
     };
 
-    var chOptionList = [];
+    let chOptionList = [];
     
-    var j = -1;
-    for (var i=0; i<getData.length; i++) {
-        var c = category[getData[i].category];
+    let j = -1;
+    for (let i=0; i<getData.length; i++) {
+        let c = category[getData[i].category];
 
         if (getData[i].itemNumber === 0) {
             chOptionList.push({

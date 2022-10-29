@@ -11,7 +11,26 @@ import SSO_TestData from 'src/testdata/seller/SSO_TestData';
 import List2Option from 'src/utils/List2Option';
 
 type userType = {
-    [key: string]: any;
+    [key: string]: Props[];
+}
+
+interface Props {
+    image1: string, 
+    name: string, 
+    price: number, 
+    saleTime: string, 
+    saleDate: string, 
+    optionsList: Props2[],
+}
+
+interface Props2 {
+    price: number,
+    category: string, 
+    categoryTitle: string, 
+    contents: string,
+    optionsId: number,
+    itemType: string,
+    itemNumber: number, 
 }
 
 function SellerOrder (){
@@ -20,7 +39,7 @@ function SellerOrder (){
     let [oriData, setOriData] = useState([]);
     const [data, setData] = useState<userType>({});
 
-    var pathname = window.location.pathname.split("/");
+    let pathname = window.location.pathname.split("/");
     useEffect(()=>{
         LinkClick("SellerOrder");
         sellerLinkClick("SellerOrder");
@@ -30,12 +49,12 @@ function SellerOrder (){
             //get /api/store/sales-history?storeId=0&date=2020-10-19
             oriData = SSO_TestData();
             setOriData(oriData);
-            var updateData: userType = {};
-            for (var i = 0; i < oriData.length; i++) {
+            let updateData: userType = {};
+            for (let i = 0; i < oriData.length; i++) {
                 oriData[i].optionsList = List2Option(oriData[i].optionsList);
                 updateData[oriData[i].saleDate] = [];
             }
-            oriData.forEach((data: any, ) => {
+            oriData.forEach((data: Props, ) => {
                 updateData[data.saleDate][updateData[data.saleDate].length] = data;
                 setData(updateData);
             })
@@ -43,12 +62,12 @@ function SellerOrder (){
             //get /api/store/sales-history?storeId=0
             oriData = SSO_TestData();
             setOriData(oriData);
-            var updateData: userType = {};
-            for (var i = 0; i < oriData.length; i++) {
+            let updateData: userType = {};
+            for (let i = 0; i < oriData.length; i++) {
                 oriData[i].optionsList = List2Option(oriData[i].optionsList);
                 updateData[oriData[i].saleDate] = [];
             }
-            oriData.forEach((data: any, ) => {
+            oriData.forEach((data: Props, ) => {
                 updateData[data.saleDate][updateData[data.saleDate].length] = data;
                 setData(updateData);
             })

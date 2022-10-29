@@ -31,7 +31,7 @@ const ImageModalLogo = ({
     }: Props) => {
 
     const AddImageF = () => {
-        for (var i=1; i<6; i++) {
+        for (let i=1; i<6; i++) {
             formData.append(
                 "productImage"+(i),
                 new Blob([JSON.stringify(formData.get("productImage"+(i)))], { type: "application/json" })
@@ -82,7 +82,7 @@ const ImageModalLogo = ({
     }
 
     const UpdateImageF = () => {
-        for (var i=1; i<6; i++) {
+        for (let i=1; i<6; i++) {
             formData.append(
                 "productImage"+(i),
                 new Blob([JSON.stringify(formData.get("productImage"+(i)))], { type: "application/json" })
@@ -115,7 +115,7 @@ const ImageModalLogo = ({
 
         formData.set("productImage"+(idx+1), e.target.files[0]);
         setFormData(formData);
-        for (var i=1; i<6; i++)
+        for (let i=1; i<6; i++)
             if (imageTF[i-1]) {
                 formData.set("productImage"+(i), null);
                 setFormData(formData);
@@ -140,7 +140,7 @@ const ImageModalLogo = ({
     }
     useEffect(()=>{
         if (preImage) {
-            var reader: any = new FileReader();
+            let reader: any = new FileReader();
             reader.onloadend = () => {
                 setAddPhoto(reader.result as string);
             };
@@ -161,7 +161,7 @@ const ImageModalLogo = ({
     }
     useEffect(()=>{
         if (preImage1) {
-            var reader: any = new FileReader();
+            let reader: any = new FileReader();
             reader.onloadend = () => {
                 setAddPhoto1(reader.result as string);
             };
@@ -182,7 +182,7 @@ const ImageModalLogo = ({
     }
     useEffect(()=>{
         if (preImage2) {
-            var reader: any = new FileReader();
+            let reader: any = new FileReader();
             reader.onloadend = () => {
                 setAddPhoto2(reader.result as string);
             };
@@ -203,7 +203,7 @@ const ImageModalLogo = ({
     }
     useEffect(()=>{
         if (preImage3) {
-            var reader: any = new FileReader();
+            let reader: any = new FileReader();
             reader.onloadend = () => {
                 setAddPhoto3(reader.result as string);
             };
@@ -224,7 +224,7 @@ const ImageModalLogo = ({
     }
     useEffect(()=>{
         if (preImage4) {
-            var reader: any = new FileReader();
+            let reader: any = new FileReader();
             reader.onloadend = () => {
                 setAddPhoto4(reader.result as string);
             };
@@ -236,7 +236,7 @@ const ImageModalLogo = ({
 
     let [formData, setFormData] = useState(new FormData);
     useEffect(()=>{
-        for (var i=1; i<6; i++) {
+        for (let i=1; i<6; i++) {
             formData.append("productImage"+(i), null); setFormData(formData);
         }
     },[]);

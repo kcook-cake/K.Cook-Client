@@ -27,11 +27,20 @@ import SellerReview from './seller/SellerReview';
 import SellerStore from 'src/components/seller/sss/SellerStore';
 
 
+interface PropsAuth {
+  accountId: number,
+  address: string,
+  dateOfBirth: string,
+  email: string,
+  nickname: string,
+  phoneNumber: string,
+}
+
 
 const Pages = () => {
   // 로그인확인
   const [session, setSession] = useState(false);
-  const [auth, setAuth] = useState({
+  const [auth, setAuth] = useState<PropsAuth>({
       accountId: 0,
       address: '',
       dateOfBirth: '',
@@ -40,16 +49,16 @@ const Pages = () => {
       phoneNumber: '',
   });
 
-  var jwToken: any = undefined;
+  let jwToken: string = undefined;
   if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
   else jwToken = sessionStorage.jwToken;
   useEffect(() => {
       isSession(
       jwToken,
-      (s: any) => {
+      (s: boolean) => {
           if (s) setSession(s);
       },
-      (a: any) => {
+      (a: PropsAuth) => {
           setAuth(a);
       }
       );
@@ -58,7 +67,7 @@ const Pages = () => {
   const [numLeftMobile, setNumLeftMobile] = useState(1);
   useEffect(() => {
     //pathname, parameter 가져오기
-    var pathname = window.location.pathname;
+    let pathname = window.location.pathname;
     if (pathname === '/') pathname = '/Home';
     pathname = pathname.split('/')[1];
     if (

@@ -20,11 +20,11 @@ import ImageModal from 'src/components/seller/spm-ssr/modal/ImageModal';
 import MakePrice from 'src/utils/MakePrice';
 
 interface Props {
-    idx: any,
-    NumF: any,
-    resize: any,
+    idx: number,
+    NumF: Function,
+    resize: number[],
 
-    oriShow: any,
+    oriShow: boolean[],
     getUpdateData: any,
 }
 
@@ -35,22 +35,31 @@ function SPM_Update({
     const addPhoto = useRef(null);
     const [addFormData, setAddFormData] = useState(null);
     
-    const handleAddName = (e: any, ) => {
+    const handleAddName = (e: React.ChangeEvent<HTMLInputElement>, ) => {
         setUpdateName(e.target.value);
     };
-    const handleAddPrice = (e: any, ) => {
+    const handleAddPrice = (e: React.ChangeEvent<HTMLInputElement>, ) => 
+    {
+        if (isNaN(parseInt(e.target.value))) {
+            setUpdatePrice(0);
+            return;
+        }
         setUpdatePrice(e.target.value.replace(/[^0-9]/g, ""));
     };
     
-    const handleOptionName = (e: any, optionId: any, ) => {
+    const handleOptionName = (e: React.ChangeEvent<HTMLInputElement>, optionId: number, ) => {
         updateOption[optionId].optionCategory = e.target.value;
         NumF();
     };
-    const handleOptionListName = (e: any, optionId: any, optionListId: any, ) => {
+    const handleOptionListName = (e: React.ChangeEvent<HTMLInputElement>, optionId: number, optionListId: number, ) => {
         updateOption[optionId].itemList[optionListId].itemName = e.target.value;
         NumF();
     };
-    const handleOptionListPrice = (e: any, optionId: any, optionListId: any, ) => {
+    const handleOptionListPrice = (e: React.ChangeEvent<HTMLInputElement>, optionId: number, optionListId: number, ) => {
+        if (isNaN(parseInt(e.target.value))) {
+            updateOption[optionId].itemList[optionListId].itemPrice = 0;
+            return;
+        }
         updateOption[optionId].itemList[optionListId].itemPrice = parseInt(e.target.value.replace(/[^0-9]/g, ""));
         NumF();
     };
@@ -205,15 +214,15 @@ function SPM_Update({
                                                     <input 
                                                         type='checkbox' id={'spm-add-update-option-'+option2.optionNumber}
                                                         onChange={()=>{
-                                                            var child = updateOption[updateChildOption].itemList[updateChildItem].itemChild;
-                                                            for (var i=0; i< child.length; i++) {
+                                                            let child = updateOption[updateChildOption].itemList[updateChildItem].itemChild;
+                                                            for (let i=0; i< child.length; i++) {
                                                                 if (child[i].type == option2.optionNumber) {
                                                                     if (child[i].array.length == option2.itemList.length) {
                                                                         child.splice(i, i+1);
                                                                         NumF();
                                                                         return;
                                                                     }
-                                                                    for (var j=0; j<option2.itemList.length; j++) {
+                                                                    for (let j=0; j<option2.itemList.length; j++) {
                                                                         child[i].array.push(j);
                                                                     }
                                                                     child[i].array = Array.from(new Set(child[i].array));
@@ -225,7 +234,7 @@ function SPM_Update({
                                                                 type: option2.optionNumber,
                                                                 array: [],
                                                             });
-                                                            for (var i=0; i<option2.itemList.length; i++) {
+                                                            for (let i=0; i<option2.itemList.length; i++) {
                                                                 child[child.length-1].array.push(i);
                                                             }
                                                             NumF();
@@ -251,10 +260,10 @@ function SPM_Update({
                                                                 type='checkbox' id={'spm-add-update-option-'+option2.optionNumber+"-"+item2.itemNumber}
                                                                 className='signup-checkbox-inner'
                                                                 onChange={()=>{
-                                                                    var child = updateOption[updateChildOption].itemList[updateChildItem].itemChild;
-                                                                    for (var i=0; i< child.length; i++) {
+                                                                    let child = updateOption[updateChildOption].itemList[updateChildItem].itemChild;
+                                                                    for (let i=0; i< child.length; i++) {
                                                                         if (child[i].type == option2.optionNumber) {
-                                                                            for (var j=0; j<child[i].array.length; j++) {
+                                                                            for (let j=0; j<child[i].array.length; j++) {
                                                                                 if (child[i].array[j] == item2.itemNumber) {
                                                                                     child[i].array.splice(j, j+1);
                                                                                     if (child[i].array.length == 0) child.splice(i, i+1);
@@ -357,7 +366,7 @@ function SPM_Update({
                                                 <div
                                                     className="spm-add-update-right"
                                                     onClick={()=>{
-                                                        for (var i = option.optionNumber; i < updateOption.length-1; i++) {
+                                                        for (let i = option.optionNumber; i < updateOption.length-1; i++) {
                                                             updateOption[i] = updateOption[i+1];
                                                             updateOption[i].optionNumber = i;
                                                         }
@@ -380,10 +389,10 @@ function SPM_Update({
                                                                     setStartDrag(e.clientY);
                                                                 }}
                                                                 onDragEnd={(e)=>{
-                                                                    var n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
+                                                                    let n = Math.ceil((Math.abs(startDrag-e.clientY)-45)/45);
                                                                     //Math.ceil() 올림 Math.floor() 내림, Math.abs() 절댓값
                                                                     if (n <= item.itemNumber && 56 <= startDrag-e.clientY && item.itemNumber != 0) {
-                                                                        for (var i=n; i>0; i--)
+                                                                        for (let i=n; i>0; i--)
                                                                             updateOption[option.optionNumber].itemList[item.itemNumber-i].itemNumber = item.itemNumber-(i-1);
                                                                         
                                                                             updateOption[option.optionNumber].itemList[item.itemNumber].itemNumber = item.itemNumber-n;
@@ -394,7 +403,7 @@ function SPM_Update({
                                                                         });
                                                                     }
                                                                     else if (n <= option.itemList.length-1-item.itemNumber && startDrag-e.clientY <= -56 && item.itemNumber != option.itemList.length-1) {
-                                                                        for (var i=n; i>0; i--) 
+                                                                        for (let i=n; i>0; i--) 
                                                                             updateOption[option.optionNumber].itemList[item.itemNumber+i].itemNumber = item.itemNumber+(i-1);
                                                                             
                                                                             updateOption[option.optionNumber].itemList[item.itemNumber].itemNumber = item.itemNumber+n;
@@ -438,9 +447,9 @@ function SPM_Update({
                                                                     else setUpdateChildOption(option.optionNumber);
                                                                     setUpdateChildNext(option.optionNumber+1);
                                                                     setUpdateChildItem(item.itemNumber);
-                                                                    var n = 0;
-                                                                    for (var i=0; i<option.optionNumber; i++)
-                                                                        for (var j=1; j<updateOption[i].itemList.length; j++)
+                                                                    let n = 0;
+                                                                    for (let i=0; i<option.optionNumber; i++)
+                                                                        for (let j=1; j<updateOption[i].itemList.length; j++)
                                                                             n++;
                                                                     setUpdateItemLen(n);
                                                                 }}>
@@ -456,7 +465,7 @@ function SPM_Update({
                                                             <div
                                                                 className="spm-add-update-item-right"
                                                                 onClick={()=>{
-                                                                    for (var i = item.itemNumber; i < option.itemList.length-1; i++) {
+                                                                    for (let i = item.itemNumber; i < option.itemList.length-1; i++) {
                                                                         updateOption[option.optionNumber].itemList[i] = updateOption[option.optionNumber].itemList[i+1];
                                                                         updateOption[option.optionNumber].itemList[i].itemNumber = i;
                                                                     }

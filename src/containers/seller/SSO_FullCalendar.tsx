@@ -15,7 +15,24 @@ import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
 import SSO_Fc_TestData from '../../testdata/seller/SSO_Fc_TestData';
 import SSO_FcDataChange from './SSO_FcDataChange';
 
-function SSO_FullCalendar (session: any, auth: any,){
+interface PropsAuth {
+    accountId: number,
+    address: string,
+    dateOfBirth: string,
+    email: string,
+    nickname: string,
+    phoneNumber: string,
+}
+
+interface Props {
+    todayTitle: string,
+    todayDescribe: string,
+    title: string,
+    describe: string,
+    borderColor: string,
+}
+
+function SSO_FullCalendar (session: boolean, auth: PropsAuth,){
     const [num, setNum] = useState(0);
 
     //모달창
@@ -66,7 +83,7 @@ function SSO_FullCalendar (session: any, auth: any,){
 
         let isComponentMounted = true;
 
-        SSO_FcDataChange ((seller: any)=>{
+        SSO_FcDataChange ((seller: Props[])=>{
             setEvents(seller);
         }, SSO_Fc_TestData()); // get /api/store/future_calendar?storeId=0
 
@@ -247,7 +264,7 @@ function SSO_FullCalendar (session: any, auth: any,){
                         const date = e.event.startStr;
 
                         let d = e.event._instance?.range.start.toString().split(" ")[0]
-                        var cnt = 0;
+                        let cnt = 0;
                         if(d==='Mon') { d="월요일"; cnt=0; }
                         else if(d==='Tue') { d="화요일"; cnt=1; }
                         else if(d==='Wed') { d="수요일"; cnt=2; }

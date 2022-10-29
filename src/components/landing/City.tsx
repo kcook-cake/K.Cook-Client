@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import $ from 'jquery';
 
 interface CityProps {
-    getData: any,
-    LocationAxiosF: any,
+    getData: {
+        cityId: number,
+        cityName: string,
+    }[],
+    LocationAxiosF: Function,
 }
 
 function City({ getData, LocationAxiosF }: CityProps) { 
@@ -19,7 +22,7 @@ function City({ getData, LocationAxiosF }: CityProps) {
             <option disabled selected>
                 지역 선택
             </option>
-            {getData.map((data: { cityId: any, cityName: any })=>{
+            {getData.map((data: { cityId: number, cityName: string })=>{
                 return (
                     <option
                         value={data.cityId}

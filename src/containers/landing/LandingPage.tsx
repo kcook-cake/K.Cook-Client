@@ -21,12 +21,12 @@ function LandingPage() {
   const [disabled, setDisabled] = useState(false);
   // const [failModal, setFailModal] = useState(false);
   const [modalCSS, setModalCSS] = useState(false);
-  const handleInputId = (e: any,) => {
+  const handleInputId = (e: React.ChangeEvent<HTMLInputElement>,) => {
     setInputId(e.target.value);
   };
   //onChange 될때마다 그 값을 handleInputId 메서드로 setInputId에 값을 변경한다.
   //setInputId 는 signInId의 값을 변경한다.
-  const handleInputPw = (e: any) => {
+  const handleInputPw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputPw(e.target.value);
   };
 
@@ -83,7 +83,7 @@ function LandingPage() {
   };
 
   const [phoneNumber, setPhone] = useState("");
-  const handlePhone = (e: any) => {
+  const handlePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value.replace("-", ""));
     const numRegex = /[^0-9]/
     if (!numRegex.test(e.target.value))
@@ -145,7 +145,7 @@ function LandingPage() {
   const [location, setLocation] = useState([]);
   const [cityIndex, setCityIndex] = useState(0);
   const [locationIndex, setLocationIndex] = useState(0);
-  const LocationAxios = (i: any) => {
+  const LocationAxios = (i: number) => {
     setLocationIndex(0);
     setCityIndex(i);
     axios.get(`/app/locations/${i}`)

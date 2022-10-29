@@ -8,14 +8,38 @@ import { start } from 'repl';
 
 
 interface Props {
-    getData: any,
+    getData: {
+        productId: number, 
+        name: string, 
+        storeName: string, 
+        price: number, 
+        raiting: number, 
+        image: string, 
+        status: string, 
+        isCake: boolean, 
+        resultPrice: number, 
+        salePrice: number, 
+        reviewCount: number, 
+    }[],
     link: string,
 }
 
 function LengthwiseCard({getData, link}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: number)=>{
+            {getData.map((data: { 
+                productId: number, 
+                name: string, 
+                storeName: string, 
+                price: number, 
+                raiting: number, 
+                image: string, 
+                status: string, 
+                isCake: boolean, 
+                resultPrice: number, 
+                salePrice: number, 
+                reviewCount: number, 
+            }, idx: number)=>{
                 return (
                     <Link key={idx} to={"/"+link+"/0"}>
                         <div className="lengthwise-flex" key={data.productId}>

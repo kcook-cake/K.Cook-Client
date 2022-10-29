@@ -3,7 +3,11 @@ import classNames from 'classnames';
 import 'src/styles/detail/cake/PickUp.scss';
 
 interface Props {
-    getData: any,
+    getData: {
+        groupId: number, 
+        groupTF: boolean, 
+        time: string,
+    }[],
     groupTimeId: (number | string)[],
     setGroupTimeIdF: Function,
 }

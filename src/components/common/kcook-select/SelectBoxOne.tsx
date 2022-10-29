@@ -5,7 +5,7 @@ import selectAllow from "src/assets/selectArrow.png";
 
 interface Props {
     NumF: Function,
-    selectWindow: any,
+    selectWindow: (boolean | string | number) [][],
 }
 
 export default function SelectBoxOne({ 

@@ -10,9 +10,28 @@ import add from 'src/assets/detail/cake/add.png';
 
 interface Props {
   NumF: Function;
+  getData: {
+    optionId: number;
+    optionNumber: number;
+    optionName: string;
+    itemList: Props2[];
+  }[];
   optionId: number[];
   cusId: number[];
-  getData: any;
+}
+
+interface Props2 {
+  itemId: number;
+  itemNumber: number;
+  itemType: string;
+  itemName: string;
+  itemPrice: number;
+  itemChild: Props3[];
+}
+
+interface Props3 {
+  type: number;
+  array: number[];
 }
 
 function OptionList({ NumF, optionId, cusId, getData }: Props) {
@@ -23,7 +42,7 @@ function OptionList({ NumF, optionId, cusId, getData }: Props) {
   let [child, setChild] = useState([]);
 
   useEffect(() => {
-    // for (var i=0; i<getData.length; i++) cusId2[i] = 0;
+    // for (let i=0; i<getData.length; i++) cusId2[i] = 0;
     // console.log(cusId);
     // console.log(cusId2);
   }, []);
@@ -36,7 +55,7 @@ function OptionList({ NumF, optionId, cusId, getData }: Props) {
             optionId: number;
             optionNumber: number;
             optionName: string;
-            itemList: any[];
+            itemList: Props2[];
           },
           idx: number,
         ) => {
@@ -95,7 +114,7 @@ function OptionList({ NumF, optionId, cusId, getData }: Props) {
                       itemType: string;
                       itemName: string;
                       itemPrice: number;
-                      itemChild: JSON[];
+                      itemChild: Props3[];
                     }, idx2: number) => {
                       return (
                         <div
@@ -104,7 +123,7 @@ function OptionList({ NumF, optionId, cusId, getData }: Props) {
                             'cake-detail-optionlist-option-none': 
                             (child[option.optionNumber] === undefined?
                               false:
-                              child[option.optionNumber].array.find((data: any,)=>{
+                              child[option.optionNumber].array.find((data: number,)=>{
                                 if (data === item.itemNumber)
                                   return true;
                               }) !== undefined
@@ -117,20 +136,20 @@ function OptionList({ NumF, optionId, cusId, getData }: Props) {
                             selectNum = option.optionNumber+1;
                             setSelectNum(selectNum);
 
-                            for (var i=optionNum; i<getData.length; i++) {
+                            for (let i=optionNum; i<getData.length; i++) {
                               cusId[i] = -1; optionId[i] = -1;
                               cusId[option.optionNumber] = item.itemNumber; optionId[option.optionNumber] = item.itemId;
                             }
 
-                            for (var i=0; i<getData.length; i++) {
+                            for (let i=0; i<getData.length; i++) {
                               child[i] = undefined;
                             }
-                            for (var i=0; i<selectNum; i++) {
+                            for (let i=0; i<selectNum; i++) {
                               if (cusId[i]<0) continue; 
-                              var childList = getData[i].itemList[cusId[i]].itemChild;
+                              let childList: Props3[] = getData[i].itemList[cusId[i]].itemChild;
                               if (childList === undefined) continue;
 
-                              for (var j=0; j<childList.length; j++) {
+                              for (let j=0; j<childList.length; j++) {
                                 if (child[childList[j].type] !== undefined) {
                                   child[childList[j].type].array = child[childList[j].type].array.concat(childList[j].array);
                                   child[childList[j].type].array = Array.from(new Set(child[childList[j].type].array));

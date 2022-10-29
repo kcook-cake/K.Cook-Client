@@ -16,9 +16,18 @@ import List2Option from 'src/utils/List2Option';
 import SPM_Update from 'src/components/seller/spm-ssr/SPM_Update';
 import SPM_TestData from 'src/testdata/seller/SPM_TestData';
 
-function ProductManagement(session: any, auth: any,) {
+interface PropsAuth {
+  accountId: number,
+  address: string,
+  dateOfBirth: string,
+  email: string,
+  nickname: string,
+  phoneNumber: string,
+}
+
+function ProductManagement(session: boolean, auth: PropsAuth,) {
   const [num, setNum] = useState(0);
-  const [oriShow, setOriShow] = useState<any>([]);
+  const [oriShow, setOriShow] = useState<boolean[]>([]);
   let [oriData, setOriData] = useState([]);
 
   const [addShow, setAddShow] = useState(false);
@@ -34,7 +43,7 @@ function ProductManagement(session: any, auth: any,) {
 
     let isComponentMounted = true;
     oriData = SPM_TestData();
-    for (var i = 0; i < oriData.length; i++) {
+    for (let i = 0; i < oriData.length; i++) {
       oriShow[i] = true;
       oriData[i].optionsList = List2Option(oriData[i].optionsList);
     }
@@ -50,7 +59,7 @@ function ProductManagement(session: any, auth: any,) {
         if (res.data) {
           if (isComponentMounted) {
             oriData = [res.data.result];
-            for (var i = 0; i < oriData.length; i++) {
+            for (let i = 0; i < oriData.length; i++) {
               oriShow[i] = true;
               oriData[i].optionsList = List2Option(oriData[i].optionsList);
             }
@@ -140,7 +149,7 @@ function ProductManagement(session: any, auth: any,) {
             className="mobile spm-bottom-inner spm-bottom-right"
             onClick={() => {
               setAddShow(false);
-              for (var i = 0; i < oriShow.length; i++) oriShow[i] = true;
+              for (let i = 0; i < oriShow.length; i++) oriShow[i] = true;
               setNum(num + 1);
             }}
           >

@@ -14,12 +14,53 @@ import { ReactComponent as DragBtn } from '../../../assets/seller/dragbtn.svg';
 import setting from '../../../assets/seller/spm-setting.png';
 
 interface Props {
-    idx: any,
-    NumF: any,
-    auth: any,
+    idx: number,
+    NumF: Function,
+    auth: {
+        accountId: number,
+        address: string,
+        dateOfBirth: string,
+        email: string,
+        nickname: string,
+        phoneNumber: string,
+    },
 
-    oriShow: any,
-    oriData: any,
+    oriShow: boolean[],
+    oriData: {
+        cakeId: number,
+        name: string,
+        price: number,
+        todayCake: boolean,
+        todayShow: boolean,
+        maxToday: number,
+        image1: string,
+        image2: string,
+        image3: string,
+        image4: string,
+        image5: string,
+        optionsList: Props2[],
+    },
+}
+
+interface Props2 {
+    optionId: number,
+    optionNumber: string,
+    optionName: string,
+    itemList: Props3[],
+}
+
+interface Props3 {
+    itemId: number,
+    itemNumber: number,
+    itemType: string,
+    itemName: string,
+    itemPrice: number,
+    itemChild: Props4[],
+}
+
+interface Props4 {
+    type: number,
+    array: number[],
 }
 
 function SPMCard({ 
@@ -56,7 +97,7 @@ function SPMCard({
                         </div>
                         <div className="spmcard-content-inner">
                             <div className="spmcard-title">{oriData.name}</div>
-                            {oriData.optionsList.map((option: { optionNumber: number, optionName: string, itemList: any[], }, idx: number)=>{
+                            {oriData.optionsList.map((option: Props2, idx: number)=>{
                                 return (
                                     <div key={idx} style={{ display: "flex", }}>
                                         {option.optionName}:&nbsp;

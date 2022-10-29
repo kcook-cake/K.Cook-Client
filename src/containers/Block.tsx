@@ -10,12 +10,12 @@ function Block() {
   const [disabled, setDisabled] = useState(false);
   const [failModal, setFailModal] = useState(false);
   const [modalCSS, setModalCSS] = useState(false);
-  const handleInputId = (e: any,) => {
+  const handleInputId = (e: React.ChangeEvent<HTMLInputElement>,) => {
     setInputId(e.target.value);
   };
   //onChange 될때마다 그 값을 handleInputId 메서드로 setInputId에 값을 변경한다.
   //setInputId 는 signInId의 값을 변경한다.
-  const handleInputPw = (e: any) => {
+  const handleInputPw = (e: React.ChangeEvent<HTMLInputElement>, ) => {
     setInputPw(e.target.value);
   };
 

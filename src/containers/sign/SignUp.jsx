@@ -221,7 +221,7 @@ function SignUp() {
 
   const [backWidth, setBackWidth] = useState(0);
   const BackgroundF = () => {
-    var n = ($(".login-flex").width() - $(".login").width())/2;
+    let n = ($(".login-flex").width() - $(".login").width())/2;
     setBackWidth(n);
   };
 

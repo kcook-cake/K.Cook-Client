@@ -6,19 +6,37 @@ import star from 'src/utils/star';
 
 
 interface LengthwiseCardProps {
-    getData: any
-    // img? : string,
-    // star? : number,
-    // shop : string,
-    // cakename : string ,
-    // minprice : number
-    // review? : number,
+    getData: {
+        productId: number, 
+        name: string, 
+        storeName: string, 
+        price: number, 
+        raiting: number, 
+        image: string, 
+        status: string, 
+        isCake: boolean, 
+        resultPrice: number, 
+        salePrice: number, 
+        reviewCount: number, 
+    }[],
 }
 
 function WidthwiseCard({ getData }: LengthwiseCardProps) { 
     return (
         <>
-    {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+    {getData.map((data: {
+        productId: number, 
+        name: string, 
+        storeName: string, 
+        price: number, 
+        raiting: number, 
+        image: string, 
+        status: string, 
+        isCake: boolean, 
+        resultPrice: number, 
+        salePrice: number, 
+        reviewCount: number, 
+    })=>{
         return (
         <div className="widthwise-card" key={data.productId}>
             <div className="widthwise-card-img-flex">

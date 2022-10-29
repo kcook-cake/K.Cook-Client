@@ -27,7 +27,7 @@ const PrevArrow = (props: any) => {
 };
 
 export default function Slide({ auth, getData }: Props) {
-  var settings = {
+  let settings = {
     dots: false, // 밑에 점
     infinite: true, // 콘텐츠 끝까지 갔을때 처음 콘텐츠를 가져와 반복
     autoplay: true,
@@ -37,7 +37,7 @@ export default function Slide({ auth, getData }: Props) {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
 
-    appendDots: (dots: any) => (
+    appendDots: (dots: string) => (
         <div>
             <ul> {dots} </ul>
         </div>

@@ -9,8 +9,15 @@ import LengthSlide_One from 'src/components/main/common/LengthSlide_One';
 import Cakes_Popular_TestData from 'src/testdata/main/Cakes_Popular_TestData';
 
 interface Props {
-  session: any;
-  auth: any;
+  session: boolean,
+  auth: {
+    accountId: number,
+    address: string,
+    dateOfBirth: string,
+    email: string,
+    nickname: string,
+    phoneNumber: string,
+  }
 }
 
 const PopularMenu = ({ session, auth }: Props) => {

@@ -9,7 +9,19 @@ import MakePrice from 'src/utils/MakePrice';
 
 
 interface Props {
-    getData: any,
+    getData: {
+        productId: number, 
+        name: string, 
+        storeName: string, 
+        price: number, 
+        raiting: number, 
+        image: string, 
+        status: string, 
+        isCake: boolean, 
+        resultPrice: number, 
+        salePrice: number, 
+        reviewCount: number, 
+    }[],
     resize: number,
     slidePx: number,
 }
@@ -17,7 +29,19 @@ interface Props {
 function WidthSlide({getData, resize, slidePx, }: Props) {
     return (
         <Link to="/Cake/0">
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, }, idx: any, )=>{
+            {getData.map((data: { 
+                productId: number, 
+                name: string, 
+                storeName: string, 
+                price: number, 
+                raiting: number, 
+                image: string, 
+                status: string, 
+                isCake: boolean, 
+                resultPrice: number, 
+                salePrice: number, 
+                reviewCount: number, 
+            }, idx: number, )=>{
                 return (
                     <>
                         <li

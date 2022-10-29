@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import 'src/styles/seller/spm-ssr/SSRCard.scss';
 
 interface Props {
-    getData: any,
+    getData: {
+        image: string,
+        date: string,
+    }[],
 }
 
 type userType = {
@@ -12,11 +15,11 @@ type userType = {
 function SSRCard({ getData, }: Props) {
     const [data, setData] = useState<userType>({});
     useEffect(()=>{
-        var updateData: userType = {};
-        for (var i = 0; i < getData.length; i++) {
+        let updateData: userType = {};
+        for (let i = 0; i < getData.length; i++) {
             updateData[getData[i].date] = [];
         }
-        getData.forEach((d: any, ) => {
+        getData.forEach((d: userType, ) => {
             updateData[d.date][updateData[d.date].length] = d;
             setData(updateData);
         })
@@ -28,13 +31,13 @@ function SSRCard({ getData, }: Props) {
                 (
                     <div key={idx}>
                         <div className={"mobile spm-ssr-date spm-ssr-date-"+idx}>{key}</div>
-                        {data[key].map((data: { image: string, }, idx2: number, )=>{
+                        {data[key].map((data: { image: string, date: string }, idx2: number, )=>{
                             return (
                                 <div key={idx2} className="ssrcard">
                                     <div className="pc ssrcard-time">오늘 15:00</div>
                                     <div className="ssrcard-box">
                                         <div className="seller-img-box ssrcard-img">
-                                            {data.image === ""?
+                                            {data.image === null || data.image === undefined || data.image === "" || data.image.length === 133?
                                                 <div className="seller-img-none">~준비중~</div>:
                                                 <img src={data.image} className="seller-img"/>
                                             }

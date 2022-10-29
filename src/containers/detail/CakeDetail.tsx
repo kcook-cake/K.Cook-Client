@@ -151,7 +151,7 @@ const CakeDetail = () =>{
 
             option = List2Option(data.optionsList); setOption(option);
 
-            for (var i=0; i<option.length; i++) cusId[i] = -1;
+            for (let i=0; i<option.length; i++) cusId[i] = -1;
             setCusId(cusId);
         }).catch((err)=>{
         })
@@ -290,7 +290,7 @@ const CakeDetail = () =>{
                                         'cake-detail-img-active': selectShow[0],
                                     })}
                                     onClick={()=>{
-                                        var s = selectShow;
+                                        let s = selectShow;
                                         if (selectShow[0]) s[0] = false;
                                         else s[0] = true;
 
@@ -319,7 +319,7 @@ const CakeDetail = () =>{
                                         'cake-detail-img-active': selectShow[1],
                                     })}
                                     onClick={()=>{
-                                        var s = selectShow;
+                                        let s = selectShow;
                                         if (selectShow[1]) s[1] = false;
                                         else s[1] = true;
 
@@ -343,7 +343,7 @@ const CakeDetail = () =>{
                                         'cake-detail-img-active': selectShow[2],
                                     })}
                                     onClick={()=>{
-                                        var s = selectShow;
+                                        let s = selectShow;
                                         if (selectShow[2]) s[2] = false;
                                         else s[2] = true;
 

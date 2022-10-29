@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../../styles/mypage/card/MMOCard.scss';
+import 'src/styles/mypage/card/MMOCard.scss';
 
-import rightArrow from "../../../../assets/right-arrow.svg";
-import cake6 from   '../../../../assets/cake6.png';
+import rightArrow from "src/assets/right-arrow.svg";
+import cake6 from   'src/assets/cake6.png';
 
 interface Props {
     getData: {
@@ -11,16 +11,18 @@ interface Props {
         price: number, 
         saleTime: string, 
         saleDate: string, 
-        optionsList: {
-            price: number,
-            category: string,
-            categoryTitle: string,
-            contents: string, 
-            optionsId: number,
-            itemType: string,
-            itemNumber: number, 
-        }[]
+        optionsList: Props2[]
     }[]
+}
+
+interface Props2 {
+    optionName: string, 
+    itemList: Props3[],
+}
+
+interface Props3 {
+    itemNumber: number,
+    itemName: string,
 }
 
 function MMOCard({getData}: Props) {
@@ -32,7 +34,7 @@ function MMOCard({getData}: Props) {
                 price: number, 
                 saleTime: string, 
                 saleDate: string, 
-                optionsList: any[] }, idx: number)=>{
+                optionsList: Props2[] }, idx: number)=>{
                 return (
                     <div key={idx} className="mmocard">
                         <div className="mypage-img-box">
@@ -45,7 +47,7 @@ function MMOCard({getData}: Props) {
                             <div className="mmocard-cake">하트볼터치 곰돌이 케이크</div>
                             <div className="mmocard-cake-shop">원모먼트</div>
                             <div className="mmocard-option">
-                                {data.optionsList.map((data2: { optionName: string, itemList: any[], }, idx2: number, )=>{
+                                {data.optionsList.map((data2: { optionName: string, itemList: Props3[] }, idx2: number)=>{
                                     return (
                                         <div key={idx2} style={{ display: "flex", }}>
                                             {data2.optionName}:&nbsp;

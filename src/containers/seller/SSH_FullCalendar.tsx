@@ -14,7 +14,16 @@ import SSH_Fc_TestData from 'src/testdata/seller/SSH_Fc_TestData';
 import SSH_FcDataChange from './SSH_FcDataChang';
 import MakePrice from 'src/utils/MakePrice';
 
-function SSH_FullCalendar (session: any, auth: any,){
+interface PropsAuth {
+    accountId: number,
+    address: string,
+    dateOfBirth: string,
+    email: string,
+    nickname: string,
+    phoneNumber: string,
+}
+
+function SSH_FullCalendar (session: boolean, auth: PropsAuth,){
     const [num, setNum] = useState(0);
 
     //모달창
@@ -60,7 +69,7 @@ function SSH_FullCalendar (session: any, auth: any,){
         LinkClick("SalesHistory");
         sellerLinkClick("SalesHistory");
 
-        SSH_FcDataChange ((seller: any)=>{
+        SSH_FcDataChange ((seller: Props)=>{
             setEvents(seller);
         }, SSH_Fc_TestData()); // get /api/store/past_calendar?storeId=0
 
@@ -224,7 +233,7 @@ function SSH_FullCalendar (session: any, auth: any,){
                         const date = e.event.startStr;
 
                         let d = e.event._instance?.range.start.toString().split(" ")[0]
-                        var cnt = 0;
+                        let cnt = 0;
                         if(d==='Mon') { d="월요일"; cnt=0; }
                         else if(d==='Tue') { d="화요일"; cnt=1; }
                         else if(d==='Wed') { d="수요일"; cnt=2; }

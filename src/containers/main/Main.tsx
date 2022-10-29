@@ -7,15 +7,23 @@ import Store from './Store';
 import CustomerService from './CS';
 
 interface Props {
-    session: any,
-    auth: any,
+    session: boolean,
+    auth: {
+        accountId: number,
+        address: string,
+        dateOfBirth: string,
+        email: string,
+        nickname: string,
+        phoneNumber: string,
+    }
 }
+  
 
 const Main = ({session, auth}: Props) =>{
     
     return(
         <>
-            <Route exact path="/" component={()=>Home(session, auth)} />
+            <Route exact path="/" component={()=>Home({session, auth})} />
             <Route exact path="/Cake" component={Cake} />
             <Route exact path="/Store" component={Store} />
             <Route exact path="/CS" component={CustomerService} />

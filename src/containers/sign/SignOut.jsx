@@ -31,7 +31,7 @@ function SignOut() {
         setFailModal(false);
       }, 5000);
     } else {
-      var jwToken = undefined;
+      let jwToken = undefined;
       if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
       else jwToken = sessionStorage.jwToken;
 

@@ -6,14 +6,21 @@ import BannerSlider from 'src/components/main/common/BannerSlide';
 import Banner_Slide_TestData from 'src/testdata/main/Banner_Slide_TestData';
 
 interface Props {
-  session: any;
-  auth: any;
+  session: boolean;
+  auth: {
+    accountId: number,
+    address: string,
+    dateOfBirth: string,
+    email: string,
+    nickname: string,
+    phoneNumber: string,
+  };
 }
 
 function Crousel({ session, auth }: Props) {
 
   // 배너 등록 페이지
-  const [bannerImage, setBannerImage] = useState<any>([]);
+  const [bannerImage, setBannerImage] = useState([]);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -38,12 +45,6 @@ function Crousel({ session, auth }: Props) {
       }
     },[] // eslint-disable-line react-hooks/exhaustive-deps
   );
-
-  useEffect(() => {
-    var newRes = [...data];
-    newRes.sort((a: any, b: any) => a.orders - b.orders);
-    setBannerImage(newRes);
-  }, [data]);
 
   return (
     <>

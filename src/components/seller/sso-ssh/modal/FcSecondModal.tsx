@@ -100,7 +100,7 @@ function OrderModal({
                             <div 
                               className='sfc-second-modal-content-group'
                               onClick={()=>{
-                                for (var i = data.groupNumber; i < getData.groupsList.length-1; i++) {
+                                for (let i = data.groupNumber; i < getData.groupsList.length-1; i++) {
                                   getData.groupsList[i] = getData.groupsList[i+1];
                                   getData.groupsList[i].groupNumber = i;
                                 }

@@ -4,7 +4,19 @@ import LinkClick from 'src/utils/LinkClick';
 import mypageLinkClick from 'src/utils/mypageLinkClick';
 import '../../styles/mypage/Profile.scss';
 
-function Profile (session: any, auth: any,){
+interface Props {
+    session: boolean;
+    auth: {
+        accountId: number,
+        address: string,
+        dateOfBirth: string,
+        email: string,
+        nickname: string,
+        phoneNumber: string,
+    };
+}
+
+function Profile ({session, auth,}:Props){
     const [failModalText, setFailModalText] = useState("수정 정보가 일치하지 않습니다.");
     const [failModal, setFailModal] = useState(false);
 
@@ -25,7 +37,7 @@ function Profile (session: any, auth: any,){
     const [nicknameFail, setNicknameFail] = useState(true);
     const [phoneFail, setPhoneFail] = useState(true);
   
-    const handleEmail = (e: any,) => {
+    const handleEmail = (e: React.ChangeEvent<HTMLInputElement>,) => {
         const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
         setEmail(e.target.value);
         if (e.target.value.length >= 3 && e.target.value.length <= 20 && emailRegex.test(e.target.value))
@@ -33,21 +45,21 @@ function Profile (session: any, auth: any,){
         else
             setEmailFail(true)
     };
-    const handlePastPw = (e: any,) => {
+    const handlePastPw = (e: React.ChangeEvent<HTMLInputElement>,) => {
         setPastPw(e.target.value);
         if (e.target.value.length >= 8)
             setPastPwFail(false)
         else
             setPastPwFail(true)
     };
-    const handleNewPw = (e: any,) => {
+    const handleNewPw = (e: React.ChangeEvent<HTMLInputElement>,) => {
         setNewPw(e.target.value);
         if (e.target.value.length >= 8)
             setNewPwFail(false)
         else
             setNewPwFail(true)
       };
-    const handleCheckPw = (e: any,) => {
+    const handleCheckPw = (e: React.ChangeEvent<HTMLInputElement>,) => {
         setCheckPw(e.target.value);
         if (e.target.value === checkPw)
             setCheckPwFail(false)
@@ -55,7 +67,7 @@ function Profile (session: any, auth: any,){
             setCheckPwFail(true)
     };
   
-    const handleNickname = (e: any,) => {
+    const handleNickname = (e: React.ChangeEvent<HTMLInputElement>,) => {
         const nekRegex = /[^a-z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
         setNickname(e.target.value);
         if (e.target.value.length >= 3 && e.target.value.length <= 20 && !nekRegex.test(e.target.value))
@@ -63,10 +75,10 @@ function Profile (session: any, auth: any,){
         else
             setNicknameFail(true)
     };
-    const handleAddress = (e: any,) => {
+    const handleAddress = (e: React.ChangeEvent<HTMLInputElement>,) => {
         setAddress(e.target.value);
     };
-    const handlePhone = (e: any) => {
+    const handlePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPhone(e.target.value.replace("-", ""));
         if (e.target.value.length !== 0)
             setPhoneFail(false)

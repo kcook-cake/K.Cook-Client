@@ -10,7 +10,19 @@ import StoreMenu from './StoreMenu';
 import LinkClick from 'src/utils/LinkClick';
 import PopularMenu from './PopularMenu';
 
-function Home(session: any, auth: any) {
+interface Props {
+  session: boolean,
+  auth: {
+      accountId: number,
+      address: string,
+      dateOfBirth: string,
+      email: string,
+      nickname: string,
+      phoneNumber: string,
+  }
+}
+
+function Home({session, auth}: Props) {
   useEffect(() => {
     LinkClick('Home');
   }, []);

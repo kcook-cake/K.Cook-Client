@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 interface LocationProps {
-    getData: any,
-    setLocationIndexF: any,
+    getData: {
+        locationId: number, 
+        locationName: string,
+    }[],
+    setLocationIndexF: Function,
 }
 
 function Location({ getData, setLocationIndexF }: LocationProps) { 
@@ -15,7 +18,7 @@ function Location({ getData, setLocationIndexF }: LocationProps) {
             <option disabled selected>
             시/군 선택
             </option>
-            {getData.map((data: { locationId: any, locationName: any })=>{
+            {getData.map((data: { locationId: number, locationName: string })=>{
                 return (
                     <option
                         value={data.locationId}

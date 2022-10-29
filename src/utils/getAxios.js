@@ -3,8 +3,8 @@ import axios from "axios";
 import $ from "jquery";
 
 const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
-  var listLink = "";
-  for (var i = 0; i < list.length; i++) listLink += "/" + list[i];
+  let listLink = "";
+  for (let i = 0; i < list.length; i++) listLink += "/" + list[i];
 
   axios
     .get(`/app/` + link + listLink)
@@ -12,16 +12,16 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
       const data = res.data.result.content;
       fnPage(data.length);
 
-      var num1 = page * num + pageAdd;
-      var num2 = data.length;
-      var num3 = (page + 1) * num + pageAdd;
+      let num1 = page * num + pageAdd;
+      let num2 = data.length;
+      let num3 = (page + 1) * num + pageAdd;
       if (num2 > num3) num2 = num3;
 
-      var changeData = [];
-      for (var i = num1; i < num2; i++) {
+      let changeData = [];
+      for (let i = num1; i < num2; i++) {
         changeData[i] = res.data.result.content[i];
       }
-      for (var i = num2; i < num3; i++) {
+      for (let i = num2; i < num3; i++) {
         changeData[i] = {
           image: null,
           isCake: true,
@@ -40,8 +40,8 @@ const getAxios = (fn, fnPage, link, list, num, page, pageAdd) => {
     })
     .catch((error) => {
       fnPage((page + 1) * num + pageAdd);
-      var changeData = [];
-      for (var i = 0; i < (page + 1) * num + pageAdd; i++) {
+      let changeData = [];
+      for (let i = 0; i < (page + 1) * num + pageAdd; i++) {
         changeData[i] = {
           image: null,
           isCake: true,

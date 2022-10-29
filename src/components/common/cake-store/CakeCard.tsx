@@ -22,7 +22,7 @@ interface Props {
 function CakeCard({ getData, }: Props) {
   // 상품 인기순 조회 API
 
-  const [popularProductData, setPopularProductData] = useState<any[]>([]);
+  const [popularProductData, setPopularProductData] = useState([]);
 
   return (
     <>
@@ -37,7 +37,7 @@ function CakeCard({ getData, }: Props) {
             price: number,
             reviewCount: number,
           },
-          idx: any,
+          idx: number,
         ) => {
           return (
             <Link key={idx} to={'/Cake/'+data.cakeId}>

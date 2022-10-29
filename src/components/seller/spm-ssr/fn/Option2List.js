@@ -18,14 +18,14 @@ const Option2List = (getData) => {
         "초": "CANDLE",
     };
 
-    var chList = [];
+    let chList = [];
 
-    for (var i=0; i<getData.length; i++) {
-        var c = getData[i].optionName;
+    for (let i=0; i<getData.length; i++) {
+        let c = getData[i].optionName;
         if (category[c] === undefined) c = "ETC";
         else c = category[c];
 
-        for (var j=0; j<getData[i].itemList.length; j++) {
+        for (let j=0; j<getData[i].itemList.length; j++) {
             chList.push({
                 additionalCost: getData[i].itemList[j].itemPrice,
                 category: c,

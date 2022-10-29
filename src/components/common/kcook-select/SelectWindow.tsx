@@ -11,9 +11,10 @@ interface Props {
   NumF: Function,
 
   selectAll: String[],
-  selectWindow: any[][],
+  selectWindow: any,
+//   selectWindow: (boolean | string | number)[][],
 
-  selectData: any[][],
+  selectData: string[][],
 
   setSelectMobileTF: Function,
 
@@ -32,7 +33,7 @@ export default function SelectWindow({
 
     //선택지창
     const SelectF = (n: number, str: string, length: number) => {
-        for (var i=0; i<selectAll.length; i++)
+        for (let i=0; i<selectAll.length; i++)
             if (selectAll[i] === str) {
                 selectWindow[n-1] = [false, str, 14*length];
                 NumF();
@@ -47,13 +48,13 @@ export default function SelectWindow({
 
     //선택지바
     const SelectBarF = (str: string) => {
-        for (var i = 0; i < selectAll.length; i++) {
+        for (let i = 0; i < selectAll.length; i++) {
         if (selectAll[i] === str) return false;
         }
         return true;
     };
 
-    const LocationF = (i: any, ) => {
+    const LocationF = (i: number, ) => {
         axios
             .get(`/app/locations/`+i)
             .then(res =>{
@@ -61,7 +62,7 @@ export default function SelectWindow({
                 NumF();
             });
     };
-    const SubwayF = (str: any, ) => {
+    const SubwayF = (str: string, ) => {
         if (str === "인천1호선") str = "인천선";
             
         if (str === "수인선") {
@@ -75,7 +76,7 @@ export default function SelectWindow({
             axios
                 .get(`http://openapi.seoul.go.kr:8088/466d5944556364703834526c75516a/json/SearchSTNBySubwayLineInfo/1/99/ / /`+str)
                 .then(res =>{
-                    for (var i=0; i<res.data.SearchSTNBySubwayLineInfo.row.length; i++)
+                    for (let i=0; i<res.data.SearchSTNBySubwayLineInfo.row.length; i++)
                         selectData[3][i] = res.data.SearchSTNBySubwayLineInfo.row[i].STATION_NM;
                 });
         }
@@ -115,20 +116,20 @@ export default function SelectWindow({
                     className="cake-select-ul"
                     style={{ height: selectData[0].length>5? 52.2*5 : (52.2)*selectData[0].length, }}> 
                     <ul>
-                        {selectData[0].map((data: { cityId: any, cityName: any, }, idx: any, )=>{
+                        {selectData[0].map((data: string, idx: number, )=>{
                             return (
                                 <li
                                     key={idx}
                                     className="cake-select-li"
                                     onClick={()=>{
-                                        SelectF(2, data.cityName, data.cityName.length);
+                                        SelectF(2, data, data.length);
                                         if(!cakestoreTF) {
-                                            setCitySubway(data.cityName);
+                                            setCitySubway(data);
                                             selectWindow[2] = [false, "시/군", 8];
-                                            LocationF(data.cityId);
+                                            LocationF(data.length);
                                         };
                                     }}>
-                                    {data.cityName}
+                                    {data}
                                 </li>
                             )
                             })
@@ -164,7 +165,7 @@ export default function SelectWindow({
                             <ul>
                                 {cakestoreTF?
                                     <>
-                                        {selectData[1].map((data: any, idx: any, )=>{
+                                        {selectData[1].map((data: string, idx: number, )=>{
                                             return (
                                                 <li
                                                     key={idx}
@@ -177,13 +178,13 @@ export default function SelectWindow({
                                         }
                                     </>:
                                     <>
-                                        {selectData[1].map((data: { locationId: any, locationName: any, }, idx: any, )=>{
+                                        {selectData[1].map((data: string, idx: number, )=>{
                                             return (
                                                 <li
                                                     key={idx}
                                                     className="cake-select-li"
-                                                    onClick={()=>{SelectF(3, data.locationName, data.locationName.length); }}>
-                                                    {data.locationName}
+                                                    onClick={()=>{SelectF(3, data, data.length); }}>
+                                                    {data}
                                                 </li>
                                             )
                                             })
@@ -220,7 +221,7 @@ export default function SelectWindow({
                     className="cake-select-ul"
                     style={{ height: selectData[2].length>5? 52.2*5 : (52.2)*selectData[2].length, }}>
                     <ul>
-                        {selectData[2].map((data: any, idx: any, )=>{
+                        {selectData[2].map((data: string, idx: number, )=>{
                             return (
                                 <li
                                     key={idx}
@@ -269,7 +270,7 @@ export default function SelectWindow({
                             className="cake-select-ul"
                             style={{ height: selectData[3].length>5? 52.2*5 : (52.2)*selectData[3].length, }}>
                             <ul>
-                                {selectData[3].map((data: any, idx: any, )=>{
+                                {selectData[3].map((data: string, idx: number, )=>{
                                     return (
                                         <li
                                             key={idx}

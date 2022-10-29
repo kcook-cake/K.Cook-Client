@@ -5,12 +5,12 @@ import "src/styles/common/kcook-select/SelectBox.scss";
 import selectAllow from "src/assets/selectArrow.png";
 
 interface Props {
-    cakestoreTF: any,
-    NumF: any,
+    cakestoreTF: boolean,
+    NumF: Function,
 
-    selectBox: any,
-    selectWindow: any,
-    setSelectAllF: any,
+    selectBox: boolean[],
+    selectWindow: (boolean | string | number) [][],
+    setSelectAllF: Function,
 }
 
 export default function SelectBox({ 

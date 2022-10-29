@@ -10,8 +10,15 @@ import Profile from '../../components/mypage/Profile';
 import MypageSection from '../../components/mypage/MypageSection';
 
 interface Props {
-    session: any,
-    auth: any,
+    session: boolean;
+    auth: {
+        accountId: number,
+        address: string,
+        dateOfBirth: string,
+        email: string,
+        nickname: string,
+        phoneNumber: string,
+    };
 }
 
 const Mypage = ({ session, auth, }: Props) =>{
@@ -23,7 +30,7 @@ const Mypage = ({ session, auth, }: Props) =>{
                     <Route exact path="/MypageOrder" component={MypageOrder} />
                     <Route exact path="/ProductReview" component={ProductReview} />
                     <Route exact path="/Coupon" component={Coupons} />
-                    <Route exact path="/Profile" component={()=>Profile(session, auth)} />
+                    <Route exact path="/Profile" component={()=>Profile({session, auth})} />
                 </>
             </div>
         </div>

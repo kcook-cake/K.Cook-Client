@@ -25,10 +25,10 @@ function CakeMenu() {
     //         const data = res.data.result;
 
     //         let changeData = [];
-    //         for (var i = 0; i < data.length; i++) {
+    //         for (let i = 0; i < data.length; i++) {
     //             changeData[i] = res.data.result[i];
     //         }
-    //         for (var i:number = data.length; i < num; i++) {
+    //         for (let i:number = data.length; i < num; i++) {
     //             changeData[i] = {
     //                 image: null,
     //                 name: "~준비중 입니다~",
@@ -42,7 +42,7 @@ function CakeMenu() {
     //   })
     //   .catch((err) => {
     //     let changeData = [];
-    //     for (var i = 0; i < num; i++) {
+    //     for (let i = 0; i < num; i++) {
     //       changeData[i] = {
     //         image: null,
     //         name: "~준비중 입니다~",

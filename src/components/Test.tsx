@@ -145,7 +145,7 @@ function Test({ }: Props) {
                     </div>
                     <div className="test-inner">
                         <ul className="contents">
-                            {data.map((data: { name: any, }, idx)=>{
+                            {data.map((data: { name: string, }, idx)=>{
                                 return (
                                     <>
                                         <li

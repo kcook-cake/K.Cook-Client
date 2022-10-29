@@ -6,7 +6,9 @@ import 'src/styles/main/CakeStore.scss';
 interface Props {
     page: number,
     setPageF: Function,
-    length: any[],
+    length: {
+        num: number,
+    }[],
     pageChangeF: Function,
 }
 

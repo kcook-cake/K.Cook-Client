@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import 'src/styles/footer/Footer.scss';
 
 interface FooterProps {
-    setNumLeftMobileF: any,
+    setNumLeftMobileF: Function,
     email : string,
     tel : string,
     address : string 

@@ -27,7 +27,7 @@ function DeadLineModal({
     deadLineModal,
     setDeadLineModalF,
 }: Props) {
-    var weekText = ['월', '화', '수', '목', '금', '토', '일'];
+    let weekText = ['월', '화', '수', '목', '금', '토', '일'];
     const [week, setWeek] = useState<number[]>(SSO_Deadline_TestData());
 
     const handleWeek = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {

@@ -6,9 +6,9 @@ import X from 'src/assets/x.svg';
 
 interface Props {
   NumF: Function;
-  selectAll: any[];
-  selectWindow: any[][];
-  selectDataOne: String[][];
+  selectAll: string[];
+  selectWindow: (boolean | string | number) [][];
+  selectDataOne: string[][];
   searchChangeF: Function;
 }
 
@@ -33,7 +33,7 @@ export default function SelectWindowOne({
           style={{ marginLeft: (1050)+'px' }}>
           <div className="cake-select-top"></div>
           <ul className="cake-select-ul">
-            {selectDataOne[0].map((data: any, idx: any) => {
+            {selectDataOne[0].map((data: string, idx: number) => {
               return (
                 <li
                   key={idx}

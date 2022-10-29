@@ -19,7 +19,7 @@ function MypageOrder (){
         mypageLinkClick("MypageOrder");
 
         data = MMO_TestData();
-        for (var i = 0; i < MMO_TestData().length; i++) {
+        for (let i = 0; i < MMO_TestData().length; i++) {
             data[i].optionsList = List2Option(MMO_TestData()[i].optionsList);
         }
         setData(data);

@@ -7,7 +7,7 @@ const Cake_Detail_Static_TestData = () => {
         price: 25000, 
         likes: 10,
         likeStatus: true,
-        todayCake: true,
+        todayCake: false,
         image1: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
         image2: "",
         image3: "",

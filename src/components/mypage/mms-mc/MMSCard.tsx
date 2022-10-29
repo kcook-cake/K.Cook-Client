@@ -5,13 +5,37 @@ import rightArrow from "../../../../assets/right-arrow.svg";
 import cake6 from   '../../../../assets/cake6.png';
 
 interface Props {
-    getData: any
+    getData: {
+        productId: number;
+        name: string;
+        storeName: string;
+        price: number;
+        raiting: number;
+        image: string;
+        status: string;
+        isCake: string;
+        resultPrice: number;
+        salePrice: number;
+        reviewCount: number;
+    }[],
 }
 
 function MMSCard({getData}: Props) {
     return (
         <>
-            {getData.map((data: { productId: any, name: any, storeName: any, price: any, raiting: any, image: any, status: any, isCake: any, resultPrice: any, salePrice: any, reviewCount: any, })=>{
+            {getData.map((data: { 
+                productId: number;
+                name: string;
+                storeName: string;
+                price: number;
+                raiting: number;
+                image: string;
+                status: string;
+                isCake: string;
+                resultPrice: number;
+                salePrice: number;
+                reviewCount: number;
+            })=>{
                 return (
                     <>
                     <div className="mms-table-all mms-table-card">

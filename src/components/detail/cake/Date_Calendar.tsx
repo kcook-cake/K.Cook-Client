@@ -8,7 +8,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 interface Props {
-    date: any,
+    date: string,
     setDateF: Function,
     deadline: number[],
     ChangeGroupF: Function,

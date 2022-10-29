@@ -31,7 +31,7 @@ function Store() {
     console.log(selectWindow[0][1]); 
     console.log(selectAll);
   };
-  const SearchChangeF = (s: any[]) => {
+  const SearchChangeF = (s: string[]) => {
     console.log(1); setPage(1);
     console.log(selectWindow[0][1]);
     console.log(s);
@@ -77,8 +77,8 @@ function Store() {
 
     // storeGetAxios(setData, setPageLength, 'stores/account/auth', 1, 9);
     let isComponentMounted = true;
-    var len = [];
-    for (var i=0; i<Stores_TestData().storesAll/9; i++)
+    let len = [];
+    for (let i=0; i<Stores_TestData().storesAll/9; i++)
         len[i] = { num: i+1 }
     setPageLength(len);
     setData(Stores_TestData().storesList);
@@ -95,11 +95,11 @@ function Store() {
     //         if (isComponentMounted) {
     //           const data = res.data.result.content;
 
-    //           var changeData = [];
-    //           for (var i = 0; i < data.length; i++) {
+    //           let changeData = [];
+    //           for (let i = 0; i < data.length; i++) {
     //               changeData[i] = res.data.result.content[i];
     //           }
-    //           for (var i:number = data.length; i < num; i++) {
+    //           for (let i:number = data.length; i < num; i++) {
     //               changeData[i] = {
     //                   image: null,
     //                   accountName: "~준비중 입니다~",
@@ -111,8 +111,8 @@ function Store() {
     //                   storeId: 0
     //               };
     //           }
-    //           var len = [];
-    //           for (var i=0; i<data.length/9; i++)
+    //           let len = [];
+    //           for (let i=0; i<data.length/9; i++)
     //               len[i] = { num: i+1 }
     //           setPageLength(len);
     //           setData(changeData);
@@ -120,8 +120,8 @@ function Store() {
     //     }
     //   })
     //   .catch((err) => {
-    //     var changeData = [];
-    //     for (var i = 0; i < num; i++) {
+    //     let changeData = [];
+    //     for (let i = 0; i < num; i++) {
     //         changeData[i] = {
     //             image: null,
     //             accountName: "~준비중 입니다~",

@@ -31,7 +31,7 @@ const PrevArrow = (props: any) => {
 };
 
 export default function BannerSlider({ auth, getData }: Props) {
-  var settings = {
+  let settings = {
     dots: true, // 밑에 점
     infinite: true, // 콘텐츠 끝까지 갔을때 처음 콘텐츠를 가져와 반복
     autoplay: true,
