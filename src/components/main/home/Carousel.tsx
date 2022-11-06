@@ -25,7 +25,7 @@ function Crousel({ session, auth }: Props) {
 
   useEffect(() => {
       let isComponentMounted = true;
-      setData(Banner_Slide_TestData());
+      setBannerImage(Banner_Slide_TestData());
       // axios({
       //     url: '/app/banner/carousel',
       //     method: 'GET',

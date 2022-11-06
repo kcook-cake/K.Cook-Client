@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Cakes_TestData = () => {
     return ({
-        cakesAll: 20,
+        cakesAll: 320,
         cakesList: [
             {
                 cakeId: 0,

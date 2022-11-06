@@ -4,6 +4,7 @@ import $ from 'jquery';
 import 'src/styles/detail/StoreDetail.scss';
 
 import test2 from 'src/assets/test2.png';
+import imageSrc from 'src/assets/detail/store/cub.jpg';
 // import cake6 from 'src/assets/cake6.png';
 import profileNone from 'src/assets/detail/store/profile.png';
 import timeImg from 'src/assets/detail/store/time.png';
@@ -25,12 +26,12 @@ import Slide from 'src/components/detail/store/Slide';
 
 // const { kakao } = window;
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-  //  const kakao: any;
-}
+// declare global {
+//   interface Window {
+//     kakao: any;
+//   }
+//   //  const kakao: any;
+// }
 
 const StoreDetail = (auth: any) => {
   const [num, setNum] = useState(1);
@@ -145,9 +146,6 @@ const StoreDetail = (auth: any) => {
     //     setData(changeData);
     //     console.log(err);
     //   });
-    return () => {
-      isComponentMounted = false;
-    }
 
 
     // let container = document.getElementById('map');
@@ -156,8 +154,8 @@ const StoreDetail = (auth: any) => {
     //   level: 3,
     // };
     // let map = new kakao.maps.Map(container, options);
-    // let imageSrc =
-    //   'http://amind.co.kr/data/file/figure/thumb-1931437945_a3ksBhWI_EC9B90_200x200.jpg'; // 마커이미지의 주소입니다
+    // // let imageSrc =
+    // //   'https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg'; // 마커이미지의 주소입니다
 
     // // axios.get으로 얻은 가게의 이름을 여기에 담기.
     // let names = '유니아케이크';
@@ -188,6 +186,10 @@ const StoreDetail = (auth: any) => {
 
     // // 커스텀 오버레이를 지도에 표시합니다
     // customOverlay.setMap(map);
+
+    return () => {
+      isComponentMounted = false;
+    }
   }, []);
 
   return (
@@ -257,7 +259,7 @@ const StoreDetail = (auth: any) => {
           </div>
           <div className="store-detail-ad">
             <img
-              src={test2}
+              src={'https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg'}
               alt="store-detail-ad"
             />
           </div>

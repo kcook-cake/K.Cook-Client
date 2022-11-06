@@ -23,6 +23,14 @@ interface PropsAuth {
     phoneNumber: string,
 }
 
+interface Props {
+    todayTitle: string,
+    todayDescribe: string,
+    title: string,
+    describe: string,
+    borderColor: string,
+}
+
 function SSH_FullCalendar (session: boolean, auth: PropsAuth,){
     const [num, setNum] = useState(0);
 
@@ -69,7 +77,7 @@ function SSH_FullCalendar (session: boolean, auth: PropsAuth,){
         LinkClick("SalesHistory");
         sellerLinkClick("SalesHistory");
 
-        SSH_FcDataChange ((seller: Props)=>{
+        SSH_FcDataChange ((seller: Props[])=>{
             setEvents(seller);
         }, SSH_Fc_TestData()); // get /api/store/past_calendar?storeId=0
 

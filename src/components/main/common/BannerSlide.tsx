@@ -56,14 +56,12 @@ export default function BannerSlider({ auth, getData }: Props) {
       <Slider {...settings} className="main-crousel">
         {getData.map((data: { webImageUrl: string, mobileImageUrl: string, link: string, }, idx: number) => {
           return (
-            <div key={idx}>
-                <Link to={data.link}>
-                  <img
-                    src={data.webImageUrl}
-                    alt={'profile'}
-                  />
-                </Link>
-            </div>
+            <Link to={data.link} key={idx}>
+              <img
+                src={data.webImageUrl}
+                alt={'profile'}
+              />
+            </Link>
           );
         })}
       </Slider>

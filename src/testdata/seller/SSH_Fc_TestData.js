@@ -4,7 +4,7 @@ const SSH_Fc_TestData = () => {
     // get /api/store/past_calendar?storeId=0
     return ([
         {
-            date: '2022-10-05', //필수
+            date: '2022-11-04', //필수
             todayTitle: 0, //필수
             todayDescribe: 10,
             title: 0, //필수
@@ -12,7 +12,7 @@ const SSH_Fc_TestData = () => {
             allPrice: 0, //필수
         },
         {
-            date: '2022-10-04',
+            date: '2022-11-03',
             todayTitle: 0,
             todayDescribe: 0,
             title: 0,
@@ -20,7 +20,7 @@ const SSH_Fc_TestData = () => {
             allPrice: 0, 
         },
         {
-            date: '2022-10-03',
+            date: '2022-11-02',
             todayTitle: 0,
             todayDescribe: 0,
             title: 2,
@@ -28,7 +28,7 @@ const SSH_Fc_TestData = () => {
             allPrice: 1000, 
         },
         {
-            date: '2022-10-02',
+            date: '2022-11-01',
             todayTitle: 0,
             todayDescribe: 0,
             title: 0,
@@ -36,7 +36,7 @@ const SSH_Fc_TestData = () => {
             allPrice: 0, 
         },
         {
-            date: '2022-10-01',
+            date: '2022-10-31',
             todayTitle: 0,
             todayDescribe: 0,
             title: 0,

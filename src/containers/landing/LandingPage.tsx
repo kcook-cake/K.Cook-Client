@@ -64,7 +64,7 @@ function LandingPage() {
   const [seconds, setSeconds] = useState(0);
   // 디데이
   const getdDay = () => {
-    const setDate = new Date("2022-10-23T00:00:00+0900");
+    const setDate = new Date("2022-12-31T00:00:00+0900");
     const setDateYear = setDate.getFullYear();
     const setDateMonth = setDate.getMonth() + 1;
     const setDateDay = setDate.getDate();

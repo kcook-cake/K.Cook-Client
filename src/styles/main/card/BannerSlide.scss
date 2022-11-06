@@ -68,9 +68,8 @@
   clear: both;
 }
 .main-crousel .slick-loading .slick-track {
-  visibility: hidden;
+  // visibility: hidden;
 }
-
 .main-crousel .slick-slide {
   float: left;
 
@@ -84,7 +83,7 @@
   display: block;
 }
 .main-crousel .slick-slide.slick-loading img {
-  display: none;
+  // display: none;
 }
 .main-crousel .slick-slide.dragging img {
   pointer-events: none;
@@ -103,7 +102,7 @@
   border: 1px solid transparent;
 }
 .main-crousel .slick-arrow.slick-hidden {
-  display: none;
+  // display: none;
 }
 
 /* dots css 추가 */
@@ -213,7 +212,6 @@
   height: 80px;
   opacity: 0.5;
   color: white;
-
   //  display: none;
 }
 

@@ -27,42 +27,45 @@ import SellerReview from './seller/SellerReview';
 import SellerStore from 'src/components/seller/sss/SellerStore';
 
 
-interface PropsAuth {
-  accountId: number,
-  address: string,
-  dateOfBirth: string,
-  email: string,
-  nickname: string,
-  phoneNumber: string,
+interface Props {
+  session: boolean,
+  auth: {
+      accountId: number,
+      address: string,
+      dateOfBirth: string,
+      email: string,
+      nickname: string,
+      phoneNumber: string,
+  },
 }
 
 
-const Pages = () => {
+const Pages = ({ session, auth }: Props) => {
   // 로그인확인
-  const [session, setSession] = useState(false);
-  const [auth, setAuth] = useState<PropsAuth>({
-      accountId: 0,
-      address: '',
-      dateOfBirth: '',
-      email: '',
-      nickname: '',
-      phoneNumber: '',
-  });
+  // const [session, setSession] = useState(false);
+  // const [auth, setAuth] = useState<PropsAuth>({
+  //     accountId: 0,
+  //     address: '',
+  //     dateOfBirth: '',
+  //     email: '',
+  //     nickname: '',
+  //     phoneNumber: '',
+  // });
 
-  let jwToken: string = undefined;
-  if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
-  else jwToken = sessionStorage.jwToken;
-  useEffect(() => {
-      isSession(
-      jwToken,
-      (s: boolean) => {
-          if (s) setSession(s);
-      },
-      (a: PropsAuth) => {
-          setAuth(a);
-      }
-      );
-  }, [jwToken]);
+  // let jwToken: string = undefined;
+  // if (sessionStorage.jwToken === undefined) jwToken = localStorage.jwToken;
+  // else jwToken = sessionStorage.jwToken;
+  // useEffect(() => {
+  //     isSession(
+  //     jwToken,
+  //     (s: boolean) => {
+  //         if (s) setSession(s);
+  //     },
+  //     (a: PropsAuth) => {
+  //         setAuth(a);
+  //     }
+  //     );
+  // }, [jwToken]);
 
   const [numLeftMobile, setNumLeftMobile] = useState(1);
   useEffect(() => {
