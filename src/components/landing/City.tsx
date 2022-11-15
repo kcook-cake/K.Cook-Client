@@ -19,7 +19,7 @@ function City({ getData, LocationAxiosF }: CityProps) {
             className="dropdown-bar-do"
             onChange={(e)=>{LocationAxiosF(e.target.value)}}
         >
-            <option disabled selected>
+            <option disabled>
                 지역 선택
             </option>
             {getData.map((data: { cityId: number, cityName: string })=>{

@@ -15,6 +15,7 @@ import { ReactComponent as Cube } from '../../assets/seller/cube.svg';
 import { ReactComponent as SpeechBubble } from '../../assets/mypage/speech-bubble.svg';
 import { ReactComponent as SettingIcon } from '../../assets/seller/setting.svg';
 import { ReactComponent as Question } from '../../assets/seller/question.svg';
+import kcook from 'src/utils/kcook';
 
 function SellerSection (){
     useEffect(()=>{
@@ -31,7 +32,7 @@ function SellerSection (){
                 <div className="ss-menu-flex">
                     <div className="ss-menu" >
                         <Link
-                            to="/SSOCalendar"
+                            to={kcook() + "/SSOCalendar"}
                             className="ss-link SellerOrder">
                             <Menu className="icon"/>
                             <span>주문확인 </span>
@@ -39,7 +40,7 @@ function SellerSection (){
                     </div>
                     <div className="ss-menu" >
                         <Link
-                            to="/SSHCalendar"
+                            to={kcook() + "/SSHCalendar"}
                             className="ss-link SalesHistory">
                             <Coin className="icon"/>
                             <span>판매내역 </span>
@@ -47,7 +48,7 @@ function SellerSection (){
                     </div>
                     <div className="ss-menu" >
                         <Link
-                           to="/ProductManagement"
+                           to={kcook() + "/ProductManagement"}
                            className="ss-link ProductManagement">
                             <Cube className="icon"/>
                             <span>상품관리 </span>
@@ -55,7 +56,7 @@ function SellerSection (){
                     </div>
                     <div className="ss-menu" >
                         <Link
-                            to="/SellerReview"
+                            to={kcook() + "/SellerReview"}
                             className="ss-link SellerReview">
                             <SpeechBubble className="icon"/>
                             <span>상품후기 </span>
@@ -63,7 +64,7 @@ function SellerSection (){
                     </div>
                     <div className="ss-menu" >
                         <Link
-                            to="/SellerStore"
+                            to={kcook() + "/SellerStore"}
                             className="ss-link SellerStore">
                             <SettingIcon className="icon"/>
                             <span>스토어 정보</span>

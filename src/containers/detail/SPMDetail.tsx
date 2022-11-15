@@ -14,6 +14,7 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import SelectWindow from 'src/components/common/kcook-select/SelectWindow';
 import SelectBar from 'src/components/common/kcook-select/SelectBar';
 import SelectBox from 'src/components/common/kcook-select/SelectBox';
+import kcook from 'src/utils/kcook';
 
 const SPMDetail = () => {
   const [num, setNum] = useState(0);
@@ -272,7 +273,7 @@ const SPMDetail = () => {
               style={{ marginTop: '16px' }}
             >
               <button className="spmdetail-content-btn">등록</button>
-              <Link to="/ProductManagement">
+              <Link to={kcook() + "/ProductManagement"}>
                 <button className="spmdetail-content-btn spmdetail-content-btn-left">
                   취소
                 </button>

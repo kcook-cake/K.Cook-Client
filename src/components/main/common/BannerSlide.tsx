@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 import 'src/styles/main/card/BannerSlide.scss';
+import kcook from 'src/utils/kcook';
 
 interface Props {
   auth: boolean;
@@ -56,7 +57,7 @@ export default function BannerSlider({ auth, getData }: Props) {
       <Slider {...settings} className="main-crousel">
         {getData.map((data: { webImageUrl: string, mobileImageUrl: string, link: string, }, idx: number) => {
           return (
-            <Link to={data.link} key={idx}>
+            <Link to={kcook() + data.link} key={idx}>
               <img
                 src={data.webImageUrl}
                 alt={'profile'}

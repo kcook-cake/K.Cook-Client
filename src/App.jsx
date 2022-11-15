@@ -11,7 +11,7 @@ import Block from './containers/Block';
 import isSession from './utils/isSession';
 
 function App() {
-  const [session, setSession] = useState(true);
+  const [session, setSession] = useState(false);
   const [auth, setAuth] = useState({
       accountId: 0,
       address: '경기도 광명시 오리로994번길10, 파란대문집',
@@ -43,7 +43,7 @@ function App() {
       {/* <LandingPage/> */}
       {session?
         <Pages session={session} auth={auth} />:
-        <LandingPage/>
+        <LandingPage setSession={setSession} />
       }
       {/* <Pages/> */}
       {/* </PC>

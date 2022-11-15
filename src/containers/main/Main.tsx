@@ -5,6 +5,7 @@ import Home from './home/Home';
 import Cake from './Cake';
 import Store from './Store';
 import CustomerService from './CS';
+import kcook from 'src/utils/kcook';
 
 interface Props {
     session: boolean,
@@ -23,10 +24,10 @@ const Main = ({session, auth}: Props) =>{
     
     return(
         <>
-            <Route exact path="/" component={()=>Home({session, auth})} />
-            <Route exact path="/Cake" component={Cake} />
-            <Route exact path="/Store" component={Store} />
-            <Route exact path="/CS" component={CustomerService} />
+            <Route exact path={kcook() + "/"} component={()=>Home({session, auth})} />
+            <Route exact path={kcook() + "/Cake"} component={Cake} />
+            <Route exact path={kcook() + "/Store"} component={Store} />
+            <Route exact path={kcook() + "/CS"} component={CustomerService} />
         </>
     )
 }

@@ -14,6 +14,7 @@ import KCOOKScroll from 'src/utils/KCOOKScroll';
 import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
 import SSO_Fc_TestData from '../../testdata/seller/SSO_Fc_TestData';
 import SSO_FcDataChange from './SSO_FcDataChange';
+import kcook from 'src/utils/kcook';
 
 interface PropsAuth {
     accountId: number,
@@ -102,7 +103,7 @@ function SSO_FullCalendar (session: boolean, auth: PropsAuth,){
                 <div className="seller-mypage-front-title">주문확인</div>
                 <div className='ss-fc-link-flex'>
                     <Link
-                        to='/SellerOrder'
+                        to={kcook() + '/SellerOrder'}
                         className='pc ss-fc-link'
                         style={{ color: "#ea5450", }}>
                         달력보기
@@ -112,7 +113,7 @@ function SSO_FullCalendar (session: boolean, auth: PropsAuth,){
                         style={{ display: "inline-block"}}>|
                     </div>
                     <Link
-                        to='/SellerOrder'
+                        to={kcook() + '/SellerOrder'}
                         className='ss-fc-link ss-fc-link-right'>
                         목록보기
                     </Link>
@@ -141,7 +142,7 @@ function SSO_FullCalendar (session: boolean, auth: PropsAuth,){
                             <br/>
                             <div style={{ width: "5px", height: "20px", }}></div>
                             <div className="calendar-modal-box">
-                                <Link to={'/SellerOrder/'+dateT}>
+                                <Link to={kcook() + '/SellerOrder/'+dateT}>
                                     <button className="calendar-button">예약 내역 확인</button> 
                                 </Link>
                                 <button 

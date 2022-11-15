@@ -15,6 +15,7 @@ import { ReactComponent as CPicon } from '../../assets/coupon.svg';
 import { ReactComponent as SettingIcon } from '../../assets/seller/setting.svg';
 
 import { ReactComponent as Question } from '../../assets/seller/question.svg';
+import kcook from 'src/utils/kcook';
 
 
 function MypageSection (){
@@ -31,7 +32,7 @@ function MypageSection (){
                 <div className="ms-menu-flex">
                     <div className="ms-menu" >
                         <Link
-                            to="/MypageOrder"
+                            to={kcook() + "/MypageOrder"}
                             className="ms-link MypageOrder">
                             <Menu className="icon"/>
                             <span>주문내역</span>
@@ -39,7 +40,7 @@ function MypageSection (){
                     </div>
                     <div className="ms-menu" >
                         <Link
-                            to="/ProductReview"
+                            to={kcook() + "/ProductReview"}
                             className="ms-link ProductReview">
                             <SpeechBubble className="icon"/>
                             <span>상품후기</span>
@@ -47,7 +48,7 @@ function MypageSection (){
                     </div>
                     <div className="ms-menu" >
                         <Link
-                            to="/Coupon"
+                            to={kcook() + "/Coupon"}
                             className="ms-link Coupon">
                             <CPicon className="icon"/>
                             <span>쿠폰 </span>
@@ -55,7 +56,7 @@ function MypageSection (){
                     </div>
                     <div className="ms-menu" >
                         <Link
-                            to="/Profile"
+                            to={kcook() + "/Profile"}
                             className="ms-link Profile">
                             <SettingIcon className="icon"/>
                             <span>회원정보</span>

@@ -7,6 +7,7 @@ import star from 'src/utils/star';
 import { start } from 'repl';
 import axios from 'axios';
 import { render } from '@testing-library/react';
+import kcook from 'src/utils/kcook';
 
 interface Props {
   getData: {
@@ -40,7 +41,7 @@ function CakeCard({ getData, }: Props) {
           idx: number,
         ) => {
           return (
-            <Link key={idx} to={'/Cake/'+data.cakeId}>
+            <Link key={idx} to={kcook() + '/Cake/'+data.cakeId}>
               <div className="cakecard-flex">
                 <div className="cakecard">
                   <div className="cakecard-img">

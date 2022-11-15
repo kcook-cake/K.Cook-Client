@@ -5,6 +5,7 @@ import 'src/styles/common/cake-store/StoreCard.scss';
 import star from 'src/utils/star';
 
 import { start } from 'repl';
+import kcook from 'src/utils/kcook';
 
 
 interface Props {
@@ -28,7 +29,7 @@ function StoreCard({getData}: Props) {
                 address: string,
              }, idx: number)=>{
                 return (
-                    <Link key={idx} className="cake-store-card" to={"/Store/"+data.storeId}>
+                    <Link key={idx} className="cake-store-card" to={kcook() + "/Store/"+data.storeId}>
                         <div className="storecard-flex">
                             <div className="storecard">
                                 <div className="storecard-img">

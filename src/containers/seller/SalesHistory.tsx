@@ -11,6 +11,7 @@ import SSH_AddModal from 'src/components/seller/sso-ssh/modal/SSH_AddModal';
 import addIcon from 'src/assets/seller/spm-ssr/ssr-add.png';
 import SSH_TestData from 'src/testdata/seller/SSH_TestData';
 import List2Option from 'src/utils/List2Option';
+import kcook from 'src/utils/kcook';
 
 type userType = {
     [key: string]: Props[];
@@ -102,7 +103,7 @@ function SalesHistory (){
                         <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
                     <div className='ss-fc-link-flex'>
                         <Link
-                            to='/SSHCalendar'
+                            to={kcook() +'/SSHCalendar'}
                             className='ss-fc-link'>
                             달력보기
                         </Link>
@@ -111,7 +112,7 @@ function SalesHistory (){
                             style={{ display: "inline-block"}}>|
                         </div>
                         <Link
-                            to='/SalesHistory'
+                            to={kcook() + '/SalesHistory'}
                             className='pc ss-fc-link'
                             style={{ color: "#ea5450", }}>
                             목록보기

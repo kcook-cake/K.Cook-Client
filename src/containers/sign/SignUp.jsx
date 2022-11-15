@@ -13,6 +13,7 @@ import LoginCheckbox from "src/components/sign/LoginCheckbox";
 import logo from "src/assets/logo.png";
 import X from "src/assets/address_x.png"
 import LinkClick from "src/utils/LinkClick";
+import kcook from "src/utils/kcook";
 
 function SignUp() {
   const [failModalText, setFailModalText] = useState("회원가입 정보가 일치하지 않습니다.");
@@ -201,7 +202,7 @@ function SignUp() {
         })
         .then((res) => {
           // sessionStorage.setItem("jwToken", res.data.result.jwt);
-          document.location.href = "/";
+          document.location.href = kcook() + "/";
         })
         .catch((error) => {
           setFailModalText(error.response.data.message);

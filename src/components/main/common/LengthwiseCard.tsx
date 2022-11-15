@@ -5,6 +5,7 @@ import 'src/styles/main/card/LengthwiseCard.scss';
 import star from 'src/utils/star';
 
 import { start } from 'repl';
+import kcook from 'src/utils/kcook';
 
 
 interface Props {
@@ -41,7 +42,7 @@ function LengthwiseCard({getData, link}: Props) {
                 reviewCount: number, 
             }, idx: number)=>{
                 return (
-                    <Link key={idx} to={"/"+link+"/0"}>
+                    <Link key={idx} to={kcook() + "/"+link+"/0"}>
                         <div className="lengthwise-flex" key={data.productId}>
                             <div className="lengthwise">
                                 <div className="lengthwise-img-flex">

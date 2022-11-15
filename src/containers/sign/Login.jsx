@@ -9,6 +9,7 @@ import "src/styles/sign/Login.scss";
 
 import logo from "src/assets/logo.png";
 import LinkClick from "src/utils/LinkClick";
+import kcook from "src/utils/kcook";
 
 function Login() {
   const [signInId, setInputId] = useState("");
@@ -36,7 +37,7 @@ function Login() {
           localStorage.setItem("jwToken", res.data.result.jwt);
         else
           sessionStorage.setItem("jwToken", res.data.result.jwt);
-        document.location.href = "/";
+        document.location.href = kcook() + "/";
       })
       .catch((error) => {
         setFailModal(true);
@@ -97,7 +98,7 @@ function Login() {
             <label htmlFor="loginAuto"></label>
             <div className="login-auto-contents">자동 로그인</div>
           </div>
-          <Link to="/LoginFind">비밀번호찾기</Link>
+          <Link to={kcook() + "/LoginFind"}>비밀번호찾기</Link>
         </div>
 
         <div
@@ -112,7 +113,7 @@ function Login() {
 
         <button className="login-register">
           아직 계정이 없으신가요?
-          <Link to="/SignUp" style={{ marginLeft: "4px", }}>가입하기</Link>
+          <Link to={kcook() + "/SignUp"} style={{ marginLeft: "4px", }}>가입하기</Link>
           {failModal === true ? (
             <div className="login-iscorrect">
               로그인 정보가 일치하지 않습니다.

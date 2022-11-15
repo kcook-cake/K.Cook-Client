@@ -4,6 +4,7 @@ import 'src/styles/main/home/MainAd.scss';
 
 import { Link } from 'react-router-dom';
 import Banner_Static_TestData from 'src/testdata/main/Banner_Static_TestData';
+import kcook from 'src/utils/kcook';
 
 function MainAd() {
   const [data, setData] = useState({
@@ -39,7 +40,7 @@ function MainAd() {
     <div className="main-ad-flex">
       <div className="main-ad">
         <>
-          <Link to={data.link}>
+          <Link to={kcook() + data.link}>
             <img src={data.webImageUrl} alt="" />
           </Link>
         </>

@@ -5,6 +5,7 @@ import 'src/styles/main/card/LengthSlide.scss';
 import star from 'src/utils/star';
 
 import MakePrice from 'src/utils/MakePrice';
+import kcook from 'src/utils/kcook';
 
 interface Props {
   getData: {
@@ -35,7 +36,7 @@ function LengthSlide_One({ getData, resize, slidePx }: Props) {
           idx: number
         ) => {
           return (
-            <Link key={idx} to={'/Cake/' + data.productId}>
+            <Link key={idx} to={kcook() + '/Cake/' + data.productId}>
               <li
                 className="lengthslide-flex"
                 style={{

@@ -1,24 +1,24 @@
 const Banner_Slide_TestData = () => {
     return ([
         {
-            webImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            mobileImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            link: "",
+            webImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            mobileImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            link: "/",
         },
         {
-            webImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            mobileImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            link: "",
+            webImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            mobileImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            link: "/",
         },
         {
-            webImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            mobileImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            link: "",
+            webImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            mobileImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            link: "/",
         },
         {
-            webImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            mobileImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-            link: "",
+            webImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            mobileImageUrl: "http://m.creme-store.com/web/product/medium/202204/476409f3dca4d74f5b5a740e18217dad.jpg",
+            link: "/",
         },
     ]);
 }

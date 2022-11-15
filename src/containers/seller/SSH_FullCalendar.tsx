@@ -13,6 +13,7 @@ import DeadLineModal from 'src/components/seller/sso-ssh/modal/DeadLineModal';
 import SSH_Fc_TestData from 'src/testdata/seller/SSH_Fc_TestData';
 import SSH_FcDataChange from './SSH_FcDataChang';
 import MakePrice from 'src/utils/MakePrice';
+import kcook from 'src/utils/kcook';
 
 interface PropsAuth {
     accountId: number,
@@ -96,7 +97,7 @@ function SSH_FullCalendar (session: boolean, auth: PropsAuth,){
                 <div className="seller-mypage-front-title">판매내역</div>
                 <div className='ss-fc-link-flex'>
                     <Link
-                        to='/SalesHistory'
+                        to={kcook() + '/SalesHistory'}
                         className='pc ss-fc-link'
                         style={{ color: "#ea5450", }}>
                         달력보기
@@ -106,7 +107,7 @@ function SSH_FullCalendar (session: boolean, auth: PropsAuth,){
                         style={{ display: "inline-block"}}>|
                     </div>
                     <Link
-                        to='/SalesHistory'
+                        to={kcook() +'/SalesHistory'}
                         className='ss-fc-link ss-fc-link-right'>
                         목록보기
                     </Link>
@@ -129,7 +130,7 @@ function SSH_FullCalendar (session: boolean, auth: PropsAuth,){
                             <br/>
                             <div style={{ width: "5px", height: "20px", }}></div>
                             <div className="calendar-modal-box">
-                                <Link to={'/SalesHistory/'+dateT}>
+                                <Link to={kcook() + '/SalesHistory/'+dateT}>
                                     <button className="calendar-button">판매 내역 확인</button> 
                                 </Link>
                                 <button className="calendar-button">

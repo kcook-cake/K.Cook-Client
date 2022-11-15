@@ -6,6 +6,7 @@ import 'src/styles/main/card/SectionTitle.scss'
 import LinkClick from '../../../utils/LinkClick';
 
 import allow from '../../../assets/right-arrow.svg';
+import kcook from 'src/utils/kcook';
 
 interface Props {
     title : string,
@@ -19,14 +20,14 @@ function SectionTitle({ title, link }: Props) {
                 {title}
             </div>
             <Link
-                to={"/"+link}>
+                to={kcook() + "/"+link}>
                 <div className="mobile section-title">
                     {title}
                     <img src={allow} />
                 </div>
             </Link>
             <Link
-                to={"/"+link}
+                to={kcook() + "/"+link}
                 className="link">
                 더보기 &gt;
             </Link>

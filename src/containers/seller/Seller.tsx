@@ -13,6 +13,7 @@ import SellerStore from '../../components/seller/sss/SellerStore';
 import SPMDetail from '../detail/SPMDetail';
 import SSO_FullCalendar from './SSO_FullCalendar';
 import SSH_FullCalendar from './SSH_FullCalendar';
+import kcook from 'src/utils/kcook';
 
 interface Props {
     session: boolean,
@@ -35,16 +36,16 @@ const Seller = ({ session, auth, }: Props) =>{
             <div className="seller">
                 <>
                     <SellerSection/>
-                    <Route exact path="/SSOCalendar" component={()=>SSO_FullCalendar(session, auth)} />
-                    <Route exact path="/SSHCalendar" component={()=>SSH_FullCalendar (session, auth)} />
-                    <Route exact path="/SellerOrder" component={SellerOrder} />
-                    <Route exact path="/SellerOrder/:date" component={SellerOrder} />
-                    <Route exact path="/Saleshistory" component={SalesHistory}/>
-                    <Route exact path="/Saleshistory/:date" component={SalesHistory}/>
-                    <Route exact path="/ProductManagement" component={()=>ProductManagement(session, auth)}/>
-                    <Route exact path="/ProductManagement/:id" component={SPMDetail}/>
-                    <Route exact path="/SellerReview" component={SellerReview} />
-                    <Route exact path="/SellerStore" component={()=>SellerStore(session, auth)} />
+                    <Route exact path={kcook() + "/SSOCalendar"} component={()=>SSO_FullCalendar(session, auth)} />
+                    <Route exact path={kcook() + "/SSHCalendar"} component={()=>SSH_FullCalendar (session, auth)} />
+                    <Route exact path={kcook() + "/SellerOrder"} component={SellerOrder} />
+                    <Route exact path={kcook() + "/SellerOrder/:date"} component={SellerOrder} />
+                    <Route exact path={kcook() + "/Saleshistory"} component={SalesHistory}/>
+                    <Route exact path={kcook() + "/Saleshistory/:date"} component={SalesHistory}/>
+                    <Route exact path={kcook() + "/ProductManagement"} component={()=>ProductManagement(session, auth)}/>
+                    <Route exact path={kcook() + "/ProductManagement/:id"} component={SPMDetail}/>
+                    <Route exact path={kcook() + "/SellerReview"} component={SellerReview} />
+                    <Route exact path={kcook() + "/SellerStore"} component={()=>SellerStore(session, auth)} />
                 </> 
             </div>
         </div>

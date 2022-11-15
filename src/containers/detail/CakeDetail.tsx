@@ -28,6 +28,7 @@ import Group2List from 'src/components/detail/cake/Group2List';
 
 import Cake_Detail_Static_TestData from 'src/testdata/detail/Cake_Detail_Static_TestData';
 import Cake_Detail_Date_TestData from 'src/testdata/detail/Cake_Detail_Date_TestData';
+import kcook from 'src/utils/kcook';
 
 const CakeDetail = () =>{
     const [num, setNum] = useState(0);
@@ -254,7 +255,7 @@ const CakeDetail = () =>{
                                         "auto"
                             }}>
                             <div className='cake-detail-right-box'>
-                                <Link to={"/Store/"+cakeData.storeName}>
+                                <Link to={kcook() + "/Store/"+cakeData.storeName}>
                                     <div className='cake-detail-right-store'>
                                         {true?
                                             <img src={cake6} />:

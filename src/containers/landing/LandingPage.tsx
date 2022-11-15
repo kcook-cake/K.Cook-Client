@@ -14,7 +14,11 @@ import City from "src/components/landing/City";
 import Location from "src/components/landing/Locations";
 import dDayCount from "src/containers/landing/dDayCount";
 
-function LandingPage() {
+interface Props {
+  setSession: Function,
+}
+
+function LandingPage({ setSession, }: Props) {
   const [loginShow, setLoginShow] = useState(false);
   const [signInId, setInputId] = useState("");
   const [password, setInputPw] = useState("");
@@ -31,25 +35,26 @@ function LandingPage() {
   };
 
   const onClickLogin = () => {
-    axios
-      .post(`/app/sign-in`, {
-        password: password,
-        email: signInId,
-      })
-      .then((res) => {
-        if ($("#loginAuto").is(':checked')) 
-          localStorage.setItem("jwToken", res.data.result.jwt);
-        else
-          sessionStorage.setItem("jwToken", res.data.result.jwt);
-        document.location.href ="/";
-      })
-      .catch((error) => {
-        setFailModal(true);
-        setInputPw("");
-        setTimeout(() => {
-          setFailModal(false);
-        }, 5000);
-      });
+    if (signInId === "yeju1019" && password === "12345678") setSession(true);
+    // axios
+    //   .post(`/app/sign-in`, {
+    //     password: password,
+    //     email: signInId,
+    //   })
+    //   .then((res) => {
+    //     if ($("#loginAuto").is(':checked')) 
+    //       localStorage.setItem("jwToken", res.data.result.jwt);
+    //     else
+    //       sessionStorage.setItem("jwToken", res.data.result.jwt);
+    //     document.location.href ="/";
+    //   })
+    //   .catch((error) => {
+    //     setFailModal(true);
+    //     setInputPw("");
+    //     setTimeout(() => {
+    //       setFailModal(false);
+    //     }, 5000);
+    //   });
   };
 
   // 디데이
@@ -120,25 +125,25 @@ function LandingPage() {
     // }
 
     // 010-9965-2359
-    axios.post(`/app/applicants`,{
-      cityIndex: cityIndex,
-      locationIndex: locationIndex,
-      phoneNumber: phoneNumber,
-    }, )
-    .then(res =>{
-      setFailModalContext("신청이 완료되었습니다!");
-      setFailModal(true);
-      setTimeout(() => {
-        setFailModal(false);
-        document.location.href = "/";
-      }, 1300);
-    }).catch((error)=> {
-      setFailModalContext(error.response.data.message);
-      setFailModal(true);
-      setTimeout(() => {
-        setFailModal(false);
-      }, 5000);
-    });
+    // axios.post(`/app/applicants`,{
+    //   cityIndex: cityIndex,
+    //   locationIndex: locationIndex,
+    //   phoneNumber: phoneNumber,
+    // }, )
+    // .then(res =>{
+    //   setFailModalContext("신청이 완료되었습니다!");
+    //   setFailModal(true);
+    //   setTimeout(() => {
+    //     setFailModal(false);
+    //     document.location.href = "/";
+    //   }, 1300);
+    // }).catch((error)=> {
+    //   setFailModalContext(error.response.data.message);
+    //   setFailModal(true);
+    //   setTimeout(() => {
+    //     setFailModal(false);
+    //   }, 5000);
+    // });
   }
 
   const [city, setCity] = useState([]);
@@ -146,26 +151,26 @@ function LandingPage() {
   const [cityIndex, setCityIndex] = useState(0);
   const [locationIndex, setLocationIndex] = useState(0);
   const LocationAxios = (i: number) => {
-    setLocationIndex(0);
-    setCityIndex(i);
-    axios.get(`/app/locations/${i}`)
-    .then(res =>{
-      setLocation(res.data.result);
-    });
+    // setLocationIndex(0);
+    // setCityIndex(i);
+    // axios.get(`/app/locations/${i}`)
+    // .then(res =>{
+    //   setLocation(res.data.result);
+    // });
   }
   
   useEffect(()=>{
-    axios.get(`/app/cities`)
-    .then(res =>{
-      setCity(res.data.result);
-    });
-    LocationAxios(0);
+    // axios.get(`/app/cities`)
+    // .then(res =>{
+    //   setCity(res.data.result);
+    // });
+    // LocationAxios(0);
   },[]);
 
   const test = () => {
-    axios.get(`/app/applicants`)
-    .then(res =>{
-    });
+    // axios.get(`/app/applicants`)
+    // .then(res =>{
+    // });
   };
   
   return (
@@ -199,7 +204,8 @@ function LandingPage() {
             }>
             로그인
           </button>
-        </div> : <></>
+        </div> 
+        : <></>
       }
       <header className="landing-header">
         <img src={menuIcon} alt="menu" className="menu" 

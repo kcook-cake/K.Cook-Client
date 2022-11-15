@@ -9,6 +9,7 @@ import Xbutton from '../../assets/2477.svg';
 import logo from '../../assets/logo.png';
 import menu from '../../assets/menu.svg';
 import search from '../../assets/search.svg';
+import kcook from 'src/utils/kcook';
 
 function Header({ session, auth, setNumLeftMobileF }) {
 
@@ -29,7 +30,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
       <div className="header-top-flex">
         <div className="header-top">
           <div className="header-top-left">
-            <button className="hm-pc">
+            <button className="">
               <img
                 src={menu}
                 className="menu-icon"
@@ -40,7 +41,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             </button>
 
             <Link
-              to="/"
+              to={kcook() + "/"}
               onClick={() => {
                 setNumLeftMobileF(1);
                 $('.hm-pc-flex').show();
@@ -54,7 +55,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             </form>
 
             <Link
-              to="/"
+              to={kcook() + "/"}
               onClick={() => {
                 setNumLeftMobileF(1);
               }}
@@ -68,14 +69,14 @@ function Header({ session, auth, setNumLeftMobileF }) {
               (<>
                 <button>{auth.nickname}님 환영합니다</button>
                 <Link
-                  to="/SSOCalendar"
+                  to={kcook() + "/SSOCalendar"}
                   onClick={() => {
                     setNumLeftMobileF(3);
                   }}>
                   <button style={{ cursor: "pointer", }}>판매자로 전환</button>
                 </Link>
                 <Link
-                  to="/MypageOrder"
+                  to={kcook() + "/MypageOrder"}
                   onClick={() => {
                     setNumLeftMobileF(4);
                   }}
@@ -83,7 +84,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
                   <button style={{ cursor: "pointer", }}>마이페이지</button>
                 </Link>
                 <Link
-                  to="/SignOut"
+                  to={kcook() + "/SignOut"}
                   onClick={() => {
                     setNumLeftMobileF(1);
                   }}
@@ -108,7 +109,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             ) : (
               <>
                 <Link
-                  to="/SignUp"
+                  to={kcook() + "/SignUp"}
                   onClick={() => {
                     setNumLeftMobileF(1);
                   }}
@@ -116,7 +117,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
                   <button style={{ cursor: "pointer", }}>회원가입</button>
                 </Link>
                 <Link
-                  to="/Login"
+                  to={kcook() + "/Login"}
                   onClick={() => {
                     setNumLeftMobileF(1);
                   }}
@@ -132,7 +133,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
       <div className="hm-pc-flex">
         <div className="hm-pc">
           <Link
-            to="/"
+            to={kcook() + "/"}
             className="header-link Home"
             onClick={() => {
               setNumLeftMobileF(1);
@@ -141,7 +142,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             홈
           </Link>
           <Link
-            to="/Cake"
+            to={kcook() + "/Cake"}
             className="header-link Cake"
             onClick={() => {
               setNumLeftMobileF(1);
@@ -150,7 +151,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             케이크
           </Link>
           <Link
-            to="/Store"
+            to={kcook() + "/Store"}
             className="header-link Store"
             onClick={() => {
               setNumLeftMobileF(1);
@@ -159,7 +160,7 @@ function Header({ session, auth, setNumLeftMobileF }) {
             스토어
           </Link>
           <Link
-            to="/CS"
+            to={kcook() + "/CS"}
             className="header-link CS"
             onClick={() => {
               setNumLeftMobileF(1);

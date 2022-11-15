@@ -1,8 +1,8 @@
 const Banner_Static_TestData = () => {
     return ({
-        webImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-        mobileImageUrl: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-        link: "",
+        webImageUrl: "https://vrthumb.imagetoday.co.kr/2022/11/03/ta0125t000226.jpg",
+        mobileImageUrl: "https://vrthumb.imagetoday.co.kr/2022/11/03/ta0125t000226.jpg",
+        link: "/",
     });
 }
 

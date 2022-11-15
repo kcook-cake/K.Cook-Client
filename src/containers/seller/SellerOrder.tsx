@@ -9,6 +9,7 @@ import sellerLinkClick from 'src/utils/sellerLinkClick';
 import SSO_SSH_Card from 'src/components/seller/sso-ssh/SSO_SSH_Card';
 import SSO_TestData from 'src/testdata/seller/SSO_TestData';
 import List2Option from 'src/utils/List2Option';
+import kcook from 'src/utils/kcook';
 
 type userType = {
     [key: string]: Props[];
@@ -87,7 +88,7 @@ function SellerOrder (){
                         <div className="seller-mypage-middle-title">처리할 예약 주문입니다</div>
                         <div className='ss-fc-link-flex'>
                             <Link
-                                to='/SSOCalendar'
+                                to={kcook() + '/SSOCalendar'}
                                 className='ss-fc-link'>
                                 달력보기
                             </Link>
@@ -96,7 +97,7 @@ function SellerOrder (){
                                 style={{ display: "inline-block"}}>|
                             </div>
                             <Link
-                                to='/SellerOrder'
+                                to={kcook() + '/SellerOrder'}
                                 className='pc ss-fc-link'
                                 style={{ color: "#ea5450", }}>
                                 목록보기

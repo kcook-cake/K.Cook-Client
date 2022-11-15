@@ -259,7 +259,7 @@ const StoreDetail = (auth: any) => {
           </div>
           <div className="store-detail-ad">
             <img
-              src={'https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg'}
+              src={'https://vrthumb.imagetoday.co.kr/2022/11/03/ta0125t000226.jpg'}
               alt="store-detail-ad"
             />
           </div>

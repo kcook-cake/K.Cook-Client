@@ -8,6 +8,7 @@ import $ from 'jquery';
 
 import logo from "src/assets/logo.png";
 import LinkClick from "src/utils/LinkClick";
+import kcook from "src/utils/kcook";
 
 function LoginFind() {
     const [failModalText, setFailModalText] = useState("정보가 일치하지 않습니다.");
@@ -105,7 +106,7 @@ function LoginFind() {
                 })
                 .then((res) => {
                     if (res.data.isSuccess)
-                        document.location.href = "/Login";
+                        document.location.href = kcook() + "/Login";
                 })
                 .catch((error) => {
                     setFailModalText("정보가 일치하지 않습니다.");
@@ -181,7 +182,7 @@ function LoginFind() {
 
                 <div className="login-sub">
                     <div className="login-auto"></div>
-                    <Link to="/Login">로그인하기</Link>
+                    <Link to={kcook() + "/Login"}>로그인하기</Link>
                 </div>
 
                 <button
@@ -197,7 +198,7 @@ function LoginFind() {
 
                 <div className="login-register">
                 아직 계정이 없으신가요?
-                <Link to="/SignUp" style={{ marginLeft: "4px", }}>가입하기</Link>
+                <Link to={kcook() + "/SignUp"} style={{ marginLeft: "4px", }}>가입하기</Link>
                 {failModal === true ? (
                     <div className="login-iscorrect">
                         {failModalText}

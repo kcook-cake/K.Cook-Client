@@ -25,6 +25,7 @@ import ProductManagement from './seller/ProductManagement';
 import SPMDetail from './detail/SPMDetail';
 import SellerReview from './seller/SellerReview';
 import SellerStore from 'src/components/seller/sss/SellerStore';
+import kcook from 'src/utils/kcook';
 
 
 interface Props {
@@ -105,15 +106,15 @@ const Pages = ({ session, auth }: Props) => {
       <Header
         session={session} auth={auth} 
         setNumLeftMobileF={setNumLeftMobile} />
-      
-      <Route exact path="/Login" component={Login} />
-      <Route exact path="/LoginFind" component={LoginFind} />
-      <Route exact path="/SignUp" component={SignUp} />
-      <Route exact path="/SignOut" component={SignOut} />
-      <Route exact path="/Test" component={Test} />
 
-      <Route exact path="/Cake/:id" component={CakeDetail} />
-      <Route exact path="/Store/:id" component={()=>StoreDetail(auth)} />
+      <Route exact path={kcook() + "/Login"} component={Login} />
+      <Route exact path={kcook() + "/LoginFind"} component={LoginFind} />
+      <Route exact path={kcook() + "/SignUp"} component={SignUp} />
+      <Route exact path={kcook() + "/SignOut"} component={SignOut} />
+      <Route exact path={kcook() + "/Test"} component={Test} />
+
+      <Route exact path={kcook() + "/Cake/:id"} component={CakeDetail} />
+      <Route exact path={kcook() + "/Store/:id"} component={()=>StoreDetail(auth)} />
 
       <Main session={session} auth={auth} />
 

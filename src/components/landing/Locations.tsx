@@ -15,7 +15,7 @@ function Location({ getData, setLocationIndexF }: LocationProps) {
             id="lp-select-location"
             onChange={(e)=>{setLocationIndexF(e.target.value)}}
         >
-            <option disabled selected>
+            <option disabled>
             시/군 선택
             </option>
             {getData.map((data: { locationId: number, locationName: string })=>{

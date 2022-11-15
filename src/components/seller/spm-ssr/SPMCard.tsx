@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import 'src/styles/seller/spm-ssr/SPMCard.scss';
+import kcook from 'src/utils/kcook';
 
 import { ReactComponent as AddIcon } from '../../../assets/seller/add-icon.svg';
 import { ReactComponent as CloseBtn } from '../../../assets/seller/closebtn.svg';
@@ -132,7 +133,7 @@ function SPMCard({
                         }}>
                         <CopyBtn/>
                     </button>
-                    <Link to="/ProductManagement/0">
+                    <Link to={kcook() + "/ProductManagement/0"}>
                         <div className="spmcard-tap-btn">
                             <img src={setting}/>
                         </div>

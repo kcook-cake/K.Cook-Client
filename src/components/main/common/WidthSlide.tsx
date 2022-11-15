@@ -6,6 +6,7 @@ import star from 'src/utils/star';
 
 import { start } from 'repl';
 import MakePrice from 'src/utils/MakePrice';
+import kcook from 'src/utils/kcook';
 
 
 interface Props {
@@ -28,7 +29,7 @@ interface Props {
 
 function WidthSlide({getData, resize, slidePx, }: Props) {
     return (
-        <Link to="/Cake/0">
+        <Link to={kcook() + "/Cake/0"}>
             {getData.map((data: { 
                 productId: number, 
                 name: string, 

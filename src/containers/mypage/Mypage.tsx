@@ -8,6 +8,7 @@ import ProductReview from './ProductReview';
 import Coupons from './Coupons';
 import Profile from '../../components/mypage/Profile';
 import MypageSection from '../../components/mypage/MypageSection';
+import kcook from 'src/utils/kcook';
 
 interface Props {
     session: boolean;
@@ -27,10 +28,10 @@ const Mypage = ({ session, auth, }: Props) =>{
             <div className="mypage">
                 <>
                     <MypageSection />
-                    <Route exact path="/MypageOrder" component={MypageOrder} />
-                    <Route exact path="/ProductReview" component={ProductReview} />
-                    <Route exact path="/Coupon" component={Coupons} />
-                    <Route exact path="/Profile" component={()=>Profile({session, auth})} />
+                    <Route exact path={kcook() + "/MypageOrder"} component={MypageOrder} />
+                    <Route exact path={kcook() + "/ProductReview"} component={ProductReview} />
+                    <Route exact path={kcook() + "/Coupon"} component={Coupons} />
+                    <Route exact path={kcook() + "/Profile"} component={()=>Profile({session, auth})} />
                 </>
             </div>
         </div>

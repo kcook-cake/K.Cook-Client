@@ -14,7 +14,7 @@ function PickCard (){
     const [recommendLengthTodays, setRecommendLengthTodays] = useState(0);
 
     useEffect(()=>{
-        getAxios(setRecommenTdodays, setRecommendLengthTodays, "cakes", [], 6, recommendPageTodays, 0);
+        // getAxios(setRecommenTdodays, setRecommendLengthTodays, "cakes", [], 6, recommendPageTodays, 0);
     },[]);
 
     return(

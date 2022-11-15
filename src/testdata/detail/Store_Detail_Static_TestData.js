@@ -12,11 +12,11 @@ const Store_Detail_Static_TestData = () => {
         phone: "010-1111-1111",
         location: "위치",
         logoImage: "",
-        image1: "https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg",
-        image2: "",
-        image3: "",
-        image4: "",
-        image5: "",
+        image1: "https://www.bntnews.co.kr/data/bnt/image/201706/6b083c638d30105006d1e1e62b1eb03a.jpg",
+        image2: "https://www.bntnews.co.kr/data/bnt/image/201706/6b083c638d30105006d1e1e62b1eb03a.jpg",
+        image3: "https://www.bntnews.co.kr/data/bnt/image/201706/6b083c638d30105006d1e1e62b1eb03a.jpg",
+        image4: "https://www.bntnews.co.kr/data/bnt/image/201706/6b083c638d30105006d1e1e62b1eb03a.jpg",
+        image5: "https://www.bntnews.co.kr/data/bnt/image/201706/6b083c638d30105006d1e1e62b1eb03a.jpg",
     });
 }
 
