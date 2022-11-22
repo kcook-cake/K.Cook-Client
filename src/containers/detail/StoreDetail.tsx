@@ -24,14 +24,14 @@ import Store_Detail_Static_TestData from 'src/testdata/detail/Store_Detail_Stati
 import Store_Detail_Cakes_TestData from 'src/testdata/detail/Store_Detail_Cakes_TestData';
 import Slide from 'src/components/detail/store/Slide';
 
-// const { kakao } = window;
+const { kakao } = window;
 
-// declare global {
-//   interface Window {
-//     kakao: any;
-//   }
-//   //  const kakao: any;
-// }
+declare global {
+  interface Window {
+    kakao: any;
+  }
+  //  const kakao: any;
+}
 
 const StoreDetail = (auth: any) => {
   const [num, setNum] = useState(1);
@@ -148,44 +148,44 @@ const StoreDetail = (auth: any) => {
     //   });
 
 
-    // let container = document.getElementById('map');
-    // let options = {
-    //   center: new kakao.maps.LatLng(33.450701, 126.570667),
-    //   level: 3,
-    // };
-    // let map = new kakao.maps.Map(container, options);
-    // // let imageSrc =
-    // //   'https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg'; // 마커이미지의 주소입니다
+    let container = document.getElementById('map');
+    let options = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      level: 3,
+    };
+    let map = new kakao.maps.Map(container, options);
+    // let imageSrc =
+    //   'https://image.wconcept.co.kr/productimg/image/img0/52/300728752_VO48242.jpg'; // 마커이미지의 주소입니다
 
-    // // axios.get으로 얻은 가게의 이름을 여기에 담기.
-    // let names = '유니아케이크';
+    // axios.get으로 얻은 가게의 이름을 여기에 담기.
+    let names = '유니아케이크';
 
-    // // 커스텀 오버레이
-    // // 커스텀 오버레이에 표시할 내용입니다
-    // // HTML 문자열 또는 Dom Element 입니다
-    // let content = `
-    //    <div class ="kakaomap_store">
-    //      <div class ="kakaomap_store_image">
-    //        <img src=${imageSrc} alt="img" />
-    //      </div>
-    //      <div class ="kakaomap_store_text">
-    //        <span class="text">${names}</span>
-    //      </div>
-    //    </div>
-    //   `;
+    // 커스텀 오버레이
+    // 커스텀 오버레이에 표시할 내용입니다
+    // HTML 문자열 또는 Dom Element 입니다
+    let content = `
+       <div class ="kakaomap_store">
+         <div class ="kakaomap_store_image">
+           <img src=${imageSrc} alt="img" />
+         </div>
+         <div class ="kakaomap_store_text">
+           <span class="text">${names}</span>
+         </div>
+       </div>
+      `;
 
-    // // 커스텀 오버레이가 표시될 위치입니다
-    // // + 뒤에 숫자로 위로 올려서 가게위치를 가리지 않게 조절.
-    // let position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
+    // 커스텀 오버레이가 표시될 위치입니다
+    // + 뒤에 숫자로 위로 올려서 가게위치를 가리지 않게 조절.
+    let position = new kakao.maps.LatLng(33.450701 + 0.0003, 126.570667);
 
-    // // 커스텀 오버레이를 생성합니다
-    // let customOverlay = new kakao.maps.CustomOverlay({
-    //   position: position,
-    //   content: content,
-    // });
+    // 커스텀 오버레이를 생성합니다
+    let customOverlay = new kakao.maps.CustomOverlay({
+      position: position,
+      content: content,
+    });
 
-    // // 커스텀 오버레이를 지도에 표시합니다
-    // customOverlay.setMap(map);
+    // 커스텀 오버레이를 지도에 표시합니다
+    customOverlay.setMap(map);
 
     return () => {
       isComponentMounted = false;
